@@ -6,12 +6,13 @@ try small programs and inspect values without compiling each program to an
 executable.
 
 **Built with [FortFront](https://github.com/lazy-fortran/fortfront).** Credit goes
-to Christopher Albert and the FortFront contributors for the frontend library
-that provides parsing, semantic analysis and AST APIs. ffort vendors a pinned,
-locally patched copy of FortFront and uses it to cross-check source before
+to Christopher Albert for the frontend library that provides parsing,
+semantic analysis and AST APIs. ffort vendors a pinned, locally
+patched copy of FortFront and uses it to cross-check source before
 execution. The interpreter and runtime are separate work; see the
-[third-party notices](THIRD_PARTY_NOTICES.md) and
-[FortFront integration notes](docs/FRONTEND.md) for attribution and local changes.
+[third-party notices](THIRD_PARTY_NOTICES.md) and [FortFront
+integration notes](docs/FRONTEND.md) for attribution and local
+changes.
 
 ## What it supports
 
