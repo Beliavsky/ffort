@@ -1,4 +1,2 @@
-git add .
-git commit -m "Initial commit"
-git remote add origin https://github.com/Beliavsky/ffort.git
-git push -u origin main
+git add -- .gitignore temp.bat
+git commit -m "Remove temp.bat and ignore it throughout repository"
