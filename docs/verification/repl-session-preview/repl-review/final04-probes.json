@@ -1,0 +1,121 @@
+{
+  "status": "passed",
+  "candidate_sha256": "81ce673609ae78b43d1749cc66341f7be6e72b8b2cdb014063cae3a22d9fc39d",
+  "files": {
+    "recovery/057-repl-session-work/src/fi_repl.f90": "22aa5bb3de3de2c310194c0bd799b506416aca0ebc1abe5fd649cb23b6025427"
+  },
+  "records": [
+    {
+      "name": "close_comment",
+      "stdin": "print *, \"PREFIX\"\n1) ! bypassclose\n.clear\n.quit\n",
+      "stdout": "",
+      "stderr": "<repl>: query must be one balanced expression without statement separators\n",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "splice_comment",
+      "stdin": "print *, \"PREFIX\"\n1), 2 ! splice\n.clear\n.quit\n",
+      "stdout": "",
+      "stderr": "<repl>: query must be one balanced expression without statement separators\n",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "balanced_splice",
+      "stdin": "print *, \"PREFIX\"\n1), 2, (1\n.clear\n.quit\n",
+      "stdout": "",
+      "stderr": "<repl>: query must be one balanced expression without statement separators\n",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "top_comma",
+      "stdin": "print *, \"PREFIX\"\n1,2\n.clear\n.quit\n",
+      "stdout": "",
+      "stderr": "<repl>: query must be one balanced expression without statement separators\n",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "semicolon",
+      "stdin": "print *, \"PREFIX\"\n1); print *, \"INJECT\"; print *, (2\n.clear\n.quit\n",
+      "stdout": "",
+      "stderr": "<repl>: query must be one balanced expression without statement separators\n",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "open_paren",
+      "stdin": "print *, \"PREFIX\"\n(1\n.clear\n.quit\n",
+      "stdout": "",
+      "stderr": "<repl>: query must be one balanced expression without statement separators\n",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "unterminated_quote",
+      "stdin": "print *, \"PREFIX\"\n'oops\n.clear\n.quit\n",
+      "stdout": "",
+      "stderr": "<repl>: query must be one balanced expression without statement separators\n",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "call",
+      "stdin": "print *, \"PREFIX\"\nsin(1.0)\n.clear\n.quit\n",
+      "stdout": "",
+      "stderr": "<repl>:0:0: persistent session supports only plain local intrinsic scalars and straight-line assignment, print and random calls\n",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "comment",
+      "stdin": "integer::i\ni=4\ni ! note\n.quit\n",
+      "stdout": " 4\n",
+      "stderr": "",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "quoted_punctuation",
+      "stdin": "'hello!(),;world' ! ignored ; )\n.quit\n",
+      "stdout": " hello!(),;world\n",
+      "stderr": "",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "doubled_quote",
+      "stdin": "'a''!);,b' ! ignored\n.quit\n",
+      "stdout": " a'!);,b\n",
+      "stderr": "",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "nested_expression",
+      "stdin": "((1+2)*3) ! ) ;\n.quit\n",
+      "stdout": " 9\n",
+      "stderr": "",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "state_preservation",
+      "stdin": "integer::i\ni=1\ni\ni=i+1\n1), 2 ! splice\ni\ni\n.quit\n",
+      "stdout": " 1\n 2\n 2\n",
+      "stderr": "<repl>: query must be one balanced expression without statement separators\n",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "compile_failure_no_pending",
+      "stdin": "print *, \"PREFIX\"\nunknown+1\n.clear\n.quit\n",
+      "stdout": "",
+      "stderr": "<repl>:4:18: Undeclared variable: unknown\n",
+      "exit": 0,
+      "passed": true
+    }
+  ]
+}

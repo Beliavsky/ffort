@@ -1,0 +1,48 @@
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 76
++        integer, parameter :: NUM_INTRINSICS = 77
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -522,6 +522,11 @@
+             name="verify", return_type="integer", &
+             arg_types="character,character", &
+             description="Position of a character outside a set")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="repeat", return_type="character", &
++            arg_types="character,integer", &
++            description="Scalar string repetition")
+     end subroutine register_string_intrinsics
+ 
+     subroutine register_variadic_intrinsics(i)
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -473,6 +473,13 @@
+ 
+         call resolve_name_at_node(arena, node_index, node%name, binding, error_msg)
+         if (binding%found) then
++            if (binding%binding_kind == BINDING_FUNCTION .or. &
++                binding%binding_kind == BINDING_GENERIC_INTERFACE) then
++                ! A declared procedure/generic owns the call identity, even if
++                ! lexical intrinsic discovery marked the same spelling earlier.
++                node%is_intrinsic = .false.
++                node%is_array_access = .false.
++            end if
+             if (binding%binding_kind == BINDING_GENERIC_INTERFACE) then
+                 call resolve_named_generic_result(arena, binding%declaration_node_index, node, visiting)
+                 return
+@@ -899,6 +906,8 @@
+             kind_value = intrinsic_kind_argument(arena, node, name)
+             if (kind_value <= 0) kind_value = 4
+             call set_intrinsic_metadata(node, TINT, kind_value, 1)
++        case ("repeat")
++            call set_intrinsic_metadata(node, TCHAR, 1, 0)
+         case ("adjustl", "adjustr")
+             call set_intrinsic_metadata(node, TCHAR, 1, result_rank)
+         case ("char", "achar")

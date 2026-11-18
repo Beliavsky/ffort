@@ -1,0 +1,22 @@
+{
+  "status": "blocked_query_wrapper_shape",
+  "source_sha256": "572da8da5a51873c7728d3d19979094358cda09f9c58c90203df7f4424d0ec05",
+  "evidence": {
+    "probes.json": "82e48ee6c28395179a3740063f037028a1c6c535baea14ddc446768c11e34d69",
+    "comment-splice-probes.json": "afe8f86cfababedbe41d8579a6e8cfedc6804438bb5994927975d112481d30f2"
+  },
+  "blockers": [
+    "Malformed unmatched close plus comment can consume generated wrapper syntax and trigger pending effects.",
+    "Single PRINT instruction may contain multiple items spliced by malformed expression; runtime query shape should require exactly one item and no explicit format."
+  ],
+  "usability_correction": "Valid trailing comments need quote-aware stripping before generated close; preserve quoted exclamation marks.",
+  "passed_review": [
+    ".run chooses scalar or general execution by readonly admission before effects, never retries failed execution.",
+    "Ordinary fallback marks nonresumable even on failure; queries cannot silently replay it.",
+    "Both base and query parse/frontend/admission precede pending execution.",
+    "Repeated queries are ephemeral and use internal runtime frontier.",
+    "Line/source bounds, drain and EOF policies remain inherited.",
+    "Continuation after comment-only line works in actual probe."
+  ],
+  "scope": "No source edits. Initial keyword REAL-name concern is excluded by existing parser reserved-name restriction, not a confirmed new bug."
+}

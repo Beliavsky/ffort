@@ -1,0 +1,1151 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:39:43.228381+00:00",
+  "summary": {
+    "total": 41,
+    "failed": 0,
+    "candidate_checked": 41,
+    "gnu_checked": 35,
+    "gnu_skipped": 6,
+    "gnu_executed": 10,
+    "gnu_compile_only": 3,
+    "gnu_compile_rejections": 22
+  },
+  "records": [
+    {
+      "case": {
+        "name": "vectors",
+        "source": "vectors.f90",
+        "expected_stdout": "F T 3 3 3 F T 8 F T 2",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F T           3           3                    3\n F T           8\n F T           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F T 3 3 3\n F T 8\n F T 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrices",
+        "source": "matrices.f90",
+        "expected_stdout": "F T 3 F T F T T F 1 2 0 F F T T 2 1 2 1 8 0 2 1 1 2 2",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F T           3\n F T F T T F           1           2           0\n F F T T           2           1\n                    2                    1           8\n           0           2           1           1           2\n           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F T 3\n F T F T T F 1 2 0\n F F T T 2 1\n 2 1 8\n 0 2 1 1 2\n 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty",
+        "source": "empty.f90",
+        "expected_stdout": "T F 0 T F 0 T F 0 T T T F F F 0 0 0 T T F F 0 0 0 0 0 0 0",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F           0 T F                    0\n T F           0 T T T F F F           0           0           0\n T T F F           0           0\n           0           0           0\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T F 0 T F 0\n T F 0 T T T F F F 0 0 0\n T T F F 0 0\n 0 0 0\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "elemental",
+        "source": "elemental.f90",
+        "expected_stdout": "0 0 3 4 1 2 3 4 F F T T 9007199254740993 1 2 3 4 8 9007199254740992 1.2345678901234567 8",
+        "category": "success",
+        "baseline": "run",
+        "rel_tol": 1e-15,
+        "abs_tol": 1e-15
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           3           4           1           2           3           4\n F F T T\n     9007199254740993\n   1.0000000000000000        2.0000000000000000        3.0000000000000000        4.0000000000000000                8   9007199254740992.0     \n   1.2345678901234567                8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 3 4 1 2 3 4\n F F T T\n 9007199254740993\n 1.0000000000000000 2.0000000000000000 3.0000000000000000 4.0000000000000000 8 9007199254740992.0\n 1.2345678901234567 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "characters",
+        "source": "characters.f90",
+        "expected_stdout": "aayycc\nokyyok\nno \n",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "aayycc\nokyyok\nno \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "aayycc\nokyyok\nno \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "constants",
+        "source": "constants.f90",
+        "expected_stdout": "2 T 2 8 T",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2 T   2.0000000000000000                8 T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 T 2.0000000000000000 8 T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_unevaluated",
+        "source": "kind_unevaluated.f90",
+        "expected_stdout": "4 8 4 4 8 4",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           8           4           4\n           8           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 8 4 4\n 8 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadowed_names",
+        "source": "shadowed_names.f90",
+        "expected_stdout": "3 4 5 6 7",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           4           5           6           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 4 5 6 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reject_scalar_mask",
+        "source": "reject_scalar_mask.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_scalar_mask.f90:3:12:\n\n    3 | print *,all(.true.)\n      |            1\nError: \u2018mask\u2019 argument of \u2018all\u2019 intrinsic at (1) must be a logical array\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_scalar_mask.f90:3:20: Array intrinsic requires a rank-one or rank-two array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_scalar_mask.f90:3:20: Array intrinsic requires a rank-one or rank-two array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_numeric_mask",
+        "source": "reject_numeric_mask.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_numeric_mask.f90:3:14:\n\n    3 | print *,count([1,2])\n      |              1\nError: \u2018mask\u2019 argument of \u2018count\u2019 intrinsic at (1) must be a logical array\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_numeric_mask.f90:3:21: Logical reduction requires LOGICAL array MASK\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_numeric_mask.f90:3:21: Logical reduction requires LOGICAL array MASK\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_logical_dim",
+        "source": "reject_logical_dim.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_logical_dim.f90:3:25:\n\n    3 | print *,any([.true.],dim=.true.)\n      |                         1\nError: \u2018dim\u2019 argument of \u2018any\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_logical_dim.f90:3:33: Logical reduction DIM must be scalar INTEGER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_logical_dim.f90:3:33: Logical reduction DIM must be scalar INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_array_dim",
+        "source": "reject_array_dim.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_array_dim.f90:3:25:\n\n    3 | print *,all([.true.],dim=[1])\n      |                         1\nError: \u2018dim\u2019 argument of \u2018all\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_array_dim.f90:3:30: Logical reduction DIM must be scalar INTEGER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_array_dim.f90:3:30: Logical reduction DIM must be scalar INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_any_kind",
+        "source": "reject_any_kind.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_any_kind.f90:3:8:\n\n    3 | print *,any([.true.],kind=8)\n      |        1\nError: Cannot find keyword named \u2018kind\u2019 in call to \u2018any\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_any_kind.f90:3:29: Unknown keyword or excess actual argument: kind\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_any_kind.f90:3:29: Unknown keyword or excess actual argument: kind\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_count_kind_invalid",
+        "source": "reject_count_kind_invalid.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "compile"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_count_kind_invalid.f90:3:32: COUNT supports INTEGER kinds 4 and 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_count_kind_invalid.f90:3:32: COUNT supports INTEGER kinds 4 and 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_count_kind_dynamic",
+        "source": "reject_count_kind_dynamic.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_count_kind_dynamic.f90:5:28:\n\n    5 | print *,count([.true.],kind=k)\n      |                            1\nError: Parameter \u2018k\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_count_kind_dynamic.f90:5:28:\n\n    5 | print *,count([.true.],kind=k)\n      |                            1\nError: \u2018kind\u2019 argument of \u2018count\u2019 intrinsic at (1) must be a constant\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_count_kind_dynamic.f90:5:31: COUNT KIND must be constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_count_kind_dynamic.f90:5:31: COUNT KIND must be constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_count_kind_real",
+        "source": "reject_count_kind_real.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_count_kind_real.f90:3:28:\n\n    3 | print *,count([.true.],kind=8.0)\n      |                            1\nError: \u2018kind\u2019 argument of \u2018count\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_count_kind_real.f90:3:33: COUNT KIND must be scalar INTEGER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_count_kind_real.f90:3:33: COUNT KIND must be scalar INTEGER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_missing_mask",
+        "source": "reject_missing_mask.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_missing_mask.f90:3:8:\n\n    3 | print *,count(kind=8)\n      |        1\nError: Missing actual argument \u2018mask\u2019 in call to \u2018count\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_missing_mask.f90:3:22: Missing required actual argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_missing_mask.f90:3:22: Missing required actual argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_missing_merge",
+        "source": "reject_missing_merge.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_missing_merge.f90:3:8:\n\n    3 | print *,merge(1,0)\n      |        1\nError: Missing actual argument \u2018mask\u2019 in call to \u2018merge\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_missing_merge.f90:3:19: MERGE requires TSOURCE, FSOURCE and MASK\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_missing_merge.f90:3:19: MERGE requires TSOURCE, FSOURCE and MASK\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_source_type",
+        "source": "reject_source_type.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_source_type.f90:3:16:\n\n    3 | print *,merge(1,0.0,.true.)\n      |                1\nError: \u2018fsource\u2019 argument of \u2018merge\u2019 intrinsic at (1) must be the same type and kind as \u2018tsource\u2019\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_source_type.f90:3:28: MERGE requires matching intrinsic source types/kinds and LOGICAL MASK\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_source_type.f90:3:28: MERGE requires matching intrinsic source types/kinds and LOGICAL MASK\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_source_kind",
+        "source": "reject_source_kind.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_source_kind.f90:3:16:\n\n    3 | print *,merge(1,0_8,.true.)\n      |                1\nError: \u2018fsource\u2019 argument of \u2018merge\u2019 intrinsic at (1) must be the same type and kind as \u2018tsource\u2019\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_source_kind.f90:3:28: MERGE requires matching intrinsic source types/kinds and LOGICAL MASK\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_source_kind.f90:3:28: MERGE requires matching intrinsic source types/kinds and LOGICAL MASK\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_merge_mask_type",
+        "source": "reject_merge_mask_type.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_merge_mask_type.f90:3:18:\n\n    3 | print *,merge(1,0,1)\n      |                  1\nError: \u2018mask\u2019 argument of \u2018merge\u2019 intrinsic at (1) must be LOGICAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_merge_mask_type.f90:3:21: MERGE requires matching intrinsic source types/kinds and LOGICAL MASK\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_merge_mask_type.f90:3:21: MERGE requires matching intrinsic source types/kinds and LOGICAL MASK\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_source_length",
+        "source": "reject_source_length.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_source_length.f90:3:14:\n\n    3 | print *,merge('a','bb',.true.)\n      |              1\nError: Unequal character lengths (1/2) in MERGE intrinsic at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_source_length.f90:3:31: MERGE CHARACTER source lengths must match\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_source_length.f90:3:31: MERGE CHARACTER source lengths must match\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_merge_shape",
+        "source": "reject_merge_shape.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_merge_shape.f90:3:14:\n\n    3 | print *,merge([1,2],[0,0,0],.true.)\n      |              1\nError: Different shape for arguments 'tsource' and 'fsource' for intrinsic 'merge' at (1) on dimension 1 (2 and 3)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_merge_shape.f90:3:36: Array expression shapes do not conform\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_merge_shape.f90:3:36: Array expression shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_merge_mask_shape",
+        "source": "reject_merge_mask_shape.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_merge_mask_shape.f90:3:14:\n\n    3 | print *,merge([1,2],0,[.true.])\n      |              1\nError: Different shape for arguments 'tsource' and 'mask' for intrinsic 'merge' at (1) on dimension 1 (2 and 1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_merge_mask_shape.f90:3:32: Array expression shapes do not conform\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_merge_mask_shape.f90:3:32: Array expression shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dble_type",
+        "source": "reject_dble_type.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_dble_type.f90:3:13:\n\n    3 | print *,dble(.true.)\n      |             1\nError: \u2018a\u2019 argument of \u2018dble\u2019 intrinsic at (1) must have a numeric type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_dble_type.f90:3:21: Intrinsic requires numeric arguments\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_dble_type.f90:3:21: Intrinsic requires numeric arguments\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dble_count",
+        "source": "reject_dble_count.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_dble_count.f90:3:8:\n\n    3 | print *,dble(1,8)\n      |        1\nError: Too many arguments in call to \u2018dble\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_dble_count.f90:3:18: Intrinsic requires one argument: dble\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_dble_count.f90:3:18: Intrinsic requires one argument: dble\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_duplicate_dim",
+        "source": "reject_duplicate_dim.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_duplicate_dim.f90:3:8:\n\n    3 | print *,count([.true.],1,dim=1)\n      |        1\nError: Argument \u2018dim\u2019 appears twice in call to \u2018count\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_duplicate_dim.f90:3:32: Repeated actual argument for dim\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_duplicate_dim.f90:3:32: Repeated actual argument for dim\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_positional_after_keyword",
+        "source": "reject_positional_after_keyword.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_positional_after_keyword.f90:3:27:\n\n    3 | print *,merge(mask=.true.,1,0)\n      |                           1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_positional_after_keyword.f90:3:27: Positional argument cannot follow a keyword argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_positional_after_keyword.f90:3:27: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_unknown_keyword",
+        "source": "reject_unknown_keyword.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_unknown_keyword.f90:3:8:\n\n    3 | print *,dble(x=1)\n      |        1\nError: Cannot find keyword named \u2018x\u2019 in call to \u2018dble\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_unknown_keyword.f90:3:18: Unknown keyword or excess actual argument: x\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_unknown_keyword.f90:3:18: Unknown keyword or excess actual argument: x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_dim_zero",
+        "source": "runtime_dim_zero.f90",
+        "expected_stdout": "",
+        "category": "runtime",
+        "baseline": "skip",
+        "diagnostic": "DIM outside array rank"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/runtime_dim_zero.f90:5:9: reduction DIM outside array rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_dim_large",
+        "source": "runtime_dim_large.f90",
+        "expected_stdout": "",
+        "category": "runtime",
+        "baseline": "skip",
+        "diagnostic": "DIM outside array rank"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/runtime_dim_large.f90:5:9: reduction DIM outside array rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_shape",
+        "source": "runtime_shape.f90",
+        "expected_stdout": "",
+        "category": "runtime",
+        "baseline": "skip",
+        "diagnostic": "shapes do not conform"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/runtime_shape.f90:7:9: array expression shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_mask",
+        "source": "undefined_mask.f90",
+        "expected_stdout": "",
+        "category": "runtime",
+        "baseline": "skip",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/undefined_mask.f90:5:13: read of uninitialized array element m\n"
+      }
+    },
+    {
+      "case": {
+        "name": "work_budget",
+        "source": "work_budget.f90",
+        "expected_stdout": "",
+        "category": "runtime",
+        "baseline": "skip",
+        "args": [
+          "--max-steps",
+          "30"
+        ],
+        "diagnostic": "step limit"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/work_budget.f90:4:1: execution step limit exceeded (current limit: 30); use --max-steps N to set the execution budget (positive 64-bit integer)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real_kinds",
+        "source": "real_kinds.f90",
+        "expected_stdout": "0.5 0.5 2.25 4 1 0 2.25 8 -9223372036854775808.0 0 1.25",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/real_kinds.f90:9:13:\n\n    9 | print *,dble(-9223372036854775807_8-1_8),dble(0_8),dble(1.25)\n      |             1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  0.500000000      0.500000000       2.25000000               4\n   1.0000000000000000        0.0000000000000000        2.2500000000000000                8\n  -9.2233720368547758E+018   0.0000000000000000        1.2500000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0.500000000 0.500000000 2.25000000 4\n 1.0000000000000000 0.0000000000000000 2.2500000000000000 8\n -0.92233720368547758E+19 0.0000000000000000 1.2500000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "assumed_shape",
+        "source": "assumed_shape.f90",
+        "expected_stdout": "F T F T T 2 1 3",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F T F T T                    2                    1   3.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F T F T T 2 1 3.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_character_lengths",
+        "source": "runtime_character_lengths.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "source lengths must match"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/runtime_character_lengths.f90:3:14:\n\n    3 | print *,merge(trim('a '),trim('bb'),.true.)\n      |              1\nError: Unequal character lengths (1/2) in MERGE intrinsic at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/runtime_character_lengths.f90:3:44: MERGE CHARACTER source lengths must match\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/runtime_character_lengths.f90:3:44: MERGE CHARACTER source lengths must match\n"
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_unselected_source",
+        "source": "runtime_unselected_source.f90",
+        "expected_stdout": "",
+        "category": "runtime",
+        "baseline": "skip",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/runtime_unselected_source.f90:4:17: read of uninitialized variable x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_matrix_shape",
+        "source": "reject_matrix_shape.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_matrix_shape.f90:6:14:\n\n    6 | print *,merge(a,b,.true.)\n      |              1\nError: Different shape for arguments 'tsource' and 'fsource' for intrinsic 'merge' at (1) on dimension 1 (2 and 3)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_matrix_shape.f90:6:26: Array expression shapes do not conform\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/reject_matrix_shape.f90:6:26: Array expression shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unsupported_merge_kind_selector",
+        "source": "unsupported_merge_kind_selector.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "compile",
+        "diagnostic": "resolved type/rank/kind differs"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/unsupported_merge_kind_selector.f90:4:1: FortFront adapter disagreement: resolved type/rank/kind differs or is unavailable\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/unsupported_merge_kind_selector.f90:4:1: FortFront adapter disagreement: resolved type/rank/kind differs or is unavailable\n"
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_mutable_character_lengths",
+        "source": "runtime_mutable_character_lengths.f90",
+        "expected_stdout": "",
+        "category": "runtime",
+        "baseline": "compile",
+        "diagnostic": "source lengths must match"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/logical_intrinsics/runtime_mutable_character_lengths.f90:4:9: MERGE CHARACTER source lengths must match\n"
+      }
+    }
+  ],
+  "manifest_sha256": "1157c28a807410af372dc3fb2be31c214d6361c61c459b4799be562457727053",
+  "source_sha256": {
+    "vectors.f90": "33970b46344e5e832125d77f58bdef7ec70157571efe3988246eac76aada9349",
+    "matrices.f90": "ca3edfb7b546a935521d07df9f78a0e4665cba24bc2eba132f9a2685d2c0b48b",
+    "empty.f90": "c32820079f9909cdeea102d5af2261292c4b360487c23c383250db6d94e3db43",
+    "elemental.f90": "01b191ed17ac344972444f4e73707ddff5372bd5361dcfa81be050740aad7de2",
+    "characters.f90": "36adf4beb2c772559ee168b2a68957becf00a2c56d864a5d6b6260fc48a2c829",
+    "constants.f90": "e2994fb265ae658acac69359f7075aab0cca1f7133d361b1f8010c4afbf1bde4",
+    "kind_unevaluated.f90": "c49b6d261814d13126314e48a8fbffc69f7f1624cdc4a2bcccb1ee6601006824",
+    "shadowed_names.f90": "10da9fa056a799401d52347301d79d7c3c3d2dc523220fee0ae0751b07bd6c23",
+    "reject_scalar_mask.f90": "712e7a8e4604437732cc49fc3472dcf1da8c4f3cbf8cf81177d3e6068e62ab73",
+    "reject_numeric_mask.f90": "e65a0d60898bda347a3a579bc7c32e9db734e918ae0db52cee81e14a88fa50b9",
+    "reject_logical_dim.f90": "d95b058f136d4d2c341efe14268ea340d9d7f38183b85ea72bd582005d079312",
+    "reject_array_dim.f90": "5d7209e8a0998dc9a9132f138cee55b3de9a2d540ddf3603400cd747b3201e99",
+    "reject_any_kind.f90": "60a78703aa1f5e24b026d4008d5030b705fca5e4ee61c79782b662811870dc2b",
+    "reject_count_kind_invalid.f90": "27c242f4b731f93e35e97e0e5e3bb7f96f91ee379d327786426df4ec5a5ca0bf",
+    "reject_count_kind_dynamic.f90": "7e1b39e33ff8823bf98b35e2ec1edabdacd15cbc00bcdd967a4d8253679d1e65",
+    "reject_count_kind_real.f90": "d3e136afbf7b13d3b438d88333f34b1f1006356705bbfb25eb5a8fe58862ccfc",
+    "reject_missing_mask.f90": "d6f3db38dd1ba539426d312418ac883651c379d0347d514100caf28b5fc0c9d5",
+    "reject_missing_merge.f90": "e328491594d263761fd16614229592f822e38df0c07f6c7d002a3326f19e19b8",
+    "reject_source_type.f90": "da1123cbf09d2476ea029433fa7d22d76188dba98256168c53f899f02e22ec67",
+    "reject_source_kind.f90": "94fd8c1518df80134e14bb25cb5de97904775b1ad4ae41c4b50158e3c2c334a3",
+    "reject_merge_mask_type.f90": "b3a04db14771b52616812f48da68141409e444f088e3d0c517f1d66d51228059",
+    "reject_source_length.f90": "b9d26752222286c605385f1d84fcc644a9eee664c1610e68ae3e3407c54f6fee",
+    "reject_merge_shape.f90": "6e15d5c7aa8dce73dd7c265969953cbeb81c43089eea7bd5c2457f96575207e2",
+    "reject_merge_mask_shape.f90": "dcd35afb2d1c63dd989084f94a39e438f5358d4fa8acb324407cea44be8e4784",
+    "reject_dble_type.f90": "a7cec190b386d28912d1161a6daca1235308908f2c7dfb7d5dfdc87550f59b31",
+    "reject_dble_count.f90": "87bd8ea237f86e4c1e92cc287188add0c9f58b73d13d34358ecb1895aefb3527",
+    "reject_duplicate_dim.f90": "a376335c440adbdfcced782048dcc662d273221013606097088d0849d676489b",
+    "reject_positional_after_keyword.f90": "aca1c8b902c0aa7c25353d84811d92727e94e6e63277976d1fc99b99545b6caa",
+    "reject_unknown_keyword.f90": "a257910a2d90032cd90e47650b9aeaa196e098a6b0d9a433de322bad5913b108",
+    "runtime_dim_zero.f90": "ddcc17b1f0a1d6e4d8f2cd24b6b9390d9331fbf8d287a55505f4c580f2835d2e",
+    "runtime_dim_large.f90": "1ace996473d21c82b2d5cfea486dda4fd518ce4af434d55a923cbef7ba662d81",
+    "runtime_shape.f90": "d405d37f3e52146b40dff9a7eec200299246ae225e13c4893dc7078819ce9350",
+    "undefined_mask.f90": "f20485143889c3a5949f13da65d353c21e6d1c84ab2f7fb1a44b9c04ab619327",
+    "work_budget.f90": "4a2f0c1d649bb03857a5a175812f375b734ad0f111cee3a827a32d0461cb392b",
+    "real_kinds.f90": "03fc4375f0889999b50fb06b7554b00dbcf7832dc97ae5767bf8b677553c7a92",
+    "assumed_shape.f90": "6fcd4bd4170d8fd1a53215029a401b22f47e0685ae932697c1ac8f20a2f7ac57",
+    "runtime_character_lengths.f90": "c072cd497030ba88f319c83a8bbd5ec75ed33e9f96dc4ae26d8a86416aa229ad",
+    "runtime_unselected_source.f90": "1f00a53de526dbd289e72266a4485330c5e3ec158e09b80df1fb67e2292e0392",
+    "reject_matrix_shape.f90": "fb50e593fa4f7015dde747dc1a4df63466f895b98d11ebf064d2f249342ebba4",
+    "unsupported_merge_kind_selector.f90": "5791794e8f6f927841cc5efb11935e513139827c1804b4f98ec1fa48ee5b1390",
+    "runtime_mutable_character_lengths.f90": "7a6003e926917910f27dbed28ffcdca968379207a898230c00378f671db8c6aa"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

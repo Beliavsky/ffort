@@ -1,0 +1,2743 @@
+{
+  "candidate_sha256_before": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "candidate_sha256_after": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "version_before": {
+    "argv": [
+      "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "--version"
+    ],
+    "status": 0,
+    "stdout": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+    "stderr": ""
+  },
+  "version_after": {
+    "argv": [
+      "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "--version"
+    ],
+    "status": 0,
+    "stdout": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+    "stderr": ""
+  },
+  "gnu_version": {
+    "argv": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "--version"
+    ],
+    "status": 0,
+    "stdout": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "stderr": ""
+  },
+  "manifest_sha256": "842358902d3f865cc54238930ae4b066eeca2b8bbe2604adfef5460a1e531804",
+  "expectations_sha256": "d2f03b7333220d353e992af8c68c807193fbf5da9bb971eb0863bb82be7fd540",
+  "runner_sha256": "cddec56d59f3c0e49cf62f35bf6a899cc44ec5b4a8d82531bc83028f46c1fb3e",
+  "total": 50,
+  "failed": 0,
+  "identity_errors": [],
+  "gnu_executed": 32,
+  "gnu_compile_only": 14,
+  "gnu_source_reject": 4,
+  "records": [
+    {
+      "name": "bare_in",
+      "source": "cases/bare_in.f90",
+      "sha256": "c11dd9264bc9dd4de96a2b522763d4685e06c6a9c3f1cc6449e991136e1893be",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/bare_in.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/bare_in.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/bare_in.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-8d5410xa/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-8d5410xa/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "parenthesized_control",
+      "source": "cases/parenthesized_control.f90",
+      "sha256": "c2a695580b7f276961de25514f9f01e9aeff684333f6481e97e282fd54730c73",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/parenthesized_control.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/parenthesized_control.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/parenthesized_control.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-ciaqxise/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-ciaqxise/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "keyword_in",
+      "source": "cases/keyword_in.f90",
+      "sha256": "a932fdde750577a445f38790bb2b5d65a402b30f68b8d4181c3d66580da47831",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/keyword_in.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/keyword_in.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/keyword_in.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-0l9fc3k3/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-0l9fc3k3/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "constant_vector",
+      "source": "cases/constant_vector.f90",
+      "sha256": "1e5afb0f76061d442a185442dad88020fb903d88bca2ea8aa17cb7bd53c7f2cf",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/constant_vector.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/constant_vector.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/constant_vector.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-unhcdbrm/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-unhcdbrm/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "expression_vector",
+      "source": "cases/expression_vector.f90",
+      "sha256": "76ae49ec8a83c7302ead16809e5dbda0bc276c6fd442fb25a492d87b1d9a701a",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/expression_vector.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/expression_vector.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/expression_vector.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-wjgo206t/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-wjgo206t/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "integer8_vector",
+      "source": "cases/integer8_vector.f90",
+      "sha256": "5e6d56b63c77e984063b7284eece03fb55dd4adf8f8d3ab4b5fb1a835368718c",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/integer8_vector.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/integer8_vector.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/integer8_vector.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-hf9buaqu/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-hf9buaqu/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "parameter_base",
+      "source": "cases/parameter_base.f90",
+      "sha256": "40d8518cc2aa7da7156376c837f282710c83774f83ea2ee0e86a1950ad50aea0",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/parameter_base.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/parameter_base.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/parameter_base.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-i08phu4z/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-i08phu4z/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "zero_length",
+      "source": "cases/zero_length.f90",
+      "sha256": "8afa12306bbf760dc983dd54aeb8c45ddb8570387ff7663800784d4932bc6bc3",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "\n\n\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/zero_length.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/zero_length.f90"
+        ],
+        "status": 0,
+        "stdout": "\n\n\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/zero_length.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-68obhubg/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-68obhubg/oracle"
+        ],
+        "status": 0,
+        "stdout": "\n\n\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "empty_undefined_base",
+      "source": "cases/empty_undefined_base.f90",
+      "sha256": "b8995910b52bb3b4b3f4e0094b18500e80bc7678ea017838551f1a93221b883f",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/empty_undefined_base.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/empty_undefined_base.f90"
+        ],
+        "status": 0,
+        "stdout": "\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/empty_undefined_base.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-75hucu8i/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-75hucu8i/oracle"
+        ],
+        "status": 0,
+        "stdout": "\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "unselected_undefined",
+      "source": "cases/unselected_undefined.f90",
+      "sha256": "f51481337d0e94e9f9ec0a3244c2ecafd0dd7d86fde6a33ea9d8201b718a11bf",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "cd\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/unselected_undefined.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/unselected_undefined.f90"
+        ],
+        "status": 0,
+        "stdout": "cd\ncd\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/unselected_undefined.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-cxrz7zbu/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-cxrz7zbu/oracle"
+        ],
+        "status": 0,
+        "stdout": "cd\ncd\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "deferred_length",
+      "source": "cases/deferred_length.f90",
+      "sha256": "26ae473edb08e12ee11d19b75d2e19e8674f173e589595e9033be91c98352f85",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/deferred_length.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/deferred_length.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/deferred_length.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-npengzrp/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-npengzrp/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "assumed_shape_lower_bound",
+      "source": "cases/assumed_shape_lower_bound.f90",
+      "sha256": "f56c96aacdec50ea2878cbb192e1be75b73cae4a6b5f944d553da74b53b36353",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/assumed_shape_lower_bound.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/assumed_shape_lower_bound.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/assumed_shape_lower_bound.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-n6i51tzu/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-n6i51tzu/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "two_readonly_inputs",
+      "source": "cases/two_readonly_inputs.f90",
+      "sha256": "668a9deeb03a8c5cfbf202af0280661dbca4bc3b240b2b088b2a818519e7face",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\ncd\nef\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/two_readonly_inputs.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/two_readonly_inputs.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\ncd\nef\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/two_readonly_inputs.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-l71qp67r/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-l71qp67r/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\ncd\nef\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "function_input",
+      "source": "cases/function_input.f90",
+      "sha256": "9cd1c198f75a6056634a1d3073830597f9bd2ec6dc27a4f60cc677caa91dbec3",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/function_input.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/function_input.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/function_input.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-nl6z0pqe/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-nl6z0pqe/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "distinct_allocatable_output",
+      "source": "cases/distinct_allocatable_output.f90",
+      "sha256": "21f34573af5599120e23325e6f3c94e8e83ae3bfa56e57c71200a1fa7802b4a2",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/distinct_allocatable_output.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/distinct_allocatable_output.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/distinct_allocatable_output.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-tmvj_j32/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-tmvj_j32/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "keyword_output_first",
+      "source": "cases/keyword_output_first.f90",
+      "sha256": "fd7fb61870db67e8213915ad90eb8fe8c337edc3d67aa6d2531da97186794c9d",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/keyword_output_first.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/keyword_output_first.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/keyword_output_first.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-ey1tjqq2/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-ey1tjqq2/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "same_base_allocatable_reject",
+      "source": "cases/same_base_allocatable_reject.f90",
+      "sha256": "e654b9a1ce6c40d3b5666f1aa75fa4d5a40aa5f41e9d8ae47b3e865a4cccf1e4",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Invalid aliasing source; GNU compile only, never execute.",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 18,
+        "column": 1,
+        "message": "bare CHARACTER gather base overlaps a writable actual"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/same_base_allocatable_reject.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/same_base_allocatable_reject.f90"
+        ],
+        "status": 2,
+        "stdout": "SAFE\n",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/same_base_allocatable_reject.f90:18:1: bare CHARACTER gather base overlaps a writable actual\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/same_base_allocatable_reject.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-0y02abxu/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "parenthesized_same_base_control",
+      "source": "cases/parenthesized_same_base_control.f90",
+      "sha256": "86fa84a8c3f35d6f0852d9341d44ad07d55a9490a1fcd159f82f7b765f74e838",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/parenthesized_same_base_control.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/parenthesized_same_base_control.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/parenthesized_same_base_control.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-o8feucw2/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-o8feucw2/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "overlap_writable_section",
+      "source": "cases/overlap_writable_section.f90",
+      "sha256": "4999ac518181e323110ac212d43ef8623b7c1aaa008c64e35163afbf1a316f15",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Invalid aliasing source; never execute GNU.",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 17,
+        "column": 1,
+        "message": "bare CHARACTER gather base overlaps a writable actual"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/overlap_writable_section.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/overlap_writable_section.f90"
+        ],
+        "status": 2,
+        "stdout": "SAFE\n",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/overlap_writable_section.f90:17:1: bare CHARACTER gather base overlaps a writable actual\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/overlap_writable_section.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-wjscrco1/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "disjoint_same_base_boundary",
+      "source": "cases/disjoint_same_base_boundary.f90",
+      "sha256": "90c5046e7c64315c784eb739fba59330dc9390b984f036367cca0270b7f33944",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "note": "GNU-valid disjoint selections, deliberately rejected by conservative whole-base reservation.",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 16,
+        "column": 1,
+        "message": "bare CHARACTER gather base overlaps a writable actual"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/disjoint_same_base_boundary.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/disjoint_same_base_boundary.f90"
+        ],
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/disjoint_same_base_boundary.f90:16:1: bare CHARACTER gather base overlaps a writable actual\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/disjoint_same_base_boundary.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-g59er2np/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "distinct_writable_section",
+      "source": "cases/distinct_writable_section.f90",
+      "sha256": "0f30dffa10b2437fbcaacec493c44ecba4e174782d1d9aa7042f333752f6ede8",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\nzz\nzz\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/distinct_writable_section.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/distinct_writable_section.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\nzz\nzz\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/distinct_writable_section.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-8v1b4yap/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-8v1b4yap/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\nzz\nzz\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "out_dummy",
+      "source": "cases/out_dummy.f90",
+      "sha256": "56b080217e3db2ae11cf0ee0f2ddc2fa5c8a9a349a07cb6d8581792ea4d5d7df",
+      "category": "reject",
+      "gnu": "reject",
+      "expected_stdout": null,
+      "note": "Vector actual cannot associate with a definable ordinary dummy.",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 14,
+        "column": 19,
+        "message": "Parenthesize a gathered row value when passing it to a user procedure"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/out_dummy.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/out_dummy.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/out_dummy.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/out_dummy.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/out_dummy.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-yrh1chrw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/out_dummy.f90:14:13:\n\n   14 | call consume(x(i))\n      |             1\nError: Array-section actual argument with vector subscripts at (1) is incompatible with INTENT(OUT), INTENT(INOUT), VOLATILE or ASYNCHRONOUS attribute of the dummy argument 'v'\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "inout_dummy",
+      "source": "cases/inout_dummy.f90",
+      "sha256": "20dfd2e9a13904030cda22ef775f47f955f30073e9cb8c70f42e325d137444c1",
+      "category": "reject",
+      "gnu": "reject",
+      "expected_stdout": null,
+      "note": "Vector actual cannot associate with a definable ordinary dummy.",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 14,
+        "column": 19,
+        "message": "Parenthesize a gathered row value when passing it to a user procedure"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/inout_dummy.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/inout_dummy.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/inout_dummy.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/inout_dummy.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/inout_dummy.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-mpd44y06/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/inout_dummy.f90:14:13:\n\n   14 | call consume(x(i))\n      |             1\nError: Array-section actual argument with vector subscripts at (1) is incompatible with INTENT(OUT), INTENT(INOUT), VOLATILE or ASYNCHRONOUS attribute of the dummy argument 'v'\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "unspecified_intent_boundary",
+      "source": "cases/unspecified_intent_boundary.f90",
+      "sha256": "88eae42df5023a70408707d270b1ba2d4e64bfcc1544d782cad961ee15cc53c9",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": null,
+      "note": "GNU-valid read-only case outside narrow assumed-shape non-TARGET INTENT(IN) support.",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 5,
+        "column": 13,
+        "message": "Assumed-length CHARACTER requires a dummy argument or PARAMETER"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/unspecified_intent_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/unspecified_intent_boundary.f90:5:13: Assumed-length CHARACTER requires a dummy argument or PARAMETER\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/unspecified_intent_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/unspecified_intent_boundary.f90:5:13: Assumed-length CHARACTER requires a dummy argument or PARAMETER\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/unspecified_intent_boundary.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-s5qyztut/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "target_in_boundary",
+      "source": "cases/target_in_boundary.f90",
+      "sha256": "298c09b3af13ec50fa8452258726a9ab9b0c80dff90a4582347bbb4841e52da5",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": null,
+      "note": "GNU-valid read-only case outside narrow assumed-shape non-TARGET INTENT(IN) support.",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 14,
+        "column": 19,
+        "message": "Parenthesize a gathered row value when passing it to a user procedure"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/target_in_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/target_in_boundary.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/target_in_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/target_in_boundary.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/target_in_boundary.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-9eih092x/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "explicit_shape_boundary",
+      "source": "cases/explicit_shape_boundary.f90",
+      "sha256": "50b51b44b267b0cf2dfdd5e0e5bdd86e21df1900d54320b67033eaaca8e5bd4b",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": null,
+      "note": "GNU-valid read-only case outside narrow assumed-shape non-TARGET INTENT(IN) support.",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 14,
+        "column": 19,
+        "message": "Parenthesize a gathered row value when passing it to a user procedure"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/explicit_shape_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/explicit_shape_boundary.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/explicit_shape_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/explicit_shape_boundary.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/explicit_shape_boundary.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-n52ce4bs/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "allocatable_in_reject",
+      "source": "cases/allocatable_in_reject.f90",
+      "sha256": "a95580771e59ed3bb823a45bedf57bac946d8e5f6950dac4bb2f35f2733320a6",
+      "category": "reject",
+      "gnu": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 14,
+        "column": 19,
+        "message": "Parenthesize a gathered row value when passing it to a user procedure"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/allocatable_in_reject.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/allocatable_in_reject.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/allocatable_in_reject.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/allocatable_in_reject.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/allocatable_in_reject.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-801r08jx/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/allocatable_in_reject.f90:14:13:\n\n   14 | call consume(x(i))\n      |             1\nError: Actual argument for 'v' must be ALLOCATABLE at (1)\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "pointer_in_reject",
+      "source": "cases/pointer_in_reject.f90",
+      "sha256": "8b731ffd55c8b4c9cfc108e4b6c62da98c6339bf4c2f2f3f326bf6986b018af1",
+      "category": "reject",
+      "gnu": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 5,
+        "column": 32,
+        "message": "Unsupported POINTER declaration"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/pointer_in_reject.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/pointer_in_reject.f90:5:32: Unsupported POINTER declaration\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/pointer_in_reject.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/pointer_in_reject.f90:5:32: Unsupported POINTER declaration\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/pointer_in_reject.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-rgy2zgep/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/pointer_in_reject.f90:14:13:\n\n   14 | call consume(x(i))\n      |             1\nError: Actual argument for 'v' at (1) must be a pointer or a valid target for the dummy pointer in a pointer assignment statement\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "out_of_bounds",
+      "source": "cases/out_of_bounds.f90",
+      "sha256": "eded947af17847149adf482091e011f2abf11bc3e97c5b1904cff576a4300af5",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Runtime-invalid input; never execute GNU.",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 15,
+        "column": 16,
+        "message": "vector row index out of bounds"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/out_of_bounds.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/out_of_bounds.f90"
+        ],
+        "status": 2,
+        "stdout": "SAFE\n",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/out_of_bounds.f90:15:16: vector row index out of bounds\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/out_of_bounds.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-2puxkxbk/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "selected_undefined",
+      "source": "cases/selected_undefined.f90",
+      "sha256": "79496ed876cf8f804ebdcc914773ea20993b0d3b235dc6422fb0a2edca563126",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Runtime-invalid input; never execute GNU.",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 14,
+        "column": 16,
+        "message": "read of uninitialized gathered array element"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/selected_undefined.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/selected_undefined.f90"
+        ],
+        "status": 2,
+        "stdout": "SAFE\n",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/selected_undefined.f90:14:16: read of uninitialized gathered array element\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/selected_undefined.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-nudb_kq1/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "unallocated",
+      "source": "cases/unallocated.f90",
+      "sha256": "e2754ee6ff514af77e805ef940b213baf43a2b3d709edc7aa581ca9cb7f29e0a",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Runtime-invalid input; never execute GNU.",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 14,
+        "column": 16,
+        "message": "reference to unallocated array x"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/unallocated.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/unallocated.f90"
+        ],
+        "status": 2,
+        "stdout": "SAFE\n",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/unallocated.f90:14:16: reference to unallocated array x\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/unallocated.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-fh0o85we/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "module_host_alias",
+      "source": "cases/module_host_alias.f90",
+      "sha256": "8af0b9538115af99ec68eb4990baf345c8befe22cb4e7eb20bb48550ec7102e9",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": null,
+      "note": "Invalid host/actual association; compiler accepts but never execute GNU.",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 16,
+        "column": 1,
+        "message": "Module actual also referenced through callee host/USE association is unsupported"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/module_host_alias.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/module_host_alias.f90:16:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/module_host_alias.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/module_host_alias.f90:16:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/module_host_alias.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-w9tbn75b/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "module_host_read_boundary",
+      "source": "cases/module_host_read_boundary.f90",
+      "sha256": "05d812360787a0d5ee0cc8e7439b0130ce202d00903d0bb909354b8582c9f3ec",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": null,
+      "note": "GNU-valid readonly shared access, existing conservative whole-host conflict policy retained.",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 15,
+        "column": 1,
+        "message": "Module actual also referenced through callee host/USE association is unsupported"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/module_host_read_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/module_host_read_boundary.f90:15:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/module_host_read_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/module_host_read_boundary.f90:15:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/module_host_read_boundary.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-c9p9phh6/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "numeric_parentheses_boundary",
+      "source": "cases/numeric_parentheses_boundary.f90",
+      "sha256": "0b5f287188033919a74639ef735f7c728c4670c434fa74126ab5e613bd98886d",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": null,
+      "note": "Existing bare numeric gather boundary is not expanded.",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 13,
+        "column": 25,
+        "message": "Parenthesize a gathered row value when passing it to a user procedure"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/numeric_parentheses_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/numeric_parentheses_boundary.f90:13:25: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/numeric_parentheses_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/numeric_parentheses_boundary.f90:13:25: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/numeric_parentheses_boundary.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-b23eyycv/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "original_select_match_vec_char",
+      "source": "cases/original_select_match_vec_char.f90",
+      "sha256": "9cb9d4f0e9d171b7925be8faca9a69ab51c2af5fed838d37e94d26bef03732cf",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "red\nred\n0\nblu\ngrn\n",
+      "note": "",
+      "gnu_compile_stderr": "{source}:15:45:\n\n   15 | forall (i=1:n) xmask(i) = any(xgood == xx(i))\n      |                                             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/original_select_match_vec_char.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/original_select_match_vec_char.f90"
+        ],
+        "status": 0,
+        "stdout": "red\nred\n0\nblu\ngrn\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/original_select_match_vec_char.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-310ttlrn/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/original_select_match_vec_char.f90:15:45:\n\n   15 | forall (i=1:n) xmask(i) = any(xgood == xx(i))\n      |                                             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-310ttlrn/oracle"
+        ],
+        "status": 0,
+        "stdout": "red\nred\n0\nblu\ngrn\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "empty_same_base_boundary",
+      "source": "cases/empty_same_base_boundary.f90",
+      "sha256": "c8c3da26712caea3b29e463a2b2b8938d1df0efd5bbe5a35a7134bb924c5368a",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Conservative whole-base alias restriction retained even for an empty bare section; GNU compile only.",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 17,
+        "column": 1,
+        "message": "bare CHARACTER gather base overlaps a writable actual"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/empty_same_base_boundary.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/empty_same_base_boundary.f90"
+        ],
+        "status": 2,
+        "stdout": "SAFE\n",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/empty_same_base_boundary.f90:17:1: bare CHARACTER gather base overlaps a writable actual\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/empty_same_base_boundary.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-w_ciqmjs/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "output_first_same_base_boundary",
+      "source": "cases/output_first_same_base_boundary.f90",
+      "sha256": "00f916a1b3dc10d3329a16fc04568216e20eb1739319d0c284755d22a8f32ed5",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Invalid alias; output descriptor staged first must not be invalidated before input staging/alias checks. Never execute GNU.",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 17,
+        "column": 1,
+        "message": "bare CHARACTER gather base overlaps a writable actual"
+      },
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/output_first_same_base_boundary.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/output_first_same_base_boundary.f90"
+        ],
+        "status": 2,
+        "stdout": "SAFE\n",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/output_first_same_base_boundary.f90:17:1: bare CHARACTER gather base overlaps a writable actual\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/output_first_same_base_boundary.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-mbf31d3p/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "empty_parenthesized_same_base_control",
+      "source": "cases/empty_parenthesized_same_base_control.f90",
+      "sha256": "ae9fa8c41b081fa1fd8131b66317a9f3d7c1043b5ed74e68dad1cd95ba7c1237",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "0\n",
+      "note": "Parenthesized zero-size expression is an independent value snapshot.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/empty_parenthesized_same_base_control.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/empty_parenthesized_same_base_control.f90"
+        ],
+        "status": 0,
+        "stdout": "0\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/empty_parenthesized_same_base_control.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-cw1psno4/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-cw1psno4/oracle"
+        ],
+        "status": 0,
+        "stdout": "0\n",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "marker_0",
+      "source": "cases/marker_0.f90",
+      "sha256": "aab8263a1b96e60a8b5818d7147fe2c9551289d10a76769259b1ba9444576a41",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "",
+      "note": "Additive source-marker control; first source/GNU outcome preserved.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_0.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_0.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_0.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-frpbcq5t/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-frpbcq5t/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "marker_1",
+      "source": "cases/marker_1.f90",
+      "sha256": "26afc4e9a90533e0b1c1063cdda852532cb37cec8cf831ea70d661863752e84d",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "",
+      "note": "Additive source-marker control; first source/GNU outcome preserved.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_1.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_1.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_1.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-hn3tl8wc/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-hn3tl8wc/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "marker_2",
+      "source": "cases/marker_2.f90",
+      "sha256": "8a3391758ba4a1684e6950ae8fb2b160a6ef023fa82495a593e58ee5dccc8aed",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "",
+      "note": "Additive source-marker control; first source/GNU outcome preserved.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_2.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_2.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_2.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-8q0wc8w5/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-8q0wc8w5/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "marker_3",
+      "source": "cases/marker_3.f90",
+      "sha256": "8e6889e605b56f888739b585043f8240b355cad86a1c5f8d68f24cd981f939e4",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "",
+      "note": "Additive source-marker control; first source/GNU outcome preserved.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_3.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_3.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_3.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-7bfmmv6e/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-7bfmmv6e/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "marker_4",
+      "source": "cases/marker_4.f90",
+      "sha256": "01b0ddcfa6b6ec9b9e348ac511460d623bd134cdac95db8f2726899fcb628c5a",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "",
+      "note": "Additive source-marker control; first source/GNU outcome preserved.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_4.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_4.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_4.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-xw2hn6ir/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-xw2hn6ir/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "marker_5",
+      "source": "cases/marker_5.f90",
+      "sha256": "353e364d1d2edb925a344bb14ec8542cd5130a545f7aa444da788908438b9e56",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "",
+      "note": "Additive source-marker control; first source/GNU outcome preserved.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_5.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_5.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_5.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-k9f8s7hm/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-k9f8s7hm/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "marker_6",
+      "source": "cases/marker_6.f90",
+      "sha256": "023213d8a4ae52c61e4a70e81429e9abb324440f6e664af6e4735e5a83a7c9e0",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "",
+      "note": "Additive source-marker control; first source/GNU outcome preserved.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_6.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_6.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_6.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-t6y74wob/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-t6y74wob/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "marker_7",
+      "source": "cases/marker_7.f90",
+      "sha256": "486f66324234a2e513070f6e8b9140a3d6697a9ba37be220194b83826a7e189e",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "",
+      "note": "Additive source-marker control; first source/GNU outcome preserved.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_7.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_7.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_7.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-ebvh3rhd/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-ebvh3rhd/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "marker_8",
+      "source": "cases/marker_8.f90",
+      "sha256": "b0b73ca62467659ceacb8925e3f954c4f03a0b2c127e6003693e09438b74a299",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "",
+      "note": "Additive source-marker control; first source/GNU outcome preserved.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_8.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_8.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_8.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-3d1oi9ll/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-3d1oi9ll/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "marker_9",
+      "source": "cases/marker_9.f90",
+      "sha256": "561ab1cd1eb6f0c09d2fb3f84f098c3cdf2ed30d90cabc83ee8e0e89fcc83c86",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "",
+      "note": "Additive source-marker control; first source/GNU outcome preserved.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_9.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_9.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_9.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-ui6vcr3p/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-ui6vcr3p/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "marker_bound_receiver",
+      "source": "cases/marker_bound_receiver.f90",
+      "sha256": "264264528763f96799eaaab2bd9fc8d52c430dae32b883a59d56ad2f3118e39c",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "",
+      "note": "Additive source-marker anchor control; unchanged baseline candidate/GNU success preserved.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_bound_receiver.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_bound_receiver.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_bound_receiver.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-ka2qm3ur/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-ka2qm3ur/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "marker_legacy_constructor",
+      "source": "cases/marker_legacy_constructor.f90",
+      "sha256": "033fd281ac2dbd8a536d0217ac0479c9a8014f25d14127625207ad382be91f80",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "",
+      "note": "Additive source-marker anchor control; unchanged baseline candidate/GNU success preserved.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_legacy_constructor.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_legacy_constructor.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_gather_actual/cases/marker_legacy_constructor.f90",
+          "-o",
+          "/tmp/bare-character-actual-strict-xmf__mia/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-character-actual-strict-xmf__mia/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "errors": []
+    }
+  ]
+}

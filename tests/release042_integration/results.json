@@ -1,0 +1,948 @@
+{
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "summary": {
+    "total": 16,
+    "failed": 0,
+    "integrity_failed": 0,
+    "candidate_checked": 16,
+    "gnu_checked": 16,
+    "gnu_skipped": 0,
+    "gnu_executed": 5,
+    "gnu_compile_only": 11,
+    "gnu_compile_rejections": 0
+  },
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--version"
+        ]
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "--version"
+        ]
+      }
+    }
+  },
+  "records": [
+    {
+      "name": "zero_length_cap_rank1",
+      "source_sha256": "b0ad75599fac75d5f36c76f9c28eef262693e4c7e46aa6179c59ea196c199c0a",
+      "case": {
+        "name": "zero_length_cap_rank1",
+        "source": "cases/zero_length_cap_rank1.f90",
+        "sha256": "b0ad75599fac75d5f36c76f9c28eef262693e4c7e46aa6179c59ea196c199c0a",
+        "category": "success",
+        "gnu": "compile",
+        "expected": "ok\n",
+        "diagnostic": "",
+        "note": "Interpreter resource/undefined-state policy; GNU compile only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-698ny05q/zero_length_cap_rank1.f90",
+          "-o",
+          "/tmp/release042-case-698ny05q/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-698ny05q/zero_length_cap_rank1.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "ok\n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-698ny05q/zero_length_cap_rank1.f90"
+        ]
+      }
+    },
+    {
+      "name": "zero_length_cap_rank3",
+      "source_sha256": "a54524e199b9b543f5bc1107040bff649c9aa8fe68108b164f058dd6182db7b0",
+      "case": {
+        "name": "zero_length_cap_rank3",
+        "source": "cases/zero_length_cap_rank3.f90",
+        "sha256": "a54524e199b9b543f5bc1107040bff649c9aa8fe68108b164f058dd6182db7b0",
+        "category": "success",
+        "gnu": "compile",
+        "expected": "ok\n",
+        "diagnostic": "",
+        "note": "Interpreter resource/undefined-state policy; GNU compile only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-ct1ww8uc/zero_length_cap_rank3.f90",
+          "-o",
+          "/tmp/release042-case-ct1ww8uc/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-ct1ww8uc/zero_length_cap_rank3.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "ok\n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-ct1ww8uc/zero_length_cap_rank3.f90"
+        ]
+      }
+    },
+    {
+      "name": "mixed_record_nested_frozen",
+      "source_sha256": "10986e06019f9d5decd9e1a83bf5bad6495eca803298f5ec7015179856c05302",
+      "case": {
+        "name": "mixed_record_nested_frozen",
+        "source": "cases/mixed_record_nested_frozen.f90",
+        "sha256": "10986e06019f9d5decd9e1a83bf5bad6495eca803298f5ec7015179856c05302",
+        "category": "success",
+        "gnu": "run",
+        "expected": "Q   \nQ \n",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-ppfkwtg6/mixed_record_nested_frozen.f90",
+          "-o",
+          "/tmp/release042-case-ppfkwtg6/gnu"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "Q   \nQ \n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-case-ppfkwtg6/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-ppfkwtg6/mixed_record_nested_frozen.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "Q   \nQ \n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-ppfkwtg6/mixed_record_nested_frozen.f90"
+        ]
+      }
+    },
+    {
+      "name": "caller_element_copyout_1",
+      "source_sha256": "a2eb0cf12f2ca559983a289290232b44c42dc22a90756175f685bf5b9d2493ff",
+      "case": {
+        "name": "caller_element_copyout_1",
+        "source": "cases/caller_element_copyout_1.f90",
+        "sha256": "a2eb0cf12f2ca559983a289290232b44c42dc22a90756175f685bf5b9d2493ff",
+        "category": "success",
+        "gnu": "run",
+        "expected": "ok\n",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-xrwfvksx/caller_element_copyout_1.f90",
+          "-o",
+          "/tmp/release042-case-xrwfvksx/gnu"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ok\n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-case-xrwfvksx/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-xrwfvksx/caller_element_copyout_1.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "ok\n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-xrwfvksx/caller_element_copyout_1.f90"
+        ]
+      }
+    },
+    {
+      "name": "caller_element_copyout_2",
+      "source_sha256": "3a93b9e8ea97ca99a6805c59953df7538838835eb0fea5814d6da6543c16a82e",
+      "case": {
+        "name": "caller_element_copyout_2",
+        "source": "cases/caller_element_copyout_2.f90",
+        "sha256": "3a93b9e8ea97ca99a6805c59953df7538838835eb0fea5814d6da6543c16a82e",
+        "category": "runtime",
+        "gnu": "compile",
+        "expected": "",
+        "diagnostic": "limit",
+        "note": "Interpreter resource/undefined-state policy; GNU compile only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-qlybd09p/caller_element_copyout_2.f90",
+          "-o",
+          "/tmp/release042-case-qlybd09p/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-qlybd09p/caller_element_copyout_2.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/tmp/release042-case-qlybd09p/caller_element_copyout_2.f90:6:1: total array element limit exceeded by allocatable argument copyout\n",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-qlybd09p/caller_element_copyout_2.f90"
+        ]
+      }
+    },
+    {
+      "name": "character_byte_boundary",
+      "source_sha256": "8d547b5d1ebe2f1a65fdf7bd96364cfc6363002d50dbf8e0e80442589823a837",
+      "case": {
+        "name": "character_byte_boundary",
+        "source": "cases/character_byte_boundary.f90",
+        "sha256": "8d547b5d1ebe2f1a65fdf7bd96364cfc6363002d50dbf8e0e80442589823a837",
+        "category": "success",
+        "gnu": "compile",
+        "expected": "ok\n",
+        "diagnostic": "",
+        "note": "Interpreter resource/undefined-state policy; GNU compile only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-14yqkb4a/character_byte_boundary.f90",
+          "-o",
+          "/tmp/release042-case-14yqkb4a/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-14yqkb4a/character_byte_boundary.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "ok\n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-14yqkb4a/character_byte_boundary.f90"
+        ]
+      }
+    },
+    {
+      "name": "caller_byte_copyout",
+      "source_sha256": "0105240f5c640d473e397dcd67f397d01bf76e827e6e8cec793fc183c7ec9fc9",
+      "case": {
+        "name": "caller_byte_copyout",
+        "source": "cases/caller_byte_copyout.f90",
+        "sha256": "0105240f5c640d473e397dcd67f397d01bf76e827e6e8cec793fc183c7ec9fc9",
+        "category": "runtime",
+        "gnu": "compile",
+        "expected": "",
+        "diagnostic": "character",
+        "note": "Interpreter resource/undefined-state policy; GNU compile only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-vvg5gv9m/caller_byte_copyout.f90",
+          "-o",
+          "/tmp/release042-case-vvg5gv9m/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-vvg5gv9m/caller_byte_copyout.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/tmp/release042-case-vvg5gv9m/caller_byte_copyout.f90:5:1: CHARACTER allocation byte limit exceeded at copyout (16777216)\n",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-vvg5gv9m/caller_byte_copyout.f90"
+        ]
+      }
+    },
+    {
+      "name": "forall_zero_cartesian",
+      "source_sha256": "6098d96b7ecdc26a5355dd2510eb21038b2a377158f5d59fb170c6182d2c82e7",
+      "case": {
+        "name": "forall_zero_cartesian",
+        "source": "cases/forall_zero_cartesian.f90",
+        "sha256": "6098d96b7ecdc26a5355dd2510eb21038b2a377158f5d59fb170c6182d2c82e7",
+        "category": "success",
+        "gnu": "run",
+        "expected": "ok\n",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-8p2h00it/forall_zero_cartesian.f90",
+          "-o",
+          "/tmp/release042-case-8p2h00it/gnu"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ok\n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-case-8p2h00it/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-8p2h00it/forall_zero_cartesian.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "ok\n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-8p2h00it/forall_zero_cartesian.f90"
+        ]
+      }
+    },
+    {
+      "name": "captured_host_length_reject",
+      "source_sha256": "a5a911cce667a2058baee87be47396bffeff9124fb18b23a3b21494013499ead",
+      "case": {
+        "name": "captured_host_length_reject",
+        "source": "cases/captured_host_length_reject.f90",
+        "sha256": "a5a911cce667a2058baee87be47396bffeff9124fb18b23a3b21494013499ead",
+        "category": "reject",
+        "gnu": "compile",
+        "expected": "",
+        "diagnostic": "CHARACTER LEN requires a constant or supported specification expression",
+        "note": "Interpreter resource/undefined-state policy; GNU compile only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-3kpw1d2g/captured_host_length_reject.f90",
+          "-o",
+          "/tmp/release042-case-3kpw1d2g/gnu"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release042-case-3kpw1d2g/captured_host_length_reject.f90:6:16: CHARACTER LEN requires a constant or supported specification expression\n",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-3kpw1d2g/captured_host_length_reject.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release042-case-3kpw1d2g/captured_host_length_reject.f90:6:16: CHARACTER LEN requires a constant or supported specification expression\n",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-3kpw1d2g/captured_host_length_reject.f90"
+        ]
+      }
+    },
+    {
+      "name": "nested_inout_reallocation",
+      "source_sha256": "c09e11635a351637bfc3a9fda4f826854d096073e9d6c318650eaf16c69e69a3",
+      "case": {
+        "name": "nested_inout_reallocation",
+        "source": "cases/nested_inout_reallocation.f90",
+        "sha256": "c09e11635a351637bfc3a9fda4f826854d096073e9d6c318650eaf16c69e69a3",
+        "category": "success",
+        "gnu": "run",
+        "expected": "efgh\nijkl\n",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-oafyw57o/nested_inout_reallocation.f90",
+          "-o",
+          "/tmp/release042-case-oafyw57o/gnu"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "efgh\nijkl\n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-case-oafyw57o/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-oafyw57o/nested_inout_reallocation.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "efgh\nijkl\n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-oafyw57o/nested_inout_reallocation.f90"
+        ]
+      }
+    },
+    {
+      "name": "alias_unallocated",
+      "source_sha256": "cceb8f31076c52f06ccd9b72f929db6e670c381584d60280889a46f44914958c",
+      "case": {
+        "name": "alias_unallocated",
+        "source": "cases/alias_unallocated.f90",
+        "sha256": "cceb8f31076c52f06ccd9b72f929db6e670c381584d60280889a46f44914958c",
+        "category": "runtime",
+        "gnu": "compile",
+        "expected": "",
+        "diagnostic": "overlapping allocatable descriptors",
+        "note": "Interpreter resource/undefined-state policy; GNU compile only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-jiwtz5ls/alias_unallocated.f90",
+          "-o",
+          "/tmp/release042-case-jiwtz5ls/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-jiwtz5ls/alias_unallocated.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/tmp/release042-case-jiwtz5ls/alias_unallocated.f90:5:1: overlapping allocatable descriptors with a writable dummy are unsupported\n",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-jiwtz5ls/alias_unallocated.f90"
+        ]
+      }
+    },
+    {
+      "name": "alias_empty",
+      "source_sha256": "724b37fff488456c4d8441a95a1d5c75c0319d8643acde26b321645f604a5b11",
+      "case": {
+        "name": "alias_empty",
+        "source": "cases/alias_empty.f90",
+        "sha256": "724b37fff488456c4d8441a95a1d5c75c0319d8643acde26b321645f604a5b11",
+        "category": "runtime",
+        "gnu": "compile",
+        "expected": "",
+        "diagnostic": "overlapping allocatable descriptors",
+        "note": "Interpreter resource/undefined-state policy; GNU compile only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-9i1qgx1u/alias_empty.f90",
+          "-o",
+          "/tmp/release042-case-9i1qgx1u/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-9i1qgx1u/alias_empty.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/tmp/release042-case-9i1qgx1u/alias_empty.f90:5:1: overlapping allocatable descriptors with a writable dummy are unsupported\n",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-9i1qgx1u/alias_empty.f90"
+        ]
+      }
+    },
+    {
+      "name": "alias_allocated",
+      "source_sha256": "179e54fe58030a35bb5d0e21fe6f5d8bda69cb8404a3c9b4c9114c8c76941ac2",
+      "case": {
+        "name": "alias_allocated",
+        "source": "cases/alias_allocated.f90",
+        "sha256": "179e54fe58030a35bb5d0e21fe6f5d8bda69cb8404a3c9b4c9114c8c76941ac2",
+        "category": "runtime",
+        "gnu": "compile",
+        "expected": "",
+        "diagnostic": "overlapping allocatable descriptors",
+        "note": "Interpreter resource/undefined-state policy; GNU compile only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-6qqx1j_x/alias_allocated.f90",
+          "-o",
+          "/tmp/release042-case-6qqx1j_x/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-6qqx1j_x/alias_allocated.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/tmp/release042-case-6qqx1j_x/alias_allocated.f90:6:1: overlapping allocatable descriptors with a writable dummy are unsupported\n",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-6qqx1j_x/alias_allocated.f90"
+        ]
+      }
+    },
+    {
+      "name": "undefined_record_copy",
+      "source_sha256": "e11b6074ab64d4964a95c8e26f0926fd852066e5e9e7009629eb096006d912e1",
+      "case": {
+        "name": "undefined_record_copy",
+        "source": "cases/undefined_record_copy.f90",
+        "sha256": "e11b6074ab64d4964a95c8e26f0926fd852066e5e9e7009629eb096006d912e1",
+        "category": "runtime",
+        "gnu": "compile",
+        "expected": "",
+        "diagnostic": "uninitialized",
+        "note": "Interpreter resource/undefined-state policy; GNU compile only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-e_rn4h76/undefined_record_copy.f90",
+          "-o",
+          "/tmp/release042-case-e_rn4h76/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-e_rn4h76/undefined_record_copy.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/tmp/release042-case-e_rn4h76/undefined_record_copy.f90:16:11: read of uninitialized derived component\n",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-e_rn4h76/undefined_record_copy.f90"
+        ]
+      }
+    },
+    {
+      "name": "undefined_character_copyout",
+      "source_sha256": "5a91e09ef0922cef12bbe8f678005a33877adc7eb214bdb85098bb2515915669",
+      "case": {
+        "name": "undefined_character_copyout",
+        "source": "cases/undefined_character_copyout.f90",
+        "sha256": "5a91e09ef0922cef12bbe8f678005a33877adc7eb214bdb85098bb2515915669",
+        "category": "runtime",
+        "gnu": "compile",
+        "expected": "",
+        "diagnostic": "uninitialized",
+        "note": "Interpreter resource/undefined-state policy; GNU compile only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-liu96zua/undefined_character_copyout.f90",
+          "-o",
+          "/tmp/release042-case-liu96zua/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-liu96zua/undefined_character_copyout.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/tmp/release042-case-liu96zua/undefined_character_copyout.f90:5:9: read of uninitialized array element x\n",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-liu96zua/undefined_character_copyout.f90"
+        ]
+      }
+    },
+    {
+      "name": "record_signed_zero",
+      "source_sha256": "0cac7cb2fda78c80d52928322634d6d9dadfc08241356f1b41772dcad5aa968b",
+      "case": {
+        "name": "record_signed_zero",
+        "source": "cases/record_signed_zero.f90",
+        "sha256": "0cac7cb2fda78c80d52928322634d6d9dadfc08241356f1b41772dcad5aa968b",
+        "category": "success",
+        "gnu": "run",
+        "diagnostic": "",
+        "note": "",
+        "numeric": [
+          "-0",
+          "2",
+          "3"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2008",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release042-case-v36yjuys/record_signed_zero.f90",
+          "-o",
+          "/tmp/release042-case-v36yjuys/gnu"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -0.0000000000000000        2.0000000000000000        3.0000000000000000     \n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-case-v36yjuys/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--check",
+          "/tmp/release042-case-v36yjuys/record_signed_zero.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " -0.0000000000000000 2.0000000000000000 3.0000000000000000\n",
+        "err": "",
+        "argv": [
+          "/tmp/release042-frozen-1l3x__7a/candidate",
+          "--max-steps",
+          "50000000",
+          "/tmp/release042-case-v36yjuys/record_signed_zero.f90"
+        ]
+      }
+    }
+  ],
+  "integrity_errors": [],
+  "source_pins": {
+    "synthetic-manifest.json": "aea348dab9ab029ce43cafea27f05a6eafd2943072a4acf0b3f4a0fb4e28ccac",
+    "run_tests.py": "9f23c1cfa5a35b0c990d191bd4d799316c46a5a84a570b040632e828b11f4381",
+    "cases/zero_length_cap_rank1.f90": "b0ad75599fac75d5f36c76f9c28eef262693e4c7e46aa6179c59ea196c199c0a",
+    "cases/zero_length_cap_rank3.f90": "a54524e199b9b543f5bc1107040bff649c9aa8fe68108b164f058dd6182db7b0",
+    "cases/mixed_record_nested_frozen.f90": "10986e06019f9d5decd9e1a83bf5bad6495eca803298f5ec7015179856c05302",
+    "cases/caller_element_copyout_1.f90": "a2eb0cf12f2ca559983a289290232b44c42dc22a90756175f685bf5b9d2493ff",
+    "cases/caller_element_copyout_2.f90": "3a93b9e8ea97ca99a6805c59953df7538838835eb0fea5814d6da6543c16a82e",
+    "cases/character_byte_boundary.f90": "8d547b5d1ebe2f1a65fdf7bd96364cfc6363002d50dbf8e0e80442589823a837",
+    "cases/caller_byte_copyout.f90": "0105240f5c640d473e397dcd67f397d01bf76e827e6e8cec793fc183c7ec9fc9",
+    "cases/forall_zero_cartesian.f90": "6098d96b7ecdc26a5355dd2510eb21038b2a377158f5d59fb170c6182d2c82e7",
+    "cases/captured_host_length_reject.f90": "a5a911cce667a2058baee87be47396bffeff9124fb18b23a3b21494013499ead",
+    "cases/nested_inout_reallocation.f90": "c09e11635a351637bfc3a9fda4f826854d096073e9d6c318650eaf16c69e69a3",
+    "cases/alias_unallocated.f90": "cceb8f31076c52f06ccd9b72f929db6e670c381584d60280889a46f44914958c",
+    "cases/alias_empty.f90": "724b37fff488456c4d8441a95a1d5c75c0319d8643acde26b321645f604a5b11",
+    "cases/alias_allocated.f90": "179e54fe58030a35bb5d0e21fe6f5d8bda69cb8404a3c9b4c9114c8c76941ac2",
+    "cases/undefined_record_copy.f90": "e11b6074ab64d4964a95c8e26f0926fd852066e5e9e7009629eb096006d912e1",
+    "cases/undefined_character_copyout.f90": "5a91e09ef0922cef12bbe8f678005a33877adc7eb214bdb85098bb2515915669",
+    "cases/record_signed_zero.f90": "0cac7cb2fda78c80d52928322634d6d9dadfc08241356f1b41772dcad5aa968b"
+  },
+  "flags": [
+    "-std=f2008",
+    "-pedantic-errors",
+    "-fcheck=all,no-array-temps",
+    "-ffpe-trap=invalid,zero,overflow",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:48:02.346315+00:00"
+}

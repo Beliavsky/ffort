@@ -1,0 +1,69 @@
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 79
++        integer, parameter :: NUM_INTRINSICS = 82
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -442,6 +442,12 @@
+ 
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="parity", return_type="logical", &
++            arg_types="logical_array", &
++            description="True for an odd number of true array elements")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="count", return_type="integer", &
+             arg_types="logical_array", &
+             description="Number of true elements in array")
+@@ -605,6 +611,16 @@
+             name="epsilon", return_type="real", &
+             arg_types="real", &
+             description="Machine epsilon")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="tiny", return_type="real", arg_types="real", &
++            description="Smallest positive model number of the kind")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="radix", return_type="integer", arg_types="numeric", &
++            description="Base of the numeric model")
+ 
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -941,9 +941,14 @@
+             call set_intrinsic_metadata(node, TREAL, 8, result_rank)
+         case ("merge")
+             call resolve_merge_metadata(arena, node, visiting, result_rank)
+-        case ("sum", "product", "minval", "maxval", "all", "any", "count", "minloc", "maxloc", "findloc")
++        case ("sum", "product", "minval", "maxval", "all", "any", "count", "parity", "minloc", "maxloc", "findloc")
+             call resolve_reduction_metadata(arena, node, visiting)
+-        case ("kind", "selected_int_kind", "selected_real_kind")
++        case ("epsilon", "tiny", "huge")
++            call first_intrinsic_argument_metadata(arena, node, visiting, &
++                result_type, kind_value)
++            if (result_type > 0 .and. kind_value > 0) &
++                call set_intrinsic_metadata(node, result_type, kind_value, 0)
++        case ("kind", "selected_int_kind", "selected_real_kind", "radix")
+             call set_intrinsic_metadata(node, TINT, 4, 0)
+         case ("aimag", "abs")
+             call resolve_unary_same_kind_intrinsic(arena, node, visiting, name, &
+@@ -973,7 +978,7 @@
+         if (.not. allocated(node%arg_indices)) return
+         array_index = 0
+         kind_value = 4
+-        logical_reduction = any(to_lower(node%name) == [character(5)::'all','any','count'])
++        logical_reduction = any(to_lower(node%name) == [character(6)::'all','any','count','parity'])
+         location_reduction = any(to_lower(node%name) == [character(7)::'minloc','maxloc','findloc'])
+         value_offset = merge(1, 0, to_lower(node%name) == "findloc")
+         positional = 0

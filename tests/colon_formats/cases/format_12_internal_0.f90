@@ -1,0 +1,8 @@
+program p
+implicit none
+character(100)::s
+
+s="OLD"
+write(s,'(*(2(i0:,",")))')
+print "(a)",trim(s)
+end program

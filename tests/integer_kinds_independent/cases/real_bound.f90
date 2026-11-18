@@ -1,0 +1,4 @@
+program t
+implicit none
+print *, int(9223372036854775808.0_8,8)
+end program

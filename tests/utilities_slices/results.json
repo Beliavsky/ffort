@@ -1,0 +1,843 @@
+{
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "candidate_version": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches",
+  "gfortran_version": "GNU Fortran (Debian 14.2.0-19) 14.2.0",
+  "total": 33,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "logical_runs",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           3\n           3           0\n           2           3\n           3           0\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 3\n 3 0\n 2 3\n 3 0\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "elemental_factorial",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           1           1           2           6          24\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 1 1 2 6 24\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "generic_if_else",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   1.0000000000000000        0.0000000000000000     \n          10          20\n           1           0           1\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1.0000000000000000 0.0000000000000000\n 10 20\n 1 0 1\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "activation_functions",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " -0.86466471676338730      -0.39346934028736658        0.0000000000000000        2.0000000000000000     \n  0.11920292202211755       0.37754066879814541       0.50000000000000000       0.88079707797788231     \n  -1.0000000000000000      -0.43368899680278183        0.0000000000000000        2.5231883119115306     \n -0.23840584404423509      -0.18877033439907270        0.0000000000000000        1.7615941559557646     \n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " -0.86466471676338730 -0.39346934028736658 0.0000000000000000 2.0000000000000000\n 0.11920292202211755 0.37754066879814541 0.50000000000000000 0.88079707797788231\n -1.0000000000000000 -0.43368899680278183 0.0000000000000000 2.5231883119115306\n -0.23840584404423509 -0.18877033439907270 0.0000000000000000 1.7615941559557646\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "bounded_values",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " F T T F\n F T T F\n           3\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " F T T F\n F T T F\n 3\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "ordered_search",
+      "pass": true,
+      "expected": "run",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           3           5\n           2\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 3 5\n 2\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "blocked_automatic_result",
+      "pass": true,
+      "expected": "run",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "  0.16666666666666666       0.33333333333333331       0.50000000000000000     \n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 0.16666666666666666 0.33333333333333331 0.50000000000000000\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "blocked_optional",
+      "pass": true,
+      "expected": "run",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "          10          20\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 10 20\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "blocked_hyperbolic",
+      "pass": true,
+      "expected": "run",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   1.0000000000000000       0.64805427366388546     \n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1.0000000000000000 0.64805427366388546\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "blocked_count_dble",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "  0.50000000000000000     \n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 0.50000000000000000\n",
+        "stderr": ""
+      },
+      "literal_expected": [
+        0.5
+      ]
+    },
+    {
+      "name": "blocked_character_result",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " dog cat fourfive\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " dog cat fourfive\n",
+        "stderr": ""
+      },
+      "literal_expected": [
+        "dog cat fourfive"
+      ]
+    },
+    {
+      "name": "blocked_merge",
+      "pass": true,
+      "expected": "run",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           4           6           4           1           0\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 4 6 4 1 0\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "blocked_allocatable",
+      "pass": true,
+      "expected": "run",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           2\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 2\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "blocked_integer64_do",
+      "pass": true,
+      "expected": "run",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "  2432902008176640000\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 2432902008176640000\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "blocked_else_if",
+      "pass": true,
+      "expected": "run",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " -0.44673467014368329     \n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " -0.44673467014368329\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "kinds_positional",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           4           8           4           8           4\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 4 8 4 8 4\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "kinds_keywords",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           4           8           4           4           8           4           4\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 4 8 4 4 8 4 4\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "kinds_runtime",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           8           4           4           4\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 8 4 4 4\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "kinds_fail_codes",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "          -1          -2          -3          -5\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " -1 -2 -3 -5\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "kinds_supported_model",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "          10          10          10\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " -1 -2 -3\n",
+        "stderr": ""
+      },
+      "literal_expected": [
+        -1,
+        -2,
+        -3
+      ]
+    },
+    {
+      "name": "kinds_direct_declaration",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           8   1.2500000000000000     \n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 8 1.2500000000000000\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "kinds_not_evaluated",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           4\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 4\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "invalid_real_precision",
+      "pass": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_real_precision.f90:4:28:\n\n    4 | print *, selected_real_kind(6.0)\n      |                            1\nError: \u2018p\u2019 argument of \u2018selected_real_kind\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_real_precision.f90:4:33: SELECTED_REAL_KIND arguments must be scalar INTEGER\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_real_precision.f90:4:33: SELECTED_REAL_KIND arguments must be scalar INTEGER\n"
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "invalid_array_precision",
+      "pass": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_array_precision.f90:4:28:\n\n    4 | print *, selected_real_kind([6,7])\n      |                            1\nError: \u2018p\u2019 argument of \u2018selected_real_kind\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_array_precision.f90:4:35: SELECTED_REAL_KIND arguments must be scalar INTEGER\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_array_precision.f90:4:35: SELECTED_REAL_KIND arguments must be scalar INTEGER\n"
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "invalid_array_range",
+      "pass": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_array_range.f90:4:30:\n\n    4 | print *, selected_real_kind(r=[37])\n      |                              1\nError: \u2018r\u2019 argument of \u2018selected_real_kind\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_array_range.f90:4:36: SELECTED_REAL_KIND arguments must be scalar INTEGER\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_array_range.f90:4:36: SELECTED_REAL_KIND arguments must be scalar INTEGER\n"
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "invalid_real_radix",
+      "pass": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_real_radix.f90:4:34:\n\n    4 | print *, selected_real_kind(radix=2.0)\n      |                                  1\nError: \u2018r\u2019 argument of \u2018selected_real_kind\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_real_radix.f90:4:39: SELECTED_REAL_KIND arguments must be scalar INTEGER\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_real_radix.f90:4:39: SELECTED_REAL_KIND arguments must be scalar INTEGER\n"
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "invalid_keyword",
+      "pass": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_keyword.f90:4:8:\n\n    4 | print *, selected_real_kind(precision=6)\n      |        1\nError: Cannot find keyword named \u2018precision\u2019 in call to \u2018selected_real_kind\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_keyword.f90:4:41: Unknown keyword or excess actual argument: precision\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_keyword.f90:4:41: Unknown keyword or excess actual argument: precision\n"
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "invalid_duplicate",
+      "pass": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_duplicate.f90:4:8:\n\n    4 | print *, selected_real_kind(6,p=15)\n      |        1\nError: Argument \u2018p\u2019 appears twice in call to \u2018selected_real_kind\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_duplicate.f90:4:36: Repeated actual argument for p\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_duplicate.f90:4:36: Repeated actual argument for p\n"
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "invalid_positional_after_keyword",
+      "pass": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_positional_after_keyword.f90:4:33:\n\n    4 | print *, selected_real_kind(p=6,37)\n      |                                 1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_positional_after_keyword.f90:4:33: Positional argument cannot follow a keyword argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_positional_after_keyword.f90:4:33: Positional argument cannot follow a keyword argument\n"
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "invalid_excess",
+      "pass": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_excess.f90:4:8:\n\n    4 | print *, selected_real_kind(6,37,2,0)\n      |        1\nError: Too many arguments in call to \u2018selected_real_kind\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_excess.f90:4:38: SELECTED_REAL_KIND accepts at most P, R and RADIX\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/utilities_slices/invalid_excess.f90:4:38: SELECTED_REAL_KIND accepts at most P, R and RADIX\n"
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "blocked_merge_intrinsic",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "kinds_keyword_declaration",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           8   1.5000000000000000     \n           8   2.5000000000000000     \n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 8 1.5000000000000000\n 8 2.5000000000000000\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    },
+    {
+      "name": "kinds_empty_direct_selector",
+      "pass": true,
+      "expected": "pass",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           4           4           4   1.25000000       2.50000000               7\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 4 4 4 1.25000000 2.50000000 7\n",
+        "stderr": ""
+      },
+      "literal_expected": null
+    }
+  ]
+}

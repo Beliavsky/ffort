@@ -1,0 +1,168 @@
+{
+  "cases": [
+    {
+      "name": "original_positions_pipeline",
+      "source": "cases/original_positions_pipeline.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "call=1 record [x  ]\npositions: 2 4\ncall=2 record [ ]\npositions:\ncall=3 record [x ]\npositions: 4\n",
+      "compare_mode": "exact",
+      "support_sources": [
+        "original/positions_module.f90"
+      ],
+      "gnu_compile_warning": "forall_obsolescent"
+    },
+    {
+      "name": "original_assert_stop",
+      "source": "cases/original_assert_stop.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "checked positions\nin pipeline, positions limit = 3 2 need positions <= limit, STOPPING\n",
+      "compare_mode": "exact",
+      "support_sources": [
+        "original/positions_module.f90"
+      ],
+      "stderr_exact": "STOP\n",
+      "gnu_compile_warning": "forall_obsolescent"
+    },
+    {
+      "name": "original_filter_dependency_boundary",
+      "source": "cases/original_filter_dependency_boundary.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "[  2.0  3.0][ 20.0 30.0]\nshape: 0 2\n",
+      "compare_mode": "exact",
+      "support_sources": [
+        "original/filter_module.f90"
+      ],
+      "scope_note": "Complete unchanged historical driver now executes with typed empty constructors. All three exact original support routine bodies and historical driver bytes remain unchanged.",
+      "gnu_stdout": "[  2.0  3.0][ 20.0 30.0]\nshape: 0 2\n"
+    },
+    {
+      "name": "char_generic_specification",
+      "source": "cases/char_generic_specification.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "generic specification calls are unsupported",
+      "scope_note": "Generic specification calls are outside the documented subset. GNU compiles only. This source originally found an unresolved-specific parser bounds crash, which must now be a clean rejection."
+    },
+    {
+      "name": "frozen_descriptor_saved_pointer",
+      "source": "cases/frozen_descriptor_saved_pointer.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "visit: 1 1 4 16 [a b ]\nview: 101 101\n 1 1\nvisit: 2 1 1 1 [a]\nview: 102\nvisit: 3 1 0 0 []\nview:\n",
+      "compare_mode": "exact"
+    },
+    {
+      "name": "deferred_character_frozen",
+      "source": "cases/deferred_character_frozen.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "[ x  ] 4 4 2 1\nmask: T T\n T T\n[ ] 1 1 2 2\nmask: T\n",
+      "compare_mode": "exact"
+    },
+    {
+      "name": "rank_three_inquiry_write",
+      "source": "cases/rank_three_inquiry_write.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "[Q ] 2 2 2 8\ndata:[ 9 9][ 9 9]\n[ 9 9][ 9 9]\n[Q ] 0 2 2 0\ndata:[\nintrinsic:[A][ ]\n",
+      "compare_mode": "exact"
+    },
+    {
+      "name": "dynamic_group_atomic_failure",
+      "source": "cases/dynamic_group_atomic_failure.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "completed_stdout": "before grouped write\n",
+      "diagnostic": "PRINT format descriptor and item type differ",
+      "scope_note": "Runtime-only atomic format/type mismatch. GNU compiles but does not execute the invalid transfer."
+    },
+    {
+      "name": "unallocated_before_saved_body",
+      "source": "cases/unallocated_before_saved_body.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "completed_stdout": "before entry\n",
+      "diagnostic": "reference to unallocated array char",
+      "scope_note": "Unallocated descriptor inquiry is a candidate safety probe, not a GNU execution oracle."
+    },
+    {
+      "name": "descriptor_frame_cap_before_write",
+      "source": "cases/descriptor_frame_cap_before_write.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "completed_stdout": "before entry\n",
+      "diagnostic": "total array element limit exceeded",
+      "scope_note": "Combined descriptor and automatic storage exceed the interpreter frame cap. GNU compile-only.",
+      "args": [
+        "--max-steps",
+        "20000000"
+      ]
+    },
+    {
+      "name": "pure_char_transitive_write",
+      "source": "cases/pure_char_transitive_write.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "PURE procedure cannot invoke an impure procedure"
+    },
+    {
+      "name": "optional_char_specification_boundary",
+      "source": "cases/optional_char_specification_boundary.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "Unsupported automatic array bound",
+      "scope_note": "OPTIONAL dummies cannot be used in this specification expression. Candidate and GNU both reject."
+    },
+    {
+      "name": "shadowed_char_call_boundary",
+      "source": "cases/shadowed_char_call_boundary.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "Cannot subscript a scalar variable"
+    },
+    {
+      "name": "list_numeric_descriptor",
+      "source": "cases/list_numeric_descriptor.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "9007199254740993 -0.75 0.0 1.125",
+      "compare_mode": "numeric_tokens"
+    },
+    {
+      "name": "automatic_pointer_boundary",
+      "source": "cases/automatic_pointer_boundary.f90",
+      "category": "reject",
+      "baseline": "run",
+      "expected_stdout": "",
+      "gnu_stdout": "visit: 1 1 4 16 [a b ]\nview: 101 101\n 1 1\nvisit: 2 1 1 1 [a]\nview: 102\nvisit: 3 1 0 0 []\nview:\n",
+      "compare_mode": "exact",
+      "diagnostic": "Pointer association requires nonallocatable rank-one/two TARGET",
+      "scope_note": "Automatic local arrays are not supported pointer targets in this bounded interpreter. The full synthetic source is GNU-valid and executed independently."
+    },
+    {
+      "name": "char_direct_specification",
+      "source": "cases/char_direct_specification.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "word=[a b ]\nvalues: 7 7\n 7 7\nword=[a]\nvalues: 7\n",
+      "compare_mode": "exact"
+    }
+  ]
+}

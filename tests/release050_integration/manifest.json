@@ -1,0 +1,430 @@
+{
+  "cases": [
+    {
+      "name": "axis1_masks_rank3_file",
+      "source": "cases/axis1_masks_rank3_file.f90",
+      "sha256": "0154477a4674900d16572621c3c07c97b887deef7ea2f74db2b01daa98a5c349",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "0000\n0111\n0000\n0101\n0100\n0101\n0010\n0001\n0010\n0111\n0110\n0111\n",
+      "features": [
+        "axis1 duplicate gather",
+        "MASKR scalar expansion",
+        "SHIFTR rank3",
+        "rank3 internal elements"
+      ]
+    },
+    {
+      "name": "axis2_wide_mask_records",
+      "source": "cases/axis2_wide_mask_records.f90",
+      "sha256": "3a28f9b21a7a20a74d6e44c4d2402c26a91bbb673182619c0b3161eb430b1979",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "F000000000000083\nF000000000000084\nF00000000000006F\nF000000000000070\nF0000000000000E7\nF0000000000000E8\nF0000000000000D3\nF0000000000000D4\n",
+      "features": [
+        "axis2 gather",
+        "INTEGER8 full-bit payload",
+        "MASKL/MASKR",
+        "rank3 file"
+      ]
+    },
+    {
+      "name": "axis3_nondefault_bounds",
+      "source": "cases/axis3_nondefault_bounds.f90",
+      "sha256": "0e00658bff1da78f4dd0227a332df02b8f072d88eef331b9a9013d2e8ad07728",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "016\n016\n018\n018\n008\n008\n010\n010\n016\n016\n018\n018\n",
+      "features": [
+        "axis3 nondefault bounds",
+        "repeated selection",
+        "SHIFTR",
+        "rank3 file"
+      ]
+    },
+    {
+      "name": "self_reallocation_snapshot",
+      "source": "cases/self_reallocation_snapshot.f90",
+      "sha256": "a9632440412370584eccecfaccf009b94d2ab89996f631297c7cd4975d884532",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "0037\n006F\n0037\n00D3\n",
+      "features": [
+        "gather alias snapshot",
+        "allocatable rank3 resize",
+        "bit processing",
+        "rank1 element file"
+      ]
+    },
+    {
+      "name": "rank1_undefined_neighbors",
+      "source": "cases/rank1_undefined_neighbors.f90",
+      "sha256": "322df5e24d79949b8c5a0bef8045a4300f8b0c5e121704bf0e078573c7ad4985",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[00 7    ]\n8\n",
+      "features": [
+        "undefined neighbors remain unread",
+        "runtime named FMT",
+        "MASKL full32 width",
+        "SHIFTR"
+      ]
+    },
+    {
+      "name": "rank2_neighbors_wide",
+      "source": "cases/rank2_neighbors_wide.f90",
+      "sha256": "5056247e5b8e9b4b1d7add45283b20c6ee7d6b557e74d01de06e1c1567918a4a",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "################\n7FFFFFFFFFFFFFFF\n################\n################\n",
+      "features": [
+        "rank2 element file",
+        "neighbor preservation",
+        "INTEGER8 logical shift"
+      ]
+    },
+    {
+      "name": "deferred_rank3_file",
+      "source": "cases/deferred_rank3_file.f90",
+      "sha256": "c519f019183495a8064f31f2afc4130e19b255330beea72351c827c109c1edbf",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "000003\n000007\n000007\n000015\n",
+      "features": [
+        "deferred file length",
+        "rank3 descriptors",
+        "dynamic MASKR count",
+        "runtime format"
+      ]
+    },
+    {
+      "name": "gather_assumed_file_dummy",
+      "source": "cases/gather_assumed_file_dummy.f90",
+      "sha256": "ebdf7d9439d8d0a5bf33f86975cd0ce6b209593de0612c916bf09a1ba8a6da8b",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "006\n007\n004\n005\n",
+      "features": [
+        "parenthesized gather IN value",
+        "assumed-length OUT array",
+        "rank3 element file"
+      ]
+    },
+    {
+      "name": "implied_do_element_values",
+      "source": "cases/implied_do_element_values.f90",
+      "sha256": "e139ffbc4190f0b7963958040ec28caca8fd54c77d2fada6b3347ee63561c9f3",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "00010307\n4\n",
+      "features": [
+        "output implied-DO",
+        "MASKR per iteration",
+        "undefined internal target"
+      ]
+    },
+    {
+      "name": "colon_skips_element_slash",
+      "source": "cases/colon_skips_element_slash.f90",
+      "sha256": "c518aac9461797c61257dbf6b4262e35f33be6265eb503c4a46c9fc4697cd7ff",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[0F    ]\n",
+      "features": [
+        "rank2 internal file",
+        "colon skips slash",
+        "blank padding"
+      ]
+    },
+    {
+      "name": "positioning_pending_stdout",
+      "source": "cases/positioning_pending_stdout.f90",
+      "sha256": "2e99a198c4e90be897a73ff2fd06b772fc45ef88a95c508393808290ec53cb45",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "P:00XY1111\n",
+      "features": [
+        "B output",
+        "T backward overwrite",
+        "internal file independent of pending stdout"
+      ]
+    },
+    {
+      "name": "case_inline_call",
+      "source": "cases/case_inline_call.f90",
+      "sha256": "63205d3b0950b8f7e1526184aca46408b17d7abeea9afac07386667b46d28abc",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "000F\n",
+      "features": [
+        "CASE same-line CALL",
+        "MASKR selector",
+        "internal element in callee"
+      ]
+    },
+    {
+      "name": "case_inline_write",
+      "source": "cases/case_inline_write.f90",
+      "sha256": "e993f0ad449ad62153b19f8ecabbbdc62f3efb9809eeb2eaec3d397f89cda4fd",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[0F  ]\n",
+      "features": [
+        "CASE same-line WRITE",
+        "MASKL+SHIFTR",
+        "internal padding"
+      ]
+    },
+    {
+      "name": "record_defaults_staged_items",
+      "source": "cases/record_defaults_staged_items.f90",
+      "sha256": "6ef4f5b75d245237346eeafc84b700b67dff525817447329aac8ba38b5d68472",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "features": [
+        "mixed defaults",
+        "CHAR deep copy",
+        "staged component/bit items",
+        "element file"
+      ],
+      "oracle_note": "Whole-record assignment reads undefined components a/b. Initial GNU execution is retained as historical observation only, not a valid execution agreement.",
+      "diagnostic": "read of uninitialized derived components",
+      "diagnostic_line": 14,
+      "diagnostic_column": 3
+    },
+    {
+      "name": "fresh_function_file_result",
+      "source": "cases/fresh_function_file_result.f90",
+      "sha256": "e7bfc6a4d4e08e82d49fa7ed83065a1b515e99a0b39631656bd3814bd4fee6ee",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "0007\n0003\n0001\n0000\n",
+      "features": [
+        "fresh function result array",
+        "internal element output",
+        "mask/shift result lifetime"
+      ]
+    },
+    {
+      "name": "empty_gather_bit_no_data",
+      "source": "cases/empty_gather_bit_no_data.f90",
+      "sha256": "0706205db3609e12ef51c48776420497f3fd2cf29da7be58a8932881b41d21e8",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[0 8  ]\n",
+      "features": [
+        "empty axis2 gather",
+        "undefined base and scalar shift not read",
+        "KIND result",
+        "element file"
+      ]
+    },
+    {
+      "name": "kind_unallocated_gather",
+      "source": "cases/kind_unallocated_gather.f90",
+      "sha256": "16e35a4c48464f27e411e7df7a3512d216f9353d06fbb59d4cfda3df870e5b3a",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[8  ]\n",
+      "features": [
+        "KIND unallocated gather",
+        "undefined vector not evaluated",
+        "SHIFTR metadata",
+        "element file"
+      ]
+    },
+    {
+      "name": "paired_gather_bit_alias",
+      "source": "cases/paired_gather_bit_alias.f90",
+      "sha256": "c6cd8b00b162e8dac63b34357e5492e4728b99fa039ec5cb27581577635a59b3",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "0011\n0011\n1100\n1100\n",
+      "features": [
+        "independent gather snapshots",
+        "IOR alias reads",
+        "rank3 file"
+      ]
+    },
+    {
+      "name": "constant_kind_full_width",
+      "source": "cases/constant_kind_full_width.f90",
+      "sha256": "86c7d728ad80c00710efc853e75ced29b103c17f7e627caed1ca1d8c2ceddf0f",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "0 \n1 \n0 \n8\n",
+      "features": [
+        "constant converted KIND",
+        "MASKL zero/full widths",
+        "mixed input-kind shift",
+        "internal records"
+      ]
+    },
+    {
+      "name": "zero_length_element",
+      "source": "cases/zero_length_element.f90",
+      "sha256": "f8d75cb9e7ba73b12a7d1d798982e3717c90d3e6df31455286da646675ed00bf",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[]\n",
+      "features": [
+        "zero-length rank3 element",
+        "empty transfer",
+        "zero mask"
+      ]
+    },
+    {
+      "name": "gather_bounds_pending_atomic",
+      "source": "cases/gather_bounds_pending_atomic.f90",
+      "sha256": "99b2d8a0b3a9f8e5fed5337567eedcd90b4961338d36a1ead7e110f3c8021625",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE",
+      "features": [
+        "invalid vector index",
+        "internal output staging",
+        "pending stdout preserved"
+      ],
+      "diagnostic": "vector row index out of bounds",
+      "diagnostic_line": 8,
+      "diagnostic_column": 28
+    },
+    {
+      "name": "gather_undefined_atomic",
+      "source": "cases/gather_undefined_atomic.f90",
+      "sha256": "0b2233caff8c693b46fcbc276a40db2906335152f4eaef43e61675870a084d32",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "features": [
+        "selected undefined value",
+        "no target commit",
+        "prior stdout preserved"
+      ],
+      "diagnostic": "read of uninitialized gathered array element",
+      "diagnostic_line": 8,
+      "diagnostic_column": 26
+    },
+    {
+      "name": "mask_count_atomic",
+      "source": "cases/mask_count_atomic.f90",
+      "sha256": "d6f77b051c57f60fafedd502ff540831db2f01e6caa2b79201aa6d539e4f4338",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE",
+      "features": [
+        "MASKR count bounds",
+        "internal element failure atomicity"
+      ],
+      "diagnostic": "MASKL/MASKR I outside result bit width",
+      "diagnostic_line": 8,
+      "diagnostic_column": 21
+    },
+    {
+      "name": "shift_count_atomic",
+      "source": "cases/shift_count_atomic.f90",
+      "sha256": "7e7116a7e24ac9a38fdeaa1e036ea09d751f664fad1d9e8d0b3b7c1348b00cfb",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "features": [
+        "SHIFTR count bounds",
+        "rank3 internal target"
+      ],
+      "diagnostic": "SHIFTR SHIFT outside bit width",
+      "diagnostic_line": 8,
+      "diagnostic_column": 23
+    },
+    {
+      "name": "dynamic_internal_slash_atomic",
+      "source": "cases/dynamic_internal_slash_atomic.f90",
+      "sha256": "c64d8c3418e766ba817686624a1e09643548c46264403621bfaec87ed2b00ee8",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE",
+      "features": [
+        "runtime slash boundary",
+        "scalar record represented by element",
+        "pending stdout"
+      ],
+      "diagnostic": "slash record editing requires another record; scalar internal/child WRITE is unsupported",
+      "diagnostic_line": 8,
+      "diagnostic_column": 1
+    },
+    {
+      "name": "short_record_atomic",
+      "source": "cases/short_record_atomic.f90",
+      "sha256": "6c9a8f79090aa10d63a834f97f2431e4e362a300efef01464383bf848833642d",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE",
+      "features": [
+        "whole-record overflow",
+        "no partial file write",
+        "B/O/Z exact width"
+      ],
+      "diagnostic": "internal WRITE record exceeds CHARACTER length",
+      "diagnostic_line": 6,
+      "diagnostic_column": 1
+    },
+    {
+      "name": "undefined_file_index_atomic",
+      "source": "cases/undefined_file_index_atomic.f90",
+      "sha256": "5315e0851db65b65679a42b04de75beaa2bb4b1855eace88689f2b731f1c683c",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "features": [
+        "target index evaluated before items",
+        "undefined index rejection"
+      ],
+      "diagnostic": "read of uninitialized variable i",
+      "diagnostic_line": 7,
+      "diagnostic_column": 9
+    },
+    {
+      "name": "rank3_scatter_boundary",
+      "source": "cases/rank3_scatter_boundary.f90",
+      "sha256": "9176702baaf83487c543340a47fea042858d168c80edaaec09f89fd729d8ada4",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "features": [
+        "read-only vector gather contract",
+        "scatter remains excluded"
+      ],
+      "diagnostic": "Vector row gathering is read-only; scatter assignment is unsupported",
+      "diagnostic_line": 7,
+      "diagnostic_column": 11
+    },
+    {
+      "name": "defined_record_copy_staged_items",
+      "source": "cases/defined_record_copy_staged_items.f90",
+      "sha256": "a8fa9f4afe268424c9b6389e067e913e1429af842db8ea3d174743ab03a7223d",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[Ab  0F  ]\n",
+      "features": [
+        "fully defined record copy",
+        "CHAR deep copy",
+        "MASKR staged component",
+        "internal element file"
+      ]
+    },
+    {
+      "name": "real_gathers_integer_bits",
+      "source": "cases/real_gathers_integer_bits.f90",
+      "sha256": "0fa8dec16fab6eefe013e1478774d14c2fd9991da49f7e402569df8874d17c34",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "04\n0A\n11\n0A\n",
+      "features": [
+        "REAL4/8 numeric gathers",
+        "array INTEGER conversion",
+        "IOR/SHIFTR",
+        "rank3 element files"
+      ]
+    }
+  ]
+}

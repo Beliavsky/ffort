@@ -1,0 +1,882 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--version"
+        ],
+        "cwd": "/tmp/release033-candidate-zguoq0z3"
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "--version"
+        ],
+        "cwd": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release033_integration"
+      }
+    }
+  },
+  "summary": {
+    "total": 14,
+    "failed": 0,
+    "integrity_failed": 0,
+    "candidate_checked": 14,
+    "gnu_checked": 14,
+    "gnu_compiler_discrepancies": 0,
+    "gnu_executed": 7,
+    "gnu_compile_only": 4,
+    "gnu_compile_rejections": 3,
+    "gnu_skipped": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "original_combined_driver",
+        "source": "cases/original_combined_driver.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 3 30 -84\n10 3 90 -210\n0 3 0 0",
+        "diagnostic": "",
+        "support_sources": [
+          "original/combinations_module.f90"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-9n41mxwn/original_combined_driver.f90",
+          "-o",
+          "/tmp/release033-gnu-9n41mxwn/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-9n41mxwn"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           3          30         -84\n          10           3          90        -210\n           0           3           0           0\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-gnu-9n41mxwn/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-9n41mxwn"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-f_kgew2a/original_combined_driver.f90"
+        ],
+        "cwd": "/tmp/release033-run-f_kgew2a"
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 3 30 -84\n 10 3 90 -210\n 0 3 0 0\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "/tmp/release033-run-f_kgew2a/original_combined_driver.f90"
+        ],
+        "cwd": "/tmp/release033-run-f_kgew2a"
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_frozen_saved_character",
+        "source": "cases/recursive_frozen_saved_character.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 1 3 1 c 3 xxx\n1 2 4 2 bc 3 xxx\n2 3 3 3 abc 3 xxx\n0 1 4 1 x 4 xxx",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-my9jmka1/recursive_frozen_saved_character.f90",
+          "-o",
+          "/tmp/release033-gnu-my9jmka1/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-my9jmka1"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           1           3           1 c           3 xxx\n           1           2           4           2 bc           3 xxx\n           2           3           3           3 abc           3 xxx\n           0           1           4           1 x           4 xxx\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-gnu-my9jmka1/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-my9jmka1"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-rre_gi94/recursive_frozen_saved_character.f90"
+        ],
+        "cwd": "/tmp/release033-run-rre_gi94"
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 1 3 1 c 3 xxx\n 1 2 4 2 bc 3 xxx\n 2 3 3 3 abc 3 xxx\n 0 1 4 1 x 4 xxx\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "/tmp/release033-run-rre_gi94/recursive_frozen_saved_character.f90"
+        ],
+        "cwd": "/tmp/release033-run-rre_gi94"
+      }
+    },
+    {
+      "case": {
+        "name": "saved_explicit_prefix_pointer_views",
+        "source": "cases/saved_explicit_prefix_pointer_views.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 0\n2 3 0\n21 2 23 4 25 16 7 18 18 16 4 2 2 4",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-6npjwduy/saved_explicit_prefix_pointer_views.f90",
+          "-o",
+          "/tmp/release033-gnu-6npjwduy/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-6npjwduy"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           0\n           2           3           0\n          21           2          23           4          25          16           7          18          18          16           4           2           2           4\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-gnu-6npjwduy/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-6npjwduy"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-p4fleve_/saved_explicit_prefix_pointer_views.f90"
+        ],
+        "cwd": "/tmp/release033-run-p4fleve_"
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 0\n 2 3 0\n 21 2 23 4 25 16 7 18 18 16 4 2 2 4\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "/tmp/release033-run-p4fleve_/saved_explicit_prefix_pointer_views.f90"
+        ],
+        "cwd": "/tmp/release033-run-p4fleve_"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_elemental_saved_count",
+        "source": "cases/empty_elemental_saved_count.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 3 61 2\n2 0 0 0\n3 2 58 2\n6",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-a2o4sbyt/empty_elemental_saved_count.f90",
+          "-o",
+          "/tmp/release033-gnu-a2o4sbyt/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-a2o4sbyt"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           3          61           2\n           2           0           0           0\n           3           2          58           2\n           6\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-gnu-a2o4sbyt/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-a2o4sbyt"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-5awpbsj3/empty_elemental_saved_count.f90"
+        ],
+        "cwd": "/tmp/release033-run-5awpbsj3"
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 3 61 2\n 2 0 0 0\n 3 2 58 2\n 6\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "/tmp/release033-run-5awpbsj3/empty_elemental_saved_count.f90"
+        ],
+        "cwd": "/tmp/release033-run-5awpbsj3"
+      }
+    },
+    {
+      "case": {
+        "name": "saved_actual_frozen_module_bounds",
+        "source": "cases/saved_actual_frozen_module_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 2 3 3 3 1 abc\n4 3 5 5 10 2 abcde",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-j1hsu7ki/saved_actual_frozen_module_bounds.f90",
+          "-o",
+          "/tmp/release033-gnu-j1hsu7ki/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-j1hsu7ki"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           2           3           3           3           1 abc\n           4           3           5           5          10           2 abcde\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-gnu-j1hsu7ki/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-j1hsu7ki"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-aelun4ir/saved_actual_frozen_module_bounds.f90"
+        ],
+        "cwd": "/tmp/release033-run-aelun4ir"
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 2 3 3 3 1 abc\n 4 3 5 5 10 2 abcde\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "/tmp/release033-run-aelun4ir/saved_actual_frozen_module_bounds.f90"
+        ],
+        "cwd": "/tmp/release033-run-aelun4ir"
+      }
+    },
+    {
+      "case": {
+        "name": "wide_saved_specification_values",
+        "source": "cases/wide_saved_specification_values.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 9007199254740993 9007199254740993\n1 9007199254740994",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-f82kg2zq/wide_saved_specification_values.f90",
+          "-o",
+          "/tmp/release033-gnu-f82kg2zq/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-f82kg2zq"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2     9007199254740993     9007199254740993\n           1     9007199254740994\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-gnu-f82kg2zq/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-f82kg2zq"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-5mi2rl_t/wide_saved_specification_values.f90"
+        ],
+        "cwd": "/tmp/release033-run-5mi2rl_t"
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 9007199254740993 9007199254740993\n 1 9007199254740994\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "/tmp/release033-run-5mi2rl_t/wide_saved_specification_values.f90"
+        ],
+        "cwd": "/tmp/release033-run-5mi2rl_t"
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_saved_snapshot_specification",
+        "source": "cases/recursive_saved_snapshot_specification.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 2 3 3\n1 1 3 4\n2 0 3 3",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-j59sgfej/recursive_saved_snapshot_specification.f90",
+          "-o",
+          "/tmp/release033-gnu-j59sgfej/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-j59sgfej"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           2           3           3\n           1           1           3           4\n           2           0           3           3\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-gnu-j59sgfej/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-j59sgfej"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-61hoagpt/recursive_saved_snapshot_specification.f90"
+        ],
+        "cwd": "/tmp/release033-run-61hoagpt"
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 2 3 3\n 1 1 3 4\n 2 0 3 3\n",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "/tmp/release033-run-61hoagpt/recursive_saved_snapshot_specification.f90"
+        ],
+        "cwd": "/tmp/release033-run-61hoagpt"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_specification_budget_before_saved_body",
+        "source": "cases/empty_specification_budget_before_saved_body.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "execution step limit exceeded",
+        "args": [
+          "--max-steps",
+          "80"
+        ],
+        "scope_note": "A mathematically empty array still evaluates its specification call under the root budget before the saved-state body. GNU compiles only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-1t4gn592/empty_specification_budget_before_saved_body.f90",
+          "-o",
+          "/tmp/release033-gnu-1t4gn592/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-1t4gn592"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-38zm_wlu/empty_specification_budget_before_saved_body.f90"
+        ],
+        "cwd": "/tmp/release033-run-38zm_wlu"
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/tmp/release033-run-38zm_wlu/empty_specification_budget_before_saved_body.f90:10:5: execution step limit exceeded (current limit: 80); use --max-steps N to set the execution budget (positive 64-bit integer)\n",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--max-steps",
+          "80",
+          "/tmp/release033-run-38zm_wlu/empty_specification_budget_before_saved_body.f90"
+        ],
+        "cwd": "/tmp/release033-run-38zm_wlu"
+      }
+    },
+    {
+      "case": {
+        "name": "specification_cap_before_saved_body",
+        "source": "cases/specification_cap_before_saved_body.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "array element limit",
+        "scope_note": "Interpreter frame resource limit, not a Fortran language error; GNU compiles only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-mnb3kz1_/specification_cap_before_saved_body.f90",
+          "-o",
+          "/tmp/release033-gnu-mnb3kz1_/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-mnb3kz1_"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-7pl16d1_/specification_cap_before_saved_body.f90"
+        ],
+        "cwd": "/tmp/release033-run-7pl16d1_"
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/tmp/release033-run-7pl16d1_/specification_cap_before_saved_body.f90:11:10: total array element limit exceeded\n",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "/tmp/release033-run-7pl16d1_/specification_cap_before_saved_body.f90"
+        ],
+        "cwd": "/tmp/release033-run-7pl16d1_"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_saved_specification_empty",
+        "source": "cases/pure_saved_specification_empty.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "PURE/SIMPLE"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release033-gnu-m77pnrj9/pure_saved_specification_empty.f90:7:12:\n\n    7 | integer,save::calls=0\n      |            1\nError: SAVE attribute at (1) cannot be specified in a PURE procedure\n/tmp/release033-gnu-m77pnrj9/pure_saved_specification_empty.f90:8:9:\n\n    8 | v=n+calls\n      |         1\nError: Symbol \u2018calls\u2019 at (1) has no IMPLICIT type\n/tmp/release033-gnu-m77pnrj9/pure_saved_specification_empty.f90:17:5:\n\n   17 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-m77pnrj9/pure_saved_specification_empty.f90",
+          "-o",
+          "/tmp/release033-gnu-m77pnrj9/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-m77pnrj9"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release033-run-ae30q4fb/pure_saved_specification_empty.f90:7:21: PURE/SIMPLE procedures cannot declare SAVE or initialized mutable locals\n",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-ae30q4fb/pure_saved_specification_empty.f90"
+        ],
+        "cwd": "/tmp/release033-run-ae30q4fb"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release033-run-ae30q4fb/pure_saved_specification_empty.f90:7:21: PURE/SIMPLE procedures cannot declare SAVE or initialized mutable locals\n",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "/tmp/release033-run-ae30q4fb/pure_saved_specification_empty.f90"
+        ],
+        "cwd": "/tmp/release033-run-ae30q4fb"
+      }
+    },
+    {
+      "case": {
+        "name": "saved_initializer_specification_call",
+        "source": "cases/saved_initializer_specification_call.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "constant"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release033-gnu-tpmk_9no/saved_initializer_specification_call.f90:12:20:\n\n   12 | integer,save::calls=span(1)\n      |                    1\nError: Function \u2018span\u2019 in initialization expression at (1) must be an intrinsic function\n/tmp/release033-gnu-tpmk_9no/saved_initializer_specification_call.f90:13:7:\n\n   13 | a=calls\n      |       1\nError: Symbol \u2018calls\u2019 at (1) has no IMPLICIT type\n/tmp/release033-gnu-tpmk_9no/saved_initializer_specification_call.f90:18:5:\n\n   18 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-tpmk_9no/saved_initializer_specification_call.f90",
+          "-o",
+          "/tmp/release033-gnu-tpmk_9no/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-tpmk_9no"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release033-run-fsipl4oc/saved_initializer_specification_call.f90:12:28: Declaration initializers must be constant expressions\n",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-fsipl4oc/saved_initializer_specification_call.f90"
+        ],
+        "cwd": "/tmp/release033-run-fsipl4oc"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release033-run-fsipl4oc/saved_initializer_specification_call.f90:12:28: Declaration initializers must be constant expressions\n",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "/tmp/release033-run-fsipl4oc/saved_initializer_specification_call.f90"
+        ],
+        "cwd": "/tmp/release033-run-fsipl4oc"
+      }
+    },
+    {
+      "case": {
+        "name": "saved_runtime_character_length",
+        "source": "cases/saved_runtime_character_length.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "initialized intrinsic scalar"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release033-gnu-opy1oueg/saved_runtime_character_length.f90:11:33:\n\n   11 | character(len=span(n)),save::word='x'\n      |                                 1\nError: Automatic object \u2018word\u2019 at (1) cannot have the SAVE attribute\n/tmp/release033-gnu-opy1oueg/saved_runtime_character_length.f90:16:5:\n\n   16 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-opy1oueg/saved_runtime_character_length.f90",
+          "-o",
+          "/tmp/release033-gnu-opy1oueg/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-opy1oueg"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release033-run-fwl7oou4/saved_runtime_character_length.f90:11:35: SAVE supports initialized intrinsic scalar procedure locals only\n",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-fwl7oou4/saved_runtime_character_length.f90"
+        ],
+        "cwd": "/tmp/release033-run-fwl7oou4"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release033-run-fwl7oou4/saved_runtime_character_length.f90:11:35: SAVE supports initialized intrinsic scalar procedure locals only\n",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "/tmp/release033-run-fwl7oou4/saved_runtime_character_length.f90"
+        ],
+        "cwd": "/tmp/release033-run-fwl7oou4"
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_saved_alias_specification",
+        "source": "cases/recursive_saved_alias_specification.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Module actual",
+        "scope_note": "Conservative saved-actual alias boundary. GNU compiles only; no standard-invalid execution oracle is claimed."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-7zwgf1a4/recursive_saved_alias_specification.f90",
+          "-o",
+          "/tmp/release033-gnu-7zwgf1a4/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-7zwgf1a4"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release033-run-by2dqw_5/recursive_saved_alias_specification.f90:24:1: Module actual also referenced through callee host/USE association is unsupported\n",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-by2dqw_5/recursive_saved_alias_specification.f90"
+        ],
+        "cwd": "/tmp/release033-run-by2dqw_5"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release033-run-by2dqw_5/recursive_saved_alias_specification.f90:24:1: Module actual also referenced through callee host/USE association is unsupported\n",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "/tmp/release033-run-by2dqw_5/recursive_saved_alias_specification.f90"
+        ],
+        "cwd": "/tmp/release033-run-by2dqw_5"
+      }
+    },
+    {
+      "case": {
+        "name": "explicit_specification_bound_boundary",
+        "source": "cases/explicit_specification_bound_boundary.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported explicit-shape dummy bound",
+        "scope_note": "Bounded specification functions are accepted in automatic local/result storage; explicit dummy bound calls remain outside this increment. Standard-valid source, GNU compile-only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release033-gnu-in8lf9qb/explicit_specification_bound_boundary.f90",
+          "-o",
+          "/tmp/release033-gnu-in8lf9qb/reference"
+        ],
+        "cwd": "/tmp/release033-gnu-in8lf9qb"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release033-run-u9vqcl6f/explicit_specification_bound_boundary.f90:11:44: Unsupported explicit-shape dummy bound: require scalar INTEGER input dummies or parameters\n",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "--check",
+          "/tmp/release033-run-u9vqcl6f/explicit_specification_bound_boundary.f90"
+        ],
+        "cwd": "/tmp/release033-run-u9vqcl6f"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release033-run-u9vqcl6f/explicit_specification_bound_boundary.f90:11:44: Unsupported explicit-shape dummy bound: require scalar INTEGER input dummies or parameters\n",
+        "argv": [
+          "/tmp/release033-candidate-zguoq0z3/fortfront-interpreter",
+          "/tmp/release033-run-u9vqcl6f/explicit_specification_bound_boundary.f90"
+        ],
+        "cwd": "/tmp/release033-run-u9vqcl6f"
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:36:33.339125+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all,no-array-temps",
+    "-O0"
+  ],
+  "scope": "Bounded specification-function/SAVE composition with existing pointer, explicit-dummy and elemental semantics. Five original utility bodies execute in one wrapper, not the full utility module. Compile-only boundaries are not GNU execution comparisons.",
+  "original_source_provenance": {
+    "original_source": "../utilities_slices/source/xutilities.f90",
+    "original_source_sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+    "wrapper": "original/combinations_module.f90",
+    "wrapper_sha256": "c61370c80a03f17adbe9343086af0190de123ce987b6daa4931f29da4c696862",
+    "routines": [
+      {
+        "name": "factorial_long",
+        "source_byte_start": 273250,
+        "source_byte_end_exclusive": 273507,
+        "source_start_line": 7882,
+        "bytes": 257,
+        "sha256": "bb9afdf2dfd672a6740cf9bc977d1b6311c20dc84588e06fa69b779872a6f69b",
+        "wrapper_byte_start": 221,
+        "body_modified": false
+      },
+      {
+        "name": "choose",
+        "source_byte_start": 273510,
+        "source_byte_end_exclusive": 274054,
+        "source_start_line": 7892,
+        "bytes": 544,
+        "sha256": "603afa9c6b5726c7217779df5c90814bf02f2998a502af91305d95537d3f8b2f",
+        "wrapper_byte_start": 478,
+        "body_modified": false
+      },
+      {
+        "name": "few_combinations",
+        "source_byte_start": 275055,
+        "source_byte_end_exclusive": 275459,
+        "source_start_line": 7965,
+        "bytes": 404,
+        "sha256": "f51ed6f2d4bc7ee89f49c15295e2277b6f6c9782cb1aeb1fcd84c486136e25d9",
+        "wrapper_byte_start": 1022,
+        "body_modified": false
+      },
+      {
+        "name": "default_logical",
+        "source_byte_start": 128750,
+        "source_byte_end_exclusive": 129090,
+        "source_start_line": 3687,
+        "bytes": 340,
+        "sha256": "4f1c9194dacb66f1eadb58d378ece7aaef25afa191c542ac737b1b3284ee6bda",
+        "wrapper_byte_start": 1426,
+        "body_modified": false
+      },
+      {
+        "name": "gen",
+        "source_byte_start": 275462,
+        "source_byte_end_exclusive": 276422,
+        "source_start_line": 7983,
+        "bytes": 960,
+        "sha256": "557f311cc777f3677a38d44447935545adae1764d970348b097a41864e98d971",
+        "wrapper_byte_start": 1766,
+        "body_modified": false
+      }
+    ],
+    "driver": "cases/original_combined_driver.f90",
+    "coverage_claim": "Five exact original bodies in a new module wrapper and a separate synthetic driver; not the full utility module."
+  },
+  "provenance_sha256": "e02e8f491a0e571ac1885e502dd3f2acae61a44b457650efe26483f6222196ff",
+  "manifest_sha256": "4a4f5a963f96a9ad2998cdc88c8e8b4c087786a5a65091c816b68328b90db698",
+  "source_sha256": {
+    "original/combinations_module.f90": "c61370c80a03f17adbe9343086af0190de123ce987b6daa4931f29da4c696862",
+    "cases/original_combined_driver.f90": "872de018d4192c13ba70273d466b7373d5c13f65370cada55a3ef6319e88ba30",
+    "cases/recursive_frozen_saved_character.f90": "2303d700520f3dc8fc9bb1c63b4a7c4350821657315a14c6f09671ac7dc755e2",
+    "cases/saved_explicit_prefix_pointer_views.f90": "cef7b3b69116cf8c0f4f4c9d2b688d77437b608124ba7d4a3c233f465401370c",
+    "cases/empty_elemental_saved_count.f90": "cc58b85a39972b38a9ed7b74d5e0f2b2b33e33b8a8a41490b32f7dec34c843fe",
+    "cases/saved_actual_frozen_module_bounds.f90": "f0af3cb16073d0a37aa4bd66920b42b4bf70470e0ff38854aa7ab9f0c9888da5",
+    "cases/wide_saved_specification_values.f90": "76f786ee2326b0190b89ec79dacc4b6126a7a07f7252a4ff8fc64fdd029eff7c",
+    "cases/recursive_saved_snapshot_specification.f90": "cb70c0c17e092aa56a29defb162696c8da72393faa7a389deac7ea7a46fe8b17",
+    "cases/empty_specification_budget_before_saved_body.f90": "0942b8938499b5c3e54b28e5e2cdab421805c2474f9e938dcc23cbfc8536dff5",
+    "cases/specification_cap_before_saved_body.f90": "60e14c2e5c43b3c04b7935aa57ee9b13a39fee81c05c670454ad379564214ce6",
+    "cases/pure_saved_specification_empty.f90": "03ed771500de699d319d8033497c5b7ee2abe21df1f905f1ae58667624dbdace",
+    "cases/saved_initializer_specification_call.f90": "b93cf2a3cc9a213255a3f7ebe1aa1237cb8f1bf5daa38f865fb8461811e033f6",
+    "cases/saved_runtime_character_length.f90": "a5d8b06d440979161610c49067682c2e8465fedec3771262868ac6a28197fd4a",
+    "cases/recursive_saved_alias_specification.f90": "cd2230ab5c525ff532fb3a5670ac578fa022f6eb33f2e1cb52f9320019150f67",
+    "cases/explicit_specification_bound_boundary.f90": "70a36fdf0227f9fa85a7a505e57edbc7d369ade44edfb3495f45e331b5ce0390"
+  },
+  "integrity_errors": [],
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

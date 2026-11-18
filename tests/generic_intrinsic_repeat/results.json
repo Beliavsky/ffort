@@ -1,0 +1,2006 @@
+{
+  "runner_sha256": "4d444a6b101e6a7b3d9dc476efff5d2f2a535eeefab2d0d467390a6f177c39f5",
+  "manifest_sha256": "58d1172e57845dd632ab2a91775dc617b85942da2dae7d6e6bc3de7ff154dfaa",
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "candidate_version": {
+    "argv": [
+      "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "--version"
+    ],
+    "code": 0,
+    "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+    "err": ""
+  },
+  "gnu_version": {
+    "argv": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "--version"
+    ],
+    "code": 0,
+    "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "err": ""
+  },
+  "summary": {
+    "total": 39,
+    "failed": 0,
+    "gnu_executed": 24,
+    "gnu_compile_only": 3,
+    "gnu_rejections": 12
+  },
+  "cases": [
+    {
+      "name": "positional",
+      "source_sha256": "54938e929188e573bc1608618b0f581ea9d4c6df7c1b4d40ac9a153d52cd82df",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/positional.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/positional.f90"
+        ],
+        "code": 0,
+        "out": "ababab\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/positional.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "ababab\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "keyword_order",
+      "source_sha256": "b86e1f0c6d539f1c4778700462742f2e5495cb443a62d261d2b6228019bd889c",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/keyword_order.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/keyword_order.f90"
+        ],
+        "code": 0,
+        "out": "xyxy\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/keyword_order.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "xyxy\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "mixed_keywords",
+      "source_sha256": "4e17a0813e1daece5fb8993f839b5dcdcdb25a23b518f46afc40439cdde78d86",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/mixed_keywords.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/mixed_keywords.f90"
+        ],
+        "code": 0,
+        "out": "qqqq\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/mixed_keywords.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "qqqq\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "kind8_count",
+      "source_sha256": "815463d30653d4685b47945dcbec999aeb82878f62dc057db31f3aa1e70f779a",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/kind8_count.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/kind8_count.f90"
+        ],
+        "code": 0,
+        "out": "abab\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/kind8_count.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "abab\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "runtime_count",
+      "source_sha256": "fd999dac062d9be4644804e480e035494583563e564da9339979b3e20acb8d52",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/runtime_count.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/runtime_count.f90"
+        ],
+        "code": 0,
+        "out": "kkk\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/runtime_count.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "kkk\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "zero_count",
+      "source_sha256": "f1299c1a2f69fd67ba5cc3efdb170a6cd99070ec5a2d3b42565c6bd886c6ab6b",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/zero_count.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/zero_count.f90"
+        ],
+        "code": 0,
+        "out": "\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/zero_count.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "empty_string",
+      "source_sha256": "b7ce44898ccfdb927a1aafa7ee6f09b650e09228f1964837c67b91d176cac744",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/empty_string.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/empty_string.f90"
+        ],
+        "code": 0,
+        "out": "\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/empty_string.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "user_specific",
+      "source_sha256": "f033bb31a9e9c8bf165e7c63fc94a131eae1a28cf8fd406bc5397875d8bb67a5",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/user_specific.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/user_specific.f90"
+        ],
+        "code": 0,
+        "out": "USER\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/user_specific.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "USER\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "user_keyword",
+      "source_sha256": "25c31ab74eb4ce707442035dd15f287b50c5523a59fc961129a6055038c7406f",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/user_keyword.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/user_keyword.f90"
+        ],
+        "code": 0,
+        "out": "USER\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/user_keyword.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "USER\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "combined_calls",
+      "source_sha256": "53f19e54206c7d7375c5d63cd24dec8c5ccc81f91530bd122927ef50fb9a0998",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/combined_calls.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/combined_calls.f90"
+        ],
+        "code": 0,
+        "out": "xx\nUSER\nyy\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/combined_calls.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "xx\nUSER\nyy\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "nested_intrinsic",
+      "source_sha256": "cc605bb9ef6823420b931c8f62cc0e2ff792ca311306052b09786b19c1a63072",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/nested_intrinsic.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/nested_intrinsic.f90"
+        ],
+        "code": 0,
+        "out": "xxxxxx\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/nested_intrinsic.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "xxxxxx\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "substring",
+      "source_sha256": "ed33cd03749eed7e6e8c05b56e6b2ec52f9b8f507a21526f993c175e78336ceb",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/substring.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/substring.f90"
+        ],
+        "code": 0,
+        "out": "bcbc\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/substring.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "bcbc\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "character_actual",
+      "source_sha256": "2d24f16ed60c7fd4bf1a07d134f891a30ce51df1d0570ef4ea44d4553ff618ab",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/character_actual.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/character_actual.f90"
+        ],
+        "code": 0,
+        "out": "abab\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/character_actual.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "abab\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "function_result",
+      "source_sha256": "56f473b649d1cb2bc88cffae7953a007521e87ed21ba915f6689c5c1964694a9",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/function_result.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/function_result.f90"
+        ],
+        "code": 0,
+        "out": "abab\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/function_result.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "abab\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "constant_expression",
+      "source_sha256": "3ea1034dd65eda1fd255c9efd8f762eee2f34451eac237853c05612bcd821e81",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/constant_expression.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/constant_expression.f90"
+        ],
+        "code": 0,
+        "out": "xxx\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/constant_expression.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "xxx\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "matching_override",
+      "source_sha256": "083df929691ee36d4c9ddf41e1618bafa1ac066310053ad58a79ebdbbb4b0e9c",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/matching_override.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/matching_override.f90"
+        ],
+        "code": 0,
+        "out": "USER\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/matching_override.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "USER\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "matching_override_keywords",
+      "source_sha256": "050c01077cde9429c703e1d7b1295cd57cf744c4500db61b4cc77d9de612ef4c",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/matching_override_keywords.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/matching_override_keywords.f90"
+        ],
+        "code": 0,
+        "out": "USER\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/matching_override_keywords.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "USER\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "intrinsic_keywords_distinguish",
+      "source_sha256": "fd6f7918eaaa3460154b27452fe3acffbbdd362acc08fa28d92754cb559b2e44",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/intrinsic_keywords_distinguish.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/intrinsic_keywords_distinguish.f90"
+        ],
+        "code": 0,
+        "out": "ababab\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/intrinsic_keywords_distinguish.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "ababab\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "private_specific_use_only",
+      "source_sha256": "695870cbb1b1f6fcecd66b5aea95b43371f49200a654c30a5e655a8abfa09634",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/private_specific_use_only.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/private_specific_use_only.f90"
+        ],
+        "code": 0,
+        "out": "abab\nUSER\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/private_specific_use_only.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "abab\nUSER\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "invalid_keyword",
+      "source_sha256": "06e5f3b5f1839bad4547f56a896016845c06a460aa3b8cca4d5deb9d64716ba7",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 31,
+        "message": "Unknown keyword or excess actual argument: n"
+      },
+      "oracle_mode": "reject",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/invalid_keyword.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/invalid_keyword.f90:18:31: Unknown keyword or excess actual argument: n\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/invalid_keyword.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/invalid_keyword.f90:18:31: Unknown keyword or excess actual argument: n\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/invalid_keyword.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/invalid_keyword.f90:18:8:\n\n   18 | print *,repeat(string='x',n=2)\n      |        1\nError: Generic function \u2018repeat\u2019 at (1) is not consistent with a specific intrinsic interface\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "duplicate_keyword",
+      "source_sha256": "d6cbf6498603c2031d76c7b829016c26050e1ad3c561622901a72072a6bf3de9",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 41,
+        "message": "Repeated actual argument for string"
+      },
+      "oracle_mode": "reject",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/duplicate_keyword.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/duplicate_keyword.f90:18:41: Repeated actual argument for string\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/duplicate_keyword.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/duplicate_keyword.f90:18:41: Repeated actual argument for string\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/duplicate_keyword.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/duplicate_keyword.f90:18:8:\n\n   18 | print *,repeat('x',string='y',ncopies=2)\n      |        1\nError: Generic function \u2018repeat\u2019 at (1) is not consistent with a specific intrinsic interface\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "positional_after_keyword",
+      "source_sha256": "4a71c7f68bb368c8c656a3ec440d217b38908fd5ec6a7e7e212db75d387419a8",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 27,
+        "message": "Positional argument cannot follow a keyword argument"
+      },
+      "oracle_mode": "reject",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/positional_after_keyword.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/positional_after_keyword.f90:18:27: Positional argument cannot follow a keyword argument\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/positional_after_keyword.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/positional_after_keyword.f90:18:27: Positional argument cannot follow a keyword argument\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/positional_after_keyword.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/positional_after_keyword.f90:18:27:\n\n   18 | print *,repeat(string='x',2)\n      |                           1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "missing_count",
+      "source_sha256": "8d3ac7aa8a030655387403554ce33366619e7f503abcadbe2a652c446f4f093d",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 20,
+        "message": "REPEAT requires STRING and NCOPIES"
+      },
+      "oracle_mode": "reject",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/missing_count.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/missing_count.f90:18:20: REPEAT requires STRING and NCOPIES\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/missing_count.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/missing_count.f90:18:20: REPEAT requires STRING and NCOPIES\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/missing_count.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/missing_count.f90:18:8:\n\n   18 | print *,repeat('x')\n      |        1\nError: Generic function \u2018repeat\u2019 at (1) is not consistent with a specific intrinsic interface\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "excess_args",
+      "source_sha256": "f6d2fe9b1e4d421ac46a3d7b330b206351612b67c989e8d9fd2d31446d28191a",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 24,
+        "message": "REPEAT requires STRING and NCOPIES"
+      },
+      "oracle_mode": "reject",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/excess_args.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/excess_args.f90:18:24: REPEAT requires STRING and NCOPIES\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/excess_args.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/excess_args.f90:18:24: REPEAT requires STRING and NCOPIES\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/excess_args.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/excess_args.f90:18:8:\n\n   18 | print *,repeat('x',2,3)\n      |        1\nError: Generic function \u2018repeat\u2019 at (1) is not consistent with a specific intrinsic interface\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "real_count",
+      "source_sha256": "dc017680f7747b3f1a6cc51cf2ff90bc2d2f88fd2330c775d35772e206d2d3f1",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 24,
+        "message": "REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES"
+      },
+      "oracle_mode": "reject",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/real_count.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/real_count.f90:18:24: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/real_count.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/real_count.f90:18:24: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/real_count.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/real_count.f90:18:8:\n\n   18 | print *,repeat('x',2.0)\n      |        1\nError: Generic function \u2018repeat\u2019 at (1) is not consistent with a specific intrinsic interface\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "array_count",
+      "source_sha256": "56d22a8521b8a810bc7ed2389803a88fa889295946067b8d2f1a66bac3a42172",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 24,
+        "message": "REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES"
+      },
+      "oracle_mode": "reject",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/array_count.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/array_count.f90:18:24: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/array_count.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/array_count.f90:18:24: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/array_count.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/array_count.f90:18:8:\n\n   18 | print *,repeat('x',[2])\n      |        1\nError: Generic function \u2018repeat\u2019 at (1) is not consistent with a specific intrinsic interface\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "array_string",
+      "source_sha256": "ec3e8b1ba1c434c17d1950870cbc7f8b1f7e060c21f456f7f52125a6edb65971",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 24,
+        "message": "REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES"
+      },
+      "oracle_mode": "reject",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/array_string.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/array_string.f90:18:24: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/array_string.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/array_string.f90:18:24: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/array_string.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/array_string.f90:18:8:\n\n   18 | print *,repeat(['x'],2)\n      |        1\nError: Generic function \u2018repeat\u2019 at (1) is not consistent with a specific intrinsic interface\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "wrong_type",
+      "source_sha256": "72d52aeb36c2bd4f105c72fe9f56019ead6333ea5f9c8e119eca92eb15f51242",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 25,
+        "message": "REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES"
+      },
+      "oracle_mode": "reject",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/wrong_type.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/wrong_type.f90:18:25: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/wrong_type.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/wrong_type.f90:18:25: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/wrong_type.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/wrong_type.f90:18:8:\n\n   18 | print *,repeat(.true.,2)\n      |        1\nError: Generic function \u2018repeat\u2019 at (1) is not consistent with a specific intrinsic interface\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "negative_runtime",
+      "source_sha256": "8c0e467387a84b45410f9c3829e2cc0bfccdaee6c450391f4833c90eedb43bd2",
+      "category": "runtime",
+      "expected_diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 19,
+        "column": 13,
+        "message": "REPEAT NCOPIES must be nonnegative"
+      },
+      "oracle_mode": "compile",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/negative_runtime.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/negative_runtime.f90"
+        ],
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/negative_runtime.f90:19:13: REPEAT NCOPIES must be nonnegative\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/negative_runtime.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "subroutine_generic",
+      "source_sha256": "8026c5d073653d6644f4c9232762ce2a0d1bbc33a779df570cc1624d5511ef66",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 14,
+        "column": 22,
+        "message": "No matching specific procedure for generic repeat"
+      },
+      "oracle_mode": "compile",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/subroutine_generic.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/subroutine_generic.f90:14:22: No matching specific procedure for generic repeat\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/subroutine_generic.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/subroutine_generic.f90:14:22: No matching specific procedure for generic repeat\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/subroutine_generic.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "ordinary_procedure_shadow",
+      "source_sha256": "cf32a6ef71ef4bdd69a2f876d881fac94cb09c958e6da417659512d39fc4cecb",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ordinary_procedure_shadow.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ordinary_procedure_shadow.f90"
+        ],
+        "code": 0,
+        "out": "USER\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ordinary_procedure_shadow.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "USER\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "ordinary_shadow_mismatch",
+      "source_sha256": "fb6e744dc9e6bbf49867a66f01a9722a5a0a9966da5c293d7ba6155360a97e51",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 14,
+        "column": 38,
+        "message": "Unknown keyword or excess actual argument: string"
+      },
+      "oracle_mode": "reject",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ordinary_shadow_mismatch.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ordinary_shadow_mismatch.f90:14:38: Unknown keyword or excess actual argument: string\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ordinary_shadow_mismatch.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ordinary_shadow_mismatch.f90:14:38: Unknown keyword or excess actual argument: string\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ordinary_shadow_mismatch.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ordinary_shadow_mismatch.f90:14:22:\n\n   14 | print *,repeat(string='ab',ncopies=2)\n      |                      1\nError: Keyword argument \u2018string\u2019 at (1) is not in the procedure\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "original_repeat_and_str_int",
+      "source_sha256": "e4b347745f46410048e6ff0d0292f5c0f4b2328e1a65a787d6c406ed0257dab0",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/original_repeat_and_str_int.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/original_repeat_and_str_int.f90"
+        ],
+        "code": 0,
+        "out": "00042\nxxx\nq\nq\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/original_repeat_and_str_int.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "00042\nxxx\nq\nq\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "matching_intrinsic_keyword_override",
+      "source_sha256": "c180324384392aee02203a3e2a2969bfbffe3c97ff951649264319854313b15f",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/matching_intrinsic_keyword_override.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/matching_intrinsic_keyword_override.f90"
+        ],
+        "code": 0,
+        "out": "USER\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/matching_intrinsic_keyword_override.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "USER\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "use_only_intrinsic",
+      "source_sha256": "8ee0b3af9e912b71105d542ab572a18c620a56fe61d960d190410d3571668f14",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/use_only_intrinsic.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/use_only_intrinsic.f90"
+        ],
+        "code": 0,
+        "out": "ababab\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/use_only_intrinsic.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "ababab\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "internal_host_intrinsic",
+      "source_sha256": "75c3b4370228c5bdb6c28fcb5bd5e3356287087a5ed50cd0765c40b2e95bc28a",
+      "category": "success",
+      "expected_diagnostic": null,
+      "oracle_mode": "execute",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/internal_host_intrinsic.f90"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/internal_host_intrinsic.f90"
+        ],
+        "code": 0,
+        "out": "ababab\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/internal_host_intrinsic.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "ababab\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "external_shadow_boundary",
+      "source_sha256": "6efbb35284cb8144cd26fdaafc376be01ace1ea8bb64889d3108afdd5d6400ab",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 7,
+        "column": 14,
+        "message": "Unsupported declaration attribute"
+      },
+      "oracle_mode": "compile",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/external_shadow_boundary.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/external_shadow_boundary.f90:7:14: Unsupported declaration attribute\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/external_shadow_boundary.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/external_shadow_boundary.f90:7:14: Unsupported declaration attribute\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/external_shadow_boundary.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "ambiguous_generic",
+      "source_sha256": "6ca92892968b44618dfbac3b6bc31c6a6d30109bb256e4e17c9f3d9b5be2d95f",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 19,
+        "column": 1,
+        "message": "Ambiguous generic specific procedures"
+      },
+      "oracle_mode": "reject",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ambiguous_generic.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ambiguous_generic.f90:19:1: Ambiguous generic specific procedures\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ambiguous_generic.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ambiguous_generic.f90:19:1: Ambiguous generic specific procedures\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ambiguous_generic.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ambiguous_generic.f90:7:0:\n\n    7 | function custom(text,n) result(answer)\n......\n   13 | function custom_two(text,n) result(answer)\nError: Ambiguous interfaces in generic interface 'repeat' for \u2018custom\u2019 at (1) and \u2018custom_two\u2019 at (2)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/ambiguous_generic.f90:21:5:\n\n   21 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    },
+    {
+      "name": "no_call_fallback",
+      "source_sha256": "bd49e24ac3800f475baa153b3ca823e818085aba5b3c26715edd217a39f502f2",
+      "category": "reject",
+      "expected_diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 17,
+        "column": 20,
+        "message": "No matching specific procedure for generic repeat"
+      },
+      "oracle_mode": "reject",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/no_call_fallback.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/no_call_fallback.f90:17:20: No matching specific procedure for generic repeat\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/no_call_fallback.f90"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/no_call_fallback.f90:17:20: No matching specific procedure for generic repeat\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/no_call_fallback.f90",
+          "-o",
+          "/tmp/repeat-oracle-fx3k4b80/oracle"
+        ],
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_intrinsic_repeat/cases/no_call_fallback.f90:17:19:\n\n   17 | call repeat('ab',3)\n      |                   1\nError: There is no specific subroutine for the generic \u2018repeat\u2019 at (1)\n"
+      },
+      "gnu_run": null,
+      "errors": []
+    }
+  ]
+}

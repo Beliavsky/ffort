@@ -1,0 +1,16 @@
+{
+  "status": "implemented_pending_native_and_independent_review",
+  "runtime_sha256": "51bd6341010854afad3e044aee25bc24e3cf3321977eeeedfc369ef35c635911",
+  "before_sha256": "f70ef6c1ec6dd0c213c4be12086cd5b19f00368ca6eb29b0e85dc21f202d18e2",
+  "patch_sha256": "69655b57c3cad6b025f44939a967ebb8c172c16b1cea79462e7cc5de5ab140c1",
+  "native_test_sha256": "ddfcf32c0549c8258d4d9f698e0ed66602e4f4cc1b5744a4e29fe3a9d7a417e2",
+  "ownership": "Only fi_runtime.f90 and new test/test_repl_scalar_session.f90 edited in isolated session worktree. Delivered057 and056 unchanged.",
+  "architecture": "Opaque values-only store; private execute_frame injection/capture; execute_program signature and default behavior unchanged; internal frontier and exact prefix/declaration identity; ephemeral print query not committed; RNG retained; runtime errors taint until reset.",
+  "subset": "Plain local intrinsic scalars; no initialized declarations, parameters, arrays, pointers, modules/procedures, calls in expressions, loops/branches or external input; assignment, advancing print, noarg random_seed and scalar random_number only.",
+  "validation": "All current symbol/expr/instruction fields compared; canonical inactive defaults checked; expression edges strictly backward; counts/indices bounded; literal tag/kind/payload canonical; no descriptor or frame pointer copied.",
+  "limitations": [
+    "Current native and focused transcript runs controlled by parent; no passing execution claimed here.",
+    "Standalone compiler probe used stale module directory and generated unusable module artifact; full FPM compile reported passed by parent.",
+    "Failed execution may already emit output or alter temporary values; prior snapshot remains inaccessible while tainted, no rollback or automatic retry promised."
+  ]
+}

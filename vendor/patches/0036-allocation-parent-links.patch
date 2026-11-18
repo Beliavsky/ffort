@@ -1,0 +1,30 @@
+--- a/src/ast/factory/ast_factory_statements.f90
++++ b/src/ast/factory/ast_factory_statements.f90
+@@ -1,5 +1,5 @@
+ module ast_factory_statements
+-    use ast_arena_modern, only: ast_arena_t
++    use ast_arena_modern, only: ast_arena_t, link_children_to_parent
+     use ast_base, only: string_t
+     use uid_generator, only: generate_uid
+     use ast_nodes_misc, only: use_statement_node, implicit_statement_node, &
+@@ -613,6 +613,10 @@
+ 
+         call arena%push(alloc_stmt, "allocate_statement", parent_index)
+         alloc_index = arena%size
++        call link_children_to_parent(arena, alloc_index, var_indices)
++        if (present(shape_indices)) call link_children_to_parent(arena, alloc_index, shape_indices)
++        call link_children_to_parent(arena, alloc_index, [alloc_stmt%stat_var_index, &
++            alloc_stmt%errmsg_var_index, alloc_stmt%source_expr_index, alloc_stmt%mold_expr_index])
+     end function push_allocate
+ 
+     ! Create deallocate statement node and add to stack
+@@ -639,6 +643,9 @@
+ 
+         call arena%push(dealloc_stmt, "deallocate_statement", parent_index)
+         dealloc_index = arena%size
++        call link_children_to_parent(arena, dealloc_index, var_indices)
++        call link_children_to_parent(arena, dealloc_index, &
++            [dealloc_stmt%stat_var_index, dealloc_stmt%errmsg_var_index])
+     end function push_deallocate
+ 
+ end module ast_factory_statements

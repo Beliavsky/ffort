@@ -1,0 +1,20 @@
+--- a/src/semantic/analyzers/semantic_call_signature_checker.f90
++++ b/src/semantic/analyzers/semantic_call_signature_checker.f90
+@@ -33,6 +33,7 @@
+         resolve_name_in_scopes, scope_specification_indices
+     use semantic_strict_argument_type_checker_validation, only: &
+         validate_call_against_interface
++    use semantic_elemental_validation, only: is_elemental_prefix
+     use string_utils_mod, only: to_lower
+     implicit none
+     private
+@@ -241,7 +242,8 @@
+         select type (iface => arena%entries(def_index)%node)
+             type is (subroutine_def_node)
+             call validate_call_against_interface(arena, errors, stmt%name, &
+-                stmt%arg_indices, iface%param_indices, iface%body_indices)
++                stmt%arg_indices, iface%param_indices, iface%body_indices, &
++                is_elemental_prefix(iface%prefix_keywords))
+         class default
+             return
+         end select

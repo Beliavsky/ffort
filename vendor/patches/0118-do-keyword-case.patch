@@ -1,0 +1,147 @@
+--- a/src/parser/control_flow/parser_do_constructs.f90
++++ b/src/parser/control_flow/parser_do_constructs.f90
+@@ -1,3 +1,4 @@
++! DO keyword boundaries are compared case-insensitively in the included bodies.
+ ! Nested SELECT bodies are dispatched on the parent token stream.
+ module parser_do_constructs_module
+     ! Parser module for DO constructs (do loops, do while)
+--- a/src/parser/control_flow/parser_do_constructs_part1.inc
++++ b/src/parser/control_flow/parser_do_constructs_part1.inc
+@@ -582,7 +582,7 @@
+                 if (tokens(idx + 1)%kind == TK_OPERATOR .and. &
+                     tokens(idx + 1)%text == ":" .and. &
+                     tokens(idx + 2)%kind == TK_KEYWORD .and. &
+-                    tokens(idx + 2)%text == "do") then
++                    to_lower(tokens(idx + 2)%text) == "do") then
+                     depth = depth + 1
+                     ! Skip the complete named opener; DO has already been counted.
+                     idx = idx + 3
+@@ -591,7 +591,7 @@
+             end if
+ 
+             if (token%kind == TK_KEYWORD) then
+-                select case (token%text)
++                select case (to_lower(token%text))
+                 case ("do")
+                     depth = depth + 1
+                 case ("enddo", "end do")
+@@ -605,7 +605,7 @@
+                     next_idx = skip_trivia_tokens(tokens, idx + 1)
+                     if (next_idx <= size(tokens)) then
+                         if (tokens(next_idx)%kind == TK_KEYWORD .and. &
+-                            tokens(next_idx)%text == "do") then
++                            to_lower(tokens(next_idx)%text) == "do") then
+                             depth = depth - 1
+                             if (depth == 0) then
+                                 end_index = include_end_construct_name( &
+@@ -666,7 +666,7 @@
+                 parser%tokens(parser%current_token + 1)%kind == TK_OPERATOR .and. &
+                 parser%tokens(parser%current_token + 1)%text == ":" .and. &
+                 parser%tokens(parser%current_token + 2)%kind == TK_KEYWORD .and. &
+-                parser%tokens(parser%current_token + 2)%text == "do") then
++                to_lower(parser%tokens(parser%current_token + 2)%text) == "do") then
+                 label_token = parser%tokens(parser%current_token)
+                 loop_label = label_token%text
+                 parser%current_token = parser%current_token + 2
+@@ -836,13 +836,13 @@
+ 
+                     current_token = parser%peek()
+                     if (current_token%kind == TK_KEYWORD .and. &
+-                        current_token%text == "end") then
++                        to_lower(current_token%text) == "end") then
+                         ! Skip whitespace/newlines/comments after "end"
+                         check_idx = skip_trivia_tokens(parser%tokens, &
+                                                        parser%current_token + 1)
+                         if (check_idx <= size(parser%tokens)) then
+                             if (parser%tokens(check_idx)%kind == TK_KEYWORD .and. &
+-                                parser%tokens(check_idx)%text == "do") then
++                                to_lower(parser%tokens(check_idx)%text) == "do") then
+                                 call consume_end_do(parser, loop_label)
+                                 exit
+                             end if
+@@ -895,17 +895,17 @@
+                 end if
+ 
+                 if (parser%tokens(stmt_start)%kind == TK_KEYWORD) then
+-                    if (parser%tokens(stmt_start)%text == "enddo" .or. &
+-                        parser%tokens(stmt_start)%text == "end do") then
++                    if (to_lower(parser%tokens(stmt_start)%text) == "enddo" .or. &
++                        to_lower(parser%tokens(stmt_start)%text) == "end do") then
+                         parser%current_token = stmt_start
+                         exit
+-                    else if (parser%tokens(stmt_start)%text == "end") then
++                    else if (to_lower(parser%tokens(stmt_start)%text) == "end") then
+                         ! Skip whitespace/newlines/comments after "end"
+                         next_index = skip_trivia_tokens(parser%tokens, stmt_start + 1)
+                         if (next_index <= size(parser%tokens)) then
+                             next_token = parser%tokens(next_index)
+                             if (next_token%kind == TK_KEYWORD .and. &
+-                                next_token%text == "do") then
++                                to_lower(next_token%text) == "do") then
+                                 parser%current_token = stmt_start
+                                 exit
+                             end if
+@@ -930,13 +930,13 @@
+                         if (parser%tokens(stmt_start + 1)%kind == TK_OPERATOR .and. &
+                             parser%tokens(stmt_start + 1)%text == ":" .and. &
+                             parser%tokens(stmt_start + 2)%kind == TK_KEYWORD .and. &
+-                            parser%tokens(stmt_start + 2)%text == "do") then
++                            to_lower(parser%tokens(stmt_start + 2)%text) == "do") then
+                             do_pos = stmt_start + 2
+                         end if
+                     end if
+ 
+                     if (parser%tokens(do_pos)%kind == TK_KEYWORD) then
+-                        select case (parser%tokens(do_pos)%text)
++                        select case (to_lower(parser%tokens(do_pos)%text))
+                         case ("if")
+                             block_end = find_matching_end_if(parser%tokens, do_pos)
+                             if (block_end > do_pos) then
+--- a/src/parser/control_flow/parser_do_constructs_part2.inc
++++ b/src/parser/control_flow/parser_do_constructs_part2.inc
+@@ -73,13 +73,13 @@
+                 if (parser%is_at_end()) exit
+                 token = parser%peek()
+ 
+-                if (token%kind == TK_KEYWORD .and. token%text == "end") then
++                if (token%kind == TK_KEYWORD .and. to_lower(token%text) == "end") then
+                     ! Skip whitespace/newlines/comments after "end"
+                     next_index = skip_trivia_tokens(parser%tokens, &
+                                                     parser%current_token + 1)
+                     if (next_index <= size(parser%tokens)) then
+                         if (parser%tokens(next_index)%kind == TK_KEYWORD .and. &
+-                            parser%tokens(next_index)%text == "do") then
++                            to_lower(parser%tokens(next_index)%text) == "do") then
+                             exit
+                         end if
+                     end if
+@@ -135,7 +135,7 @@
+                         if (parser%tokens(stmt_start + 1)%kind == TK_OPERATOR .and. &
+                             parser%tokens(stmt_start + 1)%text == ":" .and. &
+                             parser%tokens(stmt_start + 2)%kind == TK_KEYWORD .and. &
+-                            parser%tokens(stmt_start + 2)%text == "do") then
++                            to_lower(parser%tokens(stmt_start + 2)%text) == "do") then
+                             do_pos = stmt_start + 2
+                         end if
+                     end if
+@@ -165,16 +165,16 @@
+                 end if
+ 
+                 if (parser%tokens(stmt_start)%kind == TK_KEYWORD) then
+-                    if (parser%tokens(stmt_start)%text == "enddo" .or. &
+-                        parser%tokens(stmt_start)%text == "end do") then
++                    if (to_lower(parser%tokens(stmt_start)%text) == "enddo" .or. &
++                        to_lower(parser%tokens(stmt_start)%text) == "end do") then
+                         parser%current_token = stmt_start
+                         exit
+-                    else if (parser%tokens(stmt_start)%text == "end") then
++                    else if (to_lower(parser%tokens(stmt_start)%text) == "end") then
+                         ! Skip whitespace/newlines/comments after "end"
+                         next_index = skip_trivia_tokens(parser%tokens, stmt_start + 1)
+                         if (next_index <= size(parser%tokens)) then
+                             if (parser%tokens(next_index)%kind == TK_KEYWORD .and. &
+-                                parser%tokens(next_index)%text == "do") then
++                                to_lower(parser%tokens(next_index)%text) == "do") then
+                                 parser%current_token = stmt_start
+                                 exit
+                             end if

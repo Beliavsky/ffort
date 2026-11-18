@@ -1,0 +1,37 @@
+--- a/vendor/fortfront/src/frontend/frontend_compiler_resolution.f90
++++ b/vendor/fortfront/src/frontend/frontend_compiler_resolution.f90
+@@ -851,7 +851,8 @@
+         integer, intent(in) :: module_index
+         character(len=*), intent(in) :: name
+         integer, allocatable :: indices(:)
+-        integer :: i
++        integer :: i, j
++        logical :: declaration_matches
+         logical :: default_public
+         logical :: named_visibility
+         logical :: named_public
+@@ -866,6 +867,24 @@
+             type is (visibility_statement_node)
+                 call apply_visibility(node, name, default_public, named_public)
+                 if (visibility_names_name(node, name)) named_visibility = .true.
++            type is (declaration_node)
++                if (.not. allocated(node%accessibility)) cycle
++                declaration_matches = .false.
++                if (allocated(node%var_name)) &
++                    declaration_matches = same_name(node%var_name, name)
++                if (allocated(node%var_names)) then
++                    do j = 1, size(node%var_names)
++                        if (same_name(node%var_names(j), name)) declaration_matches = .true.
++                    end do
++                end if
++                if (.not. declaration_matches) cycle
++                if (same_name(node%accessibility, 'public')) then
++                    named_visibility = .true.
++                    named_public = .true.
++                else if (same_name(node%accessibility, 'private')) then
++                    named_visibility = .true.
++                    named_public = .false.
++                end if
+             type is (derived_type_node)
+                 if (.not. allocated(node%name)) cycle
+                 if (.not. same_name(node%name, name)) cycle

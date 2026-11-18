@@ -1,0 +1,420 @@
+{
+  "cases": [
+    {
+      "name": "grouped_fields_bits_records",
+      "source": "cases/grouped_fields_bits_records.f90",
+      "sha256": "da2723803ddf6e11f8117b3bfbc6484831b99f2bfa57774e8862e35dbbcb2679",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "Ab Ab \n1 28 3\n",
+      "features": [
+        "mixed defaults",
+        "CHAR fields",
+        "REPEAT",
+        "LEADZ",
+        "runtime unit",
+        "slash"
+      ]
+    },
+    {
+      "name": "copy_generic_fallback",
+      "source": "cases/copy_generic_fallback.f90",
+      "sha256": "171239d411463e2e6b66f27e743e0bd2f877980867f32a14d4db0549709a41d0",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "aB aB \n107\n",
+      "features": [
+        "deep copy",
+        "generic user precedence",
+        "intrinsic REPEAT fallback",
+        "slash"
+      ]
+    },
+    {
+      "name": "fresh_frame_defaults",
+      "source": "cases/fresh_frame_defaults.f90",
+      "sha256": "bb8aff79ab0d8c6ca57def7120d71970c8f06a71a3c12dce1b8dc8cb93270789",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "X  \nXX \n 1 2\n",
+      "features": [
+        "fresh procedure defaults",
+        "returned CHAR copy lifetime",
+        "REPEAT",
+        "runtime unit"
+      ]
+    },
+    {
+      "name": "intent_out_defaults_reentry",
+      "source": "cases/intent_out_defaults_reentry.f90",
+      "sha256": "b9afb218aa748155a0f39257f6f39ef9c5ae22c561408520188440b08113192b",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "Q  \n  3 28\n",
+      "features": [
+        "INTENT OUT resets",
+        "mixed undefined/default",
+        "LEADZ staged component"
+      ]
+    },
+    {
+      "name": "zero_length_fallback",
+      "source": "cases/zero_length_fallback.f90",
+      "sha256": "0c87868df930ed8b7339e4ae759bc696e8a7cf9a3538e14bfd2d80ba52e91ef0",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[]\n0\n",
+      "features": [
+        "zero-length field",
+        "metadata LEN",
+        "generic fallback",
+        "records"
+      ]
+    },
+    {
+      "name": "wide_leadz_default_kind",
+      "source": "cases/wide_leadz_default_kind.f90",
+      "sha256": "71e025fea041b68d4fe2b889dcbc8c355a3dc6247f81a8be0c82a6ea80d302fa",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": " 64 63 32  0\n4\n",
+      "features": [
+        "LEADZ INTEGER8 input",
+        "default INTEGER result",
+        "array",
+        "runtime unit"
+      ]
+    },
+    {
+      "name": "rank_three_leadz_records",
+      "source": "cases/rank_three_leadz_records.f90",
+      "sha256": "499d057a0e55d958dd8b544bd4e05a5f9002fb1804ff624094f422cbd152ae55",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "32 31\n\n30 28\n\n",
+      "features": [
+        "rank3 LEADZ",
+        "slash and ordinary reversion",
+        "runtime unit"
+      ]
+    },
+    {
+      "name": "empty_leadz_constructor",
+      "source": "cases/empty_leadz_constructor.f90",
+      "sha256": "0ec95ab85190d75cbb397667519b9b3d35493fe2fc4f4c44acd48f29f4ebe34d",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[]\n4\n",
+      "features": [
+        "empty elemental LEADZ",
+        "REPEAT zero count",
+        "allocatable CHAR",
+        "slash"
+      ]
+    },
+    {
+      "name": "metadata_leadz_unallocated",
+      "source": "cases/metadata_leadz_unallocated.f90",
+      "sha256": "c0213cc4ca673102d37e264090d3c0e0927b6e95a66a1f287bef42a0253bd021",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "4\nMM\n",
+      "features": [
+        "KIND non-evaluation",
+        "unallocated LEADZ operand",
+        "REPEAT",
+        "runtime unit"
+      ]
+    },
+    {
+      "name": "runtime_format_repeat",
+      "source": "cases/runtime_format_repeat.f90",
+      "sha256": "2c5332bad11109451b145fcfdc99548588d505975a942dfb3802c36aa6ea39be",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "fmt\n31\n",
+      "features": [
+        "CHAR field",
+        "runtime format via REPEAT",
+        "named FMT",
+        "LEADZ"
+      ]
+    },
+    {
+      "name": "matching_repeat_specific",
+      "source": "cases/matching_repeat_specific.f90",
+      "sha256": "bc31a3c151cbb2a4fb1ac2ed83d8cfd87ec181bc1c4bd33e759efc74bd10306e",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "USER\n31\n",
+      "features": [
+        "matching user specific wins",
+        "keyword association",
+        "CHAR component",
+        "LEADZ"
+      ]
+    },
+    {
+      "name": "generic_host_fallback",
+      "source": "cases/generic_host_fallback.f90",
+      "sha256": "f5a338082f8d63492b064c9978f2bbe6d38c2c4fe26df0d25dd322c70b98ee26",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "Z Z \n101\n",
+      "features": [
+        "module generic host visibility",
+        "fallback keywords",
+        "readonly stdout dummy"
+      ]
+    },
+    {
+      "name": "pending_backward_slash",
+      "source": "cases/pending_backward_slash.f90",
+      "sha256": "4dc95998bd05011682af9a6b1937d08d93215fb35bde9d1057f826e055f3fae4",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ABCDEX\nZ\n",
+      "features": [
+        "pending record",
+        "CHAR default",
+        "TL statement left-limit",
+        "slash record reset"
+      ]
+    },
+    {
+      "name": "slash_group_reversion",
+      "source": "cases/slash_group_reversion.f90",
+      "sha256": "ac9c87e31e37c986647a3d5061214bc930e7bbc3e838c2e12d91e54a377e39ad",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "Ab\n31\nQQ\n32\n",
+      "features": [
+        "ordinary reversion",
+        "slash",
+        "record component",
+        "LEADZ and REPEAT"
+      ]
+    },
+    {
+      "name": "colon_skips_internal_slash",
+      "source": "cases/colon_skips_internal_slash.f90",
+      "sha256": "cbe66cb32bc5a61db0d9683d44b69a5451c28090af739a25290c9631400432a3",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[xy   ]\n30\n",
+      "features": [
+        "internal scalar file",
+        "colon skips slash",
+        "CHAR padding",
+        "runtime stdout"
+      ]
+    },
+    {
+      "name": "slash_nonadvancing_position",
+      "source": "cases/slash_nonadvancing_position.f90",
+      "sha256": "9332d9445611453c585e5bda9ede6df70ef57f2a847e7fcea69766c036fb5584",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ABC\n  DDE\n",
+      "features": [
+        "nonadvancing record reset",
+        "T positioning",
+        "REPEAT output",
+        "CHAR component"
+      ]
+    },
+    {
+      "name": "defined_record_slash_runtime_unit",
+      "source": "cases/defined_record_slash_runtime_unit.f90",
+      "sha256": "5fe3fb9f75a71b92aa3f35d2beabf95c6f106fbd932e72426b00a4a4ff2c90f6",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "DT 7\nQQ 7\n",
+      "features": [
+        "defined formatted child WRITE",
+        "mixed defaults",
+        "record-owned CHAR",
+        "runtime unit",
+        "external slash"
+      ]
+    },
+    {
+      "name": "coexisting_allocatable_char_array",
+      "source": "cases/coexisting_allocatable_char_array.f90",
+      "sha256": "8046a2a0e7307cd43a11eeb243b26fcfd45bb4a287b6f4feef02650f7e997c99",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "Hi\nxxxxYYYY\n",
+      "features": [
+        "record plus unrelated allocatable CHAR array",
+        "REPEAT",
+        "slash",
+        "no global heap admission"
+      ]
+    },
+    {
+      "name": "leadz_constructor_i8_broadcast",
+      "source": "cases/leadz_constructor_i8_broadcast.f90",
+      "sha256": "9f93c13eedd34acc298e99f397926a0c547fd98e26d4b21250a91110fd523dc1",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": " 126 125 124\n4\n",
+      "features": [
+        "constructor owned index",
+        "LEADZ INTEGER8 default-kind result",
+        "scalar expansion",
+        "slash"
+      ]
+    },
+    {
+      "name": "unit_kind8_component_staging",
+      "source": "cases/unit_kind8_component_staging.f90",
+      "sha256": "ba2adb025630431377421a0896d65b589c23471d1c2daf8ac2bd13afb1dad857",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "Wide\n62\n",
+      "features": [
+        "INTEGER8 runtime unit",
+        "mixed field staging",
+        "LEADZ width"
+      ]
+    },
+    {
+      "name": "component_length_undefined_no_read",
+      "source": "cases/component_length_undefined_no_read.f90",
+      "sha256": "5522df5b61d2e9a680f2ade88a440fa9466d3448a0d20c7d33215a38cf468144",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "4\n____\n",
+      "features": [
+        "undefined CHAR metadata LEN",
+        "REPEAT",
+        "runtime output unit",
+        "slash"
+      ]
+    },
+    {
+      "name": "invalid_unit_before_format",
+      "source": "cases/invalid_unit_before_format.f90",
+      "sha256": "d9eef7b984086fe5d251db5cca32f46a97a397f3e1e8cdd77140a095db39396d",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE",
+      "features": [
+        "unit gate precedes malformed runtime format",
+        "pending output preserved"
+      ],
+      "diagnostic": "unsupported WRITE unit: runtime unit must equal OUTPUT_UNIT; file output is unsupported",
+      "diagnostic_line": 9,
+      "diagnostic_column": 7,
+      "oracle_note": "GNU compile only: executing unit99 would create a native file, forbidden in this suite."
+    },
+    {
+      "name": "undefined_component_atomic",
+      "source": "cases/undefined_component_atomic.f90",
+      "sha256": "97816c9dc260e63142cdc2968a7deb0568c324a4d5e9a829af925c2ebc1c746d",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "features": [
+        "undefined field read",
+        "slash staging atomicity",
+        "runtime unit"
+      ],
+      "diagnostic": "read of uninitialized derived component",
+      "diagnostic_line": 18,
+      "diagnostic_column": 22,
+      "oracle_note": "Undefined component data is never evaluated by GNU."
+    },
+    {
+      "name": "generic_repeat_negative_atomic",
+      "source": "cases/generic_repeat_negative_atomic.f90",
+      "sha256": "b3a9d0c3c867d7aafe0d4536b2d0d37ce95a0154b841b13d02bc851294634169",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE",
+      "features": [
+        "fallback count safety",
+        "pending record atomicity",
+        "generic resolution"
+      ],
+      "diagnostic": "REPEAT NCOPIES must be nonnegative",
+      "diagnostic_line": 24,
+      "diagnostic_column": 20
+    },
+    {
+      "name": "leadz_component_boundary",
+      "source": "cases/leadz_component_boundary.f90",
+      "sha256": "0e6f47d513736ce467e061631cbdc4833c324bc1812364a1482b1479590601ef",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "features": [
+        "retained direct component intrinsic boundary",
+        "new CHAR component coexistence"
+      ],
+      "diagnostic": "Bit intrinsic component operands are unsupported",
+      "diagnostic_line": 17,
+      "diagnostic_column": 34
+    },
+    {
+      "name": "internal_write_element_boundary",
+      "source": "cases/internal_write_element_boundary.f90",
+      "sha256": "d9520da148a91684654a6dd5ce13463683e688e76dc29eb7c59235b81127a2ff",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ABC2    \n",
+      "features": [
+        "promoted utilities line2376 internal file element",
+        "CHAR record"
+      ]
+    },
+    {
+      "name": "internal_executed_slash_boundary",
+      "source": "cases/internal_executed_slash_boundary.f90",
+      "sha256": "6fb84cf8174e2e939a8c5c1602d087133d56331b97ab42acaac3edb8af16dd61",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "features": [
+        "internal scalar executed slash boundary",
+        "literal format statically validated"
+      ],
+      "diagnostic": "slash record editing requires another record; scalar internal/child WRITE is unsupported",
+      "diagnostic_line": 18,
+      "diagnostic_column": 1
+    },
+    {
+      "name": "absent_runtime_unit",
+      "source": "cases/absent_runtime_unit.f90",
+      "sha256": "3c5be590375a66237d772d1f41781d85f0b78f65b7e6cd74609d25345530f964",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "features": [
+        "absent unit checked before values",
+        "REPEAT LEADZ items"
+      ],
+      "diagnostic": "absent OPTIONAL dummy referenced: u",
+      "diagnostic_line": 5,
+      "diagnostic_column": 30
+    },
+    {
+      "name": "internal_dynamic_slash_atomic",
+      "source": "cases/internal_dynamic_slash_atomic.f90",
+      "sha256": "e8e2989af17289b9a50bf326cc2bd9a156af3a55ef2dd7df8cb67f6d3f700b01",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "features": [
+        "runtime internal slash boundary",
+        "prior external commit preserved",
+        "record CHARACTER field"
+      ],
+      "diagnostic": "slash record editing requires another record; scalar internal/child WRITE is unsupported",
+      "diagnostic_line": 20,
+      "diagnostic_column": 1,
+      "oracle_note": "GNU compile only: an executed scalar internal-file slash requires an unavailable second record."
+    }
+  ]
+}

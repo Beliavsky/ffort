@@ -1,0 +1,1966 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--version"
+        ],
+        "cwd": "/tmp/release036-candidate-xbwymq07"
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "--version"
+        ],
+        "cwd": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release036_integration"
+      }
+    }
+  },
+  "summary": {
+    "total": 32,
+    "failed": 0,
+    "integrity_failed": 0,
+    "candidate_checked": 32,
+    "gnu_checked": 32,
+    "gnu_compiler_discrepancies": 1,
+    "gnu_executed": 20,
+    "gnu_compile_only": 10,
+    "gnu_compile_rejections": 2,
+    "gnu_skipped": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "gather_elemental_reduction",
+        "source": "cases/gather_elemental_reduction.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "rows: 3 0 3 7 2 7\nreduce: 22 5 1 1\nkinds: 8 8 2 8\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-r7hp8x0x/gather_elemental_reduction.f90",
+          "-o",
+          "/tmp/release036-gnu-r7hp8x0x/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-r7hp8x0x"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "rows: 3 0 3 7 2 7\nreduce: 22 5 1 1\nkinds: 8 8 2 8\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-r7hp8x0x/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-r7hp8x0x"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-c9wlabvd/gather_elemental_reduction.f90"
+        ],
+        "cwd": "/tmp/release036-run-c9wlabvd"
+      },
+      "run": {
+        "code": 0,
+        "out": "rows: 3 0 3 7 2 7\nreduce: 22 5 1 1\nkinds: 8 8 2 8\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-c9wlabvd/gather_elemental_reduction.f90"
+        ],
+        "cwd": "/tmp/release036-run-c9wlabvd"
+      }
+    },
+    {
+      "case": {
+        "name": "reallocate_snapshot_models",
+        "source": "cases/reallocate_snapshot_models.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "snapshot: 3 2 -3 -1 -3 -6 -4 -6\nagain: 2 2 -1 -3 -4 -6\nmodel: 8 2 0\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-nw06a7mf/reallocate_snapshot_models.f90",
+          "-o",
+          "/tmp/release036-gnu-nw06a7mf/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-nw06a7mf"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "snapshot: 3 2 -3 -1 -3 -6 -4 -6\nagain: 2 2 -1 -3 -4 -6\nmodel: 8 2 0\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-nw06a7mf/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-nw06a7mf"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-hhsav5_r/reallocate_snapshot_models.f90"
+        ],
+        "cwd": "/tmp/release036-run-hhsav5_r"
+      },
+      "run": {
+        "code": 0,
+        "out": "snapshot: 3 2 -3 -1 -3 -6 -4 -6\nagain: 2 2 -1 -3 -4 -6\nmodel: 8 2 0\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-hhsav5_r/reallocate_snapshot_models.f90"
+        ],
+        "cwd": "/tmp/release036-run-hhsav5_r"
+      }
+    },
+    {
+      "case": {
+        "name": "gather_function_snapshot_once",
+        "source": "cases/gather_function_snapshot_once.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "first: 2 3 1 6 4\nsecond: 4 -2 -2 -5 -5\nreduced: 0 2\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-eczc6ymx/gather_function_snapshot_once.f90",
+          "-o",
+          "/tmp/release036-gnu-eczc6ymx/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-eczc6ymx"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "first: 2 3 1 6 4\nsecond: 4 -2 -2 -5 -5\nreduced: 0 2\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-eczc6ymx/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-eczc6ymx"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-bi1oo32s/gather_function_snapshot_once.f90"
+        ],
+        "cwd": "/tmp/release036-run-bi1oo32s"
+      },
+      "run": {
+        "code": 0,
+        "out": "first: 2 3 1 6 4\nsecond: 4 -2 -2 -5 -5\nreduced: 0 2\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-bi1oo32s/gather_function_snapshot_once.f90"
+        ],
+        "cwd": "/tmp/release036-run-bi1oo32s"
+      }
+    },
+    {
+      "case": {
+        "name": "model_function_not_executed",
+        "source": "cases/model_function_not_executed.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "metadata: 2 8 8 8 0\narray: 8 2 0\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-fb1rnnhn/model_function_not_executed.f90",
+          "-o",
+          "/tmp/release036-gnu-fb1rnnhn/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-fb1rnnhn"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "metadata: 2 8 8 8 0\narray: 8 2 0\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-fb1rnnhn/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-fb1rnnhn"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-njkvslck/model_function_not_executed.f90"
+        ],
+        "cwd": "/tmp/release036-run-njkvslck"
+      },
+      "run": {
+        "code": 0,
+        "out": "metadata: 2 8 8 8 0\narray: 8 2 0\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-njkvslck/model_function_not_executed.f90"
+        ],
+        "cwd": "/tmp/release036-run-njkvslck"
+      }
+    },
+    {
+      "case": {
+        "name": "gamma_gather_float_kinds",
+        "source": "cases/gamma_gather_float_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0.6931471805599453 0.0 4.787491742782046 1.791759469228055 zero: -1 1 4 8",
+        "compare_mode": "tokens"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-5yxppz7f/gamma_gather_float_kinds.f90",
+          "-o",
+          "/tmp/release036-gnu-5yxppz7f/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-5yxppz7f"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  0.69314718055994529        0.0000000000000000        4.7874917427820458        1.7917594692280550     \nzero: -1 1 4 8\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-5yxppz7f/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-5yxppz7f"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-khjzmkvd/gamma_gather_float_kinds.f90"
+        ],
+        "cwd": "/tmp/release036-run-khjzmkvd"
+      },
+      "run": {
+        "code": 0,
+        "out": " 0.69314718055994529 0.0000000000000000 4.7874917427820458 1.7917594692280550\nzero: -1 1 4 8\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-khjzmkvd/gamma_gather_float_kinds.f90"
+        ],
+        "cwd": "/tmp/release036-run-khjzmkvd"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_gather_masks",
+        "source": "cases/empty_gather_masks.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "empty: 0 3 0 0 0 0\nmodels: 8 2 8 8\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-tsz4tly3/empty_gather_masks.f90",
+          "-o",
+          "/tmp/release036-gnu-tsz4tly3/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-tsz4tly3"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "empty: 0 3 0 0 0 0\nmodels: 8 2 8 8\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-tsz4tly3/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-tsz4tly3"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-m7c0u2o2/empty_gather_masks.f90"
+        ],
+        "cwd": "/tmp/release036-run-m7c0u2o2"
+      },
+      "run": {
+        "code": 0,
+        "out": "empty: 0 3 0 0 0 0\nmodels: 8 2 8 8\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-m7c0u2o2/empty_gather_masks.f90"
+        ],
+        "cwd": "/tmp/release036-run-m7c0u2o2"
+      }
+    },
+    {
+      "case": {
+        "name": "model_without_values",
+        "source": "cases/model_without_values.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "unallocated: 8 2 8 8\nunevaluated: 2 8 0\noptional: 8 2 8 8\nstatus: 0\n",
+        "compare_mode": "exact",
+        "scope_note": "Candidate descriptor-only inquiry contract; GNU compiles but undefined indices, unallocated and absent operands are not executed as GNU safety probes."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-joskx0mp/model_without_values.f90",
+          "-o",
+          "/tmp/release036-gnu-joskx0mp/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-joskx0mp"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-j33deby2/model_without_values.f90"
+        ],
+        "cwd": "/tmp/release036-run-j33deby2"
+      },
+      "run": {
+        "code": 0,
+        "out": "unallocated: 8 2 8 8\nunevaluated: 2 8 0\noptional: 8 2 8 8\nstatus: 0\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-j33deby2/model_without_values.f90"
+        ],
+        "cwd": "/tmp/release036-run-j33deby2"
+      }
+    },
+    {
+      "case": {
+        "name": "tiny_epsilon_huge_exact",
+        "source": "cases/tiny_epsilon_huge_exact.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "binary: 1 1 1 2 2 8 2.220446049250313e-16 2.2250738585072014e-308 1.7976931348623157e308 9223372036854775807",
+        "compare_mode": "tokens"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-slzsn3vs/tiny_epsilon_huge_exact.f90",
+          "-o",
+          "/tmp/release036-gnu-slzsn3vs/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-slzsn3vs"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "binary: 1 1 1 2 2 8\n   2.2204460492503131E-016   2.2250738585072014E-308   1.7976931348623157E+308  9223372036854775807\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-slzsn3vs/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-slzsn3vs"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-8im8iak0/tiny_epsilon_huge_exact.f90"
+        ],
+        "cwd": "/tmp/release036-run-8im8iak0"
+      },
+      "run": {
+        "code": 0,
+        "out": "binary: 1 1 1 2 2 8\n 0.22204460492503131E-15 0.22250738585072014E-307 0.17976931348623157E+309 9223372036854775807\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-8im8iak0/tiny_epsilon_huge_exact.f90"
+        ],
+        "cwd": "/tmp/release036-run-8im8iak0"
+      }
+    },
+    {
+      "case": {
+        "name": "integer8_edge_composition",
+        "source": "cases/integer8_edge_composition.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "edges: -9223372036854775808 0 0 9223372036854775807\ngather: -9223372036854775807 -9223372036854775808 0 -1\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-_lad5ez2/integer8_edge_composition.f90",
+          "-o",
+          "/tmp/release036-gnu-_lad5ez2/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-_lad5ez2"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "edges: -9223372036854775808 0 0 9223372036854775807\ngather: -9223372036854775807 -9223372036854775808 0 -1\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-_lad5ez2/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-_lad5ez2"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-b6f2vvtf/integer8_edge_composition.f90"
+        ],
+        "cwd": "/tmp/release036-run-b6f2vvtf"
+      },
+      "run": {
+        "code": 0,
+        "out": "edges: -9223372036854775808 0 0 9223372036854775807\ngather: -9223372036854775807 -9223372036854775808 0 -1\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-b6f2vvtf/integer8_edge_composition.f90"
+        ],
+        "cwd": "/tmp/release036-run-b6f2vvtf"
+      }
+    },
+    {
+      "case": {
+        "name": "gnu_dim_wrapped_negative_difference",
+        "source": "cases/gnu_dim_wrapped_negative_difference.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "0\n",
+        "compare_mode": "exact",
+        "compiler_discrepancy": "GNU 14.2 emits 2 for DIM(-HUGE(0_8),HUGE(0_8)) consistent with subtraction wrapping before max. The independent mathematical result is zero. This probe is compiled, not executed or called GNU-equivalent.",
+        "scope_note": "Overflow-avoiding DIM contract independently checked against zero; no GNU runtime equivalence claimed."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-m272utk9/gnu_dim_wrapped_negative_difference.f90",
+          "-o",
+          "/tmp/release036-gnu-m272utk9/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-m272utk9"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-_3e76ekn/gnu_dim_wrapped_negative_difference.f90"
+        ],
+        "cwd": "/tmp/release036-run-_3e76ekn"
+      },
+      "run": {
+        "code": 0,
+        "out": "0\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-_3e76ekn/gnu_dim_wrapped_negative_difference.f90"
+        ],
+        "cwd": "/tmp/release036-run-_3e76ekn"
+      }
+    },
+    {
+      "case": {
+        "name": "array_models_specification",
+        "source": "cases/array_models_specification.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "spec: 10 10 8\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-gwe844fi/array_models_specification.f90",
+          "-o",
+          "/tmp/release036-gnu-gwe844fi/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-gwe844fi"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "spec: 10 10 8\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-gwe844fi/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-gwe844fi"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-9dyj4_lo/array_models_specification.f90"
+        ],
+        "cwd": "/tmp/release036-run-9dyj4_lo"
+      },
+      "run": {
+        "code": 0,
+        "out": "spec: 10 10 8\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-9dyj4_lo/array_models_specification.f90"
+        ],
+        "cwd": "/tmp/release036-run-9dyj4_lo"
+      }
+    },
+    {
+      "case": {
+        "name": "dim_integer_overflow",
+        "source": "cases/dim_integer_overflow.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "integer overflow",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-6ho7dfm2/dim_integer_overflow.f90",
+          "-o",
+          "/tmp/release036-gnu-6ho7dfm2/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-6ho7dfm2"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-rsms59mg/dim_integer_overflow.f90"
+        ],
+        "cwd": "/tmp/release036-run-rsms59mg"
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/tmp/release036-run-rsms59mg/dim_integer_overflow.f90:6:24: integer overflow\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-rsms59mg/dim_integer_overflow.f90"
+        ],
+        "cwd": "/tmp/release036-run-rsms59mg"
+      }
+    },
+    {
+      "case": {
+        "name": "sign_integer_overflow",
+        "source": "cases/sign_integer_overflow.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "integer overflow",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-f2egopkk/sign_integer_overflow.f90",
+          "-o",
+          "/tmp/release036-gnu-f2egopkk/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-f2egopkk"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-kc_oytyp/sign_integer_overflow.f90"
+        ],
+        "cwd": "/tmp/release036-run-kc_oytyp"
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/tmp/release036-run-kc_oytyp/sign_integer_overflow.f90:7:24: integer overflow\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-kc_oytyp/sign_integer_overflow.f90"
+        ],
+        "cwd": "/tmp/release036-run-kc_oytyp"
+      }
+    },
+    {
+      "case": {
+        "name": "gamma_pole",
+        "source": "cases/gamma_pole.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "must not be zero or a negative integer",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-ru_olqff/gamma_pole.f90",
+          "-o",
+          "/tmp/release036-gnu-ru_olqff/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-ru_olqff"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-nfiwfx41/gamma_pole.f90"
+        ],
+        "cwd": "/tmp/release036-run-nfiwfx41"
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/tmp/release036-run-nfiwfx41/gamma_pole.f90:6:29: LOG_GAMMA argument must not be zero or a negative integer\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-nfiwfx41/gamma_pole.f90"
+        ],
+        "cwd": "/tmp/release036-run-nfiwfx41"
+      }
+    },
+    {
+      "case": {
+        "name": "gamma_finite_policy",
+        "source": "cases/gamma_finite_policy.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "non-finite",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-bsitocsw/gamma_finite_policy.f90",
+          "-o",
+          "/tmp/release036-gnu-bsitocsw/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-bsitocsw"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-a0gjgnie/gamma_finite_policy.f90"
+        ],
+        "cwd": "/tmp/release036-run-a0gjgnie"
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/tmp/release036-run-a0gjgnie/gamma_finite_policy.f90:6:29: non-finite real result\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-a0gjgnie/gamma_finite_policy.f90"
+        ],
+        "cwd": "/tmp/release036-run-a0gjgnie"
+      }
+    },
+    {
+      "case": {
+        "name": "gather_bad_row",
+        "source": "cases/gather_bad_row.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "bound",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-23v5hf7u/gather_bad_row.f90",
+          "-o",
+          "/tmp/release036-gnu-23v5hf7u/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-23v5hf7u"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-qjzfpg40/gather_bad_row.f90"
+        ],
+        "cwd": "/tmp/release036-run-qjzfpg40"
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/tmp/release036-run-qjzfpg40/gather_bad_row.f90:7:34: vector row index out of bounds\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-qjzfpg40/gather_bad_row.f90"
+        ],
+        "cwd": "/tmp/release036-run-qjzfpg40"
+      }
+    },
+    {
+      "case": {
+        "name": "gather_undefined_index",
+        "source": "cases/gather_undefined_index.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "uninitialized",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-9ip_ic5q/gather_undefined_index.f90",
+          "-o",
+          "/tmp/release036-gnu-9ip_ic5q/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-9ip_ic5q"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-vowoipb3/gather_undefined_index.f90"
+        ],
+        "cwd": "/tmp/release036-run-vowoipb3"
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/tmp/release036-run-vowoipb3/gather_undefined_index.f90:6:34: read of uninitialized array element idx\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-vowoipb3/gather_undefined_index.f90"
+        ],
+        "cwd": "/tmp/release036-run-vowoipb3"
+      }
+    },
+    {
+      "case": {
+        "name": "parity_undefined_after_true",
+        "source": "cases/parity_undefined_after_true.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "uninitialized",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-27h6_pke/parity_undefined_after_true.f90",
+          "-o",
+          "/tmp/release036-gnu-27h6_pke/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-27h6_pke"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-sqbbg3ec/parity_undefined_after_true.f90"
+        ],
+        "cwd": "/tmp/release036-run-sqbbg3ec"
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/tmp/release036-run-sqbbg3ec/parity_undefined_after_true.f90:6:41: read of uninitialized array element m\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-sqbbg3ec/parity_undefined_after_true.f90"
+        ],
+        "cwd": "/tmp/release036-run-sqbbg3ec"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_column_bad_index",
+        "source": "cases/empty_column_bad_index.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "bound",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-twck4f1e/empty_column_bad_index.f90",
+          "-o",
+          "/tmp/release036-gnu-twck4f1e/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-twck4f1e"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-u5y3mks1/empty_column_bad_index.f90"
+        ],
+        "cwd": "/tmp/release036-run-u5y3mks1"
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/tmp/release036-run-u5y3mks1/empty_column_bad_index.f90:6:23: vector row index out of bounds\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-u5y3mks1/empty_column_bad_index.f90"
+        ],
+        "cwd": "/tmp/release036-run-u5y3mks1"
+      }
+    },
+    {
+      "case": {
+        "name": "parity_rank3_boundary",
+        "source": "cases/parity_rank3_boundary.f90",
+        "category": "reject",
+        "baseline": "run",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "rank",
+        "gnu_stdout": "1\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-ajtqt269/parity_rank3_boundary.f90",
+          "-o",
+          "/tmp/release036-gnu-ajtqt269/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-ajtqt269"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "1\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-ajtqt269/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-ajtqt269"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release036-run-ssb1_756/parity_rank3_boundary.f90:5:35: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-ssb1_756/parity_rank3_boundary.f90"
+        ],
+        "cwd": "/tmp/release036-run-ssb1_756"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release036-run-ssb1_756/parity_rank3_boundary.f90:5:35: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-ssb1_756/parity_rank3_boundary.f90"
+        ],
+        "cwd": "/tmp/release036-run-ssb1_756"
+      }
+    },
+    {
+      "case": {
+        "name": "numeric_component_boundary",
+        "source": "cases/numeric_component_boundary.f90",
+        "category": "reject",
+        "baseline": "run",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "component",
+        "gnu_stdout": "2\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-34cp7xpb/numeric_component_boundary.f90",
+          "-o",
+          "/tmp/release036-gnu-34cp7xpb/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-34cp7xpb"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "2\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-34cp7xpb/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-34cp7xpb"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release036-run-wn5sbqns/numeric_component_boundary.f90:11:46: Numeric model inquiry component operands are unsupported\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-wn5sbqns/numeric_component_boundary.f90"
+        ],
+        "cwd": "/tmp/release036-run-wn5sbqns"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release036-run-wn5sbqns/numeric_component_boundary.f90:11:46: Numeric model inquiry component operands are unsupported\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-wn5sbqns/numeric_component_boundary.f90"
+        ],
+        "cwd": "/tmp/release036-run-wn5sbqns"
+      }
+    },
+    {
+      "case": {
+        "name": "gather_scatter_boundary",
+        "source": "cases/gather_scatter_boundary.f90",
+        "category": "reject",
+        "baseline": "run",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "vector",
+        "gnu_stdout": "8\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-6lxaw37b/gather_scatter_boundary.f90",
+          "-o",
+          "/tmp/release036-gnu-6lxaw37b/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-6lxaw37b"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "8\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-6lxaw37b/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-6lxaw37b"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release036-run-ti5lqfu6/gather_scatter_boundary.f90:5:11: Vector row gathering is read-only; scatter assignment is unsupported\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-ti5lqfu6/gather_scatter_boundary.f90"
+        ],
+        "cwd": "/tmp/release036-run-ti5lqfu6"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release036-run-ti5lqfu6/gather_scatter_boundary.f90:5:11: Vector row gathering is read-only; scatter assignment is unsupported\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-ti5lqfu6/gather_scatter_boundary.f90"
+        ],
+        "cwd": "/tmp/release036-run-ti5lqfu6"
+      }
+    },
+    {
+      "case": {
+        "name": "gather_writable_actual_boundary",
+        "source": "cases/gather_writable_actual_boundary.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "gathered row value"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release036-gnu-m0m66iwc/gather_writable_actual_boundary.f90:5:12:\n\n    5 | call change((a([2,1],:)))\n      |            1\nError: Non-variable expression in variable definition context (actual argument to INTENT = OUT/INOUT) at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-m0m66iwc/gather_writable_actual_boundary.f90",
+          "-o",
+          "/tmp/release036-gnu-m0m66iwc/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-m0m66iwc"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release036-run-tjocotls/gather_writable_actual_boundary.f90:5:26: Parenthesize a gathered row value when passing it to a user procedure\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-tjocotls/gather_writable_actual_boundary.f90"
+        ],
+        "cwd": "/tmp/release036-run-tjocotls"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release036-run-tjocotls/gather_writable_actual_boundary.f90:5:26: Parenthesize a gathered row value when passing it to a user procedure\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-tjocotls/gather_writable_actual_boundary.f90"
+        ],
+        "cwd": "/tmp/release036-run-tjocotls"
+      }
+    },
+    {
+      "case": {
+        "name": "mismatched_kind_boundary",
+        "source": "cases/mismatched_kind_boundary.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "matching types"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release036-gnu-redgjkk0/mismatched_kind_boundary.f90:5:14:\n\n    5 | print *,dim(x,0)\n      |              1\nError: GNU Extension: Different type kinds at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-redgjkk0/mismatched_kind_boundary.f90",
+          "-o",
+          "/tmp/release036-gnu-redgjkk0/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-redgjkk0"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release036-run-lpotmx5a/mismatched_kind_boundary.f90:5:17: Intrinsic arguments must have matching types\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-lpotmx5a/mismatched_kind_boundary.f90"
+        ],
+        "cwd": "/tmp/release036-run-lpotmx5a"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release036-run-lpotmx5a/mismatched_kind_boundary.f90:5:17: Intrinsic arguments must have matching types\n",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-lpotmx5a/mismatched_kind_boundary.f90"
+        ],
+        "cwd": "/tmp/release036-run-lpotmx5a"
+      }
+    },
+    {
+      "case": {
+        "name": "original_filter_cross_features",
+        "source": "cases/original_filter_cross_features.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "filtered: 2 2 2 3 20 30\ncombined: 0 2 8 0\nremoved: 0 2 0 0\nrepeat: 0 2\n",
+        "compare_mode": "exact",
+        "support_sources": [
+          "original/filter_module.f90"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-az5unv8j/original_filter_cross_features.f90",
+          "-o",
+          "/tmp/release036-gnu-az5unv8j/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-az5unv8j"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "filtered: 2 2 2 3 20 30\ncombined: 0 2 8 0\nremoved: 0 2 0 0\nrepeat: 0 2\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-az5unv8j/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-az5unv8j"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-_orrslqy/original_filter_cross_features.f90"
+        ],
+        "cwd": "/tmp/release036-run-_orrslqy"
+      },
+      "run": {
+        "code": 0,
+        "out": "filtered: 2 2 2 3 20 30\ncombined: 0 2 8 0\nremoved: 0 2 0 0\nrepeat: 0 2\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-_orrslqy/original_filter_cross_features.f90"
+        ],
+        "cwd": "/tmp/release036-run-_orrslqy"
+      }
+    },
+    {
+      "case": {
+        "name": "unchanged_demo_dim",
+        "source": "original/demo_dim.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 3.21 0 0 1 0 0 2 0 0 10",
+        "compare_mode": "tokens",
+        "support_sources": [
+          "original/filter_module.f90"
+        ],
+        "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-hqifoxxd/unchanged_demo_dim.f90",
+          "-o",
+          "/tmp/release036-gnu-hqifoxxd/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-hqifoxxd"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n   3.2100000000000000     \n           0           0           1\n           0           0           2\n           0           0          10\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-hqifoxxd/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-hqifoxxd"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-9811mdng/unchanged_demo_dim.f90"
+        ],
+        "cwd": "/tmp/release036-run-9811mdng"
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n 3.2100000000000000\n 0 0 1\n 0 0 2\n 0 0 10\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-9811mdng/unchanged_demo_dim.f90"
+        ],
+        "cwd": "/tmp/release036-run-9811mdng"
+      }
+    },
+    {
+      "case": {
+        "name": "unchanged_demo_sign",
+        "source": "original/demo_sign.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12 12 -12 12 12 -12 this processor distinguishes +0 from -0 either way, 0==-0 is true! T either way, 0=/-0 is false! F elemental 12 12 -12",
+        "compare_mode": "tokens",
+        "support_sources": [
+          "original/filter_module.f90"
+        ],
+        "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-v38tmnsz/unchanged_demo_sign.f90",
+          "-o",
+          "/tmp/release036-gnu-v38tmnsz/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-v38tmnsz"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n          12\n         -12\n          12\n          12\n         -12\n this processor distinguishes +0 from -0\n either way, 0==-0 is true! T\n either way, 0=/-0 is false! F\n elemental   12.0000000       12.0000000      -12.0000000    \n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-v38tmnsz/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-v38tmnsz"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-e3d2mf1i/unchanged_demo_sign.f90"
+        ],
+        "cwd": "/tmp/release036-run-e3d2mf1i"
+      },
+      "run": {
+        "code": 0,
+        "out": " 12\n 12\n -12\n 12\n 12\n -12\n this processor distinguishes +0 from -0\n either way, 0==-0 is true! T\n either way, 0=/-0 is false! F\n elemental 12.0000000 12.0000000 -12.0000000\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-e3d2mf1i/unchanged_demo_sign.f90"
+        ],
+        "cwd": "/tmp/release036-run-e3d2mf1i"
+      }
+    },
+    {
+      "case": {
+        "name": "unchanged_demo_log_gamma",
+        "source": "original/demo_log_gamma.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 0 1 0.6931471805599453",
+        "compare_mode": "tokens",
+        "support_sources": [
+          "original/filter_module.f90"
+        ],
+        "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-g8ssffb9/unchanged_demo_log_gamma.f90",
+          "-o",
+          "/tmp/release036-gnu-g8ssffb9/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-g8ssffb9"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.00000000       0.00000000    \n   1.00000000      0.693147182    \n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-g8ssffb9/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-g8ssffb9"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-xeo5fp3q/unchanged_demo_log_gamma.f90"
+        ],
+        "cwd": "/tmp/release036-run-xeo5fp3q"
+      },
+      "run": {
+        "code": 0,
+        "out": " 1.00000000 0.00000000\n 1.00000000 0.693147182\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-xeo5fp3q/unchanged_demo_log_gamma.f90"
+        ],
+        "cwd": "/tmp/release036-run-xeo5fp3q"
+      }
+    },
+    {
+      "case": {
+        "name": "unchanged_demo_parity",
+        "source": "original/demo_parity.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T F T F T T T T F F F",
+        "compare_mode": "tokens",
+        "support_sources": [
+          "original/filter_module.f90"
+        ],
+        "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-sxxap0w_/unchanged_demo_parity.f90",
+          "-o",
+          "/tmp/release036-gnu-sxxap0w_/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-sxxap0w_"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T\n T\n F\n T\n F\n T T T T\n F F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-sxxap0w_/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-sxxap0w_"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-4tsnsd7m/unchanged_demo_parity.f90"
+        ],
+        "cwd": "/tmp/release036-run-4tsnsd7m"
+      },
+      "run": {
+        "code": 0,
+        "out": " T\n T\n F\n T\n F\n T T T T\n F F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-4tsnsd7m/unchanged_demo_parity.f90"
+        ],
+        "cwd": "/tmp/release036-run-4tsnsd7m"
+      }
+    },
+    {
+      "case": {
+        "name": "unchanged_demo_radix",
+        "source": "original/demo_radix.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "The radix for the default integer kind is 2 The radix for the default real kind is 2 The radix for the doubleprecision real kind is 2",
+        "compare_mode": "tokens",
+        "support_sources": [
+          "original/filter_module.f90"
+        ],
+        "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-4byy5le0/unchanged_demo_radix.f90",
+          "-o",
+          "/tmp/release036-gnu-4byy5le0/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-4byy5le0"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " The radix for the default integer kind is           2\n The radix for the default real kind is           2\n The radix for the doubleprecision real kind is           2\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-4byy5le0/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-4byy5le0"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-fkwzzg7c/unchanged_demo_radix.f90"
+        ],
+        "cwd": "/tmp/release036-run-fkwzzg7c"
+      },
+      "run": {
+        "code": 0,
+        "out": " The radix for the default integer kind is 2\n The radix for the default real kind is 2\n The radix for the doubleprecision real kind is 2\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-fkwzzg7c/unchanged_demo_radix.f90"
+        ],
+        "cwd": "/tmp/release036-run-fkwzzg7c"
+      }
+    },
+    {
+      "case": {
+        "name": "unchanged_demo_tiny",
+        "source": "original/demo_tiny.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "default real is from 1.1754943508222875e-38 to 3.4028234663852886e38 doubleprecision is from 2.2250738585072014e-308 to 1.7976931348623157e308",
+        "compare_mode": "tokens",
+        "support_sources": [
+          "original/filter_module.f90"
+        ],
+        "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-b945j0vg/unchanged_demo_tiny.f90",
+          "-o",
+          "/tmp/release036-gnu-b945j0vg/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-b945j0vg"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " default real is from   1.17549435E-38 to   3.40282347E+38\n doubleprecision is from    2.2250738585072014E-308 to   1.7976931348623157E+308\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-b945j0vg/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-b945j0vg"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-f860lx6p/unchanged_demo_tiny.f90"
+        ],
+        "cwd": "/tmp/release036-run-f860lx6p"
+      },
+      "run": {
+        "code": 0,
+        "out": " default real is from 0.117549435E-37 to 0.340282347E+39\n doubleprecision is from  0.22250738585072014E-307 to 0.17976931348623157E+309\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-f860lx6p/unchanged_demo_tiny.f90"
+        ],
+        "cwd": "/tmp/release036-run-f860lx6p"
+      }
+    },
+    {
+      "case": {
+        "name": "unchanged_demo_floor",
+        "source": "original/demo_floor.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "63.29 63 -63.59 -64 -3 -3 -3 -2 -2 -1 -1 0 0 1 1 2 2 2 2 2.0 1.9999998807907104 1.999999761581421 2 1 1",
+        "compare_mode": "tokens",
+        "support_sources": [
+          "original/filter_module.f90"
+        ],
+        "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release036-gnu-92i0vr5v/unchanged_demo_floor.f90",
+          "-o",
+          "/tmp/release036-gnu-92i0vr5v/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-92i0vr5v"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   63.2900009              63\n  -63.5900002             -64\n          -3          -3          -3          -2          -2          -1          -1           0           0           1           1           2           2           2           2\n   2.00000000       1.99999988       1.99999976    \n           2           1           1\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-gnu-92i0vr5v/reference"
+        ],
+        "cwd": "/tmp/release036-gnu-92i0vr5v"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "--check",
+          "/tmp/release036-run-73vpyn50/unchanged_demo_floor.f90"
+        ],
+        "cwd": "/tmp/release036-run-73vpyn50"
+      },
+      "run": {
+        "code": 0,
+        "out": " 63.2900009 63\n -63.5900002 -64\n -3 -3 -3 -2 -2 -1 -1 0 0 1 1 2 2 2 2\n 2.00000000 1.99999988 1.99999976\n 2 1 1\n",
+        "err": "",
+        "argv": [
+          "/tmp/release036-candidate-xbwymq07/fortfront-interpreter",
+          "/tmp/release036-run-73vpyn50/unchanged_demo_floor.f90"
+        ],
+        "cwd": "/tmp/release036-run-73vpyn50"
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:36:27.697412+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all,no-array-temps",
+    "-O0"
+  ],
+  "scope": "Bounded DIM/SIGN/LOG_GAMMA, PARITY, metadata model inquiries, and read-only rank2 numeric row gather. Exact filter_matrix_rows dependency closure and seven unchanged M_intrinsics programs; not a full-library support claim.",
+  "original_source_provenance": {
+    "original_source": "../utilities_slices/source/xutilities.f90",
+    "original_source_sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+    "wrappers": [
+      {
+        "path": "original/filter_module.f90",
+        "sha256": "f3309a988ce10dfb7982f0c41aa3377cc59f5e498093402d9143efd48910ff28",
+        "routines": [
+          {
+            "name": "filter_matrix_rows",
+            "source_start_line": 8657,
+            "source_end_line": 8679,
+            "source_byte_start": 298453,
+            "source_byte_end_exclusive": 299543,
+            "wrapper_byte_start": 215,
+            "sha256": "2988489e747a2cdc7f9045e0deae9af543a6121642d9a70632cc66a0a2969473",
+            "bytes": 1090,
+            "crlf_lines": 23
+          },
+          {
+            "name": "true_pos_func",
+            "source_start_line": 1552,
+            "source_end_line": 1564,
+            "source_byte_start": 55675,
+            "source_byte_end_exclusive": 56003,
+            "wrapper_byte_start": 1306,
+            "sha256": "b3d307baf5b780746d191aedf2080a17d2ba353b2013b310ef07f82d63c2582b",
+            "bytes": 328,
+            "crlf_lines": 13
+          },
+          {
+            "name": "set_alloc_real_matrix",
+            "source_start_line": 2610,
+            "source_end_line": 2616,
+            "source_byte_start": 90287,
+            "source_byte_end_exclusive": 90590,
+            "wrapper_byte_start": 1635,
+            "sha256": "8f3d6e5bf4905c86ab26bfd09a8c2e3684823e524eaf2fccb6bad291f06f68b4",
+            "bytes": 303,
+            "crlf_lines": 7
+          }
+        ]
+      }
+    ],
+    "originals": [
+      {
+        "path": "original/demo_dim.f90",
+        "source": "../elementary_math/cases/demo_dim.f90",
+        "bytes": 457,
+        "sha256": "d894b5c29f4ffa0cb81f736dfead6381d7df934d353375eab557e07f40368add",
+        "upstream_commit": "fc14233036d910e3678d350efc24609e11475067"
+      },
+      {
+        "path": "original/demo_sign.f90",
+        "source": "../elementary_math/cases/demo_sign.f90",
+        "bytes": 672,
+        "sha256": "f471c0005b0b9fa9d77368bc7d768fbea6e3ea6267b16461dd4592c042f93548",
+        "upstream_commit": "fc14233036d910e3678d350efc24609e11475067"
+      },
+      {
+        "path": "original/demo_log_gamma.f90",
+        "source": "../elementary_math/cases/demo_log_gamma.f90",
+        "bytes": 220,
+        "sha256": "735dee251c5a432312db060823831930b7d94879c293f8d218bdf7b29f842aa6",
+        "upstream_commit": "fc14233036d910e3678d350efc24609e11475067"
+      },
+      {
+        "path": "original/demo_parity.f90",
+        "source": "../parity_intrinsic/demo_parity.f90",
+        "bytes": 479,
+        "sha256": "d3c8632021980a15da5fe1f81c6a7808284b68e18b37c38f6b4580c879965c50",
+        "upstream_commit": "fc14233036d910e3678d350efc24609e11475067"
+      },
+      {
+        "path": "original/demo_radix.f90",
+        "source": "../numeric_model_inquiries/original/demo_radix.f90",
+        "bytes": 298,
+        "sha256": "26d8cf197178d37750dff0c96d2dcbf75b8669b3947fb690939f2f5bef8926ad",
+        "upstream_commit": "fc14233036d910e3678d350efc24609e11475067"
+      },
+      {
+        "path": "original/demo_tiny.f90",
+        "source": "../numeric_model_inquiries/original/demo_tiny.f90",
+        "bytes": 216,
+        "sha256": "b03d5cb3b10b20438914014a0a85732b2e7a6e4c5c4265c4e72d02dc2a797d71",
+        "upstream_commit": "fc14233036d910e3678d350efc24609e11475067"
+      },
+      {
+        "path": "original/demo_floor.f90",
+        "source": "../numeric_model_inquiries/original/demo_floor.f90",
+        "bytes": 659,
+        "sha256": "c6cb094c810fa53d2c354083c5d5e089190b0d0b5cc5c98067bf15ce0053fba3",
+        "upstream_commit": "fc14233036d910e3678d350efc24609e11475067"
+      }
+    ],
+    "license": {
+      "path": "original/M_INTRINSICS_LICENSE",
+      "sha256": "5bc2186f9c1ed8a9555dc8bd396ff19672e5a9bd35cb06cf16f996856667a96b"
+    }
+  },
+  "provenance_sha256": "0570abe703115a287931c953e4969d2c0c91fd8739cd4092bba0dce554a298b8",
+  "manifest_sha256": "60434cd2ba7677882c014a64ca9bddfb149f4ab861c7a1680e563f4d88242fa5",
+  "source_sha256": {
+    "cases/gather_elemental_reduction.f90": "b318c9c4cb28c26f8b3865152e0d450b36e8b5b274fb2189824533c7b5f1d3db",
+    "cases/reallocate_snapshot_models.f90": "9158046b6b12eed39ec446cf3ae8d51c26450423f07d3db0862d47a17c019d2c",
+    "cases/gather_function_snapshot_once.f90": "559c3c33aa6809fdfac6903f13bcfea75e73ca22d13ff6f2fd15c0f424babaf2",
+    "cases/model_function_not_executed.f90": "37f33db8d027120b3ccde11a4bf672eb6766e8ee69d953140f002399d3be923e",
+    "cases/gamma_gather_float_kinds.f90": "6bb65b94a2a55b2a84bb7148a129f50b72b852bf698322f6ae9763e8370433d3",
+    "cases/empty_gather_masks.f90": "83bdae60d8dd82d3c56398d22c6eeea3ddf4306bb7acaeeb4910214e7e28098a",
+    "cases/model_without_values.f90": "afa62919dc0556285d82bcf9859ec6af84c69eddecf05b0cdb27271e58fa029e",
+    "cases/tiny_epsilon_huge_exact.f90": "4611e0fbf7af249ade9cc331e9acc8f75258712c7237bb853d96f3d4eeb5e14b",
+    "cases/integer8_edge_composition.f90": "e498f055309c6883c29ea1a6e07db026a1c7771a8ba55d5d7018cbbb688bf7cb",
+    "cases/gnu_dim_wrapped_negative_difference.f90": "3d002ef448514bbe2e44adf0b44465e849b3b804082c9793503a1d9287706780",
+    "cases/array_models_specification.f90": "88b7f1919564e115763dccaf3f87d6e9da006c183e8761d67680a79350632ae3",
+    "cases/dim_integer_overflow.f90": "19f2c9909889ea497a0df6f16234c54a3ae63f3e415d25d09bff4a8534ef8528",
+    "cases/sign_integer_overflow.f90": "a738d05569b6f108ed82564ed8ccb7813c842927d00265734bbee6f57f4fe3ef",
+    "cases/gamma_pole.f90": "dca4d56027a3dd388aa9139e4832d100704c1a6a166cb136323ed5f655e4f68b",
+    "cases/gamma_finite_policy.f90": "ec14e63e1e972bb575715e4610f61006b3d8f0e8ffaa0f0f171ad08607b9f464",
+    "cases/gather_bad_row.f90": "1d81eff01a1f09196088d21874f8f2c41fea73a8ab2268dd6156ed0ec02a1c78",
+    "cases/gather_undefined_index.f90": "6b2344b4ca29f0e8f1fbc925517fd459055518379d43b6250946cb60cd863c29",
+    "cases/parity_undefined_after_true.f90": "3c933322bd399bdb862de3d0708d7bb14118aa20d1369f68c0791a5a7bb0f3c8",
+    "cases/empty_column_bad_index.f90": "e9b7f6b6850f4be5fdde7ddff540a979b4f2c393361f3870920347a5880645ec",
+    "cases/parity_rank3_boundary.f90": "d7fc935a7df9f73809d673253867aa2677066342bea521d5fea9510e6dec1b78",
+    "cases/numeric_component_boundary.f90": "817da9e286d947a59ed81e0b9cd5f34a9c89557096c490800531323d16d7519c",
+    "cases/gather_scatter_boundary.f90": "7ec4c4a61f1ea7c53b27d11b34076c7692f495a42667315f633470c0de079ef8",
+    "cases/gather_writable_actual_boundary.f90": "240afc1917a1ab35680ae568a274d6c985ce416db007c82189d693ba4c9cc96b",
+    "cases/mismatched_kind_boundary.f90": "c72e69e046ccdc35d6e57c90d4507cccf4c88575fe55ca1c89d8974318598a7b",
+    "original/filter_module.f90": "f3309a988ce10dfb7982f0c41aa3377cc59f5e498093402d9143efd48910ff28",
+    "cases/original_filter_cross_features.f90": "161d5b98e0e0db7edaf4f04d2fb61663b447b60e1cc25e249791ce8e23181dd0",
+    "original/demo_dim.f90": "d894b5c29f4ffa0cb81f736dfead6381d7df934d353375eab557e07f40368add",
+    "original/demo_sign.f90": "f471c0005b0b9fa9d77368bc7d768fbea6e3ea6267b16461dd4592c042f93548",
+    "original/demo_log_gamma.f90": "735dee251c5a432312db060823831930b7d94879c293f8d218bdf7b29f842aa6",
+    "original/demo_parity.f90": "d3c8632021980a15da5fe1f81c6a7808284b68e18b37c38f6b4580c879965c50",
+    "original/demo_radix.f90": "26d8cf197178d37750dff0c96d2dcbf75b8669b3947fb690939f2f5bef8926ad",
+    "original/demo_tiny.f90": "b03d5cb3b10b20438914014a0a85732b2e7a6e4c5c4265c4e72d02dc2a797d71",
+    "original/demo_floor.f90": "c6cb094c810fa53d2c354083c5d5e089190b0d0b5cc5c98067bf15ce0053fba3"
+  },
+  "integrity_errors": [],
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

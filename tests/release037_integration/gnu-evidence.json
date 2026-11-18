@@ -1,0 +1,1492 @@
+{
+  "tools": {
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "--version"
+        ],
+        "cwd": "/workspace/scratch/c5319e9549df/fortfront-037-integration/fortfront-interpreter-0.37.0/tests/release037_integration"
+      }
+    }
+  },
+  "summary": {
+    "total": 37,
+    "failed": 0,
+    "integrity_failed": 0,
+    "gnu_checked": 37,
+    "gnu_compiler_discrepancies": 1,
+    "gnu_executed": 18,
+    "gnu_compile_only": 12,
+    "gnu_compile_rejections": 7,
+    "gnu_skipped": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "gather_roundtrip_ascii",
+        "source": "cases/gather_roundtrip_ascii.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "roundtrip: 6 0 6 6\nexponents: 2 4 2 0 5 0\nascii: 65 122 48 8 1\n",
+        "compare_mode": "exact",
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-qjoi8nvz/gather_roundtrip_ascii.f90",
+          "-o",
+          "/tmp/release037-gnu-qjoi8nvz/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-qjoi8nvz"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "roundtrip: 6 0 6 6\nexponents: 2 4 2 0 5 0\nascii: 65 122 48 8 1\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-qjoi8nvz/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-qjoi8nvz"
+      }
+    },
+    {
+      "case": {
+        "name": "binary_edges_real4",
+        "source": "cases/binary_edges_real4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "subnormal: -148 1 1 1 1 1 zero: -1 0 -1 -1 1 normal: 1 1 1 1 1 1 1.401298464324817070923729583289916131280e-45 2.0282409603651670423947251286016e31",
+        "compare_mode": "tokens"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-tjiuw6h4/binary_edges_real4.f90",
+          "-o",
+          "/tmp/release037-gnu-tjiuw6h4/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-tjiuw6h4"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "subnormal: -148 1 1 1 1 1\nzero: -1 0 -1 -1 1\nnormal: 1 1 1 1 1 1\n   1.40129846E-45   2.02824096E+31\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-tjiuw6h4/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-tjiuw6h4"
+      }
+    },
+    {
+      "case": {
+        "name": "binary_edges_real8",
+        "source": "cases/binary_edges_real8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "subnormal: -1073 1 1 1 1 1 zero: -1 0 -1 -1 1 normal: 1 1 1 1 1 1 4.940656458412465441765687928682213723651e-324 1.995840309534719811656372713036838566067e292",
+        "compare_mode": "tokens"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-y0iy4ctw/binary_edges_real8.f90",
+          "-o",
+          "/tmp/release037-gnu-y0iy4ctw/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-y0iy4ctw"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "subnormal: -1073 1 1 1 1 1\nzero: -1 0 -1 -1 1\nnormal: 1 1 1 1 1 1\n   4.9406564584124654E-324   1.9958403095347198E+292\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-y0iy4ctw/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-y0iy4ctw"
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_direction_keyword",
+        "source": "cases/mixed_direction_keyword.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "mixed: 1 4 1 8\nkeywords: 16 -1 1 4 8 8\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-9nbzn5fq/mixed_direction_keyword.f90",
+          "-o",
+          "/tmp/release037-gnu-9nbzn5fq/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-9nbzn5fq"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "mixed: 1 4 1 8\nkeywords: 16 -1 1 4 8 8\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-9nbzn5fq/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-9nbzn5fq"
+      }
+    },
+    {
+      "case": {
+        "name": "wide_exponent_signed_underflow",
+        "source": "cases/wide_exponent_signed_underflow.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "wide: 1 -1 2 -1 4\n",
+        "compare_mode": "exact",
+        "compiler_discrepancy": "GNU 14.2 returns nonzero SET_EXPONENT for I=-HUGE(0_8). The bounded interpreter contract returns signed zero without narrowing the exponent. This case has an independent signed-zero oracle, not a GNU runtime equivalence claim.",
+        "scope_note": "Extreme INTEGER8 exponent policy independently tested; GNU compiles only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-j90g0yt4/wide_exponent_signed_underflow.f90",
+          "-o",
+          "/tmp/release037-gnu-j90g0yt4/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-j90g0yt4"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_exact_records",
+        "source": "cases/ascii_exact_records.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "codes: 65 122 0 127\ntext:[A] 48\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-hwg2tnlc/ascii_exact_records.f90",
+          "-o",
+          "/tmp/release037-gnu-hwg2tnlc/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-hwg2tnlc"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "codes: 65 122 0 127\ntext:[A] 48\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-hwg2tnlc/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-hwg2tnlc"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_rank3_composition",
+        "source": "cases/empty_rank3_composition.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "empty: 0 2 3 0 0 0 0 8\n",
+        "compare_mode": "exact",
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-31sbh4wm/empty_rank3_composition.f90",
+          "-o",
+          "/tmp/release037-gnu-31sbh4wm/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-31sbh4wm"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "empty: 0 2 3 0 0 0 0 8\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-31sbh4wm/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-31sbh4wm"
+      }
+    },
+    {
+      "case": {
+        "name": "rank3_elemental_masks",
+        "source": "cases/rank3_elemental_masks.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "rank3: 2 1 2 4 10 266 0\n",
+        "compare_mode": "exact",
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-l32vm_w9/rank3_elemental_masks.f90",
+          "-o",
+          "/tmp/release037-gnu-l32vm_w9/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-l32vm_w9"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "rank3: 2 1 2 4 10 266 0\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-l32vm_w9/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-l32vm_w9"
+      }
+    },
+    {
+      "case": {
+        "name": "optional_allocatable_composition",
+        "source": "cases/optional_allocatable_composition.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "optional: 2 2 2 1 8 4 8\nnext: 4 4\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-xgx2atcj/optional_allocatable_composition.f90",
+          "-o",
+          "/tmp/release037-gnu-xgx2atcj/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-xgx2atcj"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "optional: 2 2 2 1 8 4 8\nnext: 4 4\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-xgx2atcj/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-xgx2atcj"
+      }
+    },
+    {
+      "case": {
+        "name": "metadata_no_evaluation",
+        "source": "cases/metadata_no_evaluation.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "meta: 8 4 8 8 8 4 8\nstatus: 0\n",
+        "compare_mode": "exact",
+        "gnu_extension": "isnan",
+        "scope_note": "Descriptor-only KIND contract; GNU compilation only, never execute undefined/unallocated metadata probes."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-470nilap/metadata_no_evaluation.f90",
+          "-o",
+          "/tmp/release037-gnu-470nilap/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-470nilap"
+      }
+    },
+    {
+      "case": {
+        "name": "nearest_zero_direction",
+        "source": "cases/nearest_zero_direction.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "nonzero",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-_qldp5vk/nearest_zero_direction.f90",
+          "-o",
+          "/tmp/release037-gnu-_qldp5vk/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-_qldp5vk"
+      }
+    },
+    {
+      "case": {
+        "name": "nearest_outward_overflow",
+        "source": "cases/nearest_outward_overflow.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "finite REAL range",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-_098ldto/nearest_outward_overflow.f90",
+          "-o",
+          "/tmp/release037-gnu-_098ldto/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-_098ldto"
+      }
+    },
+    {
+      "case": {
+        "name": "set_exponent_wide_overflow",
+        "source": "cases/set_exponent_wide_overflow.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "overflow",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-lre0mejd/set_exponent_wide_overflow.f90",
+          "-o",
+          "/tmp/release037-gnu-lre0mejd/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-lre0mejd"
+      }
+    },
+    {
+      "case": {
+        "name": "fraction_undefined",
+        "source": "cases/fraction_undefined.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "uninitialized",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-cfoy9q6u/fraction_undefined.f90",
+          "-o",
+          "/tmp/release037-gnu-cfoy9q6u/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-cfoy9q6u"
+      }
+    },
+    {
+      "case": {
+        "name": "exponent_undefined",
+        "source": "cases/exponent_undefined.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "uninitialized",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-z5dswnev/exponent_undefined.f90",
+          "-o",
+          "/tmp/release037-gnu-z5dswnev/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-z5dswnev"
+      }
+    },
+    {
+      "case": {
+        "name": "spacing_undefined_array",
+        "source": "cases/spacing_undefined_array.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "uninitialized",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-jk4fr9h5/spacing_undefined_array.f90",
+          "-o",
+          "/tmp/release037-gnu-jk4fr9h5/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-jk4fr9h5"
+      }
+    },
+    {
+      "case": {
+        "name": "isnan_undefined_after_finite",
+        "source": "cases/isnan_undefined_after_finite.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "uninitialized",
+        "completed_stdout": "before\n",
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-cxx8930x/isnan_undefined_after_finite.f90",
+          "-o",
+          "/tmp/release037-gnu-cxx8930x/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-cxx8930x"
+      }
+    },
+    {
+      "case": {
+        "name": "isnan_nonfinite_policy",
+        "source": "cases/isnan_nonfinite_policy.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "non-finite",
+        "completed_stdout": "before\n",
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-y511dbnr/isnan_nonfinite_policy.f90",
+          "-o",
+          "/tmp/release037-gnu-y511dbnr/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-y511dbnr"
+      }
+    },
+    {
+      "case": {
+        "name": "iachar_nonascii",
+        "source": "cases/iachar_nonascii.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "ASCII",
+        "completed_stdout": "before\n",
+        "scope_note": "Single high-byte literal tests IACHAR ASCII policy directly, without failing earlier in CHAR/ACHAR."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-exkjdjjf/iachar_nonascii.f90",
+          "-o",
+          "/tmp/release037-gnu-exkjdjjf/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-exkjdjjf"
+      }
+    },
+    {
+      "case": {
+        "name": "iachar_dynamic_nonunit",
+        "source": "cases/iachar_dynamic_nonunit.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "length",
+        "completed_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-ia3nc1nj/iachar_dynamic_nonunit.f90",
+          "-o",
+          "/tmp/release037-gnu-ia3nc1nj/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-ia3nc1nj"
+      }
+    },
+    {
+      "case": {
+        "name": "fraction_integer_boundary",
+        "source": "cases/fraction_integer_boundary.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "real"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release037-gnu-oizgax6y/fraction_integer_boundary.f90:4:17:\n\n    4 | print *,fraction(x)\n      |                 1\nError: \u2018x\u2019 argument of \u2018fraction\u2019 intrinsic at (1) must be REAL\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-oizgax6y/fraction_integer_boundary.f90",
+          "-o",
+          "/tmp/release037-gnu-oizgax6y/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-oizgax6y"
+      }
+    },
+    {
+      "case": {
+        "name": "set_exponent_real_power_boundary",
+        "source": "cases/set_exponent_real_power_boundary.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "integer"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release037-gnu-dd4ftath/set_exponent_real_power_boundary.f90:4:23:\n\n    4 | print *,set_exponent(x,1.0)\n      |                       1\nError: \u2018i\u2019 argument of \u2018set_exponent\u2019 intrinsic at (1) must be INTEGER\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-dd4ftath/set_exponent_real_power_boundary.f90",
+          "-o",
+          "/tmp/release037-gnu-dd4ftath/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-dd4ftath"
+      }
+    },
+    {
+      "case": {
+        "name": "nearest_integer_direction_boundary",
+        "source": "cases/nearest_integer_direction_boundary.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "real"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release037-gnu-7malzn8s/nearest_integer_direction_boundary.f90:4:18:\n\n    4 | print *,nearest(x,1)\n      |                  1\nError: \u2018s\u2019 argument of \u2018nearest\u2019 intrinsic at (1) must be REAL\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-7malzn8s/nearest_integer_direction_boundary.f90",
+          "-o",
+          "/tmp/release037-gnu-7malzn8s/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-7malzn8s"
+      }
+    },
+    {
+      "case": {
+        "name": "iachar_length_boundary",
+        "source": "cases/iachar_length_boundary.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "length"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release037-gnu-cr43h5u_/iachar_length_boundary.f90:4:15:\n\n    4 | print *,iachar(c)\n      |               1\nError: Argument of iachar at (1) must be of length one\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-cr43h5u_/iachar_length_boundary.f90",
+          "-o",
+          "/tmp/release037-gnu-cr43h5u_/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-cr43h5u_"
+      }
+    },
+    {
+      "case": {
+        "name": "iachar_kind_boundary",
+        "source": "cases/iachar_kind_boundary.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "kind"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release037-gnu-5dr9u61a/iachar_kind_boundary.f90:4:17:\n\n    4 | print *,iachar(c,3)\n      |                 1\nError: Invalid kind for INTEGER at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-5dr9u61a/iachar_kind_boundary.f90",
+          "-o",
+          "/tmp/release037-gnu-5dr9u61a/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-5dr9u61a"
+      }
+    },
+    {
+      "case": {
+        "name": "isnan_integer_boundary",
+        "source": "cases/isnan_integer_boundary.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "real",
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release037-gnu-wdj57ixm/isnan_integer_boundary.f90:4:14:\n\n    4 | print *,isnan(x)\n      |              1\nError: \u2018x\u2019 argument of \u2018isnan\u2019 intrinsic at (1) must be REAL\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-wdj57ixm/isnan_integer_boundary.f90",
+          "-o",
+          "/tmp/release037-gnu-wdj57ixm/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-wdj57ixm"
+      }
+    },
+    {
+      "case": {
+        "name": "original_rng_all_six",
+        "source": "cases/original_rng_all_six.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ranges: 7 4 4 6 0\nlogical: 0 6 0 2 1 3\nmodels: 7 6 6 8\n",
+        "compare_mode": "exact",
+        "support_sources": [
+          "original/utility_module.f90"
+        ],
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-76t4gbht/original_rng_all_six.f90",
+          "-o",
+          "/tmp/release037-gnu-76t4gbht/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-76t4gbht"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ranges: 7 4 4 6 0\nlogical: 0 6 0 2 1 3\nmodels: 7 6 6 8\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-76t4gbht/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-76t4gbht"
+      }
+    },
+    {
+      "case": {
+        "name": "original_rng_empty_shapes",
+        "source": "cases/original_rng_empty_shapes.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "empty_rng: 0 0 3 0 2 0 1 0 3 0\n",
+        "compare_mode": "exact",
+        "support_sources": [
+          "original/utility_module.f90"
+        ],
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-peh9tknn/original_rng_empty_shapes.f90",
+          "-o",
+          "/tmp/release037-gnu-peh9tknn/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-peh9tknn"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "empty_rng: 0 0 3 0 2 0 1 0 3 0\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-peh9tknn/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-peh9tknn"
+      }
+    },
+    {
+      "case": {
+        "name": "original_sort_rng_composition",
+        "source": "cases/original_sort_rng_composition.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "sort_rng: 11 10 11 0 11\n",
+        "compare_mode": "exact",
+        "support_sources": [
+          "original/utility_module.f90"
+        ],
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-v73wl8q9/original_sort_rng_composition.f90",
+          "-o",
+          "/tmp/release037-gnu-v73wl8q9/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-v73wl8q9"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "sort_rng: 11 10 11 0 11\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-v73wl8q9/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-v73wl8q9"
+      }
+    },
+    {
+      "case": {
+        "name": "original_sort_known_edges",
+        "source": "cases/original_sort_known_edges.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "sort: 8 9 0 45 9\nedges: 1 1 1 0 1 -1\n",
+        "compare_mode": "exact",
+        "support_sources": [
+          "original/utility_module.f90"
+        ],
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-gf3lzpkm/original_sort_known_edges.f90",
+          "-o",
+          "/tmp/release037-gnu-gf3lzpkm/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-gf3lzpkm"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "sort: 8 9 0 45 9\nedges: 1 1 1 0 1 -1\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-gf3lzpkm/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-gf3lzpkm"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_rng_boundary",
+        "source": "cases/pure_rng_boundary.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "pure"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release037-gnu-8_hionek/pure_rng_boundary.f90:8:21:\n\n    8 | call random_number(x)\n      |                     1\nError: Subroutine call to intrinsic \u2018random_number\u2019 at (1) is not PURE\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-8_hionek/pure_rng_boundary.f90",
+          "-o",
+          "/tmp/release037-gnu-8_hionek/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-8_hionek"
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_io_boundary",
+        "source": "cases/ordinary_io_boundary.f90",
+        "category": "reject",
+        "baseline": "run",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "function",
+        "gnu_stdout": "           1\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-5hsvgygm/ordinary_io_boundary.f90",
+          "-o",
+          "/tmp/release037-gnu-5hsvgygm/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-5hsvgygm"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-5hsvgygm/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-5hsvgygm"
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_module_write_boundary",
+        "source": "cases/ordinary_module_write_boundary.f90",
+        "category": "reject",
+        "baseline": "run",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "function",
+        "gnu_stdout": "1\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release037-gnu-cjot_f1t/ordinary_module_write_boundary.f90",
+          "-o",
+          "/tmp/release037-gnu-cjot_f1t/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-cjot_f1t"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "1\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-cjot_f1t/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-cjot_f1t"
+      }
+    },
+    {
+      "case": {
+        "name": "unchanged_demo_fraction",
+        "source": "original/demo_fraction.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0.5700438618659973 0.5700438618659973 0.625 10.0",
+        "compare_mode": "tokens",
+        "support_sources": [
+          "original/utility_module.f90"
+        ],
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-hnotvpnr/unchanged_demo_fraction.f90",
+          "-o",
+          "/tmp/release037-gnu-hnotvpnr/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-hnotvpnr"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  0.570043862      0.570043862    \n  0.625000000    \n   10.0000000    \n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-hnotvpnr/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-hnotvpnr"
+      }
+    },
+    {
+      "case": {
+        "name": "unchanged_demo_set_exponent",
+        "source": "original/demo_set_exponent.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "74716.7890625 74716.7890625",
+        "compare_mode": "tokens",
+        "support_sources": [
+          "original/utility_module.f90"
+        ],
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-gbhzz1cw/unchanged_demo_set_exponent.f90",
+          "-o",
+          "/tmp/release037-gnu-gbhzz1cw/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-gbhzz1cw"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   74716.7891       74716.7891    \n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-gbhzz1cw/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-gbhzz1cw"
+      }
+    },
+    {
+      "case": {
+        "name": "unchanged_demo_iachar",
+        "source": "original/demo_iachar.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "65 65 90 97 122 abcdefg abcdefg",
+        "compare_mode": "tokens",
+        "support_sources": [
+          "original/utility_module.f90"
+        ],
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-osdwoj9b/unchanged_demo_iachar.f90",
+          "-o",
+          "/tmp/release037-gnu-osdwoj9b/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-osdwoj9b"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          65\n          65          90          97         122\nabcdefg abcdefg\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-osdwoj9b/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-osdwoj9b"
+      }
+    },
+    {
+      "case": {
+        "name": "unchanged_demo_spacing",
+        "source": "original/demo_spacing.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1.1920928955078125e-7 1.00000011920928955078125 1.1920928955078125e-7 2.220446049250313080847263336181640625e-16",
+        "compare_mode": "tokens",
+        "support_sources": [
+          "original/utility_module.f90"
+        ],
+        "gnu_extension": "isnan"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "-fall-intrinsics",
+          "/tmp/release037-gnu-_7snemlu/unchanged_demo_spacing.f90",
+          "-o",
+          "/tmp/release037-gnu-_7snemlu/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-_7snemlu"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.19209290E-07\n   1.00000012       1.19209290E-07\n   2.2204460492503131E-016\n",
+        "err": "",
+        "argv": [
+          "/tmp/release037-gnu-_7snemlu/reference"
+        ],
+        "cwd": "/tmp/release037-gnu-_7snemlu"
+      }
+    }
+  ],
+  "utc": "2026-11-15T09:18:10.220188+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all,no-array-temps",
+    "-ffpe-trap=invalid,zero,overflow",
+    "-O0"
+  ],
+  "scope": "Bounded model decomposition, ASCII, spacing/adjacent-value, ordinary impure RNG and finite-only ISNAN composition. Seven exact utility bodies including nested sort closure; not a full-library support claim.",
+  "original_source_provenance": {
+    "original_source": "../utilities_slices/source/xutilities.f90",
+    "original_source_sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+    "wrappers": [
+      {
+        "path": "original/utility_module.f90",
+        "sha256": "a90941784ecfe41e7e1f190b4c763ca66213f5858cfa7cc923ceb666f52b2a0d",
+        "routines": [
+          {
+            "name": "ran_uni_vec",
+            "source_start_line": 510,
+            "source_end_line": 514,
+            "source_byte_start": 22503,
+            "source_byte_end_exclusive": 22651,
+            "wrapper_byte_start": 81,
+            "sha256": "312c71eaec10db632f2ba6a53a19daab76a1f174a9b25e8db74c0d4ea28b5ac1",
+            "bytes": 148,
+            "crlf_lines": 5
+          },
+          {
+            "name": "runif_vec",
+            "source_start_line": 2651,
+            "source_end_line": 2658,
+            "source_byte_start": 91982,
+            "source_byte_end_exclusive": 92306,
+            "wrapper_byte_start": 230,
+            "sha256": "f852e063312c3de550d52d2f5eadc0131885a30473e00229e741dd2285df10e2",
+            "bytes": 324,
+            "crlf_lines": 8
+          },
+          {
+            "name": "random_logical_vec",
+            "source_start_line": 6192,
+            "source_end_line": 6200,
+            "source_byte_start": 212322,
+            "source_byte_end_exclusive": 212632,
+            "wrapper_byte_start": 555,
+            "sha256": "37d747d8c3cded9700b1039a469e667c5f522c5fd85a474c31b42e8116f20efd",
+            "bytes": 310,
+            "crlf_lines": 9
+          },
+          {
+            "name": "random_logical_matrix",
+            "source_start_line": 6202,
+            "source_end_line": 6210,
+            "source_byte_start": 212635,
+            "source_byte_end_exclusive": 213002,
+            "wrapper_byte_start": 866,
+            "sha256": "59f9ec828b184615ad2324ddc665e962eb2b1f04500ada33ecdbdb01e7a426fe",
+            "bytes": 367,
+            "crlf_lines": 9
+          },
+          {
+            "name": "random_logical_3d",
+            "source_start_line": 6212,
+            "source_end_line": 6220,
+            "source_byte_start": 213005,
+            "source_byte_end_exclusive": 213378,
+            "wrapper_byte_start": 1234,
+            "sha256": "fe16ab433961759064948a9a9a68229107033a4c1d962fe8ed661d338c7da893",
+            "bytes": 373,
+            "crlf_lines": 9
+          },
+          {
+            "name": "random_matrix",
+            "source_start_line": 7847,
+            "source_end_line": 7851,
+            "source_byte_start": 272387,
+            "source_byte_end_exclusive": 272563,
+            "wrapper_byte_start": 1608,
+            "sha256": "d81d96a437e46b5b58be45978b56067e028b7337a5af83f309fcda4af98bfe41",
+            "bytes": 176,
+            "crlf_lines": 5
+          },
+          {
+            "name": "quick_sort",
+            "source_start_line": 8870,
+            "source_end_line": 8942,
+            "source_byte_start": 306403,
+            "source_byte_end_exclusive": 308920,
+            "wrapper_byte_start": 1785,
+            "sha256": "c12792b8b58af0814e11fabc91840133b8f943f306e32ece55cb68cab6529366",
+            "bytes": 2517,
+            "crlf_lines": 73
+          }
+        ]
+      }
+    ],
+    "originals": [
+      {
+        "path": "original/demo_fraction.f90",
+        "source": "M_intrinsics/example/demo_fraction.f90",
+        "bytes": 272,
+        "sha256": "f05c01017d8d1446ceb5324071ef10f4a3a3d9ecde1434aca781eb840ade998e",
+        "upstream_commit": "fc14233036d910e3678d350efc24609e11475067"
+      },
+      {
+        "path": "original/demo_set_exponent.f90",
+        "source": "M_intrinsics/example/demo_set_exponent.f90",
+        "bytes": 200,
+        "sha256": "982d8ea1d3055133355bd176ba30871444f4de872ee6f891dc5efadca6abe2ea",
+        "upstream_commit": "fc14233036d910e3678d350efc24609e11475067"
+      },
+      {
+        "path": "original/demo_iachar.f90",
+        "source": "M_intrinsics/example/demo_iachar.f90",
+        "bytes": 978,
+        "sha256": "5773f26159b0c794f1dcbaf069f3b340de6c9e294fb56af5f15c8ea6f5cd7243",
+        "upstream_commit": "fc14233036d910e3678d350efc24609e11475067"
+      },
+      {
+        "path": "original/demo_spacing.f90",
+        "source": "M_intrinsics/example/demo_spacing.f90",
+        "bytes": 352,
+        "sha256": "4439ef7a072003f8998cfb34007d81688343c92c6b09f54248967bb231225010",
+        "upstream_commit": "fc14233036d910e3678d350efc24609e11475067"
+      }
+    ],
+    "license": {
+      "path": "original/M_INTRINSICS_LICENSE",
+      "sha256": "5bc2186f9c1ed8a9555dc8bd396ff19672e5a9bd35cb06cf16f996856667a96b"
+    }
+  },
+  "provenance_sha256": "9f883b93401ea06264f23aa5104faac56430d905499c83f370c8847a30359eb3",
+  "manifest_sha256": "91d7ebe3adba8dd2d4970b7f83ad89e3d275f2c44e21f4fd08d30a1a4aa54c33",
+  "source_sha256": {
+    "cases/gather_roundtrip_ascii.f90": "d1efa8cd1a404e4bcc4a8caa7ff4f31ba7d4d238e7f112d833419f0192287d4e",
+    "cases/binary_edges_real4.f90": "35e03859ca21d6a731981aad3402e3de00192b4c2c9186b671849fbc33d7d22f",
+    "cases/binary_edges_real8.f90": "a0e9e9d27eb17604f5c764ba1eb9a106be958fcd9d85a822b1771036af4e2d9d",
+    "cases/mixed_direction_keyword.f90": "8726d2e7444fe6c0f451a81dd223c9c3fe65e2bebd74fc698e1808419008ff75",
+    "cases/wide_exponent_signed_underflow.f90": "fdea9f60f6f4fa3bef8b45646bba83a54f3d62f8f9926d72e9695b00ff3e1228",
+    "cases/ascii_exact_records.f90": "65b4f03c3ffb983bcef3a182a223ff4afab74a02754428c0d0f0235faef57091",
+    "cases/empty_rank3_composition.f90": "ab65c730fea2302a95d821ee6420ff8d6513e050adbc0bc31a560e1283b78407",
+    "cases/rank3_elemental_masks.f90": "0dc4ec91707e1c97513ff69e77dd22f8fd7166110b5cd3f7756e4c7583a8b5fa",
+    "cases/optional_allocatable_composition.f90": "94896bac569b93272d4c92ab1ee174c26627c06c7d0611271ad7e0d491c6bbd4",
+    "cases/metadata_no_evaluation.f90": "406c9d4b0bda04c86df998d09a97348483b5f9fd48558820c26498821b281613",
+    "cases/nearest_zero_direction.f90": "d1a9e1c4fb48beb84509d01b896b059758c82b18f667c3ff42fa3b61e750057a",
+    "cases/nearest_outward_overflow.f90": "23985495607cf8ee93b8975b7d76c6af337ddc41c8bca9ee579eb407208ef019",
+    "cases/set_exponent_wide_overflow.f90": "3a200cd49949044251a4dea20ba40f683592f220c6f87d9f0c5474859777252d",
+    "cases/fraction_undefined.f90": "4df7af701e01f02315fb8c4d65dd92c1e1432a60da6b87f37b64460c9e793bba",
+    "cases/exponent_undefined.f90": "f8828e27c18ee9576b098c4c31b9a8e020a40b178d24dec6cd148de7bbbf015a",
+    "cases/spacing_undefined_array.f90": "448ba56461e3dfff4536856cf3cb66cbf41932771bc3ef603001686831412f72",
+    "cases/isnan_undefined_after_finite.f90": "d864a8e2ee48c1b7878efbb25b255bd1039700307187610aae8228fe6953aec5",
+    "cases/isnan_nonfinite_policy.f90": "0f090123e17e0765c6422649d60a43f217826baf58615cb666cdef3b9a8430e9",
+    "cases/iachar_nonascii.f90": "76ca96c4bebd615d198102e8583a9627973c6f47ae48054d183bc1a5dd8a66bf",
+    "cases/iachar_dynamic_nonunit.f90": "f42e5881fe1bc0c0b1911375aaf5c365c6c77d93af6fdfb6b29cfd858516c88e",
+    "cases/fraction_integer_boundary.f90": "68afaa3bfd5ad0a41bdfd835ef79048fcb1de3651f61b09fbd93e9f5828cff47",
+    "cases/set_exponent_real_power_boundary.f90": "d1b41bc1417bec9a9ab994c8c0a32b992721b1e804a860dddb2e9485df0ff293",
+    "cases/nearest_integer_direction_boundary.f90": "04d3174533f600f51844c5937f2c34bb2fc72fcfd8c3e551d4243dca641fd918",
+    "cases/iachar_length_boundary.f90": "938417d59269be13c5266b5893e88703bc6449be71f40c0e9548037068b5dc2c",
+    "cases/iachar_kind_boundary.f90": "bcf165d7058cbb42cbb13b8ab11358c5342b2da20cdc94cda623ad1debc18dcc",
+    "cases/isnan_integer_boundary.f90": "19d4ccdb31d26cc2a334985fe5b93be6f9b927c672f4093be2c2c78e3e80edc5",
+    "original/utility_module.f90": "a90941784ecfe41e7e1f190b4c763ca66213f5858cfa7cc923ceb666f52b2a0d",
+    "cases/original_rng_all_six.f90": "50334fb1846535451d55a9be6ffd95bc7ac1bcaf8e9d2bb2e4ddfdf2db3ccb91",
+    "cases/original_rng_empty_shapes.f90": "0d86d95ffd1ec8e503c72b7248b8db28cdb8e409694d7133e9e7fc6cd08cf46f",
+    "cases/original_sort_rng_composition.f90": "4cc52467b15327fcf120687e06a48b28197e8e71514856207803271624140854",
+    "cases/original_sort_known_edges.f90": "7e6e165b7748853265d45a700c1b1ff566efd57b4fa6635a56c3bf3a955fb3ae",
+    "cases/pure_rng_boundary.f90": "aab6c25f7827081eb96d299704d99b72de54b29b438b05fda9d4d9c9375c6f62",
+    "cases/ordinary_io_boundary.f90": "420fb1195111385a10150cd2480e87de69a05c46b8762fca36c3c814f9313aee",
+    "cases/ordinary_module_write_boundary.f90": "650e3746929fb351d2c9061376efa8624b464757413361bb0ce01a93aadb94ff",
+    "original/demo_fraction.f90": "f05c01017d8d1446ceb5324071ef10f4a3a3d9ecde1434aca781eb840ade998e",
+    "original/demo_set_exponent.f90": "982d8ea1d3055133355bd176ba30871444f4de872ee6f891dc5efadca6abe2ea",
+    "original/demo_iachar.f90": "5773f26159b0c794f1dcbaf069f3b340de6c9e294fb56af5f15c8ea6f5cd7243",
+    "original/demo_spacing.f90": "4439ef7a072003f8998cfb34007d81688343c92c6b09f54248967bb231225010"
+  },
+  "integrity_errors": []
+}

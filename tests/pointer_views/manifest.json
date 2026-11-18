@@ -1,0 +1,418 @@
+{
+  "description": "Independent fixed POINTER alias oracles; bounded safety failures are not GNU semantic oracles.",
+  "cases": [
+    {
+      "name": "whole_nonunit_bounds",
+      "source": "cases/whole_nonunit_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "row_negative_stride",
+      "source": "cases/row_negative_stride.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "column_section",
+      "source": "cases/column_section.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "empty_section",
+      "source": "cases/empty_section.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "empty_matrix_column",
+      "source": "cases/empty_matrix_column.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "pointer_chain_reassociation",
+      "source": "cases/pointer_chain_reassociation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "self_association",
+      "source": "cases/self_association.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "pointer_section_chain",
+      "source": "cases/pointer_section_chain.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "requires whole variable"
+    },
+    {
+      "name": "overlap_assignment_snapshot",
+      "source": "cases/overlap_assignment_snapshot.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "where_alias",
+      "source": "cases/where_alias.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "forall_alias",
+      "source": "cases/forall_alias.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "real_kinds",
+      "source": "cases/real_kinds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "integer_eight",
+      "source": "cases/integer_eight.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "random_number_alias",
+      "source": "cases/random_number_alias.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "definition_flags_shared",
+      "source": "cases/definition_flags_shared.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "target_dummy_escape",
+      "source": "cases/target_dummy_escape.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "get_data_optional_pattern",
+      "source": "cases/get_data_optional_pattern.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "nested_target_forwarding",
+      "source": "cases/nested_target_forwarding.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "pointer_intent_inout_nullify",
+      "source": "cases/pointer_intent_inout_nullify.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "pointer_intent_in_descriptor",
+      "source": "cases/pointer_intent_in_descriptor.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "optional_disassociated_present",
+      "source": "cases/optional_disassociated_present.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "pointer_out_uninitialized_input",
+      "source": "cases/pointer_out_uninitialized_input.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "pointer_descriptor_copy",
+      "source": "cases/pointer_descriptor_copy.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "nullify_local_before_return",
+      "source": "cases/nullify_local_before_return.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "undefined_association",
+      "source": "cases/undefined_association.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "association status is undefined"
+    },
+    {
+      "name": "undefined_dereference",
+      "source": "cases/undefined_dereference.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "undefined or disassociated"
+    },
+    {
+      "name": "disassociated_dereference",
+      "source": "cases/disassociated_dereference.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "undefined or disassociated"
+    },
+    {
+      "name": "uninitialized_shared_value",
+      "source": "cases/uninitialized_shared_value.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "local_target_escape",
+      "source": "cases/local_target_escape.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "lifetime has expired"
+    },
+    {
+      "name": "non_target_actual_escape",
+      "source": "cases/non_target_actual_escape.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "lacks shareable caller backing"
+    },
+    {
+      "name": "section_actual_escape",
+      "source": "cases/section_actual_escape.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "lacks shareable caller backing"
+    },
+    {
+      "name": "pointer_out_undefined_status",
+      "source": "cases/pointer_out_undefined_status.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "association status is undefined"
+    },
+    {
+      "name": "overlapping_pointer_descriptors",
+      "source": "cases/overlapping_pointer_descriptors.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "overlapping POINTER descriptors"
+    },
+    {
+      "name": "out_target_definition_flags",
+      "source": "cases/out_target_definition_flags.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "bounds_safety",
+      "source": "cases/bounds_safety.f90",
+      "category": "runtime",
+      "baseline": "runtime",
+      "expected_stdout": "",
+      "diagnostic": "out of bounds",
+      "gnu_diagnostic": "above upper bound"
+    },
+    {
+      "name": "reject_rank_two_pointer",
+      "source": "cases/reject_rank_two_pointer.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "reject_scalar_pointer",
+      "source": "cases/reject_scalar_pointer.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "reject_logical_pointer",
+      "source": "cases/reject_logical_pointer.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "reject_pointer_initializer",
+      "source": "cases/reject_pointer_initializer.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "reject_allocatable_target",
+      "source": "cases/reject_allocatable_target.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "reject_pointer_allocate",
+      "source": "cases/reject_pointer_allocate.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "reject_remapping",
+      "source": "cases/reject_remapping.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "reject_null_mold",
+      "source": "cases/reject_null_mold.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "reject_associated_target",
+      "source": "cases/reject_associated_target.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "",
+      "expected_stderr": "STOP\n"
+    },
+    {
+      "name": "reject_procedure_pointee",
+      "source": "cases/reject_procedure_pointee.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "frozen_section_mapping",
+      "source": "cases/frozen_section_mapping.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "alias_storage_cap",
+      "source": "cases/alias_storage_cap.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "target_over_storage_cap",
+      "source": "cases/target_over_storage_cap.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "array element limit"
+    },
+    {
+      "name": "repeated_frame_reassociation",
+      "source": "cases/repeated_frame_reassociation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "nested_local_escape",
+      "source": "cases/nested_local_escape.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "lifetime has expired"
+    },
+    {
+      "name": "pointer_bound_check_after_reassociate",
+      "source": "cases/pointer_bound_check_after_reassociate.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "absent_nullify",
+      "source": "cases/absent_nullify.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "absent OPTIONAL"
+    },
+    {
+      "name": "absent_null_association",
+      "source": "cases/absent_null_association.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "absent OPTIONAL"
+    },
+    {
+      "name": "absent_target_association",
+      "source": "cases/absent_target_association.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "absent OPTIONAL"
+    },
+    {
+      "name": "absent_associated",
+      "source": "cases/absent_associated.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "absent OPTIONAL"
+    },
+    {
+      "name": "absent_pointer_rhs",
+      "source": "cases/absent_pointer_rhs.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "absent OPTIONAL"
+    }
+  ]
+}

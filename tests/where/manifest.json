@@ -1,0 +1,253 @@
+{
+  "cases": [
+    {
+      "name": "masked_division",
+      "expected": "run"
+    },
+    {
+      "name": "frozen_mask",
+      "expected": "run"
+    },
+    {
+      "name": "masked_elsewhere",
+      "expected": "run"
+    },
+    {
+      "name": "elsewhere_late_mask",
+      "expected": "run"
+    },
+    {
+      "name": "rank_two_sections",
+      "expected": "run"
+    },
+    {
+      "name": "overlap",
+      "expected": "run"
+    },
+    {
+      "name": "negative_sections",
+      "expected": "run"
+    },
+    {
+      "name": "logical_character",
+      "expected": "run"
+    },
+    {
+      "name": "empty_arrays",
+      "expected": "run"
+    },
+    {
+      "name": "empty_construct",
+      "expected": "run"
+    },
+    {
+      "name": "semicolon_continuation",
+      "expected": "run"
+    },
+    {
+      "name": "inline_if",
+      "expected": "run"
+    },
+    {
+      "name": "in_do_if",
+      "expected": "run"
+    },
+    {
+      "name": "pure_elemental",
+      "expected": "run"
+    },
+    {
+      "name": "procedure_sections",
+      "expected": "run"
+    },
+    {
+      "name": "allocatable_array",
+      "expected": "run"
+    },
+    {
+      "name": "parameter_mask",
+      "expected": "run"
+    },
+    {
+      "name": "wide_conversion",
+      "expected": "run"
+    },
+    {
+      "name": "masked_uninitialized",
+      "expected": "policy",
+      "output": "4 7 2 7",
+      "reason": "Unchecked source elements are intentionally uninitialized; interpreter safety policy, not GNU equivalence."
+    },
+    {
+      "name": "false_undefined_scalar",
+      "expected": "policy",
+      "output": "1 1",
+      "reason": "All-false masks do not evaluate scalar RHS data."
+    },
+    {
+      "name": "elsewhere_masked_safety",
+      "expected": "policy",
+      "output": "-1 4 -1 9",
+      "reason": "ELSEWHERE mask elemental expressions only evaluate previously unmatched positions."
+    },
+    {
+      "name": "runtime_undefined_selected",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_division_selected",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_shape_target",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_shape_rhs",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_shape_elsewhere",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_unallocated_target",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_no_reallocation",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_zero_stride",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_narrow_selected",
+      "expected": "runtime"
+    },
+    {
+      "name": "reject_scalar_mask",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_integer_mask",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_scalar_target",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_element_target",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_mask_shape",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_rank",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_nested",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_print",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_call",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_else_after_final",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_else_mask_shape",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_missing_end",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_named",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_inline_if_construct",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_intent_in",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_impure",
+      "expected": "reject"
+    },
+    {
+      "name": "utility_lag_good_data",
+      "expected": "run"
+    },
+    {
+      "name": "endwhere",
+      "expected": "run"
+    },
+    {
+      "name": "in_select",
+      "expected": "run"
+    },
+    {
+      "name": "continued_statement",
+      "expected": "run"
+    },
+    {
+      "name": "frozen_logical_mask",
+      "expected": "run"
+    },
+    {
+      "name": "statement_snapshot",
+      "expected": "run"
+    },
+    {
+      "name": "empty_false_optional",
+      "expected": "policy",
+      "output": "1 1"
+    },
+    {
+      "name": "runtime_absent_selected",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_equal_size_different_shape",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_empty_shape",
+      "expected": "reject"
+    },
+    {
+      "name": "runtime_uninitialized_mask",
+      "expected": "runtime"
+    },
+    {
+      "name": "rank_two_reduced_sections",
+      "expected": "run"
+    },
+    {
+      "name": "utility_madev_good",
+      "expected": "run"
+    },
+    {
+      "name": "utility_madev_ratio_default_uninitialized",
+      "expected": "runtime",
+      "diagnostic_contains": "read of uninitialized array element xmadev",
+      "reason": "Original routine uses MERGE on partially undefined xmadev after WHERE. Current eager MERGE safety checks remain unchanged; no GNU-equivalence claim."
+    }
+  ]
+}

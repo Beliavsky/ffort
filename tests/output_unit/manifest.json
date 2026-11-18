@@ -1,0 +1,359 @@
+{
+  "cases": [
+    {
+      "name": "exact_user_multiline",
+      "source": "cases/exact_user_multiline.f90",
+      "sha256": "d573580629de1f1bbab66e6d38c59ebc0ea7a0fce8ca2fc884106e3fb221f5b1",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "6\n",
+      "numeric_lines": [
+        0
+      ]
+    },
+    {
+      "name": "semicolon_variant",
+      "source": "cases/semicolon_variant.f90",
+      "sha256": "ba73c1762e1df14577a4288946206c56afbe63a91dc20a109a60bec32bafb618",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "6\n",
+      "numeric_lines": [
+        0
+      ]
+    },
+    {
+      "name": "explicit_nature",
+      "source": "cases/explicit_nature.f90",
+      "sha256": "fc4c249043f856950da0ca461af2d65137297d4e25d46c12aed5f101c430c167",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "   6   4\n"
+    },
+    {
+      "name": "plain_separator",
+      "source": "cases/plain_separator.f90",
+      "sha256": "510ed03b4e6cf40f741c770ddc4c31c6f3f3626b673c1ed5ba2e83a70eb65228",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Expected a nonreserved name",
+      "diagnostic_line": 2,
+      "diagnostic_column": 29
+    },
+    {
+      "name": "plain_alias",
+      "source": "cases/plain_alias.f90",
+      "sha256": "f8178835f357b64a4b8ec836066d20fc790f6ad1e5c27e31410ece97f0279b90",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Expected a nonreserved name",
+      "diagnostic_line": 2,
+      "diagnostic_column": 26
+    },
+    {
+      "name": "explicit_alias",
+      "source": "cases/explicit_alias.f90",
+      "sha256": "302718b6faca1c41c3db46cd41c36a190a6e3db2ca02e7d35c8c0c8e7cdafa35",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Expected a nonreserved name",
+      "diagnostic_line": 2,
+      "diagnostic_column": 37
+    },
+    {
+      "name": "plain_separator_alias",
+      "source": "cases/plain_separator_alias.f90",
+      "sha256": "2afc447d92430ca73c127319ae4cdc89c65635f74f4f4c69179abb85647ab5c8",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "   6   4\n"
+    },
+    {
+      "name": "plain_alias_success",
+      "source": "cases/plain_alias_success.f90",
+      "sha256": "b2fd791c5a1cdfa615b8c916b7be22f139db73dd790c8e54d927ccdaed644ce6",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "   6   4\n"
+    },
+    {
+      "name": "explicit_alias_success",
+      "source": "cases/explicit_alias_success.f90",
+      "sha256": "883758d4f6b8e733dfd684f4bcc8246428949f5b899506f4c14fd1078ef197c0",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "   6   4\n"
+    },
+    {
+      "name": "mixed_aliases",
+      "source": "cases/mixed_aliases.f90",
+      "sha256": "772ea3b785cb22da782a5c9e03d7c0da759c90e220ed54dc89273a221e24ccea",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "   6   8   8   4\n"
+    },
+    {
+      "name": "parameter_expression",
+      "source": "cases/parameter_expression.f90",
+      "sha256": "b38268331dbf5928c8aa54643b50626e9de7db4d1804e1c71ca989c4a9747ad3",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "7\n"
+    },
+    {
+      "name": "format_write",
+      "source": "cases/format_write.f90",
+      "sha256": "e246b0b35183748f436707cd4ea53f5e0488dbf8140b3e1be96e84362c4db86f",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "unit=6\n"
+    },
+    {
+      "name": "list_write_alias",
+      "source": "cases/list_write_alias.f90",
+      "sha256": "65b107b5113bfbfddb8e6d44eeec88d5d7c8874d42ab2c878d1fcb45a3484b50",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "6\n",
+      "numeric_lines": [
+        0
+      ]
+    },
+    {
+      "name": "dynamic_nonadvancing",
+      "source": "cases/dynamic_nonadvancing.f90",
+      "sha256": "9fc72584d4a92e36fa50e88b545bcb2c9f327fe8b443b7badf43383d8bde800f",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "Ax!D\n"
+    },
+    {
+      "name": "implied_do_write",
+      "source": "cases/implied_do_write.f90",
+      "sha256": "3bfc48e2b5fe24b48a64412d9d60e8ee9b7607931833b10ec5d7ed4695c91d2d",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "1,2,3,\n"
+    },
+    {
+      "name": "host_contained_use",
+      "source": "cases/host_contained_use.f90",
+      "sha256": "3283eb22f742dbe49393ba258e813679adafa1d3ef1db906ab13c38122803e84",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "host=6\n"
+    },
+    {
+      "name": "procedure_local_use",
+      "source": "cases/procedure_local_use.f90",
+      "sha256": "9876c7fd05cfec8d1a95b62b43639c1a61d5bf559d42f5f96763a11eee7b08e3",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "local=6\n"
+    },
+    {
+      "name": "module_import_export",
+      "source": "cases/module_import_export.f90",
+      "sha256": "3cdbac56e8d1077eb0a19433aebe9ee8ab2b29e5dbb4f0e40342c386ca0e3723",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "module=6\n"
+    },
+    {
+      "name": "module_procedure_host",
+      "source": "cases/module_procedure_host.f90",
+      "sha256": "3e72476aad10ee212007db864cb48f31b9acc0e74375054741f67f3736aabf6e",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "module-host=6\n"
+    },
+    {
+      "name": "private_module_procedure",
+      "source": "cases/private_module_procedure.f90",
+      "sha256": "a5db1202c97388ffcbf3f49ff8c4fd884300f80a6c53ad63adbd8e2ebd271259",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "private\n"
+    },
+    {
+      "name": "source_shadow_plain",
+      "source": "cases/source_shadow_plain.f90",
+      "sha256": "ef632828c493a2ea714b11bdf1989c323bbc466cc0820b0b8a09465cd0bf587f",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "77\n"
+    },
+    {
+      "name": "source_shadow_nonintrinsic",
+      "source": "cases/source_shadow_nonintrinsic.f90",
+      "sha256": "a69ad151074299386b449b5e4872653bfd986787bd976e2593858be6c75309cb",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "77\n"
+    },
+    {
+      "name": "source_shadow_intrinsic",
+      "source": "cases/source_shadow_intrinsic.f90",
+      "sha256": "14f083b76f5f56554ae160516113f34e5e55d4e1c082e5bcd3f192803893cdcf",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "6\n"
+    },
+    {
+      "name": "ordinary_nonintrinsic_module",
+      "source": "cases/ordinary_nonintrinsic_module.f90",
+      "sha256": "672e18422d4f30f37e17fb6e11012edaa42511356b223e17e257acba85256a5c",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "9\n"
+    },
+    {
+      "name": "continuation_comments",
+      "source": "cases/continuation_comments.f90",
+      "sha256": "c5aea2fe33e98dd51a9a22f54a7985813fec59740c56a39b84b913c2016fe641",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "continued\n"
+    },
+    {
+      "name": "read_value_in_pure",
+      "source": "cases/read_value_in_pure.f90",
+      "sha256": "65db5291c024d8cd8596fc6888764fc3f572ecbccdc698dc5f47c518e64243df",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "6\n"
+    },
+    {
+      "name": "uninitialized_output_atomicity",
+      "source": "cases/uninitialized_output_atomicity.f90",
+      "sha256": "f4b06a47375778fe6bbb27c0d1a81092cdc0e1ae59b8ce466a1e53ec66cda8cf",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE",
+      "diagnostic": "read of uninitialized variable a",
+      "diagnostic_line": 6,
+      "diagnostic_column": 17
+    },
+    {
+      "name": "dynamic_format_failure_atomicity",
+      "source": "cases/dynamic_format_failure_atomicity.f90",
+      "sha256": "4739e07aa45a9f5f44f9c3bbd90a0bf0d75440c93af2c8bb02ebce32c2b1e726",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE",
+      "diagnostic": "unsupported PRINT format descriptor",
+      "diagnostic_line": 7,
+      "diagnostic_column": 1
+    },
+    {
+      "name": "whole_intrinsic_module",
+      "source": "cases/whole_intrinsic_module.f90",
+      "sha256": "a6fd9e82f381e4931cedc793227bc1107edc1d0ee1687b567d6323f2f5aa33a7",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Expected ,, found ;",
+      "diagnostic_line": 2,
+      "diagnostic_column": 20
+    },
+    {
+      "name": "derived_parameter_unit",
+      "source": "cases/derived_parameter_unit.f90",
+      "sha256": "e579c19a4f7d44308da7122af9989678b43390dee6e7a1adc5e1b9909f7be29b",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "no\n"
+    },
+    {
+      "name": "runtime_integer_unit",
+      "source": "cases/runtime_integer_unit.f90",
+      "sha256": "c51863a9a8484ca52f43c46b44f2a7c3f3c8b0a7bbb66d8131f2fb59fd5abc11",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "no\n"
+    },
+    {
+      "name": "integer_literal_unit",
+      "source": "cases/integer_literal_unit.f90",
+      "sha256": "4073b63426e6f9c8c5113966d5376a7f22d2214cc780999c05c7fe59dd565465",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "diagnostic": "WRITE unit must be * or a supported declared variable",
+      "diagnostic_line": 4,
+      "diagnostic_column": 7
+    },
+    {
+      "name": "unsupported_error_unit",
+      "source": "cases/unsupported_error_unit.f90",
+      "sha256": "e8ce094d28706f4393dc90f4a3682787333ce1af20ea972b0f2462d359f93e51",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Supported ISO_FORTRAN_ENV imports are REAL32, REAL64, REAL128, INT8, INT16, INT32, INT64, INTEGER_KINDS and OUTPUT_UNIT",
+      "diagnostic_line": 2,
+      "diagnostic_column": 36
+    },
+    {
+      "name": "empty_only",
+      "source": "cases/empty_only.f90",
+      "sha256": "d835414b677b5c9df526e64cb8b5e9a31edd205ad688333f5ae36add0bf25a8a",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Expected a nonreserved name",
+      "diagnostic_line": 2,
+      "diagnostic_column": 26
+    },
+    {
+      "name": "source_shadow_cannot_route",
+      "source": "cases/source_shadow_cannot_route.f90",
+      "sha256": "37af2cb8d5aa491b8bba97fc7823d04c2112f5e6cf15be1c95c9c5b1e119bcd1",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "diagnostic": "unsupported WRITE unit: runtime unit must equal OUTPUT_UNIT; file output is unsupported",
+      "diagnostic_line": 8,
+      "diagnostic_column": 7
+    },
+    {
+      "name": "immutable_output_unit",
+      "source": "cases/immutable_output_unit.f90",
+      "sha256": "d385f7d5a52cb742ecaf5f9b774682544f42c84568498526176911b15b64b5c5",
+      "category": "reject",
+      "gnu": "known-reject",
+      "expected_stdout": "",
+      "diagnostic": "Cannot assign to a PARAMETER constant",
+      "diagnostic_line": 4,
+      "diagnostic_column": 1,
+      "gnu_compile_diagnostic": "named constant"
+    },
+    {
+      "name": "pure_external_write",
+      "source": "cases/pure_external_write.f90",
+      "sha256": "7d60d274864b81ad7d2971ee375d384bab36fd2111c8e002f4fc563bf8ffe09b",
+      "category": "reject",
+      "gnu": "known-reject",
+      "expected_stdout": "",
+      "diagnostic": "FortFront rejected the source: Found 1 semantic error(s):\n  - WRITE statement is not allowed in a PURE procedure\n    Suggestion: remove the I/O or control statement, or drop the PURE/ELEMENTAL prefix",
+      "diagnostic_line": 0,
+      "diagnostic_column": 0,
+      "gnu_compile_diagnostic": "internal file"
+    },
+    {
+      "name": "forced_missing_nonintrinsic",
+      "source": "cases/forced_missing_nonintrinsic.f90",
+      "sha256": "d7b29c23dcb8282272c870f346d1f350a835aa43a98eff968ef34dbb1c067123",
+      "category": "reject",
+      "gnu": "known-reject",
+      "expected_stdout": "",
+      "diagnostic": "USE requires a module defined earlier in this source",
+      "diagnostic_line": 2,
+      "diagnostic_column": 35,
+      "gnu_compile_diagnostic": "cannot open module file"
+    }
+  ]
+}

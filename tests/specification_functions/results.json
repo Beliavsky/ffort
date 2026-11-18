@@ -1,0 +1,1181 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:39:30.509300+00:00",
+  "summary": {
+    "total": 39,
+    "failed": 0,
+    "candidate_checked": 39,
+    "gnu_checked": 39,
+    "gnu_skipped": 0,
+    "gnu_executed": 16,
+    "gnu_compile_only": 12,
+    "gnu_compile_rejections": 11
+  },
+  "records": [
+    {
+      "case": {
+        "name": "original_choose_few_combinations",
+        "source": "cases/original_choose_few_combinations.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "10 0 1 6 1\n1 1 1 1 1 1 2 2 2 3\n2 2 2 3 3 4 3 3 4 4\n3 4 5 4 5 5 4 5 5 5\n0 6 2",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          10           0           1           6           1\n           1           1           1           1           1           1           2           2           2           3\n           2           2           2           3           3           4           3           3           4           4\n           3           4           5           4           5           5           4           5           5           5\n           0           6           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 10 0 1 6 1\n 1 1 1 1 1 1 2 2 2 3\n 2 2 2 3 3 4 3 3 4 4\n 3 4 5 4 5 5 4 5 5 5\n 0 6 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple",
+        "source": "cases/simple.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 4 abcd 8",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           4 abcd           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 4 abcd 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "repeated_frames",
+        "source": "cases/repeated_frames.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 5",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2\n 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_calls_arithmetic",
+        "source": "cases/nested_calls_arithmetic.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": " -4 6 11 3 33",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          -4           6          11           3          33\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -4 6 11 3 33\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zero_negative_extents",
+        "source": "cases/zero_negative_extents.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_eight",
+        "source": "cases/kind_eight.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "named_arguments",
+        "source": "cases/named_arguments.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5 5 abcde",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5           5 abcde\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5 5 abcde\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_named_length",
+        "source": "cases/nested_named_length.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5 abcde",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5 abcde\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5 abcde\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zero_argument",
+        "source": "cases/zero_argument.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 ab",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2 ab\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 ab\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "intrinsic_actual",
+        "source": "cases/intrinsic_actual.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "module_parameter",
+        "source": "cases/module_parameter.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "module_read_frozen",
+        "source": "cases/module_read_frozen.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5 12",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5\n          12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5\n 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "transitive_pure",
+        "source": "cases/transitive_pure.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "elemental_function",
+        "source": "cases/elemental_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "constant_actual_runtime",
+        "source": "cases/constant_actual_runtime.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_result_function",
+        "source": "cases/array_result_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7 7 7 7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7           7           7           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7 7 7 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "bound_overflow",
+        "source": "cases/bound_overflow.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/bound_overflow.f90:6:4: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wide_bound_range",
+        "source": "cases/wide_bound_range.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/wide_bound_range.f90:10:12: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_cap",
+        "source": "cases/array_cap.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "array element limit"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/array_cap.f90:10:10: total array element limit exceeded\n"
+      }
+    },
+    {
+      "case": {
+        "name": "length_cap",
+        "source": "cases/length_cap.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "CHARACTER length limit"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/length_cap.f90:0:0: CHARACTER length limit exceeded (65536)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "infinite_budget",
+        "source": "cases/infinite_budget.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "execution step limit exceeded",
+        "args": [
+          "--max-steps",
+          "60"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/infinite_budget.f90:7:1: execution step limit exceeded (current limit: 60); use --max-steps N to set the execution budget (positive 64-bit integer)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "transitive_depth",
+        "source": "cases/transitive_depth.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "call depth limit"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/transitive_depth.f90:6:3: procedure call depth limit exceeded (64)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_result",
+        "source": "cases/undefined_result.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/undefined_result.f90:6:1: function RESULT is uninitialized\n"
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function",
+        "source": "cases/impure_function.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/impure_function.f90:10:11:\n\n   10 | integer::a(f(n))\n      |           1\nError: Specification function \u2018f\u2019 at (1) must be PURE\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/impure_function.f90:10:11:\n\n   10 | integer::a(f(n))\n      |           1\nError: Specification function \u2018f\u2019 at (1) must be PURE\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/impure_function.f90:10:11:\n\n   10 | integer::a(f(n))\n      |           1\nError: Specification function \u2018f\u2019 at (1) must be PURE\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/impure_function.f90:16:5:\n\n   16 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/impure_function.f90:10:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/impure_function.f90:10:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "transitive_impure",
+        "source": "cases/transitive_impure.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "PURE procedure cannot invoke"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/transitive_impure.f90:10:2:\n\n   10 | v=g(n)\n      |  1\nError: Reference to impure function \u2018g\u2019 at (1) within a PURE procedure\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/transitive_impure.f90:20:5:\n\n   20 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/transitive_impure.f90:10:7: PURE procedure cannot invoke an impure procedure\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/transitive_impure.f90:10:7: PURE procedure cannot invoke an impure procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_module_write",
+        "source": "cases/pure_module_write.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "cannot modify module data"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/pure_module_write.f90:7:0:\n\n    7 | offset=n\nError: Variable \u2018offset\u2019 cannot appear in a variable definition context (assignment) at (1) in PURE procedure\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/pure_module_write.f90:18:5:\n\n   18 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/pure_module_write.f90:8:1: PURE/SIMPLE procedure cannot modify module data\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/pure_module_write.f90:8:1: PURE/SIMPLE procedure cannot modify module data\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_print",
+        "source": "cases/pure_print.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/pure_print.f90:6:9:\n\n    6 | print *,n\n      |         1\nError: PRINT statement at (1) not allowed within PURE procedure\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/pure_print.f90:17:5:\n\n   17 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/pure_print.f90:6:1: I/O requires the main program, an impure subroutine or IMPURE ELEMENTAL function\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/pure_print.f90:6:1: I/O requires the main program, an impure subroutine or IMPURE ELEMENTAL function\n"
+      }
+    },
+    {
+      "case": {
+        "name": "optional_actual",
+        "source": "cases/optional_actual.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/optional_actual.f90:10:13:\n\n   10 | integer::a(f(n))\n      |             1\nError: Dummy argument \u2018n\u2019 at (1) cannot be OPTIONAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/optional_actual.f90:10:13:\n\n   10 | integer::a(f(n))\n      |             1\nError: Dummy argument \u2018n\u2019 at (1) cannot be OPTIONAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/optional_actual.f90:10:13:\n\n   10 | integer::a(f(n))\n      |             1\nError: Dummy argument \u2018n\u2019 at (1) cannot be OPTIONAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/optional_actual.f90:16:5:\n\n   16 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/optional_actual.f90:10:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/optional_actual.f90:10:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "out_actual",
+        "source": "cases/out_actual.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/out_actual.f90:10:13:\n\n   10 | integer::a(f(n))\n      |             1\nError: Dummy argument \u2018n\u2019 at (1) cannot be INTENT(OUT)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/out_actual.f90:10:13:\n\n   10 | integer::a(f(n))\n      |             1\nError: Dummy argument \u2018n\u2019 at (1) cannot be INTENT(OUT)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/out_actual.f90:10:13:\n\n   10 | integer::a(f(n))\n      |             1\nError: Dummy argument \u2018n\u2019 at (1) cannot be INTENT(OUT)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/out_actual.f90:16:5:\n\n   16 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/out_actual.f90:10:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/out_actual.f90:10:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "local_actual",
+        "source": "cases/local_actual.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/local_actual.f90:11:13:\n\n   11 | integer::a(f(j))\n      |             1\nError: Variable \u2018j\u2019 cannot appear in the expression at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/local_actual.f90:17:5:\n\n   17 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/local_actual.f90:11:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/local_actual.f90:11:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "optional_formal",
+        "source": "cases/optional_formal.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound",
+        "note": "GNU accepts this valid specification function; optional formals are outside the bounded interpreter subset."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/optional_formal.f90:10:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/optional_formal.f90:10:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_direct",
+        "source": "cases/recursive_direct.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/recursive_direct.f90:10:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/recursive_direct.f90:10:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real_formal",
+        "source": "cases/real_formal.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/real_formal.f90:10:18: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/real_formal.f90:10:18: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_formal",
+        "source": "cases/array_formal.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/array_formal.f90:10:20: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/array_formal.f90:10:20: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_kind",
+        "source": "cases/wrong_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "kind"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/wrong_kind.f90:10:11:\n\n   10 | integer::a(f(2_8))\n      |           1\nError: Type mismatch in argument \u2018n\u2019 at (1); passed INTEGER(8) to INTEGER(4)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/wrong_kind.f90:16:5:\n\n   16 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/wrong_kind.f90:10:18: Procedure argument REAL kind does not match its dummy declaration\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/wrong_kind.f90:10:18: Procedure argument REAL kind does not match its dummy declaration\n"
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_disallowed",
+        "source": "cases/parameter_disallowed.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "constant"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/parameter_disallowed.f90:10:21:\n\n   10 | integer,parameter::j=f(2)\n      |                     1\nError: Function \u2018f\u2019 in initialization expression at (1) must be an intrinsic function\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/parameter_disallowed.f90:11:11:\n\n   11 | integer::a(j)\n      |           1\nError: GNU Extension: Symbol \u2018j\u2019 is used before it is typed at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/parameter_disallowed.f90:12:1:\n\n   12 | a=7\n      | 1\nError: Symbol \u2018a\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/parameter_disallowed.f90:17:5:\n\n   17 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/parameter_disallowed.f90:10:26: Declaration initializers must be constant expressions\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/parameter_disallowed.f90:10:26: Declaration initializers must be constant expressions\n"
+      }
+    },
+    {
+      "case": {
+        "name": "kind_disallowed",
+        "source": "cases/kind_disallowed.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "kind selector"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/kind_disallowed.f90:10:13:\n\n   10 | integer(kind=f(3))::a\n      |             1\nError: Function \u2018f\u2019 in initialization expression at (1) must be an intrinsic function\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/kind_disallowed.f90:11:1:\n\n   11 | a=0\n      | 1\nError: Symbol \u2018a\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/kind_disallowed.f90:15:5:\n\n   15 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/kind_disallowed.f90:10:18: REAL kind selector supports an integer literal, named parameter or supported kind inquiry\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/kind_disallowed.f90:10:18: REAL kind selector supports an integer literal, named parameter or supported kind inquiry\n"
+      }
+    },
+    {
+      "case": {
+        "name": "main_bound_disallowed",
+        "source": "cases/main_bound_disallowed.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "constant"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/main_bound_disallowed.f90:18:16:\n\n   18 | integer::a(f(2))\n      |                1\nError: Explicit shaped array with nonconstant bounds at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/main_bound_disallowed.f90:19:1:\n\n   19 | a=1\n      | 1\nError: Symbol \u2018a\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/main_bound_disallowed.f90:18:16: Array bounds must be constant expressions outside procedure locals\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/main_bound_disallowed.f90:18:16: Array bounds must be constant expressions outside procedure locals\n"
+      }
+    },
+    {
+      "case": {
+        "name": "forward_definition",
+        "source": "cases/forward_definition.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/forward_definition.f90:6:16: Unsupported procedure or array reference: f\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/specification_functions/cases/forward_definition.f90:6:16: Unsupported procedure or array reference: f\n"
+      }
+    }
+  ],
+  "manifest_sha256": "81cbfc9f62c9ec307b5f25fcada4d838eb590fe5255d5e1fa558ab081b763b6d",
+  "source_sha256": {
+    "cases/original_choose_few_combinations.f90": "01ac792db48c3007edbce5463556f2b59e35ef43801ed939521817daab1d5324",
+    "cases/simple.f90": "65f577faf71a4b873d430aeb0af63ea10a3941647af624149e6e402ab18e5313",
+    "cases/repeated_frames.f90": "431853328f8a545c552cf9595cbc6f22fc788a8c8be461dbdcd0b20ff2f4c61a",
+    "cases/nested_calls_arithmetic.f90": "37a121bdeb1dc7d036c064a82ca583a90b2f6bd5c8b53f46a012f6b387be3518",
+    "cases/zero_negative_extents.f90": "e90ef4b3f389a5ce1410d36552b4ebb4e7669864d8b290f2fd3a978d6f964530",
+    "cases/kind_eight.f90": "7014ef29d36bfa999c6589fc7b13aadc2d68160d7b28156b11fc12c4b022c79f",
+    "cases/named_arguments.f90": "4cebe7a7ead80f5f735f20abeffcef52afc7c7b9f0ca293d5190b2a2d37e8ce5",
+    "cases/nested_named_length.f90": "11cbde8c0d180f28dc9e1d56e68254daaddb777500e61d738a9a7cdab6823105",
+    "cases/zero_argument.f90": "54838ca6c0807e1d3b65305638b0d4693388e61ad9f5484d5cd1d8389858db55",
+    "cases/intrinsic_actual.f90": "3b710ece6b49089d48528edfd5f7dd47c51c07bea71f19fc803cb09d08dbafd3",
+    "cases/module_parameter.f90": "c660605a0b6ad2f50778e0d104760490748c2c964021f89e174c6a9210667a52",
+    "cases/module_read_frozen.f90": "a520963904257a38f4cbada5a3fa5788b156ff8a2f8a6a34a40db274407b400d",
+    "cases/transitive_pure.f90": "cf79d27264122229c60ae39cf3a6c5399013b4ecc14d1a6703efc38eef3bae91",
+    "cases/elemental_function.f90": "8d17fe89b4c0a1449074450bbdcf8993050180c4e6c6da3566f1881313ed4b59",
+    "cases/constant_actual_runtime.f90": "13298bb1e1154541dfcad232d06981337671deac96d9475c1e97ae349788a620",
+    "cases/array_result_function.f90": "68aa5d85ceaf96d23cec32f79d2ed530c226eb5aa4501f772a4d9a41b8fce670",
+    "cases/bound_overflow.f90": "d2552fdfdd65b5acd7f4c2cfb5c8c6e4ad89578cdb01a5433a00f664853344c0",
+    "cases/wide_bound_range.f90": "7cd3626b902acad9bdb744037db0b2729bb1b0a17a895e046eafb3daff8adfa1",
+    "cases/array_cap.f90": "0465b22fcca555a17a93a0174770da010c0f42db2d881995499d9951726536c1",
+    "cases/length_cap.f90": "6d268342e3c294f055f62bf872dce7c11f737e8fb8dfa12bbe03cf0896968043",
+    "cases/infinite_budget.f90": "e9148a604d87817e3d14575439bc16c6b167572fca00bb771d22acfb76114e3e",
+    "cases/transitive_depth.f90": "136ef2c6eefa1d6442f2a0b00b165840ef6442a50b6b5e456ba8a17cc7a6c8cb",
+    "cases/undefined_result.f90": "05f823ab4ce27afce31e4aa97cae058b054cd073f4a1960552045d48e5a8441a",
+    "cases/impure_function.f90": "2001ca84b24b548be4e12bfcc6cba0fb646d8e8bbb9de8a8401259984430287e",
+    "cases/transitive_impure.f90": "3ec9bc385940a7a4832f5bc9a42232ea668e37d2cbb78af459c010b6d7a7f9b0",
+    "cases/pure_module_write.f90": "22240016c7fd68e283e5a5f3a7e8f1af328d60cdfeef16416217d3c93ffbf13b",
+    "cases/pure_print.f90": "60ea99bb3efac3e9dc6f925e4a57594de755be75cf982128254ff94e8b793098",
+    "cases/optional_actual.f90": "1bda8031dbd46967c6a110d95c56b7b1854ee6200e2aedff3dcf9c1fe7c77b67",
+    "cases/out_actual.f90": "e29ba9ae3f4f04ac99daf7cd979187d313b3b670c6da3a2f4ef4e75cc2f6cce8",
+    "cases/local_actual.f90": "b21279af8502b0d2836c63bdf2740bea47097d6dadd80ab701e9b74b72b2cff7",
+    "cases/optional_formal.f90": "b9ab10ec78c60163272d7c41d8923c6b7ee5b51d2857d023ce39264a429b2c7c",
+    "cases/recursive_direct.f90": "a71cdfae60b44d33f6d11c6fdbe8af92e58b44196ccd87421ecacccfdfb63d80",
+    "cases/real_formal.f90": "59ef24d94da74c8e87ac96d384658901b5171e65bc6c03194ca86efea3e6ad63",
+    "cases/array_formal.f90": "debddd1a83445644a374de7c7617cb252f2e79855006f04b15b0878202de09fb",
+    "cases/wrong_kind.f90": "1734e8cd89d64915dc7ff0cfee8fa5301ede459a3003399669e79341a82c9887",
+    "cases/parameter_disallowed.f90": "b526caa5213a5b5b2ee5a869d068d9001656cd8f74f09d0b5bfa07cb0273f1c6",
+    "cases/kind_disallowed.f90": "880c452e6fa163f154b1a98a2bc4f8017554213fa0e2a6d7eda3ad798bdb04be",
+    "cases/main_bound_disallowed.f90": "a2694d8fcfda939184ce5510833ea7f5ff81c38926a69857e7c1af29286c8950",
+    "cases/forward_definition.f90": "83f223fa873bb0be21dc16111a832d8ceffd6b1c47737520557ed39eea874894"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

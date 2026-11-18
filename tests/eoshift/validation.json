@@ -1,0 +1,220 @@
+{
+  "status": "PASS",
+  "baseline_zip": "fortfront-interpreter-0.46.0.zip",
+  "baseline_sha256": "ee95dbe2647b1520825782e63b00fb977300186a055639584f87273d6de5f83e",
+  "candidate": "/workspace/scratch/c5319e9549df/eoshift-work/preserved-binary/eoshift-final",
+  "candidate_sha256": "03788db0cafeb27457fba23fb89a834db76e684cbdbe6e7adf8acbd59199a999",
+  "source_summary": {
+    "total": 141,
+    "failed": 0,
+    "candidate_checked": 141,
+    "gnu_checked": 141,
+    "gnu_executed": 103,
+    "gnu_known_limitations": 0,
+    "gnu_compile_only": 18,
+    "gnu_matching_source_rejections": 20,
+    "gnu_compile_rejections": 20
+  },
+  "native_assertions": 5415,
+  "producer_checks": 10,
+  "harness_tests": 33,
+  "related_regressions": 735,
+  "regression_summaries": [
+    {
+      "suite": "cshift",
+      "summary": {
+        "total": 90,
+        "failed": 0,
+        "candidate_checked": 90
+      },
+      "exit": 0
+    },
+    {
+      "suite": "character_minmax",
+      "summary": {
+        "total": 106,
+        "failed": 0,
+        "candidate_checked": 106
+      },
+      "exit": 0
+    },
+    {
+      "suite": "array_bounds_inquiry",
+      "summary": {
+        "total": 149,
+        "failed": 0,
+        "candidate_checked": 149
+      },
+      "exit": 0
+    },
+    {
+      "suite": "constructor_implied_do",
+      "summary": {
+        "total": 99,
+        "failed": 0,
+        "harness_self_tests": 47,
+        "candidate_checked": 99,
+        "gnu_executed": 0,
+        "gnu_compile_only": 0,
+        "gnu_compile_rejections": 0
+      },
+      "exit": 0
+    },
+    {
+      "suite": "array_intrinsics_independent",
+      "summary": {
+        "total": 234,
+        "failed": 0,
+        "candidate_checked": 234
+      },
+      "exit": 0
+    },
+    {
+      "suite": "character_len_inquiry",
+      "summary": {
+        "total": 57,
+        "failed": 0,
+        "candidate_checked": 57
+      },
+      "exit": 0
+    }
+  ],
+  "full_native_aggregate": "not run in feature tree; release integrator owns aggregate",
+  "source_tree": "/tmp/eoshift-047-app-work",
+  "cache_state": "preserved; no cleanup performed",
+  "official_build_command": "fpm build --profile debug",
+  "core_sha256": "4424c0fde5cc5eb5d35904938509d1856bd46bc47246afffe4918b4a0bd3c43f",
+  "raw_vendor_sha256": "fb7a572c00227060d133872fd4e7c27602c707c17e9e23529fa1f0ef8c5f03f4",
+  "original": {
+    "case": {
+      "name": "demo_eoshift",
+      "source": "cases/demo_eoshift.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": " original\n   1,  4,  7\n   2,  5,  8\n   3,  6,  9\n shift each row differently\n   4,  7, -5\n   8, -5, -5\n  -5, -5,  3\n shift each column differently\n   8, -5, -5\n  -5, -5, -5\n  -5, -5, -5\n original\n    1,   4,   7,  10\n    2,   5,   8,  11\n    3,   6,   9,  12\nshift=+2,dim=1\n    3,   6,   9,  12\n    0,   0,   0,   0\n    0,   0,   0,   0\nshift=+2,dim=2\n    7,  10,   0,   0\n    8,  11,   0,   0\n    9,  12,   0,   0\nshift=-2,dim=1\n   0,  0,  0,  0\n   0,  0,  0,  0\n   1,  4,  7, 10\nshift=-2,dim=2\n   0,  0,  1,  4\n   0,  0,  2,  5\n   0,  0,  3,  6\n",
+      "exact_stdout": true,
+      "sha256": "42866c8e149c8ccb2f597951e6f9034ecaf69d85f9e5904c5bbc87d7e9eb74b5",
+      "rel_tol": 0,
+      "abs_tol": 0
+    },
+    "errors": [],
+    "gnu_compile": {
+      "code": 0,
+      "out": "",
+      "err": ""
+    },
+    "gnu_run": {
+      "code": 0,
+      "out": " original\n   1,  4,  7\n   2,  5,  8\n   3,  6,  9\n shift each row differently\n   4,  7, -5\n   8, -5, -5\n  -5, -5,  3\n shift each column differently\n   8, -5, -5\n  -5, -5, -5\n  -5, -5, -5\n original\n    1,   4,   7,  10\n    2,   5,   8,  11\n    3,   6,   9,  12\nshift=+2,dim=1\n    3,   6,   9,  12\n    0,   0,   0,   0\n    0,   0,   0,   0\nshift=+2,dim=2\n    7,  10,   0,   0\n    8,  11,   0,   0\n    9,  12,   0,   0\nshift=-2,dim=1\n   0,  0,  0,  0\n   0,  0,  0,  0\n   1,  4,  7, 10\nshift=-2,dim=2\n   0,  0,  1,  4\n   0,  0,  2,  5\n   0,  0,  3,  6\n",
+      "err": ""
+    },
+    "check": {
+      "code": 0,
+      "out": "",
+      "err": ""
+    },
+    "run": {
+      "code": 0,
+      "out": " original\n   1,  4,  7\n   2,  5,  8\n   3,  6,  9\n shift each row differently\n   4,  7, -5\n   8, -5, -5\n  -5, -5,  3\n shift each column differently\n   8, -5, -5\n  -5, -5, -5\n  -5, -5, -5\n original\n    1,   4,   7,  10\n    2,   5,   8,  11\n    3,   6,   9,  12\nshift=+2,dim=1\n    3,   6,   9,  12\n    0,   0,   0,   0\n    0,   0,   0,   0\nshift=+2,dim=2\n    7,  10,   0,   0\n    8,  11,   0,   0\n    9,  12,   0,   0\nshift=-2,dim=1\n   0,  0,  0,  0\n   0,  0,  0,  0\n   1,  4,  7, 10\nshift=-2,dim=2\n   0,  0,  1,  4\n   0,  0,  2,  5\n   0,  0,  3,  6\n",
+      "err": ""
+    }
+  },
+  "native_receipts": [
+    {
+      "command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-Wall",
+        "-Wextra",
+        "-Wimplicit-interface",
+        "-Wno-external-argument-mismatch",
+        "-fPIC",
+        "-fmax-errors=1",
+        "-g",
+        "-fcheck=bounds",
+        "-fcheck=array-temps",
+        "-fbacktrace",
+        "-fcoarray=single",
+        "-fimplicit-none",
+        "-Werror=implicit-interface",
+        "-ffree-form",
+        "-I/tmp/eoshift-047-app-work/build/gfortran_C95531B253A90636",
+        "/workspace/scratch/c5319e9549df/eoshift-work/test/test_eoshift.f90",
+        "/tmp/eoshift-047-app-work/build/gfortran_BF401197FF969414/fortfront-interpreter/libfortfront-interpreter.a",
+        "-o",
+        "/workspace/scratch/c5319e9549df/eoshift-work/native/test_eoshift"
+      ],
+      "source_sha256": "b55b121d513c7e98525da6bcefdb4406e90b470f3c3e5135ad730bb77200c959",
+      "official_fpm_flags": [
+        "-Wall",
+        "-Wextra",
+        "-Wimplicit-interface",
+        "-Wno-external-argument-mismatch",
+        "-fPIC",
+        "-fmax-errors=1",
+        "-g",
+        "-fcheck=bounds",
+        "-fcheck=array-temps",
+        "-fbacktrace",
+        "-fcoarray=single",
+        "-fimplicit-none",
+        "-Werror=implicit-interface",
+        "-ffree-form"
+      ],
+      "compile_exit": 0,
+      "compile_stdout": "",
+      "compile_stderr": "/workspace/scratch/c5319e9549df/eoshift-work/test/test_eoshift.f90:16:51:\n\n   16 |     integer::checks,form,mutation,e,a,b,c,dim,j,k,m,r,cols,axis,shift,pos,row,col,source_pos,wanted,q\n      |                                                   1\nWarning: Unused variable \u2018m\u2019 declared at (1) [-Wunused-variable]\n/workspace/scratch/c5319e9549df/eoshift-work/test/test_eoshift.f90:16:101:\n\n   16 |     integer::checks,form,mutation,e,a,b,c,dim,j,k,m,r,cols,axis,shift,pos,row,col,source_pos,wanted,q\n      |                                                                                                     1\nWarning: Unused variable \u2018q\u2019 declared at (1) [-Wunused-variable]\n/workspace/scratch/c5319e9549df/eoshift-work/test/test_eoshift.f90:16:92:\n\n   16 |     integer::checks,form,mutation,e,a,b,c,dim,j,k,m,r,cols,axis,shift,pos,row,col,source_pos,wanted,q\n      |                                                                                            1\nWarning: Unused variable \u2018source_pos\u2019 declared at (1) [-Wunused-variable]\nf951: note: unrecognized command-line option \u2018-Wno-external-argument-mismatch\u2019 may have been intended to silence earlier diagnostics\n",
+      "run_exit": 0,
+      "run_stdout": " cd! \n 1\n\n 4\n PASS: EOSHIFT native assertions:        5415\n",
+      "run_stderr": "",
+      "executable_sha256": "5202703795ba73eb52a917ca763a8c6f41cd89bc30e8505d8f9b1b071b5ff222"
+    },
+    {
+      "command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-Wall",
+        "-Wextra",
+        "-Wimplicit-interface",
+        "-Wno-external-argument-mismatch",
+        "-fPIC",
+        "-fmax-errors=1",
+        "-g",
+        "-fcheck=bounds",
+        "-fcheck=array-temps",
+        "-fbacktrace",
+        "-fcoarray=single",
+        "-fimplicit-none",
+        "-Werror=implicit-interface",
+        "-ffree-form",
+        "-I/tmp/eoshift-047-app-work/build/gfortran_C95531B253A90636",
+        "/workspace/scratch/c5319e9549df/eoshift-work/test/test_eoshift_producer.f90",
+        "/tmp/eoshift-047-app-work/build/gfortran_BF401197FF969414/fortfront-interpreter/libfortfront-interpreter.a",
+        "-o",
+        "/workspace/scratch/c5319e9549df/eoshift-work/native/test_eoshift_producer"
+      ],
+      "source_sha256": "c8c0c951a173b9ad3a242cbdb4203be8bd57a4a08be2aab18401c4db5644c690",
+      "official_fpm_flags": [
+        "-Wall",
+        "-Wextra",
+        "-Wimplicit-interface",
+        "-Wno-external-argument-mismatch",
+        "-fPIC",
+        "-fmax-errors=1",
+        "-g",
+        "-fcheck=bounds",
+        "-fcheck=array-temps",
+        "-fbacktrace",
+        "-fcoarray=single",
+        "-fimplicit-none",
+        "-Werror=implicit-interface",
+        "-ffree-form"
+      ],
+      "compile_exit": 0,
+      "compile_stdout": "",
+      "compile_stderr": "/workspace/scratch/c5319e9549df/eoshift-work/test/test_eoshift_producer.f90:10:26:\n\n   10 |     integer::checks,family\n      |                          1\nWarning: Unused variable \u2018family\u2019 declared at (1) [-Wunused-variable]\nf951: note: unrecognized command-line option \u2018-Wno-external-argument-mismatch\u2019 may have been intended to silence earlier diagnostics\n",
+      "run_exit": 0,
+      "run_stdout": " PASS: independent EOSHIFT producer cases:          10\n",
+      "run_stderr": "",
+      "executable_sha256": "64566de4a7c1087b65b83c61c7d38d072807119a61505d84ec1a2e2d4e1177fe"
+    }
+  ]
+}

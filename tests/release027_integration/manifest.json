@@ -1,0 +1,88 @@
+{
+  "cases": [
+    {
+      "name": "original_body_composition",
+      "source": "original_body_composition.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "'a'\n'hi'\n' xyz'\n3 1 3\n",
+      "formatted_lines": {
+        "0": "'a'",
+        "1": "'hi'",
+        "2": "' xyz'"
+      }
+    },
+    {
+      "name": "optional_allocatable_adjust",
+      "source": "optional_allocatable_adjust.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 2 1 2 1 0 0 2 0 1\n6 12 8\n"
+    },
+    {
+      "name": "forall_substring_search",
+      "source": "forall_substring_search.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "ab ab ab \n2 2 2 1 1 1 2 2 2\naab a ab\n",
+      "formatted_lines": {
+        "0": "ab ab ab ",
+        "2": "aab a ab"
+      }
+    },
+    {
+      "name": "optional_empty_descriptors",
+      "source": "optional_empty_descriptors.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 7 0 0\n0 0 1\n"
+    },
+    {
+      "name": "optional_forward_substring",
+      "source": "optional_forward_substring.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "123456\n1ab  6\n",
+      "exact_stdout": true
+    },
+    {
+      "name": "absent_substring_inquiry",
+      "source": "absent_substring_inquiry.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "absent_intrinsic_read",
+      "source": "absent_intrinsic_read.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "writable_substring_boundary",
+      "source": "writable_substring_boundary.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "optional_numeric_character",
+      "source": "optional_numeric_character.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 3 1\na*     bb   c     \n[hi   \n",
+      "formatted_lines": {
+        "1": "a*     bb   c     ",
+        "2": "[hi   "
+      }
+    },
+    {
+      "name": "optional_index_array",
+      "source": "optional_index_array.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2\n3 4\n\n"
+    }
+  ]
+}

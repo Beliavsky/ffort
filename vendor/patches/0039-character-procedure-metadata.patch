@@ -1,0 +1,252 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -386,6 +386,13 @@
+             result_kind = max(left_kind, right_kind)
+             if (result_kind <= 0) result_kind = 4
+             call set_intrinsic_metadata(node, TLOGICAL, result_kind, result_rank)
++            return
++        end if
++
++        if (operator == "//" .and. left_type == TCHAR .and. right_type == TCHAR) then
++            if (left_kind == right_kind .and. left_kind > 0) then
++                call set_intrinsic_metadata(node, TCHAR, left_kind, result_rank)
++            end if
+             return
+         end if
+ 
+@@ -1111,6 +1118,24 @@
+         character(len=:), allocatable :: result_name
+         integer :: i, body_index
+ 
++        result_name = ""
++        if (allocated(node%result_variable)) then
++            result_name = trim(node%result_variable)
++        else if (allocated(node%name)) then
++            result_name = trim(node%name)
++        end if
++        ! A result declaration carries the rank and exact declared type. A
++        ! provisional return_type may still contain implicit REAL here.
++        if (len_trim(result_name) > 0 .and. allocated(node%body_indices)) then
++            do i = 1, size(node%body_indices)
++                body_index = node%body_indices(i)
++                if (.not. declaration_has_name(arena, body_index, result_name)) cycle
++                call resolve_node_metadata(arena, body_index, visiting)
++                call copy_metadata_from_index(arena, body_index, node)
++                if (node%resolved_type_found) return
++            end do
++        end if
++
+         if (allocated(node%return_type)) then
+             if (len_trim(node%return_type) > 0) then
+                 call resolve_type_spec(arena, node_index, node%return_type, &
+@@ -1119,22 +1144,6 @@
+             end if
+         end if
+ 
+-        result_name = ""
+-        if (allocated(node%result_variable)) then
+-            result_name = trim(node%result_variable)
+-        else if (allocated(node%name)) then
+-            result_name = trim(node%name)
+-        end if
+-        if (len_trim(result_name) == 0) return
+-        if (.not. allocated(node%body_indices)) return
+-
+-        do i = 1, size(node%body_indices)
+-            body_index = node%body_indices(i)
+-            if (.not. declaration_has_name(arena, body_index, result_name)) cycle
+-            call resolve_node_metadata(arena, body_index, visiting)
+-            call copy_metadata_from_index(arena, body_index, node)
+-            return
+-        end do
+     end subroutine resolve_function_result
+ 
+     subroutine resolve_type_spec(arena, node_index, type_name, has_kind, &
+--- a/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
++++ b/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
+@@ -42,6 +42,10 @@
+             typ = declaration_type_to_mono(node%type_name)
+             call apply_declared_real_kind(arena, decl_index, node%type_name, &
+                 node%has_kind, node%kind_value, typ)
++            if (typ%kind == TCHAR .and. allocated(node%character_length_expr)) then
++                if (trim(adjustl(node%character_length_expr)) == '*') &
++                    typ = create_mono_type(TCHAR, char_size=-1)
++            end if
+             if (node%is_unsigned) then
+                 if (typ%kind == TINT) then
+                     typ%is_unsigned = .true.
+@@ -61,6 +65,10 @@
+                     node%has_kind, node%kind_value, typ)
+             else
+                 typ = node%inferred_type
++            end if
++            if (typ%kind == TCHAR .and. allocated(node%character_length_expr)) then
++                if (trim(adjustl(node%character_length_expr)) == '*') &
++                    typ = create_mono_type(TCHAR, char_size=-1)
+             end if
+             if (node%is_unsigned) then
+                 if (typ%kind == TINT) then
+@@ -98,10 +106,20 @@
+         resolved = resolve_expression_type(arena, expr_index)
+         if (resolved%found .and. resolved%rank >= 0) then
+             select case (resolved%type_kind)
+-            case (TREAL, TLOGICAL)
++            case (TREAL, TLOGICAL, TCHAR)
+                 typ = create_mono_type(resolved%type_kind)
+                 if (resolved%type_kind == TREAL .and. resolved%kind_value == 8) &
+                     typ = create_mono_type(TDOUBLE)
++                if (resolved%type_kind == TCHAR) then
++                    declared_type = arena%entries(expr_index)%node%inferred_type
++                    call declared_type%sync_from_arena()
++                    do while (declared_type%kind == TARRAY)
++                        if (.not. declared_type%has_args()) exit
++                        declared_type = declared_type%get_arg(1)
++                        call declared_type%sync_from_arena()
++                    end do
++                    if (declared_type%kind == TCHAR) typ = declared_type
++                end if
+                 do i = 1, resolved%rank
+                     typ = create_mono_type(TARRAY, args=[typ])
+                 end do
+@@ -333,7 +351,7 @@
+ 
+         matches = expected_copy%kind == actual_copy%kind
+         if (matches .and. expected_copy%kind == TCHAR) then
+-            matches = expected_copy%size == actual_copy%size
++            matches = expected_copy%size < 0 .or. expected_copy%size == actual_copy%size
+         end if
+     end function strict_types_match
+ 
+--- a/src/semantic/analyzers/semantic_strict_argument_type_checker_validation.f90
++++ b/src/semantic/analyzers/semantic_strict_argument_type_checker_validation.f90
+@@ -14,7 +14,7 @@
+         strict_types_match
+     use frontend_compiler_type_queries, only: resolve_expression_type, resolved_type_query_t
+     use string_utils_mod, only: to_lower
+-    use type_system_unified, only: mono_type_t, TARRAY
++    use type_system_unified, only: mono_type_t, TARRAY, TCHAR
+     implicit none
+     private
+ 
+@@ -470,6 +470,24 @@
+             end if
+         end if
+ 
++        actual_resolved = resolve_expression_type(arena, arg_expr_index)
++        dummy_resolved = resolve_expression_type(arena, dummy_index)
++        if (actual_resolved%found .and. dummy_resolved%found) then
++            if (actual_resolved%type_kind == TCHAR .and. dummy_resolved%type_kind == TCHAR) then
++                if (actual_resolved%kind_value /= dummy_resolved%kind_value) then
++                    call emit_argument_error(errors, &
++                        "CHARACTER kind mismatch in call to '"//trim(proc_name)//"'", &
++                        arena, arg_expr_index)
++                    return
++                end if
++            end if
++        end if
++
++        ! Scalar CHARACTER association may expose a shorter dummy view of a
++        ! longer actual. Length is not part of scalar type compatibility; the
++        ! interpreter validates available/writable storage at association time.
++        ! Keep rank-bearing array matching below unchanged.
++        if (dummy_type%kind == TCHAR .and. actual_type%kind == TCHAR) return
+         if (strict_types_match(dummy_type, actual_type)) return
+ 
+         call strict_type_name(actual_type, actual_string)
+--- a/src/parser/declarations/parser_declarations_type_spec_module.f90
++++ b/src/parser/declarations/parser_declarations_type_spec_module.f90
+@@ -295,17 +295,36 @@
+         type(token_t), allocatable :: value_tokens(:)
+         type(token_t), allocatable :: cleaned(:)
+         character(len=:), allocatable :: value_text
+-        integer :: read_stat, numeric_value
++        integer :: read_stat, numeric_value, lookahead
++        logical :: keyword_selector
+ 
+         if (parser%is_at_end()) return
+ 
+         token = parser%peek()
+         normalized = to_lower(trim(adjustl(token%text)))
+ 
++        ! LEN and KIND are ordinary names unless followed by an equals sign.
++        keyword_selector = .false.
++        lookahead = parser%current_token + 1
++        do while (lookahead <= size(parser%tokens))
++            select case (parser%tokens(lookahead)%kind)
++            case (TK_WHITESPACE, TK_COMMENT, TK_NEWLINE)
++                lookahead = lookahead + 1
++            case default
++                keyword_selector = parser%tokens(lookahead)%text == "="
++                exit
++            end select
++        end do
++        keyword_selector = keyword_selector .and. &
++            (normalized == "len" .or. normalized == "kind")
++        if (.not. keyword_selector) normalized = "len"
++
+         select case (normalized)
+         case ("len")
+-            token = parser%consume()
+-            call consume_optional_equals(parser)
++            if (keyword_selector) then
++                token = parser%consume()
++                call consume_optional_equals(parser)
++            end if
+             call collect_character_parameter_tokens(parser, value_tokens)
+             if (allocated(value_tokens)) then
+                 call trim_token_sequence(value_tokens, cleaned)
+@@ -369,54 +388,6 @@
+                     end associate
+                 end if
+             end if
+-        case default
+-            if (token%kind == TK_NUMBER) then
+-                read_stat = 0
+-                read (token%text, *, iostat=read_stat) numeric_value
+-                if (read_stat == 0) then
+-                    type_spec%kind_value = numeric_value
+-                    type_spec%has_kind = .true.
+-                    type_spec%character_length_expr = trim(token%text)
+-                    type_spec%has_character_length = .true.
+-                end if
+-                token = parser%consume()
+-            else if (token%text == "*") then
+-                type_spec%has_kind = .true.
+-                type_spec%kind_value = -1
+-                type_spec%character_length_expr = "*"
+-                type_spec%has_character_length = .true.
+-                token = parser%consume()
+-            else if (token%kind == TK_IDENTIFIER) then
+-                call collect_character_parameter_tokens(parser, value_tokens)
+-                if (allocated(value_tokens)) then
+-                    call trim_token_sequence(value_tokens, cleaned)
+-                    if (allocated(cleaned)) then
+-                        value_text = trim(adjustl(tokens_to_text(cleaned)))
+-                        block
+-                            type(token_t), allocatable :: temp(:)
+-                            call move_alloc(cleaned, temp)
+-                        end block
+-                    else
+-                        value_text = ""
+-                    end if
+-                    block
+-                        type(token_t), allocatable :: temp(:)
+-                        call move_alloc(value_tokens, temp)
+-                    end block
+-                else
+-                    value_text = ""
+-                end if
+-                if (len_trim(value_text) > 0) then
+-                    type_spec%character_length_expr = trim(value_text)
+-                    type_spec%has_character_length = .true.
+-                end if
+-            else if (token%text == ":") then
+-                type_spec%character_length_expr = ":"
+-                type_spec%has_character_length = .true.
+-                token = parser%consume()
+-            else
+-                token = parser%consume()
+-            end if
+         end select
+     end subroutine handle_character_parameter
+ 

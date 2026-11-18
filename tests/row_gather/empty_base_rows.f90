@@ -1,0 +1,6 @@
+program p
+implicit none
+integer::a(0,2),idx(0),b(0,2)
+b=a(idx,:)
+print *,shape(b)
+end program

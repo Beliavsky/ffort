@@ -1,0 +1,49 @@
+{
+  "classification": "GNU14.2 runtime crash; not execution agreement. Later suite runs compile-only with F2018 optional forwarding oracle.",
+  "compiler": {
+    "code": 0,
+    "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "err": "",
+    "argv": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "--version"
+    ]
+  },
+  "source_sha256": "952fe41c538c14124bcf14daab15817c761199468dfc70e74846ead9dcc52e05",
+  "record": {
+    "case": {
+      "name": "optional_forwarding",
+      "source": "cases/optional_forwarding.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS\n"
+    },
+    "errors": [
+      "GNU oracle mismatch",
+      "GNU unexpected success diagnostic"
+    ],
+    "gnu_compile": {
+      "code": 0,
+      "out": "",
+      "err": "",
+      "argv": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "/workspace/scratch/c5319e9549df/timing-queries-work/fortfront/tests/timing_queries/cases/optional_forwarding.f90",
+        "-o",
+        "/tmp/timing-048-gnu-initial/optional_forwarding-sjlejaeb/reference"
+      ]
+    },
+    "gnu_run": {
+      "code": -11,
+      "out": "",
+      "err": "\nProgram received signal SIGSEGV: Segmentation fault - invalid memory reference.\n\nBacktrace for this error:\n#0  0x7ff1921f72ba in ???\n#1  0x7ff1921f6375 in ???\n#2  0x7ff191f2fd6f in ???\n#3  0x557819777211 in q.0\n#4  0x557819777290 in MAIN__\n#5  0x55781977737e in main\n",
+      "argv": [
+        "/tmp/timing-048-gnu-initial/optional_forwarding-sjlejaeb/reference"
+      ]
+    }
+  }
+}

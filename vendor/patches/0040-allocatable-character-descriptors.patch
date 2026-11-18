@@ -1,0 +1,24 @@
+diff --git a/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90 b/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
+index a81b25f..07e1414 100644
+--- a/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
++++ b/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
+@@ -43,7 +43,8 @@ contains
+             call apply_declared_real_kind(arena, decl_index, node%type_name, &
+                 node%has_kind, node%kind_value, typ)
+             if (typ%kind == TCHAR .and. allocated(node%character_length_expr)) then
+-                if (trim(adjustl(node%character_length_expr)) == '*') &
++                if (trim(adjustl(node%character_length_expr)) == '*' .or. &
++                    trim(adjustl(node%character_length_expr)) == ':') &
+                     typ = create_mono_type(TCHAR, char_size=-1)
+             end if
+             if (node%is_unsigned) then
+@@ -67,7 +68,8 @@ contains
+                 typ = node%inferred_type
+             end if
+             if (typ%kind == TCHAR .and. allocated(node%character_length_expr)) then
+-                if (trim(adjustl(node%character_length_expr)) == '*') &
++                if (trim(adjustl(node%character_length_expr)) == '*' .or. &
++                    trim(adjustl(node%character_length_expr)) == ':') &
+                     typ = create_mono_type(TCHAR, char_size=-1)
+             end if
+             if (node%is_unsigned) then

@@ -1,0 +1,40 @@
+{
+  "scope": "Observed GNU section-copyback discrepancy; not a passing differential oracle.",
+  "version": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "records": [
+    {
+      "source": "character_assumed_section.f90",
+      "sha256": "5f3ac28e93e2397026a04d970bc92e9f4d59ee42ef6a7db850a312ee243cc1f2",
+      "compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "           2           2           2           4           2           2\nxy  \nabcd\n",
+        "err": ""
+      }
+    },
+    {
+      "source": "deferred_section_compiler_caveat.f90",
+      "sha256": "5d58db19b8140f8c6c2cba1326eb758f7154dd3f3a42b20697de86cecda62c03",
+      "compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "           2           2           2           4           2           2\nabcd\nabcd\n",
+        "err": ""
+      }
+    }
+  ],
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ]
+}

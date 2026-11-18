@@ -1,0 +1,321 @@
+{
+  "cases": [
+    {
+      "name": "original_choose_few_combinations",
+      "source": "cases/original_choose_few_combinations.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "10 0 1 6 1\n1 1 1 1 1 1 2 2 2 3\n2 2 2 3 3 4 3 3 4 4\n3 4 5 4 5 5 4 5 5 5\n0 6 2",
+      "diagnostic": ""
+    },
+    {
+      "name": "simple",
+      "source": "cases/simple.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 4 abcd 8",
+      "diagnostic": ""
+    },
+    {
+      "name": "repeated_frames",
+      "source": "cases/repeated_frames.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 5",
+      "diagnostic": ""
+    },
+    {
+      "name": "nested_calls_arithmetic",
+      "source": "cases/nested_calls_arithmetic.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": " -4 6 11 3 33",
+      "diagnostic": ""
+    },
+    {
+      "name": "zero_negative_extents",
+      "source": "cases/zero_negative_extents.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0",
+      "diagnostic": ""
+    },
+    {
+      "name": "kind_eight",
+      "source": "cases/kind_eight.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4",
+      "diagnostic": ""
+    },
+    {
+      "name": "named_arguments",
+      "source": "cases/named_arguments.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5 5 abcde",
+      "diagnostic": ""
+    },
+    {
+      "name": "nested_named_length",
+      "source": "cases/nested_named_length.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5 abcde",
+      "diagnostic": ""
+    },
+    {
+      "name": "zero_argument",
+      "source": "cases/zero_argument.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 ab",
+      "diagnostic": ""
+    },
+    {
+      "name": "intrinsic_actual",
+      "source": "cases/intrinsic_actual.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4",
+      "diagnostic": ""
+    },
+    {
+      "name": "module_parameter",
+      "source": "cases/module_parameter.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5",
+      "diagnostic": ""
+    },
+    {
+      "name": "module_read_frozen",
+      "source": "cases/module_read_frozen.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5 12",
+      "diagnostic": ""
+    },
+    {
+      "name": "transitive_pure",
+      "source": "cases/transitive_pure.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6",
+      "diagnostic": ""
+    },
+    {
+      "name": "elemental_function",
+      "source": "cases/elemental_function.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4",
+      "diagnostic": ""
+    },
+    {
+      "name": "constant_actual_runtime",
+      "source": "cases/constant_actual_runtime.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3",
+      "diagnostic": ""
+    },
+    {
+      "name": "array_result_function",
+      "source": "cases/array_result_function.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7 7 7 7",
+      "diagnostic": ""
+    },
+    {
+      "name": "bound_overflow",
+      "source": "cases/bound_overflow.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "wide_bound_range",
+      "source": "cases/wide_bound_range.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "array_cap",
+      "source": "cases/array_cap.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "array element limit"
+    },
+    {
+      "name": "length_cap",
+      "source": "cases/length_cap.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "CHARACTER length limit"
+    },
+    {
+      "name": "infinite_budget",
+      "source": "cases/infinite_budget.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "execution step limit exceeded",
+      "args": [
+        "--max-steps",
+        "60"
+      ]
+    },
+    {
+      "name": "transitive_depth",
+      "source": "cases/transitive_depth.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "call depth limit"
+    },
+    {
+      "name": "undefined_result",
+      "source": "cases/undefined_result.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "impure_function",
+      "source": "cases/impure_function.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported automatic array bound"
+    },
+    {
+      "name": "transitive_impure",
+      "source": "cases/transitive_impure.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "PURE procedure cannot invoke"
+    },
+    {
+      "name": "pure_module_write",
+      "source": "cases/pure_module_write.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "cannot modify module data"
+    },
+    {
+      "name": "pure_print",
+      "source": "cases/pure_print.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "optional_actual",
+      "source": "cases/optional_actual.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported automatic array bound"
+    },
+    {
+      "name": "out_actual",
+      "source": "cases/out_actual.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported automatic array bound"
+    },
+    {
+      "name": "local_actual",
+      "source": "cases/local_actual.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported automatic array bound"
+    },
+    {
+      "name": "optional_formal",
+      "source": "cases/optional_formal.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported automatic array bound",
+      "note": "GNU accepts this valid specification function; optional formals are outside the bounded interpreter subset."
+    },
+    {
+      "name": "recursive_direct",
+      "source": "cases/recursive_direct.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported automatic array bound"
+    },
+    {
+      "name": "real_formal",
+      "source": "cases/real_formal.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported automatic array bound"
+    },
+    {
+      "name": "array_formal",
+      "source": "cases/array_formal.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported automatic array bound"
+    },
+    {
+      "name": "wrong_kind",
+      "source": "cases/wrong_kind.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "kind"
+    },
+    {
+      "name": "parameter_disallowed",
+      "source": "cases/parameter_disallowed.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "constant"
+    },
+    {
+      "name": "kind_disallowed",
+      "source": "cases/kind_disallowed.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "kind selector"
+    },
+    {
+      "name": "main_bound_disallowed",
+      "source": "cases/main_bound_disallowed.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "constant"
+    },
+    {
+      "name": "forward_definition",
+      "source": "cases/forward_definition.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": ""
+    }
+  ]
+}

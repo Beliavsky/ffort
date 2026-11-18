@@ -1,0 +1,256 @@
+{
+  "cases": [
+    {
+      "name": "factorial_repeated",
+      "source": "cases/factorial_repeated.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "720 1 120",
+      "diagnostic": ""
+    },
+    {
+      "name": "fibonacci_independent_locals",
+      "source": "cases/fibonacci_independent_locals.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "34",
+      "diagnostic": ""
+    },
+    {
+      "name": "mutual_functions",
+      "source": "cases/mutual_functions.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T F",
+      "diagnostic": ""
+    },
+    {
+      "name": "recursive_subroutine_locals",
+      "source": "cases/recursive_subroutine_locals.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "30",
+      "diagnostic": ""
+    },
+    {
+      "name": "automatic_array_frames",
+      "source": "cases/automatic_array_frames.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "20",
+      "diagnostic": ""
+    },
+    {
+      "name": "allocatable_result_frames",
+      "source": "cases/allocatable_result_frames.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 3 4 5 0",
+      "diagnostic": ""
+    },
+    {
+      "name": "character_result_frames",
+      "source": "cases/character_result_frames.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "xxxxx xx",
+      "diagnostic": ""
+    },
+    {
+      "name": "shared_module_state",
+      "source": "cases/shared_module_state.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6",
+      "diagnostic": ""
+    },
+    {
+      "name": "optional_forwarding",
+      "source": "cases/optional_forwarding.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 16",
+      "diagnostic": ""
+    },
+    {
+      "name": "depth_64_allowed",
+      "source": "cases/depth_64_allowed.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "63",
+      "diagnostic": ""
+    },
+    {
+      "name": "depth_65_rejected",
+      "source": "cases/depth_65_rejected.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "call depth limit exceeded (64)"
+    },
+    {
+      "name": "shared_execution_budget",
+      "source": "cases/shared_execution_budget.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "Execution step limit",
+      "args": [
+        "--max-steps",
+        "100"
+      ]
+    },
+    {
+      "name": "missing_recursive_direct",
+      "source": "cases/missing_recursive_direct.f90",
+      "category": "unsupported",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "cycles require RECURSIVE"
+    },
+    {
+      "name": "missing_recursive_indirect",
+      "source": "cases/missing_recursive_indirect.f90",
+      "category": "unsupported",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "cycles require RECURSIVE"
+    },
+    {
+      "name": "duplicate_recursive_prefix",
+      "source": "cases/duplicate_recursive_prefix.f90",
+      "category": "unsupported",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "Duplicate RECURSIVE"
+    },
+    {
+      "name": "recursive_elemental",
+      "source": "cases/recursive_elemental.f90",
+      "category": "unsupported",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "RECURSIVE ELEMENTAL"
+    },
+    {
+      "name": "save_local_rejected",
+      "source": "cases/save_local_rejected.f90",
+      "category": "unsupported",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "SAVE"
+    },
+    {
+      "name": "frame_undefined_local",
+      "source": "cases/frame_undefined_local.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "recursive_out_undefined",
+      "source": "cases/recursive_out_undefined.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "recursive_scalar_alias",
+      "source": "cases/recursive_scalar_alias.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "overlapping actual"
+    },
+    {
+      "name": "recursive_section_alias",
+      "source": "cases/recursive_section_alias.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "overlapping actual"
+    },
+    {
+      "name": "recursive_allocatable_alias",
+      "source": "cases/recursive_allocatable_alias.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "overlapping allocatable"
+    },
+    {
+      "name": "recursive_disjoint_sections",
+      "source": "cases/recursive_disjoint_sections.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 1 3 2 2 2",
+      "diagnostic": ""
+    },
+    {
+      "name": "cycle_external_effect",
+      "source": "cases/cycle_external_effect.f90",
+      "category": "unsupported",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "External side effects"
+    },
+    {
+      "name": "pure_recursive_impure_call",
+      "source": "cases/pure_recursive_impure_call.f90",
+      "category": "unsupported",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "PURE procedure"
+    },
+    {
+      "name": "original_set_alloc_int_vec",
+      "source": "cases/original_set_alloc_int_vec.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7 -5 -1 0 2 4 8 8 5 0 2 4 8 8 4 -5 -1 0 2 3 0 2 4 T 0 T 0 3 8 4 0",
+      "diagnostic": ""
+    },
+    {
+      "name": "recursive_loop_state",
+      "source": "cases/recursive_loop_state.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "16",
+      "diagnostic": ""
+    },
+    {
+      "name": "uninitialized_result_frame",
+      "source": "cases/uninitialized_result_frame.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "readonly_alias",
+      "source": "cases/readonly_alias.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "25",
+      "diagnostic": ""
+    },
+    {
+      "name": "recursive_generic",
+      "source": "cases/recursive_generic.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "15",
+      "diagnostic": ""
+    },
+    {
+      "name": "mutual_subroutines",
+      "source": "cases/mutual_subroutines.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "33",
+      "diagnostic": ""
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+--- a/src/semantic/analyzers/semantic_explicit_interface_checker.f90
++++ b/src/semantic/analyzers/semantic_explicit_interface_checker.f90
+@@ -15,6 +15,7 @@
+         identifier_table_init, &
+         identifier_table_reset, identifier_id_kind
+     use intrinsic_registry, only: is_intrinsic_function, is_intrinsic_subroutine
++    use frontend_compiler_resolution, only: declaration_binding_t, resolve_name_at_node, BINDING_DERIVED_TYPE
+     use scope_manager, only: scope_stack_t
+     use string_utils_mod, only: to_lower
+     use type_system_unified, only: TARRAY, mono_type_t, poly_type_t
+@@ -542,7 +543,8 @@
+         type(call_or_subscript_node), intent(in) :: expr
+         integer, intent(in) :: expr_index
+ 
+-        character(len=:), allocatable :: proc_name
++        character(len=:), allocatable :: proc_name, binding_error
++        type(declaration_binding_t) :: binding
+ 
+         if (.not. allocated(expr%name)) return
+         if (len_trim(expr%name) == 0) return
+@@ -550,6 +552,10 @@
+ 
+         proc_name = to_lower(trim(expr%name))
+         if (is_intrinsic_function(proc_name)) return
++        ! A visible derived type designates a structure constructor, not an
++        ! external function requiring a procedure interface.
++        call resolve_name_at_node(arena, expr_index, proc_name, binding, binding_error)
++        if (binding%found .and. binding%binding_kind == BINDING_DERIVED_TYPE) return
+         if (is_known_array_reference(scopes, proc_name)) return
+         if (has_explicit_interface_in_cache(cache, proc_name)) return
+ 
+--- a/src/frontend/frontend_compiler_resolution.f90
++++ b/src/frontend/frontend_compiler_resolution.f90
+@@ -866,6 +866,17 @@
+             type is (visibility_statement_node)
+                 call apply_visibility(node, name, default_public, named_public)
+                 if (visibility_names_name(node, name)) named_visibility = .true.
++            type is (derived_type_node)
++                if (.not. allocated(node%name)) cycle
++                if (.not. same_name(node%name, name)) cycle
++                if (.not. allocated(node%attribute_clause)) cycle
++                if (index(node%attribute_clause, 'public') > 0) then
++                    named_visibility = .true.
++                    named_public = .true.
++                else if (index(node%attribute_clause, 'private') > 0) then
++                    named_visibility = .true.
++                    named_public = .false.
++                end if
+             end select
+         end do
+         if (named_visibility) then
+--- a/src/parser/declarations/parser_module_structures.f90
++++ b/src/parser/declarations/parser_module_structures.f90
+@@ -611,7 +611,7 @@
+         type(token_t) :: keyword_token, token
+         logical :: is_private
+         logical :: has_double_colon
+-        character(len=:), allocatable :: names(:)
++        character(len=:), allocatable :: names(:), generic_name
+ 
+         stmt_index = 0
+         if (parser%is_at_end()) return
+@@ -631,9 +631,24 @@
+         do while (.not. parser%is_at_end())
+             token = parser%peek()
+             select case (token%kind)
+-            case (TK_IDENTIFIER)
+-                call append_name(names, token%text)
+-                token = parser%consume()
++            case (TK_IDENTIFIER, TK_KEYWORD)
++                if (to_lower(token%text) == 'operator') then
++                    generic_name = 'operator'
++                    token = parser%consume()
++                    token = parser%peek()
++                    if (token%text /= '(') exit
++                    token = parser%consume()
++                    generic_name = generic_name//'('
++                    token = parser%consume()
++                    generic_name = generic_name//to_lower(token%text)
++                    token = parser%peek()
++                    if (token%text /= ')') exit
++                    token = parser%consume()
++                    call append_name(names, generic_name//')')
++                else
++                    call append_name(names, token%text)
++                    token = parser%consume()
++                end if
+             case (TK_OPERATOR)
+                 if (token%text == ",") then
+                     token = parser%consume()
+--- a/src/parser/declarations/parser_declarations_derived_module.f90
++++ b/src/parser/declarations/parser_declarations_derived_module.f90
+@@ -43,7 +43,10 @@
+         integer, allocatable :: tp_classes(:)
+         integer, allocatable :: tp_defaults(:)
+ 
++        type(token_t) :: header_token
++
+         type_index = 0
++        header_token = parser%peek()
+ 
+         call parse_type_definition_header(parser, type_name, header_attributes, &
+             has_header_attrs, invalid_type_spec, param_names)
+@@ -75,6 +78,10 @@
+             has_header_attrs, component_indices, &
+             component_count, binding_indices, &
+             binding_count, extends_parent)
++        if (arena%has_node_at(type_index)) then
++            arena%entries(type_index)%node%line = header_token%line
++            arena%entries(type_index)%node%column = header_token%column
++        end if
+         call attach_type_parameters(arena, type_index, param_names, tp_names, &
+             tp_classes, tp_defaults)
+     end function parse_derived_type_def

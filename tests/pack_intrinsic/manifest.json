@@ -1,0 +1,366 @@
+{
+  "cases": [
+    {
+      "name": "integer_mask",
+      "source": "cases/integer_mask.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 8 9"
+    },
+    {
+      "name": "scalar_masks",
+      "source": "cases/scalar_masks.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 4 6 0"
+    },
+    {
+      "name": "vector_tail",
+      "source": "cases/vector_tail.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "20 40 7 8 9"
+    },
+    {
+      "name": "vector_false",
+      "source": "cases/vector_false.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 12 13"
+    },
+    {
+      "name": "vector_prefix_undefined",
+      "source": "cases/vector_prefix_undefined.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7 8 9 10"
+    },
+    {
+      "name": "keywords",
+      "source": "cases/keywords.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 3 7 6 1 2"
+    },
+    {
+      "name": "rank_two_order",
+      "source": "cases/rank_two_order.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 4 6"
+    },
+    {
+      "name": "rank_two_sections",
+      "source": "cases/rank_two_sections.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 5 4 3"
+    },
+    {
+      "name": "kinds",
+      "source": "cases/kinds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4000000000 5000000000 8 1.25 3.5 8 1.5 4.0 4"
+    },
+    {
+      "name": "logical_array",
+      "source": "cases/logical_array.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T F T"
+    },
+    {
+      "name": "character_array",
+      "source": "cases/character_array.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "abefyz"
+    },
+    {
+      "name": "character_zero_length",
+      "source": "cases/character_zero_length.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "3 0",
+      "oracle_note": "GNU 14.2 libgfortran PACK of zero-length CHARACTER crashed (SIGFPE); compile-only, not a runtime match."
+    },
+    {
+      "name": "empty_arrays",
+      "source": "cases/empty_arrays.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0 0 5 6"
+    },
+    {
+      "name": "all_false_undefined_source",
+      "source": "cases/all_false_undefined_source.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0"
+    },
+    {
+      "name": "alias_vector",
+      "source": "cases/alias_vector.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 4 3 4"
+    },
+    {
+      "name": "nested_transforms",
+      "source": "cases/nested_transforms.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "12 2 4"
+    },
+    {
+      "name": "constructor_elements",
+      "source": "cases/constructor_elements.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 2 3 4"
+    },
+    {
+      "name": "parameter_pack",
+      "source": "cases/parameter_pack.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 3"
+    },
+    {
+      "name": "kind_unevaluated",
+      "source": "cases/kind_unevaluated.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "8"
+    },
+    {
+      "name": "dynamic_mask",
+      "source": "cases/dynamic_mask.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 4 7 6"
+    },
+    {
+      "name": "impure_mask_once",
+      "source": "cases/impure_mask_once.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 -1 3 2 3 7"
+    },
+    {
+      "name": "dynamic_shape_mismatch",
+      "source": "cases/dynamic_shape_mismatch.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "PACK MASK shape does not conform"
+    },
+    {
+      "name": "short_vector",
+      "source": "cases/short_vector.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "PACK VECTOR has fewer"
+    },
+    {
+      "name": "zero_vector_with_selected",
+      "source": "cases/zero_vector_with_selected.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "PACK VECTOR has fewer"
+    },
+    {
+      "name": "undefined_mask",
+      "source": "cases/undefined_mask.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "undefined_selected",
+      "source": "cases/undefined_selected.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "undefined_vector_tail",
+      "source": "cases/undefined_vector_tail.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "budget_mask_scan",
+      "source": "cases/budget_mask_scan.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "step limit",
+      "args": [
+        "--max-steps",
+        "25"
+      ]
+    },
+    {
+      "name": "aggregate_temporary_limit",
+      "source": "cases/aggregate_temporary_limit.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "PACK temporary element limit",
+      "args": [
+        "--max-steps",
+        "20000000"
+      ],
+      "reason": "Two 500,001-element PACK results exceed the 1,000,000-element expression-cache cap; the explicit work budget isolates storage policy."
+    },
+    {
+      "name": "missing_mask",
+      "source": "cases/missing_mask.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "extra_argument",
+      "source": "cases/extra_argument.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "scalar_array",
+      "source": "cases/scalar_array.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "nonlogical_mask",
+      "source": "cases/nonlogical_mask.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "wrong_mask_extent",
+      "source": "cases/wrong_mask_extent.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "wrong_mask_rank",
+      "source": "cases/wrong_mask_rank.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "wrong_vector_rank",
+      "source": "cases/wrong_vector_rank.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "wrong_vector_type",
+      "source": "cases/wrong_vector_type.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "wrong_vector_kind",
+      "source": "cases/wrong_vector_kind.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "wrong_vector_length",
+      "source": "cases/wrong_vector_length.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "oracle_note": "GNU 14.2 accepts unequal CHARACTER lengths without diagnosis; interpreter rejects the nonconforming type parameters."
+    },
+    {
+      "name": "unknown_keyword",
+      "source": "cases/unknown_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "duplicate_keyword",
+      "source": "cases/duplicate_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "keyword_missing_mask",
+      "source": "cases/keyword_missing_mask.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "keyword_positional_after",
+      "source": "cases/keyword_positional_after.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "scalar_false_short_vector",
+      "source": "cases/scalar_false_short_vector.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7"
+    },
+    {
+      "name": "result_bounds",
+      "source": "cases/result_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 1 0"
+    },
+    {
+      "name": "loop_refresh",
+      "source": "cases/loop_refresh.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 3 3"
+    },
+    {
+      "name": "function_and_actual",
+      "source": "cases/function_and_actual.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5 6 -1 11"
+    },
+    {
+      "name": "shadowed_name",
+      "source": "cases/shadowed_name.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5"
+    },
+    {
+      "name": "character_rank_two",
+      "source": "cases/character_rank_two.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "efgh"
+    }
+  ]
+}

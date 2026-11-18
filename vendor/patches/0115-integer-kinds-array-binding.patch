@@ -1,0 +1,163 @@
+--- a/src/frontend/frontend_compiler_resolution.f90
++++ b/src/frontend/frontend_compiler_resolution.f90
+@@ -25,6 +25,8 @@
+     integer, parameter, public :: BINDING_STATEMENT_FUNCTION = 8
+     integer, parameter, public :: BINDING_GENERIC_INTERFACE = 9
+     integer, parameter, public :: BINDING_ASSOCIATE_NAME = 10
++    ! Intrinsic-module array constants have no source declaration AST node.
++    integer, parameter, public :: BINDING_INTRINSIC_ARRAY = 11
+ 
+     integer, parameter, public :: ASSOCIATION_NONE = 0
+     integer, parameter, public :: ASSOCIATION_DIRECT = 1
+@@ -403,7 +405,13 @@
+             select type (node => arena%entries(indices(i))%node)
+             type is (use_statement_node)
+                 call resolve_from_use_statement(arena, node, name, binding)
+-                if (binding%found) return
++                if (binding%found) then
++                    if (binding%binding_kind == BINDING_INTRINSIC_ARRAY) then
++                        binding%node_index = indices(i)
++                        binding%scope_node_index = scope_node_index
++                    end if
++                    return
++                end if
+             end select
+         end do
+     end subroutine resolve_use_binding
+@@ -417,21 +425,36 @@
+         character(len=:), allocatable :: module_name
+ 
+         call clear_binding(binding)
+-        if (node%is_intrinsic) return
+         if (.not. allocated(node%module_name)) return
+         module_name = trim(node%module_name)
+         if (len_trim(module_name) == 0) return
+ 
+         if (find_rename_remote(node, name, remote_name)) then
+-            call resolve_module_export(arena, module_name, remote_name, binding)
++            ! The local alias owns the reference; its remote spelling is not
++            ! implicitly imported by an unrestricted renaming USE.
+         else if (node%has_only) then
+             if (.not. list_contains(node%only_list, name)) return
+-            call resolve_module_export(arena, module_name, name, binding)
+             remote_name = trim(name)
+         else
+             if (is_renamed_remote(node, name)) return
+-            call resolve_module_export(arena, module_name, name, binding)
+             remote_name = trim(name)
++        end if
++
++        ! INTEGER_KINDS is a rank-one default-INTEGER constant, independent
++        ! of the processor-specific values/extent. Resolve its USE identity,
++        ! not its spelling globally. Source modules and NON_INTRINSIC win
++        ! unless INTRINSIC was explicitly requested.
++        if (same_name(module_name, 'iso_fortran_env') .and. &
++            same_name(remote_name, 'integer_kinds') .and. &
++            .not. node%is_non_intrinsic) then
++            if (node%is_intrinsic .or. .not. source_module_precedes_use(arena, node)) then
++                binding%found = .true.
++                binding%binding_kind = BINDING_INTRINSIC_ARRAY
++            end if
++        end if
++        if (.not. binding%found) then
++            if (node%is_intrinsic) return
++            call resolve_module_export(arena, module_name, remote_name, binding)
+         end if
+ 
+         if (.not. binding%found) return
+@@ -440,6 +463,20 @@
+         binding%remote_name = trim(remote_name)
+         binding%module_name = trim(module_name)
+     end subroutine resolve_from_use_statement
++
++    logical function source_module_precedes_use(arena, use_node) result(precedes)
++        type(ast_arena_t), intent(in) :: arena
++        type(use_statement_node), intent(in) :: use_node
++        integer :: module_index
++        precedes = .false.
++        if (.not. allocated(use_node%module_name)) return
++        module_index = find_module_index(arena, use_node%module_name)
++        if (.not. arena%has_node_at(module_index)) return
++        select type (node => arena%entries(module_index)%node)
++        type is (module_node)
++            precedes = node%line < use_node%line
++        end select
++    end function source_module_precedes_use
+ 
+     subroutine resolve_module_export(arena, module_name, name, binding)
+         type(ast_arena_t), intent(in) :: arena
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -15,7 +15,7 @@
+     use frontend_compiler_resolution, only: declaration_binding_t, &
+         resolve_name_at_node, resolve_identifier_binding, BINDING_DERIVED_TYPE, &
+         resolve_name_in_scope, find_enclosing_scope, find_host_scope, BINDING_FUNCTION, BINDING_GENERIC_INTERFACE, &
+-        get_scope_statement_indices
++        get_scope_statement_indices, BINDING_INTRINSIC_ARRAY
+     use string_utils_mod, only: to_lower
+     use type_system_unified, only: mono_type_t, create_mono_type, TINT, TREAL, TCHAR, &
+         TLOGICAL, TARRAY, TCOMPLEX, TDOUBLE, TDERIVED
+@@ -405,6 +405,10 @@
+ 
+         call resolve_identifier_binding(arena, node_index, binding, error_msg)
+         if (binding%found) then
++            if (binding%binding_kind == BINDING_INTRINSIC_ARRAY) then
++                call set_intrinsic_metadata(node, TINT, 4, 1)
++                return
++            end if
+             call resolve_node_metadata(arena, binding%declaration_node_index, visiting)
+             call copy_metadata_from_index(arena, binding%declaration_node_index, node)
+             if (node%resolved_type_found) return
+@@ -556,6 +560,31 @@
+ 
+         call resolve_name_at_node(arena, node_index, node%name, binding, error_msg)
+         if (binding%found) then
++            if (binding%binding_kind == BINDING_INTRINSIC_ARRAY) then
++                ! A rank-one intrinsic-module constant is data, never a
++                ! procedure. Preserve rank only for a triplet/vector subscript.
++                if (.not. allocated(node%arg_indices)) return
++                if (size(node%arg_indices) /= 1) return
++                arg_index = node%arg_indices(1)
++                if (.not. arena%has_node_at(arg_index)) return
++                call_rank = 0
++                select type (subscript => arena%entries(arg_index)%node)
++                type is (range_expression_node)
++                    call_rank = 1
++                type is (array_bounds_node)
++                    call_rank = 1
++                class default
++                    call resolve_node_metadata(arena, arg_index, visiting)
++                    if (.not. arena%entries(arg_index)%node%resolved_type_found) return
++                    if (arena%entries(arg_index)%node%resolved_type_kind /= TINT) return
++                    call_rank = arena%entries(arg_index)%node%resolved_rank
++                    if (call_rank < 0 .or. call_rank > 1) return
++                end select
++                node%is_intrinsic = .false.
++                node%is_array_access = .true.
++                call set_intrinsic_metadata(node, TINT, 4, call_rank)
++                return
++            end if
+             if (binding%binding_kind == BINDING_FUNCTION .or. &
+                 binding%binding_kind == BINDING_GENERIC_INTERFACE) then
+                 ! A declared procedure/generic owns the call identity, even if
+--- a/src/semantic/analyzers/semantic_explicit_interface_checker.f90
++++ b/src/semantic/analyzers/semantic_explicit_interface_checker.f90
+@@ -16,7 +16,7 @@
+         identifier_table_reset, identifier_id_kind
+     use intrinsic_registry, only: is_intrinsic_function, is_intrinsic_subroutine
+     use frontend_compiler_resolution, only: declaration_binding_t, resolve_name_at_node, &
+-        BINDING_DERIVED_TYPE, BINDING_GENERIC_INTERFACE
++        BINDING_DERIVED_TYPE, BINDING_GENERIC_INTERFACE, BINDING_INTRINSIC_ARRAY
+     use scope_manager, only: scope_stack_t
+     use string_utils_mod, only: to_lower
+     use type_system_unified, only: TARRAY, mono_type_t, poly_type_t
+@@ -557,6 +557,9 @@
+         ! external function requiring a procedure interface.
+         call resolve_name_at_node(arena, expr_index, proc_name, binding, binding_error)
+         if (binding%found .and. binding%binding_kind == BINDING_DERIVED_TYPE) return
++        ! A scoped ISO_FORTRAN_ENV INTEGER_KINDS import is array data even
++        ! though no declaration node exists in the source arena.
++        if (binding%found .and. binding%binding_kind == BINDING_INTRINSIC_ARRAY) return
+         ! A visible named generic supplies an explicit interface through its
+         ! specific procedures. Resolve the scoped interface, not a global name
+         ! cache, so PRIVATE and USE ONLY exclusions cannot leak a generic.

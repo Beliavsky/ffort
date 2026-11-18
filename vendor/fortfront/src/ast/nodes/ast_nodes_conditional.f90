@@ -1,0 +1,430 @@
+module ast_nodes_conditional
+    use uid_generator, only: generate_uid
+    use ast_base, only: ast_node, &
+        ast_node_wrapper, ast_visitor_base_t, copy_ast_node_base
+    implicit none
+    private
+
+    ! Public types
+    public :: elseif_wrapper_t, case_wrapper_t
+    public :: if_node, select_case_node, case_block_node
+    public :: case_range_node, case_default_node
+    public :: select_type_node, type_guard_block_node
+    public :: select_rank_node, rank_block_node
+
+    ! Public factory functions
+    public :: create_if, create_select_case, create_select_type, create_select_rank
+
+    ! Elseif wrapper (not an AST node itself)
+    type :: elseif_wrapper_t
+        integer :: condition_index = 0 ! Elseif condition arena index
+        integer, allocatable :: body_indices(:) ! Elseif body arena indices
+    end type elseif_wrapper_t
+
+    ! Case statement wrapper (temporary for parser compatibility)
+    type :: case_wrapper_t
+        character(len=:), allocatable :: case_type ! "case", "case_default"
+        class(ast_node), allocatable :: value ! Case value (optional &
+        ! for default)
+        type(ast_node_wrapper), allocatable :: body(:) ! Case body
+    end type case_wrapper_t
+
+    ! If statement node
+    type, extends(ast_node) :: if_node
+        integer :: condition_index = 0 ! If condition arena index
+        integer, allocatable :: then_body_indices(:) ! Then body arena indices
+        type(elseif_wrapper_t), allocatable :: elseif_blocks(:)
+        ! Elseif blocks (optional)
+        integer, allocatable :: else_body_indices(:) ! Else body arena indices &
+        ! (optional)
+    contains
+        procedure :: accept => if_accept
+        procedure :: assign => if_assign
+        generic :: assignment(=) => assign
+    end type if_node
+
+    ! Select case construct node
+    type, extends(ast_node) :: select_case_node
+        integer :: selector_index = 0 ! Selector expression arena index
+        integer, allocatable :: case_indices(:) ! Case block arena indices
+        integer :: default_index = 0 ! Default case arena index &
+        ! (optional)
+    contains
+        procedure :: accept => select_case_accept
+        procedure :: assign => select_case_assign
+        generic :: assignment(=) => assign
+    end type select_case_node
+
+    ! Case block node (case (values) body)
+    type, extends(ast_node) :: case_block_node
+        integer, allocatable :: value_indices(:) ! Case value arena indices
+        integer, allocatable :: body_indices(:) ! Case body arena indices
+    contains
+        procedure :: accept => case_block_accept
+        procedure :: assign => case_block_assign
+        generic :: assignment(=) => assign
+    end type case_block_node
+
+    ! Case range node (for ranges like 1:5)
+    type, extends(ast_node) :: case_range_node
+        integer :: start_value = 0 ! Start value
+        integer :: end_value = 0 ! End value
+    contains
+        procedure :: accept => case_range_accept
+        procedure :: assign => case_range_assign
+        generic :: assignment(=) => assign
+    end type case_range_node
+
+    ! Case default node
+    type, extends(ast_node) :: case_default_node
+        integer, allocatable :: body_indices(:) ! Default case body arena indices
+    contains
+        procedure :: accept => case_default_accept
+        procedure :: assign => case_default_assign
+        generic :: assignment(=) => assign
+    end type case_default_node
+
+    ! Select type construct node
+    type, extends(ast_node) :: select_type_node
+        integer :: selector_index = 0 ! Selector expression arena index
+        integer, allocatable :: guard_indices(:) ! Type guard block arena indices
+        integer :: default_index = 0 ! Default guard arena index (optional)
+    contains
+        procedure :: accept => select_type_accept
+        procedure :: assign => select_type_assign
+        generic :: assignment(=) => assign
+    end type select_type_node
+
+    ! Type guard block node (type is/class is)
+    type, extends(ast_node) :: type_guard_block_node
+        character(len=20) :: guard_type ! "type_is" or "class_is"
+        integer :: type_name_index = 0 ! Type name identifier index
+        integer, allocatable :: body_indices(:) ! Guard body arena indices
+    contains
+        procedure :: accept => type_guard_block_accept
+        procedure :: assign => type_guard_block_assign
+        generic :: assignment(=) => assign
+    end type type_guard_block_node
+
+    ! Select rank construct node
+    type, extends(ast_node) :: select_rank_node
+        integer :: selector_index = 0 ! Selector expression arena index
+        integer, allocatable :: rank_indices(:) ! Rank block arena indices
+        integer :: default_index = 0 ! Default rank arena index (optional)
+    contains
+        procedure :: accept => select_rank_accept
+        procedure :: assign => select_rank_assign
+        generic :: assignment(=) => assign
+    end type select_rank_node
+
+    ! Rank block node (rank (n))
+    type, extends(ast_node) :: rank_block_node
+        integer :: rank_value = -1 ! Rank value (-1 for star/default)
+        integer, allocatable :: body_indices(:) ! Rank body arena indices
+    contains
+        procedure :: accept => rank_block_accept
+        procedure :: assign => rank_block_assign
+        generic :: assignment(=) => assign
+    end type rank_block_node
+
+contains
+
+    ! If node implementations
+    subroutine if_accept(this, visitor)
+        class(if_node), intent(in) :: this
+        class(ast_visitor_base_t), intent(inout) :: visitor
+        ! Stub implementation
+    end subroutine if_accept
+
+    subroutine if_assign(lhs, rhs)
+        class(if_node), intent(inout) :: lhs
+        class(if_node), intent(in) :: rhs
+        integer :: i
+        call copy_ast_node_base(lhs, rhs)
+        ! Copy specific fields
+        lhs%condition_index = rhs%condition_index
+        if (allocated(rhs%then_body_indices)) then
+            if (allocated(lhs%then_body_indices)) deallocate (lhs%then_body_indices)
+            allocate (lhs%then_body_indices(size(rhs%then_body_indices)))
+            lhs%then_body_indices = rhs%then_body_indices
+        end if
+        if (allocated(rhs%else_body_indices)) then
+            if (allocated(lhs%else_body_indices)) deallocate (lhs%else_body_indices)
+            allocate (lhs%else_body_indices(size(rhs%else_body_indices)))
+            lhs%else_body_indices = rhs%else_body_indices
+        end if
+        if (allocated(rhs%elseif_blocks)) then
+            if (allocated(lhs%elseif_blocks)) deallocate (lhs%elseif_blocks)
+            allocate (lhs%elseif_blocks(size(rhs%elseif_blocks)))
+            lhs%elseif_blocks = rhs%elseif_blocks
+        end if
+    end subroutine if_assign
+
+    ! Select case implementations
+    subroutine select_case_accept(this, visitor)
+        class(select_case_node), intent(in) :: this
+        class(ast_visitor_base_t), intent(inout) :: visitor
+        ! Visitor pattern implementation
+    end subroutine select_case_accept
+
+    subroutine select_case_assign(lhs, rhs)
+        class(select_case_node), intent(inout) :: lhs
+        class(select_case_node), intent(in) :: rhs
+        ! Copy base class components
+        call copy_ast_node_base(lhs, rhs)
+        ! Copy specific components
+        lhs%selector_index = rhs%selector_index
+        lhs%default_index = rhs%default_index
+        ! Deep copy allocatable array
+        if (allocated(rhs%case_indices)) then
+            if (allocated(lhs%case_indices)) deallocate (lhs%case_indices)
+            allocate (lhs%case_indices(size(rhs%case_indices)))
+            lhs%case_indices = rhs%case_indices
+        end if
+    end subroutine select_case_assign
+
+    ! Case block implementations
+    subroutine case_block_accept(this, visitor)
+        class(case_block_node), intent(in) :: this
+        class(ast_visitor_base_t), intent(inout) :: visitor
+    end subroutine case_block_accept
+
+    subroutine case_block_assign(lhs, rhs)
+        class(case_block_node), intent(inout) :: lhs
+        class(case_block_node), intent(in) :: rhs
+        ! Copy base class components
+        call copy_ast_node_base(lhs, rhs)
+        ! Deep copy allocatable arrays
+        if (allocated(rhs%value_indices)) then
+            if (allocated(lhs%value_indices)) deallocate (lhs%value_indices)
+            allocate (lhs%value_indices(size(rhs%value_indices)))
+            lhs%value_indices = rhs%value_indices
+        end if
+        if (allocated(rhs%body_indices)) then
+            if (allocated(lhs%body_indices)) deallocate (lhs%body_indices)
+            allocate (lhs%body_indices(size(rhs%body_indices)))
+            lhs%body_indices = rhs%body_indices
+        end if
+    end subroutine case_block_assign
+
+    ! Case range implementations
+    subroutine case_range_accept(this, visitor)
+        class(case_range_node), intent(in) :: this
+        class(ast_visitor_base_t), intent(inout) :: visitor
+    end subroutine case_range_accept
+
+    subroutine case_range_assign(lhs, rhs)
+        class(case_range_node), intent(inout) :: lhs
+        class(case_range_node), intent(in) :: rhs
+        ! Copy base class components
+        call copy_ast_node_base(lhs, rhs)
+        ! Copy specific components
+        lhs%start_value = rhs%start_value
+        lhs%end_value = rhs%end_value
+    end subroutine case_range_assign
+
+    ! Case default implementations
+    subroutine case_default_accept(this, visitor)
+        class(case_default_node), intent(in) :: this
+        class(ast_visitor_base_t), intent(inout) :: visitor
+    end subroutine case_default_accept
+
+    subroutine case_default_assign(lhs, rhs)
+        class(case_default_node), intent(inout) :: lhs
+        class(case_default_node), intent(in) :: rhs
+        ! Copy base class components
+        call copy_ast_node_base(lhs, rhs)
+        ! Deep copy allocatable array
+        if (allocated(rhs%body_indices)) then
+            if (allocated(lhs%body_indices)) deallocate (lhs%body_indices)
+            allocate (lhs%body_indices(size(rhs%body_indices)))
+            lhs%body_indices = rhs%body_indices
+        end if
+    end subroutine case_default_assign
+
+    ! Select type implementations
+    subroutine select_type_accept(this, visitor)
+        class(select_type_node), intent(in) :: this
+        class(ast_visitor_base_t), intent(inout) :: visitor
+    end subroutine select_type_accept
+
+    subroutine select_type_assign(lhs, rhs)
+        class(select_type_node), intent(inout) :: lhs
+        class(select_type_node), intent(in) :: rhs
+        ! Copy base class components
+        call copy_ast_node_base(lhs, rhs)
+        ! Copy specific components
+        lhs%selector_index = rhs%selector_index
+        lhs%default_index = rhs%default_index
+        ! Deep copy allocatable array
+        if (allocated(rhs%guard_indices)) then
+            if (allocated(lhs%guard_indices)) deallocate (lhs%guard_indices)
+            allocate (lhs%guard_indices(size(rhs%guard_indices)))
+            lhs%guard_indices = rhs%guard_indices
+        end if
+    end subroutine select_type_assign
+
+    ! Type guard block implementations
+    subroutine type_guard_block_accept(this, visitor)
+        class(type_guard_block_node), intent(in) :: this
+        class(ast_visitor_base_t), intent(inout) :: visitor
+    end subroutine type_guard_block_accept
+
+    subroutine type_guard_block_assign(lhs, rhs)
+        class(type_guard_block_node), intent(inout) :: lhs
+        class(type_guard_block_node), intent(in) :: rhs
+        ! Copy base class components
+        call copy_ast_node_base(lhs, rhs)
+        ! Copy specific components
+        lhs%guard_type = rhs%guard_type
+        lhs%type_name_index = rhs%type_name_index
+        ! Deep copy allocatable array
+        if (allocated(rhs%body_indices)) then
+            if (allocated(lhs%body_indices)) deallocate (lhs%body_indices)
+            allocate (lhs%body_indices(size(rhs%body_indices)))
+            lhs%body_indices = rhs%body_indices
+        end if
+    end subroutine type_guard_block_assign
+
+    ! Select rank implementations
+    subroutine select_rank_accept(this, visitor)
+        class(select_rank_node), intent(in) :: this
+        class(ast_visitor_base_t), intent(inout) :: visitor
+    end subroutine select_rank_accept
+
+    subroutine select_rank_assign(lhs, rhs)
+        class(select_rank_node), intent(inout) :: lhs
+        class(select_rank_node), intent(in) :: rhs
+        ! Copy base class components
+        call copy_ast_node_base(lhs, rhs)
+        ! Copy specific components
+        lhs%selector_index = rhs%selector_index
+        lhs%default_index = rhs%default_index
+        ! Deep copy allocatable array
+        if (allocated(rhs%rank_indices)) then
+            if (allocated(lhs%rank_indices)) deallocate (lhs%rank_indices)
+            allocate (lhs%rank_indices(size(rhs%rank_indices)))
+            lhs%rank_indices = rhs%rank_indices
+        end if
+    end subroutine select_rank_assign
+
+    ! Rank block implementations
+    subroutine rank_block_accept(this, visitor)
+        class(rank_block_node), intent(in) :: this
+        class(ast_visitor_base_t), intent(inout) :: visitor
+    end subroutine rank_block_accept
+
+    subroutine rank_block_assign(lhs, rhs)
+        class(rank_block_node), intent(inout) :: lhs
+        class(rank_block_node), intent(in) :: rhs
+        ! Copy base class components
+        call copy_ast_node_base(lhs, rhs)
+        ! Copy specific components
+        lhs%rank_value = rhs%rank_value
+        ! Deep copy allocatable array
+        if (allocated(rhs%body_indices)) then
+            if (allocated(lhs%body_indices)) deallocate (lhs%body_indices)
+            allocate (lhs%body_indices(size(rhs%body_indices)))
+            lhs%body_indices = rhs%body_indices
+        end if
+    end subroutine rank_block_assign
+
+    ! Factory functions
+    function create_if(condition_index, then_body_indices, elseif_blocks, &
+            else_body_indices, line, column) result(node)
+        integer, intent(in) :: condition_index
+        integer, intent(in), optional :: then_body_indices(:)
+        type(elseif_wrapper_t), intent(in), optional :: elseif_blocks(:)
+        integer, intent(in), optional :: else_body_indices(:)
+        integer, intent(in), optional :: line, column
+        type(if_node) :: node
+
+        node%uid = generate_uid()
+        node%condition_index = condition_index
+
+        if (present(then_body_indices)) then
+            if (size(then_body_indices) > 0) then
+                node%then_body_indices = then_body_indices
+            end if
+        end if
+
+        if (present(elseif_blocks)) then
+            if (size(elseif_blocks) > 0) then
+                node%elseif_blocks = elseif_blocks
+            end if
+        end if
+
+        if (present(else_body_indices)) then
+            if (size(else_body_indices) > 0) then
+                node%else_body_indices = else_body_indices
+            end if
+        end if
+
+        if (present(line)) node%line = line
+        if (present(column)) node%column = column
+    end function create_if
+
+    function create_select_case(expr_index, case_indices, default_index, &
+            line, column) result(node)
+        integer, intent(in) :: expr_index
+        integer, intent(in), optional :: case_indices(:)
+        integer, intent(in), optional :: default_index
+        integer, intent(in), optional :: line, column
+        type(select_case_node) :: node
+
+        node%uid = generate_uid()
+        node%selector_index = expr_index
+        if (present(case_indices)) then
+            if (size(case_indices) > 0) then
+                node%case_indices = case_indices
+            end if
+        end if
+        if (present(default_index)) node%default_index = default_index
+
+        if (present(line)) node%line = line
+        if (present(column)) node%column = column
+    end function create_select_case
+
+    function create_select_type(selector_index, guard_indices, &
+            default_index, line, column) result(node)
+        integer, intent(in) :: selector_index
+        integer, intent(in), optional :: guard_indices(:)
+        integer, intent(in), optional :: default_index
+        integer, intent(in), optional :: line, column
+        type(select_type_node) :: node
+
+        node%uid = generate_uid()
+        node%selector_index = selector_index
+        if (present(guard_indices)) then
+            if (size(guard_indices) > 0) then
+                node%guard_indices = guard_indices
+            end if
+        end if
+        if (present(default_index)) node%default_index = default_index
+
+        if (present(line)) node%line = line
+        if (present(column)) node%column = column
+    end function create_select_type
+
+    function create_select_rank(selector_index, rank_indices, &
+            default_index, line, column) result(node)
+        integer, intent(in) :: selector_index
+        integer, intent(in), optional :: rank_indices(:)
+        integer, intent(in), optional :: default_index
+        integer, intent(in), optional :: line, column
+        type(select_rank_node) :: node
+
+        node%uid = generate_uid()
+        node%selector_index = selector_index
+        if (present(rank_indices)) then
+            if (size(rank_indices) > 0) then
+                node%rank_indices = rank_indices
+            end if
+        end if
+        if (present(default_index)) node%default_index = default_index
+
+        if (present(line)) node%line = line
+        if (present(column)) node%column = column
+    end function create_select_rank
+
+end module ast_nodes_conditional

@@ -1,0 +1,142 @@
+--- a/vendor/fortfront/src/utilities/intrinsic_registry.f90
++++ b/vendor/fortfront/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 64
++        integer, parameter :: NUM_INTRINSICS = 65
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -546,6 +546,12 @@
+ 
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="selected_real_kind", return_type="integer", &
++            arg_types="integer", &
++            description="Real kind for precision, range and radix")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="selected_int_kind", return_type="integer", &
+             arg_types="integer", &
+             description="Integer kind for range")
+--- a/vendor/fortfront/src/frontend/frontend_compiler_type_queries.f90
++++ b/vendor/fortfront/src/frontend/frontend_compiler_type_queries.f90
+@@ -1570,29 +1570,66 @@
+         type(call_or_subscript_node), intent(in) :: node
+         integer, intent(out) :: value
+         logical, intent(inout) :: visiting(:)
+-        integer :: precision, range_value
++        integer :: requirements(3), slots(3), j, k, n, argument
++        logical :: saw_keyword
++        character(:), allocatable :: name
+ 
+         value = 0
+-        precision = 0
+-        range_value = 0
+-        if (.not. allocated(node%arg_indices)) return
+-        if (size(node%arg_indices) >= 1) then
+-            call evaluate_integer_constant(arena, node%arg_indices(1), &
+-                precision, visiting)
+-        end if
+-        if (size(node%arg_indices) >= 2) then
+-            call evaluate_integer_constant(arena, node%arg_indices(2), &
+-                range_value, visiting)
+-        end if
+-
+-        if (precision <= 6 .and. range_value <= 37) then
++        requirements = [0, 0, 2]
++        slots = 0
++        saw_keyword = .false.
++        n = 0
++        if (allocated(node%arg_indices)) n = size(node%arg_indices)
++        if (n > 3) return
++        do j = 1, n
++            argument = node%arg_indices(j)
++            if (.not. arena%has_node_at(argument)) return
++            k = j
++            select type (arg => arena%entries(argument)%node)
++            type is (assignment_node)
++                if (.not. arg%is_keyword_argument) return
++                saw_keyword = .true.
++                if (.not. arena%has_node_at(arg%target_index)) return
++                select type (target => arena%entries(arg%target_index)%node)
++                type is (identifier_node)
++                    if (.not. allocated(target%name)) return
++                    name = compact_lower(target%name)
++                class default
++                    return
++                end select
++                select case (name)
++                case ("p"); k = 1
++                case ("r"); k = 2
++                case ("radix"); k = 3
++                case default; return
++                end select
++                argument = arg%value_index
++            class default
++                if (saw_keyword) return
++            end select
++            if (slots(k) /= 0) return
++            slots(k) = argument
++        end do
++        do k = 1, 3
++            if (slots(k) /= 0) then
++                call evaluate_integer_constant(arena, slots(k), requirements(k), visiting)
++            end if
++        end do
++        ! The frontend knows wider kinds than the restricted interpreter.
++        if (requirements(3) /= 2) then
++            value = -5
++        else if (requirements(1) <= 6 .and. requirements(2) <= 37) then
+             value = 4
+-        else if (precision <= 15 .and. range_value <= 307) then
++        else if (requirements(1) <= 15 .and. requirements(2) <= 307) then
+             value = 8
+-        else if (precision <= 33 .and. range_value <= 4931) then
++        else if (requirements(1) <= 33 .and. requirements(2) <= 4931) then
+             value = 16
++        else if (requirements(1) > 33 .and. requirements(2) > 4931) then
++            value = -3
++        else if (requirements(1) > 33) then
++            value = -1
+         else
+-            value = -1
++            value = -2
+         end if
+     end subroutine evaluate_selected_real_kind
+ 
+--- a/vendor/fortfront/src/semantic/analyzers/semantic_kind_selector_validation.f90
++++ b/vendor/fortfront/src/semantic/analyzers/semantic_kind_selector_validation.f90
+@@ -3,6 +3,7 @@
+     use ast_nodes_data, only: declaration_node
+     use ast_nodes_core, only: call_or_subscript_node
+     use error_handling, only: error_collection_t, ERROR_SEMANTIC
++    use string_utils_mod, only: to_lower
+     implicit none
+     private
+     public :: validate_kind_selectors
+@@ -28,9 +29,10 @@
+         integer, intent(in) :: selector_index
+         type(error_collection_t), intent(inout) :: errors
+ 
+-        ! A kind selector is a scalar integer constant expression. No intrinsic
+-        ! permitted in that expression takes zero arguments. An empty argument
+-        ! list therefore cannot be a parameter-array element or a valid inquiry.
++        ! A kind selector is a scalar integer constant expression. Intrinsics
++        ! generally require arguments. SELECTED_REAL_KIND is the exception:
++        ! since Fortran 2008 its P, R and RADIX arguments may all be absent.
++        ! Other empty calls cannot be parameter-array elements or valid inquiries.
+         ! Calls inside inquiry arguments are deliberately not traversed: their
+         ! types can be inquired about without evaluating their values.
+         if (.not. arena%has_node_at(selector_index)) return
+@@ -40,6 +42,7 @@
+                 if (size(node%arg_indices) /= 0) return
+             end if
+             if (.not. allocated(node%name)) return
++            if (to_lower(node%name) == "selected_real_kind") return
+             call errors%add_error( &
+                 "Zero-argument function '"//node%name// &
+                 "' is not permitted in a constant kind selector", &

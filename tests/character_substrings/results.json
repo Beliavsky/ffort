@@ -1,0 +1,1101 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:31:06.472491+00:00",
+  "summary": {
+    "total": 35,
+    "failed": 0,
+    "candidate_checked": 35,
+    "gnu_checked": 34,
+    "gnu_skipped": 1,
+    "gnu_executed": 18,
+    "gnu_compile_only": 10,
+    "gnu_compile_rejections": 6
+  },
+  "records": [
+    {
+      "case": {
+        "name": "basic",
+        "source": "basic.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "aaX  f\n",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "aaX  f\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "aaX  f\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameter",
+        "source": "parameter.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "bcd\n",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "bcd\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "bcd\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "undef_len",
+        "source": "undef_len.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "test  \n",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "test  \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "test  \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "wide_empty",
+        "source": "wide_empty.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "empty\n",
+        "compare_mode": "lines",
+        "note": "GNU 14.2 length arithmetic overflows at opposite int64 bounds; compile-only oracle, independently checked empty result."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "empty\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "const_bound_wide",
+        "source": "const_bound_wide.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ab\n",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ab\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ab\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "in_actual",
+        "source": "in_actual.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "bc\n",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "bc\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "bc\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "forall",
+        "source": "forall.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": " 3\n",
+        "compare_mode": "tokens"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/forall.f90:7:30:\n\n    7 | forall(i=1:5) v(i)=s(i:i)=='a'\n      |                              1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_undefined",
+        "source": "empty_undefined.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ok\n",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ok\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ok\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "strip",
+        "source": "strip.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "abc     \n",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "abc     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "abc     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "wide_bounds",
+        "source": "wide_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "acdee\n",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "acdee\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "acdee\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zero_length",
+        "source": "zero_length.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "zero\n",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "zero\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "zero\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_writes",
+        "source": "empty_writes.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "abc\n",
+        "diagnostic": "",
+        "compare_mode": "lines",
+        "note": "GNU 14.2 length arithmetic overflows at opposite int64 bounds; compile-only oracle, independently checked empty result."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "abc\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_rhs",
+        "source": "empty_rhs.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "a  d\n",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "a  d\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "a  d\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_bounds",
+        "source": "nested_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "bcd\n",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "bcd\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "bcd\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_kind",
+        "source": "undefined_kind.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "kind\n",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "kind\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "kind\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "full_out",
+        "source": "full_out.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "hell\n",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "hell\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "hell\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "fixed_dummy",
+        "source": "fixed_dummy.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "bc\n",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "bc\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "bc\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "lower_oob",
+        "source": "lower_oob.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "substring bounds out of range",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/lower_oob.f90:7:3: substring bounds out of range\n"
+      }
+    },
+    {
+      "case": {
+        "name": "upper_oob",
+        "source": "upper_oob.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "substring bounds out of range",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/upper_oob.f90:7:6: substring bounds out of range\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_read",
+        "source": "undefined_read.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized substring base",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/undefined_read.f90:4:6: read of uninitialized substring base\n"
+      }
+    },
+    {
+      "case": {
+        "name": "partial_initialization",
+        "source": "partial_initialization.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "partial substring assignment requires an initialized base",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/partial_initialization.f90:4:1: partial substring assignment requires an initialized base\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_bound",
+        "source": "undefined_bound.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized variable",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/undefined_bound.f90:6:6: read of uninitialized variable i\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bad_rhs_empty_target",
+        "source": "bad_rhs_empty_target.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized variable",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/bad_rhs_empty_target.f90:5:8: read of uninitialized variable t\n"
+      }
+    },
+    {
+      "case": {
+        "name": "stride_reject",
+        "source": "stride_reject.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/stride_reject.f90:5:14:\n\n    5 | print *,s(1:3:2)\n      |              1\nError: Syntax error in SUBSTRING specification at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/stride_reject.f90:5:14: Expected ), found :\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/stride_reject.f90:5:14: Expected ), found :\n"
+      }
+    },
+    {
+      "case": {
+        "name": "no_colon_reject",
+        "source": "no_colon_reject.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/no_colon_reject.f90:5:10:\n\n    5 | print *,s(1)\n      |          1\nError: Syntax error in PRINT statement at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/no_colon_reject.f90:5:12: Expected :, found )\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/no_colon_reject.f90:5:12: Expected :, found )\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real_bound_reject",
+        "source": "real_bound_reject.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/real_bound_reject.f90:5:10:\n\n    5 | print *,s(1.0:2)\n      |          1\nError: Substring start index at (1) must be of type INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/real_bound_reject.f90:5:14: Array subscript and triplet operands must be scalar INTEGER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/real_bound_reject.f90:5:14: Array subscript and triplet operands must be scalar INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_bound_reject",
+        "source": "array_bound_reject.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/array_bound_reject.f90:7:10:\n\n    7 | print *,s(i:2)\n      |          1\nError: Substring start index at (1) must be scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/array_bound_reject.f90:7:12: Array subscript and triplet operands must be scalar INTEGER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/array_bound_reject.f90:7:12: Array subscript and triplet operands must be scalar INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_element_boundary",
+        "source": "array_element_boundary.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": " ab\n",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " ab\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " ab\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "literal_boundary",
+        "source": "literal_boundary.f90",
+        "category": "reject",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/literal_boundary.f90:4:16: Unexpected trailing token: (\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/literal_boundary.f90:4:16: Unexpected trailing token: (\n"
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_write_reject",
+        "source": "parameter_write_reject.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/parameter_write_reject.f90:4:0:\n\n    4 | s(1:2)='z'\nError: Named constant \u2018s\u2019 in variable definition context (assignment) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/parameter_write_reject.f90:4:1: Cannot assign to a PARAMETER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/parameter_write_reject.f90:4:1: Cannot assign to a PARAMETER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "intent_in_write_reject",
+        "source": "intent_in_write_reject.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/intent_in_write_reject.f90:5:0:\n\n    5 | s(1:2)='a'\nError: Dummy argument \u2018s\u2019 with INTENT(IN) in variable definition context (assignment) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/intent_in_write_reject.f90:5:1: Cannot assign to an INTENT(IN) dummy argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/intent_in_write_reject.f90:5:1: Cannot assign to an INTENT(IN) dummy argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "out_actual_boundary",
+        "source": "out_actual_boundary.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Writable dummy requires",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/out_actual_boundary.f90:13:17: Writable dummy requires a variable, element or section actual\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/out_actual_boundary.f90:13:17: Writable dummy requires a variable, element or section actual\n"
+      }
+    },
+    {
+      "case": {
+        "name": "alias_reject",
+        "source": "alias_reject.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "overlapping actual arguments",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_substrings/alias_reject.f90:14:1: overlapping actual arguments with a writable dummy are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "module_slice",
+        "source": "module_slice.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "bcd\n",
+        "diagnostic": "",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "bcd\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "bcd\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mutable_module",
+        "source": "mutable_module.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "az d\n",
+        "compare_mode": "lines"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "az d\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "az d\n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "d5c0cee1c65947843b36786d557a90d54a3de48e1f4b8eae869cf1e853223222",
+  "source_sha256": {
+    "basic.f90": "f06ef44eebda47fa8f01c28c3dd5b527eb0e69298c4fbe0beb3afa5ea8dedc05",
+    "parameter.f90": "928649441d716616fee5d462550967602dd1c3330ab7d419c1ac8d088a5f3ef8",
+    "undef_len.f90": "78ce96fe64e159bd797154bc088176ea9e02a39dacfbe1ba893a1fd9d7c0317e",
+    "wide_empty.f90": "5ef8297bd84cb88702359ef69c3903b214fbe2b7abf5ee995494fc1165cdb847",
+    "const_bound_wide.f90": "08a6a92a9a4cf1d4dad6b853e8e6e1d01832b80aebb5612ca51be1c807cd167b",
+    "in_actual.f90": "da121cda84f904958df7292d66cef676b2200428907446e14b915c0041afeb7e",
+    "forall.f90": "b5151c8ddb4e115d79da6efdd98f34ae2d35e72fcf0f6a4b5ca5aed9c6c36885",
+    "empty_undefined.f90": "cdbfe0b1e39ae0a4dc36b4c82abd081c62ba0f9cabc21a059d5424bdd6e526aa",
+    "strip.f90": "0095fc8bf8e83af19b364424682855e036142d924dc40d05c9eb941168e2222b",
+    "wide_bounds.f90": "b6b72157833a06bd4db07393196313f1ffac0cddf284c61b234ec4cb94a30203",
+    "zero_length.f90": "7bf91f669a1d7583763af50f892ad83736612fde5e33340bddb634af5997d546",
+    "empty_writes.f90": "f761030f4f52028b38510434a0ea40b5bbc223a3ee4dafdf6e14ce95a6be6ebc",
+    "empty_rhs.f90": "0ac1f07733dd2527032b8629c35e77b87092c43154ce98328936e7aa5a111dec",
+    "nested_bounds.f90": "5436d4321607fe0885b43e8c927f863d714c9771fb205bd7d224836347230793",
+    "undefined_kind.f90": "2fb50dbaad1042975a6393b0d3c846e032bad588a5ecdb2f24492f93815769e8",
+    "full_out.f90": "d155a8ebefe5510802a66545463a8e91b9fd4bb9c3cf1e9f60730f95944418ab",
+    "fixed_dummy.f90": "f62895266dae2b1de559d9468e3c71e6f5a89973cfc49ca18d7ca1011a3bc100",
+    "lower_oob.f90": "da6e2bd4b1fc4e8b593f5efeab3266f436de166543d3a60ddc1fb6d2788473de",
+    "upper_oob.f90": "ef57ce8ab6ef9f57bffd3456df98aacb04713c88aff2fc93f375e4bb272d6963",
+    "undefined_read.f90": "6955fd5e442c9ca351f3e525f52d64da630e08940e0b19142a6a9503dc593195",
+    "partial_initialization.f90": "ccf33c6abccbcd00416e3d8f04b4d2db933a0b65dd35bbd2298866cd1fcf2d66",
+    "undefined_bound.f90": "c27a9bae67dc8152037b70bdd9c121086ca87cc69aab64d85f4fa66af861ec89",
+    "bad_rhs_empty_target.f90": "3c1222a45b2a1e86a5eb8a58be620d6bacd4dd6a33132471dc2cb670a71d7f6c",
+    "stride_reject.f90": "d61cdd57d20b3d6235e1a3c0cdae02d0cf8e4ad3f47651b7685669ff9257d755",
+    "no_colon_reject.f90": "53d7d7b8bfe28fe658d6887a1331d047dbce0b0f37071506d15f4ce2365e679e",
+    "real_bound_reject.f90": "56929df0a8fec1390a34bc44290713533e225d65e37c3e393c643497a506a852",
+    "array_bound_reject.f90": "79cbcb2cd8f51b752bb571b44a9ee4e2dc126a00cd35f22e09528e87f2eaf426",
+    "array_element_boundary.f90": "26693300a8ee592e4bae0a6d8e585cd18eb45efaa228cb11567dfa454060799b",
+    "literal_boundary.f90": "77d66ff296c32348a2c9d40b8b9d6d9ec39f12327cd81232b3e51a607493085a",
+    "parameter_write_reject.f90": "af8be7bf3bb9433a318e0f327d0924e0048b4f14cb859cfd52a319c469527eeb",
+    "intent_in_write_reject.f90": "3e1ad40081d3b77e1ece62d8cdfcce851f5b14201933f189229045b1eac91f46",
+    "out_actual_boundary.f90": "04f6eaed995bf2651bcac505676696b6337e8f90715ae08afbf5b5735dafdac4",
+    "alias_reject.f90": "3b7ea2d2a0a4422740d8af084d27562b0aecb7bed5b1fcacd76700bc86ca5722",
+    "module_slice.f90": "047b63fa713fbabc89b989a2f77dd97ad42400f0992b23db4cf66ad7a78c9f2c",
+    "mutable_module.f90": "86c66d758e90e74ab9af70cc22f6f3bc297a953167497d536ea289bbe8836c13"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

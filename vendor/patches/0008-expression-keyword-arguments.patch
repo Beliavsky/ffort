@@ -1,0 +1,38 @@
+--- a/src/parser/expressions/parser_expression_arrays.f90
++++ b/src/parser/expressions/parser_expression_arrays.f90
+@@ -5,7 +5,7 @@
+     use parser_state_module, only: parser_state_t
+     use ast_arena_modern, only: ast_arena_t
+     use ast_nodes_core, only: call_or_subscript_node, component_access_node, &
+-                              identifier_node, literal_node, binary_op_node
++                              identifier_node, literal_node, binary_op_node, assignment_node
+     use ast_nodes_bounds, only: range_expression_node, array_bounds_node
+     use ast_base, only: LITERAL_INTEGER, LITERAL_STRING
+     use ast_factory_control, only: push_do_loop
+@@ -935,7 +935,7 @@
+         type(token_t), intent(out) :: close_token
+         type(token_t) :: token
+         integer :: arg_index
+-        integer :: arg_count
++        integer :: arg_count, i
+         integer, parameter :: MAX_ARGUMENTS = 10000
+ 
+         if (parser%is_at_end()) then
+@@ -976,6 +976,17 @@
+         if (.not. allocated(arg_indices)) then
+             allocate (arg_indices(0))
+         end if
++        ! Function/intrinsic actuals use the same assignment wrappers as CALL.
++        ! A keyword label is not an assignment target or a variable reference.
++        if (closing_char == ")") then
++            do i = 1, size(arg_indices)
++                if (.not. arena%has_node_at(arg_indices(i))) cycle
++                select type (arg => arena%entries(arg_indices(i))%node)
++                type is (assignment_node)
++                    arg%is_keyword_argument = .true.
++                end select
++            end do
++        end if
+     end subroutine collect_index_arguments
+ 
+     integer function fold_literal_substring(parser, arena, base_expr, arg_indices, &

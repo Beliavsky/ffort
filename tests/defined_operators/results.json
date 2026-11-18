@@ -1,0 +1,537 @@
+{
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "passed": 19,
+  "total": 19,
+  "cases": [
+    {
+      "name": "utilities_membership",
+      "file": "utilities_membership.f90",
+      "category": "success",
+      "gnu_valid": true,
+      "expected_stdout": "T F T T F",
+      "diagnostic": "",
+      "source_sha256": "06482e1e5ff0da2b7b818d94218169f3786566c61ff810ebb00826ddbac1d962",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "actual": {
+        "code": 0,
+        "out": " T F T\n T F\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/utilities_membership.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n"
+      },
+      "gnu": {
+        "code": 0,
+        "out": " T F T\n T F\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "unary_elemental",
+      "file": "unary_elemental.f90",
+      "category": "success",
+      "gnu_valid": true,
+      "expected_stdout": "6 4 2 4 6 36 36",
+      "diagnostic": "",
+      "source_sha256": "bfcdb32ae98d18911e803ffeec40cd0d68611f7985ba3da8260bd18473bb5685",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "actual": {
+        "code": 0,
+        "out": " 6 4.0000000000000000 2 4 6\n 36 36\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/unary_elemental.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n"
+      },
+      "gnu": {
+        "code": 0,
+        "out": "           6   4.0000000000000000                2           4           6\n          36          36\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "binary_precedence",
+      "file": "binary_precedence.f90",
+      "category": "success",
+      "gnu_valid": true,
+      "expected_stdout": "42 123 F T 8",
+      "diagnostic": "",
+      "source_sha256": "e9e6f380c00530adf1c054df71ad468d2d05f96f56af64f278065cfa770fcc7f",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "actual": {
+        "code": 0,
+        "out": " 42 123\n F T\n 8\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/binary_precedence.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n"
+      },
+      "gnu": {
+        "code": 0,
+        "out": "          42         123\n F T\n           8\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "elemental_shapes",
+      "file": "elemental_shapes.f90",
+      "category": "success",
+      "gnu_valid": true,
+      "expected_stdout": "14 24 34 41 42 43 3 5",
+      "diagnostic": "",
+      "source_sha256": "fce6e79d6059f82622a8309993b0be9cfc006a0fcc7c5a72069b43dde3d4e00c",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "actual": {
+        "code": 0,
+        "out": " 14 24 34\n 41 42 43\n 3.0000000000000000 5.0000000000000000\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/elemental_shapes.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n"
+      },
+      "gnu": {
+        "code": 0,
+        "out": "          14          24          34\n          41          42          43\n   3.0000000000000000        5.0000000000000000     \n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "only_import",
+      "file": "only_import.f90",
+      "category": "success",
+      "gnu_valid": true,
+      "expected_stdout": "T 14",
+      "diagnostic": "",
+      "source_sha256": "521e113f56f0f7cce13ba573446c3d33f4c5279fea2d5bcd4c9f9871aa7cf6e5",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "actual": {
+        "code": 0,
+        "out": " T 14\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/only_import.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n"
+      },
+      "gnu": {
+        "code": 0,
+        "out": " T          14\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "internal_host",
+      "file": "internal_host.f90",
+      "category": "success",
+      "gnu_valid": true,
+      "expected_stdout": "T 14",
+      "diagnostic": "",
+      "source_sha256": "e7ee702a844fa901a03e737f3de4fae56e59621382ce369cfdea5411cd0ac48f",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "actual": {
+        "code": 0,
+        "out": " T 14\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/internal_host.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n"
+      },
+      "gnu": {
+        "code": 0,
+        "out": " T          14\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "kind_rank_mismatch",
+      "file": "kind_rank_mismatch.f90",
+      "category": "reject",
+      "gnu_valid": false,
+      "expected_stdout": "",
+      "diagnostic": "No matching accessible defined operator",
+      "source_sha256": "4f66ce67b1fbd61f6ed523e9d40baa80043dd9969c864e6c39e04901d1b628d3",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/kind_rank_mismatch.f90:73:24: No matching accessible defined operator: .in.\n"
+      },
+      "actual": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/kind_rank_mismatch.f90:73:24: No matching accessible defined operator: .in.\n"
+      },
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/kind_rank_mismatch.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/kind_rank_mismatch.f90:73:17:\n\n   73 | print *, 3.0 .in. [2,3]\n      |                 1\nError: Operands of user operator \u2018in\u2019 at (1) are REAL(4)/INTEGER(4)\n"
+      },
+      "gnu": null,
+      "errors": []
+    },
+    {
+      "name": "missing_operator",
+      "file": "missing_operator.f90",
+      "category": "reject",
+      "gnu_valid": false,
+      "expected_stdout": "",
+      "diagnostic": "No matching accessible defined operator",
+      "source_sha256": "ac1b303cd8bd810a11f6cfea02fa5427541f9397a25b587476538d38445e40d4",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/missing_operator.f90:73:23: No matching accessible defined operator: .missing.\n"
+      },
+      "actual": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/missing_operator.f90:73:23: No matching accessible defined operator: .missing.\n"
+      },
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/missing_operator.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/missing_operator.f90:73:20:\n\n   73 | print *, 2 .missing. 3\n      |                    1\nError: Unknown operator \u2018missing\u2019 at (1)\n"
+      },
+      "gnu": null,
+      "errors": []
+    },
+    {
+      "name": "private_operator",
+      "file": "private_operator.f90",
+      "category": "reject",
+      "gnu_valid": false,
+      "expected_stdout": "",
+      "diagnostic": "No matching accessible defined operator",
+      "source_sha256": "dabac16c7b3444f49ae295dab8e03f093aac486549797d59ecb9d104db209831",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/private_operator.f90:73:22: No matching accessible defined operator: .in.\n"
+      },
+      "actual": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/private_operator.f90:73:22: No matching accessible defined operator: .in.\n"
+      },
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/private_operator.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/private_operator.f90:73:15:\n\n   73 | print *, 3 .in. [2,3]\n      |               1\nError: Unknown operator \u2018in\u2019 at (1)\n"
+      },
+      "gnu": null,
+      "errors": []
+    },
+    {
+      "name": "only_excluded",
+      "file": "only_excluded.f90",
+      "category": "reject",
+      "gnu_valid": false,
+      "expected_stdout": "",
+      "diagnostic": "No matching accessible defined operator",
+      "source_sha256": "a7fc42b76c88aaed44d0f0129e37fce2dc6c72b97c07ccebc10c72aeef981b8b",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/only_excluded.f90:73:22: No matching accessible defined operator: .in.\n"
+      },
+      "actual": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/only_excluded.f90:73:22: No matching accessible defined operator: .in.\n"
+      },
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/only_excluded.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/only_excluded.f90:73:15:\n\n   73 | print *, 3 .in. [2,3]\n      |               1\nError: Unknown operator \u2018in\u2019 at (1)\n"
+      },
+      "gnu": null,
+      "errors": []
+    },
+    {
+      "name": "wrong_arity",
+      "file": "wrong_arity.f90",
+      "category": "reject",
+      "gnu_valid": false,
+      "expected_stdout": "",
+      "diagnostic": "No matching accessible defined operator",
+      "source_sha256": "f3477cdfd7d3cfe226a54b11706fc33457128f01597e97d66c1e516d2d92fa6c",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/wrong_arity.f90:73:21: No matching accessible defined operator: .twice.\n"
+      },
+      "actual": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/wrong_arity.f90:73:21: No matching accessible defined operator: .twice.\n"
+      },
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/wrong_arity.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/wrong_arity.f90:73:18:\n\n   73 | print *, 2 .twice. 3\n      |                  1\nError: Operands of user operator \u2018twice\u2019 at (1) are INTEGER(4)/INTEGER(4)\n"
+      },
+      "gnu": null,
+      "errors": []
+    },
+    {
+      "name": "invalid_intent",
+      "file": "invalid_intent.f90",
+      "category": "reject",
+      "gnu_valid": false,
+      "expected_stdout": "",
+      "diagnostic": "Function dummy arguments must have INTENT(IN)",
+      "source_sha256": "d080bf2eb45bca6ad61da0cf3277f9224e67224d64bb0f5a4e73587b9dfbc6df",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/invalid_intent.f90:22:24: Function dummy arguments must have INTENT(IN)\n"
+      },
+      "actual": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/invalid_intent.f90:22:24: Function dummy arguments must have INTENT(IN)\n"
+      },
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/invalid_intent.f90:21:26:\n\n   21 | pure function int_in_vec(i,ivec) result(tf)\n      |                          1\nError: Argument \u2018i\u2019 of pure function \u2018int_in_vec\u2019 at (1) must be INTENT(IN) or VALUE\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/invalid_intent.f90:21:31:\n\n   21 | pure function int_in_vec(i,ivec) result(tf)\n      |                               1\nError: Argument \u2018ivec\u2019 of pure function \u2018int_in_vec\u2019 at (1) must be INTENT(IN) or VALUE\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/invalid_intent.f90:21:0:\n\n   21 | pure function int_in_vec(i,ivec) result(tf)\nError: First argument of operator interface at (1) must be INTENT(IN)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/invalid_intent.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/invalid_intent.f90:70:5:\n\n   70 | use operators\n      |     1\nFatal Error: Cannot open module file \u2018operators.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "gnu": null,
+      "errors": []
+    },
+    {
+      "name": "duplicate_signature",
+      "file": "duplicate_signature.f90",
+      "category": "reject",
+      "gnu_valid": false,
+      "expected_stdout": "",
+      "diagnostic": "Duplicate operator specific",
+      "source_sha256": "69964f6685c82889f7b0f576e166def458d9797a878567c44aef1a30aabfcd85",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/duplicate_signature.f90:6:44: Duplicate operator specific\n"
+      },
+      "actual": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/duplicate_signature.f90:6:44: Duplicate operator specific\n"
+      },
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/duplicate_signature.f90:6:43:\n\n    6 |  module procedure :: int_in_vec, int_in_vec\n      |                                           1\nError: Entity \u2018int_in_vec\u2019 at (1) is already present in the interface\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/duplicate_signature.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/duplicate_signature.f90:70:5:\n\n   70 | use operators\n      |     1\nFatal Error: Cannot open module file \u2018operators.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "gnu": null,
+      "errors": []
+    },
+    {
+      "name": "mismatched_end",
+      "file": "mismatched_end.f90",
+      "category": "reject",
+      "gnu_valid": false,
+      "expected_stdout": "",
+      "diagnostic": "END INTERFACE operator does not match",
+      "source_sha256": "84947581ccfed51c22bd900bbbe65fd22d0e323963b92c8541dc5841a05b36f2",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/mismatched_end.f90:7:24: END INTERFACE operator does not match\n"
+      },
+      "actual": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/mismatched_end.f90:7:24: END INTERFACE operator does not match\n"
+      },
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/mismatched_end.f90:7:31:\n\n    7 | end interface operator(.other.)\n      |                               1\nError: Expecting \u2018END INTERFACE OPERATOR (.in.)\u2019 at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/mismatched_end.f90:8:28:\n\n    8 | interface operator(.notall.)\n      |                            1\nError: Unexpected INTERFACE statement in INTERFACE block at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/mismatched_end.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/mismatched_end.f90:70:5:\n\n   70 | use operators\n      |     1\nFatal Error: Cannot open module file \u2018operators.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "gnu": null,
+      "errors": []
+    },
+    {
+      "name": "operator_name_bound",
+      "file": "operator_name_bound.f90",
+      "category": "reject",
+      "gnu_valid": false,
+      "expected_stdout": "",
+      "diagnostic": "Defined operator names require 1 to 14 letters",
+      "source_sha256": "5ccce953af2aaf5d134c646ee4c6b591c4573859c34c84636f6312447bf82550",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/operator_name_bound.f90:73:12: Defined operator names require 1 to 14 letters\n"
+      },
+      "actual": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/operator_name_bound.f90:73:12: Defined operator names require 1 to 14 letters\n"
+      },
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/operator_name_bound.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/operator_name_bound.f90:73:28:\n\n   73 | print *, 2 .toolongoperator. 3\n      |                            1\nError: Unknown operator \u2018toolongoperator\u2019 at (1)\n"
+      },
+      "gnu": null,
+      "errors": []
+    },
+    {
+      "name": "rank_priority_and_integer_kind",
+      "file": "rank_priority_and_integer_kind.f90",
+      "category": "success",
+      "gnu_valid": true,
+      "expected_stdout": "3 104 4 8",
+      "diagnostic": "",
+      "source_sha256": "993236a0a9a2b6c275e0875d3399f58285e1b31291c49db589e23a10b7e3b8f1",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "actual": {
+        "code": 0,
+        "out": " 3 104 4 8\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/rank_priority_and_integer_kind.f90:22:28:\n\n   22 | pure integer function wide(x) result(y)\n      |                            1\nWarning: Unused dummy argument \u2018x\u2019 at (1) [-Wunused-dummy-argument]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/rank_priority_and_integer_kind.f90:18:30:\n\n   18 | pure integer function narrow(x) result(y)\n      |                              1\nWarning: Unused dummy argument \u2018x\u2019 at (1) [-Wunused-dummy-argument]\n"
+      },
+      "gnu": {
+        "code": 0,
+        "out": "           3         104           4           8\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "private_host_operator",
+      "file": "private_host_operator.f90",
+      "category": "success",
+      "gnu_valid": true,
+      "expected_stdout": "14",
+      "diagnostic": "",
+      "source_sha256": "1a5a7e1c4f9a62dccd5b2d64e25fef5aec5f3e490d90bd12eeba5fc3ab7721a3",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "actual": {
+        "code": 0,
+        "out": " 14\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu": {
+        "code": 0,
+        "out": "          14\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "operator_actual_result_type",
+      "file": "operator_actual_result_type.f90",
+      "category": "success",
+      "gnu_valid": true,
+      "expected_stdout": "1 0",
+      "diagnostic": "",
+      "source_sha256": "c7dac359e870fcfceeccfa3c8ba22bb527cb5eee4b70673c0d2cabc2c740ab12",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "actual": {
+        "code": 0,
+        "out": " 1 0\n",
+        "err": ""
+      },
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/operator_actual_result_type.f90:36:10:\n\n   36 |  tf=tf.or.x==vec(j)\n      |          1\nWarning: Equality comparison for REAL(8) at (1) [-Wcompare-reals]\n"
+      },
+      "gnu": {
+        "code": 0,
+        "out": "           1           0\n",
+        "err": ""
+      },
+      "errors": []
+    },
+    {
+      "name": "ambiguous_unused_signature",
+      "file": "ambiguous_unused_signature.f90",
+      "category": "reject",
+      "gnu_valid": false,
+      "expected_stdout": "",
+      "diagnostic": "Ambiguous operator specifics",
+      "source_sha256": "c06f7feea9a46180224e6686c5c05147a1bc26cc1b2c113c9a5df5ca533c814a",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/ambiguous_unused_signature.f90:15:1: Ambiguous operator specifics\n"
+      },
+      "actual": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/ambiguous_unused_signature.f90:15:1: Ambiguous operator specifics\n"
+      },
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/ambiguous_unused_signature.f90:7:25:\n\n    7 | pure integer function one(x) result(y)\n      |                         1\n......\n   11 | pure real function two(z) result(y)\n      |                      2   \nError: Ambiguous interfaces in operator interface 'same' for \u2018one\u2019 at (1) and \u2018two\u2019 at (2)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/defined_operators/ambiguous_unused_signature.f90:17:5:\n\n   17 | use ops\n      |     1\nFatal Error: Cannot open module file \u2018ops.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "gnu": null,
+      "errors": []
+    }
+  ]
+}

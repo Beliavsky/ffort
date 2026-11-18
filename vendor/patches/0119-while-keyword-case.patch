@@ -1,0 +1,18 @@
+--- a/src/parser/control_flow/parser_do_constructs.f90
++++ b/src/parser/control_flow/parser_do_constructs.f90
+@@ -1,3 +1,4 @@
++! WHILE header keyword matching also preserves case-insensitive Fortran syntax.
+ ! DO keyword boundaries are compared case-insensitively in the included bodies.
+ ! Nested SELECT bodies are dispatched on the parent token stream.
+ module parser_do_constructs_module
+--- a/src/parser/control_flow/parser_do_constructs_part2.inc
++++ b/src/parser/control_flow/parser_do_constructs_part2.inc
+@@ -17,7 +17,7 @@
+ 
+         ! Consume 'while'
+         while_token = parser%consume()
+-        if (while_token%kind /= TK_KEYWORD .or. while_token%text /= "while") then
++        if (while_token%kind /= TK_KEYWORD .or. to_lower(while_token%text) /= "while") then
+             return
+         end if
+ 

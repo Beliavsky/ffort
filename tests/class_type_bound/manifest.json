@@ -1,0 +1,340 @@
+{
+  "cases": [
+    {
+      "name": "month_date_class",
+      "source": "month_date_class.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "d1 = 2026-11 list-directed d1 = 2026-11 d2 = 2025-08 d1 - d2 (months) = 15 d1 + 3 = 2027-02 3 + d1 = 2027-02 d1 - 14 = 2025-09 after advancing 2026-12 by 2 months: 2027-02 All tests passed."
+    },
+    {
+      "name": "binding_and_dt",
+      "source": "binding_and_dt.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "b=7,c=9 7 9"
+    },
+    {
+      "name": "binding_keyword",
+      "source": "binding_keyword.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "b=7,c=9 7 9"
+    },
+    {
+      "name": "private_implementation",
+      "source": "private_implementation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "b=7,c=9 7 9"
+    },
+    {
+      "name": "listdirected",
+      "source": "listdirected.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "b= 7 ,c= 9 7 9"
+    },
+    {
+      "name": "iotype_and_vlist",
+      "source": "iotype_and_vlist.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "b=7,c=9 7 9"
+    },
+    {
+      "name": "listdirected_iotype",
+      "source": "listdirected_iotype.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7 7 9"
+    },
+    {
+      "name": "multiple_child_writes",
+      "source": "multiple_child_writes.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "b=x7,c=x9 7 9"
+    },
+    {
+      "name": "repeated_dt",
+      "source": "repeated_dt.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "79 7 9"
+    },
+    {
+      "name": "defined_output_expression",
+      "source": "defined_output_expression.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "12 7 9"
+    },
+    {
+      "name": "no_status_control",
+      "source": "no_status_control.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "b=7,c=9 7 9"
+    },
+    {
+      "name": "status_order",
+      "source": "status_order.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "b=7,c=9 7 9"
+    },
+    {
+      "name": "class_forwarding",
+      "source": "class_forwarding.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "b=7,c=9 7 9"
+    },
+    {
+      "name": "missing_object",
+      "source": "missing_object.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "declared object"
+    },
+    {
+      "name": "private_binding",
+      "source": "private_binding.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "private"
+    },
+    {
+      "name": "unknown_binding",
+      "source": "unknown_binding.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Unknown type binding"
+    },
+    {
+      "name": "unknown_implementation",
+      "source": "unknown_implementation.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "implementation"
+    },
+    {
+      "name": "missing_class_dummy",
+      "source": "missing_class_dummy.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "CLASS"
+    },
+    {
+      "name": "class_local",
+      "source": "class_local.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "scalar dummy"
+    },
+    {
+      "name": "class_unlimited",
+      "source": "class_unlimited.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "derived type"
+    },
+    {
+      "name": "nopass",
+      "source": "nopass.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "default PASS"
+    },
+    {
+      "name": "named_pass",
+      "source": "named_pass.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "default PASS"
+    },
+    {
+      "name": "wrong_keyword",
+      "source": "wrong_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Unknown keyword"
+    },
+    {
+      "name": "duplicate_passed_object",
+      "source": "duplicate_passed_object.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Repeated actual"
+    },
+    {
+      "name": "wrong_argument_type",
+      "source": "wrong_argument_type.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "type or rank"
+    },
+    {
+      "name": "wrong_write_signature",
+      "source": "wrong_write_signature.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "dummy types"
+    },
+    {
+      "name": "generic_unknown_binding",
+      "source": "generic_unknown_binding.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "unknown binding"
+    },
+    {
+      "name": "dt_tag_unsupported",
+      "source": "dt_tag_unsupported.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "syntax"
+    },
+    {
+      "name": "external_write_unsupported",
+      "source": "external_write_unsupported.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "WRITE unit must be * or a supported declared variable"
+    },
+    {
+      "name": "different_child_unit",
+      "source": "different_child_unit.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "UNIT dummy"
+    },
+    {
+      "name": "internal_dt_unsupported",
+      "source": "internal_dt_unsupported.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "parent PRINT"
+    },
+    {
+      "name": "undefined_record",
+      "source": "undefined_record.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "nonzero_iostat",
+      "source": "nonzero_iostat.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "deliberate failure"
+    },
+    {
+      "name": "undefined_iostat",
+      "source": "undefined_iostat.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "did not define IOSTAT"
+    },
+    {
+      "name": "recursive_io",
+      "source": "recursive_io.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "recursive I/O"
+    },
+    {
+      "name": "direct_callback",
+      "source": "direct_callback.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "active parent"
+    },
+    {
+      "name": "scoped_type_names",
+      "source": "scoped_type_names.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "203"
+    },
+    {
+      "name": "readonly_passed_object",
+      "source": "readonly_passed_object.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "INTENT(IN)"
+    },
+    {
+      "name": "binding_recursion",
+      "source": "binding_recursion.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Recursive"
+    },
+    {
+      "name": "binding_array_object",
+      "source": "binding_array_object.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Derived type arrays"
+    },
+    {
+      "name": "inheritance_unsupported",
+      "source": "inheritance_unsupported.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported derived type attribute"
+    },
+    {
+      "name": "out_passed_object",
+      "source": "out_passed_object.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "b=3,c=9 3 9"
+    },
+    {
+      "name": "bound_function_keywords",
+      "source": "bound_function_keywords.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "b=8,c=10 9 12"
+    },
+    {
+      "name": "pure_polymorphic_out",
+      "source": "pure_polymorphic_out.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "polymorphic INTENT(OUT)"
+    }
+  ]
+}

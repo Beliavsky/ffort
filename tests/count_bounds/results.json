@@ -1,0 +1,1244 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:39:24.299732+00:00",
+  "summary": {
+    "total": 42,
+    "failed": 0,
+    "candidate_checked": 42,
+    "gnu_checked": 33,
+    "gnu_skipped": 9,
+    "gnu_executed": 23,
+    "gnu_compile_only": 3,
+    "gnu_compile_rejections": 7
+  },
+  "records": [
+    {
+      "case": {
+        "name": "original_true_pos_func",
+        "source": "cases/original_true_pos_func.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 3 4\n0\n0\n2\n1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           3           4\n           0\n           0\n           2\n           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 3 4\n 0\n 0\n 2\n 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "integer_mask",
+        "source": "cases/integer_mask.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 14"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_mask",
+        "source": "cases/rank_two_mask.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 2 42"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           2          42\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 2 42\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_result",
+        "source": "cases/rank_two_result.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7 7 7 7 7 7\n6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7           7           7           7           7           7\n           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7 7 7 7 7 7\n 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_dim_keywords",
+        "source": "cases/kind_dim_keywords.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 14"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "integer64_comparison",
+        "source": "cases/integer64_comparison.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 14"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real64_logical_mask",
+        "source": "cases/real64_logical_mask.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 14"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "arithmetic_lower_bounds",
+        "source": "cases/arithmetic_lower_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-2 1 4 28"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          -2           1           4          28\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -2 1 4 28\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "logical_frozen_inout",
+        "source": "cases/logical_frozen_inout.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 14\n0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          14\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 14\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_mask_operand",
+        "source": "cases/scalar_mask_operand.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2\n0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_mask_operand",
+        "source": "cases/parameter_mask_operand.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 7"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_array_mask",
+        "source": "cases/parameter_array_mask.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 14"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_mask_unevaluated_scalar",
+        "source": "cases/empty_mask_unevaluated_scalar.f90",
+        "category": "success",
+        "baseline": "skip",
+        "expected_stdout": "0"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_rank_two",
+        "source": "cases/empty_rank_two.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "entry_data_actual_expression",
+        "source": "cases/entry_data_actual_expression.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 14"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "entry_data_section_actual",
+        "source": "cases/entry_data_section_actual.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 21"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3          21\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 21\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "count_intrinsic_mask",
+        "source": "cases/count_intrinsic_mask.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 14"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_count_expression",
+        "source": "cases/nested_count_expression.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 14"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "exact_frame_limit",
+        "source": "cases/exact_frame_limit.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "65536 65536",
+        "args": [
+          "--max-steps",
+          "5000000"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "       65536       65536\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 65536 65536\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "frame_limit_exceeded",
+        "source": "cases/frame_limit_exceeded.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "total array element limit",
+        "args": [
+          "--max-steps",
+          "20000000"
+        ]
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/frame_limit_exceeded.f90:7:10: total array element limit exceeded\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mask_budget",
+        "source": "cases/mask_budget.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "execution step limit",
+        "args": [
+          "--max-steps",
+          "250"
+        ]
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/mask_budget.f90:7:12: execution step limit exceeded (current limit: 250); use --max-steps N to set the execution budget (positive 64-bit integer)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_mask",
+        "source": "cases/undefined_mask.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/undefined_mask.f90:7:18: read of uninitialized array element x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_scalar_in_mask",
+        "source": "cases/undefined_scalar_in_mask.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/undefined_scalar_in_mask.f90:6:20: read of uninitialized variable n\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mask_division_zero",
+        "source": "cases/mask_division_zero.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "division by zero"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/mask_division_zero.f90:7:19: integer division by zero\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mask_integer_overflow",
+        "source": "cases/mask_integer_overflow.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/mask_integer_overflow.f90:7:19: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mask_shape_mismatch",
+        "source": "cases/mask_shape_mismatch.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "conform"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/mask_shape_mismatch.f90:6:19: array expression shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "out_mask",
+        "source": "cases/out_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/out_mask.f90:7:17:\n\n    7 | integer::a(count(x))\n      |                 1\nError: Dummy argument \u2018x\u2019 at (1) cannot be INTENT(OUT)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/out_mask.f90:7:17:\n\n    7 | integer::a(count(x))\n      |                 1\nError: Dummy argument \u2018x\u2019 at (1) cannot be INTENT(OUT)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/out_mask.f90:13:5:\n\n   13 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/out_mask.f90:7:20: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/out_mask.f90:7:20: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "optional_mask",
+        "source": "cases/optional_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/optional_mask.f90:7:17:\n\n    7 | integer::a(count(x))\n      |                 1\nError: Dummy argument \u2018x\u2019 at (1) cannot be OPTIONAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/optional_mask.f90:7:17:\n\n    7 | integer::a(count(x))\n      |                 1\nError: Dummy argument \u2018x\u2019 at (1) cannot be OPTIONAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/optional_mask.f90:13:5:\n\n   13 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/optional_mask.f90:7:20: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/optional_mask.f90:7:20: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "local_mask",
+        "source": "cases/local_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/local_mask.f90:7:17:\n\n    7 | integer::a(count(local))\n      |                 1\nError: Variable \u2018local\u2019 cannot appear in the expression at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/local_mask.f90:13:5:\n\n   13 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/local_mask.f90:7:24: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/local_mask.f90:7:24: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "section_mask_boundary",
+        "source": "cases/section_mask_boundary.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/section_mask_boundary.f90:7:23: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/section_mask_boundary.f90:7:23: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "constructor_mask_boundary",
+        "source": "cases/constructor_mask_boundary.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/constructor_mask_boundary.f90:7:22: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/constructor_mask_boundary.f90:7:22: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_dim_bound",
+        "source": "cases/rank_two_dim_bound.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "scalar INTEGER"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/rank_two_dim_bound.f90:7:11:\n\n    7 | integer::a(count(x,1))\n      |           1\nError: Expression at (1) must be scalar\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/rank_two_dim_bound.f90:7:11:\n\n    7 | integer::a(count(x,1))\n      |           1\nError: Expression at (1) must be scalar\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/rank_two_dim_bound.f90:13:5:\n\n   13 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/rank_two_dim_bound.f90:7:22: Array bounds must be scalar INTEGER expressions\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/rank_two_dim_bound.f90:7:22: Array bounds must be scalar INTEGER expressions\n"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_count_mask",
+        "source": "cases/scalar_count_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "rank-one or rank-two"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/scalar_count_mask.f90:7:17:\n\n    7 | integer::a(count(x))\n      |                 1\nError: \u2018mask\u2019 argument of \u2018count\u2019 intrinsic at (1) must be a logical array\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/scalar_count_mask.f90:7:17:\n\n    7 | integer::a(count(x))\n      |                 1\nError: \u2018mask\u2019 argument of \u2018count\u2019 intrinsic at (1) must be a logical array\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/scalar_count_mask.f90:13:5:\n\n   13 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/scalar_count_mask.f90:7:20: Array intrinsic requires a rank-one or rank-two array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/scalar_count_mask.f90:7:20: Array intrinsic requires a rank-one or rank-two array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "user_mask_function",
+        "source": "cases/user_mask_function.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/user_mask_function.f90:11:26: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/user_mask_function.f90:11:26: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "optional_scalar_mask",
+        "source": "cases/optional_scalar_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/optional_scalar_mask.f90:7:23:\n\n    7 | integer::a(count(x.and.n))\n      |                       1\nError: Dummy argument \u2018n\u2019 at (1) cannot be OPTIONAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/optional_scalar_mask.f90:7:23:\n\n    7 | integer::a(count(x.and.n))\n      |                       1\nError: Dummy argument \u2018n\u2019 at (1) cannot be OPTIONAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/optional_scalar_mask.f90:7:23:\n\n    7 | integer::a(count(x.and.n))\n      |                       1\nError: Dummy argument \u2018n\u2019 at (1) cannot be OPTIONAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/optional_scalar_mask.f90:13:5:\n\n   13 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/optional_scalar_mask.f90:7:26: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/optional_scalar_mask.f90:7:26: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "out_scalar_mask",
+        "source": "cases/out_scalar_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/out_scalar_mask.f90:7:23:\n\n    7 | integer::a(count(x.and.n))\n      |                       1\nError: Dummy argument \u2018n\u2019 at (1) cannot be INTENT(OUT)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/out_scalar_mask.f90:7:23:\n\n    7 | integer::a(count(x.and.n))\n      |                       1\nError: Dummy argument \u2018n\u2019 at (1) cannot be INTENT(OUT)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/out_scalar_mask.f90:7:23:\n\n    7 | integer::a(count(x.and.n))\n      |                       1\nError: Dummy argument \u2018n\u2019 at (1) cannot be INTENT(OUT)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/out_scalar_mask.f90:13:5:\n\n   13 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/out_scalar_mask.f90:7:26: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/out_scalar_mask.f90:7:26: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_count_dim",
+        "source": "cases/runtime_count_dim.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_count_dim",
+        "source": "cases/invalid_count_dim.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "DIM outside array rank"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/count_bounds/cases/invalid_count_dim.f90:7:12: reduction DIM outside array rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "constant_and_count_dimensions",
+        "source": "cases/constant_and_count_dimensions.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_type_inquiry",
+        "source": "cases/kind_type_inquiry.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 14"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_int_conversion",
+        "source": "cases/kind_int_conversion.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 14"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_parameter_element",
+        "source": "cases/kind_parameter_element.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 14"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 14\n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "5a7500860bcbf4f455f90ce26a14ddc23efd9616ed91bd6e1c952783335ecc96",
+  "source_sha256": {
+    "cases/original_true_pos_func.f90": "a4a4d8b45069408f7e297130d390fab4fa6fee8e00bd574913af20d2a6e28edc",
+    "cases/integer_mask.f90": "e05bf1dc30e7a0858d73a9d47217a38f4b5d4b0ad2646599b72ecdbbb537b845",
+    "cases/rank_two_mask.f90": "a1c8131559e8aaf108449183741395c3bd56c05508c16cd7c3643ac29d18faf0",
+    "cases/rank_two_result.f90": "08eaed25ab55b6559e9210362aea331c9f61b76f28265fa3d07c8c41232578f3",
+    "cases/kind_dim_keywords.f90": "f9bb506a62ab142a9dc6895ed45f6ee9ce736117c72026f405420acb76eda9cd",
+    "cases/integer64_comparison.f90": "ddf7b4b539750111ed0c4ae4db805de01304123c2f77aabf24aa55c7534f4911",
+    "cases/real64_logical_mask.f90": "fe28098615484c74e6fd11b761a732baa79987c168bc7c7d6e9819604911060e",
+    "cases/arithmetic_lower_bounds.f90": "c5e91e6509088301eeece08eba471456babeb64aec6e78f87db0b78dd9587ba2",
+    "cases/logical_frozen_inout.f90": "353ff2d3fc36aac85c0641135f38d37aad3ca2d2aae9b622c099e70dc33bcb96",
+    "cases/scalar_mask_operand.f90": "d94c199a05588f3d0e43a5d20f26ad2b1b12003fed9626821a516bcf42418ea5",
+    "cases/parameter_mask_operand.f90": "a03bf8bc2e67e621178235a2e67f18e29c522c6201e56ac19cbd06808b5f4f00",
+    "cases/parameter_array_mask.f90": "a9b68f3bc303ae666a80fd412f096f5622084c8f21fb53d3b8e8cf9c32227145",
+    "cases/empty_mask_unevaluated_scalar.f90": "8cd2d01b447b74a64a1e46dc63adc9c0e9408a3a091010150c484d33b8563f82",
+    "cases/empty_rank_two.f90": "3508697dc26ba9ec6e478c16f89882efb8543dd8b5411b25f7427b8a16002d9f",
+    "cases/entry_data_actual_expression.f90": "fe8503ba2572037cc16f68ec78cd7e5cd407c23c18a9b4580aa62f34b1d9dd34",
+    "cases/entry_data_section_actual.f90": "ddefaaea56af67ed4b1d45834a35cfb8ff9bc9493443101bbf06434cdeef98f5",
+    "cases/count_intrinsic_mask.f90": "c19137ff4791a89ab667e8772989aaba925a4c4838e3517357a8ac90567a09b0",
+    "cases/nested_count_expression.f90": "c9f17bc63d0e832f090860e9e7c71f39657fcf4f9bf7d257a3b61b6da3171356",
+    "cases/exact_frame_limit.f90": "f3d710de05d2054ea98e435dee39f22b8606b9da9f624effb0cb532de7288dac",
+    "cases/frame_limit_exceeded.f90": "3a4eead472ddd29372c84a21b32093d31cdb59b9fb58059dc2fb80051bff5f20",
+    "cases/mask_budget.f90": "77f2dbabfa9256e0dbb569e45e71d2f42c85a3b00dc6ff209724ce8387a4f10f",
+    "cases/undefined_mask.f90": "21e657bb1bce8457e5fbd2adf9a6d0d8b5e43032cc7a98707224702d2832d8b0",
+    "cases/undefined_scalar_in_mask.f90": "eb4291c1bf8e57b9c6aff2bb404800cc2ef451028e49de41774e59ae64ee00c3",
+    "cases/mask_division_zero.f90": "3c260f1796cfdbeee97e9d2a99328237f81691e2ec58c3cf997e04ec46e9b105",
+    "cases/mask_integer_overflow.f90": "6153d560e81df85fcf25e6e4b137d73be658b0d7a607dfb70964615ba88f8ed0",
+    "cases/mask_shape_mismatch.f90": "f7254959ea34525d288ed1da898ddc748eecb88c9c588b66cef607a4e2ac3365",
+    "cases/out_mask.f90": "eac1fa322c3f7de44e229f9ec2f479702f0e6ca0314b07afe89a8baf14c6aa2c",
+    "cases/optional_mask.f90": "e759d32f3c615b9889f9cb09d8706f2a4590ea0de6534d5801eafb612601a8d1",
+    "cases/local_mask.f90": "f5fe1a4eebc4a875a90902f1f22e91501c2619426b3426a388d9292ebf85f5f9",
+    "cases/section_mask_boundary.f90": "4cd3ab3361861f6b77ee2e7f74be5854fa51be3fa0e66ef52428b4b3cb7ea16f",
+    "cases/constructor_mask_boundary.f90": "69479631421d8488642e828213117e0e543c24ab58c759104027291394c05b0c",
+    "cases/rank_two_dim_bound.f90": "5c2543c6f77ff70ea95fd98dd5ae256a745a1bf5728347fd3f7fbed4e69d7b2b",
+    "cases/scalar_count_mask.f90": "acd16cb935c96b2a98d1bea6691075f2abaf34da06873ed69fecab842eacebc2",
+    "cases/user_mask_function.f90": "af2d6213b2d6d6f36cbaf57f48e83364e4df689d76a52c7ca3fd697a64254ac4",
+    "cases/optional_scalar_mask.f90": "1252bf9cf488a85b8e1736842a3f838105614fccc1ad1a40e3bc1a158b450005",
+    "cases/out_scalar_mask.f90": "b451d262c4cb0c1d4fb50f70a642f059b521c41ba8a8da6b518a785ea205cee7",
+    "cases/runtime_count_dim.f90": "a12a315c04437521a3d50b61162bd5cf24e000ee75a6d4dfbc7549537509058e",
+    "cases/invalid_count_dim.f90": "71a4a0eb55b9c9be5a8d673a2be6b0d0b39babb9bcee3e8164edfddae8162f18",
+    "cases/constant_and_count_dimensions.f90": "098c9fbbd71eb9748e0bf7b3b1b818aeca05e9691b30c95665049aa99921e6da",
+    "cases/kind_type_inquiry.f90": "45490dd501ac60182771bcf86a4bceab1dcc129ce71fe7dbd1e6082a3e280c40",
+    "cases/kind_int_conversion.f90": "c9f43bb411251be6f427cb9765433ebbf2aca8e58bd4c5cd4f157328ef1ee518",
+    "cases/kind_parameter_element.f90": "aae8ba79dc66f17f8b65c3c8ece6943fc9698bd844f4bda38053b03eca6bdce7"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

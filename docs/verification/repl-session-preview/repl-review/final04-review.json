@@ -1,0 +1,29 @@
+{
+  "status": "passed_focused_independent_repl_review",
+  "candidate_sha256": "81ce673609ae78b43d1749cc66341f7be6e72b8b2cdb014063cae3a22d9fc39d",
+  "source": {
+    "recovery/057-repl-session-work/src/fi_repl.f90": "22aa5bb3de3de2c310194c0bd799b506416aca0ebc1abe5fd649cb23b6025427"
+  },
+  "probe_receipt": "recovery/057-repl-session-evidence/repl-review/final04-probes.json",
+  "probe_sha256": "e73fa0f592c319c01ca427580895eaa666fbe1c06841f2bae283d528c4e9853b",
+  "checks": 14,
+  "review": [
+    "Quote-aware comment trimming preserves quoted punctuation and doubled quotes.",
+    "Balanced-parenthesis, top-level comma and semicolon checks precede compilation and pending effects.",
+    "Base and ephemeral query compile/frontend/admission both precede suffix execution.",
+    "Malformed or compile-failed query leaves state and pending body untouched.",
+    "Ephemeral query is not buffered; repeated query does not replay pending statements.",
+    ".run chooses ordinary fallback by read-only admission before effects, never retries runtime failure.",
+    "Explicit .run/.clear reset; nonresumable general run refuses later queries."
+  ],
+  "history_preserved": [
+    "review-draft1.json",
+    "probes.json",
+    "comment-splice-probes.json"
+  ],
+  "limits": [
+    "Focused new REPL review only; not full certification.",
+    "Runtime implementation independently reviewed by source056; this review covers caller.",
+    "Keyword-classification expansion remains outside current subset."
+  ]
+}

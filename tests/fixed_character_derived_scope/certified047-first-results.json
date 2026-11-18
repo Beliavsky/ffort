@@ -1,0 +1,242 @@
+{
+  "summary": {
+    "candidate_sha256": "086cf371b0b1a0be06287a39a607fa2261ab807926e109aaaf0300988d0f47c0",
+    "total": 7,
+    "failed": 2
+  },
+  "records": [
+    {
+      "case": {
+        "name": "ordinary_abs",
+        "source": "cases/ordinary_abs.f90",
+        "sha256": "95b52cb3b66f33db26ee74037c26486e30e830031d794ae2a6f50691b7132846",
+        "stage": "success",
+        "gnu": "run",
+        "expected": "0303\n",
+        "diagnostic": null,
+        "integer_records": []
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "0303\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "0303\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_max",
+        "source": "cases/ordinary_max.f90",
+        "sha256": "74d83f1d8a1b3ebed73694764f8b2f7530c2c76c76a05b25d6958d78dce15307",
+        "stage": "success",
+        "gnu": "run",
+        "expected": "0303\n",
+        "diagnostic": null,
+        "integer_records": []
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "0303\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "0303\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_sum",
+        "source": "cases/ordinary_sum.f90",
+        "sha256": "82149a2184e52bb18d9c58a21d5983801ea38a4fe8a303684336dcec5799947c",
+        "stage": "success",
+        "gnu": "run",
+        "expected": "0303\n",
+        "diagnostic": null,
+        "integer_records": []
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "0303\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "0303\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_nested_in_character",
+        "source": "cases/kind_nested_in_character.f90",
+        "sha256": "b9c293f6ee841209eaf7692c519242ef94ebc4e2c46621290ee7ac203e3d7552",
+        "stage": "runtime",
+        "gnu": "run",
+        "expected": "",
+        "diagnostic": null,
+        "integer_records": [],
+        "gnu_expected": "0404\n"
+      },
+      "errors": [
+        "unpinned or mismatched exact diagnostic"
+      ],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "0404\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/tmp/fixed-character-derived-scope-tests/cases/kind_nested_in_character.f90:49:18: invalid KIND argument opcode\n"
+      }
+    },
+    {
+      "case": {
+        "name": "direct_component_kind",
+        "source": "cases/direct_component_kind.f90",
+        "sha256": "a13ced39fb133b17174fcbcaa887621280653e2f3e4b5e22adf8879900d44cf7",
+        "stage": "runtime",
+        "gnu": "run",
+        "expected": "",
+        "gnu_expected": "4\n",
+        "diagnostic": null,
+        "integer_records": []
+      },
+      "errors": [
+        "unpinned or mismatched exact diagnostic"
+      ],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/tmp/fixed-character-derived-scope-tests/cases/direct_component_kind.f90:49:23: invalid KIND argument opcode\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_move_read_eoshift_vector",
+        "source": "source/move_read_eoshift_vector.f90",
+        "sha256": "754e110c0efa6b2aeba5b561a8413d7fe387c8bf8c0c8a7321e338074a6e0e42",
+        "stage": "runtime",
+        "gnu": "compile",
+        "expected": "",
+        "diagnostic": "18:26: invalid KIND argument opcode",
+        "integer_records": [],
+        "inputs": [
+          {
+            "unit": 27,
+            "file": "inputs/move_read_eoshift_vector_27.dat"
+          }
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/tmp/fixed-character-derived-scope-tests/source/move_read_eoshift_vector.f90:18:26: invalid KIND argument opcode\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_metadata_no_read_default_kind",
+        "source": "source/metadata_no_read_default_kind.f90",
+        "sha256": "69ae9fabba895d41012569bfe1783168f08aa38c525fc2c3f9008c0c48d65933",
+        "stage": "runtime",
+        "gnu": "compile",
+        "expected": "",
+        "diagnostic": "14:20: invalid KIND argument opcode",
+        "integer_records": []
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/tmp/fixed-character-derived-scope-tests/source/metadata_no_read_default_kind.f90:14:20: invalid KIND argument opcode\n"
+      }
+    }
+  ]
+}

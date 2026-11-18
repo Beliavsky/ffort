@@ -1,0 +1,16 @@
+diff --git a/src/frontend/frontend_compiler_type_queries.f90 b/src/frontend/frontend_compiler_type_queries.f90
+index d892880..5654135 100644
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -438,7 +438,10 @@ contains
+         call resolve_node_metadata(arena, node%array_index, visiting)
+         call copy_metadata_from_index(arena, node%array_index, node)
+         if (.not. node%resolved_type_found) return
+-        if (node%is_character_substring) return
++        ! A scalar CHARACTER base is a substring even before semantic inference
++        ! has set the lexical flag (notably inside CALL actual arguments).
++        ! CHARACTER array sections still retain their declared nonzero rank.
++        if (node%resolved_type_kind == TCHAR .and. node%resolved_rank == 0) return
+         rank = 0
+         do i = 1, node%num_dimensions
+             bound = node%bounds_indices(i)

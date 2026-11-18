@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "native_checks": 134,
+  "candidate_sha256": "2d47a3913ad6cc9145bbbe02e6e5af9739eb6ecc9818af9de0198038d0a714f8",
+  "source_pins": {
+    "src/fi_ir.f90": "874e46ea37c6f13529836392a8d193b8ac70e71b03095438f7b0464d12226cee",
+    "src/fi_runtime.f90": "fc477af3bbb6e84ea36bd9d2ceecacf50d80a088b3c43e6085ebec258361b05b",
+    "src/fi_frontend.f90": "c84da8ef1a9cffaab9cf9144e58743356bacd15f7a8801f421f7494235a4bcc9",
+    "test/test_internal_read_sections_independent.f90": "e50c138a3bd7df39952af614919962254440a09de457ae729df0654554f0d933"
+  },
+  "findings": [
+    "All selected offsets staged before file evaluation/data transfer",
+    "Associated storage and flags validated before shape/offset evaluation",
+    "Only selected flags invalidated on conversion/EOF; null/slash preserve untouched elements",
+    "Per-statement shape cache reset causes fresh descriptor reevaluation per READ",
+    "Strict root and INTEGER bound-tree canonical validation rejects cycles/inactive fields/IOSTAT or target dependencies",
+    "General runtime preflight retains readonly, active-DO and alias checks"
+  ],
+  "tests": [
+    "32 root mutations checked at public gate/runtime/frontend",
+    "bound-cycle and metadata/type/kind mutations",
+    "IOSTAT dependency, readonly and duplicate targets",
+    "negative stride, empty selection, null and slash",
+    "conversion/EOF unselected preservation and selected undefinedness",
+    "fresh READ destination reevaluation"
+  ],
+  "limitations": [
+    "No direct forged runtime storage bindings tested; static descriptor validation reviewed",
+    "Full native suite and compiled oracle comparison delegated separately"
+  ]
+}

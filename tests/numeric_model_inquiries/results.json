@@ -1,0 +1,1509 @@
+{
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "total": 69,
+  "failed": 0,
+  "originals": [
+    {
+      "name": "demo_floor",
+      "sha256": "c6cb094c810fa53d2c354083c5d5e089190b0d0b5cc5c98067bf15ce0053fba3",
+      "source": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/numeric_model_inquiries/original/demo_floor.f90"
+    },
+    {
+      "name": "demo_radix",
+      "sha256": "26d8cf197178d37750dff0c96d2dcbf75b8669b3947fb690939f2f5bef8926ad",
+      "source": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/numeric_model_inquiries/original/demo_radix.f90"
+    },
+    {
+      "name": "demo_tiny",
+      "sha256": "b03d5cb3b10b20438914014a0a85732b2e7a6e4c5c4265c4e72d02dc2a797d71",
+      "source": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/numeric_model_inquiries/original/demo_tiny.f90"
+    }
+  ],
+  "cases": [
+    {
+      "name": "scalars",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           2  9223372036854775807  2147483647           2           2           2\n   1.19209290E-07   1.17549435E-38   3.40282347E+38   2.2204460492503131E-016   2.2250738585072014E-308   1.7976931348623157E+308\n           4           8           4           8\n           4           8           4           8           4\n   2.2204460492503131E-016   2.2250738585072014E-308  9223372036854775807           2\n           1  9223372036854775806\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 2 9223372036854775807 2147483647 2 2 2\n 0.119209290E-6 0.117549435E-37 0.340282347E+39 0.22204460492503131E-15 0.22250738585072014E-307 0.17976931348623157E+309\n 4 8 4 8\n 4 8 4 8 4\n 0.22204460492503131E-15 0.22250738585072014E-307 9223372036854775807 2\n 1 9223372036854775806\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "arrays",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   1.19209290E-07   1.17549435E-38   3.40282347E+38           2\n   1.19209290E-07   1.17549435E-38   3.40282347E+38           2\n   1.19209290E-07   1.17549435E-38   3.40282347E+38           2\n   2.2204460492503131E-016   1.17549435E-38  9223372036854775807           2\n           3           1\n           8           8           4\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 0.119209290E-6 0.117549435E-37 0.340282347E+39 2\n 0.119209290E-6 0.117549435E-37 0.340282347E+39 2\n 0.119209290E-6 0.117549435E-37 0.340282347E+39 2\n 0.22204460492503131E-15 0.117549435E-37 9223372036854775807 2\n 3 1\n 8 8 4\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "descriptors",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   1.19209290E-07   1.17549435E-38   3.40282347E+38           2\n   1.19209290E-07   1.17549435E-38   3.40282347E+38           2\n F   1.19209290E-07   1.17549435E-38   3.40282347E+38           2\n           1\n T   1.19209290E-07   1.17549435E-38   3.40282347E+38           2\n           1\n F   1.19209290E-07   1.17549435E-38   3.40282347E+38           2\n           1\n T   1.19209290E-07   1.17549435E-38   3.40282347E+38           2\n           1\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 0.119209290E-6 0.117549435E-37 0.340282347E+39 2\n 0.119209290E-6 0.117549435E-37 0.340282347E+39 2\n F 0.119209290E-6 0.117549435E-37 0.340282347E+39 2\n 1\n T 0.119209290E-6 0.117549435E-37 0.340282347E+39 2\n 1\n F 0.119209290E-6 0.117549435E-37 0.340282347E+39 2\n 1\n T 0.119209290E-6 0.117549435E-37 0.340282347E+39 2\n 1\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "no_evaluation",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   2.2204460492503131E-016   1.17549435E-38   1.7976931348623157E+308           2           0\n   1.19209290E-07   1.17549435E-38   3.40282347E+38           2\n           0   2.2204460492503131E-016   1.7976931348623157E+308\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 0.22204460492503131E-15 0.117549435E-37 0.17976931348623157E+309 2 0\n 0.119209290E-6 0.117549435E-37 0.340282347E+39 2\n 0 0.22204460492503131E-15 0.17976931348623157E+309\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "composition",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           4           8           8\n           2           2           1           2\n   1.0020841800044864E-292           4294967298\n           2           1           1\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 4 8 8\n 2 2 1 2\n 0.10020841800044864E-291 4294967298\n 2 1 1\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "shadowing",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           7          20          30   3.00000000    \n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 7 20 30 3.00000000\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "epsilon_empty",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_empty.f90:2:8:\n\n    2 | print *,epsilon()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018epsilon\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_empty.f90:2:18: Numeric model inquiry requires one X argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_empty.f90:2:18: Numeric model inquiry requires one X argument\n"
+      }
+    },
+    {
+      "name": "epsilon_excess",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_excess.f90:2:8:\n\n    2 | print *,epsilon(1.0,2.0)\n      |        1\nError: Too many arguments in call to \u2018epsilon\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_excess.f90:2:25: Numeric model inquiry requires one X argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_excess.f90:2:25: Numeric model inquiry requires one X argument\n"
+      }
+    },
+    {
+      "name": "epsilon_logical",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_logical.f90:2:16:\n\n    2 | print *,epsilon(.true.)\n      |                1\nError: \u2018x\u2019 argument of \u2018epsilon\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_logical.f90:2:24: EPSILON/TINY requires REAL X\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_logical.f90:2:24: EPSILON/TINY requires REAL X\n"
+      }
+    },
+    {
+      "name": "epsilon_character",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_character.f90:2:16:\n\n    2 | print *,epsilon('a')\n      |                1\nError: \u2018x\u2019 argument of \u2018epsilon\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_character.f90:2:21: EPSILON/TINY requires REAL X\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_character.f90:2:21: EPSILON/TINY requires REAL X\n"
+      }
+    },
+    {
+      "name": "epsilon_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_keyword.f90:2:8:\n\n    2 | print *,epsilon(a=1.0)\n      |        1\nError: Cannot find keyword named \u2018a\u2019 in call to \u2018epsilon\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_keyword.f90:2:23: Unknown keyword or excess actual argument: a\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_keyword.f90:2:23: Unknown keyword or excess actual argument: a\n"
+      }
+    },
+    {
+      "name": "epsilon_duplicate",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_duplicate.f90:2:28:\n\n    2 | print *,epsilon(x=1.0,x=2.0)\n      |                            1\nError: Keyword \u2018x\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_duplicate.f90:2:29: Repeated actual argument for x\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_duplicate.f90:2:29: Repeated actual argument for x\n"
+      }
+    },
+    {
+      "name": "epsilon_after_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_after_keyword.f90:2:23:\n\n    2 | print *,epsilon(x=1.0,2.0)\n      |                       1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_after_keyword.f90:2:23: Positional argument cannot follow a keyword argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_after_keyword.f90:2:23: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "name": "epsilon_kind_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_kind_keyword.f90:2:8:\n\n    2 | print *,epsilon(1.0,kind=8)\n      |        1\nError: Too many arguments in call to \u2018epsilon\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_kind_keyword.f90:2:28: Unknown keyword or excess actual argument: kind\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_kind_keyword.f90:2:28: Unknown keyword or excess actual argument: kind\n"
+      }
+    },
+    {
+      "name": "epsilon_real16",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_real16.f90:2:17: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_real16.f90:2:17: Only REAL literal kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "name": "radix_empty",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_empty.f90:2:8:\n\n    2 | print *,radix()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018radix\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_empty.f90:2:16: Numeric model inquiry requires one X argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_empty.f90:2:16: Numeric model inquiry requires one X argument\n"
+      }
+    },
+    {
+      "name": "radix_excess",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_excess.f90:2:8:\n\n    2 | print *,radix(1.0,2.0)\n      |        1\nError: Too many arguments in call to \u2018radix\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_excess.f90:2:23: Numeric model inquiry requires one X argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_excess.f90:2:23: Numeric model inquiry requires one X argument\n"
+      }
+    },
+    {
+      "name": "radix_logical",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_logical.f90:2:14:\n\n    2 | print *,radix(.true.)\n      |              1\nError: \u2018x\u2019 argument of \u2018radix\u2019 intrinsic at (1) must be INTEGER or REAL\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_logical.f90:2:22: HUGE/RADIX requires INTEGER or REAL X\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_logical.f90:2:22: HUGE/RADIX requires INTEGER or REAL X\n"
+      }
+    },
+    {
+      "name": "radix_character",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_character.f90:2:14:\n\n    2 | print *,radix('a')\n      |              1\nError: \u2018x\u2019 argument of \u2018radix\u2019 intrinsic at (1) must be INTEGER or REAL\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_character.f90:2:19: HUGE/RADIX requires INTEGER or REAL X\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_character.f90:2:19: HUGE/RADIX requires INTEGER or REAL X\n"
+      }
+    },
+    {
+      "name": "radix_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_keyword.f90:2:8:\n\n    2 | print *,radix(a=1.0)\n      |        1\nError: Cannot find keyword named \u2018a\u2019 in call to \u2018radix\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_keyword.f90:2:21: Unknown keyword or excess actual argument: a\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_keyword.f90:2:21: Unknown keyword or excess actual argument: a\n"
+      }
+    },
+    {
+      "name": "radix_duplicate",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_duplicate.f90:2:26:\n\n    2 | print *,radix(x=1.0,x=2.0)\n      |                          1\nError: Keyword \u2018x\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_duplicate.f90:2:27: Repeated actual argument for x\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_duplicate.f90:2:27: Repeated actual argument for x\n"
+      }
+    },
+    {
+      "name": "radix_after_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_after_keyword.f90:2:21:\n\n    2 | print *,radix(x=1.0,2.0)\n      |                     1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_after_keyword.f90:2:21: Positional argument cannot follow a keyword argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_after_keyword.f90:2:21: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "name": "radix_kind_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_kind_keyword.f90:2:8:\n\n    2 | print *,radix(1.0,kind=8)\n      |        1\nError: Too many arguments in call to \u2018radix\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_kind_keyword.f90:2:26: Unknown keyword or excess actual argument: kind\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_kind_keyword.f90:2:26: Unknown keyword or excess actual argument: kind\n"
+      }
+    },
+    {
+      "name": "radix_real16",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_real16.f90:2:15: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_real16.f90:2:15: Only REAL literal kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "name": "radix_integer2",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_integer2.f90:2:15: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_integer2.f90:2:15: Only REAL literal kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "name": "tiny_empty",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_empty.f90:2:8:\n\n    2 | print *,tiny()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018tiny\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_empty.f90:2:15: Numeric model inquiry requires one X argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_empty.f90:2:15: Numeric model inquiry requires one X argument\n"
+      }
+    },
+    {
+      "name": "tiny_excess",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_excess.f90:2:8:\n\n    2 | print *,tiny(1.0,2.0)\n      |        1\nError: Too many arguments in call to \u2018tiny\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_excess.f90:2:22: Numeric model inquiry requires one X argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_excess.f90:2:22: Numeric model inquiry requires one X argument\n"
+      }
+    },
+    {
+      "name": "tiny_logical",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_logical.f90:2:13:\n\n    2 | print *,tiny(.true.)\n      |             1\nError: \u2018x\u2019 argument of \u2018tiny\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_logical.f90:2:21: EPSILON/TINY requires REAL X\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_logical.f90:2:21: EPSILON/TINY requires REAL X\n"
+      }
+    },
+    {
+      "name": "tiny_character",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_character.f90:2:13:\n\n    2 | print *,tiny('a')\n      |             1\nError: \u2018x\u2019 argument of \u2018tiny\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_character.f90:2:18: EPSILON/TINY requires REAL X\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_character.f90:2:18: EPSILON/TINY requires REAL X\n"
+      }
+    },
+    {
+      "name": "tiny_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_keyword.f90:2:8:\n\n    2 | print *,tiny(a=1.0)\n      |        1\nError: Cannot find keyword named \u2018a\u2019 in call to \u2018tiny\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_keyword.f90:2:20: Unknown keyword or excess actual argument: a\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_keyword.f90:2:20: Unknown keyword or excess actual argument: a\n"
+      }
+    },
+    {
+      "name": "tiny_duplicate",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_duplicate.f90:2:25:\n\n    2 | print *,tiny(x=1.0,x=2.0)\n      |                         1\nError: Keyword \u2018x\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_duplicate.f90:2:26: Repeated actual argument for x\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_duplicate.f90:2:26: Repeated actual argument for x\n"
+      }
+    },
+    {
+      "name": "tiny_after_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_after_keyword.f90:2:20:\n\n    2 | print *,tiny(x=1.0,2.0)\n      |                    1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_after_keyword.f90:2:20: Positional argument cannot follow a keyword argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_after_keyword.f90:2:20: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "name": "tiny_kind_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_kind_keyword.f90:2:8:\n\n    2 | print *,tiny(1.0,kind=8)\n      |        1\nError: Too many arguments in call to \u2018tiny\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_kind_keyword.f90:2:25: Unknown keyword or excess actual argument: kind\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_kind_keyword.f90:2:25: Unknown keyword or excess actual argument: kind\n"
+      }
+    },
+    {
+      "name": "tiny_real16",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_real16.f90:2:14: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_real16.f90:2:14: Only REAL literal kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "name": "huge_empty",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_empty.f90:2:8:\n\n    2 | print *,huge()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018huge\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_empty.f90:2:15: Numeric model inquiry requires one X argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_empty.f90:2:15: Numeric model inquiry requires one X argument\n"
+      }
+    },
+    {
+      "name": "huge_excess",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_excess.f90:2:8:\n\n    2 | print *,huge(1.0,2.0)\n      |        1\nError: Too many arguments in call to \u2018huge\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_excess.f90:2:22: Numeric model inquiry requires one X argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_excess.f90:2:22: Numeric model inquiry requires one X argument\n"
+      }
+    },
+    {
+      "name": "huge_logical",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_logical.f90:2:13:\n\n    2 | print *,huge(.true.)\n      |             1\nError: \u2018x\u2019 argument of \u2018huge\u2019 intrinsic at (1) must be INTEGER or REAL\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_logical.f90:2:21: HUGE/RADIX requires INTEGER or REAL X\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_logical.f90:2:21: HUGE/RADIX requires INTEGER or REAL X\n"
+      }
+    },
+    {
+      "name": "huge_character",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_character.f90:2:13:\n\n    2 | print *,huge('a')\n      |             1\nError: \u2018x\u2019 argument of \u2018huge\u2019 intrinsic at (1) must be INTEGER or REAL\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_character.f90:2:18: HUGE/RADIX requires INTEGER or REAL X\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_character.f90:2:18: HUGE/RADIX requires INTEGER or REAL X\n"
+      }
+    },
+    {
+      "name": "huge_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_keyword.f90:2:8:\n\n    2 | print *,huge(a=1.0)\n      |        1\nError: Cannot find keyword named \u2018a\u2019 in call to \u2018huge\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_keyword.f90:2:20: Unknown keyword or excess actual argument: a\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_keyword.f90:2:20: Unknown keyword or excess actual argument: a\n"
+      }
+    },
+    {
+      "name": "huge_duplicate",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_duplicate.f90:2:25:\n\n    2 | print *,huge(x=1.0,x=2.0)\n      |                         1\nError: Keyword \u2018x\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_duplicate.f90:2:26: Repeated actual argument for x\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_duplicate.f90:2:26: Repeated actual argument for x\n"
+      }
+    },
+    {
+      "name": "huge_after_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_after_keyword.f90:2:20:\n\n    2 | print *,huge(x=1.0,2.0)\n      |                    1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_after_keyword.f90:2:20: Positional argument cannot follow a keyword argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_after_keyword.f90:2:20: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "name": "huge_kind_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_kind_keyword.f90:2:8:\n\n    2 | print *,huge(1.0,kind=8)\n      |        1\nError: Too many arguments in call to \u2018huge\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_kind_keyword.f90:2:25: Unknown keyword or excess actual argument: kind\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_kind_keyword.f90:2:25: Unknown keyword or excess actual argument: kind\n"
+      }
+    },
+    {
+      "name": "huge_real16",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_real16.f90:2:14: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_real16.f90:2:14: Only REAL literal kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "name": "huge_integer2",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_integer2.f90:2:14: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_integer2.f90:2:14: Only REAL literal kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "name": "epsilon_integer",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_integer.f90:2:16:\n\n    2 | print *,epsilon(1)\n      |                1\nError: \u2018x\u2019 argument of \u2018epsilon\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_integer.f90:2:19: EPSILON/TINY requires REAL X\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_integer.f90:2:19: EPSILON/TINY requires REAL X\n"
+      }
+    },
+    {
+      "name": "tiny_integer",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_integer.f90:2:13:\n\n    2 | print *,tiny(1)\n      |             1\nError: \u2018x\u2019 argument of \u2018tiny\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_integer.f90:2:16: EPSILON/TINY requires REAL X\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_integer.f90:2:16: EPSILON/TINY requires REAL X\n"
+      }
+    },
+    {
+      "name": "epsilon_component_direct",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_component_direct.f90:14:21: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_component_direct.f90:14:21: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "epsilon_component_arithmetic",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_component_arithmetic.f90:14:25: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_component_arithmetic.f90:14:25: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "epsilon_component_call",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_component_call.f90:14:27: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_component_call.f90:14:27: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "epsilon_component_constructor",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_component_constructor.f90:14:27: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_component_constructor.f90:14:27: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "epsilon_component_subscript",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_component_subscript.f90:14:24: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/epsilon_component_subscript.f90:14:24: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "tiny_component_direct",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_component_direct.f90:14:18: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_component_direct.f90:14:18: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "tiny_component_arithmetic",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_component_arithmetic.f90:14:22: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_component_arithmetic.f90:14:22: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "tiny_component_call",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_component_call.f90:14:24: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_component_call.f90:14:24: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "tiny_component_constructor",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_component_constructor.f90:14:24: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_component_constructor.f90:14:24: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "tiny_component_subscript",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_component_subscript.f90:14:21: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/tiny_component_subscript.f90:14:21: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "huge_component_direct",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_component_direct.f90:14:18: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_component_direct.f90:14:18: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "huge_component_arithmetic",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_component_arithmetic.f90:14:22: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_component_arithmetic.f90:14:22: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "huge_component_call",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_component_call.f90:14:24: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_component_call.f90:14:24: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "huge_component_constructor",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_component_constructor.f90:14:24: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_component_constructor.f90:14:24: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "huge_component_subscript",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_component_subscript.f90:14:21: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/huge_component_subscript.f90:14:21: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "radix_component_direct",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_component_direct.f90:14:19: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_component_direct.f90:14:19: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "radix_component_arithmetic",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_component_arithmetic.f90:14:23: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_component_arithmetic.f90:14:23: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "radix_component_call",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_component_call.f90:14:25: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_component_call.f90:14:25: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "radix_component_constructor",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_component_constructor.f90:14:25: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_component_constructor.f90:14:25: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "radix_component_subscript",
+      "expected": "unsupported",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_component_subscript.f90:14:22: Numeric model inquiry component operands are unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/numeric-model-w4m558z1/radix_component_subscript.f90:14:22: Numeric model inquiry component operands are unsupported\n"
+      }
+    },
+    {
+      "name": "demo_floor",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   63.2900009              63\n  -63.5900002             -64\n          -3          -3          -3          -2          -2          -1          -1           0           0           1           1           2           2           2           2\n   2.00000000       1.99999988       1.99999976    \n           2           1           1\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 63.2900009 63\n -63.5900002 -64\n -3 -3 -3 -2 -2 -1 -1 0 0 1 1 2 2 2 2\n 2.00000000 1.99999988 1.99999976\n 2 1 1\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "demo_radix",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " The radix for the default integer kind is           2\n The radix for the default real kind is           2\n The radix for the doubleprecision real kind is           2\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " The radix for the default integer kind is 2\n The radix for the default real kind is 2\n The radix for the doubleprecision real kind is 2\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "demo_tiny",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " default real is from   1.17549435E-38 to   3.40282347E+38\n doubleprecision is from    2.2250738585072014E-308 to   1.7976931348623157E+308\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " default real is from 0.117549435E-37 to 0.340282347E+39\n doubleprecision is from  0.22250738585072014E-307 to 0.17976931348623157E+309\n",
+        "stderr": ""
+      }
+    }
+  ]
+}

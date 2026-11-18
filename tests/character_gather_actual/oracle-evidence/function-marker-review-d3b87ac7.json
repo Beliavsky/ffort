@@ -1,0 +1,22 @@
+{
+  "status": "passed_corrected_source_review",
+  "patch_sha256": "d3b87ac766eee8678c1ce8f97fc44f3bbad57af6fec5253e30605431b88f7901",
+  "baseline_snapshot_sha256": "7f79a843b0352b5cacbb1ac8401d4e3f46bfa355932879845d5a30880f8a8d0f",
+  "baseline_frontend_sha256": "f3ad4f760db8ab37032d4714d7d5755f14a10a8a79091cd7163966e2be8dd577",
+  "modified_frontend_sha256": "8379e68267d0c20f073cd7519fd09ea8bb6c5801c3807dc947c729180e88da9e",
+  "producer_file": "recovery/052-shared-work/vendor/fortfront/src/parser/expressions/parser_expression_arrays.f90",
+  "producer_sha256": "7d131c50c70edfc14d25708fd8e629477813a5bd8a2cdbad99bb67055b891442",
+  "prior_review_correction": "The earlier804c source review incorrectly treated function AST locations as callee starts. Native60/source50 execution exposed the omission. That earlier receipt and failing outputs remain preserved; this review supersedes only that mistaken anchor conclusion.",
+  "checks": [
+    "Verified apply_index_postfix lines482\u2013484 constructs call_or_subscript_node with close_token line/column, obtained from the actual-list closing token.",
+    "Function branch now requires independently anchored TK_OPERATOR closing parenthesis and balances backwards to the exact matching opener; strings/comments cannot affect depth. Nested calls and modern/legacy constructors preserve delimiter balance.",
+    "Subroutine CALL retains forward search from its independent statement/callee anchor. Unsupported owner node classes fail closed.",
+    "After recovering opener, existing source-ordinal, keyword-remapping, delimiter-nesting and trivia/continuation logic remains unchanged.",
+    "No guarded-IR source marker or source position supplies anchor selection. Existing callee binding and per-argument expression checks remain independent."
+  ],
+  "blockers": [],
+  "limits": [
+    "Source-only review; no builds or execution of this correction.",
+    "Central native71/native60 and unchanged50 source controls must rerun; previous valid-function regression must be shown fixed before freeze."
+  ]
+}

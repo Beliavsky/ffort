@@ -1,0 +1,57 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -1016,6 +1016,8 @@
+             call resolve_transpose_metadata(arena, node, visiting)
+         case ("cshift")
+             call resolve_cshift_metadata(arena, node, visiting)
++        case ("lbound", "ubound")
++            call resolve_bounds_inquiry_metadata(arena,node,visiting)
+         case ("shape")
+             kind_value = intrinsic_kind_argument(arena, node, name)
+             if (kind_value <= 0) kind_value = 4
+@@ -1106,6 +1108,45 @@
+         end select
+     end subroutine resolve_intrinsic_call
+ 
++    subroutine resolve_bounds_inquiry_metadata(arena,node,visiting)
++        type(ast_arena_t),intent(inout)::arena
++        type(call_or_subscript_node),intent(inout)::node
++        logical,intent(inout)::visiting(:)
++        integer::i,arg,kind_value,rank,source,positional
++        character(:),allocatable::keyword
++        kind_value=4;rank=1;source=0;positional=0
++        if(.not.allocated(node%arg_indices))return
++        do i=1,size(node%arg_indices)
++            arg=node%arg_indices(i);keyword=''
++            if(.not.arena%has_node_at(arg))return
++            select type(actual=>arena%entries(arg)%node)
++            type is(assignment_node)
++                if(.not.actual%is_keyword_argument)return
++                if(.not.arena%has_node_at(actual%target_index))return
++                select type(key=>arena%entries(actual%target_index)%node)
++                type is(identifier_node)
++                    keyword=to_lower(key%name)
++                end select
++                arg=actual%value_index
++            class default
++                positional=positional+1
++                select case(positional)
++                case(1);keyword='array'
++                case(2);keyword='dim'
++                case(3);keyword='kind'
++                end select
++            end select
++            if(.not.arena%has_node_at(arg))return
++            call resolve_node_metadata(arena,arg,visiting)
++            select case(keyword)
++            case('array');source=arg
++            case('dim');rank=0
++            case('kind');call evaluate_integer_constant(arena,arg,kind_value,visiting)
++            end select
++        end do
++        if(.not.arena%has_node_at(source).or.kind_value<=0)return
++        call set_intrinsic_metadata(node,TINT,kind_value,rank)
++    end subroutine
+     recursive subroutine resolve_transpose_metadata(arena, node, visiting)
+         type(ast_arena_t), intent(inout) :: arena
+         type(call_or_subscript_node), intent(inout) :: node

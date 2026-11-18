@@ -1,0 +1,115 @@
+{
+  "cases": [
+    {
+      "name": "local_data",
+      "expected": "run"
+    },
+    {
+      "name": "optional_colons",
+      "expected": "run"
+    },
+    {
+      "name": "character_substring",
+      "expected": "run"
+    },
+    {
+      "name": "array_data",
+      "expected": "run"
+    },
+    {
+      "name": "dummy_positional_keyword",
+      "expected": "run"
+    },
+    {
+      "name": "optional_dummy",
+      "expected": "run"
+    },
+    {
+      "name": "mutable_dummy",
+      "expected": "run"
+    },
+    {
+      "name": "function_result_name",
+      "expected": "run"
+    },
+    {
+      "name": "function_named_procedure",
+      "expected": "run"
+    },
+    {
+      "name": "module_data",
+      "expected": "run"
+    },
+    {
+      "name": "module_named_procedure",
+      "expected": "reject",
+      "reason": "Program-unit naming context remains a producer boundary; this patch admits data, dummy and entity-name slots only."
+    },
+    {
+      "name": "generic_module_procedure",
+      "expected": "run"
+    },
+    {
+      "name": "type_bound_procedure",
+      "expected": "run"
+    },
+    {
+      "name": "type_bound_named_procedure",
+      "expected": "run"
+    },
+    {
+      "name": "component_named_procedure",
+      "expected": "run"
+    },
+    {
+      "name": "program_named_procedure",
+      "expected": "reject",
+      "reason": "Program-unit naming context remains a producer boundary; this patch admits data, dummy and entity-name slots only."
+    },
+    {
+      "name": "duplicate_procedure_dummy",
+      "expected": "reject"
+    },
+    {
+      "name": "duplicate_procedure_declaration",
+      "expected": "reject"
+    },
+    {
+      "name": "missing_procedure_actual",
+      "expected": "reject"
+    },
+    {
+      "name": "wrong_procedure_type",
+      "expected": "reject"
+    },
+    {
+      "name": "procedure_pointer_boundary",
+      "expected": "reject"
+    },
+    {
+      "name": "stray_module_procedure",
+      "expected": "reject"
+    },
+    {
+      "name": "malformed_type_binding",
+      "expected": "reject"
+    },
+    {
+      "name": "other_keyword_unchanged",
+      "expected": "reject"
+    },
+    {
+      "name": "original_assert_le_pass",
+      "expected": "run",
+      "output": "assert_le passes",
+      "reason": "Exact unchanged original assert_le body now executes with bounded standard-output WRITE and grouped formats."
+    },
+    {
+      "name": "original_assert_le_stop",
+      "expected": "run",
+      "output": "in unit, left right = 3 2 need left <= right, STOPPING",
+      "reason": "Exact unchanged original assert_le body now executes with bounded standard-output WRITE and grouped formats.",
+      "stderr_exact": "STOP\n"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "compiler": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "source": "cases/impure_mask_once.f90",
+  "source_sha256": "4dda4df1ecff638f5acd9c66ed6a8290a168fd172028c37bae96d3a6a104ba35",
+  "compile_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "compile_status": 0,
+  "compile_stderr": "",
+  "gnu_run_status": 0,
+  "gnu_stdout": "           4\n          -1\n           2\n           2\n           2           1\n",
+  "gnu_stderr": "",
+  "expected_stdout": "4 -1 2 2 2 2",
+  "conclusion": "Observed GNU 14.2 discrepancy: final [2,1] selects masked-out -1. The documented result is [2,2]. No claim is made about the cause or other compiler versions.",
+  "reference": "cases/masked_back_reference.f90",
+  "reference_documentation": "https://gcc.gnu.org/onlinedocs/gfortran/MINLOC.html"
+}

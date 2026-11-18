@@ -1,0 +1,4186 @@
+{
+  "utc": "2026-11-16T14:49:11.762259+00:00",
+  "summary": {
+    "total": 99,
+    "failed": 0,
+    "harness_self_tests": 47,
+    "candidate_checked": 99,
+    "gnu_executed": 53,
+    "gnu_compile_only": 26,
+    "gnu_compile_rejections": 20
+  },
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0",
+    "-ffree-line-length-none"
+  ],
+  "manifest_sha256": "be04e18c3fe7ee56311307fff6b2758a5b781045ec35d9f37f85c7b17fd0de3b",
+  "records": [
+    {
+      "case": {
+        "name": "forward_outer_preserved",
+        "source": "cases/forward_outer_preserved.f90",
+        "source_sha256": "845b0ac13930a2e3d827f37b931de9bd7743d088ec5d0d22b0de6b7833ea8518",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/forward_outer_preserved.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/forward_outer_preserved.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/forward_outer_preserved/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/forward_outer_preserved",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           4           9          16          99\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 4 9 16 99\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reverse_dynamic_controls",
+        "source": "cases/reverse_dynamic_controls.f90",
+        "source_sha256": "fa8ea6fc1ab7d13445945a8317603ac5538b4e355067b716e61f12b1ee11cccf",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/reverse_dynamic_controls.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/reverse_dynamic_controls.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/reverse_dynamic_controls/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/reverse_dynamic_controls",
+      "gnu_run": {
+        "code": 0,
+        "out": "           7           4           1          -2          88\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7 4 1 -2 88\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zero_trip_preserves_outer",
+        "source": "cases/zero_trip_preserves_outer.f90",
+        "source_sha256": "3f4b672f01cac4bf7b94369ef4f31f3cd3f7211cf89ed071aac054eb87684f01",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/zero_trip_preserves_outer.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/zero_trip_preserves_outer.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/zero_trip_preserves_outer/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/zero_trip_preserves_outer",
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0          99          88\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 99 88\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "uninitialized_outer_unused",
+        "source": "cases/uninitialized_outer_unused.f90",
+        "source_sha256": "aaf35e8fc2680986b76a3e0b2408636ad311eafbbcbc166fa5d3cdd8dd25a686",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/uninitialized_outer_unused.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/uninitialized_outer_unused.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/uninitialized_outer_unused/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/uninitialized_outer_unused",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "siblings_and_source_order",
+        "source": "cases/siblings_and_source_order.f90",
+        "source_sha256": "4f14a61e7aa6f8cc57eec8d791407920264b796afd8bc5d37bfb352489ab8a6b",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/siblings_and_source_order.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/siblings_and_source_order.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/siblings_and_source_order/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/siblings_and_source_order",
+      "gnu_run": {
+        "code": 0,
+        "out": "          99           1           2           3          99           6           4           2          99          99\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 99 1 2 3 99 6 4 2 99 99\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "legacy_slash_constructor",
+        "source": "cases/legacy_slash_constructor.f90",
+        "source_sha256": "fcd844464c91af8c97e4bd7d50da868dfa575ec7f160fb0dedbe25dbd0528ab3",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/legacy_slash_constructor.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/legacy_slash_constructor.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/legacy_slash_constructor/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/legacy_slash_constructor",
+      "gnu_run": {
+        "code": 0,
+        "out": "          -1           1          10           2          20          -2          99\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -1 1 10 2 20 -2 99\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_nested_delimiters",
+        "source": "cases/mixed_nested_delimiters.f90",
+        "source_sha256": "102128718507d79e26795d88b99475aa19f976f363135899e84664cac89ac387",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/mixed_nested_delimiters.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/mixed_nested_delimiters.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/mixed_nested_delimiters/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/mixed_nested_delimiters",
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          12          21          22          31          32          77          88\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 12 21 22 31 32 77 88\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "multiple_values",
+        "source": "cases/multiple_values.f90",
+        "source_sha256": "75abf9a6d8615b05697f520c8a6169d249cd3394d79d28843d977399b010b884",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/multiple_values.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/multiple_values.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/multiple_values/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/multiple_values",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1          10           2          20           3          30           4          40          99\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 10 2 20 3 30 4 40 99\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_dependent_bounds",
+        "source": "cases/nested_dependent_bounds.f90",
+        "source_sha256": "52a269e9b3742c4a739185027b31889ad9492f8a86daf92efaf5893d19260cbc",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/nested_dependent_bounds.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nested_dependent_bounds.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_dependent_bounds/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_dependent_bounds",
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          21          22          31          32          33          41          42          43          44          77          88\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 21 22 31 32 33 41 42 43 44 77 88\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_reverse_three_levels",
+        "source": "cases/nested_reverse_three_levels.f90",
+        "source_sha256": "727a574b1def016eb20d7c7a91d1aca23964df125264010238916bee5f147e92",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/nested_reverse_three_levels.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nested_reverse_three_levels.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_reverse_three_levels/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_reverse_three_levels",
+      "gnu_run": {
+        "code": 0,
+        "out": "         111         222         221         211         333         332         331         322         321         311          77          88          99\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 111 222 221 211 333 332 331 322 321 311 77 88 99\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_zero_trip",
+        "source": "cases/nested_zero_trip.f90",
+        "source_sha256": "bdbe6b412016c607135c6fe2d9f3ce158b57663839ce73979bbd052a1e8b4fb1",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/nested_zero_trip.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nested_zero_trip.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_zero_trip/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_zero_trip",
+      "gnu_run": {
+        "code": 0,
+        "out": "           0          77          88\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 77 88\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_array_leaf",
+        "source": "cases/empty_array_leaf.f90",
+        "source_sha256": "3ff01b12e64f60a383a8b1c334df69c63d868f62e5a5cfa4d716dc24fe02f56d",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/empty_array_leaf.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/empty_array_leaf.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/empty_array_leaf/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/empty_array_leaf",
+      "gnu_run": {
+        "code": 0,
+        "out": "           0          77\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 77\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zero_trip_real_logical_metadata",
+        "source": "cases/zero_trip_real_logical_metadata.f90",
+        "source_sha256": "c1b4c8af2b8e24edb7aeab48c985d3663c79b2e195ad2f54ce9e2630d7c7a539",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/zero_trip_real_logical_metadata.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/zero_trip_real_logical_metadata.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/zero_trip_real_logical_metadata/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/zero_trip_real_logical_metadata",
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           8           0           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 8 0 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zero_trip_skips_undefined_leaf",
+        "source": "cases/zero_trip_skips_undefined_leaf.f90",
+        "source_sha256": "5eee4657ac5927ba26706c630b25dbb53a84515003a449622c9c9d16ab703446",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/zero_trip_skips_undefined_leaf.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/zero_trip_skips_undefined_leaf.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/zero_trip_skips_undefined_leaf/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/zero_trip_skips_undefined_leaf",
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_then_nonempty_siblings",
+        "source": "cases/empty_then_nonempty_siblings.f90",
+        "source_sha256": "75e31f3661ba1e8686ebb90f6576b93b58b769c7385249589381abeee27abc12",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/empty_then_nonempty_siblings.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/empty_then_nonempty_siblings.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/empty_then_nonempty_siblings/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/empty_then_nonempty_siblings",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2          99\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 99\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "integer8_runtime_precision",
+        "source": "cases/integer8_runtime_precision.f90",
+        "source_sha256": "be9aef150b02a965d264309c601e6cb16191646ab2b2a915ff5009d9cdfc4d4f",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/integer8_runtime_precision.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/integer8_runtime_precision.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/integer8_runtime_precision/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/integer8_runtime_precision",
+      "gnu_run": {
+        "code": 0,
+        "out": "     9007199254740993     9007199254740995     9007199254740997                   99           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 9007199254740993 9007199254740995 9007199254740997 99 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "integer8_leaf_precision",
+        "source": "cases/integer8_leaf_precision.f90",
+        "source_sha256": "53a9f81a8e363e45d4d9ae3aff4c4cc4546cef5a204540515996fbe53f99de1c",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/integer8_leaf_precision.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/integer8_leaf_precision.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/integer8_leaf_precision/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/integer8_leaf_precision",
+      "gnu_run": {
+        "code": 0,
+        "out": "     9007199254740993     9007199254740994     9007199254740995\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 9007199254740993 9007199254740994 9007199254740995\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "cross_kind_controls",
+        "source": "cases/cross_kind_controls.f90",
+        "source_sha256": "c46f3f57a34f1ff476bad66bc2d76dfc8622c3872032c3bbe11102c7b5e24262",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/cross_kind_controls.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/cross_kind_controls.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/cross_kind_controls/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/cross_kind_controls",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           3           5          99           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 3 5 99 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real_values_and_signed_zero",
+        "source": "cases/real_values_and_signed_zero.f90",
+        "source_sha256": "742d3f637b6219f1248fedfbbb8fd09e216b60019ac467f8fbf3da5e8f554717",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/real_values_and_signed_zero.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_values_and_signed_zero.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/real_values_and_signed_zero/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/real_values_and_signed_zero",
+      "gnu_run": {
+        "code": 0,
+        "out": "  -0.0000000000000000      -0.12500000000000000        0.0000000000000000       0.12500000000000000       0.25000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -0.0000000000000000 -0.12500000000000000 0.0000000000000000 0.12500000000000000 0.25000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "logical_all_membership",
+        "source": "cases/logical_all_membership.f90",
+        "source_sha256": "506c4f0f9c89a1d9b9ede555968e9cf55e58d0f7f0f56a1a25d06482eab3bad8",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/logical_all_membership.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/logical_all_membership.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/logical_all_membership/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/logical_all_membership",
+      "gnu_run": {
+        "code": 0,
+        "out": " T F T F           2          99\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T F T F 2 99\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "logical_empty_set",
+        "source": "cases/logical_empty_set.f90",
+        "source_sha256": "1b018ef4d92049fa3ecceb4bd61017b4a87cc1638cc0c185b32803dcd041df25",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/logical_empty_set.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/logical_empty_set.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/logical_empty_set/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/logical_empty_set",
+      "gnu_run": {
+        "code": 0,
+        "out": " T T           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "logical_multiple_values",
+        "source": "cases/logical_multiple_values.f90",
+        "source_sha256": "7ca36ce11288c839a2492471145fcaf0d9af83c76bcc50259c41b1b229185c7e",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/logical_multiple_values.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/logical_multiple_values.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/logical_multiple_values/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/logical_multiple_values",
+      "gnu_run": {
+        "code": 0,
+        "out": " F F T T T F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F F T T T F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_padding",
+        "source": "cases/character_padding.f90",
+        "source_sha256": "121adac638e4ac920390fc4cbd7bc32538e81bef7c624abed07cf81ec08a771e",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "exact",
+        "expected_file": "expected/character_padding.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/character_padding.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/character_padding/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/character_padding",
+      "gnu_run": {
+        "code": 0,
+        "out": "[ a ][   ][b  ][b  ][   ][ a ]\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "[ a ][   ][b  ][b  ][   ][ a ]\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_quotes_commas",
+        "source": "cases/character_quotes_commas.f90",
+        "source_sha256": "45ae96c7341b87acf179ddf7a942e68bacc5974449fe9d5ad2f80bd6b12aa6c7",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "exact",
+        "expected_file": "expected/character_quotes_commas.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/character_quotes_commas.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/character_quotes_commas/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/character_quotes_commas",
+      "gnu_run": {
+        "code": 0,
+        "out": "[i=1,2 ][(x,y) ][i=1,2 ][(x,y) ]\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "[i=1,2 ][(x,y) ][i=1,2 ][(x,y) ]\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_zero_length",
+        "source": "cases/character_zero_length.f90",
+        "source_sha256": "51edd14aa908907a984a6c02c4c06e1839a9a50f482b91a8e8fdd2f4b31149cc",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "exact",
+        "expected_file": "expected/character_zero_length.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/character_zero_length.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/character_zero_length/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/character_zero_length",
+      "gnu_run": {
+        "code": 0,
+        "out": "[][][]\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "[][][]\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_zero_trip_constant",
+        "source": "cases/character_zero_trip_constant.f90",
+        "source_sha256": "286ab5ea9fd27619b6d4e0fa06f35e551320ec2b7ab316e07daeb46004cbb29a",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/character_zero_trip_constant.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/character_zero_trip_constant.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/character_zero_trip_constant/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/character_zero_trip_constant",
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "whole_array_leaf",
+        "source": "cases/whole_array_leaf.f90",
+        "source_sha256": "37b69f4ad2711cbfb24a1ce89b663454bb3b5dd50c3d983e5bba4d3f7fd25213",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/whole_array_leaf.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/whole_array_leaf.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/whole_array_leaf/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/whole_array_leaf",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           4           6           2           2           4           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 4 6 2 2 4 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_leaf",
+        "source": "cases/rank_two_leaf.f90",
+        "source_sha256": "08c31cad65534359d857ee78d550ee83ccb06e636ccdfe8f2faee7027506065e",
+        "category": "reject",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/rank_two_leaf.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/rank_two_leaf",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/rank_two_leaf.f90:5:6: Constructor implied-DO items must be intrinsic scalars or rank-one arrays\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/rank_two_leaf.f90:5:6: Constructor implied-DO items must be intrinsic scalars or rank-one arrays\n"
+      }
+    },
+    {
+      "case": {
+        "name": "rank_three_leaf",
+        "source": "cases/rank_three_leaf.f90",
+        "source_sha256": "2c8c7aa717317d0f5db74c20673b99e5ae58be79dde0db1c9181196ec0270202",
+        "category": "reject",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/rank_three_leaf.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/rank_three_leaf",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/rank_three_leaf.f90:4:37: RESHAPE SHAPE must be an INTEGER vector of known size 1 or 2\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/rank_three_leaf.f90:4:37: RESHAPE SHAPE must be an INTEGER vector of known size 1 or 2\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_reverse_sections",
+        "source": "cases/dynamic_reverse_sections.f90",
+        "source_sha256": "e0766346b9acbe76fbd1f0223b883bbbf1e8a9e8597411e0c3e9bf6e5ea9b5c6",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/dynamic_reverse_sections.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/dynamic_reverse_sections.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/dynamic_reverse_sections/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/dynamic_reverse_sections",
+      "gnu_run": {
+        "code": 0,
+        "out": "          10          20          10          30          20          10          40          30          20          10\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 10 20 10 30 20 10 40 30 20 10\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_expression_leaves",
+        "source": "cases/array_expression_leaves.f90",
+        "source_sha256": "c8cc78a18b4434060b120498b3e745526d9302b3f0ab7306c1157727738b294c",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/array_expression_leaves.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/array_expression_leaves.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/array_expression_leaves/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/array_expression_leaves",
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           3           4           4           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 3 4 4 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "constructor_in_argument",
+        "source": "cases/constructor_in_argument.f90",
+        "source_sha256": "6fb55060df6fb89f041971598e035d56f90f1ffeffc2e09dea9479b9acd07329",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/constructor_in_argument.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/constructor_in_argument.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/constructor_in_argument/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/constructor_in_argument",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           4           9          16\n          99\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 4 9 16\n 99\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "constructor_in_intrinsics",
+        "source": "cases/constructor_in_intrinsics.f90",
+        "source_sha256": "410dade2fd7d8d06e662cbb6bf9d1044931a607374c68342cae04fdefb22eee2",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/constructor_in_intrinsics.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/constructor_in_intrinsics.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/constructor_in_intrinsics/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/constructor_in_intrinsics",
+      "gnu_run": {
+        "code": 0,
+        "out": "          15           0          99\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 15 0 99\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_constructor_expression",
+        "source": "cases/nested_constructor_expression.f90",
+        "source_sha256": "f296808aedcdef76d43eaec966d7f7c885010c44debcd2a455a64a88df6a9597",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/nested_constructor_expression.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nested_constructor_expression.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_constructor_expression/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_constructor_expression",
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          12          21          22          31          32          77          88\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 12 21 22 31 32 77 88\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "active_outer_do",
+        "source": "cases/active_outer_do.f90",
+        "source_sha256": "fed36f190be7af652d072991a677cf6e8e57b380546a6fa00a10ef660a6dc6d9",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/active_outer_do.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/active_outer_do.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/active_outer_do/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/active_outer_do",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3           1\n           1           2           3           2\n           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 1\n 1 2 3 2\n 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "saved_outer_preserved",
+        "source": "cases/saved_outer_preserved.f90",
+        "source_sha256": "b60190123f1a5e0115cbaa12a427cad12942a0019bd2e3b41e4dd0d28af25e0b",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/saved_outer_preserved.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/saved_outer_preserved.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/saved_outer_preserved/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/saved_outer_preserved",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3          88\n           1           2           3          89\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 88\n 1 2 3 89\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dummy_intent_in_preserved",
+        "source": "cases/dummy_intent_in_preserved.f90",
+        "source_sha256": "aa29de069013f8449a3bca4168d7a29363e23de2b5b2f6a3364a5481999189d3",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/dummy_intent_in_preserved.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/dummy_intent_in_preserved.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/dummy_intent_in_preserved/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/dummy_intent_in_preserved",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3          88\n          88\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 88\n 88\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "module_outer_preserved",
+        "source": "cases/module_outer_preserved.f90",
+        "source_sha256": "86078d8ca9c949dd0afcb002d3ee7c6388932f179ef86032bb8eef52db364f3e",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/module_outer_preserved.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/module_outer_preserved.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/module_outer_preserved/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/module_outer_preserved",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3          88\n          88\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 88\n 88\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "host_outer_preserved",
+        "source": "cases/host_outer_preserved.f90",
+        "source_sha256": "609db8cb83b8e01f5b624fec890b095d096d9da1df9390977e9eb9df2f4d9a70",
+        "category": "reject",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "expected_stdout": "",
+        "note": "Existing main-program host-association or fixed-length untyped CHARACTER subset boundary, observed before execution."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/host_outer_preserved.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/host_outer_preserved",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/host_outer_preserved.f90:10:4: Constructor implied-DO requires a declared scalar INTEGER index\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/host_outer_preserved.f90:10:4: Constructor implied-DO requires a declared scalar INTEGER index\n"
+      }
+    },
+    {
+      "case": {
+        "name": "allocatable_outer_preserved",
+        "source": "cases/allocatable_outer_preserved.f90",
+        "source_sha256": "7aaa64214e05b7c6e4bc643ec27255f04fdf4a31b233e2f11496aef182ae15b4",
+        "category": "reject",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "expected_stdout": "",
+        "note": "Existing scalar INTEGER ALLOCATABLE/POINTER declaration boundary, before constructor lowering. Earlier GNU execution proves independent language semantics only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/allocatable_outer_preserved.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/allocatable_outer_preserved",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/allocatable_outer_preserved.f90:3:23: ALLOCATABLE requires deferred-shape rank-one/two/three array or scalar CHARACTER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/allocatable_outer_preserved.f90:3:23: ALLOCATABLE requires deferred-shape rank-one/two/three array or scalar CHARACTER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pointer_outer_preserved",
+        "source": "cases/pointer_outer_preserved.f90",
+        "source_sha256": "993ff01af3e03a5a711ee92912b43b8448b13333de2687fe8c454d600ede8448",
+        "category": "reject",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "expected_stdout": "",
+        "note": "Existing scalar INTEGER ALLOCATABLE/POINTER declaration boundary, before constructor lowering. Earlier GNU execution proves independent language semantics only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/pointer_outer_preserved.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/pointer_outer_preserved",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/pointer_outer_preserved.f90:3:19: POINTER requires deferred-shape rank-one array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/pointer_outer_preserved.f90:3:19: POINTER requires deferred-shape rank-one array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_outer_not_read",
+        "source": "cases/unallocated_outer_not_read.f90",
+        "source_sha256": "cfe7df0438f80e6f76d95191064c0ea751ded6098fcbbe6af974f206cd322cb5",
+        "category": "reject",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "expected_stdout": "",
+        "note": "Existing scalar INTEGER ALLOCATABLE/POINTER declaration boundary, before constructor lowering. Earlier GNU execution proves independent language semantics only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/unallocated_outer_not_read.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/unallocated_outer_not_read",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/unallocated_outer_not_read.f90:3:23: ALLOCATABLE requires deferred-shape rank-one/two/three array or scalar CHARACTER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/unallocated_outer_not_read.f90:3:23: ALLOCATABLE requires deferred-shape rank-one/two/three array or scalar CHARACTER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unassociated_outer_not_read",
+        "source": "cases/unassociated_outer_not_read.f90",
+        "source_sha256": "0ecee00c5f2cba28ffa856e9bd64eb999350dc1ad51f5c6552f3825cdd04ce2b",
+        "category": "reject",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "expected_stdout": "",
+        "note": "Existing scalar INTEGER ALLOCATABLE/POINTER declaration boundary, before constructor lowering. Earlier GNU execution proves independent language semantics only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/unassociated_outer_not_read.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/unassociated_outer_not_read",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/unassociated_outer_not_read.f90:3:19: POINTER requires deferred-shape rank-one array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/unassociated_outer_not_read.f90:3:19: POINTER requires deferred-shape rank-one array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "absent_optional_outer_not_read",
+        "source": "cases/absent_optional_outer_not_read.f90",
+        "source_sha256": "c6f2f4634062e6332ead49183b3b474cb6cf69e53633327eee071b6198a404d6",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/absent_optional_outer_not_read.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/absent_optional_outer_not_read.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/absent_optional_outer_not_read/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/absent_optional_outer_not_read",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3 F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_function_constructor",
+        "source": "cases/pure_function_constructor.f90",
+        "source_sha256": "df12afb1d0d8f549a3c91fb532a3063f996c7a43dbe6223b441f06993cbdcda4",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/pure_function_constructor.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/pure_function_constructor.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/pure_function_constructor/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/pure_function_constructor",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           4           9          16\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 4 9 16\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_leaves_each_iteration",
+        "source": "cases/function_leaves_each_iteration.f90",
+        "source_sha256": "2abf36b1be7835f56454878162fc30c97d96bf1290f7ae431196c047fca22197",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/function_leaves_each_iteration.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/function_leaves_each_iteration.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/function_leaves_each_iteration/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/function_leaves_each_iteration",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3           4           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 4 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "controls_evaluated_once",
+        "source": "cases/controls_evaluated_once.f90",
+        "source_sha256": "ce366de2c64649a456c46da6dac1b08c2f498e303701dec2faae9aaf4d2647cb",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/controls_evaluated_once.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/controls_evaluated_once.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/controls_evaluated_once/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/controls_evaluated_once",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3           4           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 4 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_function_each_iteration",
+        "source": "cases/array_function_each_iteration.f90",
+        "source_sha256": "72849e96ae5c37c5db0d9f7df23bb976d3b14cf4a13395574ee7227b34ca1762",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/array_function_each_iteration.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/array_function_each_iteration.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/array_function_each_iteration/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/array_function_each_iteration",
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           3           4           4           5           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 3 4 4 5 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "typed_character_constructor",
+        "source": "cases/typed_character_constructor.f90",
+        "source_sha256": "04cba8675887228b91553654d958e61f4668453fdcb229872918d5ed2fc33d1b",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "exact",
+        "expected_file": "expected/typed_character_constructor.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/typed_character_constructor.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/typed_character_constructor/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/typed_character_constructor",
+      "gnu_run": {
+        "code": 0,
+        "out": "[ a  ][b   ][    ]\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "[ a  ][b   ][    ]\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_frame_outer_visibility",
+        "source": "cases/function_frame_outer_visibility.f90",
+        "source_sha256": "bc39c4732f1ef4bfe3316b10b530b82ffbb9f0f453b0a144b6d832861eb7f6ec",
+        "category": "reject",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "expected_stdout": "",
+        "note": "Existing main-program host-association or fixed-length untyped CHARACTER subset boundary, observed before execution."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/function_frame_outer_visibility.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/function_frame_outer_visibility",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/function_frame_outer_visibility.f90:9:4: Undeclared variable: i\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/function_frame_outer_visibility.f90:9:4: Undeclared variable: i\n"
+      }
+    },
+    {
+      "case": {
+        "name": "eight_nested_levels",
+        "source": "cases/eight_nested_levels.f90",
+        "source_sha256": "ead8275f32b94454b4a7aaf4534c4ce3d5fb54da1eeb711a4eae6513cad3c5fc",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/eight_nested_levels.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/eight_nested_levels.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/eight_nested_levels/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/eight_nested_levels",
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nine_nested_levels",
+        "source": "cases/nine_nested_levels.f90",
+        "source_sha256": "6a95a73e6a28c2110556f6afd065888412392f5c77965aa03469f3b00d5954e8",
+        "category": "reject",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nine_nested_levels.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nine_nested_levels",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nine_nested_levels.f90:5:12: Constructor implied-DO nesting limit exceeded (8)\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nine_nested_levels.f90:5:12: Constructor implied-DO nesting limit exceeded (8)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "body_items64",
+        "source": "cases/body_items64.f90",
+        "source_sha256": "269edd92ae8d76dab0dc957b386f503de7e139088150612e6eba94dd987f4c0b",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/body_items64.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/body_items64.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/body_items64/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/body_items64",
+      "gnu_run": {
+        "code": 0,
+        "out": "        2080          64\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2080 64\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "body_items65",
+        "source": "cases/body_items65.f90",
+        "source_sha256": "4546c5a39cff76337341c419e553523ca0aec9f24bfe2747436b22c53072fa6c",
+        "category": "reject",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/body_items65.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/body_items65",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/body_items65.f90:8:5: Constructor implied-DO object limit exceeded (64)\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/body_items65.f90:8:5: Constructor implied-DO object limit exceeded (64)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "emitted_values1000000",
+        "source": "cases/emitted_values1000000.f90",
+        "source_sha256": "aa327599d0e4e66e14f6ab273dfecc2bfb83a377bfc38ceee6ba5950530109e9",
+        "category": "runtime",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "completed_stdout": "before\n",
+        "args": [
+          "--max-steps",
+          "100000000"
+        ],
+        "expected_stdout": "before\n",
+        "note": "Constructor itself fits; destination plus existing 2-element X exceeds unchanged aggregate array storage cap. Separate emitted_values_exact_cap tests the exact emitted-value boundary without X storage."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/emitted_values1000000.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/emitted_values1000000",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/emitted_values1000000.f90:8:1: total array element limit exceeded during allocatable assignment\n"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_iterations1000000",
+        "source": "cases/empty_iterations1000000.f90",
+        "source_sha256": "e1aa909c37dd4af1a801e0bd3f9079f5a0bbb10408db14b5daff6835e5ffef4f",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "completed_stdout": "before\n",
+        "args": [
+          "--max-steps",
+          "100000000"
+        ],
+        "expected_file": "expected/empty_iterations1000000.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/empty_iterations1000000.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/empty_iterations1000000/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/empty_iterations1000000",
+      "gnu_run": {
+        "code": 0,
+        "out": "before\n           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "before\n 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "emitted_values1000001",
+        "source": "cases/emitted_values1000001.f90",
+        "source_sha256": "df3b8d1718badc5488b8da0afe34335ff3d8759283e7bf4c7b7b5de7e2e161e2",
+        "category": "runtime",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "completed_stdout": "before\n",
+        "args": [
+          "--max-steps",
+          "100000000"
+        ],
+        "expected_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/emitted_values1000001.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/emitted_values1000001",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/emitted_values1000001.f90:8:7: constructor element limit exceeded\n"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_iterations1000001",
+        "source": "cases/empty_iterations1000001.f90",
+        "source_sha256": "bc4937af4e3577f0d593e2f4bbc9416aabce3501f8537b3fba4dec26fe4f7518",
+        "category": "runtime",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "completed_stdout": "before\n",
+        "args": [
+          "--max-steps",
+          "100000000"
+        ],
+        "expected_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/empty_iterations1000001.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/empty_iterations1000001",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/empty_iterations1000001.f90:7:4: constructor implied-DO iteration limit exceeded\n"
+      }
+    },
+    {
+      "case": {
+        "name": "character_staging16777216",
+        "source": "cases/character_staging16777216.f90",
+        "source_sha256": "f1e633eab3af69c927d2a3d05189adb47bf2182a0c539bb0e4efafae28aaab64",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "completed_stdout": "before\n",
+        "args": [
+          "--max-steps",
+          "100000000"
+        ],
+        "expected_file": "expected/character_staging16777216.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/character_staging16777216.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/character_staging16777216/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/character_staging16777216",
+      "gnu_run": {
+        "code": 0,
+        "out": "before\n        4096        4096\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "before\n 4096 4096\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_staging16777217",
+        "source": "cases/character_staging16777217.f90",
+        "source_sha256": "152e887665465a3b4fb8cab8f1597f8fa7486b2b253c43b9129c69cc27761735",
+        "category": "runtime",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "completed_stdout": "before\n",
+        "args": [
+          "--max-steps",
+          "100000000"
+        ],
+        "expected_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/character_staging16777217.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/character_staging16777217",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/character_staging16777217.f90:8:3: constructor CHARACTER staging limit exceeded (16 MiB)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nested_total_iterations1000000",
+        "source": "cases/nested_total_iterations1000000.f90",
+        "source_sha256": "81fe58544842d8683295f24656167c71b48736601ad5f59cc466c6576557b291",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "completed_stdout": "before\n",
+        "args": [
+          "--max-steps",
+          "100000000"
+        ],
+        "expected_file": "expected/nested_total_iterations1000000.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nested_total_iterations1000000.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_total_iterations1000000/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_total_iterations1000000",
+      "gnu_run": {
+        "code": 0,
+        "out": "before\n           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "before\n 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_total_iterations1000001",
+        "source": "cases/nested_total_iterations1000001.f90",
+        "source_sha256": "4c3e1255db3edec0d2702a6501cedd5dea5784533743f41666a236c9200054e3",
+        "category": "runtime",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "completed_stdout": "before\n",
+        "args": [
+          "--max-steps",
+          "100000000"
+        ],
+        "expected_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nested_total_iterations1000001.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_total_iterations1000001",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nested_total_iterations1000001.f90:7:26: constructor implied-DO iteration limit exceeded\n"
+      }
+    },
+    {
+      "case": {
+        "name": "shared_step_budget",
+        "source": "cases/shared_step_budget.f90",
+        "source_sha256": "53442ed55147ad14fc74d67a09bbae2d22669d1d019a334982fea6c912879eb8",
+        "category": "runtime",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "completed_stdout": "before\n",
+        "args": [
+          "--max-steps",
+          "50"
+        ],
+        "expected_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/shared_step_budget.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/shared_step_budget",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/shared_step_budget.f90:7:5: execution step limit exceeded (current limit: 50); use --max-steps N to set the execution budget (positive 64-bit integer)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nested_controls_per_outer_iteration",
+        "source": "cases/nested_controls_per_outer_iteration.f90",
+        "source_sha256": "a56eb49cb9ffa010e7dc4754d6f4d317675ec40c66b166f27e1a9dacd59447bd",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/nested_controls_per_outer_iteration.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nested_controls_per_outer_iteration.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_controls_per_outer_iteration/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_controls_per_outer_iteration",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           1           2           1           2           3           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 1 2 1 2 3 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "undeclared_index",
+        "source": "cases/undeclared_index.f90",
+        "source_sha256": "3876b7f162642bf48143b59e00b43a6892341a3d75b1dcb625c3aafa0a72e20e",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/undeclared_index.f90:4:5:\n\n    4 | a=[(i,i=1,3)]\n      |     1\nError: Symbol \u00e2\u0080\u0098i\u00e2\u0080\u0099 at (1) has no IMPLICIT type\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/undeclared_index.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/undeclared_index",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/undeclared_index.f90:4:4: Constructor implied-DO requires a declared scalar INTEGER index\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/undeclared_index.f90:4:4: Constructor implied-DO requires a declared scalar INTEGER index\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real_index",
+        "source": "cases/real_index.f90",
+        "source_sha256": "51f3e95ce1687225473d24e955c1ed9d049d4b4370c596a6e4d4f993f34adb85",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_index.f90:5:6:\n\n    5 | a=[(1,i=1,3)]\n      |      1\nError: Loop variable at (1) must be INTEGER\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_index.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/real_index",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_index.f90:5:4: Constructor implied-DO requires a non-PARAMETER scalar INTEGER index\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_index.f90:5:4: Constructor implied-DO requires a non-PARAMETER scalar INTEGER index\n"
+      }
+    },
+    {
+      "case": {
+        "name": "logical_index",
+        "source": "cases/logical_index.f90",
+        "source_sha256": "87b554a2ea77c760853dca3e8e147c4485e5a839a2d4a1ff80f6fda766c3c2f8",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/logical_index.f90:5:6:\n\n    5 | a=[(1,i=1,3)]\n      |      1\nError: Loop variable at (1) must be INTEGER\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/logical_index.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/logical_index",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/logical_index.f90:5:4: Constructor implied-DO requires a non-PARAMETER scalar INTEGER index\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/logical_index.f90:5:4: Constructor implied-DO requires a non-PARAMETER scalar INTEGER index\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_index_name",
+        "source": "cases/array_index_name.f90",
+        "source_sha256": "9506cf5c74d921189010b5ef71127f42b1175d8da1d0bba19d88da92555190fe",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/array_index_name.f90:4:8:\n\n    4 | a=[(1,i=1,3)]\n      |        1\nError: Loop variable at (1) cannot be an array\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/array_index_name.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/array_index_name",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/array_index_name.f90:4:4: Constructor implied-DO requires a non-PARAMETER scalar INTEGER index\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/array_index_name.f90:4:4: Constructor implied-DO requires a non-PARAMETER scalar INTEGER index\n"
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_index_name",
+        "source": "cases/parameter_index_name.f90",
+        "source_sha256": "8910d26600a4f93a229445723f2c9fdc3cb8de43d517b95867d5379271086e49",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/parameter_index_name.f90:5:6:\n\n    5 | a=[(i,i=1,3)]\n      |      1\nError: Named constant \u00e2\u0080\u0098i\u00e2\u0080\u0099 in variable definition context (iterator variable) at (1)\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/parameter_index_name.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/parameter_index_name",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/parameter_index_name.f90:5:4: Constructor implied-DO requires a non-PARAMETER scalar INTEGER index\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/parameter_index_name.f90:5:4: Constructor implied-DO requires a non-PARAMETER scalar INTEGER index\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real_start",
+        "source": "cases/real_start.f90",
+        "source_sha256": "0bde5a8c4e53223a360472b6ea32c0185d2db26a3e6b8d68dff7eaa63759d8c2",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_start.f90:4:8:\n\n    4 | a=[(i,i=1.0,3)]\n      |        1\nError: Start expression in DO loop at (1) must be INTEGER\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_start.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/real_start",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_start.f90:4:15: Invalid constructor implied-DO index scope, controls or body\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_start.f90:4:15: Invalid constructor implied-DO index scope, controls or body\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real_end",
+        "source": "cases/real_end.f90",
+        "source_sha256": "6252f2fa72b83e1ce80ed286fee324d62a972e97de66cad5ee752101399eae16",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_end.f90:4:10:\n\n    4 | a=[(i,i=1,3.0)]\n      |          1\nError: End expression in DO loop at (1) must be INTEGER\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_end.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/real_end",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_end.f90:4:15: Invalid constructor implied-DO index scope, controls or body\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_end.f90:4:15: Invalid constructor implied-DO index scope, controls or body\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real_step",
+        "source": "cases/real_step.f90",
+        "source_sha256": "40e77662e7259f539bd0a9cc2aa8810335e621c34fa14d2c5b6afdd556902966",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_step.f90:4:12:\n\n    4 | a=[(i,i=1,3,1.0)]\n      |            1\nError: Step expression in DO loop at (1) must be INTEGER\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_step.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/real_step",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_step.f90:4:17: Invalid constructor implied-DO index scope, controls or body\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/real_step.f90:4:17: Invalid constructor implied-DO index scope, controls or body\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_start",
+        "source": "cases/array_start.f90",
+        "source_sha256": "fb825cbc95eede56bd7de27b3b4a7ac62ebe39e4d41e0df9931a6c42d9717388",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/array_start.f90:4:8:\n\n    4 | a=[(i,i=[1],3)]\n      |        1\nError: Start expression in DO loop at (1) must be a scalar\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/array_start.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/array_start",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/array_start.f90:4:15: Invalid constructor implied-DO index scope, controls or body\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/array_start.f90:4:15: Invalid constructor implied-DO index scope, controls or body\n"
+      }
+    },
+    {
+      "case": {
+        "name": "zero_constant_stride",
+        "source": "cases/zero_constant_stride.f90",
+        "source_sha256": "e0cec54167b277f38179e76915c79ca0ad3f345a2e2083bc2f8c95e3c0610711",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/zero_constant_stride.f90:4:12:\n\n    4 | a=[(i,i=1,3,0)]\n      |            1\nError: Step expression in DO loop at (1) cannot be zero\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/zero_constant_stride.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/zero_constant_stride",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/zero_constant_stride.f90:4:15: Constructor implied-DO step is zero\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/zero_constant_stride.f90:4:15: Constructor implied-DO step is zero\n"
+      }
+    },
+    {
+      "case": {
+        "name": "own_index_start",
+        "source": "cases/own_index_start.f90",
+        "source_sha256": "e4701cf7acfc0631f004435c897a1febef12423b7055e097004d6ac61192b5f1",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/own_index_start.f90:4:8:\n\n    4 | a=[(i,i=i,3)]\n      |        1\nError: Legacy Extension: AC-IMPLIED-DO initial expression references control variable at (1)\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/own_index_start.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/own_index_start",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/own_index_start.f90:4:13: Invalid constructor implied-DO index scope, controls or body\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/own_index_start.f90:4:13: Invalid constructor implied-DO index scope, controls or body\n"
+      }
+    },
+    {
+      "case": {
+        "name": "own_index_end",
+        "source": "cases/own_index_end.f90",
+        "source_sha256": "d44c34d67737feb7f52be1499e17c6cca343181d9cb79256348fe23ff8974135",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/own_index_end.f90:4:10:\n\n    4 | a=[(i,i=1,i)]\n      |          1\nError: Legacy Extension: AC-IMPLIED-DO final expression references control variable at (1)\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/own_index_end.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/own_index_end",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/own_index_end.f90:4:13: Invalid constructor implied-DO index scope, controls or body\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/own_index_end.f90:4:13: Invalid constructor implied-DO index scope, controls or body\n"
+      }
+    },
+    {
+      "case": {
+        "name": "own_index_step",
+        "source": "cases/own_index_step.f90",
+        "source_sha256": "80909014d556f6cf1b875e11f554ba28530e7bb9427d9fa5f4b65110cf169392",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/own_index_step.f90:4:12:\n\n    4 | a=[(i,i=1,3,i)]\n      |            1\nError: Legacy Extension: AC-IMPLIED-DO step expression references control variable at (1)\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/own_index_step.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/own_index_step",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/own_index_step.f90:4:15: Invalid constructor implied-DO index scope, controls or body\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/own_index_step.f90:4:15: Invalid constructor implied-DO index scope, controls or body\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nested_index_reuse",
+        "source": "cases/nested_index_reuse.f90",
+        "source_sha256": "841aa8201299686591917c9813ea388e9e44cb3c66b8da08e4479b58814fd67b",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nested_index_reuse.f90:4:13:\n\n    4 | a=[((i,i=1,2),i=1,3)]\n      |             1\nError: DO-iterator \u00e2\u0080\u0098i\u00e2\u0080\u0099 at (1) is inside iterator of the same name\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nested_index_reuse.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/nested_index_reuse",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nested_index_reuse.f90:4:5: Nested constructor implied-DO indices must have distinct names\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/nested_index_reuse.f90:4:5: Nested constructor implied-DO indices must have distinct names\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_numeric_types",
+        "source": "cases/mixed_numeric_types.f90",
+        "source_sha256": "624b64c0e5dbd785a15549a5a0991e2716bcd2c02d67a0c8a559c099739d8c1d",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/mixed_numeric_types.f90:5:6:\n\n    5 | a=[(i,real(i),i=1,3)]\n      |      1\nError: Element in INTEGER(4) array constructor at (1) is REAL(4)\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/mixed_numeric_types.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/mixed_numeric_types",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/mixed_numeric_types.f90:5:14: Constructor implied-DO items must have matching types and kinds\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/mixed_numeric_types.f90:5:14: Constructor implied-DO items must have matching types and kinds\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_integer_kinds",
+        "source": "cases/mixed_integer_kinds.f90",
+        "source_sha256": "971393fa65b861d35442cdc1185e97bf76744c358d628228ffd31d340a307296",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/mixed_integer_kinds.f90:5:6:\n\n    5 | a=[(i,int(i,8),i=1,3)]\n      |      1\nError: Element in INTEGER(4) array constructor at (1) is INTEGER(8)\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/mixed_integer_kinds.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/mixed_integer_kinds",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/mixed_integer_kinds.f90:5:15: Constructor implied-DO items must have matching types and kinds\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/mixed_integer_kinds.f90:5:15: Constructor implied-DO items must have matching types and kinds\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_character_lengths",
+        "source": "cases/mixed_character_lengths.f90",
+        "source_sha256": "384e67b6b0096e327c7dc625db74bcf48a353df1cc37357fd72bd092b598828a",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/mixed_character_lengths.f90:5:8:\n\n    5 | a=[(\"a\",\"bb\",i=1,3)]\n      |        1\nError: Different CHARACTER lengths (1/2) in array constructor at (1)\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/mixed_character_lengths.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/mixed_character_lengths",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/mixed_character_lengths.f90:5:13: Untyped CHARACTER constructor requires matching fixed item lengths\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/mixed_character_lengths.f90:5:13: Untyped CHARACTER constructor requires matching fixed item lengths\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_end",
+        "source": "cases/missing_end.f90",
+        "source_sha256": "4d4054bb5d3a2ee789492f3e257df02c612a725aa7e0b9fb4e7a4e31eeab10fd",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/missing_end.f90:4:10:\n\n    4 | a=[(i,i=1)]\n      |          1\nError: Syntax error in iterator at (1)\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/missing_end.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/missing_end",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/missing_end.f90:4:10: Expected ,, found )\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/missing_end.f90:4:10: Expected ,, found )\n"
+      }
+    },
+    {
+      "case": {
+        "name": "too_many_controls",
+        "source": "cases/too_many_controls.f90",
+        "source_sha256": "a054634860f4ab3d3172ba094b48ef484a56c8279ceee3b41474ddf51536087a",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/too_many_controls.f90:4:14:\n\n    4 | a=[(i,i=1,3,1,1)]\n      |              1\nError: Syntax error in array constructor at (1)\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/too_many_controls.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/too_many_controls",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/too_many_controls.f90:4:14: Expected ), found ,\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/too_many_controls.f90:4:14: Expected ), found ,\n"
+      }
+    },
+    {
+      "case": {
+        "name": "typed_nonempty_numeric",
+        "source": "cases/typed_nonempty_numeric.f90",
+        "source_sha256": "9b189c13e423f72113819123b67fc45224186a16c760b9c9d21f86f2f2e3ae60",
+        "category": "reject",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/typed_nonempty_numeric.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/typed_nonempty_numeric",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/typed_nonempty_numeric.f90:4:13: Nonempty typed numeric/logical constructors are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/typed_nonempty_numeric.f90:4:13: Nonempty typed numeric/logical constructors are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "typed_nonempty_real",
+        "source": "cases/typed_nonempty_real.f90",
+        "source_sha256": "5d893f98ffcd08e3d99726488426758f876eddeb71a8b34ec5224a7ee00c3d71",
+        "category": "reject",
+        "baseline": "compile",
+        "compare_mode": "numeric_records",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/typed_nonempty_real.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/typed_nonempty_real",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/typed_nonempty_real.f90:5:13: Nonempty typed numeric/logical constructors are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/typed_nonempty_real.f90:5:13: Nonempty typed numeric/logical constructors are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "explicit_index_type",
+        "source": "cases/explicit_index_type.f90",
+        "source_sha256": "50eb2b95a6971d58530778cab3b1f073451991169e00e56607e45dc989cd0579",
+        "category": "reject",
+        "baseline": "reject",
+        "compare_mode": "numeric_records",
+        "note": "F2018-valid syntax not implemented by GNU 14.2 or this bounded subset; GNU rejection is not standard-invalid evidence.",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/explicit_index_type.f90:4:6:\n\n    4 | a=[(i,integer::i=1,3)]\n      |      1\nError: Expected a right parenthesis in expression at (1)\n"
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/explicit_index_type.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/explicit_index_type",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/explicit_index_type.f90:4:6: Undeclared variable: i\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/explicit_index_type.f90:4:6: Undeclared variable: i\n"
+      }
+    },
+    {
+      "case": {
+        "name": "zero_dynamic_stride",
+        "source": "cases/zero_dynamic_stride.f90",
+        "source_sha256": "05519bac525df93bc53b18a7b902605c4436867e9523be03beb71336bd651920",
+        "category": "runtime",
+        "baseline": "compile",
+        "compare_mode": "exact",
+        "completed_stdout": "before\n",
+        "expected_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/zero_dynamic_stride.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/zero_dynamic_stride",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/zero_dynamic_stride.f90:6:4: constructor implied-DO step is zero\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_bound",
+        "source": "cases/undefined_bound.f90",
+        "source_sha256": "fc3d918d8d88acb99bb636193ef2fcf9c83a8d76c2290b611b6a4eb0a77d1674",
+        "category": "runtime",
+        "baseline": "compile",
+        "compare_mode": "exact",
+        "completed_stdout": "before\n",
+        "expected_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/undefined_bound.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/undefined_bound",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/undefined_bound.f90:6:11: read of uninitialized variable n\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_leaf",
+        "source": "cases/undefined_leaf.f90",
+        "source_sha256": "72f9c152b58f5d0c8c2054b7ef68b0d6d76d31e7eea89c4ccd235dd4affdfb03",
+        "category": "runtime",
+        "baseline": "compile",
+        "compare_mode": "exact",
+        "completed_stdout": "before\n",
+        "expected_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/undefined_leaf.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/undefined_leaf",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/undefined_leaf.f90:5:5: read of uninitialized variable x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "late_bounds_error",
+        "source": "cases/late_bounds_error.f90",
+        "source_sha256": "e1ebf2ca3b807dc270a15ad97e4c7025a1d6221263d2f2a0d932c6767c8aacf6",
+        "category": "runtime",
+        "baseline": "compile",
+        "compare_mode": "exact",
+        "completed_stdout": "before\n",
+        "expected_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/late_bounds_error.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/late_bounds_error",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/late_bounds_error.f90:6:5: array subscript 3 out of bounds for x (1:2)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "narrow_control_overflow",
+        "source": "cases/narrow_control_overflow.f90",
+        "source_sha256": "60b3872ca60a287a789d87112c0eb8138c44790dcfd2e10086f7b4855fbb1a35",
+        "category": "runtime",
+        "baseline": "compile",
+        "compare_mode": "exact",
+        "completed_stdout": "before\n",
+        "expected_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/narrow_control_overflow.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/narrow_control_overflow",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/narrow_control_overflow.f90:7:4: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "final_increment_overflow",
+        "source": "cases/final_increment_overflow.f90",
+        "source_sha256": "03d32afe2d1fd7f621800d4a001c9fe389c650be4abc2746628de51fe72464fe",
+        "category": "runtime",
+        "baseline": "compile",
+        "compare_mode": "exact",
+        "completed_stdout": "before\n",
+        "expected_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/final_increment_overflow.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/final_increment_overflow",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/final_increment_overflow.f90:6:4: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_character_length_mismatch",
+        "source": "cases/dynamic_character_length_mismatch.f90",
+        "source_sha256": "fe8b8c0c7bc8168f45a173f32148b0a8811427ec0b649cc2e319aaa9fea37ee5",
+        "category": "reject",
+        "baseline": "compile",
+        "compare_mode": "exact",
+        "expected_stdout": "",
+        "note": "Existing main-program host-association or fixed-length untyped CHARACTER subset boundary, observed before execution."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/dynamic_character_length_mismatch.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/dynamic_character_length_mismatch",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/dynamic_character_length_mismatch.f90:7:15: Untyped CHARACTER constructor requires descriptor-known item lengths\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/dynamic_character_length_mismatch.f90:7:15: Untyped CHARACTER constructor requires descriptor-known item lengths\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_outer_after_constructor",
+        "source": "cases/undefined_outer_after_constructor.f90",
+        "source_sha256": "69cd5b605480f8a8c934a6cd27606a97fe3a39621b0d5ba1f83ecfc9022d8055",
+        "category": "runtime",
+        "baseline": "compile",
+        "compare_mode": "exact",
+        "completed_stdout": "before\n",
+        "expected_stdout": "before\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/undefined_outer_after_constructor.f90",
+        "-fsyntax-only"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/undefined_outer_after_constructor",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/undefined_outer_after_constructor.f90:6:9: read of uninitialized variable i\n"
+      }
+    },
+    {
+      "case": {
+        "name": "module_internal_host_preserved",
+        "source": "cases/module_internal_host_preserved.f90",
+        "source_sha256": "8a13bb771ccb63edf2c60bdf35573ae1576dc39a7863d00e112077ae57a5054e",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/module_internal_host_preserved.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/module_internal_host_preserved.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/module_internal_host_preserved/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/module_internal_host_preserved",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3          88\n          88\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 88\n 88\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "module_function_outer_visibility",
+        "source": "cases/module_function_outer_visibility.f90",
+        "source_sha256": "93bcdb67c7479872e16e1f8e8e75c302ad0612bba4d24f643db6a63c1727248e",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/module_function_outer_visibility.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/module_function_outer_visibility.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/module_function_outer_visibility/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/module_function_outer_visibility",
+      "gnu_run": {
+        "code": 0,
+        "out": "           1          88           2          88           3          88          88\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 88 2 88 3 88 88\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_index_activation",
+        "source": "cases/recursive_index_activation.f90",
+        "source_sha256": "4a44fa40c6b44040500a9c98aee82b4e0174fd3588f91797f52916309d915aa1",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "expected_file": "expected/recursive_index_activation.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/recursive_index_activation.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/recursive_index_activation/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/recursive_index_activation",
+      "gnu_run": {
+        "code": 0,
+        "out": "         313\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 313\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "emitted_values_exact_cap",
+        "source": "cases/emitted_values_exact_cap.f90",
+        "source_sha256": "253a65afda439ce3893dfa05daa8dee3a8eaa181e4d411d9ab31480476ffa965",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_records",
+        "args": [
+          "--max-steps",
+          "100000000"
+        ],
+        "expected_file": "expected/emitted_values_exact_cap.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/emitted_values_exact_cap.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/emitted_values_exact_cap/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/emitted_values_exact_cap",
+      "gnu_run": {
+        "code": 0,
+        "out": "     1000000     1000000\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1000000 1000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_compare_vec_strings",
+        "source": "cases/original_compare_vec_strings.f90",
+        "source_sha256": "28c27ecb0df93cbc701670392acb1924fbd81b43fbd5410a600039dd1fbf65b3",
+        "category": "success",
+        "baseline": "run",
+        "compare_mode": "numeric_prefix_exact",
+        "expected_file": "expected/original_compare_vec_strings.stdout"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "-ffree-line-length-none",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/cases/original_compare_vec_strings.f90",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/original_compare_vec_strings/reference"
+      ],
+      "gnu_evidence_directory": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/constructor_implied_do/evidence/gnu-20261116T144854645106Z/original_compare_vec_strings",
+      "gnu_run": {
+        "code": 0,
+        "out": "CASE defaults mixed\n           2  elements of x not in y:\n cat\n cat\n\n           1  elements of x not in y:\n owl\n\nCASE equal duplicates\n all elements of l are in r\n all elements of r are in l\nCASE both empty\n all elements of x are in y\n all elements of x are in y\nCASE left empty\n all elements of x are in y\n           1  elements of x not in y:\n cat\n\nCASE right empty\n           1  elements of s not in t:\n cat\n\n all elements of t are in s\nCASE trailing spaces\n all elements of x are in y\n all elements of x are in y\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "CASE defaults mixed\n 2  elements of x not in y:\n cat\n cat\n\n 1  elements of x not in y:\n owl\n\nCASE equal duplicates\n all elements of l are in r\n all elements of r are in l\nCASE both empty\n all elements of x are in y\n all elements of x are in y\nCASE left empty\n all elements of x are in y\n 1  elements of x not in y:\n cat\n\nCASE right empty\n 1  elements of s not in t:\n cat\n\n all elements of t are in s\nCASE trailing spaces\n all elements of x are in y\n all elements of x are in y\n",
+        "err": ""
+      }
+    }
+  ]
+}

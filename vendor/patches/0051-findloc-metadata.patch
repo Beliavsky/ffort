@@ -1,0 +1,88 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -932,7 +932,7 @@
+             call set_intrinsic_metadata(node, TREAL, 8, result_rank)
+         case ("merge")
+             call resolve_merge_metadata(arena, node, visiting, result_rank)
+-        case ("sum", "product", "minval", "maxval", "all", "any", "count", "minloc", "maxloc")
++        case ("sum", "product", "minval", "maxval", "all", "any", "count", "minloc", "maxloc", "findloc")
+             call resolve_reduction_metadata(arena, node, visiting)
+         case ("kind", "selected_int_kind", "selected_real_kind")
+             call set_intrinsic_metadata(node, TINT, 4, 0)
+@@ -957,7 +957,7 @@
+         type(ast_arena_t), intent(inout) :: arena
+         type(call_or_subscript_node), intent(inout) :: node
+         logical, intent(inout) :: visiting(:)
+-        integer :: i, idx, value_index, array_index, positional, rank, kind_value, result_type
++        integer :: i, idx, value_index, array_index, positional, rank, kind_value, result_type, value_offset
+         logical :: has_dim, keyword, logical_reduction, location_reduction
+         character(:), allocatable :: argument_name
+ 
+@@ -965,7 +965,8 @@
+         array_index = 0
+         kind_value = 4
+         logical_reduction = any(to_lower(node%name) == [character(5)::'all','any','count'])
+-        location_reduction = any(to_lower(node%name) == [character(6)::'minloc','maxloc'])
++        location_reduction = any(to_lower(node%name) == [character(7)::'minloc','maxloc','findloc'])
++        value_offset = merge(1, 0, to_lower(node%name) == "findloc")
+         positional = 0
+         has_dim = .false.
+         do i = 1, size(node%arg_indices)
+@@ -1001,9 +1002,9 @@
+                 if (logical_reduction.and.positional == 3) &
+                     call evaluate_integer_constant(arena,value_index,kind_value,visiting)
+                 if (location_reduction.and. &
+-                    ((has_dim.and.positional==4).or.(.not.has_dim.and.positional==3))) &
++                    ((has_dim.and.positional==4+value_offset).or.(.not.has_dim.and.positional==3+value_offset))) &
+                     call evaluate_integer_constant(arena,value_index,kind_value,visiting)
+-                if (positional == 2) then
++                if (positional == 2+value_offset) then
+                     has_dim = arena%entries(value_index)%node%resolved_type_kind == TINT
+                 end if
+             end if
+--- a/src/semantic/analyzers/semantic_array_intrinsics.f90
++++ b/src/semantic/analyzers/semantic_array_intrinsics.f90
+@@ -274,7 +274,7 @@
+         type(mono_type_t) :: element_type
+ 
+         select case (lowered_name)
+-        case ("shape", "maxloc", "minloc")
++        case ("shape", "maxloc", "minloc", "findloc")
+             element_type = create_mono_type(TINT)
+         case ("any", "all")
+             element_type = create_mono_type(TLOGICAL)
+--- a/src/standardizers/standardizer_function_param_scanner.f90
++++ b/src/standardizers/standardizer_function_param_scanner.f90
+@@ -167,7 +167,7 @@
+         lowered = to_lower(trim(name))
+         select case (lowered)
+         case ("size", "lbound", "ubound", "shape", "allocated", &
+-                "maxloc", "minloc", "sum", "product", "maxval", "minval", &
++                "maxloc", "minloc", "findloc", "sum", "product", "maxval", "minval", &
+                 "any", "all", "count", "matmul", "transpose", "pack", &
+                 "unpack", "reshape", "spread", "merge", "cshift", "eoshift")
+             is_array_fn = .true.
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 75
++        integer, parameter :: NUM_INTRINSICS = 76
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -452,6 +452,12 @@
+ 
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="findloc", return_type="array", &
++            arg_types="array,value", &
++            description="Location of matching array value")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="pack", return_type="array", &
+             arg_types="array,logical_array", &
+             description="Pack array into vector")

@@ -1,0 +1,614 @@
+{
+  "status": "passed",
+  "tests": 17,
+  "failures": 0,
+  "errors": 0,
+  "candidate_sha256": "ddd6289eb4fa8116ccd2aa8ead8081cae8bd7f29ddd89636970fc0b122774ed4",
+  "candidate_after_sha256": "ddd6289eb4fa8116ccd2aa8ead8081cae8bd7f29ddd89636970fc0b122774ed4",
+  "records": [
+    {
+      "source": "integer :: i,a(2)\na=0\ndo i=1,3\na(i)=i\nend do\na\n.vars\n.clear\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": "<repl>:6:1: array subscript 3 out of bounds for a (1:2)\n<repl>:0:0: scalar session tainted; reset required\n<repl>:0:0: scalar session tainted; reset required\n"
+    },
+    {
+      "source": "integer :: i,n,m,s\nn=3\ns=1\nm=0\ndo i=1,n,s\nn=1\ns=3\nm=m+i\nend do\nm\ni\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 6\n 4\n",
+      "stderr": ""
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger :: i,n,m,s\nn=3\ns=1\nm=0\ndo i=1,n,s\nn=1\ns=3\nm=m+i\nend do\nprint *,m\nprint *,i\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 6\n 4\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i\ndo i=1,2\nprint '(A)', 'ONCE'\nend do\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": "ONCE\nONCE\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i\ndo i=1,2\nprint '(A)', 'ONCE'\nenddo\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": "ONCE\nONCE\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i\ndo i=1,2\nprint '(A)', 'ONCE'\nEND DO\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": "ONCE\nONCE\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i\ndo i=1,2\nprint '(A)', 'ONCE'\nENDDO\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": "ONCE\nONCE\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i\ndo i=1,2\nprint '(A)', 'ONCE'\nEnD dO\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": "ONCE\nONCE\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i\ndo i=1,2\nprint '(A)', 'ONCE'\nEnDdO\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": "ONCE\nONCE\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=1,3\nn=n+i\nend do\nn\ni\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 6\n 4\n 6\n",
+      "stderr": ""
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger :: i,n\nn=0\ndo i=1,3\nn=n+i\nend do\nprint *,n\nprint *,i\nprint *,n\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 6\n 4\n 6\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=1,3\nn=n+i\nend do\nn\ni\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        "",
+        "--defer-check"
+      ],
+      "code": 0,
+      "stdout": " 6\n 4\n 6\n",
+      "stderr": ""
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger :: i,n\nn=0\ndo i=1,3\nn=n+i\nend do\nprint *,n\nprint *,i\nprint *,n\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 6\n 4\n 6\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=3,1,-1\nn=n+i\nend do\nn\ni\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 6\n 0\n 6\n",
+      "stderr": ""
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger :: i,n\nn=0\ndo i=3,1,-1\nn=n+i\nend do\nprint *,n\nprint *,i\nprint *,n\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 6\n 0\n 6\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=3,1,-1\nn=n+i\nend do\nn\ni\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        "",
+        "--defer-check"
+      ],
+      "code": 0,
+      "stdout": " 6\n 0\n 6\n",
+      "stderr": ""
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger :: i,n\nn=0\ndo i=3,1,-1\nn=n+i\nend do\nprint *,n\nprint *,i\nprint *,n\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 6\n 0\n 6\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=2,8,2\nn=n+i\nend do\nn\ni\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 20\n 10\n 20\n",
+      "stderr": ""
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger :: i,n\nn=0\ndo i=2,8,2\nn=n+i\nend do\nprint *,n\nprint *,i\nprint *,n\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 20\n 10\n 20\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=2,8,2\nn=n+i\nend do\nn\ni\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        "",
+        "--defer-check"
+      ],
+      "code": 0,
+      "stdout": " 20\n 10\n 20\n",
+      "stderr": ""
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger :: i,n\nn=0\ndo i=2,8,2\nn=n+i\nend do\nprint *,n\nprint *,i\nprint *,n\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 20\n 10\n 20\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=3,1\nn=n+i\nend do\nn\ni\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 0\n 3\n 0\n",
+      "stderr": ""
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger :: i,n\nn=0\ndo i=3,1\nn=n+i\nend do\nprint *,n\nprint *,i\nprint *,n\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 0\n 3\n 0\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=3,1\nn=n+i\nend do\nn\ni\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        "",
+        "--defer-check"
+      ],
+      "code": 0,
+      "stdout": " 0\n 3\n 0\n",
+      "stderr": ""
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger :: i,n\nn=0\ndo i=3,1\nn=n+i\nend do\nprint *,n\nprint *,i\nprint *,n\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 0\n 3\n 0\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=1,3,-1\nn=n+i\nend do\nn\ni\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 0\n 1\n 0\n",
+      "stderr": ""
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger :: i,n\nn=0\ndo i=1,3,-1\nn=n+i\nend do\nprint *,n\nprint *,i\nprint *,n\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 0\n 1\n 0\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=1,3,-1\nn=n+i\nend do\nn\ni\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        "",
+        "--defer-check"
+      ],
+      "code": 0,
+      "stdout": " 0\n 1\n 0\n",
+      "stderr": ""
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger :: i,n\nn=0\ndo i=1,3,-1\nn=n+i\nend do\nprint *,n\nprint *,i\nprint *,n\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 0\n 1\n 0\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=1,2\nn=n+1\nend do\nn\n.rep 4 n=n+3\nn\n.run\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 2\n 6\n",
+      "stderr": "<repl>: source edited; use .run to rebuild state\n"
+    },
+    {
+      "source": "integer(kind=8) :: i\ndo i=1_8,3_8\nend do\ni\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 4\n",
+      "stderr": ""
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger(kind=8) :: i\ndo i=1_8,3_8\nend do\nprint *,i\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 4\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n,u\nn=7\ndo i=1,2,0\nprint *,n\nend do\nn\n.vars\n.clear\ninteger :: k\nk=9\nk\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 9\n",
+      "stderr": "<repl>:5:1: DO step is zero\n<repl>:0:0: scalar session tainted; reset required\n<repl>:0:0: scalar session tainted; reset required\n"
+    },
+    {
+      "source": "integer :: i,n,u\nn=7\ndo i=u,2\nprint *,n\nend do\nn\n.vars\n.clear\ninteger :: k\nk=9\nk\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 9\n",
+      "stderr": "<repl>:5:6: read of uninitialized variable u\n<repl>:0:0: scalar session tainted; reset required\n<repl>:0:0: scalar session tainted; reset required\n"
+    },
+    {
+      "source": "integer :: i,n,u\nn=7\ndo i=2147483647,2147483647\nprint *,n\nend do\nn\n.vars\n.clear\ninteger :: k\nk=9\nk\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 7\n 9\n",
+      "stderr": "<repl>:5:1: integer overflow\n<repl>:0:0: scalar session tainted; reset required\n<repl>:0:0: scalar session tainted; reset required\n"
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=1,2\nn=n+1\nprint '(A)', 'BODY'\nend do\nn\n.run\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": "BODY\nBODY\n 2\nBODY\nBODY\n 2\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=3\nif (.false.) then\ndo i=1,2\nn=n+1\nend do\nendif\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 3\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,j\ndo i=1,2\nprint '(A)', 'FORBIDDEN'\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,j\ndo i=1,2\nprint '(A)', 'FORBIDDEN'\ndo j=1,2\nprint *,j\nend do\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,j,a(2)\na=0\ndo i=1,2\ndo j=1,3\nif (j/=2) a(i)=a(i)+j\nend do\nend do\na\na\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 4 4\n 4 4\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=1,2\nn=n+1\nprint '(A)', 'BODY'\nend do\nn\n.vars\nn\ndo i=1,2\nn=n+1\nend do\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": "BODY\nBODY\n 2\ni = 3\nn = 2\n 2\n 4\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=1,2\nn=n+1\nprint '(A)', 'BODY'\nend do\nn\n.vars\nn\ndo i=1,2\nn=n+1\nend do\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        "",
+        "--defer-check"
+      ],
+      "code": 0,
+      "stdout": "BODY\nBODY\n 2\ni = 3\nn = 2\n 2\n 4\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=1,2\nprint '(A)', 'FORBIDDEN'\nend do\nunknown(n)\n.clear\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        "",
+        "--defer-check"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": "<repl>:8:21: Unsupported procedure or array reference: unknown\n"
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger :: i\nreal :: x\ncall random_seed()\ndo i=1,3\ncall random_number(x)\nend do\nprint *,x\nprint *,x\ndo i=1,2\ncall random_number(x)\nend do\nprint *,x\nprint *,x\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 0.789788187\n 0.789788187\n 0.180006936\n 0.180006936\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i\nreal :: x\ncall random_seed()\ndo i=1,3\ncall random_number(x)\nend do\nx\nx\ndo i=1,2\ncall random_number(x)\nend do\nx\nx\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 0.789788187\n 0.789788187\n 0.180006936\n 0.180006936\n",
+      "stderr": ""
+    },
+    {
+      "source": "program oracle\nimplicit none\ninteger :: i\nreal :: x\ncall random_seed()\ndo i=1,3\ncall random_number(x)\nend do\nprint *,x\nprint *,x\ndo i=1,2\ncall random_number(x)\nend do\nprint *,x\nprint *,x\nend program oracle\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate"
+      ],
+      "code": 0,
+      "stdout": " 0.789788187\n 0.789788187\n 0.180006936\n 0.180006936\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i\nreal :: x\ncall random_seed()\ndo i=1,3\ncall random_number(x)\nend do\nx\nx\ndo i=1,2\ncall random_number(x)\nend do\nx\nx\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        "",
+        "--defer-check"
+      ],
+      "code": 0,
+      "stdout": " 0.789788187\n 0.789788187\n 0.180006936\n 0.180006936\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=1,2\nn=n+1\nprint '(A)', 'BODY'\nend do\n.save loop.f90\n.clear\n.load loop.f90\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": "BODY\nBODY\nSaved source to loop.f90\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n,u\nn=5\ndo i=2,1\nn=u\nend do\nn\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        ""
+      ],
+      "code": 0,
+      "stdout": " 5\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: i,n\nn=0\ndo i=1,1000\nn=n+1\nend do\nn\n.vars\n.clear\n.quit!\n",
+      "args": [
+        "/workspace/scratch/c5319e9549df/recovery/057-repl-values-evidence/final-candidate",
+        "--repl",
+        "--nologo",
+        "--prompt",
+        "",
+        "--max-steps",
+        "30"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": "<repl>:6:3: execution step limit exceeded\n<repl>:0:0: scalar session tainted; reset required\n<repl>:0:0: scalar session tainted; reset required\n"
+    }
+  ]
+}

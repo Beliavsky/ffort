@@ -1,0 +1,1857 @@
+{
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "total": 85,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "reverse_snapshot",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 6 5 4 3 2 1 99\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reverse_snapshot.f90:6:25:\n\n    6 | forall(i=1:6) a(i)=a(7-i)\n      |                         1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           6           5           4           3           2           1          99\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "construct_statement_order",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 51 52 53 54 5 5 5 5\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/construct_statement_order.f90:5:13:\n\n    5 | forall(i=1:4)\n      |             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "          51          52          53          54           5           5           5           5\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "frozen_mask",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 1 2 0 0 0 0 3 4\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/frozen_mask.f90:6:20:\n\n    6 | forall(i=1:4,a(i)>2)\n      |                    1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           0           0           0           0           3           4\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "mask_index_expression",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 1 0 9 0 25\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/mask_index_expression.f90:5:34:\n\n    5 | forall(i=1:5,mod(i,2)==1) a(i)=i*i\n      |                                  1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           0           9           0          25\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "matrix_transpose",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 1 4 7 2 5 8 3 6 9\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/matrix_transpose.f90:5:33:\n\n    5 | forall(i=1:3,j=1:3) a(i,j)=a(j,i)\n      |                                 1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           4           7           2           5           8           3           6           9\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "masked_two_indices",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " -9 -9 21 -9 30 31 39 40 41 70 80\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/masked_two_indices.f90:7:43:\n\n    7 | forall(i=-1:1,j=4:2:-1,i+j>2) a(i,j)=10*j+i\n      |                                           1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "          -9          -9          21          -9          30          31          39          40          41          70          80\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "overlap_columns",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 7 8 5 6 3 4 1 2\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/overlap_columns.f90:5:29:\n\n    5 | forall(i=1:4) a(:,i)=a(:,5-i)\n      |                             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           7           8           5           6           3           4           1           2\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "overlap_rows",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 3 2 1 6 5 4\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/overlap_rows.f90:5:29:\n\n    5 | forall(i=1:3) a(i,:)=a(4-i,:)\n      |                             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           3           2           1           6           5           4\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "rank_two_sections",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 3 4 1 2 7 8 5 6\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/rank_two_sections.f90:5:45:\n\n    5 | forall(i=1:2) a(2*i-1:2*i,:)=a(5-2*i:6-2*i,:)\n      |                                             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           3           4           1           2           7           8           5           6\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "lhs_mapping_snapshot",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 20 30 10\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/lhs_mapping_snapshot.f90:5:26:\n\n    5 | forall(i=1:3) a(a(i))=10*i\n      |                          1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "          20          30          10\n",
+        "stderr": "At line 3 of file /workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/lhs_mapping_snapshot.f90\nFortran runtime warning: An array temporary was created\n"
+      },
+      "reason": null
+    },
+    {
+      "name": "lhs_mapping_construct",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 2 3 1 2 3 1\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/lhs_mapping_construct.f90:5:13:\n\n    5 | forall(i=1:3)\n      |             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           2           3           1           2           3           1\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "stride_nonunit",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " -3 0 -1 0 1 0 3\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/stride_nonunit.f90:5:24:\n\n    5 | forall(i=3:-3:-2) a(i)=i\n      |                        1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "          -3           0          -1           0           1           0           3\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "empty_and_false",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 7 7 7 21\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/empty_and_false.f90:7:20:\n\n    7 | forall(i=3:1) a(i)=x\n      |                    1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/empty_and_false.f90:8:28:\n\n    8 | forall(i=1:3,.false.) b(i)=x\n      |                            1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           7           7           7          21\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "empty_construct",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 5\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/empty_construct.f90:5:13:\n\n    5 | forall(i=1:3)\n      |             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           5\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "empty_sections",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 0\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/empty_sections.f90:4:22:\n\n    4 | forall(i=1:2) a(:,i)=3\n      |                      1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           0\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "scope_restore_undefined",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/scope_restore_undefined.f90:5:9: read of uninitialized variable i\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "character_reverse",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": "sixtwoone\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/character_reverse.f90:6:25:\n\n    6 | forall(i=1:3) a(i)=a(4-i)\n      |                         1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "sixtwoone\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "character_sections",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": "sixtenonetwo\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/character_sections.f90:6:29:\n\n    6 | forall(i=1:2) a(:,i)=a(:,3-i)\n      |                             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "sixtenonetwo\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "real_conversion",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 4 3 2 1\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/real_conversion.f90:7:25:\n\n    7 | forall(i=1:4) b(i)=a(5-i)\n      |                         1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           4           3           2           1\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "logical_assignment",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " F T T F\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/logical_assignment.f90:6:30:\n\n    6 | forall(i=1:4) a(i)=.not.a(5-i)\n      |                              1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " F T T F\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "wide_terminal",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 5 6\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/wide_terminal.f90:7:39:\n\n    7 | forall(i=(-9223372036854775807_8-1_8):(-9223372036854775807_8-1_8):-1_8) a(2)=6\n      |                                       1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/wide_terminal.f90:6:20:\n\n    6 | forall(i=j:j) a(1)=5\n      |                    1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/wide_terminal.f90:6:14:\n\n    6 | forall(i=j:j) a(1)=5\n      |              1\nWarning: The FORALL with index \u2018i\u2019 is not used on the left side of the assignment at (1) and so might cause multiple assignment to this object\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/wide_terminal.f90:7:79:\n\n    7 | forall(i=(-9223372036854775807_8-1_8):(-9223372036854775807_8-1_8):-1_8) a(2)=6\n      |                                                                               1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/wide_terminal.f90:7:73:\n\n    7 | forall(i=(-9223372036854775807_8-1_8):(-9223372036854775807_8-1_8):-1_8) a(2)=6\n      |                                                                         1\nWarning: The FORALL with index \u2018i\u2019 is not used on the left side of the assignment at (1) and so might cause multiple assignment to this object\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           5           6\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "minimum_stride",
+      "expected": "policy",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 7 7\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/minimum_stride.f90:7:10:\n\n    7 |  a(int(i/(-9223372036854775807_8-1_8))+1)=7\n      |          1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/minimum_stride.f90:7:43:\n\n    7 |  a(int(i/(-9223372036854775807_8-1_8))+1)=7\n      |                                           1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           0           0\n",
+        "stderr": ""
+      },
+      "reason": "GNU 14.2 computes zero iterations for the full-range minimum-int64 stride; interpreter enumerates the two representable indices without overflowing a trip-count formula."
+    },
+    {
+      "name": "mixed_control_kinds",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 1 2 3\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/mixed_control_kinds.f90:5:34:\n\n    5 | forall(i=1:3_8:1) a(int(i))=int(i)\n      |                                  1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "pure_function",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 1 4 9 16\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/pure_function.f90:4:28:\n\n    4 | forall(i=1:4) a(i)=square(i)\n      |                            1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           4           9          16\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "pure_array_result",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 1 2 2 4 3 6\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/pure_array_result.f90:4:28:\n\n    4 | forall(i=1:3) a(:,i)=pair(i)\n      |                            1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           2           4           3           6\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "procedure_out_sections",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 1 1 1 2 2 2\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/procedure_out_sections.f90:11:30:\n\n   11 | forall(i=1:size(x,2)) x(:,i)=i\n      |                              1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           1           1           2           2           2\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "allocate_numeric",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " -10 0 10 -1\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/allocate_numeric.f90:6:24:\n\n    6 | forall(i=-1:1) a(i)=i*10\n      |                        1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "         -10           0          10          -1\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "nested_in_do_if",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 3 2 1\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/nested_in_do_if.f90:7:20:\n\n    7 | forall(i=1:3) a(i)=i\n      |                    1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/nested_in_do_if.f90:9:25:\n\n    9 | forall(i=1:3) a(i)=a(4-i)\n      |                         1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           3           2           1\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "semicolon_and_continuation",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 13 12 1\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/semicolon_and_continuation.f90:4:25:\n\n    4 | a=0;forall(i=1:3) a(i)=i;forall(i=1:3) a(i)=a(4-i)\n      |                         1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/semicolon_and_continuation.f90:4:50:\n\n    4 | a=0;forall(i=1:3) a(i)=i;forall(i=1:3) a(i)=a(4-i)\n      |                                                  1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/semicolon_and_continuation.f90:6:23:\n\n    6 |  & a(i)>1) a(i)=a(i)+10\n      |                       1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "          13          12           1\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "false_mask_undefined_rhs",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 9 9 9\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/false_mask_undefined_rhs.f90:5:31:\n\n    5 | forall(i=1:3,.false.) a(i)=b(i)\n      |                               1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           9           9           9\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "bounds_frozen",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 0 0 0\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/bounds_frozen.f90:5:23:\n\n    5 | forall(i=1:a(1)) a(i)=0\n      |                       1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           0           0           0\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "runtime_duplicate_element",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_duplicate_element.f90:4:15: FORALL assignment defines an element more than once\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_overlapping_sections",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_overlapping_sections.f90:4:15: FORALL assignment defines an element more than once\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_duplicate_second_index",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_duplicate_second_index.f90:4:21: FORALL assignment defines an element more than once\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_zero_stride",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_zero_stride.f90:5:1: FORALL stride is zero\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_undefined_bound",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_undefined_bound.f90:4:12: read of uninitialized variable n\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_undefined_mask",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_undefined_mask.f90:5:14: read of uninitialized variable m\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_undefined_rhs",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_undefined_rhs.f90:4:20: read of uninitialized array element b\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_undefined_subscript",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_undefined_subscript.f90:4:17: read of uninitialized array element b\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_out_of_bounds",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_out_of_bounds.f90:4:15: array subscript 3 out of bounds for a (1:2)\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_shape_mismatch",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_shape_mismatch.f90:5:15: FORALL array assignment shapes do not conform\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_unallocated_target",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_unallocated_target.f90:5:15: reference to unallocated array a\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_narrow_bound",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_narrow_bound.f90:4:1: integer overflow\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_iteration_limit",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_iteration_limit.f90:4:1: FORALL iteration limit exceeded\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_product_limit",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_product_limit.f90:4:1: FORALL iteration limit exceeded\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "runtime_empty_section_undefined_scalar",
+      "expected": "runtime",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/runtime_empty_section_undefined_scalar.f90:4:22: read of uninitialized variable x\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_real_index",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_real_index.f90:5:8: FORALL index requires a local non-dummy INTEGER variable outside active DO controls\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_real_index.f90:5:8: FORALL index requires a local non-dummy INTEGER variable outside active DO controls\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_undeclared_index",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_undeclared_index.f90:4:8: FORALL index requires a declared local INTEGER scalar\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_undeclared_index.f90:4:8: FORALL index requires a declared local INTEGER scalar\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_parameter_index",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_parameter_index.f90:5:8: FORALL index requires a local non-dummy INTEGER variable outside active DO controls\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_parameter_index.f90:5:8: FORALL index requires a local non-dummy INTEGER variable outside active DO controls\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_array_index",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_array_index.f90:4:8: FORALL index requires a local non-dummy INTEGER variable outside active DO controls\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_array_index.f90:4:8: FORALL index requires a local non-dummy INTEGER variable outside active DO controls\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_duplicate_index",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_duplicate_index.f90:4:14: Duplicate FORALL index variable\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_duplicate_index.f90:4:14: Duplicate FORALL index variable\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_three_indices",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_three_indices.f90:4:20: FORALL supports at most two index variables\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_three_indices.f90:4:20: FORALL supports at most two index variables\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_dependent_lower",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_dependent_lower.f90:4:21: FORALL bounds and strides cannot reference an index in the same header\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_dependent_lower.f90:4:21: FORALL bounds and strides cannot reference an index in the same header\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_dependent_upper",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_dependent_upper.f90:4:15: FORALL bounds and strides cannot reference an index in the same header\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_dependent_upper.f90:4:15: FORALL bounds and strides cannot reference an index in the same header\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_dependent_stride",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_dependent_stride.f90:4:17: FORALL bounds and strides cannot reference an index in the same header\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_dependent_stride.f90:4:17: FORALL bounds and strides cannot reference an index in the same header\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_real_bound",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_real_bound.f90:4:15: Array subscript and triplet operands must be scalar INTEGER\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_real_bound.f90:4:15: Array subscript and triplet operands must be scalar INTEGER\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_array_bound",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_array_bound.f90:4:13: Array subscript and triplet operands must be scalar INTEGER\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_array_bound.f90:4:13: Array subscript and triplet operands must be scalar INTEGER\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_integer_mask",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_integer_mask.f90:4:17: FORALL mask must be scalar LOGICAL\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_integer_mask.f90:4:17: FORALL mask must be scalar LOGICAL\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_array_mask",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_array_mask.f90:5:17: FORALL mask must be scalar LOGICAL\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_array_mask.f90:5:17: FORALL mask must be scalar LOGICAL\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_scalar_target",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_scalar_target.f90:5:1: FORALL target must be an array element or section\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_scalar_target.f90:5:1: FORALL target must be an array element or section\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_whole_array_target",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_whole_array_target.f90:5:1: FORALL target must be an array element or section\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_whole_array_target.f90:5:1: FORALL target must be an array element or section\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_nested_forall",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_nested_forall.f90:5:1: FORALL body supports array assignments only; nested constructs are unsupported\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_nested_forall.f90:5:1: FORALL body supports array assignments only; nested constructs are unsupported\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_print_body",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_print_body.f90:5:1: FORALL body supports array assignments only; nested constructs are unsupported\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_print_body.f90:5:1: FORALL body supports array assignments only; nested constructs are unsupported\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_where_body",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_where_body.f90:5:1: FORALL body supports array assignments only; nested constructs are unsupported\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_where_body.f90:5:1: FORALL body supports array assignments only; nested constructs are unsupported\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_named_construct",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_named_construct.f90:4:6: Only named counted DO constructs are supported\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_named_construct.f90:4:6: Only named counted DO constructs are supported\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_missing_end",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_missing_end.f90:6:5: Expected forall, found program\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_missing_end.f90:6:5: Expected forall, found program\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_trailing_end_name",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_trailing_end_name.f90:6:12: Unexpected trailing token: foo\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_trailing_end_name.f90:6:12: Unexpected trailing token: foo\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_active_do_index",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_active_do_index.f90:5:8: FORALL index requires a local non-dummy INTEGER variable outside active DO controls\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_active_do_index.f90:5:8: FORALL index requires a local non-dummy INTEGER variable outside active DO controls\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_typed_header",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_typed_header.f90:4:8: FORALL index requires a declared local INTEGER scalar\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_typed_header.f90:4:8: FORALL index requires a declared local INTEGER scalar\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_impure_rhs",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_impure_rhs.f90:5:1: FORALL expressions may reference only PURE user functions\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_impure_rhs.f90:5:1: FORALL expressions may reference only PURE user functions\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_impure_bound",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_impure_bound.f90:5:1: FORALL expressions may reference only PURE user functions\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_impure_bound.f90:5:1: FORALL expressions may reference only PURE user functions\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_dummy_index",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_dummy_index.f90:9:8: FORALL index requires a local non-dummy INTEGER variable outside active DO controls\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_dummy_index.f90:9:8: FORALL index requires a local non-dummy INTEGER variable outside active DO controls\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "utility_matrix_by_vector_real",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 1.0000000000000000 2.0000000000000000 3.0000000000000000 4.0000000000000000 2.0000000000000000 2.3999999999999999\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/utility_matrix_by_vector_real.f90:15:43:\n\n   15 | forall (i=1:n2) ymat(:,i) = xmat(:,i)/xx(i)\n      |                                           1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   1.0000000000000000        2.0000000000000000        3.0000000000000000        4.0000000000000000        2.0000000000000000        2.3999999999999999     \n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "utility_repeat_int",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 7 7 7 7 0\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/utility_repeat_int.f90:12:26:\n\n   12 | forall (j=1:n) ivec(j) = i\n      |                          1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           7           7           7           7           0\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "utility_repeat_real",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 2.5000000000000000 2.5000000000000000 2.5000000000000000 0\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/utility_repeat_real.f90:13:26:\n\n   13 | forall (j=1:n) xvec(j) = x\n      |                          1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   2.5000000000000000        2.5000000000000000        2.5000000000000000                0\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "utility_sign_changes_real",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " F T F F T\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/utility_sign_changes_real.f90:14:107:\n\n   14 | forall (i=2:n) tf(i) = (xx(i) > 0.0_dp .and. xx(i-1) < 0.0_dp) .or. (xx(i) < 0.0_dp .and. xx(i-1) > 0.0_dp)\n      |                                                                                                           1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " F T F F T\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "utility_ivec",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 1 2 3 4 0\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/utility_ivec.f90:12:24:\n\n   12 | forall (i=1:n) jj(i) = i\n      |                        1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3           4           0\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "utility_diag",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 1.0000000000000000 4.0000000000000000\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/utility_diag.f90:15:42:\n\n   15 | forall (i=1:min(n1,n2)) xdiag(i) = xx(i,i)\n      |                                          1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   1.0000000000000000        4.0000000000000000     \n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "inline_if",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 1 2 3\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/inline_if.f90:5:31:\n\n    5 | if(.true.) forall(i=1:3) a(i)=i\n      |                               1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "reject_inline_if_construct",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_inline_if_construct.f90:4:25: Single-line IF requires a FORALL statement, not a construct\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_inline_if_construct.f90:4:25: Single-line IF requires a FORALL statement, not a construct\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "reject_impure_mask",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_impure_mask.f90:5:1: FORALL expressions may reference only PURE user functions\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_impure_mask.f90:5:1: FORALL expressions may reference only PURE user functions\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    },
+    {
+      "name": "duplicate_masked_single",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 2\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/duplicate_masked_single.f90:5:25:\n\n    5 | forall(i=1:3,i==2) a(1)=i\n      |                         1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/duplicate_masked_single.f90:5:19:\n\n    5 | forall(i=1:3,i==2) a(1)=i\n      |                   1\nWarning: The FORALL with index \u2018i\u2019 is not used on the left side of the assignment at (1) and so might cause multiple assignment to this object\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           2\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "construct_in_function",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 3 2 1\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/construct_in_function.f90:10:13:\n\n   10 | forall(i=1:3)\n      |             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           3           2           1\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "mask_once_cross_references",
+      "expected": "run",
+      "pass": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 1 2 9 9\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/mask_once_cross_references.f90:5:29:\n\n    5 | forall(i=1:4,a(5-i)<3) a(i)=9\n      |                             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           9           9\n",
+        "stderr": ""
+      },
+      "reason": null
+    },
+    {
+      "name": "reject_module_index",
+      "expected": "reject",
+      "pass": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_module_index.f90:7:8: FORALL index requires a local non-dummy INTEGER variable outside active DO controls\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/forall/reject_module_index.f90:7:8: FORALL index requires a local non-dummy INTEGER variable outside active DO controls\n"
+      },
+      "compile": null,
+      "oracle": null,
+      "reason": null
+    }
+  ]
+}

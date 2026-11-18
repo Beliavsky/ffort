@@ -1,0 +1,1751 @@
+{
+  "candidate_sha256": "c75015954df558fe895150dfefb8feac59c379ae8e136e89f2f5bf7a5779021e",
+  "candidate_sha256_after": "c75015954df558fe895150dfefb8feac59c379ae8e136e89f2f5bf7a5779021e",
+  "candidate_version": {
+    "argv": [
+      "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+      "--version"
+    ],
+    "status": 0,
+    "stdout": "fortfront-interpreter 0.52.0; FortFront 9a5896a + documented local patches\n",
+    "stderr": ""
+  },
+  "gnu_version": {
+    "argv": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "--version"
+    ],
+    "status": 0,
+    "stdout": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "stderr": ""
+  },
+  "records": [
+    {
+      "name": "bare_in",
+      "source": "cases/bare_in.f90",
+      "sha256": "c11dd9264bc9dd4de96a2b522763d4685e06c6a9c3f1cc6449e991136e1893be",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/bare_in.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/bare_in.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/bare_in.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/bare_in.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/bare_in.f90",
+          "-o",
+          "/tmp/bare-char-gather-lqh47a1v/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-lqh47a1v/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "parenthesized_control",
+      "source": "cases/parenthesized_control.f90",
+      "sha256": "c2a695580b7f276961de25514f9f01e9aeff684333f6481e97e282fd54730c73",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/parenthesized_control.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/parenthesized_control.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/parenthesized_control.f90",
+          "-o",
+          "/tmp/bare-char-gather-tbhyuwuo/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-tbhyuwuo/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "keyword_in",
+      "source": "cases/keyword_in.f90",
+      "sha256": "a932fdde750577a445f38790bb2b5d65a402b30f68b8d4181c3d66580da47831",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/keyword_in.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/keyword_in.f90:14:21: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/keyword_in.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/keyword_in.f90:14:21: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/keyword_in.f90",
+          "-o",
+          "/tmp/bare-char-gather-uzzpmtwd/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-uzzpmtwd/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "constant_vector",
+      "source": "cases/constant_vector.f90",
+      "sha256": "1e5afb0f76061d442a185442dad88020fb903d88bca2ea8aa17cb7bd53c7f2cf",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/constant_vector.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/constant_vector.f90:14:28: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/constant_vector.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/constant_vector.f90:14:28: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/constant_vector.f90",
+          "-o",
+          "/tmp/bare-char-gather-b_y00wgj/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-b_y00wgj/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "expression_vector",
+      "source": "cases/expression_vector.f90",
+      "sha256": "76ae49ec8a83c7302ead16809e5dbda0bc276c6fd442fb25a492d87b1d9a701a",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/expression_vector.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/expression_vector.f90:14:21: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/expression_vector.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/expression_vector.f90:14:21: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/expression_vector.f90",
+          "-o",
+          "/tmp/bare-char-gather-fluotbas/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-fluotbas/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "integer8_vector",
+      "source": "cases/integer8_vector.f90",
+      "sha256": "5e6d56b63c77e984063b7284eece03fb55dd4adf8f8d3ab4b5fb1a835368718c",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/integer8_vector.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/integer8_vector.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/integer8_vector.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/integer8_vector.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/integer8_vector.f90",
+          "-o",
+          "/tmp/bare-char-gather-lc682rwq/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-lc682rwq/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "parameter_base",
+      "source": "cases/parameter_base.f90",
+      "sha256": "40d8518cc2aa7da7156376c837f282710c83774f83ea2ee0e86a1950ad50aea0",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/parameter_base.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/parameter_base.f90:13:23: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/parameter_base.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/parameter_base.f90:13:23: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/parameter_base.f90",
+          "-o",
+          "/tmp/bare-char-gather-5xmawojn/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-5xmawojn/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "zero_length",
+      "source": "cases/zero_length.f90",
+      "sha256": "8afa12306bbf760dc983dd54aeb8c45ddb8570387ff7663800784d4932bc6bc3",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "\n\n\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/zero_length.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/zero_length.f90:14:25: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/zero_length.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/zero_length.f90:14:25: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/zero_length.f90",
+          "-o",
+          "/tmp/bare-char-gather-mi7m480y/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-mi7m480y/oracle"
+        ],
+        "status": 0,
+        "stdout": "\n\n\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "empty_undefined_base",
+      "source": "cases/empty_undefined_base.f90",
+      "sha256": "b8995910b52bb3b4b3f4e0094b18500e80bc7678ea017838551f1a93221b883f",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/empty_undefined_base.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/empty_undefined_base.f90:13:29: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/empty_undefined_base.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/empty_undefined_base.f90:13:29: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/empty_undefined_base.f90",
+          "-o",
+          "/tmp/bare-char-gather-dp_rc7g1/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-dp_rc7g1/oracle"
+        ],
+        "status": 0,
+        "stdout": "\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "unselected_undefined",
+      "source": "cases/unselected_undefined.f90",
+      "sha256": "f51481337d0e94e9f9ec0a3244c2ecafd0dd7d86fde6a33ea9d8201b718a11bf",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "cd\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unselected_undefined.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unselected_undefined.f90:14:23: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unselected_undefined.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unselected_undefined.f90:14:23: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unselected_undefined.f90",
+          "-o",
+          "/tmp/bare-char-gather-isoltvo_/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-isoltvo_/oracle"
+        ],
+        "status": 0,
+        "stdout": "cd\ncd\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "deferred_length",
+      "source": "cases/deferred_length.f90",
+      "sha256": "26ae473edb08e12ee11d19b75d2e19e8674f173e589595e9033be91c98352f85",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/deferred_length.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/deferred_length.f90:15:23: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/deferred_length.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/deferred_length.f90:15:23: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/deferred_length.f90",
+          "-o",
+          "/tmp/bare-char-gather-mpycxdh7/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-mpycxdh7/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "assumed_shape_lower_bound",
+      "source": "cases/assumed_shape_lower_bound.f90",
+      "sha256": "f56c96aacdec50ea2878cbb192e1be75b73cae4a6b5f944d553da74b53b36353",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/assumed_shape_lower_bound.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/assumed_shape_lower_bound.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/assumed_shape_lower_bound.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/assumed_shape_lower_bound.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/assumed_shape_lower_bound.f90",
+          "-o",
+          "/tmp/bare-char-gather-0awvl1cm/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-0awvl1cm/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "two_readonly_inputs",
+      "source": "cases/two_readonly_inputs.f90",
+      "sha256": "668a9deeb03a8c5cfbf202af0280661dbca4bc3b240b2b088b2a818519e7face",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\ncd\nef\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/two_readonly_inputs.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/two_readonly_inputs.f90:14:28: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/two_readonly_inputs.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/two_readonly_inputs.f90:14:28: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/two_readonly_inputs.f90",
+          "-o",
+          "/tmp/bare-char-gather-iah3brba/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-iah3brba/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\ncd\nef\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "function_input",
+      "source": "cases/function_input.f90",
+      "sha256": "9cd1c198f75a6056634a1d3073830597f9bd2ec6dc27a4f60cc677caa91dbec3",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/function_input.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/function_input.f90:15:24: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/function_input.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/function_input.f90:15:24: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/function_input.f90",
+          "-o",
+          "/tmp/bare-char-gather-q9osm4ws/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-q9osm4ws/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "distinct_allocatable_output",
+      "source": "cases/distinct_allocatable_output.f90",
+      "sha256": "21f34573af5599120e23325e6f3c94e8e83ae3bfa56e57c71200a1fa7802b4a2",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/distinct_allocatable_output.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/distinct_allocatable_output.f90:17:18: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/distinct_allocatable_output.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/distinct_allocatable_output.f90:17:18: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/distinct_allocatable_output.f90",
+          "-o",
+          "/tmp/bare-char-gather-ih5am72j/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-ih5am72j/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "keyword_output_first",
+      "source": "cases/keyword_output_first.f90",
+      "sha256": "fd7fb61870db67e8213915ad90eb8fe8c337edc3d67aa6d2531da97186794c9d",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/keyword_output_first.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/keyword_output_first.f90:17:22: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/keyword_output_first.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/keyword_output_first.f90:17:22: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/keyword_output_first.f90",
+          "-o",
+          "/tmp/bare-char-gather-eie8x3za/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-eie8x3za/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "same_base_allocatable_reject",
+      "source": "cases/same_base_allocatable_reject.f90",
+      "sha256": "e654b9a1ce6c40d3b5666f1aa75fa4d5a40aa5f41e9d8ae47b3e865a4cccf1e4",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Invalid aliasing source; GNU compile only, never execute.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/same_base_allocatable_reject.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/same_base_allocatable_reject.f90:18:22: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/same_base_allocatable_reject.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/same_base_allocatable_reject.f90:18:22: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/same_base_allocatable_reject.f90",
+          "-o",
+          "/tmp/bare-char-gather-2jfgqu_t/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "parenthesized_same_base_control",
+      "source": "cases/parenthesized_same_base_control.f90",
+      "sha256": "86fa84a8c3f35d6f0852d9341d44ad07d55a9490a1fcd159f82f7b765f74e838",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/parenthesized_same_base_control.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/parenthesized_same_base_control.f90"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/parenthesized_same_base_control.f90",
+          "-o",
+          "/tmp/bare-char-gather-j2x52t76/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-j2x52t76/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "overlap_writable_section",
+      "source": "cases/overlap_writable_section.f90",
+      "sha256": "4999ac518181e323110ac212d43ef8623b7c1aaa008c64e35163afbf1a316f15",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Invalid aliasing source; never execute GNU.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/overlap_writable_section.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/overlap_writable_section.f90:17:24: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/overlap_writable_section.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/overlap_writable_section.f90:17:24: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/overlap_writable_section.f90",
+          "-o",
+          "/tmp/bare-char-gather-sk1e2f6d/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "disjoint_same_base_boundary",
+      "source": "cases/disjoint_same_base_boundary.f90",
+      "sha256": "90c5046e7c64315c784eb739fba59330dc9390b984f036367cca0270b7f33944",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "note": "GNU-valid disjoint selections, deliberately rejected by conservative whole-base reservation.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/disjoint_same_base_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/disjoint_same_base_boundary.f90:16:29: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/disjoint_same_base_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/disjoint_same_base_boundary.f90:16:29: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/disjoint_same_base_boundary.f90",
+          "-o",
+          "/tmp/bare-char-gather-zy_89wdd/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "distinct_writable_section",
+      "source": "cases/distinct_writable_section.f90",
+      "sha256": "0f30dffa10b2437fbcaacec493c44ecba4e174782d1d9aa7042f333752f6ede8",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "ef\nab\nef\ncd\nzz\nzz\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/distinct_writable_section.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/distinct_writable_section.f90:17:21: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/distinct_writable_section.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/distinct_writable_section.f90:17:21: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/distinct_writable_section.f90",
+          "-o",
+          "/tmp/bare-char-gather-tlxf7837/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-tlxf7837/oracle"
+        ],
+        "status": 0,
+        "stdout": "ef\nab\nef\ncd\nzz\nzz\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "out_dummy",
+      "source": "cases/out_dummy.f90",
+      "sha256": "56b080217e3db2ae11cf0ee0f2ddc2fa5c8a9a349a07cb6d8581792ea4d5d7df",
+      "category": "reject",
+      "gnu": "reject",
+      "expected_stdout": null,
+      "note": "Vector actual cannot associate with a definable ordinary dummy.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/out_dummy.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/out_dummy.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/out_dummy.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/out_dummy.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/out_dummy.f90",
+          "-o",
+          "/tmp/bare-char-gather-9cqs1k3l/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/out_dummy.f90:14:13:\n\n   14 | call consume(x(i))\n      |             1\nError: Array-section actual argument with vector subscripts at (1) is incompatible with INTENT(OUT), INTENT(INOUT), VOLATILE or ASYNCHRONOUS attribute of the dummy argument 'v'\n"
+      }
+    },
+    {
+      "name": "inout_dummy",
+      "source": "cases/inout_dummy.f90",
+      "sha256": "20dfd2e9a13904030cda22ef775f47f955f30073e9cb8c70f42e325d137444c1",
+      "category": "reject",
+      "gnu": "reject",
+      "expected_stdout": null,
+      "note": "Vector actual cannot associate with a definable ordinary dummy.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/inout_dummy.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/inout_dummy.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/inout_dummy.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/inout_dummy.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/inout_dummy.f90",
+          "-o",
+          "/tmp/bare-char-gather-2quv6w4m/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/inout_dummy.f90:14:13:\n\n   14 | call consume(x(i))\n      |             1\nError: Array-section actual argument with vector subscripts at (1) is incompatible with INTENT(OUT), INTENT(INOUT), VOLATILE or ASYNCHRONOUS attribute of the dummy argument 'v'\n"
+      }
+    },
+    {
+      "name": "unspecified_intent_boundary",
+      "source": "cases/unspecified_intent_boundary.f90",
+      "sha256": "88eae42df5023a70408707d270b1ba2d4e64bfcc1544d782cad961ee15cc53c9",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": null,
+      "note": "GNU-valid read-only case outside narrow assumed-shape non-TARGET INTENT(IN) support.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unspecified_intent_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unspecified_intent_boundary.f90:5:13: Assumed-length CHARACTER requires a dummy argument or PARAMETER\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unspecified_intent_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unspecified_intent_boundary.f90:5:13: Assumed-length CHARACTER requires a dummy argument or PARAMETER\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unspecified_intent_boundary.f90",
+          "-o",
+          "/tmp/bare-char-gather-k4prfjvm/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "target_in_boundary",
+      "source": "cases/target_in_boundary.f90",
+      "sha256": "298c09b3af13ec50fa8452258726a9ab9b0c80dff90a4582347bbb4841e52da5",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": null,
+      "note": "GNU-valid read-only case outside narrow assumed-shape non-TARGET INTENT(IN) support.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/target_in_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/target_in_boundary.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/target_in_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/target_in_boundary.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/target_in_boundary.f90",
+          "-o",
+          "/tmp/bare-char-gather-fn18bo5_/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "explicit_shape_boundary",
+      "source": "cases/explicit_shape_boundary.f90",
+      "sha256": "50b51b44b267b0cf2dfdd5e0e5bdd86e21df1900d54320b67033eaaca8e5bd4b",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": null,
+      "note": "GNU-valid read-only case outside narrow assumed-shape non-TARGET INTENT(IN) support.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/explicit_shape_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/explicit_shape_boundary.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/explicit_shape_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/explicit_shape_boundary.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/explicit_shape_boundary.f90",
+          "-o",
+          "/tmp/bare-char-gather-1_50d60h/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "allocatable_in_reject",
+      "source": "cases/allocatable_in_reject.f90",
+      "sha256": "a95580771e59ed3bb823a45bedf57bac946d8e5f6950dac4bb2f35f2733320a6",
+      "category": "reject",
+      "gnu": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/allocatable_in_reject.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/allocatable_in_reject.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/allocatable_in_reject.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/allocatable_in_reject.f90:14:19: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/allocatable_in_reject.f90",
+          "-o",
+          "/tmp/bare-char-gather-kwjpw3zi/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/allocatable_in_reject.f90:14:13:\n\n   14 | call consume(x(i))\n      |             1\nError: Actual argument for 'v' must be ALLOCATABLE at (1)\n"
+      }
+    },
+    {
+      "name": "pointer_in_reject",
+      "source": "cases/pointer_in_reject.f90",
+      "sha256": "8b731ffd55c8b4c9cfc108e4b6c62da98c6339bf4c2f2f3f326bf6986b018af1",
+      "category": "reject",
+      "gnu": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/pointer_in_reject.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/pointer_in_reject.f90:5:32: Unsupported POINTER declaration\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/pointer_in_reject.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/pointer_in_reject.f90:5:32: Unsupported POINTER declaration\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/pointer_in_reject.f90",
+          "-o",
+          "/tmp/bare-char-gather-cm_jee11/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/pointer_in_reject.f90:14:13:\n\n   14 | call consume(x(i))\n      |             1\nError: Actual argument for 'v' at (1) must be a pointer or a valid target for the dummy pointer in a pointer assignment statement\n"
+      }
+    },
+    {
+      "name": "out_of_bounds",
+      "source": "cases/out_of_bounds.f90",
+      "sha256": "eded947af17847149adf482091e011f2abf11bc3e97c5b1904cff576a4300af5",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Runtime-invalid input; never execute GNU.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/out_of_bounds.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/out_of_bounds.f90:15:21: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/out_of_bounds.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/out_of_bounds.f90:15:21: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/out_of_bounds.f90",
+          "-o",
+          "/tmp/bare-char-gather-ezx4apu6/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "selected_undefined",
+      "source": "cases/selected_undefined.f90",
+      "sha256": "79496ed876cf8f804ebdcc914773ea20993b0d3b235dc6422fb0a2edca563126",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Runtime-invalid input; never execute GNU.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/selected_undefined.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/selected_undefined.f90:14:21: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/selected_undefined.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/selected_undefined.f90:14:21: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/selected_undefined.f90",
+          "-o",
+          "/tmp/bare-char-gather-0rx1h2nd/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "unallocated",
+      "source": "cases/unallocated.f90",
+      "sha256": "e2754ee6ff514af77e805ef940b213baf43a2b3d709edc7aa581ca9cb7f29e0a",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Runtime-invalid input; never execute GNU.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unallocated.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unallocated.f90:14:21: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unallocated.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unallocated.f90:14:21: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/unallocated.f90",
+          "-o",
+          "/tmp/bare-char-gather-_b966g_j/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "module_host_alias",
+      "source": "cases/module_host_alias.f90",
+      "sha256": "8af0b9538115af99ec68eb4990baf345c8befe22cb4e7eb20bb48550ec7102e9",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": null,
+      "note": "Invalid host/actual association; compiler accepts but never execute GNU.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/module_host_alias.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/module_host_alias.f90:14:23: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/module_host_alias.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/module_host_alias.f90:14:23: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/module_host_alias.f90",
+          "-o",
+          "/tmp/bare-char-gather-pvz7__l8/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "module_host_read_boundary",
+      "source": "cases/module_host_read_boundary.f90",
+      "sha256": "05d812360787a0d5ee0cc8e7439b0130ce202d00903d0bb909354b8582c9f3ec",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": null,
+      "note": "GNU-valid readonly shared access, existing conservative whole-host conflict policy retained.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/module_host_read_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/module_host_read_boundary.f90:13:23: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/module_host_read_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/module_host_read_boundary.f90:13:23: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/module_host_read_boundary.f90",
+          "-o",
+          "/tmp/bare-char-gather-f_881ufh/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "numeric_parentheses_boundary",
+      "source": "cases/numeric_parentheses_boundary.f90",
+      "sha256": "0b5f287188033919a74639ef735f7c728c4670c434fa74126ab5e613bd98886d",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": null,
+      "note": "Existing bare numeric gather boundary is not expanded.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/numeric_parentheses_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/numeric_parentheses_boundary.f90:13:25: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/numeric_parentheses_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/numeric_parentheses_boundary.f90:13:25: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/numeric_parentheses_boundary.f90",
+          "-o",
+          "/tmp/bare-char-gather-6sssflg1/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "original_select_match_vec_char",
+      "source": "cases/original_select_match_vec_char.f90",
+      "sha256": "9cb9d4f0e9d171b7925be8faca9a69ab51c2af5fed838d37e94d26bef03732cf",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "red\nred\n0\nblu\ngrn\n",
+      "note": "",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/original_select_match_vec_char.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/original_select_match_vec_char.f90:33:31: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/original_select_match_vec_char.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/original_select_match_vec_char.f90:33:31: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/original_select_match_vec_char.f90",
+          "-o",
+          "/tmp/bare-char-gather-53f9ehw7/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/original_select_match_vec_char.f90:15:45:\n\n   15 | forall (i=1:n) xmask(i) = any(xgood == xx(i))\n      |                                             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-53f9ehw7/oracle"
+        ],
+        "status": 0,
+        "stdout": "red\nred\n0\nblu\ngrn\n",
+        "stderr": ""
+      }
+    }
+  ]
+}

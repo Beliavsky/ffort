@@ -1,0 +1,88 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -974,6 +974,8 @@
+             kind_value = intrinsic_kind_argument(arena, node, name)
+             if (kind_value <= 0) kind_value = 4
+             call set_intrinsic_metadata(node, TINT, kind_value, result_rank)
++        case ("transpose")
++            call resolve_transpose_metadata(arena, node, visiting)
+         case ("cshift")
+             call resolve_cshift_metadata(arena, node, visiting)
+         case ("shape")
+@@ -1040,7 +1042,7 @@
+             call set_intrinsic_metadata(node, TREAL, 8, result_rank)
+         case ("merge")
+             call resolve_merge_metadata(arena, node, visiting, result_rank)
+-        case ("sum", "product", "minval", "maxval", "all", "any", "count", "parity", "minloc", "maxloc", "findloc")
++        case ("norm2", "sum", "product", "minval", "maxval", "all", "any", "count", "parity", "minloc", "maxloc", "findloc")
+             call resolve_reduction_metadata(arena, node, visiting)
+         case ("epsilon", "tiny", "huge")
+             call first_intrinsic_argument_metadata(arena, node, visiting, &
+@@ -1065,6 +1067,33 @@
+             end if
+         end select
+     end subroutine resolve_intrinsic_call
++
++    recursive subroutine resolve_transpose_metadata(arena, node, visiting)
++        type(ast_arena_t), intent(inout) :: arena
++        type(call_or_subscript_node), intent(inout) :: node
++        logical, intent(inout) :: visiting(:)
++        integer :: i, arg, source
++        source = 0
++        if (.not. allocated(node%arg_indices)) return
++        do i = 1, size(node%arg_indices)
++            arg = node%arg_indices(i)
++            if (.not. arena%has_node_at(arg)) return
++            select type (actual => arena%entries(arg)%node)
++            type is (assignment_node)
++                if (.not. actual%is_keyword_argument) return
++                if (.not. arena%has_node_at(actual%target_index)) return
++                select type (key => arena%entries(actual%target_index)%node)
++                type is (identifier_node)
++                    if (to_lower(key%name) == 'matrix') source = actual%value_index
++                end select
++            class default
++                if (i == 1) source = arg
++            end select
++        end do
++        if (.not. arena%has_node_at(source)) return
++        call resolve_node_metadata(arena, source, visiting)
++        call copy_metadata_from_index(arena, source, node)
++    end subroutine resolve_transpose_metadata
+ 
+     recursive subroutine resolve_cshift_metadata(arena, node, visiting)
+         type(ast_arena_t), intent(inout) :: arena
+@@ -1131,7 +1160,8 @@
+             call resolve_node_metadata(arena, value_index, visiting)
+             if (.not. arena%has_node_at(value_index)) cycle
+             if (keyword) then
+-                if (argument_name == 'array'.or.(logical_reduction.and.argument_name == 'mask')) &
++                if (argument_name == 'array'.or.(logical_reduction.and.argument_name == 'mask').or. &
++                    (to_lower(node%name)=='norm2'.and.argument_name=='x')) &
+                     array_index = value_index
+                 if ((logical_reduction.or.location_reduction).and.argument_name == 'kind') &
+                     call evaluate_integer_constant(arena,value_index,kind_value,visiting)
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 118
++        integer, parameter :: NUM_INTRINSICS = 119
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -558,6 +558,12 @@
+ 
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="norm2", return_type="real", &
++            arg_types="array,integer", &
++            description="Euclidean norm of REAL ARRAY, optionally along DIM")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="product", return_type="numeric", &
+             arg_types="array", &
+             description="Product of array elements")

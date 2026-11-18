@@ -1,0 +1,2796 @@
+{
+  "tools": {
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "simple_capability": {
+    "probes": {
+      "valid": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/simple-capability-qkx8hx3q/valid.f90:6:1:\n\n    6 | simple integer function compute(xx) result(rr)\n      | 1\nError: Unclassifiable statement at (1)\n/tmp/simple-capability-qkx8hx3q/valid.f90:7:25:\n\n    7 | integer, intent(in) :: xx\n      |                         1\nError: Unexpected data declaration statement in CONTAINS section at (1)\n/tmp/simple-capability-qkx8hx3q/valid.f90:8:10:\n\n    8 | rr=xx*xx+1\n      |          1\nError: Unexpected assignment statement in CONTAINS section at (1)\n/tmp/simple-capability-qkx8hx3q/valid.f90:9:3:\n\n    9 | end function compute\n      |   1\nError: Expecting END PROGRAM statement at (1)\n/tmp/simple-capability-qkx8hx3q/valid.f90:4:19:\n\n    4 | print *,compute(xx=4)\n      |                   1\nError: Keyword argument requires explicit interface for procedure \u2018compute\u2019 at (1)\n/tmp/simple-capability-qkx8hx3q/valid.f90:4:8:\n\n    4 | print *,compute(xx=4)\n      |        1\nError: Function \u2018compute\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "invalid_callee": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/simple-capability-qkx8hx3q/invalid_callee.f90:6:1:\n\n    6 | simple integer function compute(xx) result(rr)\n      | 1\nError: Unclassifiable statement at (1)\n/tmp/simple-capability-qkx8hx3q/invalid_callee.f90:7:25:\n\n    7 | integer, intent(in) :: xx\n      |                         1\nError: Unexpected data declaration statement in CONTAINS section at (1)\n/tmp/simple-capability-qkx8hx3q/invalid_callee.f90:8:13:\n\n    8 | rr=helper(xx)\n      |             1\nError: Unexpected assignment statement in CONTAINS section at (1)\n/tmp/simple-capability-qkx8hx3q/invalid_callee.f90:9:3:\n\n    9 | end function compute\n      |   1\nError: Expecting END PROGRAM statement at (1)\n/tmp/simple-capability-qkx8hx3q/invalid_callee.f90:4:8:\n\n    4 | print *,compute(5)\n      |        1\nError: Function \u2018compute\u2019 at (1) has no IMPLICIT type\n"
+      }
+    },
+    "native_simple_oracle": false
+  },
+  "limitations": "SIMPLE-to-PURE references test ordinary output and PURE constraints only, never the additional SIMPLE requirements. Original SIMPLE outcomes use independent expectations from the standard.",
+  "compiler_flags": {
+    "direct_or_lowered": [
+      "-std=f2018",
+      "-pedantic-errors",
+      "-fcheck=all",
+      "-O0"
+    ],
+    "native_simple": [
+      "-std=f2023",
+      "-pedantic-errors",
+      "-fcheck=all",
+      "-O0"
+    ]
+  },
+  "utc": "2026-11-14T15:02:33.743014+00:00",
+  "summary": {
+    "total": 121,
+    "failed": 0,
+    "gnu_checked": 121,
+    "gnu_skipped": 0,
+    "gnu_lowered_simple": 67,
+    "gnu_direct_fortran": 54,
+    "gnu_executed": 56,
+    "gnu_compile_only": 25,
+    "gnu_compile_rejections": 40
+  },
+  "records": [
+    {
+      "case": {
+        "name": "pure_attr_type_function",
+        "source": "cases/pure_attr_type_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "17"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_type_attr_function",
+        "source": "cases/pure_type_attr_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "17"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_untyped_function",
+        "source": "cases/pure_untyped_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "17"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_mixed_case",
+        "source": "cases/pure_mixed_case.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "6"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_real64",
+        "source": "cases/pure_real64.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "1.5"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.5000000000000000     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_subroutine_inout",
+        "source": "cases/pure_subroutine_inout.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "15"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          15\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_subroutine_out",
+        "source": "cases/pure_subroutine_out.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "23"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          23\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_local_parameter",
+        "source": "cases/pure_local_parameter.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "15"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          15\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_host_parameter",
+        "source": "cases/pure_host_parameter.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "20"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          20\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_local_mutation",
+        "source": "cases/pure_local_mutation.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "30"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          30\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_read_only_alias",
+        "source": "cases/pure_read_only_alias.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "18"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          18\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_array_reduction",
+        "source": "cases/pure_array_reduction.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "39"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          39\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_rank_two_writes",
+        "source": "cases/pure_rank_two_writes.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "31 32 21 22 11 12"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          31          32          21          22          11          12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_disjoint_output_sections",
+        "source": "cases/pure_disjoint_output_sections.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "2 2 7 7"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           7           7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_error_stop_unreached",
+        "source": "cases/pure_error_stop_unreached.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "4"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_function_calls_subroutine",
+        "source": "cases/pure_function_calls_subroutine.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "10"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          10\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_char_dummy",
+        "source": "cases/pure_char_dummy.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "42"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          42\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_calls_ordinary_function",
+        "source": "cases/pure_calls_ordinary_function.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": "",
+        "diagnostic": "pure"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_calls_ordinary_function.f90:8:3:\n\n    8 | rr=helper(xx)\n      |   1\nError: Reference to impure function \u2018helper\u2019 at (1) within a PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_calls_ordinary_subroutine",
+        "source": "cases/pure_calls_ordinary_subroutine.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": "",
+        "diagnostic": "pure"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_calls_ordinary_subroutine.f90:10:15:\n\n   10 | call helper(xx)\n      |               1\nError: Subroutine call to \u2018helper\u2019 at (1) is not PURE\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_calls_pure_function",
+        "source": "cases/pure_calls_pure_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "12"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_calls_pure_subroutine",
+        "source": "cases/pure_calls_pure_subroutine.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "12"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_calls_simple_function",
+        "source": "cases/pure_calls_simple_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "12",
+        "pure_reference": "pure_references/pure_calls_simple_function.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_calls_simple_subroutine",
+        "source": "cases/pure_calls_simple_subroutine.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "12",
+        "pure_reference": "pure_references/pure_calls_simple_subroutine.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_print",
+        "source": "cases/pure_print.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_print.f90:8:10:\n\n    8 | print *,xx\n      |          1\nError: PRINT statement at (1) not allowed within PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_conditional_print",
+        "source": "cases/pure_conditional_print.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_conditional_print.f90:8:22:\n\n    8 | if(.false.) print *,xx\n      |                      1\nError: PRINT statement at (1) not allowed within PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_intent_out_function",
+        "source": "cases/pure_intent_out_function.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_intent_out_function.f90:6:32:\n\n    6 | pure integer function compute(xx) result(rr)\n      |                                1\nError: Argument \u2018xx\u2019 of pure function \u2018compute\u2019 at (1) must be INTENT(IN) or VALUE\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_intent_out_function.f90:8:0:\n\n    8 | xx=1\nError: Variable \u2018xx\u2019 cannot appear in a variable definition context (assignment) at (1) in PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_intent_inout_function",
+        "source": "cases/pure_intent_inout_function.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_intent_inout_function.f90:6:32:\n\n    6 | pure integer function compute(xx) result(rr)\n      |                                1\nError: Argument \u2018xx\u2019 of pure function \u2018compute\u2019 at (1) must be INTENT(IN) or VALUE\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_intent_inout_function.f90:8:0:\n\n    8 | xx=xx+1\nError: Variable \u2018xx\u2019 cannot appear in a variable definition context (assignment) at (1) in PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_missing_intent",
+        "source": "cases/pure_missing_intent.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_missing_intent.f90:6:32:\n\n    6 | pure integer function compute(xx) result(rr)\n      |                                1\nError: Argument \u2018xx\u2019 of pure function \u2018compute\u2019 at (1) must be INTENT(IN) or VALUE\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_write_input",
+        "source": "cases/pure_write_input.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_write_input.f90:8:0:\n\n    8 | xx=2\nError: Dummy argument \u2018xx\u2019 with INTENT(IN) in variable definition context (assignment) at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_input_loop",
+        "source": "cases/pure_input_loop.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_input_loop.f90:8:3:\n\n    8 | do xx=1,3\n      |   1\nError: Dummy argument \u2018xx\u2019 with INTENT(IN) in variable definition context (iterator variable) at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_saved_local",
+        "source": "cases/pure_saved_local.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_saved_local.f90:8:12:\n\n    8 | integer,save::state\n      |            1\nError: SAVE attribute at (1) cannot be specified in a PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_initialized_local",
+        "source": "cases/pure_initialized_local.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_initialized_local.f90:8:16:\n\n    8 | integer::state=3\n      |                1\nError: Initialization of variable at (1) is not allowed in a PURE procedure\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_initialized_local.f90:9:11:\n\n    9 | rr=xx+state\n      |           1\nError: Symbol \u2018state\u2019 at (1) has no IMPLICIT type\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_ordinary_stop",
+        "source": "cases/pure_ordinary_stop.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_ordinary_stop.f90:8:6:\n\n    8 | stop 5\n      |      1\nError: STOP statement not allowed in PURE procedure at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_input_passed_out",
+        "source": "cases/pure_input_passed_out.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_input_passed_out.f90:8:15:\n\n    8 | call set_value(xx)\n      |               1\nError: Dummy argument \u2018xx\u2019 with INTENT(IN) in variable definition context (actual argument to INTENT = OUT/INOUT) at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_subroutine_print",
+        "source": "cases/pure_subroutine_print.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_subroutine_print.f90:8:10:\n\n    8 | print *,xx\n      |          1\nError: PRINT statement at (1) not allowed within PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_recursive_unsupported",
+        "source": "cases/pure_recursive_unsupported.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_value_dummy_unsupported",
+        "source": "cases/pure_value_dummy_unsupported.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_internal_io_unsupported",
+        "source": "cases/pure_internal_io_unsupported.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_error_stop_runtime",
+        "source": "cases/pure_error_stop_runtime.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": "112",
+        "diagnostic": "77"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_uninitialized_result",
+        "source": "cases/pure_uninitialized_result.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_attr_type_function",
+        "source": "cases/simple_attr_type_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "17",
+        "pure_reference": "pure_references/simple_attr_type_function.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_type_attr_function",
+        "source": "cases/simple_type_attr_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "17",
+        "pure_reference": "pure_references/simple_type_attr_function.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_untyped_function",
+        "source": "cases/simple_untyped_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "17",
+        "pure_reference": "pure_references/simple_untyped_function.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_mixed_case",
+        "source": "cases/simple_mixed_case.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "6",
+        "pure_reference": "pure_references/simple_mixed_case.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_real64",
+        "source": "cases/simple_real64.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "1.5",
+        "pure_reference": "pure_references/simple_real64.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.5000000000000000     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_subroutine_inout",
+        "source": "cases/simple_subroutine_inout.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "15",
+        "pure_reference": "pure_references/simple_subroutine_inout.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          15\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_subroutine_out",
+        "source": "cases/simple_subroutine_out.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "23",
+        "pure_reference": "pure_references/simple_subroutine_out.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          23\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_local_parameter",
+        "source": "cases/simple_local_parameter.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "15",
+        "pure_reference": "pure_references/simple_local_parameter.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          15\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_host_parameter",
+        "source": "cases/simple_host_parameter.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "20",
+        "pure_reference": "pure_references/simple_host_parameter.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          20\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_local_mutation",
+        "source": "cases/simple_local_mutation.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "30",
+        "pure_reference": "pure_references/simple_local_mutation.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          30\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_read_only_alias",
+        "source": "cases/simple_read_only_alias.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "18",
+        "pure_reference": "pure_references/simple_read_only_alias.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          18\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_array_reduction",
+        "source": "cases/simple_array_reduction.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "39",
+        "pure_reference": "pure_references/simple_array_reduction.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          39\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_rank_two_writes",
+        "source": "cases/simple_rank_two_writes.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "31 32 21 22 11 12",
+        "pure_reference": "pure_references/simple_rank_two_writes.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          31          32          21          22          11          12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_disjoint_output_sections",
+        "source": "cases/simple_disjoint_output_sections.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "2 2 7 7",
+        "pure_reference": "pure_references/simple_disjoint_output_sections.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           7           7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_error_stop_unreached",
+        "source": "cases/simple_error_stop_unreached.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "4",
+        "pure_reference": "pure_references/simple_error_stop_unreached.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_function_calls_subroutine",
+        "source": "cases/simple_function_calls_subroutine.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "10",
+        "pure_reference": "pure_references/simple_function_calls_subroutine.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          10\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_char_dummy",
+        "source": "cases/simple_char_dummy.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "42",
+        "pure_reference": "pure_references/simple_char_dummy.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          42\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_calls_ordinary_function",
+        "source": "cases/simple_calls_ordinary_function.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_calls_ordinary_function.f90",
+        "diagnostic": "simple"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_calls_ordinary_function.f90:8:3:\n\n    8 | rr=helper(xx)\n      |   1\nError: Reference to impure function \u2018helper\u2019 at (1) within a PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_calls_ordinary_subroutine",
+        "source": "cases/simple_calls_ordinary_subroutine.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_calls_ordinary_subroutine.f90",
+        "diagnostic": "simple"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_calls_ordinary_subroutine.f90:10:15:\n\n   10 | call helper(xx)\n      |               1\nError: Subroutine call to \u2018helper\u2019 at (1) is not PURE\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_calls_pure_function",
+        "source": "cases/simple_calls_pure_function.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_calls_pure_function.f90",
+        "diagnostic": "simple"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_calls_pure_subroutine",
+        "source": "cases/simple_calls_pure_subroutine.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_calls_pure_subroutine.f90",
+        "diagnostic": "simple"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_calls_simple_function",
+        "source": "cases/simple_calls_simple_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "12",
+        "pure_reference": "pure_references/simple_calls_simple_function.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_calls_simple_subroutine",
+        "source": "cases/simple_calls_simple_subroutine.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "12",
+        "pure_reference": "pure_references/simple_calls_simple_subroutine.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_print",
+        "source": "cases/simple_print.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_print.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_print.f90:8:10:\n\n    8 | print *,xx\n      |          1\nError: PRINT statement at (1) not allowed within PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_conditional_print",
+        "source": "cases/simple_conditional_print.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_conditional_print.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_conditional_print.f90:8:22:\n\n    8 | if(.false.) print *,xx\n      |                      1\nError: PRINT statement at (1) not allowed within PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_intent_out_function",
+        "source": "cases/simple_intent_out_function.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_intent_out_function.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_intent_out_function.f90:6:32:\n\n    6 | pure integer function compute(xx) result(rr)\n      |                                1\nError: Argument \u2018xx\u2019 of pure function \u2018compute\u2019 at (1) must be INTENT(IN) or VALUE\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_intent_out_function.f90:8:0:\n\n    8 | xx=1\nError: Variable \u2018xx\u2019 cannot appear in a variable definition context (assignment) at (1) in PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_intent_inout_function",
+        "source": "cases/simple_intent_inout_function.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_intent_inout_function.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_intent_inout_function.f90:6:32:\n\n    6 | pure integer function compute(xx) result(rr)\n      |                                1\nError: Argument \u2018xx\u2019 of pure function \u2018compute\u2019 at (1) must be INTENT(IN) or VALUE\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_intent_inout_function.f90:8:0:\n\n    8 | xx=xx+1\nError: Variable \u2018xx\u2019 cannot appear in a variable definition context (assignment) at (1) in PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_missing_intent",
+        "source": "cases/simple_missing_intent.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_missing_intent.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_missing_intent.f90:6:32:\n\n    6 | pure integer function compute(xx) result(rr)\n      |                                1\nError: Argument \u2018xx\u2019 of pure function \u2018compute\u2019 at (1) must be INTENT(IN) or VALUE\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_write_input",
+        "source": "cases/simple_write_input.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_write_input.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_write_input.f90:8:0:\n\n    8 | xx=2\nError: Dummy argument \u2018xx\u2019 with INTENT(IN) in variable definition context (assignment) at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_input_loop",
+        "source": "cases/simple_input_loop.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_input_loop.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_input_loop.f90:8:3:\n\n    8 | do xx=1,3\n      |   1\nError: Dummy argument \u2018xx\u2019 with INTENT(IN) in variable definition context (iterator variable) at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_saved_local",
+        "source": "cases/simple_saved_local.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_saved_local.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_saved_local.f90:8:12:\n\n    8 | integer,save::state\n      |            1\nError: SAVE attribute at (1) cannot be specified in a PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_initialized_local",
+        "source": "cases/simple_initialized_local.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_initialized_local.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_initialized_local.f90:8:16:\n\n    8 | integer::state=3\n      |                1\nError: Initialization of variable at (1) is not allowed in a PURE procedure\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_initialized_local.f90:9:11:\n\n    9 | rr=xx+state\n      |           1\nError: Symbol \u2018state\u2019 at (1) has no IMPLICIT type\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_ordinary_stop",
+        "source": "cases/simple_ordinary_stop.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_ordinary_stop.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_ordinary_stop.f90:8:6:\n\n    8 | stop 5\n      |      1\nError: STOP statement not allowed in PURE procedure at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_input_passed_out",
+        "source": "cases/simple_input_passed_out.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_input_passed_out.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_input_passed_out.f90:8:15:\n\n    8 | call set_value(xx)\n      |               1\nError: Dummy argument \u2018xx\u2019 with INTENT(IN) in variable definition context (actual argument to INTENT = OUT/INOUT) at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_subroutine_print",
+        "source": "cases/simple_subroutine_print.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_subroutine_print.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_subroutine_print.f90:8:10:\n\n    8 | print *,xx\n      |          1\nError: PRINT statement at (1) not allowed within PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_recursive_unsupported",
+        "source": "cases/simple_recursive_unsupported.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_recursive_unsupported.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_value_dummy_unsupported",
+        "source": "cases/simple_value_dummy_unsupported.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_value_dummy_unsupported.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_internal_io_unsupported",
+        "source": "cases/simple_internal_io_unsupported.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_internal_io_unsupported.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_error_stop_runtime",
+        "source": "cases/simple_error_stop_runtime.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "112",
+        "pure_reference": "pure_references/simple_error_stop_runtime.f90",
+        "diagnostic": "77"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_uninitialized_result",
+        "source": "cases/simple_uninitialized_result.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_uninitialized_result.f90",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_calls_ordinary",
+        "source": "cases/ordinary_calls_ordinary.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "24"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          24\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_calls_pure",
+        "source": "cases/ordinary_calls_pure.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "24"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          24\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_calls_simple",
+        "source": "cases/ordinary_calls_simple.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "24",
+        "pure_reference": "pure_references/ordinary_calls_simple.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          24\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_module_constants",
+        "source": "cases/pure_module_constants.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "11"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_imported_callee",
+        "source": "cases/pure_imported_callee.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "21"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          21\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_module_constants",
+        "source": "cases/simple_module_constants.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "11",
+        "pure_reference": "pure_references/simple_module_constants.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_imported_callee",
+        "source": "cases/simple_imported_callee.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "21",
+        "pure_reference": "pure_references/simple_imported_callee.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          21\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_host_read_unsupported",
+        "source": "cases/pure_host_read_unsupported.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_host_read_invalid",
+        "source": "cases/simple_host_read_invalid.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_host_read_invalid.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_host_write_invalid",
+        "source": "cases/pure_host_write_invalid.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_host_write_invalid.f90:8:0:\n\n    8 | scale=xx\nError: Variable \u2018scale\u2019 cannot appear in a variable definition context (assignment) at (1) in PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_host_write_invalid",
+        "source": "cases/simple_host_write_invalid.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_host_write_invalid.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_host_write_invalid.f90:8:0:\n\n    8 | scale=xx\nError: Variable \u2018scale\u2019 cannot appear in a variable definition context (assignment) at (1) in PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_module_variable",
+        "source": "cases/pure_module_variable.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_module_variable",
+        "source": "cases/simple_module_variable.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_module_variable.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_bad_call_unused",
+        "source": "cases/pure_bad_call_unused.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": "",
+        "diagnostic": "pure"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_bad_call_unused.f90:8:3:\n\n    8 | rr=helper(xx)\n      |   1\nError: Reference to impure function \u2018helper\u2019 at (1) within a PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_bad_call_unreachable",
+        "source": "cases/pure_bad_call_unreachable.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": "",
+        "diagnostic": "pure"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_bad_call_unreachable.f90:9:3:\n\n    9 | rr=helper(xx)\n      |   1\nError: Reference to impure function \u2018helper\u2019 at (1) within a PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_bad_call_loop_bound",
+        "source": "cases/pure_bad_call_loop_bound.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": "",
+        "diagnostic": "pure"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_bad_call_loop_bound.f90:10:8:\n\n   10 | do ii=1,helper(xx)\n      |        1\nError: Reference to impure function \u2018helper\u2019 at (1) within a PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_bad_call_if_condition",
+        "source": "cases/pure_bad_call_if_condition.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": "",
+        "diagnostic": "pure"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_bad_call_if_condition.f90:8:3:\n\n    8 | if(helper(xx)>0) then\n      |   1\nError: Reference to impure function \u2018helper\u2019 at (1) within a PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_bad_call_intrinsic_nested",
+        "source": "cases/pure_bad_call_intrinsic_nested.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": "",
+        "diagnostic": "pure"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_bad_call_intrinsic_nested.f90:8:7:\n\n    8 | rr=abs(helper(xx))\n      |       1\nError: Reference to impure function \u2018helper\u2019 at (1) within a PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_bad_call_array_subscript",
+        "source": "cases/pure_bad_call_array_subscript.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": "",
+        "diagnostic": "pure"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/pure_bad_call_array_subscript.f90:10:6:\n\n   10 | rr=aa(helper(xx))\n      |      1\nError: Reference to impure function \u2018helper\u2019 at (1) within a PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_bad_call_unused",
+        "source": "cases/simple_bad_call_unused.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_bad_call_unused.f90",
+        "diagnostic": "simple"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_bad_call_unreachable",
+        "source": "cases/simple_bad_call_unreachable.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_bad_call_unreachable.f90",
+        "diagnostic": "simple"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_bad_call_loop_bound",
+        "source": "cases/simple_bad_call_loop_bound.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_bad_call_loop_bound.f90",
+        "diagnostic": "simple"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_bad_call_if_condition",
+        "source": "cases/simple_bad_call_if_condition.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_bad_call_if_condition.f90",
+        "diagnostic": "simple"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_bad_call_intrinsic_nested",
+        "source": "cases/simple_bad_call_intrinsic_nested.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_bad_call_intrinsic_nested.f90",
+        "diagnostic": "simple"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_bad_call_array_subscript",
+        "source": "cases/simple_bad_call_array_subscript.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_bad_call_array_subscript.f90",
+        "diagnostic": "simple"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_pure",
+        "source": "cases/duplicate_pure.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/duplicate_pure.f90:6:10:\n\n    6 | pure pure integer function compute(xx) result(rr)\n      |          1\nError: Duplicate PURE attribute specified at (1)\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/duplicate_pure.f90:7:25:\n\n    7 | integer, intent(in) :: xx\n      |                         1\nError: Unexpected data declaration statement in CONTAINS section at (1)\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/duplicate_pure.f90:8:10:\n\n    8 | rr=xx*xx+1\n      |          1\nError: Unexpected assignment statement in CONTAINS section at (1)\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/duplicate_pure.f90:9:3:\n\n    9 | end function compute\n      |   1\nError: Expecting END PROGRAM statement at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_simple",
+        "source": "cases/duplicate_simple.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/duplicate_simple.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/duplicate_simple.f90:6:10:\n\n    6 | pure pure integer function compute(xx) result(rr)\n      |          1\nError: Duplicate PURE attribute specified at (1)\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/duplicate_simple.f90:7:25:\n\n    7 | integer, intent(in) :: xx\n      |                         1\nError: Unexpected data declaration statement in CONTAINS section at (1)\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/duplicate_simple.f90:8:10:\n\n    8 | rr=xx*xx+1\n      |          1\nError: Unexpected assignment statement in CONTAINS section at (1)\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/duplicate_simple.f90:9:3:\n\n    9 | end function compute\n      |   1\nError: Expecting END PROGRAM statement at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "impure_pure",
+        "source": "cases/impure_pure.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/impure_pure.f90:6:13:\n\n    6 | impure pure integer function compute(xx) result(rr)\n      |             1\nError: PURE and IMPURE must not appear both at (1)\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/impure_pure.f90:7:25:\n\n    7 | integer, intent(in) :: xx\n      |                         1\nError: Unexpected data declaration statement in CONTAINS section at (1)\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/impure_pure.f90:8:10:\n\n    8 | rr=xx*xx+1\n      |          1\nError: Unexpected assignment statement in CONTAINS section at (1)\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/cases/impure_pure.f90:9:3:\n\n    9 | end function compute\n      |   1\nError: Expecting END PROGRAM statement at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_impure",
+        "source": "cases/simple_impure.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_impure.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_impure.f90:6:13:\n\n    6 | pure impure integer function compute(xx) result(rr)\n      |             1\nError: PURE and IMPURE must not appear both at (1)\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_impure.f90:7:25:\n\n    7 | integer, intent(in) :: xx\n      |                         1\nError: Unexpected data declaration statement in CONTAINS section at (1)\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_impure.f90:8:10:\n\n    8 | rr=xx*xx+1\n      |          1\nError: Unexpected assignment statement in CONTAINS section at (1)\n/workspace/scratch/c5319e9549df/pure-simple-work/fortfront-interpreter-0.12.0/tests/pure_simple_independent/pure_references/simple_impure.f90:9:3:\n\n    9 | end function compute\n      |   1\nError: Expecting END PROGRAM statement at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_simple_integer",
+        "source": "cases/pure_simple_integer.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "17",
+        "pure_reference": "pure_references/pure_simple_integer.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_integer_simple",
+        "source": "cases/pure_integer_simple.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "17",
+        "pure_reference": "pure_references/pure_integer_simple.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_pure_integer",
+        "source": "cases/simple_pure_integer.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "17",
+        "pure_reference": "pure_references/simple_pure_integer.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_integer_pure",
+        "source": "cases/simple_integer_pure.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "17",
+        "pure_reference": "pure_references/simple_integer_pure.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "integer_pure_simple",
+        "source": "cases/integer_pure_simple.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "17",
+        "pure_reference": "pure_references/integer_pure_simple.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "integer_simple_pure",
+        "source": "cases/integer_simple_pure.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "17",
+        "pure_reference": "pure_references/integer_simple_pure.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_simple_subroutine",
+        "source": "cases/pure_simple_subroutine.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "11",
+        "pure_reference": "pure_references/pure_simple_subroutine.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_pure_subroutine",
+        "source": "cases/simple_pure_subroutine.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "11",
+        "pure_reference": "pure_references/simple_pure_subroutine.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_host_constant_inquiry_unsupported",
+        "source": "cases/pure_host_constant_inquiry_unsupported.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_host_constant_inquiry_unsupported",
+        "source": "cases/simple_host_constant_inquiry_unsupported.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_host_constant_inquiry_unsupported.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_intrinsics",
+        "source": "cases/simple_intrinsics.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "56.0",
+        "pure_reference": "pure_references/simple_intrinsics.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   56.000000000000000     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_keyword_named_simple",
+        "source": "cases/simple_keyword_named_simple.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_keyword_named_simple.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "1295efc6e32e77fac1deec06c8b112079d03012db4e28d725f4c082aaa851342",
+  "source_sha256": {
+    "cases/pure_attr_type_function.f90": "bd90494504f7fa900e3012eda5576fbce0e96ac8c9150189edccf7e8e8b45a7e",
+    "cases/pure_type_attr_function.f90": "eda241034e537e4a03227bee650c73794d1e43b36739c80bbd88b72ea158db8b",
+    "cases/pure_untyped_function.f90": "448c03c7955eccd3dc63daf3494d8935d0eb2c7b612ef487352ec62f0ea78eae",
+    "cases/pure_mixed_case.f90": "c54e29cd3205b6be964c5c35bac69ba4cb94c59e6756411a7cd4ab8d6f09f04f",
+    "cases/pure_real64.f90": "af2f04ed7cf841aa570dd2b478269fa2ad3bac8a9b2f9c933b7560683a43930f",
+    "cases/pure_subroutine_inout.f90": "a9c4d5b94ae5df402dcfa8ea42f65e2e8fa60735f9949a5589d6968b11d12e9a",
+    "cases/pure_subroutine_out.f90": "052852a8f91fcaa874493c51d7596e8fa91ec399f584a9b58b9ab5f78a994fbd",
+    "cases/pure_local_parameter.f90": "9f5e601aa39ccee95f5ffbf6cca4d258abc649ba94195e9de4bfc9b091fbe02f",
+    "cases/pure_host_parameter.f90": "2bb015eb7df6e6ef77b4ad6ffafb56f8c1265eb7da0e0b419ba0da88f6e61033",
+    "cases/pure_local_mutation.f90": "c6c23225c6298065d66a61e43386ada92101c293068bd324075748b456362180",
+    "cases/pure_read_only_alias.f90": "b77c5159c9527d8ec13a7c7e605d4b4c3a140dd53f294c2ffacdff987c055335",
+    "cases/pure_array_reduction.f90": "bb182777ea4403253045f012fe4a5de8b24bd26eb207c502810ee0c5d73e1390",
+    "cases/pure_rank_two_writes.f90": "50c36905f5f6377c361773f0fab34bbec32bac72b2dd07d5d375a00de22605d4",
+    "cases/pure_disjoint_output_sections.f90": "5990d6e84f4f91eaf0358791c10f75c1b31f2ee69bd2a6686c0ea70529fc03b8",
+    "cases/pure_error_stop_unreached.f90": "d20457172354c48e92b74eb05361e57c02d3025a50cf60ec680159b07c0c3e21",
+    "cases/pure_function_calls_subroutine.f90": "5118587bb2e24f053d078dc8355331ba0f086746bccd69994de457ec6729be92",
+    "cases/pure_char_dummy.f90": "f0e8e03c73832637eff5933979b5d59b143c7b7d50f887d35a5367dd5d97127a",
+    "cases/pure_calls_ordinary_function.f90": "d280aea80c8df3309d20f575ef0f609c9fdcd94a98be3436e5eb05b25a63f5af",
+    "cases/pure_calls_ordinary_subroutine.f90": "3f1d5116f17c7959e2256b96d40785a178ad2d58b7246ce018c3f8a6000c62ce",
+    "cases/pure_calls_pure_function.f90": "e1a30f51cdb8b5975a3bbca52dadc7e48429816767d69ef1161fd0920088f80d",
+    "cases/pure_calls_pure_subroutine.f90": "c167b000907393db58f04caa2bcb8e6f8491a1745814ae822e235500a99557e2",
+    "cases/pure_calls_simple_function.f90": "f90b814dd14e3dc43d96be3ec542d3869636b71eea293eb8069d17ddc7df90c3",
+    "cases/pure_calls_simple_subroutine.f90": "9c31be3ee38d8fcd9a285b96c9bb7adcc70b1ddb843c8e5c02ce3acface3d83f",
+    "cases/pure_print.f90": "feb7905e449778e1d45144d580f379ae1b485f99e8081da925fdc85de7680838",
+    "cases/pure_conditional_print.f90": "5ef3447217745be2834044f9faead47ab2a7c32ce23c046c825a6e6800c5bb9b",
+    "cases/pure_intent_out_function.f90": "82057fbd4e88f6b8d86e32933d083095eefc98504f199d9bca41f8a4cf687fb3",
+    "cases/pure_intent_inout_function.f90": "6cea81033bf35a02aefbac24901458509a296a4e6e478b406a4539f2792e9ed7",
+    "cases/pure_missing_intent.f90": "e325c14fb432653dce64c6b97e32d27ee858094999e9b116171ce4200d113962",
+    "cases/pure_write_input.f90": "7ff2983e91fdcf81d079e6484c4f9cb4920aa7bfe2f7c207987315f3a4465c52",
+    "cases/pure_input_loop.f90": "c6cb0659cd6e64e3c41b76c04cfec41e65fdcaf01ac7a70062af1c15e756528d",
+    "cases/pure_saved_local.f90": "232f8fb99a9ebe3cc19eae2acd0446251792b1061210efe2675548fe4a663665",
+    "cases/pure_initialized_local.f90": "958cbd396186c6a3e4702a97e8bc7b28bcc0c505811aa524871c2b28a90e3eb5",
+    "cases/pure_ordinary_stop.f90": "6977879cec7b172a3c320a1aefa2b4b9f8f15f8b6fe9648c8216130ffc68d155",
+    "cases/pure_input_passed_out.f90": "074e25008613d3a3b0d92a3a9e4343774cfcfb6b6cb32182ec23f8b36cde3e04",
+    "cases/pure_subroutine_print.f90": "12b7fc9c9433fe2de6c07b24bc642ec5f311e963f29f42409252a04d8525c65f",
+    "cases/pure_recursive_unsupported.f90": "0f32508dc0f974493fe839513e097359d3d6636814e3cfe0b2b752341b23799c",
+    "cases/pure_value_dummy_unsupported.f90": "a7034d4080a056db2f764b1aa712dc0238d5ad7b7939cb3072bc150ccd270be2",
+    "cases/pure_internal_io_unsupported.f90": "fdb904b91ffe9980cd42d0b065519449b4977facb07618195477f011dd3f44e6",
+    "cases/pure_error_stop_runtime.f90": "af687716b6f57782f43095a1a7b00ef963cd9867f31ed4732e5e4a571cb84b15",
+    "cases/pure_uninitialized_result.f90": "5b9fcb641d89e59eaed221619cde8ab2d683d912c3e58406d05ec04830b0c17a",
+    "cases/simple_attr_type_function.f90": "c25f285dd471b9c098f3054c31da0e34412be8bb5fa9bba65b78bbf949c8450e",
+    "cases/simple_type_attr_function.f90": "0dfb6083b30d5c3b60b12006df906e1ef3a7a35212352c7fef1d8ed15b74af87",
+    "cases/simple_untyped_function.f90": "80c4025c247a4db7d8c5c7b281fb372bfbdb2c311b8a5dfd5d8dfead843c043d",
+    "cases/simple_mixed_case.f90": "dafec84ee23a78e8d909a4f6da6031de9bdd5f66856e380c6909b656850be768",
+    "cases/simple_real64.f90": "0f0ff1d7f2090143678cd610f90707ad33095e99530372d819f0bb841e4815b8",
+    "cases/simple_subroutine_inout.f90": "ea1a2b56c3782bcdf33b1aa5cbf127f1d845e925099788da4b765de94fa7cec4",
+    "cases/simple_subroutine_out.f90": "c3080ad08afdc026629e7dd1279c8efe601062e781d32954a1851518ead55066",
+    "cases/simple_local_parameter.f90": "313bd7af2dbce12bfdf1d822761f03c3f87916ab850a3e89625d882a259e31ef",
+    "cases/simple_host_parameter.f90": "9708fa7bc3b67fae44baac2f2480b54bb29447fe3f31c912703e26c9f287fd94",
+    "cases/simple_local_mutation.f90": "a85f09729455b94e84774a08b799b363d2ba39524b883ef181e811e7d7d7ce22",
+    "cases/simple_read_only_alias.f90": "fe7d4cb356891e24a8fb6b707ea9450ef6057983f3e23eaca234ac9c51dbb0a2",
+    "cases/simple_array_reduction.f90": "8e73545a10a845b7b47b096bab685b0f8948cf3c3726715204167af7af3faaf1",
+    "cases/simple_rank_two_writes.f90": "00b0bbb20f305fd902c97e33618ce5e3e3c766a425b9203682147f3b957ab5a0",
+    "cases/simple_disjoint_output_sections.f90": "f656d8a9224897f8c07100dd74614bc1dfea7648a0abd9323d09d24c8a6d2f61",
+    "cases/simple_error_stop_unreached.f90": "8bbb683156abebb60ca9640cf273092198706cedcdd582b58a40b44e101edb0f",
+    "cases/simple_function_calls_subroutine.f90": "83b5bbe227733f22cd473f2cba4aff474436728c9faf4aaaccd707256cf689d6",
+    "cases/simple_char_dummy.f90": "c79dfa8cb5f221a054cb5e5cd1ae5a2fb1af6edc7a81e601ab79b8c4dc16fac4",
+    "cases/simple_calls_ordinary_function.f90": "e1ac9b1f7e1b7542fbac57e9e422a8aca35e84ec85da7dad6883d70e6caed923",
+    "cases/simple_calls_ordinary_subroutine.f90": "3f07e26b1f5243c67b27fad53edce4e486ad482ff2146df771776437e1ef8500",
+    "cases/simple_calls_pure_function.f90": "305100f65363b283ebd1bf201bb82957f855592a0634c3d3f1aa244a7fe97c7c",
+    "cases/simple_calls_pure_subroutine.f90": "d1e89c870c553d44e3c863207fb9ca8eb22f56d454533b1775cc4c624fe182ba",
+    "cases/simple_calls_simple_function.f90": "5c3fbf68a4feb8cd9915b39a827f4f6b5f82800276e64d0de2ac79b0e0c76fd5",
+    "cases/simple_calls_simple_subroutine.f90": "2147bff209cb33d7d9922de1cbf2fc733bd6c075435964738b1cdbe24e026163",
+    "cases/simple_print.f90": "864f60f285ad1c46c9805eec1054f5721fbfb8b8bab7fdd3fe8caffada584ad6",
+    "cases/simple_conditional_print.f90": "a8021349ef06fb2f653cc6998919d8aa1501ff829ddcfb62a3868cc894967283",
+    "cases/simple_intent_out_function.f90": "015767a15c7669c10ca7f99e336819f486ffbb8a0dbd7fe7bf6a40c276585b49",
+    "cases/simple_intent_inout_function.f90": "98822d289fcb1bcfec5cf10abb5a057e071134981052ed76d27c6e8985cb1bd1",
+    "cases/simple_missing_intent.f90": "3a16dc4ef61d10c7c257ddebb33679c49bec0f1f3307ef14cdb7afac42908e35",
+    "cases/simple_write_input.f90": "524d37c05185ac5b05b7eafc20d104ece4736aed797098969d03b532771e292e",
+    "cases/simple_input_loop.f90": "2bfacbad1532a941cf07c0d9888cbb3a2801b392c3a67c0bd8e1967d90a2f924",
+    "cases/simple_saved_local.f90": "dde8ed8a88261ee053b4bf562dec077dfb3bf1158339eafa50c586236198d8dd",
+    "cases/simple_initialized_local.f90": "af523a9ca1ecb40fe3e2566783b3343d25cfd97bbdb6be46b42180de13c4bf14",
+    "cases/simple_ordinary_stop.f90": "6483019c5bac0c546eb7b69a27692cce082366c02ca7ee3019edf79864b57819",
+    "cases/simple_input_passed_out.f90": "f6331ad2bbb74e17a966be4134a834f113eea68fae018c5488496d0a8062871e",
+    "cases/simple_subroutine_print.f90": "2fbd76aae699fada2862eb3925a5d668c670ad626781109936f3cb3566c60dfe",
+    "cases/simple_recursive_unsupported.f90": "7aa45395c2659e7dcee94afd1702f46c36ba90d728bf987fb23e1318b8709a38",
+    "cases/simple_value_dummy_unsupported.f90": "1a042d08549f5cbbba7e76b214944db6e415a28dadd980b66c8629a025383559",
+    "cases/simple_internal_io_unsupported.f90": "1b2c2f451b1df049773feea95a46fa4f28ad3c45fbcef7149e6d16f3b50764e4",
+    "cases/simple_error_stop_runtime.f90": "8f409dfaf03c7f23f969040179db0d04d717fce53e9b1b14c21acd5cf3a7e632",
+    "cases/simple_uninitialized_result.f90": "e77d0aea853dfce3a9e490e824ccc84c0670c6ad2bff7d22cf3eae48ed2bb423",
+    "cases/ordinary_calls_ordinary.f90": "05309cbe119fa1df4b63319363fd10d9d3c9686a34fb27522fb421fb96e5c25b",
+    "cases/ordinary_calls_pure.f90": "66f2b2aa5fa1987b3d81e0ead25a5f6b6abdda101fd0a53eaccb49a9096381e5",
+    "cases/ordinary_calls_simple.f90": "fe433e9fe8da4b014a5affe1113d9dcf6803647eac72039750d548fb751180d6",
+    "cases/pure_module_constants.f90": "78693df7564560a863fd06c6f9c45a8d9a918e1f9db46491d463d1c7d2b08e54",
+    "cases/pure_imported_callee.f90": "7a7377fb698ce9057324e870a329d86b556ed8c268a76a914721068a08f904a5",
+    "cases/simple_module_constants.f90": "a690243612bf7aee3114108e045fe9271d664b52371ad1948a1fd48b9a13b450",
+    "cases/simple_imported_callee.f90": "aeb3c379d78b89408070f166e320f79fa0ead7bde079b5401542b806fb0026cb",
+    "cases/pure_host_read_unsupported.f90": "e90716dff5991f5a3ea9a27971fd82a249f51f49287e38ebf8b89ff954f02435",
+    "cases/simple_host_read_invalid.f90": "8e45831c1f4f69a3da35e2aaa50050c6a81eec95ef9b93f066471cf5a2bda68c",
+    "cases/pure_host_write_invalid.f90": "b82195cfc1ebb3a617d05bae1a62bcd26891a76beb5421b068e1a36cd7e679dc",
+    "cases/simple_host_write_invalid.f90": "d441e16c023a08c3c4c32dbe2895eadcbcb69c20cd57513207f673e38edba01f",
+    "cases/pure_module_variable.f90": "3a13e18b1dd09dfeac960955b3659230d55c5b7cba22b8b75b2fa1e679dbe229",
+    "cases/simple_module_variable.f90": "48344a85b7acaf51c0946edd03ff417b0b389dd6634aad560ea2281aa99c5f47",
+    "cases/pure_bad_call_unused.f90": "b68975ac98fa73d9aec00509a6e9a5cc7b79b98a1aec85747ea071187e8ae50f",
+    "cases/pure_bad_call_unreachable.f90": "108748306413554321f65af1f2c742b7a81c134c3f97a3feb678e95015243872",
+    "cases/pure_bad_call_loop_bound.f90": "40ef54a94348c46e8946f0f5444275352f4e3ceaa6ebc7865458bd43f1d18e52",
+    "cases/pure_bad_call_if_condition.f90": "8561eb79d3b85b3cfa3693acd575eff650a65f660bbd3ea488dc403f807cf0f2",
+    "cases/pure_bad_call_intrinsic_nested.f90": "328a78bcf38439f3c714683f55f2cf53ec42ffcc59b44b5dbcd6f731f9593747",
+    "cases/pure_bad_call_array_subscript.f90": "228d2ae5965eb9d02e46a8b2d07a412412e4848c9cd9117c1523335b49972d81",
+    "cases/simple_bad_call_unused.f90": "81a4217713d2cfae9e429d011a15bd8dc4f32392fe43f55545c61c03b6f7c90e",
+    "cases/simple_bad_call_unreachable.f90": "cb6d446d27b6c37dc0ccb9bb2bd9a2d4a1a3bb5ea571ae0f81af020fe3d895da",
+    "cases/simple_bad_call_loop_bound.f90": "97bbc69ad2673f660e4a6cbac9417085a2c71a4015c4b92e00bfd32207d3847b",
+    "cases/simple_bad_call_if_condition.f90": "373ef2471c341a97b1960c6031394d16303806554ddc037951583e4e977aa832",
+    "cases/simple_bad_call_intrinsic_nested.f90": "e61a1264b9a87055cf49088170ffc58ff6cf1da03e834686f1eb169c61313239",
+    "cases/simple_bad_call_array_subscript.f90": "eb9e1d4470c81596fea742a16449266757be7347d8af0c5f3c9f37355f4a1b75",
+    "cases/duplicate_pure.f90": "79e11b5839273eaa8987c006b9e414669f835a8802a511fbcd17ac0ada209f96",
+    "cases/duplicate_simple.f90": "ab8dc13740681f49f7b8dca68a0872cc46aa64e172b49914d2903dd9b5bbb22d",
+    "cases/impure_pure.f90": "63f42aead22cdc1f4066f79196cf3b9fd6e2742af45c54613d6a3bd89a74f4bb",
+    "cases/simple_impure.f90": "1a2b175b9edf8a248cdfe99d7ad20400ad8599f8027b28cc87b04a77f543f5b1",
+    "cases/pure_simple_integer.f90": "2f2ff5513324b8d3197d08f738555fdeaf026332cfe5d8022897cea213df3586",
+    "cases/pure_integer_simple.f90": "2651f36de71ae203d30759d5b1c6641219d78d58da90f82a1bde9469381db161",
+    "cases/simple_pure_integer.f90": "8423d42e351f2b6ba37a59025380c6f29fd51f6c02fca4bf00e16eda52b9a81f",
+    "cases/simple_integer_pure.f90": "a86860b9b7c609f4574b966fae5bfdd7c1ee5ddfd550a887be758316a8f7e93b",
+    "cases/integer_pure_simple.f90": "63571e898209d8946f09e2dd3c36c52b225b943d873962694a7bd47855a53853",
+    "cases/integer_simple_pure.f90": "37a6a77191569917ed54a1f34f3aa60e51c505be591e8e396d223e7f85e27a4d",
+    "cases/pure_simple_subroutine.f90": "a5ca8b4cb71b49da2f3ad00f2112170f77a192f4559bfe9a2dcdecc3d1066063",
+    "cases/simple_pure_subroutine.f90": "de96c98bd5ae5df85fe7865530fef5fa85215767844e154e614e35d552db1183",
+    "cases/pure_host_constant_inquiry_unsupported.f90": "ce4b2fe196819573f37679a5a2a57b732abffdb51fcf0f1db74b2fdc74ab3564",
+    "cases/simple_host_constant_inquiry_unsupported.f90": "a99de1db1df2e18cd29416a6c8ff90617a9c8fbc369473d84876b71d94ab8b1e",
+    "cases/simple_intrinsics.f90": "5941827af966646759790f0d90902557f45fbda262e011fd28bdb595e99df3e3",
+    "cases/simple_keyword_named_simple.f90": "93af073db28c26a296281c845b07b27d4e48c1998d5eb15be2204ff2e5b8ab21"
+  },
+  "reference_sha256": {
+    "pure_references/pure_calls_simple_function.f90": "e1a30f51cdb8b5975a3bbca52dadc7e48429816767d69ef1161fd0920088f80d",
+    "pure_references/pure_calls_simple_subroutine.f90": "c167b000907393db58f04caa2bcb8e6f8491a1745814ae822e235500a99557e2",
+    "pure_references/simple_attr_type_function.f90": "bd90494504f7fa900e3012eda5576fbce0e96ac8c9150189edccf7e8e8b45a7e",
+    "pure_references/simple_type_attr_function.f90": "eda241034e537e4a03227bee650c73794d1e43b36739c80bbd88b72ea158db8b",
+    "pure_references/simple_untyped_function.f90": "448c03c7955eccd3dc63daf3494d8935d0eb2c7b612ef487352ec62f0ea78eae",
+    "pure_references/simple_mixed_case.f90": "fe154938b134faaf0e9d2349098f8ffa9148972526f733a2b183eda5e5d50ad2",
+    "pure_references/simple_real64.f90": "af2f04ed7cf841aa570dd2b478269fa2ad3bac8a9b2f9c933b7560683a43930f",
+    "pure_references/simple_subroutine_inout.f90": "a9c4d5b94ae5df402dcfa8ea42f65e2e8fa60735f9949a5589d6968b11d12e9a",
+    "pure_references/simple_subroutine_out.f90": "052852a8f91fcaa874493c51d7596e8fa91ec399f584a9b58b9ab5f78a994fbd",
+    "pure_references/simple_local_parameter.f90": "9f5e601aa39ccee95f5ffbf6cca4d258abc649ba94195e9de4bfc9b091fbe02f",
+    "pure_references/simple_host_parameter.f90": "2bb015eb7df6e6ef77b4ad6ffafb56f8c1265eb7da0e0b419ba0da88f6e61033",
+    "pure_references/simple_local_mutation.f90": "c6c23225c6298065d66a61e43386ada92101c293068bd324075748b456362180",
+    "pure_references/simple_read_only_alias.f90": "b77c5159c9527d8ec13a7c7e605d4b4c3a140dd53f294c2ffacdff987c055335",
+    "pure_references/simple_array_reduction.f90": "bb182777ea4403253045f012fe4a5de8b24bd26eb207c502810ee0c5d73e1390",
+    "pure_references/simple_rank_two_writes.f90": "50c36905f5f6377c361773f0fab34bbec32bac72b2dd07d5d375a00de22605d4",
+    "pure_references/simple_disjoint_output_sections.f90": "5990d6e84f4f91eaf0358791c10f75c1b31f2ee69bd2a6686c0ea70529fc03b8",
+    "pure_references/simple_error_stop_unreached.f90": "d20457172354c48e92b74eb05361e57c02d3025a50cf60ec680159b07c0c3e21",
+    "pure_references/simple_function_calls_subroutine.f90": "5118587bb2e24f053d078dc8355331ba0f086746bccd69994de457ec6729be92",
+    "pure_references/simple_char_dummy.f90": "f0e8e03c73832637eff5933979b5d59b143c7b7d50f887d35a5367dd5d97127a",
+    "pure_references/simple_calls_ordinary_function.f90": "d280aea80c8df3309d20f575ef0f609c9fdcd94a98be3436e5eb05b25a63f5af",
+    "pure_references/simple_calls_ordinary_subroutine.f90": "3f1d5116f17c7959e2256b96d40785a178ad2d58b7246ce018c3f8a6000c62ce",
+    "pure_references/simple_calls_pure_function.f90": "e1a30f51cdb8b5975a3bbca52dadc7e48429816767d69ef1161fd0920088f80d",
+    "pure_references/simple_calls_pure_subroutine.f90": "c167b000907393db58f04caa2bcb8e6f8491a1745814ae822e235500a99557e2",
+    "pure_references/simple_calls_simple_function.f90": "e1a30f51cdb8b5975a3bbca52dadc7e48429816767d69ef1161fd0920088f80d",
+    "pure_references/simple_calls_simple_subroutine.f90": "c167b000907393db58f04caa2bcb8e6f8491a1745814ae822e235500a99557e2",
+    "pure_references/simple_print.f90": "feb7905e449778e1d45144d580f379ae1b485f99e8081da925fdc85de7680838",
+    "pure_references/simple_conditional_print.f90": "5ef3447217745be2834044f9faead47ab2a7c32ce23c046c825a6e6800c5bb9b",
+    "pure_references/simple_intent_out_function.f90": "82057fbd4e88f6b8d86e32933d083095eefc98504f199d9bca41f8a4cf687fb3",
+    "pure_references/simple_intent_inout_function.f90": "6cea81033bf35a02aefbac24901458509a296a4e6e478b406a4539f2792e9ed7",
+    "pure_references/simple_missing_intent.f90": "e325c14fb432653dce64c6b97e32d27ee858094999e9b116171ce4200d113962",
+    "pure_references/simple_write_input.f90": "7ff2983e91fdcf81d079e6484c4f9cb4920aa7bfe2f7c207987315f3a4465c52",
+    "pure_references/simple_input_loop.f90": "c6cb0659cd6e64e3c41b76c04cfec41e65fdcaf01ac7a70062af1c15e756528d",
+    "pure_references/simple_saved_local.f90": "232f8fb99a9ebe3cc19eae2acd0446251792b1061210efe2675548fe4a663665",
+    "pure_references/simple_initialized_local.f90": "958cbd396186c6a3e4702a97e8bc7b28bcc0c505811aa524871c2b28a90e3eb5",
+    "pure_references/simple_ordinary_stop.f90": "6977879cec7b172a3c320a1aefa2b4b9f8f15f8b6fe9648c8216130ffc68d155",
+    "pure_references/simple_input_passed_out.f90": "074e25008613d3a3b0d92a3a9e4343774cfcfb6b6cb32182ec23f8b36cde3e04",
+    "pure_references/simple_subroutine_print.f90": "12b7fc9c9433fe2de6c07b24bc642ec5f311e963f29f42409252a04d8525c65f",
+    "pure_references/simple_recursive_unsupported.f90": "0f32508dc0f974493fe839513e097359d3d6636814e3cfe0b2b752341b23799c",
+    "pure_references/simple_value_dummy_unsupported.f90": "a7034d4080a056db2f764b1aa712dc0238d5ad7b7939cb3072bc150ccd270be2",
+    "pure_references/simple_internal_io_unsupported.f90": "fdb904b91ffe9980cd42d0b065519449b4977facb07618195477f011dd3f44e6",
+    "pure_references/simple_error_stop_runtime.f90": "af687716b6f57782f43095a1a7b00ef963cd9867f31ed4732e5e4a571cb84b15",
+    "pure_references/simple_uninitialized_result.f90": "5b9fcb641d89e59eaed221619cde8ab2d683d912c3e58406d05ec04830b0c17a",
+    "pure_references/ordinary_calls_simple.f90": "66f2b2aa5fa1987b3d81e0ead25a5f6b6abdda101fd0a53eaccb49a9096381e5",
+    "pure_references/simple_module_constants.f90": "78693df7564560a863fd06c6f9c45a8d9a918e1f9db46491d463d1c7d2b08e54",
+    "pure_references/simple_imported_callee.f90": "7a7377fb698ce9057324e870a329d86b556ed8c268a76a914721068a08f904a5",
+    "pure_references/simple_host_read_invalid.f90": "e90716dff5991f5a3ea9a27971fd82a249f51f49287e38ebf8b89ff954f02435",
+    "pure_references/simple_host_write_invalid.f90": "b82195cfc1ebb3a617d05bae1a62bcd26891a76beb5421b068e1a36cd7e679dc",
+    "pure_references/simple_module_variable.f90": "3a13e18b1dd09dfeac960955b3659230d55c5b7cba22b8b75b2fa1e679dbe229",
+    "pure_references/simple_bad_call_unused.f90": "9fb06aab552e0b79383f6b611fcb9a8bb6463f4bfbc341e24fd32ea018d63b5f",
+    "pure_references/simple_bad_call_unreachable.f90": "3fe9777a4385ff39704d5cd0fdbf8d7abf43e91b5dcac76bd65d72dd91ad6eb3",
+    "pure_references/simple_bad_call_loop_bound.f90": "9759d8ee87cb60d5594410bd213cc2fee5d1e247160a097ebc587db745b497fd",
+    "pure_references/simple_bad_call_if_condition.f90": "68526d08a43f184f43a093f410417920ae304374ef94bba1f975f61af8c7e084",
+    "pure_references/simple_bad_call_intrinsic_nested.f90": "590743570b7073fc8991ad31e5720e21dc72d016cae3cb3a1de78c5d4f9dea68",
+    "pure_references/simple_bad_call_array_subscript.f90": "28113101c0a3ae734abc8a34058f2df791c14be7049cad19ea2735b5ccdff15f",
+    "pure_references/duplicate_simple.f90": "79e11b5839273eaa8987c006b9e414669f835a8802a511fbcd17ac0ada209f96",
+    "pure_references/simple_impure.f90": "9656aefe6fdce9a9f615439d41afd0b55911783c4749ff7aa71fe12041ab57b9",
+    "pure_references/pure_simple_integer.f90": "c1e773065d3831b4a2e51b0d8061b9ac56e76e2a4ef4556caf32632189423830",
+    "pure_references/pure_integer_simple.f90": "2eedc0de5c6dd7451315d8bd5346154bfaab44e7f4a1d8633b1d63eba69cbec5",
+    "pure_references/simple_pure_integer.f90": "df29dec31cccf2d4d0ad28a2df01410e4c618461f758a936a50b8be3915f346e",
+    "pure_references/simple_integer_pure.f90": "c8e955cf77a4862e5ee1da9a20d11b29b1026f6e91efb503cf5dd08aa912f1e6",
+    "pure_references/integer_pure_simple.f90": "8567ed4d0835e53681733b147ca99b48b071a79062ef5df0bcd431a886049492",
+    "pure_references/integer_simple_pure.f90": "48fd427b7da8aa4eb2d0509020540a46ae770fd228bca25c4f1ceb1da48a2074",
+    "pure_references/pure_simple_subroutine.f90": "a4d1220dc262c33d5699f17428efe0d367856078ed011a6d20677417a1ec9f8a",
+    "pure_references/simple_pure_subroutine.f90": "e8685b19d82ee5f96c1e444fdc43773138c152e66c4ad87dc9f7276a0c84b85f",
+    "pure_references/simple_host_constant_inquiry_unsupported.f90": "ce4b2fe196819573f37679a5a2a57b732abffdb51fcf0f1db74b2fdc74ab3564",
+    "pure_references/simple_intrinsics.f90": "734c8feff6070383bbf95cf27b44aabdab71216e86ca5d6b8ad06d429aa7051f",
+    "pure_references/simple_keyword_named_simple.f90": "012d6becce89d25e95fdaf24ce3d49dbc37a6dd59d12549ab75eb6d48f3e9be6"
+  }
+}

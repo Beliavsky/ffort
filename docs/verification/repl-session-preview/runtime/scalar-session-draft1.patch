@@ -1,0 +1,433 @@
+--- src/fi_runtime.f90.before
++++ src/fi_runtime.f90
+@@ -8,6 +8,9 @@
+     private
+     public :: execute_program, evaluate_constant_array, evaluate_constant_shape, evaluate_constant, validate_print_format
+     public :: input_unit_t, validate_input_units
++    public :: scalar_session_t, reset_scalar_session, execute_scalar_session, inspect_scalar_session
++    public :: scalar_session_frontier, scalar_session_tainted
++    public :: validate_scalar_session_program, validate_scalar_session_query
+     integer, parameter :: max_input_units=32, max_input_bytes=1048576, max_total_input_bytes=4194304
+     integer, parameter :: max_input_name=4096
+     ! Explicit read-only byte records supplied by the embedding caller. Unit
+@@ -24,6 +27,15 @@
+     integer(int64), parameter :: min64=-huge(0_int64)-1_int64, max64=huge(0_int64)
+     integer(int64), parameter :: initial_random_state=104729_int64
+     integer(int64), parameter :: imin=-2147483648_int64, imax=2147483647_int64
++    ! Opaque values-only state: no borrowed descriptors or retained frame pointers.
++    type :: scalar_session_t
++        private
++        logical :: ready=.false., tainted=.false.
++        integer(int64) :: rng=initial_random_state
++        type(program_t) :: snapshot
++        type(value_t), allocatable :: values(:)
++        logical, allocatable :: defined(:)
++    end type
+     type :: format_edit_t
+         character(2) :: name=''
+         character(32) :: spec=''
+@@ -90,6 +102,367 @@
+         logical :: gathered_input=.false. ! conservative whole-base alias reservation
+     end type
+ contains
++    subroutine reset_scalar_session(session)
++        type(scalar_session_t),intent(inout)::session
++        type(scalar_session_t)::empty
++        session=empty
++    end subroutine
++    integer function scalar_session_frontier(session) result(pc)
++        type(scalar_session_t),intent(in)::session
++        pc=1
++        if(session%ready)pc=session%snapshot%nc+1
++    end function
++    logical function scalar_session_tainted(session) result(tainted)
++        type(scalar_session_t),intent(in)::session
++        tainted=session%tainted
++    end function
++    subroutine inspect_scalar_session(session,index,value,defined,diag)
++        type(scalar_session_t),intent(in)::session
++        integer,intent(in)::index
++        type(value_t),intent(out)::value
++        logical,intent(out)::defined
++        type(diagnostic_t),intent(inout)::diag
++        defined=.false.;value=value_t()
++        if(diag%code/=0)return
++        if(.not.session%ready.or.session%tainted)then
++            call fail(diag,'scalar session unavailable or tainted; reset required',0,0);return
++        end if
++        if(index<1.or.index>size(session%values))then
++            call fail(diag,'invalid scalar session symbol',0,0);return
++        end if
++        defined=session%defined(index)
++        if(defined)value=session%values(index)
++    end subroutine
++    subroutine validate_scalar_session_query(prog,base_nc,diag)
++        type(program_t),intent(in)::prog
++        integer,intent(in)::base_nc
++        type(diagnostic_t),intent(inout)::diag
++        call validate_scalar_session_program(prog,diag)
++        if(diag%code/=0)return
++        if(base_nc<0.or.base_nc/=prog%nc-1)then
++            call fail(diag,'scalar query must add exactly one print instruction',0,0);return
++        end if
++        if(prog%code(prog%nc)%op/=op_print) &
++            call fail(diag,'scalar query must be an expression print',0,0)
++    end subroutine
++    subroutine execute_scalar_session(session,prog,diag,max_steps,commit)
++        type(scalar_session_t),intent(inout)::session
++        type(program_t),intent(in)::prog
++        type(diagnostic_t),intent(inout)::diag
++        integer(int64),intent(in),optional::max_steps
++        logical,intent(in),optional::commit
++        type(pointer_context_t)::context
++        integer(int64),target::rng
++        integer::j,start
++        logical::save_state
++        if(diag%code/=0)return
++        if(session%tainted)then
++            call fail(diag,'scalar session tainted; reset required',0,0);return
++        end if
++        call validate_scalar_session_program(prog,diag)
++        if(diag%code/=0)return
++        save_state=.true.;if(present(commit))save_state=commit
++        if(session%ready)then
++            if(prog%ns/=session%snapshot%ns.or.prog%nc<session%snapshot%nc.or. &
++                prog%ne<session%snapshot%ne.or.prog%name/=session%snapshot%name)then
++                call fail(diag,'scalar session declaration or prefix changed; reset required',0,0);return
++            end if
++            do j=1,prog%ns
++                if(.not.session_same_symbol(prog%symbols(j),session%snapshot%symbols(j)))exit
++            end do
++            if(j<=prog%ns)then
++                call fail(diag,'scalar session declaration changed; reset required',0,0);return
++            end if
++            do j=1,session%snapshot%ne
++                if(.not.session_same_expr(prog%expressions(j),session%snapshot%expressions(j)))exit
++            end do
++            if(j<=session%snapshot%ne)then
++                call fail(diag,'scalar session expression prefix changed; reset required',0,0);return
++            end if
++            do j=1,session%snapshot%nc
++                if(.not.session_same_instruction(prog%code(j),session%snapshot%code(j)))exit
++            end do
++            if(j<=session%snapshot%nc)then
++                call fail(diag,'scalar session instruction prefix changed; reset required',0,0);return
++            end if
++        else if(.not.save_state)then
++            call fail(diag,'scalar query requires an established session',0,0);return
++        end if
++        start=scalar_session_frontier(session)
++        if(.not.save_state)then
++            call validate_scalar_session_query(prog,start-1,diag)
++            if(diag%code/=0)return
++        end if
++        if(present(max_steps))then
++            if(max_steps<=0)then
++                call fail(diag,'scalar session step budget must be positive',0,0);return
++            end if
++        end if
++        rng=session%rng
++        context%generation(0)=1_int64;context%live(0)=.true.
++        call execute_frame(prog,diag,max_steps=max_steps,random_state=rng,context=context, &
++            frame_depth=0,scalar_state=session,scalar_start=start,scalar_commit=save_state)
++        context%live(0)=.false.;nullify(context%frames(0)%refs)
++        if(diag%code/=0)then
++            ! External output cannot be rolled back. Never retry a failed suffix.
++            session%tainted=.true.;return
++        end if
++        if(save_state)then
++            session%snapshot=prog;session%rng=rng;session%ready=.true.
++        end if
++    end subroutine
++    subroutine validate_scalar_session_program(prog,diag)
++        type(program_t),intent(in)::prog
++        type(diagnostic_t),intent(inout)::diag
++        type(symbol_t)::symbol
++        type(expr_t)::expr
++        type(instruction_t)::ins
++        type(value_t)::literal
++        integer::j,k,n
++        if(diag%code/=0)return
++        if(prog%ns<0.or.prog%ns>max_symbols.or.prog%ne<0.or.prog%ne>max_expressions.or. &
++            prog%nc<0.or.prog%nc>max_instructions)goto 900
++        if(prog%np/=0.or.prog%nm/=0.or.prog%nt/=0.or.prog%no/=0.or.prog%ng/=0.or. &
++            prog%nu/=0.or.prog%entry_pc/=1)goto 900
++        if(.not.allocated(prog%symbols).or..not.allocated(prog%expressions).or..not.allocated(prog%code))goto 900
++        if(size(prog%symbols)<prog%ns.or.size(prog%expressions)<prog%ne.or.size(prog%code)<prog%nc)goto 900
++        do j=1,prog%ns
++            associate(v=>prog%symbols(j))
++            symbol=symbol_t();symbol%name=v%name;symbol%typ=v%typ;symbol%real_kind=v%real_kind
++            symbol%line=v%line;symbol%column=v%column;symbol%character_len=v%character_len
++            symbol%length_expr=v%length_expr;symbol%kind_expr=v%kind_expr
++            if(.not.session_same_symbol(v,symbol))goto 900
++            if(len_trim(v%name)==0.or.v%typ<ty_integer.or.v%typ>ty_character)goto 900
++            if(v%real_kind/=4.and.v%real_kind/=8)goto 900
++            if(v%typ==ty_character)then
++                if(v%real_kind/=4.or.v%character_len<0.or.v%character_len>65536)goto 900
++            else if(v%character_len/=-1)then
++                goto 900
++            end if
++            if(v%kind_expr<0.or.v%kind_expr>prog%ne.or.v%length_expr<0.or.v%length_expr>prog%ne)goto 900
++            do k=1,j-1
++                if(prog%symbols(k)%name==v%name)goto 900
++            end do
++            end associate
++        end do
++        do j=1,prog%ne
++            associate(v=>prog%expressions(j))
++            expr=expr_t();expr%kind=v%kind;expr%typ=v%typ;expr%real_kind=v%real_kind
++            expr%line=v%line;expr%column=v%column;expr%character_len=v%character_len
++            expr%parenthesized=v%parenthesized
++            if(v%typ<ty_integer.or.v%typ>ty_character.or.(v%real_kind/=4.and.v%real_kind/=8))goto 900
++            if(v%typ/=ty_character.and.v%character_len/=-1)goto 900
++            if(v%typ==ty_character.and.(v%real_kind/=4.or.v%character_len<0.or.v%character_len>65536))goto 900
++            select case(v%kind)
++            case(ex_literal)
++                literal=value_t(tag=v%typ,real_kind=v%real_kind)
++                select case(v%typ)
++                case(ty_integer)
++                    literal%i=v%value%i
++                    if(v%real_kind==4.and.(literal%i<imin.or.literal%i>imax))goto 900
++                case(ty_real)
++                    literal%r=v%value%r
++                    if(.not.ieee_is_finite(literal%r))goto 900
++                case(ty_logical)
++                    literal%l=v%value%l
++                case(ty_character)
++                    if(.not.allocated(v%value%s))goto 900
++                    if(len(v%value%s)>65536.or.len(v%value%s)/=v%character_len.or.v%real_kind/=4)goto 900
++                    literal%s=v%value%s
++                end select
++                if(.not.session_same_value(v%value,literal))goto 900
++                expr%value=literal
++            case(ex_variable)
++                expr%symbol=v%symbol
++                if(v%symbol<1.or.v%symbol>prog%ns)goto 900
++                if(v%typ/=prog%symbols(v%symbol)%typ.or.v%real_kind/=prog%symbols(v%symbol)%real_kind.or. &
++                    v%character_len/=prog%symbols(v%symbol)%character_len)goto 900
++            case(ex_unary)
++                expr%left=v%left;expr%op=v%op
++                if(v%left<1.or.v%left>=j)goto 900
++                if(v%op/='+'.and.v%op/='-'.and.v%op/='.not.')goto 900
++            case(ex_binary)
++                expr%left=v%left;expr%right=v%right;expr%op=v%op
++                if(v%left<1.or.v%left>=j.or.v%right<1.or.v%right>=j)goto 900
++                select case(trim(v%op))
++                case('+','-','*','/','**','//','==','/=','<','<=','>','>=','.and.','.or.','.eqv.','.neqv.')
++                case default;goto 900
++                end select
++            case default;goto 900
++            end select
++            if(.not.session_same_expr(v,expr))goto 900
++            end associate
++        end do
++        do j=1,prog%nc
++            associate(v=>prog%code(j))
++            ins=instruction_t();ins%op=v%op;ins%line=v%line;ins%column=v%column
++            select case(v%op)
++            case(op_assign)
++                ins%symbol=v%symbol;ins%a=v%a
++                if(v%symbol<1.or.v%symbol>prog%ns.or.v%a<1.or.v%a>prog%ne)goto 900
++            case(op_random_number)
++                ins%symbol=v%symbol;ins%a=v%a
++                if(v%symbol<1.or.v%symbol>prog%ns.or.v%a<1.or.v%a>prog%ne)goto 900
++                if(prog%symbols(v%symbol)%typ/=ty_real)goto 900
++                if(prog%expressions(v%a)%kind/=ex_variable.or.prog%expressions(v%a)%symbol/=v%symbol.or. &
++                    prog%expressions(v%a)%parenthesized)goto 900
++            case(op_random_seed)
++            case(op_print)
++                if(.not.allocated(v%items))goto 900
++                if(size(v%items)>64)goto 900
++                ins%items=v%items
++                do k=1,size(v%items)
++                    n=v%items(k);if(n<1.or.n>prog%ne)goto 900
++                end do
++                if(allocated(v%format))then
++                    if(len(v%format)>65536)goto 900
++                    ins%format=v%format
++                end if
++            case default;goto 900
++            end select
++            if(.not.session_same_instruction(v,ins))goto 900
++            end associate
++        end do
++        return
++900     call fail(diag,'persistent session supports only plain local intrinsic scalars and straight-line assignment, print and random calls',0,0)
++    end subroutine
++    logical function session_same_symbol(a,b) result(same)
++        type(symbol_t),intent(in)::a,b
++        same=.false.
++        if(a%name/=b%name)return
++        if(a%intrinsic_import/=b%intrinsic_import)return
++        if(a%typ/=b%typ)return
++        if(a%line/=b%line)return
++        if(a%column/=b%column)return
++        if(a%real_kind/=b%real_kind)return
++        if(a%rank/=b%rank)return
++        if(a%lower_expr/=b%lower_expr)return
++        if(a%upper_expr/=b%upper_expr)return
++        if(a%lower_expr2/=b%lower_expr2)return
++        if(a%upper_expr2/=b%upper_expr2)return
++        if(a%lower_expr3/=b%lower_expr3)return
++        if(a%upper_expr3/=b%upper_expr3)return
++        if(a%lower_bound/=b%lower_bound)return
++        if(a%upper_bound/=b%upper_bound)return
++        if(a%lower_bound2/=b%lower_bound2)return
++        if(a%upper_bound2/=b%upper_bound2)return
++        if(a%lower_bound3/=b%lower_bound3)return
++        if(a%upper_bound3/=b%upper_bound3)return
++        if(a%scope/=b%scope)return
++        if(a%dummy_intent/=b%dummy_intent)return
++        if(a%assumed_shape.neqv.b%assumed_shape)return
++        if(a%is_optional.neqv.b%is_optional)return
++        if(a%is_automatic.neqv.b%is_automatic)return
++        if(a%is_allocatable.neqv.b%is_allocatable)return
++        if(a%is_dummy.neqv.b%is_dummy)return
++        if(a%is_public.neqv.b%is_public)return
++        if(a%is_intrinsic.neqv.b%is_intrinsic)return
++        if(a%is_class.neqv.b%is_class)return
++        if(a%is_target.neqv.b%is_target)return
++        if(a%is_pointer.neqv.b%is_pointer)return
++        if(a%is_parameter.neqv.b%is_parameter)return
++        if(a%parameter_ready.neqv.b%parameter_ready)return
++        if(a%deferred_character.neqv.b%deferred_character)return
++        if(a%is_saved.neqv.b%is_saved)return
++        if(a%initializer_expr/=b%initializer_expr)return
++        if(a%kind_expr/=b%kind_expr)return
++        if(a%character_len/=b%character_len)return
++        if(a%length_expr/=b%length_expr)return
++        if(.not.session_same_value(a%constant_value,b%constant_value))return
++        if(allocated(a%constant_values).neqv.allocated(b%constant_values))return
++        if(allocated(a%constant_values))then
++            if(size(a%constant_values)/=size(b%constant_values))return
++            if(size(a%constant_values)/=0)return ! Scalar session never admits constant arrays.
++        end if
++        same=.true.
++    end function
++    logical function session_same_expr(a,b) result(same)
++        type(expr_t),intent(in)::a,b
++        same=.false.
++        if(a%kind/=b%kind)return
++        if(a%typ/=b%typ)return
++        if(a%line/=b%line)return
++        if(a%column/=b%column)return
++        if(a%scope/=b%scope)return
++        if(a%real_kind/=b%real_kind)return
++        if(a%rank/=b%rank)return
++        if(a%character_len/=b%character_len)return
++        if(a%length_expr/=b%length_expr)return
++        if(a%generic_id/=b%generic_id)return
++        if(a%constructor_kind_expr/=b%constructor_kind_expr)return
++        if(a%constructor_owner/=b%constructor_owner)return
++        if(a%parenthesized.neqv.b%parenthesized)return
++        if(a%bound_type/=b%bound_type)return
++        if(a%bound_binding/=b%bound_binding)return
++        if(a%intrinsic_mask/=b%intrinsic_mask)return
++        if(a%extent/=b%extent)return
++        if(any(a%dims/=b%dims))return
++        if(a%left/=b%left)return
++        if(a%right/=b%right)return
++        if(a%symbol/=b%symbol)return
++        if(a%stride/=b%stride)return
++        if(a%left2/=b%left2)return
++        if(a%right2/=b%right2)return
++        if(a%stride2/=b%stride2)return
++        if(a%left3/=b%left3)return
++        if(a%right3/=b%right3)return
++        if(a%stride3/=b%stride3)return
++        if(a%third/=b%third)return
++        if(any(a%triplet.neqv.b%triplet))return
++        if(a%op/=b%op)return
++        if(allocated(a%args).neqv.allocated(b%args))return
++        if(allocated(a%args))then
++            if(size(a%args)/=size(b%args))return
++            if(any(a%args/=b%args))return
++        end if
++        if(.not.session_same_value(a%value,b%value))return
++        same=.true.
++    end function
++    logical function session_same_instruction(a,b) result(same)
++        type(instruction_t),intent(in)::a,b
++        same=.false.
++        if(a%construct_name/=b%construct_name)return
++        if(a%op/=b%op)return
++        if(a%line/=b%line)return
++        if(a%column/=b%column)return
++        if(a%scope/=b%scope)return
++        if(a%symbol/=b%symbol)return
++        if(a%a/=b%a)return
++        if(a%b/=b%b)return
++        if(a%c/=b%c)return
++        if(a%d/=b%d)return
++        if(a%target/=b%target)return
++        if(a%component/=b%component)return
++        if(a%generic_id/=b%generic_id)return
++        if(a%third/=b%third)return
++        if(a%bound_type/=b%bound_type)return
++        if(a%bound_binding/=b%bound_binding)return
++        if(allocated(a%items).neqv.allocated(b%items))return
++        if(allocated(a%items))then
++            if(size(a%items)/=size(b%items))return
++            if(any(a%items/=b%items))return
++        end if
++        if(allocated(a%format).neqv.allocated(b%format))return
++        if(allocated(a%format))then
++            if(a%format/=b%format)return
++        end if
++        if(a%format_expr/=b%format_expr)return
++        if(a%advance_mode/=b%advance_mode)return
++        same=.true.
++    end function
++    logical function session_same_value(a,b) result(same)
++        type(value_t),intent(in)::a,b
++        same=.false.
++        if(a%tag/=b%tag.or.a%real_kind/=b%real_kind.or.a%i/=b%i)return
++        if(transfer(a%r,0_int64)/=transfer(b%r,0_int64))return
++        if(a%l.neqv.b%l)return
++        if(allocated(a%record).or.allocated(b%record))return
++        if(allocated(a%s).neqv.allocated(b%s))return
++        if(allocated(a%s))then
++            if(a%s/=b%s)return
++        end if
++        same=.true.
++    end function
+     subroutine validate_input_units(inputs,diag)
+         type(input_unit_t),intent(in)::inputs(:)
+         type(diagnostic_t),intent(inout)::diag
+@@ -548,7 +921,10 @@
+     end subroutine
+     recursive subroutine execute_frame(prog, diag, max_steps, constant_index, constant_value, constant_type, &
+                                         procedure_index, argument_values, procedure_value, budget_remaining, call_stack, &
+-                                        constant_real_kind, argument_bindings, io_in_progress, random_state, constant_array, defined_output, procedure_array, module_store, constant_shape, context, frame_depth, input_units)
++                                        constant_real_kind, argument_bindings, io_in_progress, random_state, constant_array, defined_output, procedure_array, module_store, constant_shape, context, frame_depth, input_units, scalar_state, scalar_start, scalar_commit)
++        type(scalar_session_t),intent(inout),optional::scalar_state
++        integer,intent(in),optional::scalar_start
++        logical,intent(in),optional::scalar_commit
+         type(program_t), intent(in) :: prog
+         type(module_store_t), target, intent(inout), optional :: module_store
+         type(module_store_t), target :: owned_modules
+@@ -1336,6 +1712,12 @@
+             call allocate_frame_array(sym)
+             if(diag%code/=0) return
+         end do
++        if(present(scalar_state))then
++            if(scalar_state%ready)then
++                variables=scalar_state%values;initialized=scalar_state%defined
++            end if
++            first_pc=scalar_start
++        end if
+         pc=first_pc
+         do while(pc<=last_pc)
+             if (pc<first_pc) then
+@@ -2132,6 +2514,11 @@
+         end do
+         if(pc/=last_pc+1) then
+             call runtime_error('instruction escaped its call frame',0,0); return
++        end if
++        if(present(scalar_state))then
++            if(scalar_commit)then
++                scalar_state%values=variables;scalar_state%defined=initialized
++            end if
+         end if
+         ! RETURN ends every DO owned by this frame. Release shared module
+         ! control variables without touching loops still active in callers.

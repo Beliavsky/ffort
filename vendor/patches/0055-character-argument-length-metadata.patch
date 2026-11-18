@@ -1,0 +1,110 @@
+--- a/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
++++ b/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
+@@ -42,10 +42,12 @@
+             typ = declaration_type_to_mono(node%type_name)
+             call apply_declared_real_kind(arena, decl_index, node%type_name, &
+                 node%has_kind, node%kind_value, typ)
+-            if (typ%kind == TCHAR .and. allocated(node%character_length_expr)) then
+-                if (trim(adjustl(node%character_length_expr)) == '*' .or. &
+-                    trim(adjustl(node%character_length_expr)) == ':') &
+-                    typ = create_mono_type(TCHAR, char_size=-1)
++            if (typ%kind == TCHAR) then
++                if (allocated(node%character_length_expr)) then
++                    call apply_declared_character_length(node%character_length_expr, typ)
++                else
++                    typ = create_mono_type(TCHAR, char_size=1)
++                end if
+             end if
+             if (node%is_unsigned) then
+                 if (typ%kind == TINT) then
+@@ -67,10 +69,12 @@
+             else
+                 typ = node%inferred_type
+             end if
+-            if (typ%kind == TCHAR .and. allocated(node%character_length_expr)) then
+-                if (trim(adjustl(node%character_length_expr)) == '*' .or. &
+-                    trim(adjustl(node%character_length_expr)) == ':') &
+-                    typ = create_mono_type(TCHAR, char_size=-1)
++            if (typ%kind == TCHAR) then
++                if (allocated(node%character_length_expr)) then
++                    call apply_declared_character_length(node%character_length_expr, typ)
++                else
++                    typ = create_mono_type(TCHAR, char_size=1)
++                end if
+             end if
+             if (node%is_unsigned) then
+                 if (typ%kind == TINT) then
+@@ -88,6 +92,34 @@
+             typ = arena%entries(decl_index)%node%inferred_type
+         end select
+     end function strict_dummy_type
++
++    ! declaration_type_to_mono retains the CHARACTER tag but drops its LEN.
++    ! Preserve literal/default lengths before wrapping the type in array ranks;
++    ! otherwise a declared length-two dummy is incorrectly compared as length 0.
++    subroutine apply_declared_character_length(expression, typ)
++        character(len=*), intent(in) :: expression
++        type(mono_type_t), intent(inout) :: typ
++        character(len=:), allocatable :: text
++        integer :: i, first, length_value, ios
++        ! A nonliteral length is unresolved here, not a known zero length.
++        ! Its value/storage compatibility is checked independently at runtime.
++        typ = create_mono_type(TCHAR, char_size=-1)
++        text = ""
++        do i = 1, len_trim(expression)
++            if (expression(i:i) /= ' ') text = text//expression(i:i)
++        end do
++        if (text == '*' .or. text == ':') then
++            typ = create_mono_type(TCHAR, char_size=-1)
++            return
++        end if
++        if (len(text) == 0) return
++        first = 1
++        if (text(1:1) == '+' .or. text(1:1) == '-') first = 2
++        if (first > len(text)) return
++        if (verify(text(first:), '0123456789') /= 0) return
++        read (text, *, iostat=ios) length_value
++        if (ios == 0) typ = create_mono_type(TCHAR, char_size=max(0, length_value))
++    end subroutine apply_declared_character_length
+ 
+     recursive function strict_actual_argument_type(arena, expr_index) result(typ)
+         type(ast_arena_t), intent(inout) :: arena
+@@ -114,6 +146,28 @@
+                     typ = create_mono_type(TDOUBLE)
+                 if (resolved%type_kind == TCHAR) then
+                     declared_type = arena%entries(expr_index)%node%inferred_type
++                    ! Resolve designator lengths from their own declaration,
++                    ! not a provisional inferred length from another scope.
++                    select type (node => arena%entries(expr_index)%node)
++                    type is (identifier_node)
++                        call resolve_identifier_binding(arena, expr_index, binding, error_msg)
++                        if (binding%found) declared_type = strict_dummy_type(arena, binding%declaration_node_index)
++                    type is (call_or_subscript_node)
++                        if (allocated(node%name)) then
++                            call resolve_name_at_node(arena, expr_index, node%name, binding, error_msg)
++                            if (binding%found) then
++                                if (arena%has_node_at(binding%declaration_node_index)) then
++                                    select type (decl => arena%entries(binding%declaration_node_index)%node)
++                                    type is (declaration_node)
++                                        declared_type = strict_dummy_type(arena, binding%declaration_node_index)
++                                    end select
++                                end if
++                            end if
++                        end if
++                    type is (array_slice_node)
++                        if (.not. node%is_character_substring) &
++                            declared_type = strict_actual_argument_type(arena, node%array_index)
++                    end select
+                     call declared_type%sync_from_arena()
+                     do while (declared_type%kind == TARRAY)
+                         if (.not. declared_type%has_args()) exit
+@@ -353,7 +407,8 @@
+ 
+         matches = expected_copy%kind == actual_copy%kind
+         if (matches .and. expected_copy%kind == TCHAR) then
+-            matches = expected_copy%size < 0 .or. expected_copy%size == actual_copy%size
++            matches = expected_copy%size < 0 .or. actual_copy%size < 0 .or. &
++                expected_copy%size == actual_copy%size
+         end if
+     end function strict_types_match
+ 

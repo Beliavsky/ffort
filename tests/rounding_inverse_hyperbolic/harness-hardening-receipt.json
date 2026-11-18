@@ -1,0 +1,239 @@
+{
+  "status": "PASS",
+  "scope": "Tests/docs-only hardening; no interpreter or Fortran source changes",
+  "adversarial_checks": [
+    {
+      "case": "adjacent decimal",
+      "actual": "1.00000000000000001",
+      "expected": "1.00000000000000002",
+      "relative_tolerance": 0,
+      "absolute_tolerance": 0,
+      "old_comparator_accepted": true,
+      "hardened_comparator_accepted": false
+    },
+    {
+      "case": "positive versus negative zero",
+      "actual": "0.0",
+      "expected": "-0.0",
+      "relative_tolerance": 0,
+      "absolute_tolerance": 0,
+      "old_comparator_accepted": true,
+      "hardened_comparator_accepted": false
+    },
+    {
+      "case": "underflowed decimal",
+      "actual": "0.0",
+      "expected": "1e-1000",
+      "relative_tolerance": 0,
+      "absolute_tolerance": 0,
+      "old_comparator_accepted": true,
+      "hardened_comparator_accepted": false
+    },
+    {
+      "case": "distinct tiny decimals",
+      "actual": "1e-1000",
+      "expected": "2e-1000",
+      "relative_tolerance": 0,
+      "absolute_tolerance": 0,
+      "old_comparator_accepted": true,
+      "hardened_comparator_accepted": false
+    },
+    {
+      "case": "wide integer decimal token",
+      "actual": "9223372036854775806.0",
+      "expected": "9223372036854775807",
+      "relative_tolerance": 0,
+      "absolute_tolerance": 0,
+      "old_comparator_accepted": false,
+      "hardened_comparator_accepted": false
+    },
+    {
+      "case": "wide adjacent decimal real tokens",
+      "actual": "9223372036854775806.0",
+      "expected": "9223372036854775807.0",
+      "relative_tolerance": 0,
+      "absolute_tolerance": 0,
+      "old_comparator_accepted": true,
+      "hardened_comparator_accepted": false
+    }
+  ],
+  "matrix_changes": [
+    {
+      "position": 17,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 19,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 21,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 22,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 23,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 24,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 25,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 26,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 69,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 71,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 73,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 74,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 75,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 76,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 77,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 78,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 121,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 123,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 125,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 126,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 127,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 128,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 129,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 130,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 173,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 175,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 177,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 178,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 179,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 180,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 181,
+      "old": "0.0",
+      "new": "-0.0"
+    },
+    {
+      "position": 182,
+      "old": "0.0",
+      "new": "-0.0"
+    }
+  ],
+  "matrix_note": "Negative-zero sign restored according to input sign and tested bounded IEEE contract; no blanket tolerance relaxation.",
+  "source_fixture_hashes_unchanged": true,
+  "source_cases": 66,
+  "harness_selftests": 15,
+  "candidate_sha256": "9467bedc6d6859b9427800de61dda9868687c2587061a16111687c3386f9e5d4",
+  "hardened_source_summary": {
+    "total": 66,
+    "failed": 0,
+    "candidate_checked": 66,
+    "gnu_checked": 66,
+    "gnu_executed": 24,
+    "gnu_compile_only": 14,
+    "gnu_compile_rejections": 28
+  },
+  "prior_report_sha256": "bb91d83eb80b40bb6e63932d56eb0600f20e417a84d9014ff80a70e54531de2b",
+  "prior_runner_sha256": "2497ef85c3d48b878b0e17b4010fa1d1ea1f4806f4b965fbd52c47af7c39fd8b",
+  "hardened_runner_sha256": "16f20ecc9f64e1452350598805066dede6336a7868e6b5dc3fc327da1e0180c2"
+}

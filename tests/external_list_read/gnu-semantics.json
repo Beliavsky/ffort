@@ -1,0 +1,132 @@
+[
+  {
+    "name": "leading_comma_next_record",
+    "source": "program p\nimplicit none\ninteger::u\ninteger::a(3),b,s\nu=27\na=9\nread(u,*,iostat=s) a\nprint *,s,a\nread(u,*,iostat=s)b\nprint *,s,b\nend program\n",
+    "input": "1\n,2,3\n4\n",
+    "compile_code": 0,
+    "compile_err": "",
+    "code": 0,
+    "out": "           0           1           2           3\n           0           4\n",
+    "err": ""
+  },
+  {
+    "name": "comma_end_then_comma_next",
+    "source": "program p\nimplicit none\ninteger::u\ninteger::a(4),b,s\nu=27\na=9\nread(u,*,iostat=s)a\nprint *,s,a\nread(u,*,iostat=s)b\nprint *,s,b\nend program\n",
+    "input": "1,\n,2,3\n4\n",
+    "compile_code": 0,
+    "compile_err": "",
+    "code": 0,
+    "out": "           0           1           9           2           3\n           0           4\n",
+    "err": ""
+  },
+  {
+    "name": "quote_continuation",
+    "source": "program p\nimplicit none\ninteger::u\ncharacter(12)::x,y\ninteger::s\nu=27\nread(u,*,iostat=s)x,y\nprint *,s\nprint \"(a)\",\"[\"//x//\"]\",\"[\"//y//\"]\"\nend program\n",
+    "input": "'ab\ncd', 'e\nf'\n",
+    "compile_code": 0,
+    "compile_err": "",
+    "code": 0,
+    "out": "           0\n[abcd        ]\n[ef          ]\n",
+    "err": ""
+  },
+  {
+    "name": "quote_continuation_spaces",
+    "source": "program p\nimplicit none\ninteger::u\ncharacter(12)::x\ninteger::s\nu=27\nread(u,*,iostat=s)x\nprint *,s\nprint \"(a)\",\"[\"//x//\"]\"\nend program\n",
+    "input": "'ab  \n  cd'\n",
+    "compile_code": 0,
+    "compile_err": "",
+    "code": 0,
+    "out": "           0\n[ab    cd    ]\n",
+    "err": ""
+  },
+  {
+    "name": "zero_size_then_read",
+    "source": "program p\nimplicit none\ninteger::u\ninteger::a(0),b,s\nu=27\nread(u,*,iostat=s)a\nprint *,s\nread(u,*,iostat=s)b\nprint *,s,b\nend program\n",
+    "input": "11\n22\n",
+    "compile_code": 0,
+    "compile_err": "",
+    "code": 0,
+    "out": "           0\n           0          22\n",
+    "err": ""
+  },
+  {
+    "name": "zero_size_empty_file",
+    "source": "program p\nimplicit none\ninteger::u\ninteger::a(0),s\nu=27\nread(u,*,iostat=s)a\nprint *,s\nread(u,*,iostat=s)a\nprint *,s\nend program\n",
+    "input": "",
+    "compile_code": 0,
+    "compile_err": "",
+    "code": 0,
+    "out": "          -1\n        5001\n",
+    "err": ""
+  },
+  {
+    "name": "empty_list_then_read",
+    "source": "program p\nimplicit none\ninteger::u\ninteger::b,s\nu=27\nread(u,*,iostat=s)\nprint *,s\nread(u,*,iostat=s)b\nprint *,s,b\nend program\n",
+    "input": "11\n22\n",
+    "compile_code": 0,
+    "compile_err": "",
+    "code": 0,
+    "out": "           0\n           0          22\n",
+    "err": ""
+  },
+  {
+    "name": "backspace_initial",
+    "source": "program p\nimplicit none\ninteger::u\ninteger::b,s\nu=27\nbackspace(u,iostat=s)\nprint *,s\nread(u,*,iostat=s)b\nprint *,s,b\nend program\n",
+    "input": "11\n22\n",
+    "compile_code": 0,
+    "compile_err": "",
+    "code": 0,
+    "out": "        5005\n           0          11\n",
+    "err": ""
+  },
+  {
+    "name": "backspace_eof",
+    "source": "program p\nimplicit none\ninteger::u\ninteger::b,s\nu=27\nread(u,*,iostat=s)b\nprint *,s,b\nread(u,*,iostat=s)b\nprint *,s\nbackspace(u,iostat=s)\nprint *,s\nread(u,*,iostat=s)b\nprint *,s\nbackspace(u,iostat=s)\nbackspace(u,iostat=s)\nread(u,*,iostat=s)b\nprint *,s,b\nend program\n",
+    "input": "11\n",
+    "compile_code": 0,
+    "compile_err": "",
+    "code": 0,
+    "out": "           0          11\n          -1\n           0\n          -1\n           0          11\n",
+    "err": ""
+  },
+  {
+    "name": "backspace_last_no_lf",
+    "source": "program p\nimplicit none\ninteger::u\ninteger::b,s\nu=27\nread(u,*,iostat=s)b\nprint *,s,b\nbackspace(u,iostat=s)\nprint *,s\nread(u,*,iostat=s)b\nprint *,s,b\nend program\n",
+    "input": "11",
+    "compile_code": 0,
+    "compile_err": "",
+    "code": 0,
+    "out": "           0          11\n           0\n           0          11\n",
+    "err": ""
+  },
+  {
+    "name": "backspace_spanning",
+    "source": "program p\nimplicit none\ninteger::u\ninteger::a(2),b,s\nu=27\nread(u,*,iostat=s)a\nprint *,s,a\nbackspace(u,iostat=s)\nread(u,*,iostat=s)b\nprint *,s,b\nend program\n",
+    "input": "11\n22\n33\n",
+    "compile_code": 0,
+    "compile_err": "",
+    "code": 0,
+    "out": "           0          11          22\n           0          22\n",
+    "err": ""
+  },
+  {
+    "name": "null_new_record",
+    "source": "program p\nimplicit none\ninteger::u\ninteger::a(3),s\nu=27\na=9\nread(u,*,iostat=s)a\nprint *,s,a\nend program\n",
+    "input": "1\n,2\n",
+    "compile_code": 0,
+    "compile_err": "",
+    "code": 0,
+    "out": "          -1           1           2           9\n",
+    "err": ""
+  },
+  {
+    "name": "null_leading_blank_record",
+    "source": "program p\nimplicit none\ninteger::u\ninteger::a(3),s\nu=27\na=9\nread(u,*,iostat=s)a\nprint *,s,a\nend program\n",
+    "input": "1\n \n,2\n",
+    "compile_code": 0,
+    "compile_err": "",
+    "code": 0,
+    "out": "          -1           1           2           9\n",
+    "err": ""
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "observation": "GNU14 runtime REAL4 SIND negative-zero differs from constant-folded SIND and independent sign-preserving interpreter contract. No generic comparator relaxation.",
+  "source": "cases/sind_negative_zero4_runtime.f90",
+  "source_sha256": "da24c24565a92b8816438ce94d68e95807f14ebc922ebfa0b2fc831ee88a850c",
+  "compiler": {
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "--version"
+    ],
+    "code": 0,
+    "stdout": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "stderr": ""
+  },
+  "compiler_sha256": "406a8ebf8691187132f55a124d6ca47d99978645f6d03bb1d6926a7e5efcd730",
+  "runs": [
+    {
+      "optimization": "-O0",
+      "compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2023",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/degree-trig-work/fortfront-interpreter-0.43.0/tests/degree_trig/cases/sind_negative_zero4_runtime.f90",
+          "-o",
+          "/tmp/tmpee3p4lss/oracle"
+        ],
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "/tmp/tmpee3p4lss/oracle"
+        ],
+        "code": 0,
+        "stdout": "   0.00000000      -0.00000000       0.00000000    \n",
+        "stderr": ""
+      }
+    },
+    {
+      "optimization": "-O2",
+      "compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2023",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O2",
+          "/workspace/scratch/c5319e9549df/degree-trig-work/fortfront-interpreter-0.43.0/tests/degree_trig/cases/sind_negative_zero4_runtime.f90",
+          "-o",
+          "/tmp/tmpj7ryttwm/oracle"
+        ],
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "/tmp/tmpj7ryttwm/oracle"
+        ],
+        "code": 0,
+        "stdout": "   0.00000000      -0.00000000       0.00000000    \n",
+        "stderr": ""
+      }
+    }
+  ],
+  "candidate": {
+    "command": [
+      "/workspace/scratch/c5319e9549df/degree-trig-work/preserved-binary/degree-trig-final",
+      "/workspace/scratch/c5319e9549df/degree-trig-work/fortfront-interpreter-0.43.0/tests/degree_trig/cases/sind_negative_zero4_runtime.f90"
+    ],
+    "code": 0,
+    "stdout": " -0.00000000 -0.00000000 -0.00000000\n",
+    "stderr": ""
+  },
+  "candidate_sha256": "cc4ec4c76f425e50f935f540c1a52b3fd1be011fe211369b9698c1299e9d4a69",
+  "independent_expected_tokens": "-0.0 -0.0 -0.0",
+  "baseline_policy": "Compile-only in the maintained source suite; this observation is not GNU execution agreement."
+}

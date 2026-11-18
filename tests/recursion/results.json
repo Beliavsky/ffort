@@ -1,0 +1,908 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:32:11.550196+00:00",
+  "summary": {
+    "total": 31,
+    "failed": 0,
+    "candidate_checked": 31,
+    "gnu_checked": 17,
+    "gnu_skipped": 14,
+    "gnu_executed": 16,
+    "gnu_compile_only": 1,
+    "gnu_compile_rejections": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "factorial_repeated",
+        "source": "cases/factorial_repeated.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "720 1 120",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         720           1         120\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 720 1 120\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "fibonacci_independent_locals",
+        "source": "cases/fibonacci_independent_locals.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "34",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          34\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 34\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mutual_functions",
+        "source": "cases/mutual_functions.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_subroutine_locals",
+        "source": "cases/recursive_subroutine_locals.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "30",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          30\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 30\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "automatic_array_frames",
+        "source": "cases/automatic_array_frames.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "20",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          20\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 20\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "allocatable_result_frames",
+        "source": "cases/allocatable_result_frames.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 3 4 5 0",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3           4           5\n           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 4 5\n 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_result_frames",
+        "source": "cases/character_result_frames.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "xxxxx xx",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "xxxxx\nxx\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "xxxxx\nxx\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shared_module_state",
+        "source": "cases/shared_module_state.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "optional_forwarding",
+        "source": "cases/optional_forwarding.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 16",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6\n          16\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6\n 16\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "depth_64_allowed",
+        "source": "cases/depth_64_allowed.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "63",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          63\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 63\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "depth_65_rejected",
+        "source": "cases/depth_65_rejected.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "call depth limit exceeded (64)"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/depth_65_rejected.f90:11:5: procedure call depth limit exceeded (64)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "shared_execution_budget",
+        "source": "cases/shared_execution_budget.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "Execution step limit",
+        "args": [
+          "--max-steps",
+          "100"
+        ]
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/shared_execution_budget.f90:12:10: execution step limit exceeded (current limit: 100); use --max-steps N to set the execution budget (positive 64-bit integer)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_recursive_direct",
+        "source": "cases/missing_recursive_direct.f90",
+        "category": "unsupported",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "cycles require RECURSIVE"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/missing_recursive_direct.f90:15:1: Recursive module function cycles require RECURSIVE on every participating procedure\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/missing_recursive_direct.f90:15:1: Recursive module function cycles require RECURSIVE on every participating procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_recursive_indirect",
+        "source": "cases/missing_recursive_indirect.f90",
+        "category": "unsupported",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "cycles require RECURSIVE"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/missing_recursive_indirect.f90:23:1: Recursive module function cycles require RECURSIVE on every participating procedure\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/missing_recursive_indirect.f90:23:1: Recursive module function cycles require RECURSIVE on every participating procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_recursive_prefix",
+        "source": "cases/duplicate_recursive_prefix.f90",
+        "category": "unsupported",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "Duplicate RECURSIVE"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/duplicate_recursive_prefix.f90:6:16: Duplicate RECURSIVE procedure prefix\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/duplicate_recursive_prefix.f90:6:16: Duplicate RECURSIVE procedure prefix\n"
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_elemental",
+        "source": "cases/recursive_elemental.f90",
+        "category": "unsupported",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "RECURSIVE ELEMENTAL"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/recursive_elemental.f90:6:29: RECURSIVE ELEMENTAL procedures are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/recursive_elemental.f90:6:29: RECURSIVE ELEMENTAL procedures are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "save_local_rejected",
+        "source": "cases/save_local_rejected.f90",
+        "category": "unsupported",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "SAVE"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/save_local_rejected.f90:8:16: PURE/SIMPLE procedures cannot declare SAVE or initialized mutable locals\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/save_local_rejected.f90:8:16: PURE/SIMPLE procedures cannot declare SAVE or initialized mutable locals\n"
+      }
+    },
+    {
+      "case": {
+        "name": "frame_undefined_local",
+        "source": "cases/frame_undefined_local.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/frame_undefined_local.f90:13:9: read of uninitialized variable saved\n"
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_out_undefined",
+        "source": "cases/recursive_out_undefined.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/recursive_out_undefined.f90:5:9: read of uninitialized variable x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_scalar_alias",
+        "source": "cases/recursive_scalar_alias.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "overlapping actual"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/recursive_scalar_alias.f90:12:1: overlapping actual arguments with a writable dummy are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_section_alias",
+        "source": "cases/recursive_section_alias.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "overlapping actual"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/recursive_section_alias.f90:12:1: overlapping actual arguments with a writable dummy are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_allocatable_alias",
+        "source": "cases/recursive_allocatable_alias.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "overlapping allocatable"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/recursive_allocatable_alias.f90:12:1: overlapping allocatable descriptors with a writable dummy are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_disjoint_sections",
+        "source": "cases/recursive_disjoint_sections.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 1 3 2 2 2",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           1           3           2           2           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 1 3 2 2 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "cycle_external_effect",
+        "source": "cases/cycle_external_effect.f90",
+        "category": "unsupported",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "External side effects"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/cycle_external_effect.f90:21:1: External side effects inside ordinary functions are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/cycle_external_effect.f90:21:1: External side effects inside ordinary functions are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_recursive_impure_call",
+        "source": "cases/pure_recursive_impure_call.f90",
+        "category": "unsupported",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "PURE procedure"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/pure_recursive_impure_call.f90:8:10: PURE procedure cannot invoke an impure procedure\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/pure_recursive_impure_call.f90:8:10: PURE procedure cannot invoke an impure procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_set_alloc_int_vec",
+        "source": "cases/original_set_alloc_int_vec.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7 -5 -1 0 2 4 8 8 5 0 2 4 8 8 4 -5 -1 0 2 3 0 2 4 T 0 T 0 3 8 4 0",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7          -5          -1           0           2           4           8           8\n           5           0           2           4           8           8\n           4          -5          -1           0           2\n           3           0           2           4\n T           0\n T           0\n           3           8           4           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7 -5 -1 0 2 4 8 8\n 5 0 2 4 8 8\n 4 -5 -1 0 2\n 3 0 2 4\n T 0\n T 0\n 3 8 4 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_loop_state",
+        "source": "cases/recursive_loop_state.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "16",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          16\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 16\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "uninitialized_result_frame",
+        "source": "cases/uninitialized_result_frame.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/recursion/cases/uninitialized_result_frame.f90:10:1: function RESULT is uninitialized\n"
+      }
+    },
+    {
+      "case": {
+        "name": "readonly_alias",
+        "source": "cases/readonly_alias.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "25",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          25\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 25\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_generic",
+        "source": "cases/recursive_generic.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "15",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          15\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 15\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mutual_subroutines",
+        "source": "cases/mutual_subroutines.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "33",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          33\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 33\n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "c9a7b486fde4ff496059f8be05cc0c13e164ee120548575e3976827610e773d5",
+  "source_sha256": {
+    "cases/factorial_repeated.f90": "d812e1b6d26215def816de4847c42e064499ffa61a204c5931d3b623593700e5",
+    "cases/fibonacci_independent_locals.f90": "0ebd93ebde9b8db5edcd4714a67c8336bd28be397aad0481a5807ae1c77d3eda",
+    "cases/mutual_functions.f90": "261ecd1ca506bacfc63e8c18a768140bb234f84187c71ce6c46f2296e8cdf9c8",
+    "cases/recursive_subroutine_locals.f90": "61196c7ee4f910314b817234d04647f66392d1bcd7484ab2323400b10110912e",
+    "cases/automatic_array_frames.f90": "96f40264ccd1f796ec399114f717df2bad620841a63c17c0c64c2c6bb7b07149",
+    "cases/allocatable_result_frames.f90": "522cb826123d0811e61371bfb6e4c8079466e348bf43fe050d347554064add74",
+    "cases/character_result_frames.f90": "025096ed60112c96e483b9a68da66a52ace55743bbc0ed24822b017a60cffcd0",
+    "cases/shared_module_state.f90": "fe2d7b0c040bc6870aee92507fa0740bd488ddeb99d0f950b216eb113581c401",
+    "cases/optional_forwarding.f90": "92eeeafbe4619a817a50564887bb112f73869bd93dfff3f565c1461cb880b221",
+    "cases/depth_64_allowed.f90": "7c2e79f3ddc2f2c9b59e6851a5e7ee54f2d47eb38528d323b3e9a5374d26d6de",
+    "cases/depth_65_rejected.f90": "c063a8fe118c5771b1fae4acfe0bc469268dee948faa5689e67cbbad472d21ea",
+    "cases/shared_execution_budget.f90": "d0f468dfb48d4198cc42d5d53f2c29d4ed5752120f29c082e460a48c77a65b29",
+    "cases/missing_recursive_direct.f90": "a5e84bf11cf2b5b2e122e25999289a1214c3139c05200f8ff9ea3f8fa4f6bc2d",
+    "cases/missing_recursive_indirect.f90": "5669e2e513aac9ab2caff0d1dd125dbfc5b5bba8301f2de032a250a55262f507",
+    "cases/duplicate_recursive_prefix.f90": "eeaaf0d0705cf66d6910289b785f5133f9558b45b14c29533afacc05f5f4d512",
+    "cases/recursive_elemental.f90": "06af31d95cc72ba27b4cf0b72a9f93b35df4536897a0f48477f790898ff46ab6",
+    "cases/save_local_rejected.f90": "7ec8e9c60433a4c19d886f62bae9a0b4affcf2ab0130fd8951e742165d911254",
+    "cases/frame_undefined_local.f90": "80742e4ff20cde6299fc5ddabacf3352b1f3eb447e70f6cb6711520df90d0ecf",
+    "cases/recursive_out_undefined.f90": "953a6637b300a431672ccc3189fd3e6699be352770a44cc23734a1ae0b813933",
+    "cases/recursive_scalar_alias.f90": "a8ddc2532d68cfbe353cd0eceea888c21244685cb278ba38e25cc8d33fe04334",
+    "cases/recursive_section_alias.f90": "f5b6fff4f3ad586992d6c2f364bfec0e19e94f047055c50000b325b3db5baabb",
+    "cases/recursive_allocatable_alias.f90": "40ad40dcb323f567f0d881ba10b3bf052ad66e7b4c6f7bf8999d2c0cc578b42c",
+    "cases/recursive_disjoint_sections.f90": "82216a46809c071f89d4b00674e93df662015fa8f2a8d7a466b8d3db29b63a75",
+    "cases/cycle_external_effect.f90": "9d523992b89b3caf43b8595c785a93b9cfd402121a7f1d48902e5a1e979006ef",
+    "cases/pure_recursive_impure_call.f90": "74a07d224b16d4b1fefdf3f706eb122a3698d1b496b9cc8316f977a70c79bcb7",
+    "cases/original_set_alloc_int_vec.f90": "e11dab533149b8c4f2db2106ef280a7991422b2db12a4a36a727e147fcd538fd",
+    "cases/recursive_loop_state.f90": "12dac991cdde6644da994b116f0493ffd5ee8a0aa2e6359699bca8c93f708530",
+    "cases/uninitialized_result_frame.f90": "5950099a2383f43c50a5f3c01c08234b0ef2e4dfa885e42f160f648da0853de0",
+    "cases/readonly_alias.f90": "ce8eac99639106ec367a043d12a69c74c63a21dd1957fab697de18b313d66598",
+    "cases/recursive_generic.f90": "ff7aa0d35737bc33d68255964107f69c5e30808052c48546bf7ecf3da61354e5",
+    "cases/mutual_subroutines.f90": "c86cbb6b5af1e6d2e65ed04048ab5aca48e47291a899f20c3299e194de069efe"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

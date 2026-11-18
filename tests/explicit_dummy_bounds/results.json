@@ -1,0 +1,1708 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:35:36.706114+00:00",
+  "summary": {
+    "total": 57,
+    "failed": 0,
+    "candidate_checked": 57,
+    "gnu_checked": 57,
+    "gnu_skipped": 0,
+    "gnu_executed": 31,
+    "gnu_compile_only": 21,
+    "gnu_compile_rejections": 5
+  },
+  "records": [
+    {
+      "case": {
+        "name": "constant_prefix",
+        "source": "constant_prefix.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 12 13 40 50 2 4 30 40 F T T F"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          12          13          40          50   2.00000000       4.00000000       30.0000000       40.0000000     F T T F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 12 13 40 50 2.00000000 4.00000000 30.0000000 40.0000000 F T T F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_order_keywords",
+        "source": "scalar_order_keywords.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 5 6 4 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           5           6           4           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 5 6 4 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "arithmetic_bounds",
+        "source": "arithmetic_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 -3 4 32"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8          -3           4          32\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 -3 4 32\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "frozen_repeated",
+        "source": "frozen_repeated.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 -1 0 2\n12 8 9 3 4 5 6\n4 -1 2 4\n14 15 16 10 11 5 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          -1           0           2\n          12           8           9           3           4           5           6\n           4          -1           2           4\n          14          15          16          10          11           5           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 -1 0 2\n 12 8 9 3 4 5 6\n 4 -1 2 4\n 14 15 16 10 11 5 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank2_reshape_prefix",
+        "source": "rank2_reshape_prefix.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 2 1 6\n11 12 13 14 15 16 70 80"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           2           1           6\n          11          12          13          14          15          16          70          80\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 2 1 6\n 11 12 13 14 15 16 70 80\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank3_reshape_prefix",
+        "source": "rank3_reshape_prefix.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2 2 1 8\n2 4 6 8 10 12 14 16 90"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           2           1           8\n           2           4           6           8          10          12          14          16          90\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2 2 1 8\n 2 4 6 8 10 12 14 16 90\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "strided_reverse_prefix",
+        "source": "strided_reverse_prefix.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 3 30 5 20 7 10"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3          30           5          20           7          10\n",
+        "err": "At line 5 of file /workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/strided_reverse_prefix.f90\nFortran runtime warning: An array temporary was created for argument 'x' of procedure 'work'\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 30 5 20 7 10\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank2_section_copyback",
+        "source": "rank2_section_copyback.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 3 4 5 106 7 8 9 110 111 112"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3           4           5         106           7           8           9         110         111         112\n",
+        "err": "At line 5 of file /workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/rank2_section_copyback.f90\nFortran runtime warning: An array temporary was created for argument 'x' of procedure 'work'\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 4 5 106 7 8 9 110 111 112\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank3_section_copyback",
+        "source": "rank3_section_copyback.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 3 4 5 6 7 8 50 50 50 50"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3           4           5           6           7           8          50          50          50          50\n",
+        "err": "At line 11 of file /workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/rank3_section_copyback.f90\nFortran runtime warning: An array temporary was created for argument 'x' of procedure 'work'\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 4 5 6 7 8 50 50 50 50\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "expression_inputs",
+        "source": "expression_inputs.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "9 0 2 aabb"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           9           0           2 aabb\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 9 0 2 aabb\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "numeric_kinds",
+        "source": "numeric_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "10000000001 20000000001 30000000000 2.5 5 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          10000000001          20000000001          30000000000   2.5000000000000000        5.0000000000000000        9.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 10000000001 20000000001 30000000000 2.5000000000000000 5.0000000000000000 9.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_lengths",
+        "source": "character_lengths.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "q   q   ijklmnopxyztcc",
+        "compare_mode": "tokens"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " q   q   ijklmnopxyztcc\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " q   q   ijklmnopxyztcc\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_rank3_zero_length",
+        "source": "character_rank3_zero_length.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 1 2 0 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           1           2           0           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 1 2 0 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "logical_rank2_out_tail",
+        "source": "logical_rank2_out_tail.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F F T T T T"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F F T T T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F F T T T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_negative_extents",
+        "source": "empty_negative_extents.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 1 0\n0 3 1 0 4 6\n2 0 2 1 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           1           0\n           0           3           1           0           4           6\n           2           0           2           1           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 1 0\n 0 3 1 0 4 6\n 2 0 2 1 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "out_local_size",
+        "source": "out_local_size.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12 12 12 99 99"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12          12          12          99          99\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 12 12 12 99 99\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "partial_input_flags",
+        "source": "partial_input_flags.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 17"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3          17\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "inout_assign_undefined",
+        "source": "inout_assign_undefined.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "9 9 9 44 55"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           9           9           9          44          55\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 9 9 9 44 55\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_explicit",
+        "source": "recursive_explicit.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "15 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          15           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 15 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_forwarding",
+        "source": "nested_forwarding.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 3 4 80 80 7"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3           4          80          80           7\n",
+        "err": "At line 5 of file /workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/nested_forwarding.f90\nFortran runtime warning: An array temporary was created for argument 'x' of procedure 'outer'\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 4 80 80 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "short_actual",
+        "source": "short_actual.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "fewer elements than explicit-shape dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/short_actual.f90:0:0: actual argument has fewer elements than explicit-shape dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_scalar_bound",
+        "source": "undefined_scalar_bound.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized variable"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/undefined_scalar_bound.f90:9:23: read of uninitialized variable n\n"
+      }
+    },
+    {
+      "case": {
+        "name": "out_prefix_undefined",
+        "source": "out_prefix_undefined.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized array element"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/out_prefix_undefined.f90:6:9: read of uninitialized array element a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "partial_input_read",
+        "source": "partial_input_read.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized array element"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/partial_input_read.f90:10:9: read of uninitialized array element x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bound_divzero",
+        "source": "bound_divzero.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "division by zero"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/bound_divzero.f90:9:24: integer division by zero\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bound_overflow",
+        "source": "bound_overflow.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/bound_overflow.f90:9:24: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bound_power_overflow",
+        "source": "bound_power_overflow.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/bound_power_overflow.f90:9:24: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bound_wide_range",
+        "source": "bound_wide_range.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/bound_wide_range.f90:9:23: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "extent_range",
+        "source": "extent_range.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "extent exceeds supported range"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/extent_range.f90:0:0: explicit-shape dummy extent exceeds supported range\n"
+      }
+    },
+    {
+      "case": {
+        "name": "frame_limit",
+        "source": "frame_limit.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "total array element limit",
+        "args": [
+          "--max-steps",
+          "20000000"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/frame_limit.f90:10:10: total array element limit exceeded\n"
+      }
+    },
+    {
+      "case": {
+        "name": "conservative_alias",
+        "source": "conservative_alias.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "overlapping actual arguments"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/conservative_alias.f90:5:1: overlapping actual arguments with a writable dummy are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "boundary_optional_explicit",
+        "source": "boundary_optional_explicit.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "OPTIONAL explicit-shape"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_optional_explicit.f90:9:32: OPTIONAL explicit-shape dummies are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_optional_explicit.f90:9:32: OPTIONAL explicit-shape dummies are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "boundary_assumed_size",
+        "source": "boundary_assumed_size.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_assumed_size.f90:9:23: Expected expression operand, found *\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_assumed_size.f90:9:23: Expected expression operand, found *\n"
+      }
+    },
+    {
+      "case": {
+        "name": "boundary_optional_bound",
+        "source": "boundary_optional_bound.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported explicit-shape dummy bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_optional_bound.f90:9:22:\n\n    9 | integer,intent(in)::x(n)\n      |                      1\nError: Dummy argument \u2018n\u2019 at (1) cannot be OPTIONAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_optional_bound.f90:9:22:\n\n    9 | integer,intent(in)::x(n)\n      |                      1\nError: Dummy argument \u2018n\u2019 at (1) cannot be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_optional_bound.f90:9:24: Unsupported explicit-shape dummy bound: require scalar INTEGER input dummies or parameters\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_optional_bound.f90:9:24: Unsupported explicit-shape dummy bound: require scalar INTEGER input dummies or parameters\n"
+      }
+    },
+    {
+      "case": {
+        "name": "boundary_out_bound",
+        "source": "boundary_out_bound.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported explicit-shape dummy bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_out_bound.f90:9:22:\n\n    9 | integer,intent(in)::x(n)\n      |                      1\nError: Dummy argument \u2018n\u2019 at (1) cannot be INTENT(OUT)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_out_bound.f90:9:22:\n\n    9 | integer,intent(in)::x(n)\n      |                      1\nError: Dummy argument \u2018n\u2019 at (1) cannot be INTENT(OUT)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_out_bound.f90:5:12:\n\n    5 | call work(a,3)\n      |            1\nError: Non-variable expression in variable definition context (actual argument to INTENT = OUT/INOUT) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_out_bound.f90:9:24: Unsupported explicit-shape dummy bound: require scalar INTEGER input dummies or parameters\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_out_bound.f90:9:24: Unsupported explicit-shape dummy bound: require scalar INTEGER input dummies or parameters\n"
+      }
+    },
+    {
+      "case": {
+        "name": "boundary_local_bound",
+        "source": "boundary_local_bound.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported explicit-shape dummy bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_local_bound.f90:10:22:\n\n   10 | integer,intent(in)::x(m)\n      |                      1\nError: Variable \u2018m\u2019 cannot appear in the expression at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_local_bound.f90:10:24: Unsupported explicit-shape dummy bound: require scalar INTEGER input dummies or parameters\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_local_bound.f90:10:24: Unsupported explicit-shape dummy bound: require scalar INTEGER input dummies or parameters\n"
+      }
+    },
+    {
+      "case": {
+        "name": "boundary_array_inquiry",
+        "source": "boundary_array_inquiry.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_array_inquiry.f90:9:27:\n\n    9 | integer,intent(in)::x(size(n))\n      |                           1\nError: \u2018array\u2019 argument of \u2018size\u2019 intrinsic at (1) must be an array\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_array_inquiry.f90:9:27:\n\n    9 | integer,intent(in)::x(size(n))\n      |                           1\nError: \u2018array\u2019 argument of \u2018size\u2019 intrinsic at (1) must be an array\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_array_inquiry.f90:9:30: Array inquiry requires an array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_array_inquiry.f90:9:30: Array inquiry requires an array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "boundary_inquiry_dependency",
+        "source": "boundary_inquiry_dependency.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported explicit-shape dummy bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_inquiry_dependency.f90:10:30: Unsupported explicit-shape dummy bound: require scalar INTEGER input dummies or parameters\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_inquiry_dependency.f90:10:30: Unsupported explicit-shape dummy bound: require scalar INTEGER input dummies or parameters\n"
+      }
+    },
+    {
+      "case": {
+        "name": "boundary_value_dependency",
+        "source": "boundary_value_dependency.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported explicit-shape dummy bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_value_dependency.f90:10:27: Unsupported explicit-shape dummy bound: require scalar INTEGER input dummies or parameters\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_value_dependency.f90:10:27: Unsupported explicit-shape dummy bound: require scalar INTEGER input dummies or parameters\n"
+      }
+    },
+    {
+      "case": {
+        "name": "boundary_mixed_shape",
+        "source": "boundary_mixed_shape.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_mixed_shape.f90:9:26:\n\n    9 | integer,intent(in)::x(n,:)\n      |                          1\nError: Bad array specification for an explicitly shaped array at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_mixed_shape.f90:7:17:\n\n    7 | subroutine work(x,n)\n      |                 1\nError: Symbol \u2018x\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_mixed_shape.f90:5:14:\n\n    5 | call work(a,2)\n      |              1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to UNKNOWN\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_mixed_shape.f90:9:25: Expected expression operand, found :\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_mixed_shape.f90:9:25: Expected expression operand, found :\n"
+      }
+    },
+    {
+      "case": {
+        "name": "boundary_rank_mismatch",
+        "source": "boundary_rank_mismatch.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "type or rank does not match"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_rank_mismatch.f90:5:15: Procedure argument type or rank does not match its dummy declaration\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_rank_mismatch.f90:5:15: Procedure argument type or rank does not match its dummy declaration\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_fold_bounds",
+        "source": "original_fold_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 5 8 90 90 4 7 10 80 80\n1 2 3 3 3 1 2 2 2 2\n0 0 0 3 3 0 0 0 2 2\n0 0 0 3 3 0 0 0 2 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           5           8          90          90           4           7          10          80          80\n           1           2           3           3           3           1           2           2           2           2\n           0           0           0           3           3           0           0           0           2           2\n           0           0           0           3           3           0           0           0           2           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 5 8 90 90 4 7 10 80 80\n 1 2 3 3 3 1 2 2 2 2\n 0 0 0 3 3 0 0 0 2 2\n 0 0 0 3 3 0 0 0 2 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_size_result",
+        "source": "function_size_result.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 4 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           4           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 4 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "forward_assumed_explicit",
+        "source": "forward_assumed_explicit.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5 -2 2\n2 1 2 3 4 5 99 99"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5          -2           2\n           2           1           2           3           4           5          99          99\n",
+        "err": "At line 6 of file /workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/forward_assumed_explicit.f90\nFortran runtime warning: An array temporary was created for argument 'x' of procedure 'outer'\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5 -2 2\n 2 1 2 3 4 5 99 99\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "exact_limit",
+        "source": "exact_limit.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "131072 131072"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "      131072      131072\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 131072 131072\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_large_extent",
+        "source": "empty_large_extent.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2147483647 0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  2147483647           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2147483647 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_extent_range",
+        "source": "empty_extent_range.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "extent exceeds supported range"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/empty_extent_range.f90:0:0: explicit-shape dummy extent exceeds supported range\n"
+      }
+    },
+    {
+      "case": {
+        "name": "logical_rank3_prefix",
+        "source": "logical_rank3_prefix.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F F F F T T"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F F F F T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F F F F T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real_rank3_prefix",
+        "source": "real_rank3_prefix.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3.75 3.75 3.75 3.75 2.5 2.5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   3.75000000       3.75000000       3.75000000       3.75000000       2.50000000       2.50000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3.75000000 3.75000000 3.75000000 3.75000000 2.50000000 2.50000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_rank2_section",
+        "source": "character_rank2_section.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ababababq q"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " ababababq q \n",
+        "err": "At line 5 of file /workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/character_rank2_section.f90\nFortran runtime warning: An array temporary was created for argument 'x' of procedure 'work'\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " ababababq q \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_rank3_prefix",
+        "source": "character_rank3_prefix.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "q q q q abab"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " q q q q abab\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " q q q q abab\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "boundary_missing_upper",
+        "source": "boundary_missing_upper.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Array bounds must be constant"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_missing_upper.f90:9:24: Array bounds must be constant expressions; variable bounds are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_missing_upper.f90:9:24: Array bounds must be constant expressions; variable bounds are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "character_default_length",
+        "source": "character_default_length.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2\nqqcd"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2\n qqcd\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2\n qqcd\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_fixed_zero",
+        "source": "character_fixed_zero.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_actual_shorter",
+        "source": "character_actual_shorter.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "array actual length must match"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/character_actual_shorter.f90:0:0: CHARACTER array actual length must match fixed-length dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "character_actual_longer",
+        "source": "character_actual_longer.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "array actual length must match"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/character_actual_longer.f90:0:0: CHARACTER array actual length must match fixed-length dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "boundary_known_character_length",
+        "source": "boundary_known_character_length.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Type mismatch"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_known_character_length.f90:0:0: FortFront rejected the source: Found 1 semantic error(s):\n  - Type mismatch in call to 'work': actual argument 'x' is rank-1 array of character(len=3), but dummy expects rank-1 array of character(len=2)\n    Suggestion: Use explicit conversion functions (real/int/dble) to match dummy argument types\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/explicit_dummy_bounds/boundary_known_character_length.f90:0:0: FortFront rejected the source: Found 1 semantic error(s):\n  - Type mismatch in call to 'work': actual argument 'x' is rank-1 array of character(len=3), but dummy expects rank-1 array of character(len=2)\n    Suggestion: Use explicit conversion functions (real/int/dble) to match dummy argument types\n"
+      }
+    }
+  ],
+  "manifest_sha256": "508d0d77a1b83a2e0dc5bcf90da3c85c744e162c637469da6f68c16a784c9ba4",
+  "source_sha256": {
+    "constant_prefix.f90": "23b54b20366ebeb942fd5ba356e76173c0aa4964930b0a34e5b7a9762e38038d",
+    "scalar_order_keywords.f90": "177038bd3a092c198511844c99a365d04cc2b8adcdc7207eca4c3735786e1f8d",
+    "arithmetic_bounds.f90": "fa99f749fba0b3e8d73772bd5f015ce51f34b44cde7da6694e3a8f8f42ec845e",
+    "frozen_repeated.f90": "eee29a95c3e367c19e1bddcc8f0eb8f2f12784c88622f3246ec5082078320ee4",
+    "rank2_reshape_prefix.f90": "f95308999a1c618a33a117d03d082bd54826886193c3bbb9ce31b9505e4c3d3b",
+    "rank3_reshape_prefix.f90": "562033a95a0fc6c000b49e68402cf96d9e199ed63d6c036d4c1e05dee9846d3f",
+    "strided_reverse_prefix.f90": "f0f71aea0850ea20deed1996e83dc8db93bde93d0a152570eda3f9fc973a97c3",
+    "rank2_section_copyback.f90": "6e183b2208f7d0fc904fb4ef4b9d6b5a6232e057ef503cc1de777a277c804a38",
+    "rank3_section_copyback.f90": "4d5867e97c1268c247e12fc92fbd56cb9d496353c1a8f3fa064bc0f7aa4dfbed",
+    "expression_inputs.f90": "85f7221c369adafa3f070561f479a349ed079acd175505da6e79f165e90f962e",
+    "numeric_kinds.f90": "496603fcc86d43be7d38a852fffef3ef7b7f0873120cf5ad55046ee91f3a446e",
+    "character_lengths.f90": "97fcc55605a891b29b322e12891031d6f172441344c652132463c1cbdde7f3ca",
+    "character_rank3_zero_length.f90": "8eb00bd1d05a4c273e41e1be2a7791ae1aac8ffe27de6c2ddb000a6355829ae4",
+    "logical_rank2_out_tail.f90": "204c55757e5da0485d088aa744153b767f15ed8a2238d0924c29cbc8cc0912f9",
+    "empty_negative_extents.f90": "84326ed5a2985d3fccb8d4bf7030e3240ae10060a10080196ede696c5d1cbe87",
+    "out_local_size.f90": "07b34ca13e53d1da0d31b3893e5109aed164cb5e1d35db483e87e9ea9ca50b52",
+    "partial_input_flags.f90": "3cdf531a02295182a3059c897012187b71c3825a0180b52fd9f2be3738b945b9",
+    "inout_assign_undefined.f90": "872325be3d79bb4af172f7538a4abfdc1750f76110106c754f9152aa54b55353",
+    "recursive_explicit.f90": "abffc88939e68ac51936c529a7b4fd4bb57665b46b113fc45927e6b4ba2d77fd",
+    "nested_forwarding.f90": "5c209429c87b12dea61cd41857a750037c3812774ba6f79c22a6ca7bf186edfe",
+    "short_actual.f90": "b29a164f38d6ec15232c0dede5f10b0cfe743038ec0caf701fce9b453b2a94e1",
+    "undefined_scalar_bound.f90": "2fd59091ed38b458a8d176c24d02fc462edd6b3d7f15925f29683e0f213d2856",
+    "out_prefix_undefined.f90": "52e69dcfc822027fbe61a3c96db733888363ce58a87ad9cc850c2df0de00c5d8",
+    "partial_input_read.f90": "a82adb9610543f279cf410b9c5e1b10ae792df1a81288780cf722863615baf0f",
+    "bound_divzero.f90": "2843d084245834cb8d6451300cc90f0fb735a232982cc1192972fdf7940bb1cd",
+    "bound_overflow.f90": "2a18eedb861b7466829d9059deae608d24c5d6fe2e8aa8190678023ad2e41e8c",
+    "bound_power_overflow.f90": "20f536ff185d6b110d45cbed4fb1529c2bf1c6a8a631212c16289321144f7549",
+    "bound_wide_range.f90": "a4ef5fe080be8c718cc487c55c743692467f5ee893b5160aa47becdaf30945b2",
+    "extent_range.f90": "8bd74cfa761b3e35f9b2428fed84b71f18bc100f8b83ada6e3e8adedfa0b54d1",
+    "frame_limit.f90": "b9362c600906e672c578e294c78cefbe7c4aa25721733d1e634554665286a980",
+    "conservative_alias.f90": "0adfefee02332247c1244dff2d2a9e6253c6b5a3399dca7d29bd8ec80bae5713",
+    "boundary_optional_explicit.f90": "24634f414618a67051937ddee7f129e59b8c88353361603b31e107b9aaeeb0e2",
+    "boundary_assumed_size.f90": "abdd0ed4059364680ae4d588fd6b6adb548b0f7ada6796aa738d7b24147dc55e",
+    "boundary_optional_bound.f90": "8a02494324619fbed12223bd88572eef354fe32f3a688e7d529a9ca67666cc59",
+    "boundary_out_bound.f90": "4e71fdf4306a33e3754a9a9937fd6e18ac529c50929c6b23d76a679c4ed0331b",
+    "boundary_local_bound.f90": "60e435833a276f9965aac5b677e72f7fe41f8c7d8d634f9f974fb27d205762e1",
+    "boundary_array_inquiry.f90": "39d91a3f32d437739b31cc4390a9ffd09b4cd42cde1da43ebf05b83dfd61e683",
+    "boundary_inquiry_dependency.f90": "8008885edc9542a04db7304852ee15065d705bb52cfdcbcbdf02c5d79d426b77",
+    "boundary_value_dependency.f90": "c9752ecd4cac062775444e020530b540015522662bb55633eeddbdf4c529787d",
+    "boundary_mixed_shape.f90": "6985e682d0f743d34acc237b488e4aa89d659fcf7d70c4c83f9438d50bec1712",
+    "boundary_rank_mismatch.f90": "6dcee578c9b3811b703c2a8d2ec00fd150e204f00dc49c2a635d7192b05892eb",
+    "original_fold_bounds.f90": "efcba846acb2b73997c274b07cacb4e0d2857ff8d1cd754e415367664e561ba3",
+    "function_size_result.f90": "493afea07481c8cd624973d09df261c46ec8cd13b4ba701f398f7a2bbb20c731",
+    "forward_assumed_explicit.f90": "3c21edbc4adf2560dfdf54006be5f696010dde0cccc51433cba555619bfc7af9",
+    "exact_limit.f90": "770142278b3a686f1b5ed32b4cd2645d261cfc7ad9ede54e75f97b4b1dbc0edd",
+    "empty_large_extent.f90": "a85612de35f3779210f45f6553229ec4d24d9c5cc71af26719160ad632e416bf",
+    "empty_extent_range.f90": "32a94b4f6d5656f56ddd6d73a2c23338bdd0bd801b18a5d3cd92fa900b56f37b",
+    "logical_rank3_prefix.f90": "73341cc04d01079481c9af25c5eff8c3a12615a9d63b67fd946303d3580770b8",
+    "real_rank3_prefix.f90": "5b92eee2410e16b8355d290c6a9ebe05063998a9a481acd4091d06c47d36b4a6",
+    "character_rank2_section.f90": "84f4c0a41baefecdff9bc42e940535082e10467989e091a379238e2a8f28d5bd",
+    "character_rank3_prefix.f90": "44947244b73cd369c4c382ac8b8e5f15fa058e9809fceb41474ff65d3eb65884",
+    "boundary_missing_upper.f90": "6bbc2f18a14f28a84a6c01b02da52959e1d93b575cd90297da680cad82da4b40",
+    "character_default_length.f90": "34ec01bc44359d4b6521d22fdb8f161a5f151ea653d25d1634c6b48f48f0f3b4",
+    "character_fixed_zero.f90": "3b8deef20baa3aa887e30cb25a1558be6d7345acb26ddcf806a49f6de38182a1",
+    "character_actual_shorter.f90": "c4909141f5f130f16faf0cd4b5f219ddbd870e6ff89371b9cb55127507cfa3c9",
+    "character_actual_longer.f90": "dafd9c82c67abaaa0af670fa6cf2a824c121a990c69434ca007f4119a4171417",
+    "boundary_known_character_length.f90": "8416f9ed8ca161c004d85746dbd8e6af9f652f8ab56ce3a8e30a7b5dd941892c"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

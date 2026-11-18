@@ -1,0 +1,579 @@
+{
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "summary": {
+    "total": 9,
+    "failed": 0,
+    "integrity_failed": 0,
+    "candidate_checked": 9,
+    "gnu_checked": 9,
+    "gnu_skipped": 0,
+    "gnu_executed": 8,
+    "gnu_compile_only": 1,
+    "gnu_compile_rejections": 0
+  },
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "--version"
+        ]
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "--version"
+        ]
+      }
+    }
+  },
+  "records": [
+    {
+      "name": "saved_double_conversions",
+      "source_sha256": "85bea1d596d01225b484a73ced897ee58d0160152fc483671e81320f7e2ce526",
+      "case": {
+        "name": "saved_double_conversions",
+        "source": "cases/saved_double_conversions.f90",
+        "sha256": "85bea1d596d01225b484a73ced897ee58d0160152fc483671e81320f7e2ce526",
+        "category": "success",
+        "gnu": "run",
+        "expected": "  2.50 -10.00\nT\n",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release040-case-nx3ipebn/saved_double_conversions.f90",
+          "-o",
+          "/tmp/release040-case-nx3ipebn/gnu"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  2.50 -10.00\nT\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-case-nx3ipebn/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "--check",
+          "/tmp/release040-case-nx3ipebn/saved_double_conversions.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "  2.50 -10.00\nT\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "/tmp/release040-case-nx3ipebn/saved_double_conversions.f90"
+        ]
+      }
+    },
+    {
+      "name": "ordinary_g0_reversion",
+      "source_sha256": "fcfb74b4424f99818922b185d3551c1ea67caea509051cae42ba455b0089c6b7",
+      "case": {
+        "name": "ordinary_g0_reversion",
+        "source": "cases/ordinary_g0_reversion.f90",
+        "sha256": "fcfb74b4424f99818922b185d3551c1ea67caea509051cae42ba455b0089c6b7",
+        "category": "success",
+        "gnu": "run",
+        "expected": "1\n2\n3\n",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release040-case-prv_in42/ordinary_g0_reversion.f90",
+          "-o",
+          "/tmp/release040-case-prv_in42/gnu"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "1\n2\n3\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-case-prv_in42/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "--check",
+          "/tmp/release040-case-prv_in42/ordinary_g0_reversion.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "1\n2\n3\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "/tmp/release040-case-prv_in42/ordinary_g0_reversion.f90"
+        ]
+      }
+    },
+    {
+      "name": "unlimited_g0_literal_exhaustion",
+      "source_sha256": "2ecb9ae575fd8cc5412c4b066847e856eccb042f2d9bafb14454594a04caf536",
+      "case": {
+        "name": "unlimited_g0_literal_exhaustion",
+        "source": "cases/unlimited_g0_literal_exhaustion.f90",
+        "sha256": "2ecb9ae575fd8cc5412c4b066847e856eccb042f2d9bafb14454594a04caf536",
+        "category": "success",
+        "gnu": "run",
+        "expected": "p1sp2sp\n",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release040-case-sxlfw7ww/unlimited_g0_literal_exhaustion.f90",
+          "-o",
+          "/tmp/release040-case-sxlfw7ww/gnu"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "p1sp2sp\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-case-sxlfw7ww/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "--check",
+          "/tmp/release040-case-sxlfw7ww/unlimited_g0_literal_exhaustion.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "p1sp2sp\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "/tmp/release040-case-sxlfw7ww/unlimited_g0_literal_exhaustion.f90"
+        ]
+      }
+    },
+    {
+      "name": "real_kind_empty_acos",
+      "source_sha256": "69a13b98d17be534545e391984c22ed54cd479b40f627c9705a50939dc41cb64",
+      "case": {
+        "name": "real_kind_empty_acos",
+        "source": "cases/real_kind_empty_acos.f90",
+        "sha256": "69a13b98d17be534545e391984c22ed54cd479b40f627c9705a50939dc41cb64",
+        "category": "success",
+        "gnu": "run",
+        "expected": "0 8 4\n",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release040-case-ixtffhao/real_kind_empty_acos.f90",
+          "-o",
+          "/tmp/release040-case-ixtffhao/gnu"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "0 8 4\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-case-ixtffhao/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "--check",
+          "/tmp/release040-case-ixtffhao/real_kind_empty_acos.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "0 8 4\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "/tmp/release040-case-ixtffhao/real_kind_empty_acos.f90"
+        ]
+      }
+    },
+    {
+      "name": "seed_double_random_contract",
+      "source_sha256": "b5b752bb8d882956390bb1418d688596619a7c0136de91314a588390d2b2866e",
+      "case": {
+        "name": "seed_double_random_contract",
+        "source": "cases/seed_double_random_contract.f90",
+        "sha256": "b5b752bb8d882956390bb1418d688596619a7c0136de91314a588390d2b2866e",
+        "category": "success",
+        "gnu": "run",
+        "expected": "T T T\n",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release040-case-d9062x_g/seed_double_random_contract.f90",
+          "-o",
+          "/tmp/release040-case-d9062x_g/gnu"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "T T T\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-case-d9062x_g/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "--check",
+          "/tmp/release040-case-d9062x_g/seed_double_random_contract.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "T T T\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "/tmp/release040-case-d9062x_g/seed_double_random_contract.f90"
+        ]
+      }
+    },
+    {
+      "name": "acos_atomic_unlimited",
+      "source_sha256": "adc48c7ed4209485f07fb15b99efe2cf69bde41e77f264a99d919cb02d71ef0b",
+      "case": {
+        "name": "acos_atomic_unlimited",
+        "source": "cases/acos_atomic_unlimited.f90",
+        "sha256": "adc48c7ed4209485f07fb15b99efe2cf69bde41e77f264a99d919cb02d71ef0b",
+        "category": "runtime",
+        "gnu": "compile",
+        "expected": "before\n",
+        "diagnostic": "ACOS requires -1 <= X <= 1",
+        "note": "Out-of-domain ACOS is compiled by GNU but not executed; prior complete record must remain, failing record atomic."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release040-case-xppf5n4t/acos_atomic_unlimited.f90",
+          "-o",
+          "/tmp/release040-case-xppf5n4t/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "--check",
+          "/tmp/release040-case-xppf5n4t/acos_atomic_unlimited.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "before\n",
+        "err": "/tmp/release040-case-xppf5n4t/acos_atomic_unlimited.f90:6:20: ACOS requires -1 <= X <= 1\n",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "/tmp/release040-case-xppf5n4t/acos_atomic_unlimited.f90"
+        ]
+      }
+    },
+    {
+      "name": "main_save_real_into_acos",
+      "source_sha256": "34284e2b6229430806c60896d4154f455dc180281953300f274b1d0f03b5cecf",
+      "case": {
+        "name": "main_save_real_into_acos",
+        "source": "cases/main_save_real_into_acos.f90",
+        "sha256": "34284e2b6229430806c60896d4154f455dc180281953300f274b1d0f03b5cecf",
+        "category": "success",
+        "gnu": "run",
+        "expected": "T T T\n",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release040-case-1m8jw8xq/main_save_real_into_acos.f90",
+          "-o",
+          "/tmp/release040-case-1m8jw8xq/gnu"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "T T T\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-case-1m8jw8xq/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "--check",
+          "/tmp/release040-case-1m8jw8xq/main_save_real_into_acos.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "T T T\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "/tmp/release040-case-1m8jw8xq/main_save_real_into_acos.f90"
+        ]
+      }
+    },
+    {
+      "name": "unlimited_defined_output",
+      "source_sha256": "b120b6f4d0d427b170aa4dc5956968219ac51b3c6d5308d812a4bfba9c177a61",
+      "case": {
+        "name": "unlimited_defined_output",
+        "source": "cases/unlimited_defined_output.f90",
+        "sha256": "b120b6f4d0d427b170aa4dc5956968219ac51b3c6d5308d812a4bfba9c177a61",
+        "category": "success",
+        "gnu": "run",
+        "expected": "11 12\n2\n",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release040-case-zlkd6j2x/unlimited_defined_output.f90",
+          "-o",
+          "/tmp/release040-case-zlkd6j2x/gnu"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "11 12\n2\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-case-zlkd6j2x/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "--check",
+          "/tmp/release040-case-zlkd6j2x/unlimited_defined_output.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "11 12\n2\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "/tmp/release040-case-zlkd6j2x/unlimited_defined_output.f90"
+        ]
+      }
+    },
+    {
+      "name": "multi_allocation_real_acos",
+      "source_sha256": "266103d50dea19bacca8764397e81e301fd30abea7057246ef2a2121a5bc6165",
+      "case": {
+        "name": "multi_allocation_real_acos",
+        "source": "cases/multi_allocation_real_acos.f90",
+        "sha256": "266103d50dea19bacca8764397e81e301fd30abea7057246ef2a2121a5bc6165",
+        "category": "success",
+        "gnu": "run",
+        "expected": "0 T T\n0 F F\n",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/tmp/release040-case-_qd7tsns/multi_allocation_real_acos.f90",
+          "-o",
+          "/tmp/release040-case-_qd7tsns/gnu"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "0 T T\n0 F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-case-_qd7tsns/gnu"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "--check",
+          "/tmp/release040-case-_qd7tsns/multi_allocation_real_acos.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "0 T T\n0 F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/release040-frozen-aw8tlrn5/candidate",
+          "/tmp/release040-case-_qd7tsns/multi_allocation_real_acos.f90"
+        ]
+      }
+    }
+  ],
+  "integrity_errors": [],
+  "source_pins": {
+    "synthetic-manifest.json": "018ec72766a36b5597827fabaf0dd9b038edbaa4ade7ed747902b5c33639d493",
+    "run_tests.py": "a9a49213e5013c721e1c21b3e9797856990a4f55d18b3856bcda456f8bcb593a",
+    "cases/saved_double_conversions.f90": "85bea1d596d01225b484a73ced897ee58d0160152fc483671e81320f7e2ce526",
+    "cases/ordinary_g0_reversion.f90": "fcfb74b4424f99818922b185d3551c1ea67caea509051cae42ba455b0089c6b7",
+    "cases/unlimited_g0_literal_exhaustion.f90": "2ecb9ae575fd8cc5412c4b066847e856eccb042f2d9bafb14454594a04caf536",
+    "cases/real_kind_empty_acos.f90": "69a13b98d17be534545e391984c22ed54cd479b40f627c9705a50939dc41cb64",
+    "cases/seed_double_random_contract.f90": "b5b752bb8d882956390bb1418d688596619a7c0136de91314a588390d2b2866e",
+    "cases/acos_atomic_unlimited.f90": "adc48c7ed4209485f07fb15b99efe2cf69bde41e77f264a99d919cb02d71ef0b",
+    "cases/main_save_real_into_acos.f90": "34284e2b6229430806c60896d4154f455dc180281953300f274b1d0f03b5cecf",
+    "cases/unlimited_defined_output.f90": "b120b6f4d0d427b170aa4dc5956968219ac51b3c6d5308d812a4bfba9c177a61",
+    "cases/multi_allocation_real_acos.f90": "266103d50dea19bacca8764397e81e301fd30abea7057246ef2a2121a5bc6165"
+  },
+  "flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all,no-array-temps",
+    "-ffpe-trap=invalid,zero,overflow",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:46:54.135307+00:00"
+}

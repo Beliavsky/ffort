@@ -1,0 +1,383 @@
+{
+  "schema": 1,
+  "cases": [
+    {
+      "name": "deferred_scalar_bit_records",
+      "source": "cases/deferred_scalar_bit_records.f90",
+      "sha256": "50266ec0b5c87c8993ceffcbb38497305dede33b6167da510095147d6049420c",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[Ab Ab ]\nFFFFFFFF0101\n",
+      "features": [
+        "runtime CHAR length",
+        "untyped constructor",
+        "NOT/IAND",
+        "B/Z"
+      ]
+    },
+    {
+      "name": "assumed_length_variable_calls",
+      "source": "cases/assumed_length_variable_calls.f90",
+      "sha256": "93dcbf4d713fa35fdba0f858fc3c4f66a08999ac51cd04d024ad461d6b358d28",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[AA]\n0011\n[Bc Bc ]\n0012\n",
+      "features": [
+        "assumed length per frame",
+        "IOR octal",
+        "different calls"
+      ]
+    },
+    {
+      "name": "dynamic_array_alias_snapshot",
+      "source": "cases/dynamic_array_alias_snapshot.f90",
+      "sha256": "e5185aa84e9f5d9be90987796837dc9b43ee24e69d228ab9eff3f9dfa3b438aa",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[ABcdABcd]\n03020100\n",
+      "features": [
+        "descriptor array constructor",
+        "self assignment snapshot",
+        "constructor index",
+        "IEOR"
+      ]
+    },
+    {
+      "name": "descriptor_concat_bit_index",
+      "source": "cases/descriptor_concat_bit_index.f90",
+      "sha256": "1a852efb135704b20c767050e5e87fe10cc02802cd654d959430a4f847e2f5f7",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "abCDabCD\n10011010\n",
+      "features": [
+        "descriptor concatenation",
+        "separate index owners",
+        "IOR/B"
+      ]
+    },
+    {
+      "name": "bit_size_dynamic_length",
+      "source": "cases/bit_size_dynamic_length.f90",
+      "sha256": "8df9c0aedcec4b71d6511170b6173f6562b3a96c090ccb0c94ff1ff6a2fe3aea",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  4 32\n[xxxxxxxx]\n",
+      "features": [
+        "BIT_SIZE undefined metadata",
+        "runtime length",
+        "constructor"
+      ]
+    },
+    {
+      "name": "bit_size_array_broadcast",
+      "source": "cases/bit_size_array_broadcast.f90",
+      "sha256": "955f9fee8225b3e6005fb2ae92568c192c691ce1670d13c714f8e62fc3a4684a",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "K41K42K43\n",
+      "features": [
+        "BIT_SIZE scalar broadcast",
+        "INTEGER8",
+        "output impliedDO",
+        "dynamic CHAR"
+      ]
+    },
+    {
+      "name": "runtime_format_array_element",
+      "source": "cases/runtime_format_array_element.f90",
+      "sha256": "df0a0b5bc7fd0b56fea73c4c38dcdbdec7cb5c5a76838cfdf0195efafa5e1d0e",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "features": [
+        "runtime constructor format",
+        "FMT element boundary",
+        "NOT/Z"
+      ],
+      "diagnostic": "Runtime format requires a whole scalar CHARACTER variable",
+      "diagnostic_line": 7,
+      "diagnostic_column": 11
+    },
+    {
+      "name": "runtime_format_scalar_staging",
+      "source": "cases/runtime_format_scalar_staging.f90",
+      "sha256": "b703996592a8b954d7d2149679aa7a262e2e15873a5aebcc6a1df53904181b55",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[FFFFFFFF    ]\n",
+      "features": [
+        "descriptor constructor format",
+        "whole scalar format staging",
+        "internal padding",
+        "NOT/Z"
+      ]
+    },
+    {
+      "name": "nonadvancing_preserved_suffix",
+      "source": "cases/nonadvancing_preserved_suffix.f90",
+      "sha256": "5787a816c2f48acff277ad43df60bf2d79c9cc7f7d89289ea8cada136a1cb541",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "AB0FE01H\n",
+      "features": [
+        "dynamic CHAR output",
+        "nonadvancing cursor",
+        "T/TR",
+        "IOR/IAND"
+      ]
+    },
+    {
+      "name": "tl_bit_overwrite_constructor",
+      "source": "cases/tl_bit_overwrite_constructor.f90",
+      "sha256": "0248aa674b25b6a4fc8ff0cd1b4c5d2df2b6f1b0295e0357eb265d6ab685a7dc",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "abcd0Fg01\n",
+      "features": [
+        "descriptor constructor",
+        "TL overwrite",
+        "suffix retention",
+        "IEOR"
+      ]
+    },
+    {
+      "name": "bit_test_vector_positions",
+      "source": "cases/bit_test_vector_positions.f90",
+      "sha256": "f59b71559b0f829d3367ae1b120234923f3bbb6ea1d84a51a6ea150c60d8f984",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "TY TY TY TY \n",
+      "features": [
+        "BTEST independent POS kinds",
+        "array shapes",
+        "dynamic CHAR impliedDO"
+      ]
+    },
+    {
+      "name": "bits_rank_three_surrounding",
+      "source": "cases/bits_rank_three_surrounding.f90",
+      "sha256": "2654ac04ea563208ff934dc3330535c2da66f3dc4f9eb5cdd098d19c4a98a61f",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": ">292A2B2C\n",
+      "features": [
+        "rank3 bit scalar expansion",
+        "BIT_SIZE scalar expansion",
+        "dynamic CHAR prefix"
+      ]
+    },
+    {
+      "name": "wide_integer_exact_hex",
+      "source": "cases/wide_integer_exact_hex.f90",
+      "sha256": "50a38fdfe1a401856da108ac7547166f1cf20bebeaba0b471207f76fc2f6b848",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "wide=0020000000000003\n",
+      "features": [
+        "INTEGER beyond binary64 exact",
+        "IEOR",
+        "dynamic CHAR prefix"
+      ]
+    },
+    {
+      "name": "empty_bit_operands_no_data",
+      "source": "cases/empty_bit_operands_no_data.f90",
+      "sha256": "2cb85b2a5a088491d084b47e4b13bb94c84f8402b9740693f5e13d9081e82971",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": " 0 0 0\n[]\n",
+      "features": [
+        "empty elementwise does not read scalar",
+        "length0 descriptors",
+        "constructor"
+      ]
+    },
+    {
+      "name": "kind_bit_metadata_no_read",
+      "source": "cases/kind_bit_metadata_no_read.f90",
+      "sha256": "d3057922575a1734f7307b46d3424703d63be0eb5b6c011ceac7c49f3daa2225",
+      "category": "success",
+      "gnu": "known-reject",
+      "expected_stdout": "M  8  4 64\n",
+      "features": [
+        "KIND metadata ignores data/POS value",
+        "BIT_SIZE",
+        "dynamic prefix"
+      ],
+      "oracle_note": "GNU14 diagnoses a constant invalid POS even under metadata-only KIND; not execution agreement.",
+      "gnu_compile_diagnostic": "must be less than BIT_SIZE"
+    },
+    {
+      "name": "kind_bit_dynamic_position_no_read",
+      "source": "cases/kind_bit_dynamic_position_no_read.f90",
+      "sha256": "f1ce746d66a8bf54e23ab2de480ed4efc0515cd3b3ee7e83bca208a9e9247d7c",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "M  8  4 64\n",
+      "features": [
+        "KIND metadata ignores undefined data/POS",
+        "BIT_SIZE",
+        "dynamic prefix"
+      ]
+    },
+    {
+      "name": "zero_width_blank_cursor",
+      "source": "cases/zero_width_blank_cursor.f90",
+      "sha256": "a68dbf6608fe25dd621921e936cf8a654761d1f3fe3859e8d3e3f33b0ffa6c96",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "A !D\n",
+      "features": [
+        "zero bit result",
+        "Z0.0 blank",
+        "backward overwrite"
+      ]
+    },
+    {
+      "name": "ordinary_group_reversion_bits",
+      "source": "cases/ordinary_group_reversion_bits.f90",
+      "sha256": "487c73d7bbbc979f1bb0f87e0a559aa57050ff5891f460f241e9d39dc9522f98",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "go\n  09  0A\n  0B\n",
+      "features": [
+        "ordinary group reversion",
+        "array IOR",
+        "descriptor prefix"
+      ]
+    },
+    {
+      "name": "real_boz_subset_atomic",
+      "source": "cases/real_boz_subset_atomic.f90",
+      "sha256": "47d864cc8d998f2067780d1a0860a69dbabdefdebea7d4edd437374a561bf362",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE",
+      "features": [
+        "REAL BOZ standard-valid subset exclusion",
+        "pending prefix atomic"
+      ],
+      "diagnostic": "PRINT format descriptor and item type differ",
+      "diagnostic_line": 9,
+      "diagnostic_column": 1
+    },
+    {
+      "name": "slash_retained_boundary",
+      "source": "cases/slash_retained_boundary.f90",
+      "sha256": "d09b9f0b60b591c788a133873b14f773f4fdd2070615b7ed07eaca55ea50a967",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "features": [
+        "slash existing boundary",
+        "dynamic FMT",
+        "IOR"
+      ],
+      "diagnostic": "unsupported PRINT format descriptor",
+      "diagnostic_line": 9,
+      "diagnostic_column": 1
+    },
+    {
+      "name": "record_cap_pending_atomic",
+      "source": "cases/record_cap_pending_atomic.f90",
+      "sha256": "ac552a0d45b32fcf898474c744bf92d3c55f7d7146c7a41f3620655de721dd25",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE",
+      "features": [
+        "bit array result",
+        "65536 record cap",
+        "pending prefix unchanged"
+      ],
+      "diagnostic": "formatted output exceeds 65536 characters",
+      "diagnostic_line": 9,
+      "diagnostic_column": 1
+    },
+    {
+      "name": "btest_pos_record_atomic",
+      "source": "cases/btest_pos_record_atomic.f90",
+      "sha256": "7b0180f1d535138b3b745bfe733b4ee1ae645c892521aed5d1eebeaf3e66c2e4",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "features": [
+        "BTEST invalid evaluated position",
+        "dynamic constructor item staged"
+      ],
+      "diagnostic": "BTEST POS outside bit width",
+      "diagnostic_line": 9,
+      "diagnostic_column": 17
+    },
+    {
+      "name": "constructor_mismatch_pending_atomic",
+      "source": "cases/constructor_mismatch_pending_atomic.f90",
+      "sha256": "239063e30fee558e85221112b1d09f08ab66c7659d2b0d8ffae06bce239dd7a2",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "0F",
+      "features": [
+        "dynamic constructor mismatch",
+        "bit prefix atomic"
+      ],
+      "diagnostic": "CHARACTER constructor item lengths differ",
+      "diagnostic_line": 7,
+      "diagnostic_column": 3
+    },
+    {
+      "name": "machine_minimum_z_zero_minimum",
+      "source": "cases/machine_minimum_z_zero_minimum.f90",
+      "sha256": "ecce4932f6ddee36b427b1b526135368a5aafa0f348dbe57bc495626a5f1f5a6",
+      "category": "success",
+      "gnu": "compile",
+      "expected_stdout": "[8000000000000000]\n",
+      "features": [
+        "machine minimum representation",
+        "IOR",
+        "Z0.0"
+      ],
+      "oracle_note": "Processor-specific machine boundary outside the symmetric arithmetic model. GNU14 Z m=0 blanks this nonzero high-bit value; compile-only, independently exact bit oracle."
+    },
+    {
+      "name": "host_clock_bit_size_descriptor",
+      "source": "cases/host_clock_bit_size_descriptor.f90",
+      "sha256": "6f5de2b5eb819a2392676abd60bc15cfbf514e4c3a0534b9a5809fb342abd0de",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "CLOCK 40\n",
+      "features": [
+        "actual host SYSTEM_CLOCK contract",
+        "BIT_SIZE kind8",
+        "runtime CHAR descriptor"
+      ]
+    },
+    {
+      "name": "host_cpu_constructor_interval",
+      "source": "cases/host_cpu_constructor_interval.f90",
+      "sha256": "3e55042af2b9e075e3b006e265f18837a086f600d889af27f2b28a720eeb7e4b",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "CPU CPU \n00000000\n",
+      "features": [
+        "actual CPU samples",
+        "finite/nondecrease assertions only",
+        "IEOR interval work",
+        "dynamic CHAR"
+      ]
+    },
+    {
+      "name": "host_clock_absent_count_pending",
+      "source": "cases/host_clock_absent_count_pending.f90",
+      "sha256": "4fc372944932538f71a71a7a74161f0561018321a71816ff0fb7eb3738b7115c",
+      "category": "success",
+      "gnu": "compile",
+      "expected_stdout": "A0F!\n",
+      "features": [
+        "forward absent optional COUNT",
+        "actual clock rate/max",
+        "pending cursor",
+        "bit format"
+      ],
+      "oracle_note": "GNU14.2 SIGSEGV at -O0/-O2 forwarding absent COUNT with present RATE/MAX. Independent absent-OPTIONAL contract; no GNU execution agreement."
+    }
+  ]
+}

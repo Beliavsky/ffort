@@ -1,0 +1,20 @@
+--- a/src/semantic/scope_manager.f90
++++ b/src/semantic/scope_manager.f90
+@@ -166,7 +166,7 @@
+                             integer :: j
+                             integer(identifier_id_kind) :: name_id
+ 
+-                            name_id = identifier_table_find(this%identifiers, name)
++                            name_id = identifier_table_find(this%identifiers, to_lower(name))
+                             if (name_id <= 0) return
+ 
+                             do j = 1, this%env%count
+@@ -230,7 +230,7 @@
+                             end block
+                         end if
+ 
+-                        name_id = identifier_table_intern(this%identifiers, name)
++                        name_id = identifier_table_intern(this%identifiers, to_lower(name))
+ 
+                         do j = 1, this%env%count
+                             if (this%env%name_ids(j) == name_id) then

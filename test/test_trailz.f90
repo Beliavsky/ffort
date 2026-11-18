@@ -1,0 +1,213 @@
+! SPDX-License-Identifier: MIT
+program test_trailz
+use,intrinsic::iso_fortran_env,only:int64
+use fi_ir
+use fi_parser,only:parse_subset
+use fi_frontend,only:verify_frontend
+use fi_runtime,only:execute_program,evaluate_constant
+implicit none
+character(*),parameter::nl=new_line('a')
+character(8),parameter::names(1)=[character(8)::'trailz']
+type(program_t)::p
+type(diagnostic_t)::d
+type(value_t)::v
+character(:),allocatable::source,expr,decl
+integer::checks,name,form,mutation,e,a,b,s,j,k,n,q,pos
+integer(int64)::expected,remaining
+checks=0
+! All metadata guards also run below KIND and zero-sized outer expressions.
+do name=1,1
+ do form=1,3
+  n=2;if(form==3)n=0
+  decl='integer(8)::a('//itoa(n)//')'//nl//'a=1_8'//nl
+  expr=trim(names(name))//'(a'
+  expr=expr//')'
+  if(form==2)expr='kind('//expr//')'
+  source='program p'//nl//'implicit none'//nl//decl//'print *,'//expr//nl//'end program'
+  do mutation=0,43
+   call parse_subset(source,p,d);call expect(d%code==0,'baseline parse')
+   e=0
+   do j=1,p%ne
+    if(p%expressions(j)%op==trim(names(name)))e=j
+   end do
+   call expect(e>0,'intrinsic occurrence')
+   a=p%expressions(e)%args(1);s=p%expressions(a)%symbol
+   b=a;if(size(p%expressions(e)%args)==2)b=p%expressions(e)%args(2)
+   select case(mutation)
+   case(1);p%expressions(e)%typ=ty_real
+   case(2);p%expressions(e)%real_kind=16
+   case(3);p%expressions(e)%rank=4
+   case(4);p%expressions(e)%extent=99
+   case(5);p%expressions(e)%dims=[1_int64,2_int64,3_int64]
+   case(6);p%expressions(e)%intrinsic_mask=1
+   case(7);p%expressions(e)%args=[integer::]
+   case(8);p%expressions(e)%args=[a,a,a]
+   case(9);deallocate(p%expressions(e)%args)
+   case(10);p%expressions(e)%args(1)=0
+   case(11);p%expressions(e)%args(1)=p%ne+1
+   case(12);p%expressions(e)%args(1)=e
+   case(13);p%expressions(a)%typ=ty_real
+   case(14);p%expressions(a)%real_kind=16
+   case(15);p%expressions(a)%rank=4
+   case(16);p%expressions(a)%extent=99
+   case(17);p%expressions(a)%character_len=0
+   case(18);p%expressions(e)%character_len=0
+   case(19);p%expressions(e)%left=a
+   case(20);p%expressions(e)%right=a
+   case(21);p%expressions(e)%symbol=s
+   case(22);p%expressions(e)%length_expr=a
+   case(23);p%expressions(e)%constructor_kind_expr=a
+   case(24);p%expressions(e)%triplet(2)=.true.
+   case(25);p%expressions(e)%constructor_owner=1
+   case(26);p%expressions(e)%generic_id=1
+   case(27);p%expressions(e)%bound_type=1
+   case(28);p%expressions(e)%bound_binding=1
+   case(29);p%expressions(e)%stride2=a
+   case(30);p%expressions(e)%left3=a
+   case(31);p%expressions(e)%third=a
+   case(32);p%expressions(a)%dims=[1_int64,0_int64,0_int64]
+   case(33);p%expressions(b)%character_len=0
+   case(34);p%symbols(s)%real_kind=4
+   case(35);p%symbols(s)%typ=ty_real
+   case(36);p%symbols(s)%rank=2
+   case(37);p%expressions(e)%stride=a
+   case(38);p%expressions(e)%right3=a
+   case(39);p%expressions(e)%stride3=a
+   case(40);p%expressions(e)%triplet(1)=.false.
+   case(41);p%expressions(a)%extent=-2_int64
+   case(42);p%expressions(e)%real_kind=8
+   case(43);p%expressions(a)%real_kind=4
+   end select
+   call verify_frontend(source,p,d)
+   call expect((d%code==0).eqv.(mutation==0),'adapter metadata guard')
+   d=diagnostic_t();call execute_program(p,d,max_steps=20000_int64)
+   call expect((d%code==0).eqv.(mutation==0),'runtime metadata guard')
+   k=p%ne+1;p%ne=k;p%expressions(k)=expr_t(kind=ex_call,op='kind',typ=ty_integer,args=[e])
+   d=diagnostic_t();call evaluate_constant(p,k,v,d)
+   call expect((d%code==0).eqv.(mutation==0),'KIND metadata guard')
+   if(mutation==0)then
+    q=4
+    call expect(v%i==q,'result kind')
+   end if
+  end do
+ end do
+end do
+! Independent quotient oracle: no host TRAILZ/BIT_SIZE is used for expectations.
+do q=4,8,4
+ do a=-17,17
+  expr='trailz('//itoa(a)//'_'//itoa(q)//')'
+  source='program p'//nl//'print *,'//expr//nl//'end program'
+  call parse_subset(source,p,d);call expect(d%code==0,'oracle parse')
+  call verify_frontend(source,p,d);call expect(d%code==0,'oracle adapter')
+  e=0
+  do j=1,p%ne
+   if(p%expressions(j)%op=='trailz')e=j
+  end do
+  call expect(e>0,'oracle occurrence')
+  call evaluate_constant(p,e,v,d);call expect(d%code==0,'oracle evaluate')
+  expected=0;remaining=int(a,int64)
+  if(remaining==0)then
+   expected=8*q
+  else
+   ! Repeated signed division never negates the minimum INTEGER.
+   do while(mod(remaining,2_int64)==0)
+    expected=expected+1;remaining=remaining/2_int64
+   end do
+  end if
+  call expect(v%tag==ty_integer.and.v%real_kind==4.and.v%i==expected,'default-kind width-aware value')
+ end do
+end do
+! Every representable positive/negative power of two; no 2**63 intermediate.
+do q=4,8,4
+ remaining=1_int64
+ do pos=0,8*q-2
+  do form=1,2
+   if(form==1)then
+    expr='trailz('//itoa64(remaining)//'_'//itoa(q)//')'
+   else
+    expr='trailz(-'//itoa64(remaining)//'_'//itoa(q)//')'
+   end if
+   call value_check(expr,int(pos,int64))
+  end do
+  if(pos<8*q-2)remaining=remaining*2_int64
+ end do
+ call value_check('trailz(-huge(0_'//itoa(q)//')-1_'//itoa(q)//')',int(8*q-1,int64))
+end do
+! Literal payload caches must agree with expression kind before host conversion.
+do form=1,2
+ do mutation=0,10
+  source='program p'//nl//'print *,trailz(8_8)'//nl//'end program'
+  call parse_subset(source,p,d);call expect(d%code==0,'literal mutation parse')
+  e=0
+  do j=1,p%ne
+   if(p%expressions(j)%op=='trailz')e=j
+  end do
+  call expect(e>0,'literal occurrence')
+  a=p%expressions(e)%args(1)
+  select case(mutation)
+  case(1);p%expressions(a)%value%tag=ty_real
+  case(2);p%expressions(a)%value%real_kind=4
+  case(3);p%expressions(a)%real_kind=4
+  case(4);p%expressions(a)%typ=ty_real
+  case(5);p%expressions(a)%rank=1
+  case(6);p%expressions(a)%extent=1
+  case(7);p%expressions(a)%dims=[1_int64,0_int64,0_int64]
+  case(8);p%expressions(e)%typ=ty_real
+  case(9);p%expressions(e)%real_kind=8
+  case(10);p%expressions(a)%real_kind=16;p%expressions(a)%value%real_kind=16
+  end select
+  call verify_frontend(source,p,d)
+  call expect((d%code==0).eqv.(mutation==0),'literal adapter cache guard')
+  if(form==2)then
+   b=p%ne+1;p%ne=b
+   p%expressions(b)=expr_t(kind=ex_call,op='kind',typ=ty_integer,args=[e]);e=b
+  end if
+  d=diagnostic_t();call evaluate_constant(p,e,v,d)
+  call expect((d%code==0).eqv.(mutation==0),'literal constant/KIND cache guard')
+  if(mutation==0)then
+   if(form==1)call expect(v%i==3.and.v%real_kind==4,'literal value')
+   if(form==2)call expect(v%i==4,'literal result kind')
+  end if
+ end do
+end do
+write(*,'(a,i0,a)')'PASS: ',checks,' TRAILZ public-IR and independent-value checks'
+contains
+subroutine value_check(expression,wanted)
+character(*),intent(in)::expression
+integer(int64),intent(in)::wanted
+source='program p'//nl//'print *,'//expression//nl//'end program'
+call parse_subset(source,p,d);call expect(d%code==0,'power parse')
+call verify_frontend(source,p,d);call expect(d%code==0,'power adapter')
+e=0
+do j=1,p%ne
+ if(p%expressions(j)%op=='trailz')e=j
+end do
+call expect(e>0,'power occurrence')
+call evaluate_constant(p,e,v,d);call expect(d%code==0,'power evaluation')
+call expect(v%tag==ty_integer.and.v%real_kind==4.and.v%i==wanted,'power independent oracle')
+end subroutine
+function itoa64(i) result(text)
+integer(int64),intent(in)::i
+character(:),allocatable::text
+character(40)::buffer
+write(buffer,'(i0)')i
+text=trim(buffer)
+end function
+subroutine expect(condition,label)
+logical,intent(in)::condition
+character(*),intent(in)::label
+if(.not.condition)then
+ print *,trim(label),d%code
+ if(allocated(d%message))print *,d%message
+ error stop 1
+endif
+checks=checks+1
+end subroutine
+function itoa(i) result(text)
+integer,intent(in)::i
+character(:),allocatable::text
+character(40)::buffer
+write(buffer,'(i0)')i
+text=trim(buffer)
+end function
+end program

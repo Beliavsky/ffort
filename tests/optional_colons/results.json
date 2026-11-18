@@ -1,0 +1,901 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:32:07.348304+00:00",
+  "summary": {
+    "total": 29,
+    "failed": 0,
+    "candidate_checked": 29,
+    "gnu_checked": 29,
+    "gnu_skipped": 0,
+    "gnu_executed": 15,
+    "gnu_compile_only": 0,
+    "gnu_compile_rejections": 14
+  },
+  "records": [
+    {
+      "case": {
+        "name": "intrinsic_scalars",
+        "source": "cases/intrinsic_scalars.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 4 1.5 T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           4   1.50000000     T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 4 1.50000000 T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "explicit_kinds",
+        "source": "cases/explicit_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3000000000 2.5",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3000000000   2.5000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3000000000 2.5000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_lengths",
+        "source": "cases/character_lengths.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "Xabcdz   end",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "Xabcdz   end\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "Xabcdz   end\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "named_kind_length",
+        "source": "cases/named_kind_length.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1.25 abc",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.2500000000000000      abc\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1.2500000000000000 abc\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "explicit_shape_arrays",
+        "source": "cases/explicit_shape_arrays.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 3 4 5 6 7 8 9 10 11",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3           4           5           6           7           8           9          10          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 4 5 6 7 8 9 10 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_array",
+        "source": "cases/empty_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_array",
+        "source": "cases/character_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "abcd",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " abcd\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " abcd\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_colon_forms",
+        "source": "cases/mixed_colon_forms.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "semicolon_declarations",
+        "source": "cases/semicolon_declarations.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 3",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2   3.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "continuation_names",
+        "source": "cases/continuation_names.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "9",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "procedure_locals",
+        "source": "cases/procedure_locals.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "16",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          16\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 16\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "automatic_character",
+        "source": "cases/automatic_character.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "abcd",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "abcd\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "abcd\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "module_variables",
+        "source": "cases/module_variables.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 2.5",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3   2.5000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 2.5000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "derived_type_forms",
+        "source": "cases/derived_type_forms.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 2.5 T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3   2.5000000000000000      T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 2.5000000000000000 T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "initializer_scalar",
+        "source": "cases/initializer_scalar.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Declaration initialization requires ::"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/initializer_scalar.f90:3:10:\n\n    3 | integer x=1\n      |          1\nError: Syntax error in data declaration at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/initializer_scalar.f90:3:10: Declaration initialization requires ::\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/initializer_scalar.f90:3:10: Declaration initialization requires ::\n"
+      }
+    },
+    {
+      "case": {
+        "name": "initializer_second",
+        "source": "cases/initializer_second.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Declaration initialization requires ::"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/initializer_second.f90:3:12:\n\n    3 | integer x,y=2\n      |            1\nError: Syntax error in data declaration at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/initializer_second.f90:3:12: Declaration initialization requires ::\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/initializer_second.f90:3:12: Declaration initialization requires ::\n"
+      }
+    },
+    {
+      "case": {
+        "name": "initializer_array",
+        "source": "cases/initializer_array.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Declaration initialization requires ::"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/initializer_array.f90:3:13:\n\n    3 | integer x(2)=[1,2]\n      |             1\nError: Syntax error in data declaration at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/initializer_array.f90:3:13: Declaration initialization requires ::\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/initializer_array.f90:3:13: Declaration initialization requires ::\n"
+      }
+    },
+    {
+      "case": {
+        "name": "initializer_character",
+        "source": "cases/initializer_character.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Declaration initialization requires ::"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/initializer_character.f90:3:15:\n\n    3 | character(4) x='abc'\n      |               1\nError: Syntax error in data declaration at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/initializer_character.f90:3:15: Declaration initialization requires ::\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/initializer_character.f90:3:15: Declaration initialization requires ::\n"
+      }
+    },
+    {
+      "case": {
+        "name": "attribute_parameter",
+        "source": "cases/attribute_parameter.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Declaration attributes require ::"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_parameter.f90:3:9:\n\n    3 | integer,parameter x=2\n      |         1\nError: Invalid character in name at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_parameter.f90:3:19: Declaration attributes require ::\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_parameter.f90:3:19: Declaration attributes require ::\n"
+      }
+    },
+    {
+      "case": {
+        "name": "attribute_dimension",
+        "source": "cases/attribute_dimension.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Declaration attributes require ::"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_dimension.f90:3:9:\n\n    3 | integer,dimension(2) x\n      |         1\nError: Invalid character in name at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_dimension.f90:3:22: Declaration attributes require ::\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_dimension.f90:3:22: Declaration attributes require ::\n"
+      }
+    },
+    {
+      "case": {
+        "name": "attribute_allocatable",
+        "source": "cases/attribute_allocatable.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Declaration attributes require ::"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_allocatable.f90:3:9:\n\n    3 | integer,allocatable x(:)\n      |         1\nError: Invalid character in name at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_allocatable.f90:3:21: Declaration attributes require ::\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_allocatable.f90:3:21: Declaration attributes require ::\n"
+      }
+    },
+    {
+      "case": {
+        "name": "attribute_intent",
+        "source": "cases/attribute_intent.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Declaration attributes require ::"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_intent.f90:4:9:\n\n    4 | integer,intent(in) x\n      |         1\nError: Invalid character in name at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_intent.f90:4:20: Declaration attributes require ::\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_intent.f90:4:20: Declaration attributes require ::\n"
+      }
+    },
+    {
+      "case": {
+        "name": "type_attribute",
+        "source": "cases/type_attribute.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Derived type attributes require ::"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/type_attribute.f90:2:12:\n\n    2 | type,public box\n      |            1\nError: Expected :: in TYPE definition at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/type_attribute.f90:4:3:\n\n    4 | end type\n      |   1\nError: Expecting END MODULE statement at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/type_attribute.f90:2:13: Derived type attributes require ::\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/type_attribute.f90:2:13: Derived type attributes require ::\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_comma",
+        "source": "cases/missing_comma.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/missing_comma.f90:3:10:\n\n    3 | integer x y\n      |          1\nError: Syntax error in data declaration at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/missing_comma.f90:3:11: Unexpected trailing token: y\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/missing_comma.f90:3:11: Unexpected trailing token: y\n"
+      }
+    },
+    {
+      "case": {
+        "name": "single_colon",
+        "source": "cases/single_colon.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/single_colon.f90:3:10:\n\n    3 | integer : x\n      |          1\nError: Invalid character in name at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/single_colon.f90:3:9: Expected declaration name\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/single_colon.f90:3:9: Expected declaration name\n"
+      }
+    },
+    {
+      "case": {
+        "name": "extra_colon",
+        "source": "cases/extra_colon.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/extra_colon.f90:3:12:\n\n    3 | integer ::: x\n      |            1\nError: Invalid character in name at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/extra_colon.f90:3:11: Expected declaration name\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/extra_colon.f90:3:11: Expected declaration name\n"
+      }
+    },
+    {
+      "case": {
+        "name": "no_entity",
+        "source": "cases/no_entity.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/no_entity.f90:3:7:\n\n    3 | integer\n      |       1\nError: Malformed type-spec at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/no_entity.f90:3:8: Expected declaration name\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/no_entity.f90:3:8: Expected declaration name\n"
+      }
+    },
+    {
+      "case": {
+        "name": "attribute_empty",
+        "source": "cases/attribute_empty.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_empty.f90:3:9:\n\n    3 | integer,::x\n      |         1\nError: Invalid character in name at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_empty.f90:3:9: Unsupported declaration attribute\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_colons/cases/attribute_empty.f90:3:9: Unsupported declaration attribute\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_timestamp_declarations",
+        "source": "cases/original_timestamp_declarations.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "January 8 8 10 5 2026 1 2 3 4 5 6 7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " January           8           8          10           5\n        2026           1           2           3           4           5           6           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " January 8 8 10 5\n 2026 1 2 3 4 5 6 7\n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "2c1759858df10d697e5170038725387a1ba936c9dbac0260850507c81d8c2573",
+  "source_sha256": {
+    "cases/intrinsic_scalars.f90": "af417596977f9ac553e406e7ddb35448d864caeb45ad2073f366c1359e4ad422",
+    "cases/explicit_kinds.f90": "095baf7f3ae6487a3d45bd040132cfff9ce71f32be4897b8f5bff9ca16f6361e",
+    "cases/character_lengths.f90": "a382af44e5f418904b549613c578f718946ce480f9de80740906f876e917b8d8",
+    "cases/named_kind_length.f90": "31fa962b28ad5f661384afebd0b8b91d7c862c1fb6594aba9cb164c25923cf00",
+    "cases/explicit_shape_arrays.f90": "1b0dd2bda52c73391125b143bdcecfc0138d67bda854088a5f9f9e251a9b942c",
+    "cases/empty_array.f90": "c0f9ee3c5fb44e2ebbe37143f0765625f919dfeb4b0d28b165104cfe41b170c8",
+    "cases/character_array.f90": "d857bc0cbc3a9f02ff7a2baa89f3d922a3ec91701e480f6551d395548634222d",
+    "cases/mixed_colon_forms.f90": "b98cfec86b28cbc6d32c78e2fc624f3621664efc9bc912994b874938fe7df280",
+    "cases/semicolon_declarations.f90": "d7aa44dfb08cff073dbe77a2b3714f66f0a42897e05d1814612e6d8e54fc5220",
+    "cases/continuation_names.f90": "937fc68a6f6ba736bf8922d179493759c5af34384597e152988a89ae92e6ea0d",
+    "cases/procedure_locals.f90": "fcb95dcb311acbd3271e29fd17e7a66b2b796d8be56fcc214c136f7a8f03df0f",
+    "cases/automatic_character.f90": "807c291c494b80fa09066eb2560bb3fc4fc0d3acf98ce5571acd1797fa04075a",
+    "cases/module_variables.f90": "57b2bb5ab7a31211ed1b08d5cfb847af851f5b49d0d919811dc71500a34c617e",
+    "cases/derived_type_forms.f90": "9aff784433b892762c349159ce667158d5dce85a2c863f7546063598f70b3f3e",
+    "cases/initializer_scalar.f90": "1eeafbcee3477beba2ac470db6d0fff135596428805ba85cfcfdaac1ff0c1fa4",
+    "cases/initializer_second.f90": "97b15755e6242b062495f3bc8d15466e1e68bb4bdc68530df9c79925a9070514",
+    "cases/initializer_array.f90": "27e6d38dfd179ee74e3b01e88360ad3a6def4f9983effa0151138f1fa3dd3753",
+    "cases/initializer_character.f90": "a1d318ab23e1ec433ac96830eb7e22aa8e4c3efa3e7f0b43d82cd1f7757f87ca",
+    "cases/attribute_parameter.f90": "9005b29fa86308a1b3e63776bc075c7e6390e02f5c6b0d30a8f9a56bfe2f4e7c",
+    "cases/attribute_dimension.f90": "4f1e18ce1e6cd532278e797b58c36d75d6a8bc6e2dc12fbfb133f210681d052d",
+    "cases/attribute_allocatable.f90": "09a323125e4c563bba6abc9fff4ada686ac0ff648200fee62cdbaf9d6532158a",
+    "cases/attribute_intent.f90": "6b1a15b37a3545bca322f9cc1bce7fcbcbe889e2d16157417ea7c995c71b2b03",
+    "cases/type_attribute.f90": "62fbc956b97369b86b13682838bd6450c11487c002e997bc4b96190db0219220",
+    "cases/missing_comma.f90": "f183d7c88bc4d8ceab1fd1e0b9f0f99513f86127daf807177d8f92d154c6de74",
+    "cases/single_colon.f90": "d8f39c4e7a73bfb9eb082c77b6c6f729f35210457fd212e0a47e11b4010fe2be",
+    "cases/extra_colon.f90": "9e8622ee6e485d7dcde4cf9875215c400ee7277de9e7bd85b173182b0f7863ed",
+    "cases/no_entity.f90": "29cc35ef4cb4d991c029d3ead7fe86a931313ce5e6df85db9baf5035ca7a0a96",
+    "cases/attribute_empty.f90": "0a676718368bab582b24840285e78ed1f3dfceadb04b1e683ea090fc37052d02",
+    "cases/original_timestamp_declarations.f90": "b61ad5a88a8c2fede3ea7dbb649df87fca6ea7c64707aebee032655b51dbcd1c"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

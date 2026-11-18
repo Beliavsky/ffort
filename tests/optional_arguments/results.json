@@ -1,0 +1,700 @@
+{
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "candidate_version": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches",
+  "gfortran_version": "GNU Fortran (Debian 14.2.0-19) 14.2.0",
+  "total": 31,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "exact_utility_bodies",
+      "passed": true,
+      "expected": "valid",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "          10          20          30\n   1.5000000000000000        2.5000000000000000     \n T T\n F T F\n           1           2           3           9           9           9\n   1.0000000000000000        2.0000000000000000        3.0000000000000000     \n F F F\n           5   1.2500000000000000      T\n           1           2           3   4.5000000000000000        4.5000000000000000        4.5000000000000000      T F T\n           7   2.5000000000000000      F\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 10 20 30\n 1.5000000000000000 2.5000000000000000\n T T\n F T F\n 1 2 3 9 9 9\n 1.0000000000000000 2.0000000000000000 3.0000000000000000\n F F F\n 5 1.2500000000000000 T\n 1 2 3 4.5000000000000000 4.5000000000000000 4.5000000000000000 T F T\n 7 2.5000000000000000 F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "keyword_and_forwarding",
+      "passed": true,
+      "expected": "valid",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           0         300          20         301\n           0         400          30         502\n           5\n          17\n          21\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 0 300 20 301\n 0 400 30 502\n 5\n 17\n 21\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "elemental_forwarding",
+      "passed": true,
+      "expected": "valid",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3           8           8           8           5           6           7\n          99          99          99\n           7           7           7\n           0\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3 8 8 8 5 6 7\n 99 99 99\n 7 7 7\n 0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "generic_optional",
+      "passed": true,
+      "expected": "valid",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1   1.50000000               3   2.50000000    \n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 1.50000000 3 2.50000000\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "undefined_but_present",
+      "passed": true,
+      "expected": "valid",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " T T\n          31\n F F\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " T T\n 31\n F F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "missing_required",
+      "passed": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/missing_required.f90:14:13:\n\n   14 | call run(b=2)\n      |             1\nError: Missing actual argument for argument \u2018a\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/missing_required.f90:14:14: Missing required actual argument: a\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/missing_required.f90:14:14: Missing required actual argument: a\n"
+      }
+    },
+    {
+      "name": "duplicate_keyword",
+      "passed": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/duplicate_keyword.f90:14:13:\n\n   14 | call run(1,a=2)\n      |             1\nError: Keyword argument \u2018a\u2019 at (1) is already associated with another actual argument\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/duplicate_keyword.f90:14:16: Repeated actual argument for a\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/duplicate_keyword.f90:14:16: Repeated actual argument for a\n"
+      }
+    },
+    {
+      "name": "unknown_keyword",
+      "passed": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/unknown_keyword.f90:14:13:\n\n   14 | call run(1,c=2)\n      |             1\nError: Keyword argument \u2018c\u2019 at (1) is not in the procedure\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/unknown_keyword.f90:14:16: Unknown keyword or excess actual argument: c\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/unknown_keyword.f90:14:16: Unknown keyword or excess actual argument: c\n"
+      }
+    },
+    {
+      "name": "positional_after_keyword",
+      "passed": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/positional_after_keyword.f90:14:14:\n\n   14 | call run(a=1,2)\n      |              1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/positional_after_keyword.f90:14:14: Positional argument cannot follow a keyword argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/positional_after_keyword.f90:14:14: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "name": "wrong_type",
+      "passed": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/wrong_type.f90:14:18:\n\n   14 | call run(1,.true.)\n      |                  1\nError: Type mismatch in argument \u2018b\u2019 at (1); passed LOGICAL(4) to INTEGER(4)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/wrong_type.f90:14:19: Procedure argument type or rank does not match its dummy declaration\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/wrong_type.f90:14:19: Procedure argument type or rank does not match its dummy declaration\n"
+      }
+    },
+    {
+      "name": "present_required",
+      "passed": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_required.f90:7:16:\n\n    7 | print *,present(a)\n      |                1\nError: \u2018a\u2019 argument of \u2018present\u2019 intrinsic at (1) must be of an OPTIONAL dummy variable\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_required.f90:11:5:\n\n   11 | use invalid_optional\n      |     1\nFatal Error: Cannot open module file \u2018invalid_optional.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_required.f90:7:19: PRESENT argument must be an optional dummy name\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_required.f90:7:19: PRESENT argument must be an optional dummy name\n"
+      }
+    },
+    {
+      "name": "present_expression",
+      "passed": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_expression.f90:7:16:\n\n    7 | print *,present(b+1)\n      |                1\nError: \u2018a\u2019 argument of \u2018present\u2019 intrinsic at (1) must be a variable\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_expression.f90:11:5:\n\n   11 | use invalid_optional\n      |     1\nFatal Error: Cannot open module file \u2018invalid_optional.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_expression.f90:7:21: PRESENT argument must be an optional dummy name\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_expression.f90:7:21: PRESENT argument must be an optional dummy name\n"
+      }
+    },
+    {
+      "name": "present_parenthesized",
+      "passed": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_parenthesized.f90:7:16:\n\n    7 | print *,present((b))\n      |                1\nError: \u2018a\u2019 argument of \u2018present\u2019 intrinsic at (1) must be a variable\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_parenthesized.f90:11:5:\n\n   11 | use invalid_optional\n      |     1\nFatal Error: Cannot open module file \u2018invalid_optional.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_parenthesized.f90:7:21: PRESENT argument must be an optional dummy name\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_parenthesized.f90:7:21: PRESENT argument must be an optional dummy name\n"
+      }
+    },
+    {
+      "name": "present_literal",
+      "passed": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_literal.f90:7:16:\n\n    7 | print *,present(1)\n      |                1\nError: \u2018a\u2019 argument of \u2018present\u2019 intrinsic at (1) must be a variable\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_literal.f90:11:5:\n\n   11 | use invalid_optional\n      |     1\nFatal Error: Cannot open module file \u2018invalid_optional.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_literal.f90:7:19: PRESENT argument must be an optional dummy name\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_literal.f90:7:19: PRESENT argument must be an optional dummy name\n"
+      }
+    },
+    {
+      "name": "optional_local",
+      "passed": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/optional_local.f90:5:18: OPTIONAL requires a procedure dummy with explicit INTENT\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/optional_local.f90:5:18: OPTIONAL requires a procedure dummy with explicit INTENT\n"
+      }
+    },
+    {
+      "name": "optional_array",
+      "passed": true,
+      "expected": "valid",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "optional_character",
+      "passed": true,
+      "expected": "valid",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "duplicate_optional",
+      "passed": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/duplicate_optional.f90:5:25:\n\n    5 | integer,optional,optional,intent(in) :: x\n      |                         1\nError: Duplicate OPTIONAL attribute at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/duplicate_optional.f90:4:16:\n\n    4 | subroutine run(x)\n      |                1\nError: Symbol \u2018x\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/duplicate_optional.f90:9:5:\n\n    9 | use invalid_optional\n      |     1\nFatal Error: Cannot open module file \u2018invalid_optional.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/duplicate_optional.f90:5:26: Repeated OPTIONAL attribute\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/duplicate_optional.f90:5:26: Repeated OPTIONAL attribute\n"
+      }
+    },
+    {
+      "name": "absent_read",
+      "passed": true,
+      "expected": "runtime",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/absent_read.f90:9:35: absent OPTIONAL dummy referenced: b\n"
+      }
+    },
+    {
+      "name": "absent_write",
+      "passed": true,
+      "expected": "runtime",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/absent_write.f90:9:35: absent OPTIONAL dummy referenced: b\n"
+      }
+    },
+    {
+      "name": "absent_expression_forward",
+      "passed": true,
+      "expected": "runtime",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/absent_expression_forward.f90:9:35: absent OPTIONAL dummy referenced: b\n"
+      }
+    },
+    {
+      "name": "absent_required_forward",
+      "passed": true,
+      "expected": "runtime",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/absent_required_forward.f90:10:1: absent actual associated with required dummy\n"
+      }
+    },
+    {
+      "name": "undefined_present_read",
+      "passed": true,
+      "expected": "runtime",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/undefined_present_read.f90:6:9: read of uninitialized variable b\n"
+      }
+    },
+    {
+      "name": "wide_kinds_and_empty_arrays",
+      "passed": true,
+      "expected": "valid",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "  9223372036854775807  9223372036854775807\n                    1                    2                    3\n           1           1           1\n           7           7           7           2           2           2\n           0\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 9223372036854775807 9223372036854775807\n 1 2 3\n 1 1 1\n 7 7 7 2 2 2\n 0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "optional_bound_method",
+      "passed": true,
+      "expected": "valid",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           4          10\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 4 10\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "ambiguous_optional_generic",
+      "passed": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/ambiguous_optional_generic.f90:7:0:\n\n    7 | function one(a) result(x)\n......\n   12 | function two(b) result(x)\nError: Ambiguous interfaces in generic interface 'choose' for \u2018one\u2019 at (1) and \u2018two\u2019 at (2)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/ambiguous_optional_generic.f90:19:5:\n\n   19 | use ambiguous_optional\n      |     1\nFatal Error: Cannot open module file \u2018ambiguous_optional.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/ambiguous_optional_generic.f90:21:17: Ambiguous generic procedure call\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/ambiguous_optional_generic.f90:21:17: Ambiguous generic procedure call\n"
+      }
+    },
+    {
+      "name": "present_missing",
+      "passed": true,
+      "expected": "reject",
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_missing.f90:6:8:\n\n    6 | print *,present()\n      |        1\nError: Missing actual argument \u2018a\u2019 in call to \u2018present\u2019 at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_missing.f90:10:5:\n\n   10 | use present_missing_m\n      |     1\nFatal Error: Cannot open module file \u2018present_missing_m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_missing.f90:6:18: PRESENT requires one optional dummy argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/present_missing.f90:6:18: PRESENT requires one optional dummy argument\n"
+      }
+    },
+    {
+      "name": "kind_inquiries",
+      "passed": true,
+      "expected": "valid",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           4           4           4\n           8           8\n           4           4           4\n           8           8\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 4 4 4\n 8 8\n 4 4 4\n 8 8\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "intrinsic_size_dim_absent",
+      "passed": true,
+      "expected": "runtime",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/intrinsic_size_dim_absent.f90:7:32: absent OPTIONAL dummy referenced: dim_arg\n"
+      }
+    },
+    {
+      "name": "intrinsic_sum_mask_absent",
+      "passed": true,
+      "expected": "runtime",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/intrinsic_sum_mask_absent.f90:7:32: absent OPTIONAL dummy referenced: mask_arg\n"
+      }
+    },
+    {
+      "name": "intrinsic_selected_real_kind_p_absent",
+      "passed": true,
+      "expected": "runtime",
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_arguments/intrinsic_selected_real_kind_p_absent.f90:7:32: absent OPTIONAL dummy referenced: precision_arg\n"
+      }
+    }
+  ]
+}

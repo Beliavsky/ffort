@@ -1,0 +1,1098 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:39:35.142641+00:00",
+  "summary": {
+    "total": 38,
+    "failed": 0,
+    "candidate_checked": 38,
+    "gnu_checked": 27,
+    "gnu_skipped": 11,
+    "gnu_executed": 18,
+    "gnu_compile_only": 2,
+    "gnu_compile_rejections": 7
+  },
+  "records": [
+    {
+      "case": {
+        "name": "scalar_frozen_bounds",
+        "source": "cases/scalar_frozen_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 -2 0 6 12\n7\n0 1 0 0 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3          -2           0           6          12\n           7\n           0           1           0           0           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 -2 0 6 12\n 7\n 0 1 0 0 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_shapes",
+        "source": "cases/matrix_shapes.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 18 12 0 -1\n2 0 0 0 1 -1\n0 3 0 0 0 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3   18.0000000       12.0000000               0          -1\n           2           0   0.00000000       0.00000000               1          -1\n           0           3   0.00000000       0.00000000               0           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 18.0000000 12.0000000 0 -1\n 2 0 0.00000000 0.00000000 1 -1\n 0 3 0.00000000 0.00000000 0 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "integer_kinds",
+        "source": "cases/integer_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "16 10 T"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                   16   10.000000000000000      T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 16 10.000000000000000 T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "arithmetic_bounds",
+        "source": "cases/arithmetic_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 6 3 32 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           6           3          32           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 6 3 32 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_mixed_dimension",
+        "source": "cases/parameter_mixed_dimension.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 12 18"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3          12          18\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 12 18\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "out_array_inquiry",
+        "source": "cases/out_array_inquiry.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "21\n7 7 7"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          21\n   7.00000000       7.00000000       7.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 21\n 7.00000000 7.00000000 7.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dummy_lower_bound_inquiry",
+        "source": "cases/dummy_lower_bound_inquiry.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 -3 0 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4          -3           0           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 -3 0 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_local",
+        "source": "cases/character_local.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 catcatcat"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3 catcatcat\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 catcatcat\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_local",
+        "source": "cases/pure_local.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "20"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          20\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 20\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_local_calls",
+        "source": "cases/nested_local_calls.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 8\n3 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           8\n           3           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 8\n 3 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "negative_extent",
+        "source": "cases/negative_extent.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0 0 0 0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           0           0           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 0 0 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "large_zero_extent",
+        "source": "cases/large_zero_extent.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 2147483647 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0  2147483647           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 2147483647 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "exact_limit",
+        "source": "cases/exact_limit.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "131072 131072"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "      131072      131072\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 131072 131072\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "full_after_partial",
+        "source": "cases/full_after_partial.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "10 1 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          10\n           1\n           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 10\n 1\n 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "utility_true_positions",
+        "source": "cases/utility_true_positions.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 1 3 4\n0\n0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           1           3           4\n           0\n           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 1 3 4\n 0\n 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "cap_exceeded",
+        "source": "cases/cap_exceeded.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "total array element limit"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/cap_exceeded.f90:6:10: total array element limit exceeded\n"
+      }
+    },
+    {
+      "case": {
+        "name": "aggregate_cap",
+        "source": "cases/aggregate_cap.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "total array element limit"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/aggregate_cap.f90:6:16: total array element limit exceeded\n"
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_product_cap",
+        "source": "cases/matrix_product_cap.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "total array element limit"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/matrix_product_cap.f90:6:10: total array element limit exceeded\n"
+      }
+    },
+    {
+      "case": {
+        "name": "extent_range",
+        "source": "cases/extent_range.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "dimension extent"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/extent_range.f90:0:0: array element limit exceeded: dimension extent exceeds INTEGER range\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bound_divzero",
+        "source": "cases/bound_divzero.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "division by zero"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/bound_divzero.f90:6:14: integer division by zero\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bound_arithmetic_overflow",
+        "source": "cases/bound_arithmetic_overflow.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/bound_arithmetic_overflow.f90:6:14: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_dim",
+        "source": "cases/invalid_dim.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "DIM outside array rank"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/invalid_dim.f90:6:13: array inquiry DIM outside array rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wide_bound_range",
+        "source": "cases/wide_bound_range.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/wide_bound_range.f90:6:13: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_local",
+        "source": "cases/undefined_local.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/undefined_local.f90:7:9: read of uninitialized array element aa\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reallocated_definition_flags",
+        "source": "cases/reallocated_definition_flags.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/reallocated_definition_flags.f90:8:19: read of uninitialized array element aa\n"
+      }
+    },
+    {
+      "case": {
+        "name": "optional_bound",
+        "source": "cases/optional_bound.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/optional_bound.f90:6:12:\n\n    6 | integer::aa(n)\n      |            1\nError: Dummy argument \u2018n\u2019 at (1) cannot be OPTIONAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/optional_bound.f90:6:12:\n\n    6 | integer::aa(n)\n      |            1\nError: Dummy argument \u2018n\u2019 at (1) cannot be OPTIONAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/optional_bound.f90:12:5:\n\n   12 | use automatic_fixture\n      |     1\nFatal Error: Cannot open module file \u2018automatic_fixture.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/optional_bound.f90:6:14: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/optional_bound.f90:6:14: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "out_scalar_bound",
+        "source": "cases/out_scalar_bound.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/out_scalar_bound.f90:6:12:\n\n    6 | integer::aa(n)\n      |            1\nError: Dummy argument \u2018n\u2019 at (1) cannot be INTENT(OUT)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/out_scalar_bound.f90:6:12:\n\n    6 | integer::aa(n)\n      |            1\nError: Dummy argument \u2018n\u2019 at (1) cannot be INTENT(OUT)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/out_scalar_bound.f90:12:5:\n\n   12 | use automatic_fixture\n      |     1\nFatal Error: Cannot open module file \u2018automatic_fixture.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/out_scalar_bound.f90:6:14: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/out_scalar_bound.f90:6:14: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "local_scalar_bound",
+        "source": "cases/local_scalar_bound.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/local_scalar_bound.f90:6:14:\n\n    6 | integer::k,aa(k)\n      |              1\nError: Variable \u2018k\u2019 cannot appear in the expression at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/local_scalar_bound.f90:13:5:\n\n   13 | use automatic_fixture\n      |     1\nFatal Error: Cannot open module file \u2018automatic_fixture.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/local_scalar_bound.f90:6:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/local_scalar_bound.f90:6:16: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "main_variable_bound",
+        "source": "cases/main_variable_bound.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Array bounds must be constant"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/main_variable_bound.f90:3:16:\n\n    3 | integer::n,aa(n)\n      |                1\nError: Explicit shaped array with nonconstant bounds at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/main_variable_bound.f90:4:1:\n\n    4 | n=3\n      | 1\nError: Symbol \u2018n\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/main_variable_bound.f90:3:16: Array bounds must be constant expressions outside procedure locals\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/main_variable_bound.f90:3:16: Array bounds must be constant expressions outside procedure locals\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real_bound",
+        "source": "cases/real_bound.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "scalar INTEGER"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/real_bound.f90:6:12:\n\n    6 | integer::aa(n)\n      |            1\nError: Expression at (1) must be of INTEGER type, found REAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/real_bound.f90:6:12:\n\n    6 | integer::aa(n)\n      |            1\nError: Expression at (1) must be of INTEGER type, found REAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/real_bound.f90:12:5:\n\n   12 | use automatic_fixture\n      |     1\nFatal Error: Cannot open module file \u2018automatic_fixture.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/real_bound.f90:6:14: Array bounds must be scalar INTEGER expressions\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/real_bound.f90:6:14: Array bounds must be scalar INTEGER expressions\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_element_bound",
+        "source": "cases/array_element_bound.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/array_element_bound.f90:6:18: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/array_element_bound.f90:6:18: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "local_array_inquiry",
+        "source": "cases/local_array_inquiry.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported automatic array bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/local_array_inquiry.f90:6:27: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/local_array_inquiry.f90:6:27: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n"
+      }
+    },
+    {
+      "case": {
+        "name": "automatic_initializer",
+        "source": "cases/automatic_initializer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "initialized intrinsic scalar"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/automatic_initializer.f90:6:14:\n\n    6 | integer::aa(n)=1\n      |              1\nError: Automatic array \u2018aa\u2019 at (1) cannot have an initializer\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/automatic_initializer.f90:12:5:\n\n   12 | use automatic_fixture\n      |     1\nFatal Error: Cannot open module file \u2018automatic_fixture.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/automatic_initializer.f90:6:16: SAVE supports initialized intrinsic scalar procedure locals only\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/automatic_initializer.f90:6:16: SAVE supports initialized intrinsic scalar procedure locals only\n"
+      }
+    },
+    {
+      "case": {
+        "name": "automatic_parameter",
+        "source": "cases/automatic_parameter.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Array bounds must be constant"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/automatic_parameter.f90:6:24:\n\n    6 | integer,parameter::aa(n)=1\n      |                        1\nError: Parameter array \u2018aa\u2019 at (1) cannot be automatic or of deferred shape\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/automatic_parameter.f90:12:5:\n\n   12 | use automatic_fixture\n      |     1\nFatal Error: Cannot open module file \u2018automatic_fixture.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/automatic_parameter.f90:6:24: Array bounds must be constant expressions outside procedure locals\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/automatic_parameter.f90:6:24: Array bounds must be constant expressions outside procedure locals\n"
+      }
+    },
+    {
+      "case": {
+        "name": "rank_three",
+        "source": "cases/rank_three.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "",
+        "note": "Rank-three arrays are supported by the bounded rank-three milestone; original source is unchanged."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "elemental_local",
+        "source": "cases/elemental_local.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 0 0 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           0           0           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6 0 0 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "wide_intermediate",
+        "source": "cases/wide_intermediate.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dummy_local_aggregate_cap",
+        "source": "cases/dummy_local_aggregate_cap.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "total array element limit"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/automatic_arrays/cases/dummy_local_aggregate_cap.f90:8:10: total array element limit exceeded\n"
+      }
+    }
+  ],
+  "manifest_sha256": "84e8ed3f0f7a4c6a7a66626ecdee4fc0c0fa589476e75b128d58a6b1591c1a9f",
+  "source_sha256": {
+    "cases/scalar_frozen_bounds.f90": "07eb1ede964a13aa6ffd010392d5fb185da7a73a6c57a1e05e26a0ff50deb219",
+    "cases/matrix_shapes.f90": "408b42db291a635e498dbc06fdd98c6cbce9e6590f8c1c7dcb2269de6632e1cb",
+    "cases/integer_kinds.f90": "383340892b11f28bd867f5a7b2c9ef0d4e0c7ae6ac9345a3bc0fff0955c0cc8d",
+    "cases/arithmetic_bounds.f90": "658d795b9c27442fd5515d5d30d0097ff592e8272aa4065df7f20b3e474949d0",
+    "cases/parameter_mixed_dimension.f90": "29746fe84bfe16ca764a2f039475c51ce6503f99b34c976faa99fa8656643637",
+    "cases/out_array_inquiry.f90": "4c22c79c17421c74943e3730544e82eb6972348a59e6efda51669d1b405acca3",
+    "cases/dummy_lower_bound_inquiry.f90": "7792ecffa395b55be1288d7a0562e3d6f1d6f9278bc25c212821fff82b1af19f",
+    "cases/character_local.f90": "be1789e96bd650ba45ce595b740ac4c731536653ac878de6ca7324ece79e7587",
+    "cases/pure_local.f90": "71da1e6e960c9e69eff92668abf88239eb742e646466e801cf4256f69c20896e",
+    "cases/nested_local_calls.f90": "de8fc91ec35cafa8d22febe9cc2be7f7e71c69882d1c4d600d8ee2f95294fa54",
+    "cases/negative_extent.f90": "a09da765a545e126bad211c4c0aa9f926c7b22d7cd00a77e98afe6231e3ecce3",
+    "cases/large_zero_extent.f90": "a7eba63d5643dde8ff69dd44fce4eed72ab00c74ee9532073978c01d8ffebb30",
+    "cases/exact_limit.f90": "cddeb5390052e4d1f5ac7a6199c0fbda33487dcb20934b80018458b63b454a4d",
+    "cases/full_after_partial.f90": "a8ec445220651e5b3d12d31c810c61092f823e013503cb502a861bd5ba0f7f1a",
+    "cases/utility_true_positions.f90": "759c131760f80e26ee87bda243a28d88f67584ec722387aaa6572568c866e1cc",
+    "cases/cap_exceeded.f90": "79f58c59db761db711d0534fca67e55daffc7c47090696fa0bdadc59cbfb9163",
+    "cases/aggregate_cap.f90": "ab46e0ef13b6e6294e51de8ebb7048452caf7b364429024e261b7300d2a6f6d7",
+    "cases/matrix_product_cap.f90": "f41dd5ac546753b79b8cca2a4c5eb631dfcba3521dad9d3030c7e8b364760667",
+    "cases/extent_range.f90": "a1739cdf7196621a0100acf0456154319b0938b7d5912e4a723384a97454e660",
+    "cases/bound_divzero.f90": "3b73be5ac5f6f6a7661b1cdb982e7e0adf10deb14d79eb508864a023ccec931f",
+    "cases/bound_arithmetic_overflow.f90": "34bfbb7adeb697bd30e1e2f29c1b8e84497b3a67b192a967686d2f944abee0d6",
+    "cases/invalid_dim.f90": "d65374f9f096d099a4ca85c3449e467caf72946e7a7e74ff921a7ecbfeb50caf",
+    "cases/wide_bound_range.f90": "6b08764ae9e132993f2cb1eeddd27047790d8ded003333d29b54d48d9971cd43",
+    "cases/undefined_local.f90": "7538a33be5e1f46b87c8e8f424db0d84d7973e15cff4a115dafe3ef256176306",
+    "cases/reallocated_definition_flags.f90": "cae4fd64dd569a32b88efb73392d4f2d9301d1ef0ef55838f302d09f75e7d0ec",
+    "cases/optional_bound.f90": "ec8c3134796d7216c42b8369bf14daf94805fd2d3a127d7490c38ae1f1ff6e88",
+    "cases/out_scalar_bound.f90": "4256375a6c7e2bce429910c2c8ffc6e306c987753b453bb9d41e668cc329876b",
+    "cases/local_scalar_bound.f90": "14bce7bff5b6270dd516a93c6f2bed92edfaf53c33747d88b94bafad87b0cc94",
+    "cases/main_variable_bound.f90": "f25a73f910b5e4d053e1e9e5f2dd18bcf5ee92612e76afedd156652994bdc714",
+    "cases/real_bound.f90": "a83f55741915ca37823f57d857b2a5c822154af346ff2a683b946f5f667b2c6a",
+    "cases/array_element_bound.f90": "64b49c7fa785ee93ce5fc97564967d2d7c5fda255a002a53196377bc2e087f53",
+    "cases/local_array_inquiry.f90": "a09389071b97cfe863dc8f51d938c98293eded7e9c69abf4f72134477b791055",
+    "cases/automatic_initializer.f90": "06451efe9b92b9ebb94887c23a8ba39aa57ff4e1539795141f8cda9af6a42819",
+    "cases/automatic_parameter.f90": "5aa75ed13ea8e7b8f3fb33599c1adf012be8d26923e5df27965fadd552b797a9",
+    "cases/rank_three.f90": "16aad73bccdd283dd2b449a19f2f6fcb0f43a6ce76a04b9f224aa2993552c760",
+    "cases/elemental_local.f90": "801ab1912a782b0715788194ee700a2af5f22b196d3eeb7f636f706d430cfdfa",
+    "cases/wide_intermediate.f90": "38d8f6d58ad3f45c22ca44ee62fd831c045d9bc9a497dbd4205093cc8e55452d",
+    "cases/dummy_local_aggregate_cap.f90": "4d3545e2afe9695901ed378440753652254f450bb9e8d03bf8340aba2cd5e258"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

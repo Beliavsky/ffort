@@ -1,0 +1,259 @@
+{
+  "cases": [
+    {
+      "name": "original_concat",
+      "source": "original_concat.f90",
+      "expected_stdout": "ab  |cd  |EFGH|IJKL| 2 4 4 4",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "concat_empty",
+      "source": "concat_empty.f90",
+      "expected_stdout": "0 5 0",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "concat_sections",
+      "source": "concat_sections.f90",
+      "expected_stdout": "cc  |aa  |dddd|eeee|",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "concat_expression",
+      "source": "concat_expression.f90",
+      "expected_stdout": "!aa |!bb |xyz |",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "concat_nested",
+      "source": "concat_nested.f90",
+      "expected_stdout": "a  |bc |def|",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "dummy_matrix",
+      "source": "dummy_matrix.f90",
+      "expected_stdout": "5 abc|q  |",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "out_undefined",
+      "source": "out_undefined.f90",
+      "expected_stdout": "4 z   |z   |",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "out_empty",
+      "source": "out_empty.f90",
+      "expected_stdout": "14 0",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "fixed_in_truncate",
+      "source": "fixed_in_truncate.f90",
+      "expected_stdout": "",
+      "category": "unsupported",
+      "baseline": "compile",
+      "diagnostic": "Type mismatch"
+    },
+    {
+      "name": "fixed_result",
+      "source": "fixed_result.f90",
+      "expected_stdout": "a  |b  |",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "dynamic_scalar_result",
+      "source": "dynamic_scalar_result.f90",
+      "expected_stdout": "xy    |",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "dynamic_matrix_result",
+      "source": "dynamic_matrix_result.f90",
+      "expected_stdout": "!xy |!xy | 4",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "freeze_length",
+      "source": "freeze_length.f90",
+      "expected_stdout": "7 abc|",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "negative_zero_length",
+      "source": "negative_zero_length.f90",
+      "expected_stdout": "0 2 |",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "len_undefined",
+      "source": "len_undefined.f90",
+      "expected_stdout": "5 5 5 2 7 4",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "len_expression_empty",
+      "source": "len_expression_empty.f90",
+      "expected_stdout": "4 0",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "nested_forwarding",
+      "source": "nested_forwarding.f90",
+      "expected_stdout": "a    |a    |",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "len_integer_arithmetic",
+      "source": "len_integer_arithmetic.f90",
+      "expected_stdout": "9 0 16",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "actual_too_short",
+      "source": "actual_too_short.f90",
+      "expected_stdout": "",
+      "category": "unsupported",
+      "baseline": "compile",
+      "diagnostic": "Type mismatch"
+    },
+    {
+      "name": "writable_length_mismatch",
+      "source": "writable_length_mismatch.f90",
+      "expected_stdout": "",
+      "category": "unsupported",
+      "baseline": "compile",
+      "diagnostic": "Type mismatch"
+    },
+    {
+      "name": "uninitialized_result",
+      "source": "uninitialized_result.f90",
+      "expected_stdout": "",
+      "category": "runtime",
+      "baseline": "compile",
+      "diagnostic": "uninitialized elements"
+    },
+    {
+      "name": "uninitialized_dummy",
+      "source": "uninitialized_dummy.f90",
+      "expected_stdout": "",
+      "category": "runtime",
+      "baseline": "compile",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "runtime_length_limit",
+      "source": "runtime_length_limit.f90",
+      "expected_stdout": "",
+      "category": "runtime",
+      "baseline": "compile",
+      "diagnostic": "length limit"
+    },
+    {
+      "name": "runtime_length_overflow",
+      "source": "runtime_length_overflow.f90",
+      "expected_stdout": "",
+      "category": "runtime",
+      "baseline": "compile",
+      "diagnostic": "overflow"
+    },
+    {
+      "name": "dynamic_dummy_reject",
+      "source": "dynamic_dummy_reject.f90",
+      "expected_stdout": "",
+      "category": "reject",
+      "baseline": "compile",
+      "diagnostic": "only for local"
+    },
+    {
+      "name": "optional_character_supported",
+      "source": "optional_character_supported.f90",
+      "expected_stdout": "",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "deferred_character_reject",
+      "source": "deferred_character_reject.f90",
+      "expected_stdout": "",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "local_length_reject",
+      "source": "local_length_reject.f90",
+      "expected_stdout": "",
+      "category": "reject",
+      "baseline": "reject",
+      "diagnostic": "constant or supported"
+    },
+    {
+      "name": "out_integer_length_reject",
+      "source": "out_integer_length_reject.f90",
+      "expected_stdout": "",
+      "category": "reject",
+      "baseline": "reject",
+      "diagnostic": "constant or supported"
+    },
+    {
+      "name": "len_kind_reject",
+      "source": "len_kind_reject.f90",
+      "expected_stdout": "",
+      "category": "reject",
+      "baseline": "compile"
+    },
+    {
+      "name": "fixed_equal",
+      "source": "fixed_equal.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "cdab"
+    },
+    {
+      "name": "length_entry_repeated",
+      "source": "length_entry_repeated.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "ab    | abcd  |"
+    },
+    {
+      "name": "overlap_sections",
+      "source": "overlap_sections.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "abcdcdab"
+    },
+    {
+      "name": "constant_literal_lengths",
+      "source": "constant_literal_lengths.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 3 6"
+    },
+    {
+      "name": "named_integer_kind_length",
+      "source": "named_integer_kind_length.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3"
+    }
+  ]
+}

@@ -1,0 +1,961 @@
+{
+  "feature": "bounded array-constructor implied-DO",
+  "cases": [
+    {
+      "name": "forward_outer_preserved",
+      "source": "cases/forward_outer_preserved.f90",
+      "source_sha256": "845b0ac13930a2e3d827f37b931de9bd7743d088ec5d0d22b0de6b7833ea8518",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/forward_outer_preserved.stdout"
+    },
+    {
+      "name": "reverse_dynamic_controls",
+      "source": "cases/reverse_dynamic_controls.f90",
+      "source_sha256": "fa8ea6fc1ab7d13445945a8317603ac5538b4e355067b716e61f12b1ee11cccf",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/reverse_dynamic_controls.stdout"
+    },
+    {
+      "name": "zero_trip_preserves_outer",
+      "source": "cases/zero_trip_preserves_outer.f90",
+      "source_sha256": "3f4b672f01cac4bf7b94369ef4f31f3cd3f7211cf89ed071aac054eb87684f01",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/zero_trip_preserves_outer.stdout"
+    },
+    {
+      "name": "uninitialized_outer_unused",
+      "source": "cases/uninitialized_outer_unused.f90",
+      "source_sha256": "aaf35e8fc2680986b76a3e0b2408636ad311eafbbcbc166fa5d3cdd8dd25a686",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/uninitialized_outer_unused.stdout"
+    },
+    {
+      "name": "siblings_and_source_order",
+      "source": "cases/siblings_and_source_order.f90",
+      "source_sha256": "4f14a61e7aa6f8cc57eec8d791407920264b796afd8bc5d37bfb352489ab8a6b",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/siblings_and_source_order.stdout"
+    },
+    {
+      "name": "legacy_slash_constructor",
+      "source": "cases/legacy_slash_constructor.f90",
+      "source_sha256": "fcd844464c91af8c97e4bd7d50da868dfa575ec7f160fb0dedbe25dbd0528ab3",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/legacy_slash_constructor.stdout"
+    },
+    {
+      "name": "mixed_nested_delimiters",
+      "source": "cases/mixed_nested_delimiters.f90",
+      "source_sha256": "102128718507d79e26795d88b99475aa19f976f363135899e84664cac89ac387",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/mixed_nested_delimiters.stdout"
+    },
+    {
+      "name": "multiple_values",
+      "source": "cases/multiple_values.f90",
+      "source_sha256": "75abf9a6d8615b05697f520c8a6169d249cd3394d79d28843d977399b010b884",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/multiple_values.stdout"
+    },
+    {
+      "name": "nested_dependent_bounds",
+      "source": "cases/nested_dependent_bounds.f90",
+      "source_sha256": "52a269e9b3742c4a739185027b31889ad9492f8a86daf92efaf5893d19260cbc",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/nested_dependent_bounds.stdout"
+    },
+    {
+      "name": "nested_reverse_three_levels",
+      "source": "cases/nested_reverse_three_levels.f90",
+      "source_sha256": "727a574b1def016eb20d7c7a91d1aca23964df125264010238916bee5f147e92",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/nested_reverse_three_levels.stdout"
+    },
+    {
+      "name": "nested_zero_trip",
+      "source": "cases/nested_zero_trip.f90",
+      "source_sha256": "bdbe6b412016c607135c6fe2d9f3ce158b57663839ce73979bbd052a1e8b4fb1",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/nested_zero_trip.stdout"
+    },
+    {
+      "name": "empty_array_leaf",
+      "source": "cases/empty_array_leaf.f90",
+      "source_sha256": "3ff01b12e64f60a383a8b1c334df69c63d868f62e5a5cfa4d716dc24fe02f56d",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/empty_array_leaf.stdout"
+    },
+    {
+      "name": "zero_trip_real_logical_metadata",
+      "source": "cases/zero_trip_real_logical_metadata.f90",
+      "source_sha256": "c1b4c8af2b8e24edb7aeab48c985d3663c79b2e195ad2f54ce9e2630d7c7a539",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/zero_trip_real_logical_metadata.stdout"
+    },
+    {
+      "name": "zero_trip_skips_undefined_leaf",
+      "source": "cases/zero_trip_skips_undefined_leaf.f90",
+      "source_sha256": "5eee4657ac5927ba26706c630b25dbb53a84515003a449622c9c9d16ab703446",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/zero_trip_skips_undefined_leaf.stdout"
+    },
+    {
+      "name": "empty_then_nonempty_siblings",
+      "source": "cases/empty_then_nonempty_siblings.f90",
+      "source_sha256": "75e31f3661ba1e8686ebb90f6576b93b58b769c7385249589381abeee27abc12",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/empty_then_nonempty_siblings.stdout"
+    },
+    {
+      "name": "integer8_runtime_precision",
+      "source": "cases/integer8_runtime_precision.f90",
+      "source_sha256": "be9aef150b02a965d264309c601e6cb16191646ab2b2a915ff5009d9cdfc4d4f",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/integer8_runtime_precision.stdout"
+    },
+    {
+      "name": "integer8_leaf_precision",
+      "source": "cases/integer8_leaf_precision.f90",
+      "source_sha256": "53a9f81a8e363e45d4d9ae3aff4c4cc4546cef5a204540515996fbe53f99de1c",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/integer8_leaf_precision.stdout"
+    },
+    {
+      "name": "cross_kind_controls",
+      "source": "cases/cross_kind_controls.f90",
+      "source_sha256": "c46f3f57a34f1ff476bad66bc2d76dfc8622c3872032c3bbe11102c7b5e24262",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/cross_kind_controls.stdout"
+    },
+    {
+      "name": "real_values_and_signed_zero",
+      "source": "cases/real_values_and_signed_zero.f90",
+      "source_sha256": "742d3f637b6219f1248fedfbbb8fd09e216b60019ac467f8fbf3da5e8f554717",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/real_values_and_signed_zero.stdout"
+    },
+    {
+      "name": "logical_all_membership",
+      "source": "cases/logical_all_membership.f90",
+      "source_sha256": "506c4f0f9c89a1d9b9ede555968e9cf55e58d0f7f0f56a1a25d06482eab3bad8",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/logical_all_membership.stdout"
+    },
+    {
+      "name": "logical_empty_set",
+      "source": "cases/logical_empty_set.f90",
+      "source_sha256": "1b018ef4d92049fa3ecceb4bd61017b4a87cc1638cc0c185b32803dcd041df25",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/logical_empty_set.stdout"
+    },
+    {
+      "name": "logical_multiple_values",
+      "source": "cases/logical_multiple_values.f90",
+      "source_sha256": "7ca36ce11288c839a2492471145fcaf0d9af83c76bcc50259c41b1b229185c7e",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/logical_multiple_values.stdout"
+    },
+    {
+      "name": "character_padding",
+      "source": "cases/character_padding.f90",
+      "source_sha256": "121adac638e4ac920390fc4cbd7bc32538e81bef7c624abed07cf81ec08a771e",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "exact",
+      "expected_file": "expected/character_padding.stdout"
+    },
+    {
+      "name": "character_quotes_commas",
+      "source": "cases/character_quotes_commas.f90",
+      "source_sha256": "45ae96c7341b87acf179ddf7a942e68bacc5974449fe9d5ad2f80bd6b12aa6c7",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "exact",
+      "expected_file": "expected/character_quotes_commas.stdout"
+    },
+    {
+      "name": "character_zero_length",
+      "source": "cases/character_zero_length.f90",
+      "source_sha256": "51edd14aa908907a984a6c02c4c06e1839a9a50f482b91a8e8fdd2f4b31149cc",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "exact",
+      "expected_file": "expected/character_zero_length.stdout"
+    },
+    {
+      "name": "character_zero_trip_constant",
+      "source": "cases/character_zero_trip_constant.f90",
+      "source_sha256": "286ab5ea9fd27619b6d4e0fa06f35e551320ec2b7ab316e07daeb46004cbb29a",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/character_zero_trip_constant.stdout"
+    },
+    {
+      "name": "whole_array_leaf",
+      "source": "cases/whole_array_leaf.f90",
+      "source_sha256": "37b69f4ad2711cbfb24a1ce89b663454bb3b5dd50c3d983e5bba4d3f7fd25213",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/whole_array_leaf.stdout"
+    },
+    {
+      "name": "rank_two_leaf",
+      "source": "cases/rank_two_leaf.f90",
+      "source_sha256": "08c31cad65534359d857ee78d550ee83ccb06e636ccdfe8f2faee7027506065e",
+      "category": "reject",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "rank_three_leaf",
+      "source": "cases/rank_three_leaf.f90",
+      "source_sha256": "2c8c7aa717317d0f5db74c20673b99e5ae58be79dde0db1c9181196ec0270202",
+      "category": "reject",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "dynamic_reverse_sections",
+      "source": "cases/dynamic_reverse_sections.f90",
+      "source_sha256": "e0766346b9acbe76fbd1f0223b883bbbf1e8a9e8597411e0c3e9bf6e5ea9b5c6",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/dynamic_reverse_sections.stdout"
+    },
+    {
+      "name": "array_expression_leaves",
+      "source": "cases/array_expression_leaves.f90",
+      "source_sha256": "c8cc78a18b4434060b120498b3e745526d9302b3f0ab7306c1157727738b294c",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/array_expression_leaves.stdout"
+    },
+    {
+      "name": "constructor_in_argument",
+      "source": "cases/constructor_in_argument.f90",
+      "source_sha256": "6fb55060df6fb89f041971598e035d56f90f1ffeffc2e09dea9479b9acd07329",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/constructor_in_argument.stdout"
+    },
+    {
+      "name": "constructor_in_intrinsics",
+      "source": "cases/constructor_in_intrinsics.f90",
+      "source_sha256": "410dade2fd7d8d06e662cbb6bf9d1044931a607374c68342cae04fdefb22eee2",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/constructor_in_intrinsics.stdout"
+    },
+    {
+      "name": "nested_constructor_expression",
+      "source": "cases/nested_constructor_expression.f90",
+      "source_sha256": "f296808aedcdef76d43eaec966d7f7c885010c44debcd2a455a64a88df6a9597",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/nested_constructor_expression.stdout"
+    },
+    {
+      "name": "active_outer_do",
+      "source": "cases/active_outer_do.f90",
+      "source_sha256": "fed36f190be7af652d072991a677cf6e8e57b380546a6fa00a10ef660a6dc6d9",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/active_outer_do.stdout"
+    },
+    {
+      "name": "saved_outer_preserved",
+      "source": "cases/saved_outer_preserved.f90",
+      "source_sha256": "b60190123f1a5e0115cbaa12a427cad12942a0019bd2e3b41e4dd0d28af25e0b",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/saved_outer_preserved.stdout"
+    },
+    {
+      "name": "dummy_intent_in_preserved",
+      "source": "cases/dummy_intent_in_preserved.f90",
+      "source_sha256": "aa29de069013f8449a3bca4168d7a29363e23de2b5b2f6a3364a5481999189d3",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/dummy_intent_in_preserved.stdout"
+    },
+    {
+      "name": "module_outer_preserved",
+      "source": "cases/module_outer_preserved.f90",
+      "source_sha256": "86078d8ca9c949dd0afcb002d3ee7c6388932f179ef86032bb8eef52db364f3e",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/module_outer_preserved.stdout"
+    },
+    {
+      "name": "host_outer_preserved",
+      "source": "cases/host_outer_preserved.f90",
+      "source_sha256": "609db8cb83b8e01f5b624fec890b095d096d9da1df9390977e9eb9df2f4d9a70",
+      "category": "reject",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "expected_stdout": "",
+      "note": "Existing main-program host-association or fixed-length untyped CHARACTER subset boundary, observed before execution."
+    },
+    {
+      "name": "allocatable_outer_preserved",
+      "source": "cases/allocatable_outer_preserved.f90",
+      "source_sha256": "7aaa64214e05b7c6e4bc643ec27255f04fdf4a31b233e2f11496aef182ae15b4",
+      "category": "reject",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "expected_stdout": "",
+      "note": "Existing scalar INTEGER ALLOCATABLE/POINTER declaration boundary, before constructor lowering. Earlier GNU execution proves independent language semantics only."
+    },
+    {
+      "name": "pointer_outer_preserved",
+      "source": "cases/pointer_outer_preserved.f90",
+      "source_sha256": "993ff01af3e03a5a711ee92912b43b8448b13333de2687fe8c454d600ede8448",
+      "category": "reject",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "expected_stdout": "",
+      "note": "Existing scalar INTEGER ALLOCATABLE/POINTER declaration boundary, before constructor lowering. Earlier GNU execution proves independent language semantics only."
+    },
+    {
+      "name": "unallocated_outer_not_read",
+      "source": "cases/unallocated_outer_not_read.f90",
+      "source_sha256": "cfe7df0438f80e6f76d95191064c0ea751ded6098fcbbe6af974f206cd322cb5",
+      "category": "reject",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "expected_stdout": "",
+      "note": "Existing scalar INTEGER ALLOCATABLE/POINTER declaration boundary, before constructor lowering. Earlier GNU execution proves independent language semantics only."
+    },
+    {
+      "name": "unassociated_outer_not_read",
+      "source": "cases/unassociated_outer_not_read.f90",
+      "source_sha256": "0ecee00c5f2cba28ffa856e9bd64eb999350dc1ad51f5c6552f3825cdd04ce2b",
+      "category": "reject",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "expected_stdout": "",
+      "note": "Existing scalar INTEGER ALLOCATABLE/POINTER declaration boundary, before constructor lowering. Earlier GNU execution proves independent language semantics only."
+    },
+    {
+      "name": "absent_optional_outer_not_read",
+      "source": "cases/absent_optional_outer_not_read.f90",
+      "source_sha256": "c6f2f4634062e6332ead49183b3b474cb6cf69e53633327eee071b6198a404d6",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/absent_optional_outer_not_read.stdout"
+    },
+    {
+      "name": "pure_function_constructor",
+      "source": "cases/pure_function_constructor.f90",
+      "source_sha256": "df12afb1d0d8f549a3c91fb532a3063f996c7a43dbe6223b441f06993cbdcda4",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/pure_function_constructor.stdout"
+    },
+    {
+      "name": "function_leaves_each_iteration",
+      "source": "cases/function_leaves_each_iteration.f90",
+      "source_sha256": "2abf36b1be7835f56454878162fc30c97d96bf1290f7ae431196c047fca22197",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/function_leaves_each_iteration.stdout"
+    },
+    {
+      "name": "controls_evaluated_once",
+      "source": "cases/controls_evaluated_once.f90",
+      "source_sha256": "ce366de2c64649a456c46da6dac1b08c2f498e303701dec2faae9aaf4d2647cb",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/controls_evaluated_once.stdout"
+    },
+    {
+      "name": "array_function_each_iteration",
+      "source": "cases/array_function_each_iteration.f90",
+      "source_sha256": "72849e96ae5c37c5db0d9f7df23bb976d3b14cf4a13395574ee7227b34ca1762",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/array_function_each_iteration.stdout"
+    },
+    {
+      "name": "typed_character_constructor",
+      "source": "cases/typed_character_constructor.f90",
+      "source_sha256": "04cba8675887228b91553654d958e61f4668453fdcb229872918d5ed2fc33d1b",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "exact",
+      "expected_file": "expected/typed_character_constructor.stdout"
+    },
+    {
+      "name": "function_frame_outer_visibility",
+      "source": "cases/function_frame_outer_visibility.f90",
+      "source_sha256": "bc39c4732f1ef4bfe3316b10b530b82ffbb9f0f453b0a144b6d832861eb7f6ec",
+      "category": "reject",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "expected_stdout": "",
+      "note": "Existing main-program host-association or fixed-length untyped CHARACTER subset boundary, observed before execution."
+    },
+    {
+      "name": "eight_nested_levels",
+      "source": "cases/eight_nested_levels.f90",
+      "source_sha256": "ead8275f32b94454b4a7aaf4534c4ce3d5fb54da1eeb711a4eae6513cad3c5fc",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/eight_nested_levels.stdout"
+    },
+    {
+      "name": "nine_nested_levels",
+      "source": "cases/nine_nested_levels.f90",
+      "source_sha256": "6a95a73e6a28c2110556f6afd065888412392f5c77965aa03469f3b00d5954e8",
+      "category": "reject",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "body_items64",
+      "source": "cases/body_items64.f90",
+      "source_sha256": "269edd92ae8d76dab0dc957b386f503de7e139088150612e6eba94dd987f4c0b",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/body_items64.stdout"
+    },
+    {
+      "name": "body_items65",
+      "source": "cases/body_items65.f90",
+      "source_sha256": "4546c5a39cff76337341c419e553523ca0aec9f24bfe2747436b22c53072fa6c",
+      "category": "reject",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "emitted_values1000000",
+      "source": "cases/emitted_values1000000.f90",
+      "source_sha256": "aa327599d0e4e66e14f6ab273dfecc2bfb83a377bfc38ceee6ba5950530109e9",
+      "category": "runtime",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "completed_stdout": "before\n",
+      "args": [
+        "--max-steps",
+        "100000000"
+      ],
+      "expected_stdout": "before\n",
+      "note": "Constructor itself fits; destination plus existing 2-element X exceeds unchanged aggregate array storage cap. Separate emitted_values_exact_cap tests the exact emitted-value boundary without X storage."
+    },
+    {
+      "name": "empty_iterations1000000",
+      "source": "cases/empty_iterations1000000.f90",
+      "source_sha256": "e1aa909c37dd4af1a801e0bd3f9079f5a0bbb10408db14b5daff6835e5ffef4f",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "completed_stdout": "before\n",
+      "args": [
+        "--max-steps",
+        "100000000"
+      ],
+      "expected_file": "expected/empty_iterations1000000.stdout"
+    },
+    {
+      "name": "emitted_values1000001",
+      "source": "cases/emitted_values1000001.f90",
+      "source_sha256": "df3b8d1718badc5488b8da0afe34335ff3d8759283e7bf4c7b7b5de7e2e161e2",
+      "category": "runtime",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "completed_stdout": "before\n",
+      "args": [
+        "--max-steps",
+        "100000000"
+      ],
+      "expected_stdout": "before\n"
+    },
+    {
+      "name": "empty_iterations1000001",
+      "source": "cases/empty_iterations1000001.f90",
+      "source_sha256": "bc4937af4e3577f0d593e2f4bbc9416aabce3501f8537b3fba4dec26fe4f7518",
+      "category": "runtime",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "completed_stdout": "before\n",
+      "args": [
+        "--max-steps",
+        "100000000"
+      ],
+      "expected_stdout": "before\n"
+    },
+    {
+      "name": "character_staging16777216",
+      "source": "cases/character_staging16777216.f90",
+      "source_sha256": "f1e633eab3af69c927d2a3d05189adb47bf2182a0c539bb0e4efafae28aaab64",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "completed_stdout": "before\n",
+      "args": [
+        "--max-steps",
+        "100000000"
+      ],
+      "expected_file": "expected/character_staging16777216.stdout"
+    },
+    {
+      "name": "character_staging16777217",
+      "source": "cases/character_staging16777217.f90",
+      "source_sha256": "152e887665465a3b4fb8cab8f1597f8fa7486b2b253c43b9129c69cc27761735",
+      "category": "runtime",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "completed_stdout": "before\n",
+      "args": [
+        "--max-steps",
+        "100000000"
+      ],
+      "expected_stdout": "before\n"
+    },
+    {
+      "name": "nested_total_iterations1000000",
+      "source": "cases/nested_total_iterations1000000.f90",
+      "source_sha256": "81fe58544842d8683295f24656167c71b48736601ad5f59cc466c6576557b291",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "completed_stdout": "before\n",
+      "args": [
+        "--max-steps",
+        "100000000"
+      ],
+      "expected_file": "expected/nested_total_iterations1000000.stdout"
+    },
+    {
+      "name": "nested_total_iterations1000001",
+      "source": "cases/nested_total_iterations1000001.f90",
+      "source_sha256": "4c3e1255db3edec0d2702a6501cedd5dea5784533743f41666a236c9200054e3",
+      "category": "runtime",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "completed_stdout": "before\n",
+      "args": [
+        "--max-steps",
+        "100000000"
+      ],
+      "expected_stdout": "before\n"
+    },
+    {
+      "name": "shared_step_budget",
+      "source": "cases/shared_step_budget.f90",
+      "source_sha256": "53442ed55147ad14fc74d67a09bbae2d22669d1d019a334982fea6c912879eb8",
+      "category": "runtime",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "completed_stdout": "before\n",
+      "args": [
+        "--max-steps",
+        "50"
+      ],
+      "expected_stdout": "before\n"
+    },
+    {
+      "name": "nested_controls_per_outer_iteration",
+      "source": "cases/nested_controls_per_outer_iteration.f90",
+      "source_sha256": "a56eb49cb9ffa010e7dc4754d6f4d317675ec40c66b166f27e1a9dacd59447bd",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/nested_controls_per_outer_iteration.stdout"
+    },
+    {
+      "name": "undeclared_index",
+      "source": "cases/undeclared_index.f90",
+      "source_sha256": "3876b7f162642bf48143b59e00b43a6892341a3d75b1dcb625c3aafa0a72e20e",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "real_index",
+      "source": "cases/real_index.f90",
+      "source_sha256": "51f3e95ce1687225473d24e955c1ed9d049d4b4370c596a6e4d4f993f34adb85",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "logical_index",
+      "source": "cases/logical_index.f90",
+      "source_sha256": "87b554a2ea77c760853dca3e8e147c4485e5a839a2d4a1ff80f6fda766c3c2f8",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "array_index_name",
+      "source": "cases/array_index_name.f90",
+      "source_sha256": "9506cf5c74d921189010b5ef71127f42b1175d8da1d0bba19d88da92555190fe",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "parameter_index_name",
+      "source": "cases/parameter_index_name.f90",
+      "source_sha256": "8910d26600a4f93a229445723f2c9fdc3cb8de43d517b95867d5379271086e49",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "real_start",
+      "source": "cases/real_start.f90",
+      "source_sha256": "0bde5a8c4e53223a360472b6ea32c0185d2db26a3e6b8d68dff7eaa63759d8c2",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "real_end",
+      "source": "cases/real_end.f90",
+      "source_sha256": "6252f2fa72b83e1ce80ed286fee324d62a972e97de66cad5ee752101399eae16",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "real_step",
+      "source": "cases/real_step.f90",
+      "source_sha256": "40e77662e7259f539bd0a9cc2aa8810335e621c34fa14d2c5b6afdd556902966",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "array_start",
+      "source": "cases/array_start.f90",
+      "source_sha256": "fb825cbc95eede56bd7de27b3b4a7ac62ebe39e4d41e0df9931a6c42d9717388",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "zero_constant_stride",
+      "source": "cases/zero_constant_stride.f90",
+      "source_sha256": "e0cec54167b277f38179e76915c79ca0ad3f345a2e2083bc2f8c95e3c0610711",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "own_index_start",
+      "source": "cases/own_index_start.f90",
+      "source_sha256": "e4701cf7acfc0631f004435c897a1febef12423b7055e097004d6ac61192b5f1",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "own_index_end",
+      "source": "cases/own_index_end.f90",
+      "source_sha256": "d44c34d67737feb7f52be1499e17c6cca343181d9cb79256348fe23ff8974135",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "own_index_step",
+      "source": "cases/own_index_step.f90",
+      "source_sha256": "80909014d556f6cf1b875e11f554ba28530e7bb9427d9fa5f4b65110cf169392",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "nested_index_reuse",
+      "source": "cases/nested_index_reuse.f90",
+      "source_sha256": "841aa8201299686591917c9813ea388e9e44cb3c66b8da08e4479b58814fd67b",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "mixed_numeric_types",
+      "source": "cases/mixed_numeric_types.f90",
+      "source_sha256": "624b64c0e5dbd785a15549a5a0991e2716bcd2c02d67a0c8a559c099739d8c1d",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "mixed_integer_kinds",
+      "source": "cases/mixed_integer_kinds.f90",
+      "source_sha256": "971393fa65b861d35442cdc1185e97bf76744c358d628228ffd31d340a307296",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "mixed_character_lengths",
+      "source": "cases/mixed_character_lengths.f90",
+      "source_sha256": "384e67b6b0096e327c7dc625db74bcf48a353df1cc37357fd72bd092b598828a",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "missing_end",
+      "source": "cases/missing_end.f90",
+      "source_sha256": "4d4054bb5d3a2ee789492f3e257df02c612a725aa7e0b9fb4e7a4e31eeab10fd",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "too_many_controls",
+      "source": "cases/too_many_controls.f90",
+      "source_sha256": "a054634860f4ab3d3172ba094b48ef484a56c8279ceee3b41474ddf51536087a",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "typed_nonempty_numeric",
+      "source": "cases/typed_nonempty_numeric.f90",
+      "source_sha256": "9b189c13e423f72113819123b67fc45224186a16c760b9c9d21f86f2f2e3ae60",
+      "category": "reject",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "typed_nonempty_real",
+      "source": "cases/typed_nonempty_real.f90",
+      "source_sha256": "5d893f98ffcd08e3d99726488426758f876eddeb71a8b34ec5224a7ee00c3d71",
+      "category": "reject",
+      "baseline": "compile",
+      "compare_mode": "numeric_records",
+      "expected_stdout": ""
+    },
+    {
+      "name": "explicit_index_type",
+      "source": "cases/explicit_index_type.f90",
+      "source_sha256": "50eb2b95a6971d58530778cab3b1f073451991169e00e56607e45dc989cd0579",
+      "category": "reject",
+      "baseline": "reject",
+      "compare_mode": "numeric_records",
+      "note": "F2018-valid syntax not implemented by GNU 14.2 or this bounded subset; GNU rejection is not standard-invalid evidence.",
+      "expected_stdout": ""
+    },
+    {
+      "name": "zero_dynamic_stride",
+      "source": "cases/zero_dynamic_stride.f90",
+      "source_sha256": "05519bac525df93bc53b18a7b902605c4436867e9523be03beb71336bd651920",
+      "category": "runtime",
+      "baseline": "compile",
+      "compare_mode": "exact",
+      "completed_stdout": "before\n",
+      "expected_stdout": "before\n"
+    },
+    {
+      "name": "undefined_bound",
+      "source": "cases/undefined_bound.f90",
+      "source_sha256": "fc3d918d8d88acb99bb636193ef2fcf9c83a8d76c2290b611b6a4eb0a77d1674",
+      "category": "runtime",
+      "baseline": "compile",
+      "compare_mode": "exact",
+      "completed_stdout": "before\n",
+      "expected_stdout": "before\n"
+    },
+    {
+      "name": "undefined_leaf",
+      "source": "cases/undefined_leaf.f90",
+      "source_sha256": "72f9c152b58f5d0c8c2054b7ef68b0d6d76d31e7eea89c4ccd235dd4affdfb03",
+      "category": "runtime",
+      "baseline": "compile",
+      "compare_mode": "exact",
+      "completed_stdout": "before\n",
+      "expected_stdout": "before\n"
+    },
+    {
+      "name": "late_bounds_error",
+      "source": "cases/late_bounds_error.f90",
+      "source_sha256": "e1ebf2ca3b807dc270a15ad97e4c7025a1d6221263d2f2a0d932c6767c8aacf6",
+      "category": "runtime",
+      "baseline": "compile",
+      "compare_mode": "exact",
+      "completed_stdout": "before\n",
+      "expected_stdout": "before\n"
+    },
+    {
+      "name": "narrow_control_overflow",
+      "source": "cases/narrow_control_overflow.f90",
+      "source_sha256": "60b3872ca60a287a789d87112c0eb8138c44790dcfd2e10086f7b4855fbb1a35",
+      "category": "runtime",
+      "baseline": "compile",
+      "compare_mode": "exact",
+      "completed_stdout": "before\n",
+      "expected_stdout": "before\n"
+    },
+    {
+      "name": "final_increment_overflow",
+      "source": "cases/final_increment_overflow.f90",
+      "source_sha256": "03d32afe2d1fd7f621800d4a001c9fe389c650be4abc2746628de51fe72464fe",
+      "category": "runtime",
+      "baseline": "compile",
+      "compare_mode": "exact",
+      "completed_stdout": "before\n",
+      "expected_stdout": "before\n"
+    },
+    {
+      "name": "dynamic_character_length_mismatch",
+      "source": "cases/dynamic_character_length_mismatch.f90",
+      "source_sha256": "fe8b8c0c7bc8168f45a173f32148b0a8811427ec0b649cc2e319aaa9fea37ee5",
+      "category": "reject",
+      "baseline": "compile",
+      "compare_mode": "exact",
+      "expected_stdout": "",
+      "note": "Existing main-program host-association or fixed-length untyped CHARACTER subset boundary, observed before execution."
+    },
+    {
+      "name": "undefined_outer_after_constructor",
+      "source": "cases/undefined_outer_after_constructor.f90",
+      "source_sha256": "69cd5b605480f8a8c934a6cd27606a97fe3a39621b0d5ba1f83ecfc9022d8055",
+      "category": "runtime",
+      "baseline": "compile",
+      "compare_mode": "exact",
+      "completed_stdout": "before\n",
+      "expected_stdout": "before\n"
+    },
+    {
+      "name": "module_internal_host_preserved",
+      "source": "cases/module_internal_host_preserved.f90",
+      "source_sha256": "8a13bb771ccb63edf2c60bdf35573ae1576dc39a7863d00e112077ae57a5054e",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/module_internal_host_preserved.stdout"
+    },
+    {
+      "name": "module_function_outer_visibility",
+      "source": "cases/module_function_outer_visibility.f90",
+      "source_sha256": "93bcdb67c7479872e16e1f8e8e75c302ad0612bba4d24f643db6a63c1727248e",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/module_function_outer_visibility.stdout"
+    },
+    {
+      "name": "recursive_index_activation",
+      "source": "cases/recursive_index_activation.f90",
+      "source_sha256": "4a44fa40c6b44040500a9c98aee82b4e0174fd3588f91797f52916309d915aa1",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "expected_file": "expected/recursive_index_activation.stdout"
+    },
+    {
+      "name": "emitted_values_exact_cap",
+      "source": "cases/emitted_values_exact_cap.f90",
+      "source_sha256": "253a65afda439ce3893dfa05daa8dee3a8eaa181e4d411d9ab31480476ffa965",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_records",
+      "args": [
+        "--max-steps",
+        "100000000"
+      ],
+      "expected_file": "expected/emitted_values_exact_cap.stdout"
+    },
+    {
+      "name": "original_compare_vec_strings",
+      "source": "cases/original_compare_vec_strings.f90",
+      "source_sha256": "28c27ecb0df93cbc701670392acb1924fbd81b43fbd5410a600039dd1fbf65b3",
+      "category": "success",
+      "baseline": "run",
+      "compare_mode": "numeric_prefix_exact",
+      "expected_file": "expected/original_compare_vec_strings.stdout"
+    }
+  ]
+}

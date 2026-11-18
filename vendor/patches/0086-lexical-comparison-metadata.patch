@@ -1,0 +1,54 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -951,7 +951,7 @@
+         ! These elemental intrinsics preserve the conforming actual shape.
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+-        case ("acosd", "asind", "sind", "cosd", "rrspacing", "asin", "atan", "atan2", "acos", "dprod", "tand", "aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
++        case ("lge", "lgt", "lle", "llt", "acosd", "asind", "sind", "cosd", "rrspacing", "asin", "atan", "atan2", "acos", "dprod", "tand", "aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+               "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "isnan", "erfc_scaled", "erf", "bessel_j0", "bessel_j1", "bessel_jn", "bessel_y0", "bessel_y1", "bessel_yn", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+@@ -966,6 +966,8 @@
+         end select
+ 
+         select case (name)
++        case ("lge", "lgt", "lle", "llt")
++            call set_intrinsic_metadata(node,TLOGICAL,4,result_rank)
+         case ("associated")
+             call set_intrinsic_metadata(node,TLOGICAL,4,0)
+         case ("index", "scan", "verify", "len_trim", "iachar")
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 114
++        integer, parameter :: NUM_INTRINSICS = 118
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -177,6 +177,22 @@
+         call register_type_conversion_intrinsics(i)
+         call register_array_intrinsics(i)
+         call register_string_intrinsics(i)
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="lge", return_type="logical", arg_types="character,character", &
++            description="ASCII lexical comparison")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="lgt", return_type="logical", arg_types="character,character", &
++            description="ASCII lexical comparison")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="lle", return_type="logical", arg_types="character,character", &
++            description="ASCII lexical comparison")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="llt", return_type="logical", arg_types="character,character", &
++            description="ASCII lexical comparison")
+         call register_variadic_intrinsics(i)
+         call register_inquiry_intrinsics(i)
+         call register_c_interop_intrinsics(i)

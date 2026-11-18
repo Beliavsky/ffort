@@ -1,0 +1,60 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -903,7 +903,7 @@
+             call set_intrinsic_metadata(node, TREAL, 8, result_rank)
+         case ("merge")
+             call resolve_merge_metadata(arena, node, visiting, result_rank)
+-        case ("sum", "product", "minval", "maxval", "all", "any", "count")
++        case ("sum", "product", "minval", "maxval", "all", "any", "count", "minloc", "maxloc")
+             call resolve_reduction_metadata(arena, node, visiting)
+         case ("kind", "selected_int_kind", "selected_real_kind")
+             call set_intrinsic_metadata(node, TINT, 4, 0)
+@@ -929,13 +929,14 @@
+         type(call_or_subscript_node), intent(inout) :: node
+         logical, intent(inout) :: visiting(:)
+         integer :: i, idx, value_index, array_index, positional, rank, kind_value, result_type
+-        logical :: has_dim, keyword, logical_reduction
++        logical :: has_dim, keyword, logical_reduction, location_reduction
+         character(:), allocatable :: argument_name
+ 
+         if (.not. allocated(node%arg_indices)) return
+         array_index = 0
+         kind_value = 4
+         logical_reduction = any(to_lower(node%name) == [character(5)::'all','any','count'])
++        location_reduction = any(to_lower(node%name) == [character(6)::'minloc','maxloc'])
+         positional = 0
+         has_dim = .false.
+         do i = 1, size(node%arg_indices)
+@@ -962,7 +963,7 @@
+             if (keyword) then
+                 if (argument_name == 'array'.or.(logical_reduction.and.argument_name == 'mask')) &
+                     array_index = value_index
+-                if (logical_reduction.and.argument_name == 'kind') &
++                if ((logical_reduction.or.location_reduction).and.argument_name == 'kind') &
+                     call evaluate_integer_constant(arena,value_index,kind_value,visiting)
+                 if (argument_name == 'dim') has_dim = .true.
+             else
+@@ -970,6 +971,9 @@
+                 if (positional == 1) array_index = value_index
+                 if (logical_reduction.and.positional == 3) &
+                     call evaluate_integer_constant(arena,value_index,kind_value,visiting)
++                if (location_reduction.and. &
++                    ((has_dim.and.positional==4).or.(.not.has_dim.and.positional==3))) &
++                    call evaluate_integer_constant(arena,value_index,kind_value,visiting)
+                 if (positional == 2) then
+                     has_dim = arena%entries(value_index)%node%resolved_type_kind == TINT
+                 end if
+@@ -978,10 +982,11 @@
+         if (.not. arena%has_node_at(array_index)) return
+         if (.not. arena%entries(array_index)%node%resolved_type_found) return
+         rank = 0
++        if (location_reduction) rank = 1
+         if (has_dim) rank = max(0, arena%entries(array_index)%node%resolved_rank - 1)
+         result_type = arena%entries(array_index)%node%resolved_type_kind
+-        if (.not.logical_reduction) kind_value = arena%entries(array_index)%node%resolved_kind_value
+-        if (to_lower(node%name) == 'count') result_type = TINT
++        if (.not.logical_reduction.and..not.location_reduction) kind_value = arena%entries(array_index)%node%resolved_kind_value
++        if (to_lower(node%name) == 'count'.or.location_reduction) result_type = TINT
+         call set_intrinsic_metadata(node, result_type, kind_value, rank)
+     end subroutine resolve_reduction_metadata
+ 

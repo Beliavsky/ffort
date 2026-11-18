@@ -1,0 +1,1482 @@
+{
+  "utc": "2026-11-16T14:46:08.011148+00:00",
+  "summary": {
+    "total": 51,
+    "failed": 0,
+    "candidate_checked": 51,
+    "gnu_checked": 51,
+    "gnu_skipped": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "integer_real",
+        "source": "integer_real.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4.6 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   4.59999990               8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4.59999990 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_calls",
+        "source": "nested_calls.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12 5.0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12   5.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 12 5.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keyword_calls",
+        "source": "keyword_calls.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "14 3.0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          14   3.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 14 3.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "public_generic_private_specifics",
+        "source": "public_generic_private_specifics.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12 1.5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12   1.50000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 12 1.50000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "renamed_generic",
+        "source": "renamed_generic.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/renamed_generic.f90:18:31: ONLY name is absent or PRIVATE: doubled\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/renamed_generic.f90:18:31: ONLY name is absent or PRIVATE: doubled\n"
+      }
+    },
+    {
+      "case": {
+        "name": "specific_still_callable",
+        "source": "specific_still_callable.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12 12"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12          12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 12 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keyword_reordering",
+        "source": "keyword_reordering.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "32 17.5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          32   17.5000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 32 17.5000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "subroutine_generic",
+        "source": "subroutine_generic.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "10 2.5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          10   2.50000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 10 2.50000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_discrimination",
+        "source": "rank_discrimination.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "104 206"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         104         206\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 104 206\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "elemental_array",
+        "source": "elemental_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 4 6 2.5 5.0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           4           6\n   2.50000000       5.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 4 6\n 2.50000000 5.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "exact_rank_before_elemental",
+        "source": "exact_rank_before_elemental.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "104 206"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         104         206\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 104 206\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "integer_kind_exact",
+        "source": "integer_kind_exact.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 12"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8                   12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "bad_keyword",
+        "source": "bad_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/bad_keyword.f90:20:8:\n\n   20 | print *,twice(z=2)\n      |        1\nError: There is no specific function for the generic \u2018twice\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/bad_keyword.f90:20:19: No matching specific procedure for generic twice\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/bad_keyword.f90:20:19: No matching specific procedure for generic twice\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_arity",
+        "source": "wrong_arity.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/wrong_arity.f90:20:8:\n\n   20 | print *,twice(1,2)\n      |        1\nError: There is no specific function for the generic \u2018twice\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/wrong_arity.f90:20:19: No matching specific procedure for generic twice\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/wrong_arity.f90:20:19: No matching specific procedure for generic twice\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_kind",
+        "source": "wrong_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/wrong_kind.f90:20:8:\n\n   20 | print *,twice(2_8)\n      |        1\nError: There is no specific function for the generic \u2018twice\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/wrong_kind.f90:20:19: No matching specific procedure for generic twice\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/wrong_kind.f90:20:19: No matching specific procedure for generic twice\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unmatched_type",
+        "source": "unmatched_type.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/unmatched_type.f90:20:8:\n\n   20 | print *,twice(.true.)\n      |        1\nError: There is no specific function for the generic \u2018twice\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/unmatched_type.f90:20:22: No matching specific procedure for generic twice\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/unmatched_type.f90:20:22: No matching specific procedure for generic twice\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_actual",
+        "source": "missing_actual.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/missing_actual.f90:20:8:\n\n   20 | print *,twice()\n      |        1\nError: There is no specific function for the generic \u2018twice\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/missing_actual.f90:20:16: No matching specific procedure for generic twice\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/missing_actual.f90:20:16: No matching specific procedure for generic twice\n"
+      }
+    },
+    {
+      "case": {
+        "name": "private_generic",
+        "source": "private_generic.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_generic.f90:20:8:\n\n   20 | print *,twice(3)\n      |        1\nError: Function \u2018twice\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_generic.f90:20:17: Unsupported procedure or array reference: twice\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_generic.f90:20:17: Unsupported procedure or array reference: twice\n"
+      }
+    },
+    {
+      "case": {
+        "name": "private_specific",
+        "source": "private_specific.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_specific.f90:21:8:\n\n   21 | print *,twice_int(3)\n      |        1\nError: Function \u2018twice_int\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_specific.f90:21:21: Unsupported procedure or array reference: twice_int\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_specific.f90:21:21: Unsupported procedure or array reference: twice_int\n"
+      }
+    },
+    {
+      "case": {
+        "name": "only_excludes_generic",
+        "source": "only_excludes_generic.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/only_excludes_generic.f90:20:8:\n\n   20 | print *,twice(3)\n      |        1\nError: Function \u2018twice\u2019 at (1) has no IMPLICIT type; did you mean \u2018twice_int\u2019?\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/only_excludes_generic.f90:20:17: Unsupported procedure or array reference: twice\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/only_excludes_generic.f90:20:17: Unsupported procedure or array reference: twice\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_specific",
+        "source": "missing_specific.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/missing_specific.f90:5:27:\n\n    5 | module procedure twice_int, missing\n      |                           1\nError: Procedure \u2018missing\u2019 in generic interface 'twice' at (1) is neither function nor subroutine\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/missing_specific.f90:18:5:\n\n   18 | use operations\n      |     1\nFatal Error: Cannot open module file \u2018operations.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/missing_specific.f90:16:1: Generic specific procedure is absent\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/missing_specific.f90:16:1: Generic specific procedure is absent\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_specific",
+        "source": "duplicate_specific.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/duplicate_specific.f90:5:36:\n\n    5 | module procedure twice_int,twice_int\n      |                                    1\nError: Entity \u2018twice_int\u2019 at (1) is already present in the interface\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/duplicate_specific.f90:18:5:\n\n   18 | use operations\n      |     1\nFatal Error: Cannot open module file \u2018operations.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/duplicate_specific.f90:5:37: Duplicate generic specific\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/duplicate_specific.f90:5:37: Duplicate generic specific\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ambiguous_specifics",
+        "source": "ambiguous_specifics.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/ambiguous_specifics.f90:8:26:\n\n    8 | integer function twice_int(x) result(y)\n      |                          1\n......\n   16 | integer function another(x) result(y)\n      |                        2  \nError: Ambiguous interfaces in generic interface 'twice' for \u2018twice_int\u2019 at (1) and \u2018another\u2019 at (2)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/ambiguous_specifics.f90:22:5:\n\n   22 | use operations\n      |     1\nFatal Error: Cannot open module file \u2018operations.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/ambiguous_specifics.f90:20:1: Ambiguous generic specific procedures\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/ambiguous_specifics.f90:20:1: Ambiguous generic specific procedures\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_function_subroutine",
+        "source": "mixed_function_subroutine.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/mixed_function_subroutine.f90:8:26:\n\n    8 | integer function twice_int(x) result(y)\n      |                          1\nError: In generic interface 'twice' at (1) procedures must be either all SUBROUTINEs or all FUNCTIONs\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/mixed_function_subroutine.f90:21:5:\n\n   21 | use operations\n      |     1\nFatal Error: Cannot open module file \u2018operations.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/mixed_function_subroutine.f90:19:1: Generic interface cannot mix functions and subroutines\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/mixed_function_subroutine.f90:19:1: Generic interface cannot mix functions and subroutines\n"
+      }
+    },
+    {
+      "case": {
+        "name": "outside_module",
+        "source": "outside_module.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/outside_module.f90:3:1: Undeclared variable or unsupported statement: interface\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/outside_module.f90:3:1: Undeclared variable or unsupported statement: interface\n"
+      }
+    },
+    {
+      "case": {
+        "name": "interface_body",
+        "source": "interface_body.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/interface_body.f90:4:1: Generic interface has no procedures\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/interface_body.f90:4:1: Generic interface has no procedures\n"
+      }
+    },
+    {
+      "case": {
+        "name": "optional_argument",
+        "source": "optional_argument.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "repeated_interface",
+        "source": "repeated_interface.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/repeated_interface.f90:8:1: Duplicate named generic interface\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/repeated_interface.f90:8:1: Duplicate named generic interface\n"
+      }
+    },
+    {
+      "case": {
+        "name": "noarg_subroutine",
+        "source": "noarg_subroutine.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "42"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          42\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 42\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keyword_signature_discrimination",
+        "source": "keyword_signature_discrimination.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5 32"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5          32\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5 32\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real_kind_exact",
+        "source": "real_kind_exact.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2.5 3.75"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   2.50000000       3.7500000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2.50000000 3.7500000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "logical_numeric_dispatch",
+        "source": "logical_numeric_dispatch.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 99 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6          99           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6 99 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_zero_one_two",
+        "source": "rank_zero_one_two.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "104 203 310"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         104         203         310\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 104 203 310\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "module_host_generic",
+        "source": "module_host_generic.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "107"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         107\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 107\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "internal_host_generic",
+        "source": "internal_host_generic.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "107"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         107\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 107\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "private_generic_module_host",
+        "source": "private_generic_module_host.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "only_generic_specific_leak",
+        "source": "only_generic_specific_leak.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/only_generic_specific_leak.f90:21:8:\n\n   21 | print *,a(4)\n      |        1\nError: Function \u2018a\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/only_generic_specific_leak.f90:21:13: Unsupported procedure or array reference: a\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/only_generic_specific_leak.f90:21:13: Unsupported procedure or array reference: a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "private_specific_explicit_only",
+        "source": "private_specific_explicit_only.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_specific_explicit_only.f90:20:21:\n\n   20 | use operations, only: a\n      |                     1\nError: Symbol \u2018a\u2019 referenced at (1) not found in module \u2018operations\u2019\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_specific_explicit_only.f90:22:8:\n\n   22 | print *,a(4)\n      |        1\nError: Function \u2018a\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_specific_explicit_only.f90:20:24: ONLY name is absent or PRIVATE: a\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_specific_explicit_only.f90:20:24: ONLY name is absent or PRIVATE: a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "private_generic_explicit_only",
+        "source": "private_generic_explicit_only.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_generic_explicit_only.f90:20:21:\n\n   20 | use operations, only: choose\n      |                     1\nError: Symbol \u2018choose\u2019 referenced at (1) not found in module \u2018operations\u2019\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_generic_explicit_only.f90:22:8:\n\n   22 | print *,choose(4)\n      |        1\nError: Function \u2018choose\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_generic_explicit_only.f90:20:29: ONLY name is absent or PRIVATE: choose\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/private_generic_explicit_only.f90:20:29: ONLY name is absent or PRIVATE: choose\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unmatched_rank",
+        "source": "unmatched_rank.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/unmatched_rank.f90:22:8:\n\n   22 | print *,choose(v)\n      |        1\nError: There is no specific function for the generic \u2018choose\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/unmatched_rank.f90:22:18: No matching specific procedure for generic choose\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/unmatched_rank.f90:22:18: No matching specific procedure for generic choose\n"
+      }
+    },
+    {
+      "case": {
+        "name": "subroutine_mixed_keywords",
+        "source": "subroutine_mixed_keywords.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 3.75"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8   3.75000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 3.75000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "generic_specific_same_name",
+        "source": "generic_specific_same_name.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/generic_specific_same_name.f90:15:1: A generic sharing its specific procedure name is unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/generic_specific_same_name.f90:15:1: A generic sharing its specific procedure name is unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "merge_imported_generics",
+        "source": "merge_imported_generics.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/merge_imported_generics.f90:27:15: Combining same-name generics from different modules is unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/merge_imported_generics.f90:27:15: Combining same-name generics from different modules is unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "keyword_declaration_ambiguity",
+        "source": "keyword_declaration_ambiguity.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/keyword_declaration_ambiguity.f90:7:18:\n\n    7 | integer function f(i,r) result(y)\n      |                  1\n......\n   12 | integer function g(r,i) result(y)\n      |                  2\nError: Ambiguous interfaces in generic interface 'choose' for \u2018f\u2019 at (1) and \u2018g\u2019 at (2)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/keyword_declaration_ambiguity.f90:19:5:\n\n   19 | use operations\n      |     1\nFatal Error: Cannot open module file \u2018operations.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/keyword_declaration_ambiguity.f90:17:1: Ambiguous generic specific procedures\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/generic_interfaces/keyword_declaration_ambiguity.f90:17:1: Ambiguous generic specific procedures\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_wrapper",
+        "source": "pure_wrapper.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_integer",
+        "source": "character_integer.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "derived_integer",
+        "source": "derived_integer.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "elemental_subroutine",
+        "source": "elemental_subroutine.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 4 6 3.75 7.5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           4           6   3.75000000       7.50000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 4 6 3.75000000 7.50000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_expression",
+        "source": "rank_two_expression.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12.0 4.0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   12.0000000       4.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 12.0000000 4.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "elemental_array_expression",
+        "source": "elemental_array_expression.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2.0 8.0 18.0 4 6 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   2.0000000000000000        8.0000000000000000        18.000000000000000                4           6           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2.0000000000000000 8.0000000000000000 18.000000000000000 4 6 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "elemental_changed_result_type",
+        "source": "elemental_changed_result_type.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5.0 12 2.5 5.0 7.5 11 12 13 15 30.0 12 15 17 27.5 30.0 32.5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   5.0000000000000000               12\n   2.5000000000000000        5.0000000000000000        7.5000000000000000               11          12          13\n          15   30.000000000000000     \n          12          15          17   27.500000000000000        30.000000000000000        32.500000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5.0000000000000000 12\n 2.5000000000000000 5.0000000000000000 7.5000000000000000 11 12 13\n 15 30.000000000000000\n 12 15 17 27.500000000000000 30.000000000000000 32.500000000000000\n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "8ad2186fd3de550f0234c16afed995a2e3c50d51952bb85a61a8e81f585b89ce",
+  "source_sha256": {
+    "integer_real.f90": "5fa38d8bffee2c4e1486bb7051877e049d5a4dcec455128bf1c9db99aa9fb3f8",
+    "nested_calls.f90": "5eab0e1f07f5b142936b92d95e7c621269e34a79cb92eaa978755e1c474a6a66",
+    "keyword_calls.f90": "43bf4720447952a6215b39be49d1d1c84943af71df39500270c2f7c2c6be692b",
+    "public_generic_private_specifics.f90": "a18e331edc3a5ba713ce55c6634f121e9d7f727598b5413ed5d13cd2b64c0a9e",
+    "renamed_generic.f90": "9b2e45c4e2bf7820ea26a291f78e424936c6801cd077a27bea81213ec2e0ae03",
+    "specific_still_callable.f90": "294093a5a1cb2331ea2b7051bf57462c8975076f37a8ef0265356f060151b693",
+    "keyword_reordering.f90": "2841c8ad3f77d539d74ce93d75f4ab1dd990f626bcd34c854470ac43d7381bad",
+    "subroutine_generic.f90": "1c82377cdc040881bd07900d11345fc2136dffbd118bf1b480d8efc8e032075d",
+    "rank_discrimination.f90": "e2fb8b6b01642318e5a0e60581a8107bf10e3b48585876779cb931580d36b624",
+    "elemental_array.f90": "7fd7862f119494e8d2834240a6dbfe146c848a668f346bc8ec3bbe75e87addf5",
+    "exact_rank_before_elemental.f90": "7b118754286799fcef69270a11731290bb69a416e77d2f8f2ed4b1c2af63f187",
+    "integer_kind_exact.f90": "22cfb572af25415d80b4bac01914845b22f9aa1dfaf8fa81e821e33a21d9de27",
+    "bad_keyword.f90": "c6a1aacd301feea4aa00c7c4c73346c6256a42203b99ce2a8340afd6ee1fae16",
+    "wrong_arity.f90": "94c28fea0dde0e13562567e4bb179887059a17bc69037b9ad0f4174d2db511a8",
+    "wrong_kind.f90": "c5285891184f9c94f4b34fbd588d9257b8e40ccbda87a9d0cbf9429f555233f9",
+    "unmatched_type.f90": "91e5a838452fdc3ee6069649411565c501fa9c4b3738c6e7e6efbea67e2df36a",
+    "missing_actual.f90": "0c76ec5e93487a40f489680778cffb8af112041b47398e0d54302778fcf3924a",
+    "private_generic.f90": "0680adfa32594e25e48940c635a2f6f000a87b6b74344d8e5a4d52ac11a47f98",
+    "private_specific.f90": "1021ef1ba480f4f5dd35b7cf574c624a42bbbefe72682edddcfb23bed95d1e07",
+    "only_excludes_generic.f90": "c4af08ec466b21acd871ba86f47601df725d7fe6da7ee0b091f72475bda5a3cf",
+    "missing_specific.f90": "99e7c961e08aa97a5cd2d2478a1aa70ad97b450e47df2b872d83c1c81373225c",
+    "duplicate_specific.f90": "f4f57bc5da3a554a2468f76c9cd561463edb9a275809b527735272573935967d",
+    "ambiguous_specifics.f90": "0c6c03b6b9a98f0464e68b1d54702478d6a6da38986e46862f0815e3f46c4558",
+    "mixed_function_subroutine.f90": "7e89ccd0ae3d6a5efd21758a44b525e0b4722eb8ee6c72937dd12dfdbe99d592",
+    "outside_module.f90": "59589fb329d9917fc84bc1974d7621d520a293a7321dd6f556316d3b29fe20eb",
+    "interface_body.f90": "e0d22552e4e6ad6c2eaf6795daf804390ee3fdb4229007b4ef5ef54126758372",
+    "optional_argument.f90": "96b1ea6805285959cbc578b4e46a87a62d7cc210c412db071e8879b9431b1d5d",
+    "repeated_interface.f90": "16e549a6810045b34b06b839b8555c30296bedf159ff61b6275c43ef64dc0def",
+    "noarg_subroutine.f90": "e4381c6bbbf13b22cf1cc63e81f22b1bb5bb8214ff70e24d5fba726444dd4953",
+    "keyword_signature_discrimination.f90": "b72ab30849ac32c56bec71c07c7aef95c725b8596e1d9997415c83022faf1e2a",
+    "real_kind_exact.f90": "396c99cf7b78cd20c3d7de6150ed64ae8b65bd49dd5a43561563a6dd10ae2452",
+    "logical_numeric_dispatch.f90": "a9a857fefa891bf7c482ecda78ca8448488bb5811243a5f2d0562bb6c8fe1ea6",
+    "rank_zero_one_two.f90": "932c5a17487f0d116ae5776a76f92dd9f50b9b92bd8ac546026fb1271155642e",
+    "module_host_generic.f90": "d37178611e8adc6abecbaa0164c5a043ff346813bf7803ff7f8293851d88f328",
+    "internal_host_generic.f90": "676bfcfdc4a5daf687f39f72c7b2a2bcad14e796dc9ecc8053841668c774047a",
+    "private_generic_module_host.f90": "f75999c3064d15ad05fea193d16a6ee5ac368125dbafa353852f293922f8885a",
+    "only_generic_specific_leak.f90": "63f238766c1b8aa1f7e8c35dd7789fb5641bcf51982278fe0da17cf0b0f4d310",
+    "private_specific_explicit_only.f90": "741c591a5d5a39513af690fbb676ad06c20ba3a7ceb5c632a4ffdfd0bd9a45af",
+    "private_generic_explicit_only.f90": "8807bfe09d7c964359c29c65d7361ed20d605a2b7ecc838dd2d56cd2d98c418e",
+    "unmatched_rank.f90": "0a6afafb5d799a0f2c6da8b415151c858fe638297034a60a4739a22c0bdf333d",
+    "subroutine_mixed_keywords.f90": "e3705798702051908bebe4c79e335f111024102dfc47416bdacea249f73e17b7",
+    "generic_specific_same_name.f90": "a013907ea17db4b3ad74554d1acdb88cff180a12f153d4032d5067bf7a2c0fb8",
+    "merge_imported_generics.f90": "baa33dd166df72ac0af97dd0f7fb23f2c0187cef9d6e216b24022e4d2c179f50",
+    "keyword_declaration_ambiguity.f90": "310c47773967dcab39ae0dc033c52579ed08cbfe75485f594bf2f9edfca87dbb",
+    "pure_wrapper.f90": "1450ff45d4cdbd576e98a0e66f5c056db0d66eedf188f1c3aae4f5fbb8e8393b",
+    "character_integer.f90": "3dd953bd93261ba4c30dc3a4d8c769ee7a306f52223e12c0efd451e9dabe2735",
+    "derived_integer.f90": "ceeb25efcd438a59518a8a81ee5845dad3373c1d38f415498bca4f5527db35b0",
+    "elemental_subroutine.f90": "ee132f405d7ee23b3e41db9e8863debbf41d7570f1886977595341ee2cd3e908",
+    "rank_two_expression.f90": "06899a359401c8fef5c6669f3dd82453e369d082ee8f78fccbc1fc1c1fdb59d0",
+    "elemental_array_expression.f90": "0ad9995cee9bc7379f876101b20ae5145c4653203e0691d14a9905dc5b2b657a",
+    "elemental_changed_result_type.f90": "4df03a19552d29bd1a71ae88ba1dad152de1fb2ae6049a2bd4c63c9d5e7433f2"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

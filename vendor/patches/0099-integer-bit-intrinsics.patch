@@ -1,0 +1,105 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -989,7 +989,7 @@
+         ! These elemental intrinsics preserve the conforming actual shape.
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+-        case ("lge", "lgt", "lle", "llt", "acosd", "asind", "sind", "cosd", "rrspacing", "asin", "atan", "atan2", "acos", "dprod", "tand", "aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
++        case ("iand", "ior", "ieor", "not", "btest", "lge", "lgt", "lle", "llt", "acosd", "asind", "sind", "cosd", "rrspacing", "asin", "atan", "atan2", "acos", "dprod", "tand", "aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+               "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "isnan", "erfc_scaled", "erf", "bessel_j0", "bessel_j1", "bessel_jn", "bessel_y0", "bessel_y1", "bessel_yn", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+@@ -1004,6 +1004,12 @@
+         end select
+ 
+         select case (name)
++        case ("iand", "ior", "ieor", "not", "bit_size")
++            call first_intrinsic_argument_metadata(arena,node,visiting,result_type,kind_value)
++            if(name=="bit_size")result_rank=0
++            if(kind_value>0)call set_intrinsic_metadata(node,TINT,kind_value,result_rank)
++        case ("btest")
++            call set_intrinsic_metadata(node,TLOGICAL,4,result_rank)
+         case ("lge", "lgt", "lle", "llt")
+             call set_intrinsic_metadata(node,TLOGICAL,4,result_rank)
+         case ("associated")
+@@ -2066,6 +2072,37 @@
+                         end if
+                     end if
+                 end if
++            case ("bit_size")
++                ! BIT_SIZE is metadata-only; width follows the supported INTEGER kind.
++                if (expr%is_intrinsic.and..not.expr%is_array_access.and.allocated(expr%arg_indices)) then
++                    if (size(expr%arg_indices) == 1) then
++                        argument = expr%arg_indices(1)
++                        if (arena%has_node_at(argument)) then
++                            select type (arg => arena%entries(argument)%node)
++                            type is (assignment_node)
++                                if (arg%is_keyword_argument) argument = arg%value_index
++                            end select
++                        end if
++                        if (arena%has_node_at(argument)) then
++                            value = arena%entries(argument)%node%resolved_kind_value
++                            ! Strict dummy checks can ask before annotation.
++                            select type (arg => arena%entries(argument)%node)
++                            type is (literal_node)
++                                block
++                                    type(literal_node) :: typed_literal
++                                    typed_literal = arg
++                                    call resolve_literal(arena, argument, typed_literal)
++                                    value = typed_literal%resolved_kind_value
++                                end block
++                            end select
++                        end if
++                    end if
++                end if
++                if (value==4.or.value==8) then
++                    value=8*value
++                else
++                    value=0
++                end if
+             case ("selected_real_kind")
+                 call evaluate_selected_real_kind(arena, expr, value, visiting)
+             case ("selected_int_kind")
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 120
++        integer, parameter :: NUM_INTRINSICS = 126
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -229,6 +229,31 @@
+             name="merge", return_type="numeric", arg_types="any,any,logical", &
+             description="Elemental selection between matching source types")
+ 
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="iand", return_type="integer", &
++            arg_types="integer,integer", description="Bounded integer bit intrinsic")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="ior", return_type="integer", &
++            arg_types="integer,integer", description="Bounded integer bit intrinsic")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="ieor", return_type="integer", &
++            arg_types="integer,integer", description="Bounded integer bit intrinsic")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="not", return_type="integer", &
++            arg_types="integer", description="Bounded integer bit intrinsic")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="btest", return_type="logical", &
++            arg_types="integer,integer", description="Bounded integer bit intrinsic")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="bit_size", return_type="integer", &
++            arg_types="integer", description="Bounded integer bit intrinsic")
++
+         if (i /= NUM_INTRINSICS) then
+             write (error_unit, '(A)') &
+                 "ERROR [intrinsic_registry]: Intrinsic function count mismatch"

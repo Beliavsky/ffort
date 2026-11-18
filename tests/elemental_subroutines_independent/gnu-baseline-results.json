@@ -1,0 +1,2812 @@
+{
+  "tools": {
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "simple_capability": {
+    "probes": {
+      "valid": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/simple-capability-bo9eoul9/valid.f90:8:1:\n\n    8 | simple elemental subroutine bump(xx)\n      | 1\nError: Unclassifiable statement at (1)\n/tmp/simple-capability-bo9eoul9/valid.f90:9:25:\n\n    9 | integer,intent(inout)::xx\n      |                         1\nError: Unexpected data declaration statement in CONTAINS section at (1)\n/tmp/simple-capability-bo9eoul9/valid.f90:10:7:\n\n   10 | xx=xx+1\n      |       1\nError: Unexpected assignment statement in CONTAINS section at (1)\n/tmp/simple-capability-bo9eoul9/valid.f90:11:3:\n\n   11 | end subroutine bump\n      |   1\nError: Expecting END PROGRAM statement at (1)\n"
+      },
+      "invalid_callee": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/simple-capability-bo9eoul9/invalid_callee.f90:11:1:\n\n   11 | simple elemental subroutine wrap(xx)\n      | 1\nError: Unclassifiable statement at (1)\n/tmp/simple-capability-bo9eoul9/invalid_callee.f90:12:25:\n\n   12 | integer,intent(inout)::xx\n      |                         1\nError: Unexpected data declaration statement in CONTAINS section at (1)\n/tmp/simple-capability-bo9eoul9/invalid_callee.f90:13:13:\n\n   13 | call bump(xx)\n      |             1\nError: Unexpected CALL statement in CONTAINS section at (1)\n/tmp/simple-capability-bo9eoul9/invalid_callee.f90:14:3:\n\n   14 | end subroutine wrap\n      |   1\nError: Expecting END PROGRAM statement at (1)\n"
+      }
+    },
+    "native_simple_oracle": false
+  },
+  "limitations": "SIMPLE-to-PURE references test ordinary output and PURE constraints only, never the additional SIMPLE requirements. Original SIMPLE outcomes use independent expectations from the standard.",
+  "compiler_flags": {
+    "direct_or_lowered": [
+      "-std=f2018",
+      "-pedantic-errors",
+      "-fcheck=all",
+      "-O0"
+    ],
+    "native_simple": [
+      "-std=f2023",
+      "-pedantic-errors",
+      "-fcheck=all",
+      "-O0"
+    ]
+  },
+  "utc": "2026-11-14T16:14:17.115620+00:00",
+  "summary": {
+    "total": 128,
+    "failed": 0,
+    "gnu_checked": 110,
+    "gnu_skipped": 18,
+    "gnu_lowered_simple": 3,
+    "gnu_direct_fortran": 107,
+    "gnu_executed": 81,
+    "gnu_compile_only": 12,
+    "gnu_compile_rejections": 17
+  },
+  "records": [
+    {
+      "case": {
+        "name": "prefix_elemental",
+        "source": "cases/prefix_elemental.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "3 3 3"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           3           3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "prefix_pure_elemental",
+        "source": "cases/prefix_pure_elemental.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "3 3 3"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           3           3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "prefix_elemental_pure",
+        "source": "cases/prefix_elemental_pure.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "3 3 3"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           3           3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "prefix_simple_elemental",
+        "source": "cases/prefix_simple_elemental.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "3 3 3",
+        "pure_reference": "pure_references/prefix_simple_elemental.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           3           3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "prefix_impure_elemental",
+        "source": "cases/prefix_impure_elemental.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "3 3 3"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           3           3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "prefix_elemental_impure",
+        "source": "cases/prefix_elemental_impure.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "3 3 3"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           3           3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_elemental_scalar",
+        "source": "cases/simple_elemental_scalar.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": true,
+        "expected_stdout": "3",
+        "pure_reference": "pure_references/simple_elemental_scalar.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_calls_pure_non_simple",
+        "source": "cases/simple_calls_pure_non_simple.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "has_simple": true,
+        "expected_stdout": "",
+        "pure_reference": "pure_references/simple_calls_pure_non_simple.f90"
+      },
+      "errors": [],
+      "oracle_mode": "simple_lowered_to_pure_arithmetic_only",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_all_intents",
+        "source": "cases/scalar_all_intents.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "12 7"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12           7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_out_uninitialized",
+        "source": "cases/scalar_out_uninitialized.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "7"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_inout_overwrite_undefined",
+        "source": "cases/scalar_inout_overwrite_undefined.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "8"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_inout_overwrite_undefined",
+        "source": "cases/array_inout_overwrite_undefined.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "8 8 8"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8           8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_out_uninitialized",
+        "source": "cases/array_out_uninitialized.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "7 7 7"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7           7           7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_zero_arg_impure",
+        "source": "cases/scalar_zero_arg_impure.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "91"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          91\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_only_in_impure",
+        "source": "cases/scalar_only_in_impure.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "7"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_one_bounds",
+        "source": "cases/rank_one_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "10 18 28 7 9 11"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          10          18          28           7           9          11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_bounds",
+        "source": "cases/rank_two_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "6 6 6 6 6 6 5 5 5 5 5 5"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           6           6           6           6           6           5           5           5           5           5           5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keywords_xyz",
+        "source": "cases/keywords_xyz.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "6 6 5 5"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           6           5           5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keywords_xzy",
+        "source": "cases/keywords_xzy.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "6 6 5 5"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           6           5           5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keywords_yxz",
+        "source": "cases/keywords_yxz.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "6 6 5 5"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           6           5           5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keywords_yzx",
+        "source": "cases/keywords_yzx.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "6 6 5 5"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           6           5           5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keywords_zxy",
+        "source": "cases/keywords_zxy.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "6 6 5 5"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           6           5           5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keywords_zyx",
+        "source": "cases/keywords_zyx.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "6 6 5 5"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           6           5           5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_case_keywords",
+        "source": "cases/mixed_case_keywords.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "8 8 6 6"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8           6           6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "input_expression_snapshot",
+        "source": "cases/input_expression_snapshot.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "2 3 4 5"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           4           5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "readonly_aliases",
+        "source": "cases/readonly_aliases.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "4 8 12"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           8          12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "disjoint_strides",
+        "source": "cases/disjoint_strides.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "2 1 4 3 6 5"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           1           4           3           6           5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reverse_destination",
+        "source": "cases/reverse_destination.f90",
+        "category": "runtime",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/reverse_destination.f90:10:24:\n\n   10 | call work(aa(5:1:-2),bb,aa(2:4:2))\n      |                        1\nError: Different shape for elemental procedure at (1) on dimension 1 (2 and 3)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reverse_source_and_destination",
+        "source": "cases/reverse_source_and_destination.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "10 30 50"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          10          30          50\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_strided_destinations",
+        "source": "cases/rank_two_strided_destinations.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "43 41 23 21"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          43          41          23          21\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_reduced_destination",
+        "source": "cases/rank_reduced_destination.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "0 1 0 0 1 0 0 1 0 0 1 0"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           1           0           0           1           0           0           1           0           0           1           0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real64_output",
+        "source": "cases/real64_output.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "1.0 1.0 1.0 2.5 2.5 2.5",
+        "rel_tol": 1e-13,
+        "abs_tol": 1e-14
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.0000000000000000        1.0000000000000000        1.0000000000000000        2.5000000000000000        2.5000000000000000        2.5000000000000000     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "logical_output",
+        "source": "cases/logical_output.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "F F F F F F"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F F F F F F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_order_rank_one",
+        "source": "cases/impure_order_rank_one.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "2 4 6 102 104 106"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n           4\n           6\n         102         104         106\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_order_rank_two",
+        "source": "cases/impure_order_rank_two.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "11 12 21 22 31 32 111 112 121 122 131 132"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11\n          12\n          21\n          22\n          31\n          32\n         111         112         121         122         131         132\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_order_reverse_section",
+        "source": "cases/impure_order_reverse_section.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "43 41 23 21 11 12 13 121 22 123 31 32 33 141 42 143"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          43\n          41\n          23\n          21\n          11          12          13         121          22         123          31          32          33         141          42         143\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_calls_ordinary_subroutine",
+        "source": "cases/impure_calls_ordinary_subroutine.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "3 7 4 8"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3\n           7\n           4           8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "elemental_nested_pure_call",
+        "source": "cases/elemental_nested_pure_call.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "3 3 3"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           3           3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_nested_call_order",
+        "source": "cases/impure_nested_call_order.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "2 102 5 105 202 205"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n         102\n           5\n         105\n         202         205\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_prefix_impure_elemental_integer",
+        "source": "cases/function_prefix_impure_elemental_integer.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "13"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          13\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_prefix_impure_integer_elemental",
+        "source": "cases/function_prefix_impure_integer_elemental.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "13"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          13\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_prefix_elemental_impure_integer",
+        "source": "cases/function_prefix_elemental_impure_integer.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "13"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          13\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_prefix_elemental_integer_impure",
+        "source": "cases/function_prefix_elemental_integer_impure.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "13"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          13\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_prefix_integer_impure_elemental",
+        "source": "cases/function_prefix_integer_impure_elemental.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "13"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          13\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_prefix_integer_elemental_impure",
+        "source": "cases/function_prefix_integer_elemental_impure.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "13"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          13\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_no_io_print",
+        "source": "cases/impure_function_no_io_print.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "12"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_rank_two",
+        "source": "cases/impure_function_rank_two.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "11 12 21 22 21 22 31 32"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11\n          12\n          21\n          22\n          21          22          31          32\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_reverse",
+        "source": "cases/impure_function_reverse.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "3 2 1 13 12 11"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3\n           2\n           1\n          13          12          11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_sum",
+        "source": "cases/impure_function_sum.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "1 2 3 36"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n           2\n           3\n          36\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_product",
+        "source": "cases/impure_function_product.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "1 2 3 1716"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n           2\n           3\n        1716\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_matmul_once",
+        "source": "cases/impure_function_matmul_once.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "11 12 21 22 52 54 52 54"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11\n          12\n          21\n          22\n          52          54          52          54\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_dot_once",
+        "source": "cases/impure_function_dot_once.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "1 2 3 72"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n           2\n           3\n          72\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_nested",
+        "source": "cases/impure_function_nested.f90",
+        "category": "success",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": "1 2 11 12 21 22"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_cache_statement_reset",
+        "source": "cases/impure_function_cache_statement_reset.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "1 2 2 3 12 13"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n           2\n           2\n           3\n          12          13\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_scalar_expansion_once",
+        "source": "cases/impure_function_scalar_expansion_once.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "7 17 17 17"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n          17          17          17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_overlap_assignment",
+        "source": "cases/impure_function_overlap_assignment.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "3 2 1 13 12 11"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3\n           2\n           1\n          13          12          11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_impure_subroutine",
+        "source": "cases/empty_impure_subroutine.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "0"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_rank_two_subroutine",
+        "source": "cases/empty_rank_two_subroutine.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "0"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_writable_no_scalar_read",
+        "source": "cases/empty_writable_no_scalar_read.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "0"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_impure_function",
+        "source": "cases/empty_impure_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "0"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_function_scalar_expansion",
+        "source": "cases/empty_function_scalar_expansion.f90",
+        "category": "success",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": "7 0"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_in_unused",
+        "source": "cases/undefined_in_unused.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "9 9 9"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           9           9           9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "inout_partial_definition_preserved",
+        "source": "cases/inout_partial_definition_preserved.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "7"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_writable_scalar_with_array",
+        "source": "cases/invalid_writable_scalar_with_array.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_writable_scalar_with_array.f90:6:16:\n\n    6 | call copy_to(aa,bb)\n      |                1\nError: Actual argument at (1) for INTENT(OUT) dummy \u2018dst\u2019 of ELEMENTAL subroutine \u2018copy_to\u2019 is a scalar, but another actual argument is an array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_only_in_array",
+        "source": "cases/invalid_only_in_array.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_array_dummy",
+        "source": "cases/invalid_array_dummy.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_array_dummy.f90:7:28:\n\n    7 | elemental subroutine bump(xx)\n      |                            1\nError: Argument \u2018xx\u2019 of elemental procedure at (1) must be scalar\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_missing_intent",
+        "source": "cases/invalid_missing_intent.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_missing_intent.f90:7:28:\n\n    7 | elemental subroutine bump(xx)\n      |                            1\nError: Argument \u2018xx\u2019 of pure subroutine \u2018bump\u2019 at (1) must have its INTENT specified or have the VALUE attribute\n/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_missing_intent.f90:7:28:\n\n    7 | elemental subroutine bump(xx)\n      |                            1\nError: Argument \u2018xx\u2019 of elemental procedure \u2018bump\u2019 at (1) must have its INTENT specified or have the VALUE attribute\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_out_expression",
+        "source": "cases/invalid_out_expression.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_out_expression.f90:6:10:\n\n    6 | call bump(aa+1)\n      |          1\nError: Non-variable expression in variable definition context (actual argument to INTENT = OUT/INOUT) at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_inout_literal",
+        "source": "cases/invalid_inout_literal.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_inout_literal.f90:5:10:\n\n    5 | call bump(2)\n      |          1\nError: Non-variable expression in variable definition context (actual argument to INTENT = OUT/INOUT) at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_out_parameter",
+        "source": "cases/invalid_out_parameter.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_out_parameter.f90:5:10:\n\n    5 | call bump(aa)\n      |          1\nError: Non-variable expression in variable definition context (actual argument to INTENT = OUT/INOUT) at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_kind_mismatch",
+        "source": "cases/invalid_kind_mismatch.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_kind_mismatch.f90:6:13:\n\n    6 | call bump(aa)\n      |             1\nError: Type mismatch in argument \u2018xx\u2019 at (1); passed REAL(8) to REAL(4)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_rank_shape_static",
+        "source": "cases/invalid_rank_shape_static.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_rank_shape_static.f90:6:16:\n\n    6 | call copy_to(aa,bb)\n      |                1\nError: Different shape for elemental procedure at (1) on dimension 1 (3 and 2)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_pure_print",
+        "source": "cases/invalid_pure_print.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_pure_print.f90:10:10:\n\n   10 | print *,xx\n      |          1\nError: PRINT statement at (1) not allowed within PURE procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_pure_calls_impure",
+        "source": "cases/invalid_pure_calls_impure.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_pure_calls_impure.f90:10:13:\n\n   10 | call bump(xx)\n      |             1\nError: Subroutine call to \u2018bump\u2019 at (1) is not PURE\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_conflict_pure_impure",
+        "source": "cases/invalid_conflict_pure_impure.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_conflict_pure_impure.f90:8:23:\n\n    8 | pure impure elemental subroutine bump(xx)\n      |                       1\nError: PURE and IMPURE must not appear both at (1)\n/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_conflict_pure_impure.f90:9:25:\n\n    9 | integer,intent(inout)::xx\n      |                         1\nError: Unexpected data declaration statement in CONTAINS section at (1)\n/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_conflict_pure_impure.f90:10:7:\n\n   10 | xx=xx+1\n      |       1\nError: Unexpected assignment statement in CONTAINS section at (1)\n/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_conflict_pure_impure.f90:11:3:\n\n   11 | end subroutine bump\n      |   1\nError: Expecting END PROGRAM statement at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_duplicate_impure",
+        "source": "cases/invalid_duplicate_impure.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_duplicate_elemental",
+        "source": "cases/invalid_duplicate_elemental.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_duplicate_elemental.f90:8:20:\n\n    8 | elemental elemental subroutine bump(xx)\n      |                    1\nError: Duplicate ELEMENTAL attribute specified at (1)\n/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_duplicate_elemental.f90:9:25:\n\n    9 | integer,intent(inout)::xx\n      |                         1\nError: Unexpected data declaration statement in CONTAINS section at (1)\n/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_duplicate_elemental.f90:10:7:\n\n   10 | xx=xx+1\n      |       1\nError: Unexpected assignment statement in CONTAINS section at (1)\n/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_duplicate_elemental.f90:11:3:\n\n   11 | end subroutine bump\n      |   1\nError: Expecting END PROGRAM statement at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_unknown_keyword",
+        "source": "cases/invalid_unknown_keyword.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_unknown_keyword.f90:6:13:\n\n    6 | call bump(zz=aa)\n      |             1\nError: Keyword argument \u2018zz\u2019 at (1) is not in the procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_duplicate_keyword",
+        "source": "cases/invalid_duplicate_keyword.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_duplicate_keyword.f90:6:16:\n\n    6 | call bump(aa,xx=aa)\n      |                1\nError: Keyword argument \u2018xx\u2019 at (1) is already associated with another actual argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_position_after_keyword",
+        "source": "cases/invalid_position_after_keyword.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/invalid_position_after_keyword.f90:6:21:\n\n    6 | call copy_to(src=aa,bb)\n      |                     1\nError: Missing keyword name in actual argument list at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unsupported_writable_impure_function",
+        "source": "cases/unsupported_writable_impure_function.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "unsupported_impure_nonelemental",
+        "source": "cases/unsupported_impure_nonelemental.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_overlap_same",
+        "source": "cases/runtime_overlap_same.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_overlap_cross_elements",
+        "source": "cases/runtime_overlap_cross_elements.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_overlap_scalar_input",
+        "source": "cases/runtime_overlap_scalar_input.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_undefined_in_read",
+        "source": "cases/runtime_undefined_in_read.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_undefined_inout_read",
+        "source": "cases/runtime_undefined_inout_read.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_out_read_old",
+        "source": "cases/runtime_out_read_old.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_out_partial_reset",
+        "source": "cases/runtime_out_partial_reset.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_shape_dynamic",
+        "source": "cases/runtime_shape_dynamic.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_empty_zero_stride",
+        "source": "cases/runtime_empty_zero_stride.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_section_oob",
+        "source": "cases/runtime_section_oob.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_active_loop_scalar",
+        "source": "cases/runtime_active_loop_scalar.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "reject",
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/elemental-subroutines-work/fortfront-interpreter-0.15.0/tests/elemental_subroutines_independent/cases/runtime_active_loop_scalar.f90:5:10:\n\n    4 | do i=1,2\n      |        2  \n    5 | call bump(i)\n      |          1\nError: Variable \u2018i\u2019 at (1) not definable inside loop beginning at (2) as INTENT(INOUT) argument to subroutine \u2018bump\u2019\n"
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_impure_print_recursive",
+        "source": "cases/runtime_impure_print_recursive.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_impure_print_transitive",
+        "source": "cases/runtime_impure_print_transitive.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_budget_array_call",
+        "source": "cases/runtime_budget_array_call.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": "",
+        "args": [
+          "--max-steps",
+          "40"
+        ]
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_budget_impure_function",
+        "source": "cases/runtime_budget_impure_function.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": "",
+        "args": [
+          "--max-steps",
+          "40"
+        ]
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_late_function_divide",
+        "source": "cases/runtime_late_function_divide.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": "1 0"
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "matrix_stride_1_1",
+        "source": "cases/matrix_stride_1_1.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "11 12 13 21 22 23 31 32 33 41 42 43"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          12          13          21          22          23          31          32          33          41          42          43\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_1_2",
+        "source": "cases/matrix_stride_1_2.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "11 12 13 31 32 33"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          12          13          31          32          33\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_1_m1",
+        "source": "cases/matrix_stride_1_m1.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "41 42 43 31 32 33 21 22 23 11 12 13"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          41          42          43          31          32          33          21          22          23          11          12          13\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_1_m2",
+        "source": "cases/matrix_stride_1_m2.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "41 42 43 21 22 23"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          41          42          43          21          22          23\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_2_1",
+        "source": "cases/matrix_stride_2_1.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "11 13 21 23 31 33 41 43"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          13          21          23          31          33          41          43\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_2_2",
+        "source": "cases/matrix_stride_2_2.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "11 13 31 33"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          13          31          33\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_2_m1",
+        "source": "cases/matrix_stride_2_m1.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "41 43 31 33 21 23 11 13"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          41          43          31          33          21          23          11          13\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_2_m2",
+        "source": "cases/matrix_stride_2_m2.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "41 43 21 23"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          41          43          21          23\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_m1_1",
+        "source": "cases/matrix_stride_m1_1.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "13 12 11 23 22 21 33 32 31 43 42 41"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          13          12          11          23          22          21          33          32          31          43          42          41\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_m1_2",
+        "source": "cases/matrix_stride_m1_2.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "13 12 11 33 32 31"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          13          12          11          33          32          31\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_m1_m1",
+        "source": "cases/matrix_stride_m1_m1.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "43 42 41 33 32 31 23 22 21 13 12 11"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          43          42          41          33          32          31          23          22          21          13          12          11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_m1_m2",
+        "source": "cases/matrix_stride_m1_m2.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "43 42 41 23 22 21"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          43          42          41          23          22          21\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_m2_1",
+        "source": "cases/matrix_stride_m2_1.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "13 11 23 21 33 31 43 41"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          13          11          23          21          33          31          43          41\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_m2_2",
+        "source": "cases/matrix_stride_m2_2.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "13 11 33 31"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          13          11          33          31\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_m2_m1",
+        "source": "cases/matrix_stride_m2_m1.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "43 41 33 31 23 21 13 11"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          43          41          33          31          23          21          13          11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_stride_m2_m2",
+        "source": "cases/matrix_stride_m2_m2.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "43 41 23 21"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          43          41          23          21\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_masked_reduction",
+        "source": "cases/impure_function_masked_reduction.f90",
+        "category": "success",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": "1 2 3 12"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "module_impure_elemental",
+        "source": "cases/module_impure_elemental.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "5 5 6 6"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5\n           5\n           6           6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "assumed_shape_elemental_call",
+        "source": "cases/assumed_shape_elemental_call.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "2 3 4"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_array_argument",
+        "source": "cases/impure_function_array_argument.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "1 2 3 36"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n           2\n           3\n          36\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_two_references",
+        "source": "cases/impure_function_two_references.f90",
+        "category": "success",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": "1 2 1 2 22 24"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_scalar_input",
+        "source": "cases/character_scalar_input.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "item item 2 2"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " item\n item\n           2           2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_function_cache_loop_reset",
+        "source": "cases/impure_function_cache_loop_reset.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "1 1 2 2 12 12"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n           1\n           2\n           2\n          12          12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_fresh_local_each_element",
+        "source": "cases/runtime_fresh_local_each_element.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": "7",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_out_partial_branch",
+        "source": "cases/runtime_out_partial_branch.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": "7",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "runtime_dynamic_shape_before_io",
+        "source": "cases/runtime_dynamic_shape_before_io.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "has_simple": false,
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "impure_shape_only_inquiry",
+        "source": "cases/impure_shape_only_inquiry.f90",
+        "category": "success",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": "3"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_function_scalar_side_actual",
+        "source": "cases/empty_function_scalar_side_actual.f90",
+        "category": "success",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": "0"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_subroutine_scalar_side_actual",
+        "source": "cases/empty_subroutine_scalar_side_actual.f90",
+        "category": "success",
+        "baseline": "compile",
+        "has_simple": false,
+        "expected_stdout": "0"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "compile",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nonempty_subroutine_scalar_side_once",
+        "source": "cases/nonempty_subroutine_scalar_side_once.f90",
+        "category": "success",
+        "baseline": "run",
+        "has_simple": false,
+        "expected_stdout": "7 17 17 17"
+      },
+      "errors": [],
+      "oracle_mode": "direct_fortran",
+      "oracle_baseline": "run",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n          17          17          17\n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "a6bda64f171a3ddf1b10c2a5df4a761caa6396aa0a041c0fc8ee3e33cd4473c2",
+  "source_sha256": {
+    "cases/prefix_elemental.f90": "578fa4b010591d5c03650fa8ca1459d7473ab266332d2146e1cbebdc8fa4a41b",
+    "cases/prefix_pure_elemental.f90": "b565ab5e37cb102208da90daf2313613cd95fc88509374f42d043e7335834d98",
+    "cases/prefix_elemental_pure.f90": "006b5d58d8637c3a550c64f76593341dc608d81c67c9933d72bc496668e47cd9",
+    "cases/prefix_simple_elemental.f90": "abbb3603f4336bee2d481bf4448d410c7ae1345775bc3f03103a8877c9a160b0",
+    "cases/prefix_impure_elemental.f90": "cdde0511700494019a85c9aa4175eef90b3fb3866cf1ad1bd2ebe6aa168a34fe",
+    "cases/prefix_elemental_impure.f90": "86b9f555d7faa3f821465d15ecba5695a3c942f349a2e4c40c77c6e65c1bc297",
+    "cases/simple_elemental_scalar.f90": "8852557aa330d5d7db0d7f2ef79c3b7ee5f03ea9ee29ac4feb91257a834e7a53",
+    "cases/simple_calls_pure_non_simple.f90": "72836e10bc9b4f5b8d88b6b00a264c49c8356a80cc9272b4f5309997a41b3377",
+    "cases/scalar_all_intents.f90": "7c3ad908bb2080dcbe487ec50735794f1306f5e11dd698e9cf21ffe7c80b8d15",
+    "cases/scalar_out_uninitialized.f90": "fa64dc741e0d7615cb5b64fd1781b809c6c3e2aac95c2f9727a7dfce17cf2d64",
+    "cases/scalar_inout_overwrite_undefined.f90": "92c04f0adbee51432fe02692c7603e632e2bb515f6b2f0f366b95543e8109294",
+    "cases/array_inout_overwrite_undefined.f90": "cfba1911d210ca17738767b816a6b26834e7435c06e58bc3dd80785c8eadeb79",
+    "cases/array_out_uninitialized.f90": "2f36d93bd99cddbbe56ef49d4a2536916c28df286359ecbf123bbdff58069969",
+    "cases/scalar_zero_arg_impure.f90": "572069588aeba5a0616243cd5d6a03f0b808ae9fb06fdbf20d412d6c154339aa",
+    "cases/scalar_only_in_impure.f90": "0f817f5fee06178c441eee590acdcfa60a531736205accecb6347d14d5d21e4d",
+    "cases/rank_one_bounds.f90": "c2a14e8a33fcdb3b0a1036d9a15b7c7cac658c7d3259d63d91139961f29032dc",
+    "cases/rank_two_bounds.f90": "4724dcee725ce48dda9707160aab185ad0ecb7a75506d13b10f403aff717a06d",
+    "cases/keywords_xyz.f90": "eab5317ca8f2d21cca6a462598938727face60f675ac8541300a5b81b05b90ef",
+    "cases/keywords_xzy.f90": "354376472a2060d782cbb3f87e52ec7d2d64aeabf48efe39b75aaf1da3803cea",
+    "cases/keywords_yxz.f90": "c329a88907575183cde5dffb00c13aac0aade10b6854e15809aa9d3b6277e855",
+    "cases/keywords_yzx.f90": "082b6613a0171735d52f19df55fde314e15e3bdf1e0c6d1204ca090de600e78e",
+    "cases/keywords_zxy.f90": "ae111fd86121aa5aeadea4997dc0c81a01d93ca5a88e179b31fc3c3dd8e05237",
+    "cases/keywords_zyx.f90": "a0ddc83b22d4e6956627996b2cad61297852d7b4d065eca3b6ed1c0f4432ecb3",
+    "cases/mixed_case_keywords.f90": "76a95dc13972e8ca6b73ab6355a750ae3fe9899883e779bf8825571e751ed433",
+    "cases/input_expression_snapshot.f90": "2944e83a7cdd7f997fab635f7beebdcf232269ae177e51ee453b9ec101265241",
+    "cases/readonly_aliases.f90": "955aa9b4d088380eeafa01a571a7561d80a36c68a7f0d9cbcda411ba2a561e3c",
+    "cases/disjoint_strides.f90": "8b8df60a7fe80e135afda596b4bd263b180e28ec21a9d55f9d93a4f78e277960",
+    "cases/reverse_destination.f90": "bd19ab5e65c2b07d6839fc41d1a3453150966f08ff2096c38931b481e50bedc0",
+    "cases/reverse_source_and_destination.f90": "3c48f0e475cc6cf7988faa81479f55bcaee5e53c01f2add25239f4845cbae713",
+    "cases/rank_two_strided_destinations.f90": "12db0d65973fd83409a2f1732bee6f5d2b334a603169cc59c1df980ae7c22d0d",
+    "cases/rank_reduced_destination.f90": "81b6c993137a90efb0a3687fcf1d81a005d4db96ee966a199867a615031dac26",
+    "cases/real64_output.f90": "c919ac1e0e0b433a12579469b0ee1dd49b2f0f61a50de8e89fab3c129c5dd3b8",
+    "cases/logical_output.f90": "74b310d7704d6448f5f942cd78f619303585064962339cab6b9b2a34ad91ae42",
+    "cases/impure_order_rank_one.f90": "1a622896d37c0638d1dfd59f1e75283abfd020323ae1e0d4ac5e35fc275d413a",
+    "cases/impure_order_rank_two.f90": "934b621960bcd5fe9ea7f1d341766e65ec9e7eb0b66bc9668d7b0cec2cf5ea10",
+    "cases/impure_order_reverse_section.f90": "d5c4e9b45be76c2555204d24ffdbd2af39d37d37ba40af9732610e500c74cf54",
+    "cases/impure_calls_ordinary_subroutine.f90": "bc4174f6673b010eae9f02c5ba132455c736bf4c632654bda0de63e192dd5a1f",
+    "cases/elemental_nested_pure_call.f90": "3dd1cddf78813cdda701fd5bb348d7a3bd39952a3827591a67873e6cbd5c1098",
+    "cases/impure_nested_call_order.f90": "a2a3035405aa2cb0415b08f0c005eadf70dd11f33d16ac57371397f1e4c0dd41",
+    "cases/function_prefix_impure_elemental_integer.f90": "dffb116c56886ad58d7b69cf2d68b4e0f708029ab7036fefd46fbeadb957e214",
+    "cases/function_prefix_impure_integer_elemental.f90": "ae101be65ccd284995c8e9be31923b98a60b5da2c60cec82241b6d1c26f3e119",
+    "cases/function_prefix_elemental_impure_integer.f90": "a789ceb14968e34fc95d3a938d63120f794a8b7a50786e86536f22d986207376",
+    "cases/function_prefix_elemental_integer_impure.f90": "48c64a91fff9b57d9424be009a413d05c2115d41294d3b02181edc2b8bf10bde",
+    "cases/function_prefix_integer_impure_elemental.f90": "1afeecf1f2a9bfb4688fd2feb1e836d7aebf12744365363abe1c375f16feeb07",
+    "cases/function_prefix_integer_elemental_impure.f90": "4889130e19190c8178a705f3c05716ce1e1fb41e399671fbc3138e8834491d6a",
+    "cases/impure_function_no_io_print.f90": "2fd5a754b814b0b94a3b0a7376453e7cc35bb944b738d24c0f4605337fae980d",
+    "cases/impure_function_rank_two.f90": "000502801a4908d0be52b2bffc1cdc157d3ea8b08ff67a8f6f2bb21266989f32",
+    "cases/impure_function_reverse.f90": "7844d5ad5e468c96dc02e7d05b7804ee85efea85825198432eed92651b57766f",
+    "cases/impure_function_sum.f90": "c4034d0e8bdd867a102da642a497a6e0969e0f289849ee888a36b5853ea4901c",
+    "cases/impure_function_product.f90": "3efb5bd8c9f51e96562bbfd4ad3cf5f31b75c8eb6d98a343a6d6d5e64c920fc6",
+    "cases/impure_function_matmul_once.f90": "5c4fef7f8c046dfef5a01501992d3179483bc760516137ca38d206dc15906ea4",
+    "cases/impure_function_dot_once.f90": "50706795b95c851c7e748efdf13c52461bce354706fede8e093f1546eed44664",
+    "cases/impure_function_nested.f90": "f77cc7333fc568e95c080c769c2ca5d7596c58bc285125b731827b064a36aec2",
+    "cases/impure_function_cache_statement_reset.f90": "fd1c3ca65df228275f68d5027c7e477e9a554b6cdc7e23d4090d2867aea4294b",
+    "cases/impure_function_scalar_expansion_once.f90": "2be53d31997e0ef9894f065e2f55d4ec31ca7e45d6845bfa91dde9c2c0358c20",
+    "cases/impure_function_overlap_assignment.f90": "2c15f5b26680307188c30f3a0ff1badddcda724c4773dea9978ee2d02f6b45d9",
+    "cases/empty_impure_subroutine.f90": "005d74e4c98c35da64ab4ceff11d0199acc4a7d82dca404e04b077a74e17122a",
+    "cases/empty_rank_two_subroutine.f90": "a452585716c7c69aa962e40d3e114960b5390bd9e167b09bd1f0b5b27d7cfb3a",
+    "cases/empty_writable_no_scalar_read.f90": "2ef00eaa48db16aa94636b8158568507eb740d4ae736b1edbe8963b9ef103d88",
+    "cases/empty_impure_function.f90": "52887012956fbae936c7dbca59f5198d8d180d07422a0fa3c07fea66ffc57ae2",
+    "cases/empty_function_scalar_expansion.f90": "06c015af6c6d538d03c3fd4ac1d17a95f49f8c14fe372ef0cbc190d4b5799c17",
+    "cases/undefined_in_unused.f90": "b225d9600f252eeedbe9ceab897c81d8ffba6a2122a8181e3db58bee2d63baa5",
+    "cases/inout_partial_definition_preserved.f90": "38eecf804466844ca8eb47ffcb16b9954ba4466457dc991694790cd3b12c5595",
+    "cases/invalid_writable_scalar_with_array.f90": "41a825aab8b0acbda4ad15bf11709a79da8c57504aea7862d06e8f010e37bc38",
+    "cases/invalid_only_in_array.f90": "09c1327624740a044b957e3f7408e0bdaba2ee91fc26c7bcf617f533948827f0",
+    "cases/invalid_array_dummy.f90": "08097687cd3343e2087ddd3c3f3f97a01c30773814a51660d3193f5ac7b89914",
+    "cases/invalid_missing_intent.f90": "49e36504d7be69c1e7f58c879496c3a83670e34a61a40ad616436dbf322d1403",
+    "cases/invalid_out_expression.f90": "3f0d29d0e871e82148c8834f6fe9e4073e35784bf50c839dcd1fd2e8fceeda35",
+    "cases/invalid_inout_literal.f90": "8bf69ffa116f87ad3ba927c8d367c78ceb1d53b1fb5d023388149a540ac536d1",
+    "cases/invalid_out_parameter.f90": "e8dfa382290f37caf6bb4d062545aa0ef3bae8d01d77f0ecdca69cae0e0c311d",
+    "cases/invalid_kind_mismatch.f90": "78a03469464c10b7da6407606aa96a9976d0d09a042c184f33d9ff47a7feca76",
+    "cases/invalid_rank_shape_static.f90": "db4ef519f8d571d972284077745ef7d096340549266ea61f94afdb0c11461ee5",
+    "cases/invalid_pure_print.f90": "a9898bb08e5884dbac2b8716114f6f0a276d604110d060a341bd31bad16071f2",
+    "cases/invalid_pure_calls_impure.f90": "3da4e772857e6a0876b7070c0bd2cd81d7f08ec7b8597bef3a945e48bd838366",
+    "cases/invalid_conflict_pure_impure.f90": "1526eb7c27c12a655bfee088b3c7dc073e96f11dbf90013ed4f1f08b37a3f677",
+    "cases/invalid_duplicate_impure.f90": "d4a28b3f21ca33b9176b611dfba9a2c25f4ceb1b4d499092806c53f2c65bbc13",
+    "cases/invalid_duplicate_elemental.f90": "321eac74c33b79bc317ee23d67cb35a5fad851df307ac3d29cf52cb108508acb",
+    "cases/invalid_unknown_keyword.f90": "3ccda7194dd1ace9751a6ce987bfeaa09b9b5bca93a8fbe36d9e3cb269da31ee",
+    "cases/invalid_duplicate_keyword.f90": "4503a77f2bb1d85d5e835c9cc782b0b7240fde57f1a46a50fd2b1c7494dde98a",
+    "cases/invalid_position_after_keyword.f90": "98ef4e7c6d93b0fffc17b89862a20a441fe03214dbe457b556fb6fdfbfeebb18",
+    "cases/unsupported_writable_impure_function.f90": "d4bd3fdf770c6573770b84beb986a07b9dc76c336a4c9f328195349503a6fd4f",
+    "cases/unsupported_impure_nonelemental.f90": "c372a04cf7a2d95b2caf9621cd9974495f877b24c7f7e7cb8ceeab0fd4203c61",
+    "cases/runtime_overlap_same.f90": "33d871879656527b7a87f87d4be3297c05caab90b8ae98eb942019ca3cb7343d",
+    "cases/runtime_overlap_cross_elements.f90": "c31cffcb896dad552a3f145226ce846a0735563a2dc4f291ea536e56727fc5e7",
+    "cases/runtime_overlap_scalar_input.f90": "cc190221665ff63c720ddb576a6e2719e01f7e9d93522e484ee70c8e0f06f1f5",
+    "cases/runtime_undefined_in_read.f90": "d5b796fac57ba8bcebc70a0a2f25a3e46453159d9e8e3c36f0b58ed741e8ccec",
+    "cases/runtime_undefined_inout_read.f90": "4415a856c8c14a79ab1a123ca5a7bc2f57e69337742a03471f9199cba20f1e18",
+    "cases/runtime_out_read_old.f90": "a8f50af7ff517efebbb47ae09031d35d83542ace1e0bcc33ba017dddae2e8b3e",
+    "cases/runtime_out_partial_reset.f90": "ea7695109b9258f04b8a93d29ea3c2d447c6cba5a01a124f1a7768df6bac0e96",
+    "cases/runtime_shape_dynamic.f90": "203f559d66e777017822b3a409fbacbee0201fcdb013f51df2d17803eaf2ecc7",
+    "cases/runtime_empty_zero_stride.f90": "b50bf7a6a7b4bb93cf3a75bb68fa7feed6c0bd873ff5dccc17f5999c9ee7508e",
+    "cases/runtime_section_oob.f90": "ea6bd8e7985ac24193a65cae39e9b110d2f898bbc5ba0641873706a8114a3c01",
+    "cases/runtime_active_loop_scalar.f90": "2655b02a75ed718c137abf07390fa7bef287e20071227afb72423802306115ac",
+    "cases/runtime_impure_print_recursive.f90": "6984657019c761f2bfd66e6ec0f360af5a4b4e38229e890b651a38e740643ec7",
+    "cases/runtime_impure_print_transitive.f90": "b9f48820a5e065088502bcbe008585bb3bfeb819b7e1486847bce74b37fa932d",
+    "cases/runtime_budget_array_call.f90": "849edd6f8799830647270a2b0db526bb6273b5dd81001e41f8f7ee83897d2485",
+    "cases/runtime_budget_impure_function.f90": "ef806bdf7f9c985f81046e215f3076f0d05b0d4f1a9acdebc8eac463d46f0305",
+    "cases/runtime_late_function_divide.f90": "b5d5c640dbf20887335d292d9deb53841ab94b6eb92f3d34c00160d509c87763",
+    "cases/matrix_stride_1_1.f90": "e02f20dba5509d00401ef544a2c6f09eac1575eb2037d30fe89ba8b0408c3496",
+    "cases/matrix_stride_1_2.f90": "c5b242c9034a2adfb39194d4c2632af11212e42c2fdc3329c199349d5f2efa93",
+    "cases/matrix_stride_1_m1.f90": "911d71983da63b9f5e81addb6a65f4d9d830785ee90d9ee228f53ee716338647",
+    "cases/matrix_stride_1_m2.f90": "df20b9a756b8d5ea49fcf5b78f1c02eb3ee85fae73d33df0121c163ef85c902b",
+    "cases/matrix_stride_2_1.f90": "95e75e4ff56ee973ffb991575607a830abc3534f03cf2eaa95206a0fd778ea74",
+    "cases/matrix_stride_2_2.f90": "7bc1474f6492fb1404a445e5e4a94e279e6423fed926d518efa880e9321584fd",
+    "cases/matrix_stride_2_m1.f90": "7864633b54b84b4e639bea2d5a25cacd0215c51bb3875abf7c9a4639c4155f92",
+    "cases/matrix_stride_2_m2.f90": "06d99ef174f70f68aef985f89efed8586b3c946c534470a34d7d950db32107d0",
+    "cases/matrix_stride_m1_1.f90": "246a8ada128df262b7745dd19df0dda9ed4398b1eeebd004cdb0222835008eb4",
+    "cases/matrix_stride_m1_2.f90": "cfd6992ffcfc4a84f2bc9f1661a8a5427c2dd8742a3c135b9114e6ebce3edcf6",
+    "cases/matrix_stride_m1_m1.f90": "0fa7dd99a133d7fe34158b6bd68c0f846848ec12d61d18c1777c1b8380d810b0",
+    "cases/matrix_stride_m1_m2.f90": "b1dddc463c98e554aea4fb36ccbd291342b1038a8f644f6e269964a1ee1601d4",
+    "cases/matrix_stride_m2_1.f90": "e2ae3271f1ed8536ae232110236beba8bd45e6ed3e632e883fbc73712f8a9d0b",
+    "cases/matrix_stride_m2_2.f90": "740952c1261cdafe0739f9dbc6858153885668b634f6767d4dae6959008e584a",
+    "cases/matrix_stride_m2_m1.f90": "d9059fc13b7c30cee87b2c1ae123bd88e7a24dded58a96d9fb657d7f3008a53d",
+    "cases/matrix_stride_m2_m2.f90": "63903668b5f08cae9e294f18aec04506f365129ccc61c241f5145ae0c43fd40c",
+    "cases/impure_function_masked_reduction.f90": "7848ad57bcd6d334f043cf04208e1979eec3e8d635b6930c8ed71e0b175c9d1d",
+    "cases/module_impure_elemental.f90": "4e8bee7669da0b8faf12b048cce432b98d8e86c0f04a2d425c44ba28978cb972",
+    "cases/assumed_shape_elemental_call.f90": "d1f90b9c26479eaf5564a0c15f16d30d0468a4844f9f8f85c9fb7c0633b02f71",
+    "cases/impure_function_array_argument.f90": "79e283a15280ef71ef347bba716252e25f69f1283b57bba512171030a3a1384b",
+    "cases/impure_function_two_references.f90": "b72b3a46246bddec49c1b56f5203279aab87e48d1aa39ec5e4931c88fffd5ac2",
+    "cases/character_scalar_input.f90": "d163c2194b08adf203d6eba6cb00005ba5dbd651f67f6eadbbb38d69d862fb5b",
+    "cases/impure_function_cache_loop_reset.f90": "c028abf9a56ec039cb9c03268641bc5e4ca65268139c7e21dee7adf3c0adab40",
+    "cases/runtime_fresh_local_each_element.f90": "32ddf86bcb1fd955bf64c470cdc29114839816d3d5ccab321ba432b58b3f7af9",
+    "cases/runtime_out_partial_branch.f90": "e182e55c7baedf837fb39c6062f0df30f7a898e6aab47428ee5ed1ca4a6c9382",
+    "cases/runtime_dynamic_shape_before_io.f90": "f899f6250ea6d9b3b5b29eece67c95a099f540c2e1e655476748523ded8bd1d6",
+    "cases/impure_shape_only_inquiry.f90": "dd68f4c59ebe8cc6456db9b6c998f906b67ec50a22a3871252baf54b3afc80d9",
+    "cases/empty_function_scalar_side_actual.f90": "90668476ddbff8bc612775ad9940b0226ac13ee039253dd6bab5b2fd3ce31b0a",
+    "cases/empty_subroutine_scalar_side_actual.f90": "61f6675e7df6ec518434d47c86bbc67f5cca362bebae19e00c4eb11eba56b125",
+    "cases/nonempty_subroutine_scalar_side_once.f90": "849d672bd29f9f690b7014d11eaafb6bccc67df21ac14f08a191aaaee5ee19b1"
+  },
+  "reference_sha256": {
+    "pure_references/prefix_simple_elemental.f90": "b565ab5e37cb102208da90daf2313613cd95fc88509374f42d043e7335834d98",
+    "pure_references/simple_elemental_scalar.f90": "368053af9833d8eafe683b2728ba2f1d6d490a73bbe3f0eb795e54d815c21016",
+    "pure_references/simple_calls_pure_non_simple.f90": "2f69ccb6ec379722d32dfaf7360a54df4a53972cdbec04d5c7711b31a6e16d39"
+  }
+}

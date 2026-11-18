@@ -1,0 +1,127 @@
+{
+  "cases": [
+    {
+      "name": "original_combined_driver",
+      "source": "cases/original_combined_driver.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 3 30 -84\n10 3 90 -210\n0 3 0 0",
+      "diagnostic": "",
+      "support_sources": [
+        "original/combinations_module.f90"
+      ]
+    },
+    {
+      "name": "recursive_frozen_saved_character",
+      "source": "cases/recursive_frozen_saved_character.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 1 3 1 c 3 xxx\n1 2 4 2 bc 3 xxx\n2 3 3 3 abc 3 xxx\n0 1 4 1 x 4 xxx",
+      "diagnostic": ""
+    },
+    {
+      "name": "saved_explicit_prefix_pointer_views",
+      "source": "cases/saved_explicit_prefix_pointer_views.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 0\n2 3 0\n21 2 23 4 25 16 7 18 18 16 4 2 2 4",
+      "diagnostic": ""
+    },
+    {
+      "name": "empty_elemental_saved_count",
+      "source": "cases/empty_elemental_saved_count.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 3 61 2\n2 0 0 0\n3 2 58 2\n6",
+      "diagnostic": ""
+    },
+    {
+      "name": "saved_actual_frozen_module_bounds",
+      "source": "cases/saved_actual_frozen_module_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 2 3 3 3 1 abc\n4 3 5 5 10 2 abcde",
+      "diagnostic": ""
+    },
+    {
+      "name": "wide_saved_specification_values",
+      "source": "cases/wide_saved_specification_values.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 9007199254740993 9007199254740993\n1 9007199254740994",
+      "diagnostic": ""
+    },
+    {
+      "name": "recursive_saved_snapshot_specification",
+      "source": "cases/recursive_saved_snapshot_specification.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 2 3 3\n1 1 3 4\n2 0 3 3",
+      "diagnostic": ""
+    },
+    {
+      "name": "empty_specification_budget_before_saved_body",
+      "source": "cases/empty_specification_budget_before_saved_body.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "execution step limit exceeded",
+      "args": [
+        "--max-steps",
+        "80"
+      ],
+      "scope_note": "A mathematically empty array still evaluates its specification call under the root budget before the saved-state body. GNU compiles only."
+    },
+    {
+      "name": "specification_cap_before_saved_body",
+      "source": "cases/specification_cap_before_saved_body.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "array element limit",
+      "scope_note": "Interpreter frame resource limit, not a Fortran language error; GNU compiles only."
+    },
+    {
+      "name": "pure_saved_specification_empty",
+      "source": "cases/pure_saved_specification_empty.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "PURE/SIMPLE"
+    },
+    {
+      "name": "saved_initializer_specification_call",
+      "source": "cases/saved_initializer_specification_call.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "constant"
+    },
+    {
+      "name": "saved_runtime_character_length",
+      "source": "cases/saved_runtime_character_length.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "initialized intrinsic scalar"
+    },
+    {
+      "name": "recursive_saved_alias_specification",
+      "source": "cases/recursive_saved_alias_specification.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Module actual",
+      "scope_note": "Conservative saved-actual alias boundary. GNU compiles only; no standard-invalid execution oracle is claimed."
+    },
+    {
+      "name": "explicit_specification_bound_boundary",
+      "source": "cases/explicit_specification_bound_boundary.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported explicit-shape dummy bound",
+      "scope_note": "Bounded specification functions are accepted in automatic local/result storage; explicit dummy bound calls remain outside this increment. Standard-valid source, GNU compile-only."
+    }
+  ]
+}

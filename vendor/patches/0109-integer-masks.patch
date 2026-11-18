@@ -1,0 +1,125 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -1051,7 +1051,7 @@
+         ! These elemental intrinsics preserve the conforming actual shape.
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+-        case ("iand", "ior", "ieor", "not", "btest", "leadz", "lge", "lgt", "lle", "llt", "acosd", "asind", "sind", "cosd", "rrspacing", "asin", "atan", "atan2", "acos", "dprod", "tand", "aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
++        case ("iand", "ior", "ieor", "not", "btest", "leadz", "maskl", "maskr", "shiftr", "lge", "lgt", "lle", "llt", "acosd", "asind", "sind", "cosd", "rrspacing", "asin", "atan", "atan2", "acos", "dprod", "tand", "aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+               "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "isnan", "erfc_scaled", "erf", "bessel_j0", "bessel_j1", "bessel_jn", "bessel_y0", "bessel_y1", "bessel_yn", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+@@ -1069,6 +1069,13 @@
+         case ("iand", "ior", "ieor", "not", "bit_size")
+             call first_intrinsic_argument_metadata(arena,node,visiting,result_type,kind_value)
+             if(name=="bit_size")result_rank=0
++            if(kind_value>0)call set_intrinsic_metadata(node,TINT,kind_value,result_rank)
++        case ("maskl", "maskr")
++            kind_value = intrinsic_kind_argument(arena,node,name)
++            if(kind_value<=0)kind_value=4
++            call set_intrinsic_metadata(node,TINT,kind_value,result_rank)
++        case ("shiftr")
++            call bit_i_argument_kind(arena,node,visiting,kind_value)
+             if(kind_value>0)call set_intrinsic_metadata(node,TINT,kind_value,result_rank)
+         case ("leadz")
+             call set_intrinsic_metadata(node,TINT,4,result_rank)
+@@ -2300,6 +2307,7 @@
+             select type(arg=>arena%entries(idx)%node)
+             type is(assignment_node)
+                 wanted=.false.
++                if(.not.arg%is_keyword_argument)cycle
+                 if(.not.arena%has_node_at(arg%target_index))cycle
+                 select type(target=>arena%entries(arg%target_index)%node)
+                 type is(identifier_node)
+@@ -2330,6 +2338,7 @@
+             select type(arg=>arena%entries(idx)%node)
+             type is(assignment_node)
+                 wanted=.false.
++                if(.not.arg%is_keyword_argument)cycle
+                 if(.not.arena%has_node_at(arg%target_index))cycle
+                 select type(target=>arena%entries(arg%target_index)%node)
+                 type is(identifier_node)
+@@ -2360,6 +2369,7 @@
+             select type(arg=>arena%entries(idx)%node)
+             type is(assignment_node)
+                 wanted=.false.
++                if(.not.arg%is_keyword_argument)cycle
+                 if(.not.arena%has_node_at(arg%target_index))cycle
+                 select type(target=>arena%entries(arg%target_index)%node)
+                 type is(identifier_node)
+@@ -2374,6 +2384,35 @@
+             return
+         end do
+     end subroutine
++    subroutine bit_i_argument_kind(arena,node,visiting,kind_value)
++        type(ast_arena_t),intent(inout)::arena
++        type(call_or_subscript_node),intent(in)::node
++        logical,intent(inout)::visiting(:)
++        integer,intent(out)::kind_value
++        integer::j,idx
++        logical::wanted
++        kind_value=0
++        if(.not.allocated(node%arg_indices))return
++        do j=1,size(node%arg_indices)
++            idx=node%arg_indices(j);wanted=j==1
++            if(.not.arena%has_node_at(idx))cycle
++            select type(arg=>arena%entries(idx)%node)
++            type is(assignment_node)
++                wanted=.false.
++                if(.not.arg%is_keyword_argument)cycle
++                if(.not.arena%has_node_at(arg%target_index))cycle
++                select type(target=>arena%entries(arg%target_index)%node)
++                type is(identifier_node)
++                    wanted=to_lower(target%name)=='i'
++                end select
++                idx=arg%value_index
++            end select
++            if(.not.wanted.or..not.arena%has_node_at(idx))cycle
++            call resolve_node_metadata(arena,idx,visiting)
++            kind_value=arena%entries(idx)%node%resolved_kind_value
++            return
++        end do
++    end subroutine bit_i_argument_kind
+     subroutine first_intrinsic_argument_metadata(arena, node, visiting, &
+             type_kind, kind_value)
+         type(ast_arena_t), intent(inout) :: arena
+@@ -2430,7 +2469,7 @@
+         position = 0
+         if (.not. allocated(node%arg_indices)) return
+         select case (intrinsic_name)
+-        case ("real", "aint", "anint", "char", "achar", "iachar", "nint", "floor", "ceiling", "index", "scan", "verify", "len_trim", "shape")
++        case ("real", "aint", "anint", "char", "achar", "iachar", "nint", "floor", "ceiling", "index", "scan", "verify", "len_trim", "shape", "maskl", "maskr")
+             do i = 1, size(node%arg_indices)
+                 argument_index = node%arg_indices(i)
+                 if (.not. arena%has_node_at(argument_index)) cycle
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 127
++        integer, parameter :: NUM_INTRINSICS = 130
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -259,6 +259,19 @@
+             name="leadz", return_type="integer", arg_types="integer", &
+             description="Leading zero bits at the declared INTEGER width")
+ 
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="maskl", return_type="integer", arg_types="integer", &
++            description="Bounded width-aware integer masks and logical shift")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="maskr", return_type="integer", arg_types="integer", &
++            description="Bounded width-aware integer masks and logical shift")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="shiftr", return_type="integer", arg_types="integer,integer", &
++            description="Bounded width-aware integer masks and logical shift")
++
+         if (i /= NUM_INTRINSICS) then
+             write (error_unit, '(A)') &
+                 "ERROR [intrinsic_registry]: Intrinsic function count mismatch"

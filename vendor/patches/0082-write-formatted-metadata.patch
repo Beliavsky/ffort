@@ -1,0 +1,87 @@
+--- a/src/ast/factory/ast_factory_io.f90
++++ b/src/ast/factory/ast_factory_io.f90
+@@ -86,6 +86,8 @@
+         if (present(io_control_list)) then
+             if (len(io_control_list) > 0) write_stmt%io_control_list = io_control_list
+         end if
++        write_stmt%is_formatted = allocated(write_stmt%format_spec) .or. &
++            write_stmt%format_expr_index > 0 .or. allocated(write_stmt%namelist_group)
+         if (present(line)) write_stmt%line = line
+         if (present(column)) write_stmt%column = column
+         call apply_io_specifiers(write_stmt%specifiers, &
+--- a/src/semantic/analyzers/semantic_pure_validation.f90
++++ b/src/semantic/analyzers/semantic_pure_validation.f90
+@@ -18,6 +18,8 @@
+         subroutine_def_node
+     use error_handling, only: error_collection_t, ERROR_SEMANTIC
+     use semantic_pure_dummy_validation, only: validate_pure_dummies
++    use frontend_compiler_resolution, only: declaration_binding_t, &
++        resolve_name_at_node, find_enclosing_scope, ASSOCIATION_DIRECT
+     use string_utils_mod, only: int_to_string, to_lower
+     implicit none
+     private
+@@ -281,7 +283,8 @@
+             type is (print_statement_node)
+             call report_impure_stmt(errors, 'PRINT', stmt%line, stmt%column)
+             type is (write_statement_node)
+-            call report_impure_stmt(errors, 'WRITE', stmt%line, stmt%column)
++            if (.not. is_local_internal_write(arena, stmt_index, stmt)) &
++                call report_impure_stmt(errors, 'WRITE', stmt%line, stmt%column)
+             type is (read_statement_node)
+             call report_impure_stmt(errors, 'READ', stmt%line, stmt%column)
+             type is (stop_node)
+@@ -306,6 +309,54 @@
+                     param_indices)
+         end select
+     end subroutine check_pure_statement
++
++    ! A local CHARACTER internal file is not an external I/O effect. Keep
++    ! this exemption bounded to a whole scalar writable object declared in
++    ! the current procedure; host/use association and external units fail
++    ! closed. The separate dummy/purity validators retain their checks.
++    logical function is_local_internal_write(arena, stmt_index, stmt) result(local)
++        type(ast_arena_t), intent(in) :: arena
++        integer, intent(in) :: stmt_index
++        type(write_statement_node), intent(in) :: stmt
++        type(declaration_binding_t) :: binding
++        character(len=:), allocatable :: error_msg, type_name, intent_name
++        integer :: scope
++
++        local = .false.
++        if (.not. stmt%is_formatted .or. .not. allocated(stmt%unit_spec)) return
++        scope = find_enclosing_scope(arena, stmt_index)
++        if (.not. arena%has_node_at(scope)) return
++        select type (proc => arena%entries(scope)%node)
++        type is (function_def_node)
++        type is (subroutine_def_node)
++        class default
++            return
++        end select
++        call resolve_name_at_node(arena, stmt_index, stmt%unit_spec, binding, error_msg)
++        if (.not. binding%found) return
++        if (binding%association /= ASSOCIATION_DIRECT .or. &
++            binding%scope_node_index /= scope) return
++        if (.not. arena%has_node_at(binding%declaration_node_index)) return
++        select type (decl => arena%entries(binding%declaration_node_index)%node)
++        type is (declaration_node)
++            if (.not. allocated(decl%type_name)) return
++            type_name = to_lower(trim(decl%type_name))
++            if (len(type_name) < 9) return
++            if (type_name(:9) /= 'character') return
++            if (len(type_name) > 9) then
++                if (type_name(10:10) /= '(' .and. type_name(10:10) /= '*') return
++            end if
++            if (decl%is_array .or. decl%is_parameter .or. decl%is_save .or. &
++                decl%has_initializer .or. decl%is_pointer .or. decl%is_external .or. &
++                decl%is_protected .or. decl%is_volatile) return
++            if (decl%has_intent) then
++                if (.not. allocated(decl%intent)) return
++                intent_name = to_lower(trim(decl%intent))
++                if (intent_name /= 'out' .and. intent_name /= 'inout') return
++            end if
++            local = .true.
++        end select
++    end function is_local_internal_write
+ 
+     ! Recurse into all branches of an IF construct.
+     recursive subroutine check_pure_if(arena, node, errors, param_indices)

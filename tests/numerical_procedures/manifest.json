@@ -1,0 +1,685 @@
+{
+  "version": "0.7.0",
+  "cases": [
+    {
+      "name": "exact_black_scholes",
+      "source": "cases/exact_black_scholes.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "At the money\n  Call:           10.4505835722\n  Put:             5.5735260223\n  Parity error:   0.0000E+00\nIn the money call\n  Call:           23.6721907852\n  Put:             2.1833847455\n  Parity error:  -7.1054E-15\nZero volatility\n  Call:            0.4678840160\n  Put:             0.0000000000\n  Parity error:   0.0000E+00\nAt expiration\n  Call:            0.0000000000\n  Put:             5.0000000000\n  Parity error:   0.0000E+00\nAll put-call parity and benchmark tests passed.",
+      "rel_tol": 1e-12,
+      "abs_tol": 1e-11
+    },
+    {
+      "name": "exact_module_subroutine",
+      "source": "cases/exact_module_subroutine.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "twice 2.29999995 is 4.59999990"
+    },
+    {
+      "name": "bs_benchmark",
+      "source": "cases/bs_benchmark.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "10.450583572185565 5.5735260222569707",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_itm_call",
+      "source": "cases/bs_itm_call.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "23.67219078515781 2.1833847454640747",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_zero_vol_itm",
+      "source": "cases/bs_zero_vol_itm.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0.46788401604445085 0",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_expiry_otm",
+      "source": "cases/bs_expiry_otm.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 5",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_expiry_itm",
+      "source": "cases/bs_expiry_itm.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5 0",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_expiry_atm",
+      "source": "cases/bs_expiry_atm.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_zero_both",
+      "source": "cases/bs_zero_both.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 10",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_zero_vol_otm",
+      "source": "cases/bs_zero_vol_otm.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 5",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_zero_vol_atm",
+      "source": "cases/bs_zero_vol_atm.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_negative_rate",
+      "source": "cases/bs_negative_rate.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4.3878190843318237 26.528094900348805",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_tiny_maturity",
+      "source": "cases/bs_tiny_maturity.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7.9788461135876787e-06 7.9788451117224213e-06",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_large_maturity",
+      "source": "cases/bs_large_maturity.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "64.071960636717151 8.2174935772902309",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_large_vol",
+      "source": "cases/bs_large_vol.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "95.472677522087167 94.477660897003972",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_tiny_vol",
+      "source": "cases/bs_tiny_vol.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3.9894227654713177e-07 3.9894227654713177e-07",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_deep_itm",
+      "source": "cases/bs_deep_itm.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "999.02955446645149 1.0377468108342075e-264",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_deep_otm",
+      "source": "cases/bs_deep_otm.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3.3390054040096905e-260 969.44553354850814",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_small_scale",
+      "source": "cases/bs_small_scale.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5.293398058044905e-06 1.2042406748380817e-05",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_large_scale",
+      "source": "cases/bs_large_scale.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "52933980.580449045 120424067.48380804",
+      "rel_tol": 2e-12,
+      "abs_tol": 2e-11
+    },
+    {
+      "name": "bs_zero_spot",
+      "source": "cases/bs_zero_spot.f90",
+      "category": "runtime",
+      "baseline": "runtime",
+      "expected_stdout": "",
+      "diagnostic": "Spot and strike"
+    },
+    {
+      "name": "bs_negative_spot",
+      "source": "cases/bs_negative_spot.f90",
+      "category": "runtime",
+      "baseline": "runtime",
+      "expected_stdout": "",
+      "diagnostic": "Spot and strike"
+    },
+    {
+      "name": "bs_zero_strike",
+      "source": "cases/bs_zero_strike.f90",
+      "category": "runtime",
+      "baseline": "runtime",
+      "expected_stdout": "",
+      "diagnostic": "Spot and strike"
+    },
+    {
+      "name": "bs_negative_strike",
+      "source": "cases/bs_negative_strike.f90",
+      "category": "runtime",
+      "baseline": "runtime",
+      "expected_stdout": "",
+      "diagnostic": "Spot and strike"
+    },
+    {
+      "name": "bs_negative_volatility",
+      "source": "cases/bs_negative_volatility.f90",
+      "category": "runtime",
+      "baseline": "runtime",
+      "expected_stdout": "",
+      "diagnostic": "Volatility and maturity"
+    },
+    {
+      "name": "bs_negative_maturity",
+      "source": "cases/bs_negative_maturity.f90",
+      "category": "runtime",
+      "baseline": "runtime",
+      "expected_stdout": "",
+      "diagnostic": "Volatility and maturity"
+    },
+    {
+      "name": "real64_precision",
+      "source": "cases/real64_precision.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1.000088900582341e-12",
+      "rel_tol": 1e-12,
+      "abs_tol": 1e-20
+    },
+    {
+      "name": "real64_intrinsics",
+      "source": "cases/real64_intrinsics.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2.718281828459045 0.6931471805599453 1.4142135623730951 0.15729920705028513 2.0 3.0",
+      "rel_tol": 1e-12,
+      "abs_tol": 1e-14
+    },
+    {
+      "name": "real64_arithmetic",
+      "source": "cases/real64_arithmetic.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0.125 1.5 7 -8",
+      "rel_tol": 1e-12,
+      "abs_tol": 1e-14
+    },
+    {
+      "name": "real32_unaffected",
+      "source": "cases/real32_unaffected.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0"
+    },
+    {
+      "name": "real64_assignment_converts",
+      "source": "cases/real64_assignment_converts.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0.3333333333333333 0.3333333432674408 0.3333333432674408",
+      "rel_tol": 1e-12,
+      "abs_tol": 1e-14
+    },
+    {
+      "name": "real64_typed_pure_function",
+      "source": "cases/real64_typed_pure_function.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4.6",
+      "rel_tol": 1e-12,
+      "abs_tol": 1e-14
+    },
+    {
+      "name": "real64_parameter_expression",
+      "source": "cases/real64_parameter_expression.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4.6",
+      "rel_tol": 1e-12,
+      "abs_tol": 1e-14
+    },
+    {
+      "name": "subroutine_repeated_frames",
+      "source": "cases/subroutine_repeated_frames.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 4 2"
+    },
+    {
+      "name": "subroutine_nested_call",
+      "source": "cases/subroutine_nested_call.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 3"
+    },
+    {
+      "name": "subroutine_zero_arguments",
+      "source": "cases/subroutine_zero_arguments.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7"
+    },
+    {
+      "name": "subroutine_early_return",
+      "source": "cases/subroutine_early_return.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2"
+    },
+    {
+      "name": "function_early_return",
+      "source": "cases/function_early_return.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "10 20"
+    },
+    {
+      "name": "internal_character_subroutine",
+      "source": "cases/internal_character_subroutine.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "first\nsecond",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "internal_module_function_call",
+      "source": "cases/internal_module_function_call.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4"
+    },
+    {
+      "name": "private_sibling_function",
+      "source": "cases/private_sibling_function.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5"
+    },
+    {
+      "name": "only_function_and_parameter",
+      "source": "cases/only_function_and_parameter.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5"
+    },
+    {
+      "name": "formatted_a_f_es",
+      "source": "cases/formatted_a_f_es.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "heading\n  Number:     1.2500000000\n  Small:   1.2500E-03",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "string_escaped_quotes",
+      "source": "cases/string_escaped_quotes.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "It's quoted\nsay \"yes\"",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "error_stop_character",
+      "source": "cases/error_stop_character.f90",
+      "category": "runtime",
+      "baseline": "runtime",
+      "expected_stdout": "before",
+      "diagnostic": "explicit test failure"
+    },
+    {
+      "name": "error_stop_conditional_false",
+      "source": "cases/error_stop_conditional_false.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "123"
+    },
+    {
+      "name": "error_stop_conditional_true",
+      "source": "cases/error_stop_conditional_true.f90",
+      "category": "runtime",
+      "baseline": "runtime",
+      "expected_stdout": "",
+      "diagnostic": "true branch"
+    },
+    {
+      "name": "real64_sqrt_domain",
+      "source": "cases/real64_sqrt_domain.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": ""
+    },
+    {
+      "name": "real64_log_domain",
+      "source": "cases/real64_log_domain.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": ""
+    },
+    {
+      "name": "real64_exp_overflow",
+      "source": "cases/real64_exp_overflow.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": ""
+    },
+    {
+      "name": "private_function_not_imported",
+      "source": "cases/private_function_not_imported.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "private_parameter_not_imported",
+      "source": "cases/private_parameter_not_imported.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "only_unknown_name",
+      "source": "cases/only_unknown_name.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "only_excludes_function",
+      "source": "cases/only_excludes_function.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "only_private_name",
+      "source": "cases/only_private_name.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "kind_undefined",
+      "source": "cases/kind_undefined.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "kind_unsupported_real16",
+      "source": "cases/kind_unsupported_real16.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "kind_noninteger_parameter",
+      "source": "cases/kind_noninteger_parameter.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "real64_actual_real32_dummy",
+      "source": "cases/real64_actual_real32_dummy.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "real32_actual_real64_dummy",
+      "source": "cases/real32_actual_real64_dummy.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "call_function_as_subroutine",
+      "source": "cases/call_function_as_subroutine.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "subroutine_used_as_function",
+      "source": "cases/subroutine_used_as_function.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "subroutine_wrong_arity",
+      "source": "cases/subroutine_wrong_arity.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "subroutine_wrong_type",
+      "source": "cases/subroutine_wrong_type.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "subroutine_write_intent_in",
+      "source": "cases/subroutine_write_intent_in.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "subroutine_intent_out",
+      "source": "cases/subroutine_intent_out.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "subroutine_optional_dummy",
+      "source": "cases/subroutine_optional_dummy.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "777 1"
+    },
+    {
+      "name": "subroutine_keyword_actual",
+      "source": "cases/subroutine_keyword_actual.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "777 2.0"
+    },
+    {
+      "name": "subroutine_recursive_cycle",
+      "source": "cases/subroutine_recursive_cycle.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "character_wrong_actual",
+      "source": "cases/character_wrong_actual.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "format_external_unit",
+      "source": "cases/format_external_unit.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "777 x"
+    },
+    {
+      "name": "format_unsupported_group",
+      "source": "cases/format_unsupported_group.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "777 3 4"
+    },
+    {
+      "name": "formatted_integer",
+      "source": "cases/formatted_integer.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "    3",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "pure_function_print",
+      "source": "cases/pure_function_print.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "intrinsic_wrong_arity",
+      "source": "cases/intrinsic_wrong_arity.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "intrinsic_wrong_type",
+      "source": "cases/intrinsic_wrong_type.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "max_insufficient_args",
+      "source": "cases/max_insufficient_args.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "function_return_uninitialized",
+      "source": "cases/function_return_uninitialized.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "subroutine_uninitialized_local",
+      "source": "cases/subroutine_uninitialized_local.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "accessibility_duplicate_private",
+      "source": "cases/accessibility_duplicate_private.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "accessibility_conflicting_defaults",
+      "source": "cases/accessibility_conflicting_defaults.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "accessibility_unknown_public",
+      "source": "cases/accessibility_unknown_public.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "accessibility_duplicate_public_attribute",
+      "source": "cases/accessibility_duplicate_public_attribute.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "character_default_dummy",
+      "source": "cases/character_default_dummy.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "777 a"
+    },
+    {
+      "name": "double_exponent_kind_suffix",
+      "source": "cases/double_exponent_kind_suffix.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "pure_function_impure_call",
+      "source": "cases/pure_function_impure_call.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "continuation_comments",
+      "source": "cases/continuation_comments.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3"
+    },
+    {
+      "name": "continuation_missing_end",
+      "source": "cases/continuation_missing_end.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": ""
+    }
+  ]
+}

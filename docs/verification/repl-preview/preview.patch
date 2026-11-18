@@ -1,0 +1,588 @@
+--- a/src/fi_driver.f90
++++ b/src/fi_driver.f90
+@@ -3,6 +3,7 @@
+     use, intrinsic :: iso_fortran_env, only: int64, error_unit
+     use, intrinsic :: iso_c_binding, only: c_int, c_char, c_null_char
+     use fi_ir
++    use fi_repl, only: run_repl
+     use fi_limits, only: max_source_bytes
+     use fi_parser, only: parse_subset
+     use fi_frontend, only: verify_frontend
+@@ -11,6 +12,15 @@
+     private
+     public :: compile_program, run_cli
+     interface
++        integer(c_int) function stdin_is_terminal() bind(C,name='fi_stdin_is_terminal')
++            import c_int
++        end function
++        integer(c_int) function read_stdin_source(buffer,capacity,length) bind(C,name='fi_read_stdin_source')
++            import c_int,c_char
++            character(kind=c_char),intent(out)::buffer(*)
++            integer(c_int),value::capacity
++            integer(c_int),intent(out)::length
++        end function
+         integer(c_int) function load_input_bytes(path,buffer,capacity,length) bind(C,name='fi_load_input_file')
+             import c_int,c_char
+             character(kind=c_char),intent(in)::path(*)
+@@ -30,7 +40,7 @@
+     end subroutine
+     subroutine run_cli(status)
+         integer,intent(out)::status
+-        character(:),allocatable::arg,filename,source
++        character(:),allocatable::arg,filename,source,prompt
+         character(4096)::buf
+         character(32)::limit_text
+         character(4096)::input_paths(32)
+@@ -42,8 +52,10 @@
+         type(diagnostic_t)::diag
+         integer::n,i,j,unit,ios,length
+         integer(int64)::steps,nbytes
+-        logical::check,exists
++        logical::check,exists,force_repl,show_banner,terminal,batch_stdin
+         status=0; check=.false.; steps=1000000_int64; filename='';input_count=0
++        force_repl=.false.; show_banner=.true.; prompt='> '; batch_stdin=.false.
++        terminal=stdin_is_terminal()/=0
+         n=command_argument_count(); i=1
+         do while(i<=n)
+             call get_command_argument(i,buf,length=length,status=ios)
+@@ -53,14 +65,30 @@
+             arg=buf(:length)
+             select case(arg)
+             case('--help','-h')
+-                print '(a)', 'Usage: fortfront-interpreter [--check] [--max-steps N] [--input UNIT=PATH] source.f90'
++                print '(a)', 'Usage: fortfront-interpreter [--check] [--max-steps N] [--input UNIT=PATH] [source.f90]'
+                 print '(a)', 'A bounded scalar and rank-one/rank-two array Fortran prototype. See README.md for the exact subset.'
+                 print '(a)', 'Input: explicit read-only regular files, up to 32 units; 1 MiB each and 4 MiB total. --check never opens them.'
++                print '(a)', 'No file: terminal starts a source-buffer REPL; piped stdin is batch source. --repl forces REPL.'
++                print '(a)', 'REPL options: --interactive, --nologo, --prompt TEXT. .help describes the initial bounded subset.'
+                 print '(a)', 'Exit status: 0 success, 1 source/options error, 2 runtime error.'
+                 return
+             case('--version')
+                 print '(a)', 'fortfront-interpreter 0.56.0; FortFront 9a5896a + documented local patches'
+                 return
++            case('--repl','--interactive')
++                force_repl=.true.
++            case('--nologo')
++                show_banner=.false.
++            case('--prompt')
++                i=i+1
++                if(i>n) then
++                    call fail(diag,'--prompt needs text'); exit
++                end if
++                call get_command_argument(i,buf,length=length,status=ios)
++                if(ios/=0.or.length>128) then
++                    call fail(diag,'--prompt text exceeds 128 characters'); exit
++                end if
++                prompt=buf(:length)
+             case('--check')
+                 check=.true.
+             case('--input')
+@@ -134,8 +162,39 @@
+             end select
+             i=i+1
+         end do
+-        if(len(filename)==0) call fail(diag,'Specify a source file; use --help for usage')
+-        if(diag%code==0) then
++        if(diag%code==0.and.(force_repl.or.(len(filename)==0.and.terminal))) then
++            if(len(filename)>0.or.check.or.input_count>0) then
++                call fail(diag,'REPL does not accept a source filename, --check or --input; use batch mode')
++            else
++                call run_repl(status,steps,.true.,show_banner,prompt)
++                return
++            end if
++        end if
++        if(diag%code==0.and.len(filename)==0) then
++            batch_stdin=.true.; filename='<stdin>'
++            allocate(input_buffer(max_source_bytes),stat=ios)
++            if(ios/=0) then
++                call fail(diag,'Cannot allocate bounded stdin source buffer')
++            else
++                input_status=read_stdin_source(input_buffer,int(max_source_bytes,c_int),input_length)
++                if(input_status==2) then
++                    call fail(diag,'Stdin source exceeds 1048576-byte limit')
++                else if(input_status/=0) then
++                    call fail(diag,'Cannot read complete stdin source')
++                else
++                    allocate(character(int(input_length))::source,stat=ios)
++                    if(ios/=0) then
++                        call fail(diag,'Cannot allocate stdin source')
++                    else
++                        do j=1,int(input_length)
++                            source(j:j)=input_buffer(j)
++                        end do
++                    end if
++                end if
++                deallocate(input_buffer)
++            end if
++        end if
++        if(diag%code==0.and..not.batch_stdin) then
+             inquire(file=filename,exist=exists,size=nbytes,iostat=ios)
+             if(ios/=0.or..not.exists) then
+                 call fail(diag,'Cannot read source file: '//filename)
+--- /dev/null
++++ b/src/fi_repl.f90
+@@ -0,0 +1,187 @@
++! SPDX-License-Identifier: MIT
++! Deliberately bounded source-body REPL. Each run creates fresh compiler/runtime
++! state. No evaluation replay, inspection, implicit saves or host file access.
++module fi_repl
++    use, intrinsic :: iso_fortran_env, only: int64, input_unit, output_unit, error_unit, iostat_end, iostat_eor
++    use fi_limits, only: max_source_bytes
++    use fi_ir, only: program_t, diagnostic_t
++    use fi_parser, only: parse_subset
++    use fi_frontend, only: verify_frontend
++    use fi_runtime, only: execute_program
++    implicit none
++    private
++    public :: run_repl
++    integer, parameter :: line_limit=4096, line_count_limit=10000
++    character(*), parameter :: header='program repl_session'//achar(10)//'implicit none'//achar(10)
++    character(*), parameter :: footer='end program repl_session'//achar(10)
++contains
++    subroutine run_repl(status,max_steps,show_prompt,show_banner,prompt_text)
++        integer, intent(out) :: status
++        integer(int64), intent(in), optional :: max_steps
++        logical, intent(in), optional :: show_prompt,show_banner
++        character(*), intent(in), optional :: prompt_text
++        character(:), allocatable :: body,next,source,command,prompt
++        character(line_limit+1) :: line
++        integer :: ios,n,nlines,alloc_status,j
++        integer(int64) :: steps
++        logical :: prompts,banner,ended,too_long
++        status=0; steps=1000000_int64; prompts=.true.; banner=.true.
++        if(present(max_steps)) steps=max_steps
++        if(present(show_prompt)) prompts=show_prompt
++        if(present(show_banner)) banner=show_banner
++        prompt='> '
++        if(present(prompt_text)) prompt=prompt_text
++        if(steps<=0) then
++            call repl_error('max_steps must be positive',status); return
++        end if
++        if(len(prompt)>128) then
++            call repl_error('prompt exceeds 128 bytes',status); return
++        end if
++        do j=1,len(prompt)
++            if(iachar(prompt(j:j))<32.or.iachar(prompt(j:j))==127) then
++                call repl_error('prompt contains a control character',status); return
++            end if
++        end do
++        body=''; nlines=0
++        if(banner) then
++            write(output_unit,'(a)',iostat=ios) 'FortFront source-buffer REPL. Enter Fortran body lines; .help for commands.'
++            if(ios/=0) then
++                status=2; return
++            end if
++        end if
++        do
++            if(prompts) then
++                write(output_unit,'(a)',advance='no',iostat=ios) prompt
++                if(ios/=0) then
++                    status=2; return
++                end if
++                flush(output_unit,iostat=ios)
++                if(ios/=0) then
++                    status=2; return
++                end if
++            end if
++            call read_repl_line(line,n,ended,too_long,ios)
++            if(ios/=0) then
++                call repl_error('input error',status); status=2; return
++            end if
++            if(ended.and.n==0.and..not.too_long) return
++            if(too_long) then
++                call repl_error('line exceeds 4096 bytes; discarded',status)
++                if(ended) return
++                cycle
++            end if
++            if(index(line(:n),achar(0))/=0) then
++                call repl_error('NUL byte is not allowed; line discarded',status)
++                if(ended) return
++                cycle
++            end if
++            command=trim(adjustl(line(:n)))
++            select case(command)
++            case('.quit','.quit!')
++                return
++            case('.clear')
++                body=''; nlines=0; status=0
++            case('.help')
++                write(output_unit,'(a)',iostat=ios) &
++                    '. or .run: compile and run the entire buffer with fresh state', &
++                    '.list: show the standard Fortran wrapper and buffered body; .help: show this help', &
++                    '.clear: clear the body and last error; .quit or .quit!: exit without saving', &
++                    'No automatic execution. Checks occur only on .run. EOF does not run or save.', &
++                    'Body only; program/module units, load/save, expression queries and .vars are unsupported.', &
++                    'Limits: 4096 bytes per line, 10000 body lines, 1048576 total source bytes.'
++                if(ios/=0) then
++                    status=2; return
++                end if
++            case('.','.run','.list')
++                allocate(character(len(header)+len(body)+len(footer))::source,stat=alloc_status)
++                if(alloc_status/=0) then
++                    call repl_error('cannot allocate source buffer',status); status=2; return
++                end if
++                source=header//body//footer
++                if(command=='.list') then
++                    write(output_unit,'(a)',advance='no',iostat=ios) source
++                    if(ios/=0) then
++                        status=2; return
++                    end if
++                else
++                    call run_buffer(source,steps,status)
++                end if
++                deallocate(source)
++            case default
++                if(len(command)>0) then
++                    if(command(1:1)=='.') then
++                        call repl_error('unsupported command: '//command,status)
++                        if(ended) return
++                        cycle
++                    end if
++                end if
++                if(nlines>=line_count_limit.or.len(body)+n+1+len(header)+len(footer)>max_source_bytes) then
++                    call repl_error('source buffer limit exceeded; line discarded',status)
++                else
++                    allocate(character(len(body)+n+1)::next,stat=alloc_status)
++                    if(alloc_status/=0) then
++                        call repl_error('cannot grow source buffer',status); status=2; return
++                    end if
++                    next=body//line(:n)//achar(10)
++                    call move_alloc(next,body); nlines=nlines+1
++                end if
++            end select
++            if(ended) return
++        end do
++    end subroutine
++
++    subroutine read_repl_line(line,n,ended,too_long,status)
++        character(*),intent(out)::line
++        integer,intent(out)::n,status
++        logical,intent(out)::ended,too_long
++        character(line_limit+1)::discard
++        integer::ios,received
++        n=0; status=0; ended=.false.; too_long=.false.
++        read(input_unit,'(a)',advance='no',size=n,iostat=ios) line
++        too_long=n>line_limit
++        if(ios==0) then
++            ! A full overlong chunk: drain its record so its tail cannot become a command.
++            too_long=.true.
++            do
++                read(input_unit,'(a)',advance='no',size=received,iostat=ios) discard
++                if(ios/=0) exit
++            end do
++        end if
++        if(ios==iostat_end) then
++            ended=.true.
++        else if(ios/=iostat_eor) then
++            status=1
++        end if
++    end subroutine
++
++    subroutine repl_error(message,status)
++        character(*),intent(in)::message
++        integer,intent(out)::status
++        integer::ios
++        status=1
++        write(error_unit,'(a)',iostat=ios) '<repl>: '//message
++        if(ios/=0) status=2
++    end subroutine
++
++    subroutine run_buffer(source,steps,status)
++        character(*),intent(in)::source
++        integer(int64),intent(in)::steps
++        integer,intent(out)::status
++        type(program_t)::prog
++        type(diagnostic_t)::diag
++        integer::ios
++        call parse_subset(source,prog,diag)
++        if(diag%code==0) call verify_frontend(source,prog,diag)
++        if(diag%code==0) call execute_program(prog,diag,max_steps=steps,program_name='<repl>')
++        status=diag%code
++        if(diag%code==3) then
++            status=diag%stop_status
++            write(error_unit,'(a)',iostat=ios) diag%message
++        else if(diag%code/=0) then
++            write(error_unit,'(a,i0,a,i0,a,a)',iostat=ios) '<repl>:',diag%line,':',diag%column,': ',diag%message
++        else
++            ios=0
++        end if
++        if(ios/=0) status=2
++    end subroutine
++end module
+--- /dev/null
++++ b/src/fi_console.c
+@@ -0,0 +1,36 @@
++/* SPDX-License-Identifier: MIT
++ * Host console detection and bounded batch source stdin, never runtime input.
++ */
++#ifndef _WIN32
++#define _POSIX_C_SOURCE 200809L
++#endif
++#include <stdio.h>
++#ifdef _WIN32
++#include <io.h>
++#define FI_ISATTY _isatty
++#define FI_FILENO _fileno
++#else
++#include <unistd.h>
++#define FI_ISATTY isatty
++#define FI_FILENO fileno
++#endif
++
++int fi_stdin_is_terminal(void)
++{
++    return FI_ISATTY(FI_FILENO(stdin)) ? 1 : 0;
++}
++
++/* 0 complete, 1 read failure, 2 capacity exceeded; no implicit file writes. */
++int fi_read_stdin_source(char *buffer, int capacity, int *length)
++{
++    int c, n = 0;
++    if (!buffer || !length || capacity < 0 || capacity > 1048576) return 2;
++    *length = 0;
++    while ((c = fgetc(stdin)) != EOF) {
++        if (n == capacity) return 2;
++        buffer[n++] = (char)c;
++    }
++    if (ferror(stdin)) return 1;
++    *length = n;
++    return 0;
++}
+--- a/tests/test_cli_limits.py
++++ b/tests/test_cli_limits.py
+@@ -19,7 +19,7 @@
+ 
+ def check(argv,code,diagnostic):
+     global passed
+-    r=subprocess.run([exe]+argv,capture_output=True,text=True,timeout=10)
++    r=subprocess.run([exe]+argv,stdin=subprocess.DEVNULL,capture_output=True,text=True,timeout=10)
+     assert r.returncode==code,(argv,r.returncode,r.stderr)
+     assert not r.stdout.strip(),(argv,r.stdout)
+     assert diagnostic in r.stderr,(argv,r.stderr,diagnostic)
+@@ -42,7 +42,7 @@
+         p=d/(name+'.f90');p.write_text(source)
+         check(['--check',str(p)],1,diagnostic)
+     p=d/'ok.f90';p.write_text('program p\nimplicit none\ninteger :: x\nx=1\nprint *,x\nend program\n')
+-    check([],1,'Specify a source')
++    check([],1,'Expected END PROGRAM')  # Empty nonterminal stdin is now batch source.
+     check([str(d/'missing.f90')],1,'Cannot read')
+     check(['--unknown'],1,'Unknown option')
+     check(['--max-steps','0',str(p)],1,'must be positive')
+--- /dev/null
++++ b/tests/repl/test_repl.py
+@@ -0,0 +1,149 @@
++#!/usr/bin/env python3
++"""Independent black-box REPL/CLI contracts. No compiler/runtime imports.
++Run: python -B tests/repl/test_repl.py --candidate /absolute/interpreter
++Optional --report writes an exclusive JSON receipt, retaining raw transcripts.
++"""
++import argparse,base64,errno,hashlib,json,os,pty,select,subprocess,tempfile,termios,time,unittest
++from pathlib import Path
++
++CANDIDATE=None
++RECORDS=[]
++
++def record(args,stdin,code,out,err,transport='pipe'):
++ row=dict(command=args,stdin_b64=base64.b64encode(stdin).decode(),returncode=code,
++  stdout_b64=base64.b64encode(out).decode(),stderr_b64=base64.b64encode(err).decode(),transport=transport)
++ RECORDS.append(row)
++ return code,out.decode('utf-8'),err.decode('utf-8')
++
++class Repl(unittest.TestCase):
++ def setUp(self):
++  self.tmp=tempfile.TemporaryDirectory(prefix='ffort repl contract ');self.addCleanup(self.tmp.cleanup);self.cwd=Path(self.tmp.name)
++ def pipe(self,text,args=()):
++  argv=[str(CANDIDATE),*args];data=text.encode()
++  try:p=subprocess.run(argv,input=data,capture_output=True,cwd=self.cwd,timeout=15)
++  except subprocess.TimeoutExpired as ex:
++   record(argv,data,None,ex.stdout or b'',ex.stderr or b'',transport='pipe-timeout');raise
++  return record(argv,data,p.returncode,p.stdout,p.stderr)
++ def repl(self,text,extra=()):return self.pipe(text,('--repl','--nologo','--prompt','',*extra))
++ def ok(self,r,output=None):
++  code,out,err=r;self.assertEqual(code,0,repr(r));self.assertEqual(err,'',repr(r))
++  if output is not None:self.assertEqual(out,output)
++  return out
++ def test_forced_pipe_run(self):
++  self.ok(self.repl("print '(A)', 'REPL_RUN_17'\n.run\n.quit\n"),'REPL_RUN_17\n')
++ def test_buffer_has_no_effect_until_run(self):
++  self.ok(self.repl("print '(A)', 'MUST_NOT_EXECUTE'\n.quit\n"),'')
++ def test_clear_removes_pending_source(self):
++  self.ok(self.repl("print '(A)', 'STALE_BUFFER'\n.clear\nprint '(A)', 'CLEAN_BUFFER'\n.run\n.quit\n"),'CLEAN_BUFFER\n')
++ def test_eof_never_implicitly_runs(self):
++  self.ok(self.repl("print '(A)', 'EOF_MUST_NOT_RUN'\n"),'')
++ def test_eof_after_explicit_run(self):
++  self.ok(self.repl("print '(A)', 'EOF_AFTER_RUN'\n.run\n"),'EOF_AFTER_RUN\n')
++ def test_empty_eof(self):self.ok(self.repl(''),'')
++ def test_dot_alias_explicitly_runs(self):
++  self.ok(self.repl("print '(A)', 'DOT_RUN'\n.\n.quit\n"),'DOT_RUN\n')
++ def test_oversized_line_is_drained_and_session_recovers(self):
++  r=self.repl('!'+('x'*4096)+"\n.clear\nprint '(A)', 'AFTER_LONG_LINE'\n.run\n.quit\n")
++  self.assertEqual(r[0],0,repr(r));self.assertEqual(r[1],'AFTER_LONG_LINE\n');self.assertTrue(r[2].strip())
++
++ def test_repeat_runs_have_fresh_allocation_state(self):
++  source="integer, allocatable :: a(:)\nallocate(a(1))\na(1)=29\nprint '(I0)', a(1)\n"
++  self.ok(self.repl(source+'.run\n.run\n.quit\n'),'29\n29\n')
++ def test_state_query_does_not_replay(self):
++  r=self.repl("print '(A)', 'SIDE_EFFECT_ONCE'\n.run\n.vars\n.clear\n.quit\n")
++  self.assertEqual(r[0],0,repr(r));self.assertEqual(r[1].count('SIDE_EFFECT_ONCE'),1,repr(r));self.assertIn('unsupported command',(r[1]+r[2]).lower())
++ def test_unknown_command_keeps_buffer_and_recovers(self):
++  r=self.repl("print '(A)', 'AFTER_UNKNOWN'\n.not_a_command\n.run\n.quit\n")
++  self.assertEqual(r[0],0,repr(r));self.assertEqual(r[1].count('AFTER_UNKNOWN'),1);self.assertIn('unsupported command',(r[1]+r[2]).lower())
++ def test_implicit_none_is_default(self):
++  r=self.repl("undeclared_repl_variable=7\n.run\n.clear\nprint '(A)', 'AFTER_COMPILE_ERROR'\n.run\n.quit\n")
++  self.assertEqual(r[0],0,repr(r));self.assertEqual(r[1],'AFTER_COMPILE_ERROR\n');self.assertTrue(r[2].strip(),repr(r));self.assertIn('undeclared_repl_variable',r[2].lower())
++ def test_syntax_error_recovery(self):
++  r=self.repl("integer ::\n.run\n.clear\nprint '(A)', 'AFTER_SYNTAX_ERROR'\n.run\n.quit\n")
++  self.assertEqual(r[0],0,repr(r));self.assertEqual(r[1],'AFTER_SYNTAX_ERROR\n');self.assertTrue(r[2].strip())
++ def test_runtime_error_recovery(self):
++  r=self.repl("integer :: a(1), i\ni=2\nprint *, a(i)\n.run\n.clear\nprint '(A)', 'AFTER_RUNTIME_ERROR'\n.run\n.quit\n")
++  self.assertEqual(r[0],0,repr(r));self.assertEqual(r[1],'AFTER_RUNTIME_ERROR\n');self.assertTrue(r[2].strip())
++ def test_list_reports_source_without_execution(self):
++  r=self.repl("integer :: i\ni=41\n.list\n.quit\n");out=self.ok(r)
++  self.assertIn('implicit none',out.lower());self.assertIn('integer :: i',out);self.assertIn('i=41',out)
++ def test_help_lists_bounded_commands(self):
++  out=self.ok(self.repl('.help\n.quit\n'))
++  for cmd in ('.run','.list','.clear','.quit','.help'):self.assertIn(cmd,out)
++ def test_prompt_control(self):
++  r=self.pipe('.quit\n',('--repl','--nologo','--prompt','CUSTOM_REPL> '));self.ok(r,'CUSTOM_REPL> ')
++ def test_pipe_without_filename_is_batch_not_repl(self):
++  self.ok(self.pipe("program stdin_case\nimplicit none\nprint '(A)', 'BATCH_STDIN'\nend program\n"),'BATCH_STDIN\n')
++ def test_batch_check_does_not_execute(self):
++  r=self.pipe("program stdin_case\nprint '(A)', 'NOT_EXECUTED_CHECK'\nend program\n",('--check',))
++  self.assertEqual(r[0],0,repr(r));self.assertNotIn('NOT_EXECUTED_CHECK',r[1]);self.assertEqual(r[2],'')
++ def test_batch_stdin_compile_error_status(self):
++  r=self.pipe('program bad\nimplicit none\nmissing_variable=3\nend program\n');self.assertEqual(r[0],1,repr(r));self.assertTrue(r[2].strip())
++ def test_source_file_cli_unchanged(self):
++  p=self.cwd/'source with spaces.f90';p.write_text("program file_case\nprint '(A)', 'FILE_SOURCE'\nend program\n")
++  self.ok(self.pipe('ignored stdin\n',(str(p),)),'FILE_SOURCE\n')
++ def test_batch_step_limit(self):
++  r=self.pipe('program forever\ninteger :: i\ni=0\ndo\ni=i+1\nend do\nend program\n',('--max-steps','30'))
++  self.assertEqual(r[0],2,repr(r));self.assertTrue(r[2].strip())
++ def test_repl_step_limit_recovers(self):
++  r=self.repl("integer :: i\ni=0\ndo\ni=i+1\nend do\n.run\n.clear\nprint '(A)', 'AFTER_LIMIT'\n.run\n.quit\n",('--max-steps','30'))
++  self.assertEqual(r[0],0,repr(r));self.assertEqual(r[1],'AFTER_LIMIT\n');self.assertTrue(r[2].strip())
++ def test_interactive_alias(self):
++  self.ok(self.pipe("print '(A)', 'INTERACTIVE_ALIAS'\n.run\n.quit\n",('--interactive','--nologo','--prompt','')),'INTERACTIVE_ALIAS\n')
++ def test_forced_repl_rejects_batch_only_combinations(self):
++  p=self.cwd/'existing.f90';p.write_text('program x\nend program\n')
++  for args in (('--repl','--check'),('--repl','--input','11=missing.txt'),('--repl',str(p))):
++   with self.subTest(args=args):
++    r=self.pipe("print '(A)', 'MUST_NOT_RUN_OPTION_ERROR'\n.run\n",args)
++    self.assertEqual(r[0],1,repr(r));self.assertTrue(r[2].strip());self.assertNotIn('MUST_NOT_RUN_OPTION_ERROR',r[1])
++ def test_prompt_length_bound(self):
++  r=self.pipe('.quit\n',('--repl','--prompt','x'*129));self.assertEqual(r[0],1,repr(r));self.assertTrue(r[2].strip())
++ def test_prompt_exact_bound(self):
++  self.ok(self.pipe('.quit\n',('--repl','--nologo','--prompt','p'*128)),'p'*128)
++ def test_batch_stdin_read_failure(self):
++  fd=os.open(self.cwd,os.O_RDONLY)
++  try:
++   args=[str(CANDIDATE)];p=subprocess.run(args,stdin=fd,capture_output=True,cwd=self.cwd,timeout=15)
++   r=record(args,b'',p.returncode,p.stdout,p.stderr,transport='directory-stdin')
++  finally:os.close(fd)
++  self.assertEqual(r[0],1,repr(r));self.assertTrue(r[2].strip())
++ def test_batch_source_size_bound(self):
++  r=self.pipe('!'+('x'*(1024*1024))+'\n');self.assertEqual(r[0],1,repr(r));self.assertTrue(r[2].strip())
++ def test_repl_buffer_byte_bound_recovers(self):
++  r=self.repl(('!'+('x'*3999)+'\n')*270+".clear\nprint '(A)', 'AFTER_BYTE_BOUND'\n.run\n.quit\n")
++  self.assertEqual(r[0],0,repr(r));self.assertEqual(r[1],'AFTER_BYTE_BOUND\n');self.assertTrue(r[2].strip())
++ def test_repl_line_count_bound_recovers(self):
++  r=self.repl('! comment\n'*10001+".clear\nprint '(A)', 'AFTER_LINE_BOUND'\n.run\n.quit\n")
++  self.assertEqual(r[0],0,repr(r));self.assertEqual(r[1],'AFTER_LINE_BOUND\n');self.assertTrue(r[2].strip())
++ def test_noargs_terminal_enters_repl_before_eof(self):
++  master,slave=pty.openpty();attrs=termios.tcgetattr(slave);attrs[3]&=~termios.ECHO;termios.tcsetattr(slave,termios.TCSANOW,attrs)
++  p=subprocess.Popen([str(CANDIDATE)],stdin=slave,stdout=slave,stderr=slave,cwd=self.cwd,close_fds=True);os.close(slave)
++  raw=bytearray();data=b"print '(A)', 'TTY_ONLY_RESULT'\n.run\n.quit\n";sent=False;deadline=time.monotonic()+15
++  try:
++   while time.monotonic()<deadline:
++    readable,_,_=select.select([master],[],[],0.1)
++    if readable:
++     try:chunk=os.read(master,65536)
++     except OSError as ex:
++      if ex.errno==errno.EIO:break
++      raise
++     if not chunk:break
++     raw.extend(chunk)
++     if not sent and (b'> ' in raw or b'ffort>' in raw):os.write(master,data);sent=True
++    if p.poll() is not None and not readable:break
++   if p.poll() is None:
++    p.kill();p.wait();record([str(CANDIDATE)],data,p.returncode,bytes(raw),b'',transport='pty-timeout');self.fail('TTY REPL did not prompt/quit within deadline: '+repr(bytes(raw)))
++   r=record([str(CANDIDATE)],data,p.returncode,bytes(raw),b'',transport='pty')
++   self.assertTrue(sent,'No prompt before input/EOF');self.assertEqual(r[0],0,repr(r));self.assertEqual(r[1].count('TTY_ONLY_RESULT'),1,repr(r))
++  finally:
++   if p.poll() is None:p.kill();p.wait()
++   os.close(master)
++
++if __name__=='__main__':
++ ap=argparse.ArgumentParser();ap.add_argument('--candidate',required=True);ap.add_argument('--report');a=ap.parse_args();CANDIDATE=Path(a.candidate).resolve(strict=True)
++ if a.report and os.path.lexists(a.report):ap.error('report already exists')
++ before=hashlib.sha256(CANDIDATE.read_bytes()).hexdigest();suite=unittest.defaultTestLoader.loadTestsFromTestCase(Repl);r=unittest.TextTestRunner(verbosity=2).run(suite)
++ after=hashlib.sha256(CANDIDATE.read_bytes()).hexdigest();passed=r.wasSuccessful() and before==after
++ if a.report:
++  with open(a.report,'x') as f:json.dump(dict(status='passed' if passed else 'failed',candidate=str(CANDIDATE),candidate_sha256=before,candidate_after_sha256=after,tests=r.testsRun,failures=len(r.failures),errors=len(r.errors),records=RECORDS),f,indent=2);f.write('\n')
++ raise SystemExit(0 if passed else 1)
+--- /dev/null
++++ b/docs/REPL.md
+@@ -0,0 +1,63 @@
++# Initial source-buffer REPL (development preview)
++
++On a terminal, run `ffort.exe` without a source filename to enter the REPL.
++The common CLI is also built as `fortfront-interpreter` by FPM; this feature does
++not change the existing Windows executable naming workflow.
++
++`--repl` (alias `--interactive`) forces a session when standard input is a pipe.
++Without a filename or either flag, nonterminal stdin is a complete batch source,
++not an interactive transcript. `--nologo` hides the banner; `--prompt TEXT`
++changes the prompt (up to 128 printable characters, including an empty prompt).
++`--max-steps N` sets each explicit run's budget. REPL mode does not accept a
++filename, `--check`, or registered `--input` bindings. Those remain batch options.
++
++## First supported increment
++
++Enter standard Fortran declarations and executable statements for one program
++body. The buffer is wrapped in `program repl_session`, `implicit none`, and
++`end program repl_session`. Declarations must precede executable statements.
++
++- `.` or `.run`: compile and execute the entire buffer with fresh runtime state.
++- `.list`: display the effective standard Fortran source, including the wrapper.
++- `.clear`: discard the buffer and clear the last error.
++- `.help`: describe commands and limits.
++- `.quit` or `.quit!`: leave without executing or saving.
++
++There is no automatic execution. Source checks occur on explicit run, so an
++incomplete block can be entered over several lines. A failed run keeps the
++buffer; completing the block and explicitly running again starts fresh. EOF
++never implicitly executes or saves. Each deliberate `.run` repeats the program's
++effects; this is not incremental execution. The session returns the last error
++status until a successful run or `.clear`.
++
++Example:
++
++```text
++> integer :: n
++> n = 2
++> print *, n*n
++> .run
++4
++> .quit
++```
++
++## Boundaries and differences from ofort
++
++This implements the initial deferred source-buffer workflow, not all of ofort's
++interactive features. Full program/module input, load/save, editing commands,
++autorun, auto-end, declaration reordering, `let`/`const`, expression queries and
++`.vars` are not implemented. In particular, queries are not simulated by replaying
++past statements: doing so would duplicate output, random-number and input effects.
++A persistent runtime session is separate future work. Unlike ofort's normal
++quit path, neither quit command writes an automatic save file.
++
++The source remains subject to the interpreter's existing supported Fortran
++subset. Session input is bounded to 4,096 bytes per line, 10,000 body lines, and
++1,048,576 source bytes including the wrapper. An overlong input record is fully
++discarded so its remainder cannot become a command. NUL-containing lines are
++rejected. Batch stdin has the existing 1 MiB source limit.
++
++Current validation uses Linux GNU Fortran 14.2 plus real PTY transcripts. Windows
++console detection uses `_isatty`/`_fileno`, but source portability is not a claim
++that Windows execution has been tested. This preview is not the separately
++certified 0.56 delivery and has not yet received full maintained-suite certification.

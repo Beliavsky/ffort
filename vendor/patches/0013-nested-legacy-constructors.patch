@@ -1,0 +1,38 @@
+--- a/src/parser/expressions/parser_expression_arrays.f90
++++ b/src/parser/expressions/parser_expression_arrays.f90
+@@ -193,7 +193,7 @@
+                 end block
+             end if
+ 
+-            if (current%text == "(") then
++            if (current%text == "(" .and. .not. is_legacy_array_item(parser)) then
+                 if (is_malformed_parenthesized_item(parser)) then
+                     expr_index = 0
+                     return
+@@ -330,7 +330,7 @@
+             if (peek_token%text == "]") then
+                 current = parser%consume() ! Consume the closing bracket
+                 exit
+-            else if (peek_token%text == "(") then
++            else if (peek_token%text == "(" .and. .not. is_legacy_array_item(parser)) then
+                 if (is_malformed_parenthesized_item(parser)) then
+                     expr_index = 0
+                     return
+@@ -422,6 +422,17 @@
+         end if
+     end function parse_modern_array_literal
+ 
++    ! Do not speculatively parse the opening slash of a nested legacy array
++    ! constructor as an implied-do expression. A failed speculative parse can
++    ! leave a binary node with a missing left operand in the arena even when
++    ! the subsequent array parse succeeds.
++    logical function is_legacy_array_item(parser) result(legacy)
++        type(parser_state_t), intent(inout) :: parser
++        type(token_t) :: token
++        token = parser%get_token_at_index(parser%current_token + 1)
++        legacy = token%kind == TK_OPERATOR .and. token%text == "/"
++    end function is_legacy_array_item
++
+     ! F2018 R770: an ac-value that starts with "(" is either a parenthesised
+     ! expression, a complex literal (exactly two items), or an ac-implied-do
+     ! (which carries "=" for its do-variable). A parenthesised list of three or

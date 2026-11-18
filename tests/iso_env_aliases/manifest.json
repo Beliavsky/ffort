@@ -1,0 +1,237 @@
+{
+  "cases": [
+    {
+      "name": "original_cosh",
+      "source": "cases/demo_cosh.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": " X=   1.0000000000000000      COSH(X=)   1.5430806348152437     \n"
+    },
+    {
+      "name": "original_tan",
+      "source": "cases/demo_tan.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "  0.16500000000000001       0.16651386310913616     \n"
+    },
+    {
+      "name": "original_tanh",
+      "source": "cases/demo_tanh.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "   2.1000000000000001       0.97045193661345386     \n"
+    },
+    {
+      "name": "original_epsilon",
+      "source": "cases/demo_epsilon.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "   1.19209290E-07\n   1.19209290E-07\n   1.19209290E-07\n   2.2204460492503131E-016\n F\n F\n T\n T\n   2.2204460492503131E-016\n"
+    },
+    {
+      "name": "all_supported_aliases",
+      "source": "cases/all_supported_aliases.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           4           8           4           8           4           8           4           8   1.25000000       2.5000000000000000               42          12345678901\n"
+    },
+    {
+      "name": "mixed_and_case",
+      "source": "cases/mixed_and_case.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           4           8           4           8   3.0000000000000000     \n"
+    },
+    {
+      "name": "two_local_aliases",
+      "source": "cases/two_local_aliases.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           8           8   2.0000000000000000                8\n"
+    },
+    {
+      "name": "source_name_reused_locally",
+      "source": "cases/source_name_reused_locally.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           8           4           8           4\n"
+    },
+    {
+      "name": "separate_use",
+      "source": "cases/separate_use.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           4           8\n"
+    },
+    {
+      "name": "continuation",
+      "source": "cases/continuation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           4           8\n"
+    },
+    {
+      "name": "parameter_kind",
+      "source": "cases/parameter_kind.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           8           8   2.2500000000000000     \n"
+    },
+    {
+      "name": "intrinsic_name_alias",
+      "source": "cases/intrinsic_name_alias.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           8           8   2.0000000000000000     \n"
+    },
+    {
+      "name": "host_association",
+      "source": "cases/host_association.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "   5.0000000000000000     \n"
+    },
+    {
+      "name": "procedure_use",
+      "source": "cases/procedure_use.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           8           8           8           8   2.5000000000000000                        42\n"
+    },
+    {
+      "name": "module_alias",
+      "source": "cases/module_alias.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           8   3.0000000000000000     \n"
+    },
+    {
+      "name": "real128_sentinel",
+      "source": "cases/real128_sentinel.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "-1 4 T\n"
+    },
+    {
+      "name": "real128_alias_sentinel",
+      "source": "cases/real128_alias_sentinel.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "-1 T 8 2.0\n"
+    },
+    {
+      "name": "real128_used_kind",
+      "source": "cases/real128_used_kind.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "real128_used_literal",
+      "source": "cases/real128_used_literal.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "real128_used_real_conversion",
+      "source": "cases/real128_used_real_conversion.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "real128_used_constructor",
+      "source": "cases/real128_used_constructor.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_remote",
+      "source": "cases/invalid_remote.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_local_duplicate",
+      "source": "cases/invalid_local_duplicate.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "duplicate_same_import",
+      "source": "cases/duplicate_same_import.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "alias_name_conflict",
+      "source": "cases/alias_name_conflict.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "alias_immutable",
+      "source": "cases/alias_immutable.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "renamed_remote_unavailable",
+      "source": "cases/renamed_remote_unavailable.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "unsupported_int16",
+      "source": "cases/unsupported_int16.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": " -1\n",
+      "exact_stdout": true,
+      "oracle_note": "INT16=-1 is this bounded processor unavailable-kind sentinel, not INTEGER(kind=2) support. Primary GNU baseline remains compile-only; no GNU-equal output claim."
+    },
+    {
+      "name": "no_only",
+      "source": "cases/no_only.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "implicit_module_nature",
+      "source": "cases/implicit_module_nature.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": ""
+    },
+    {
+      "name": "nonintrinsic_rename",
+      "source": "cases/nonintrinsic_rename.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "missing_remote",
+      "source": "cases/missing_remote.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "empty_only",
+      "source": "cases/empty_only.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    }
+  ]
+}

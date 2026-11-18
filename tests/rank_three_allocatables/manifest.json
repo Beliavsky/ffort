@@ -1,0 +1,204 @@
+{
+  "cases": [
+    {
+      "name": "integer_lifecycle_bounds",
+      "source": "cases/integer_lifecycle_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F 0 T 12 3 -1 4 -3 -1 31 9 0 F",
+      "diagnostic": ""
+    },
+    {
+      "name": "real_kinds",
+      "source": "cases/real_kinds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5.0 0.75 3 F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "stat_double_and_deallocate",
+      "source": "cases/stat_double_and_deallocate.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T 4 7 8 20 0 F T F",
+      "diagnostic": ""
+    },
+    {
+      "name": "capacity_stat_atomic",
+      "source": "cases/capacity_stat_atomic.f90",
+      "category": "success",
+      "baseline": "skip",
+      "expected_stdout": "T F 131072 3 3 1 0 2 7 18",
+      "diagnostic": "",
+      "reason": "Synthetic aggregate policy: retain 131,072 elements and reject an additional 1,000,000-element block before a two-element recovery allocation. The 131072 output remains the retained object size."
+    },
+    {
+      "name": "third_extent_capacity_atomic",
+      "source": "cases/third_extent_capacity_atomic.f90",
+      "category": "success",
+      "baseline": "skip",
+      "expected_stdout": "T F 0 4 -5 24",
+      "diagnostic": ""
+    },
+    {
+      "name": "assignment_preserves_and_reallocates",
+      "source": "cases/assignment_preserves_and_reallocates.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "-2 4 7 14 1 2 3 3 -1 9 8",
+      "diagnostic": ""
+    },
+    {
+      "name": "expression_and_section_assignment",
+      "source": "cases/expression_and_section_assignment.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 1 1 65 41 17 8",
+      "diagnostic": ""
+    },
+    {
+      "name": "empty_shapes",
+      "source": "cases/empty_shapes.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T 0 2 2 0 -2 4 1 0 T 0 2 2 0 F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "function_results",
+      "source": "cases/function_results.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 3 1 9.0 T 0 2 1 0",
+      "diagnostic": ""
+    },
+    {
+      "name": "module_lifetime",
+      "source": "cases/module_lifetime.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F T 7 20 F",
+      "diagnostic": ""
+    },
+    {
+      "name": "descriptor_in_out_inout",
+      "source": "cases/descriptor_in_out_inout.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T -1 3 7 4 8 F T 2 -3 8 6 30 T -4 6 0 2 18",
+      "diagnostic": ""
+    },
+    {
+      "name": "optional_descriptors",
+      "source": "cases/optional_descriptors.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F T F T T 6 24",
+      "diagnostic": ""
+    },
+    {
+      "name": "out_deallocates",
+      "source": "cases/out_deallocates.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "character_fixed",
+      "source": "cases/character_fixed.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 4 7 abc abc abc z 3 2 -2 hel hel",
+      "diagnostic": ""
+    },
+    {
+      "name": "character_deferred",
+      "source": "cases/character_deferred.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 3 5 9 4 4 9 4 5 -3 2 hello hello",
+      "diagnostic": ""
+    },
+    {
+      "name": "character_function_result",
+      "source": "cases/character_function_result.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 2 1 test test",
+      "diagnostic": ""
+    },
+    {
+      "name": "character_optional_out",
+      "source": "cases/character_optional_out.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F T F T 2 2 -1 T F",
+      "diagnostic": ""
+    },
+    {
+      "name": "character_empty",
+      "source": "cases/character_empty.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T 3 0 2 3 0 T 3 0 2 3 0",
+      "diagnostic": ""
+    },
+    {
+      "name": "runtime_bounds_third",
+      "source": "cases/runtime_bounds_third.f90",
+      "category": "runtime",
+      "baseline": "runtime",
+      "expected_stdout": "",
+      "diagnostic": "bound"
+    },
+    {
+      "name": "reject_rank_four",
+      "source": "cases/reject_rank_four.f90",
+      "category": "invalid",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "Only rank-one, rank-two and rank-three ALLOCATABLE arrays are supported"
+    },
+    {
+      "name": "reject_logical_allocatable",
+      "source": "cases/reject_logical_allocatable.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": ""
+    },
+    {
+      "name": "reject_input_allocate",
+      "source": "cases/reject_input_allocate.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Allocation requires a writable ALLOCATABLE array"
+    },
+    {
+      "name": "reject_fixed_actual",
+      "source": "cases/reject_fixed_actual.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "ALLOCATABLE dummy requires an ALLOCATABLE actual"
+    },
+    {
+      "name": "synthetic_tensor_augmentation",
+      "source": "cases/synthetic_tensor_augmentation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "52.0 9.0 2.0 52.0 2.0 9.0 52.0 9.0 2.0 52.0 2.0 9.0 52.0 9.0 2.0 52.0 2.0 9.0 ",
+      "diagnostic": ""
+    },
+    {
+      "name": "character_capacity_stat_atomic",
+      "source": "cases/character_capacity_stat_atomic.f90",
+      "category": "success",
+      "baseline": "skip",
+      "expected_stdout": "T F 200 65536 7 14 0 T 100 65536",
+      "diagnostic": ""
+    }
+  ]
+}

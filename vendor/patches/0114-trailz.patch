@@ -1,0 +1,43 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -1051,7 +1051,7 @@
+         ! These elemental intrinsics preserve the conforming actual shape.
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+-        case ("iand", "ior", "ieor", "not", "btest", "leadz", "maskl", "maskr", "shiftr", "lge", "lgt", "lle", "llt", "acosd", "asind", "sind", "cosd", "rrspacing", "asin", "atan", "atan2", "acos", "dprod", "tand", "aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
++        case ("iand", "ior", "ieor", "not", "btest", "leadz", "trailz", "maskl", "maskr", "shiftr", "lge", "lgt", "lle", "llt", "acosd", "asind", "sind", "cosd", "rrspacing", "asin", "atan", "atan2", "acos", "dprod", "tand", "aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+               "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "isnan", "erfc_scaled", "erf", "bessel_j0", "bessel_j1", "bessel_jn", "bessel_y0", "bessel_y1", "bessel_yn", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+@@ -1077,7 +1077,7 @@
+         case ("shiftr")
+             call bit_i_argument_kind(arena,node,visiting,kind_value)
+             if(kind_value>0)call set_intrinsic_metadata(node,TINT,kind_value,result_rank)
+-        case ("leadz")
++        case ("leadz", "trailz")
+             call set_intrinsic_metadata(node,TINT,4,result_rank)
+         case ("btest")
+             call set_intrinsic_metadata(node,TLOGICAL,4,result_rank)
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 130
++        integer, parameter :: NUM_INTRINSICS = 131
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -261,6 +261,11 @@
+ 
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="trailz", return_type="integer", arg_types="integer", &
++            description="Trailing zero bits at the declared INTEGER width")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="maskl", return_type="integer", arg_types="integer", &
+             description="Bounded width-aware integer masks and logical shift")
+         i = i + 1

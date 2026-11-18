@@ -1,0 +1,6 @@
+program main
+implicit none
+integer,allocatable::i
+allocate(i)
+print *, (i,i=1,3)
+end program

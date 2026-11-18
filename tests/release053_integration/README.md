@@ -1,0 +1,11 @@
+# Independent 0.53 numeric-gather compositions
+
+Twenty-one original synthetic sources exercise numeric gather/control/format/association intersections. Fourteen execution comparisons use exact stdout bytes, including CHARACTER padding, records and signed zero; no float coercion/tolerance. Seven bounded failures use GNU compile-only references. These are not altered utility bodies. Every successful candidate check must be silent; rejection status, source path, line/column, named message and stdout are exact.
+
+The first sixteen sources are pinned in provenance.json and were not rewritten after observation. The bare ELEMENTAL actual in duplicate_all_elemental is valid GNU Fortran and its first GNU execution passed. It lies outside the new bare ordinary rank-one assumed-shape INTENT(IN) policy; its original is retained as a bounded source rejection, with a separately named parenthesized_elemental_values positive. This is not an implementation failure reclassified without scope review. The numeric owner and integrator confirmed that contract.
+
+Other retained boundaries: same-base bare IN/allocatable OUT association, host/USE access, bare explicit-shape dummy, vector scatter, ordinary-function external I/O and an invalid index with pending stdout. Unsafe GNU programs are never executed. Successful parenthesized same-base snapshots remain distinct from bare actuals.
+
+Use run_tests.py with a pinned candidate SHA/version and GNU path. test_runner.py checks strict diagnostics/record bytes, source identity and generator replay. First GNU/candidate outcomes are preserved outside the maintained suite; candidate results here do not establish full-release certification.
+
+Four separately named additions mix TRAILZ with portable INT32/INT64 numeric gathers, bare/parenthesized FUNCTION actuals, DO WHILE cache refresh and staged element WRITE, plus empty-gather/default-result-kind behavior. They do not compare host INTEGER_KINDS with the interpreter processor model. The original seventeen sources and contracts remain unchanged; all21 strict contracts and35 harness methods pass on the combined numeric/TRAILZ preview162874b3. INQUIRE is not included. This is focused preview evidence, not full release certification.

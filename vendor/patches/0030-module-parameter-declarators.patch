@@ -1,0 +1,35 @@
+diff --git a/vendor/fortfront/src/parser/declarations/parser_module_structures.f90 b/vendor/fortfront/src/parser/declarations/parser_module_structures.f90
+index 1377f89..b4c7ec5 100644
+--- a/vendor/fortfront/src/parser/declarations/parser_module_structures.f90
++++ b/vendor/fortfront/src/parser/declarations/parser_module_structures.f90
+@@ -10,7 +10,7 @@ module parser_module_structures_module
+     use ast_factory_procedures, only: push_module_structured
+     use ast_factory_statements, only: push_namelist_statement, push_visibility_statement
+     use parser_namelist_shared_module, only: consume_namelist_group, append_name
+-    use parser_declarations, only: parse_declaration, parse_derived_type_def, &
++    use parser_declarations, only: parse_declaration, parse_multi_declaration, parse_derived_type_def, &
+         parser_is_at_type_definition
+     use parser_parameter_statements_module, only: parse_parameter_statement
+     use parser_procedure_definitions_module, only: parse_function_definition, &
+@@ -393,6 +393,21 @@ contains
+             end if
+ 
+             if (.not. in_contains_section) then
++                ! Preserve every initialized declarator in a module statement.
++                ! The single-declaration entry point stops after the first
++                ! initializer, leaving later PARAMETERs as stray assignments.
++                if (token%kind == TK_KEYWORD) then
++                    select case (trim(lowered))
++                    case ("integer", "real", "logical", "character", "complex")
++                        block
++                            integer, allocatable :: entity_indices(:)
++                            entity_indices = parse_multi_declaration(parser, arena)
++                            if (size(entity_indices) > 0) declaration_indices = &
++                                [declaration_indices, entity_indices]
++                        end block
++                        cycle
++                    end select
++                end if
+                 if (token%kind == TK_KEYWORD) then
+                     if (.not. module_declaration_keyword(lowered) .and. &
+                         keyword_should_parse_as_identifier(token, parser)) then

@@ -1,0 +1,1066 @@
+{
+  "gnu_extension": "ISNAN; -fall-intrinsics explicitly enabled",
+  "strict_standard_probe": {
+    "status": 1,
+    "stdout": "",
+    "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/finite_scalars.f90:4:8:\n\n    4 | print *,isnan(0.0),isnan(-0.0),isnan(0d0),isnan(-1d20),kind(isnan(1d0))\n      |        1\nError: Function \u2018isnan\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/finite_scalars.f90:4:19:\n\n    4 | print *,isnan(0.0),isnan(-0.0),isnan(0d0),isnan(-1d20),kind(isnan(1d0))\n      |                   1\nError: Function \u2018isnan\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/finite_scalars.f90:4:31:\n\n    4 | print *,isnan(0.0),isnan(-0.0),isnan(0d0),isnan(-1d20),kind(isnan(1d0))\n      |                               1\nError: Function \u2018isnan\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/finite_scalars.f90:4:42:\n\n    4 | print *,isnan(0.0),isnan(-0.0),isnan(0d0),isnan(-1d20),kind(isnan(1d0))\n      |                                          1\nError: Function \u2018isnan\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/finite_scalars.f90:4:60:\n\n    4 | print *,isnan(0.0),isnan(-0.0),isnan(0d0),isnan(-1d20),kind(isnan(1d0))\n      |                                                            1\nError: Function \u2018isnan\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/finite_scalars.f90:4:14-37:\n\n    4 | print *,isnan(0.0),isnan(-0.0),isnan(0d0),isnan(-1d20),kind(isnan(1d0))\n      |              2                      1\nError: Type mismatch between actual argument at (1) and actual argument at (2) (REAL(8)/REAL(4)).\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/finite_scalars.f90:4:14-48:\n\n    4 | print *,isnan(0.0),isnan(-0.0),isnan(0d0),isnan(-1d20),kind(isnan(1d0))\n      |              2                                 1\nError: Type mismatch between actual argument at (1) and actual argument at (2) (REAL(8)/REAL(4)).\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/finite_scalars.f90:4:14-66:\n\n    4 | print *,isnan(0.0),isnan(-0.0),isnan(0d0),isnan(-1d20),kind(isnan(1d0))\n      |              2                                                   1\nError: Type mismatch between actual argument at (1) and actual argument at (2) (REAL(8)/REAL(4)).\n"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "total": 45,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "finite_scalars",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " F F F F 4\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " F F F F           4\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "finite_extremes",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " F F F F F\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " F F F F F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "keyword_x",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " F F\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " F F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "rank1",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " F F F 0\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " F F F           0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "rank2",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 3 2 F F F F F F\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           3           2 F F F F F F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "rank3",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 2 1 2 F F F F\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           2           1           2 F F F F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "sections",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " F F F F F F F\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " F F F F F F F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "empty_arrays",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 0 0 0 F\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           0           0           0 F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "gathered_rows",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " F F F F\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " F F F F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "constant_scalar",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " F\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "constant_array",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " F F\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " F F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "kind_undefined",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 4 4\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           4           4\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "kind_unallocated",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 4\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           4\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "where_masked",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " T F F\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " T F F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "forall_masked",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " T F F\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/forall_masked.f90:8:46:\n\n    8 | forall(i=1:3,x(i)>=0d0) y(i)=isnan(sqrt(x(i)))\n      |                                              1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " T F F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "array_function",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " F F\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " F F\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "user_name_shadow",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " T\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " T\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "array_name_shadow",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 2\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           2\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "generic_name_shadow",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " T\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " T\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "negative_sqrt",
+      "expected": "runtime",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/negative_sqrt.f90:5:15: SQRT argument must be nonnegative\n"
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null
+    },
+    {
+      "name": "zero_log",
+      "expected": "runtime",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/zero_log.f90:5:15: LOG argument must be positive\n"
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null
+    },
+    {
+      "name": "divide_zero",
+      "expected": "runtime",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/divide_zero.f90:5:18: real division by zero\n"
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null
+    },
+    {
+      "name": "overflow_exp",
+      "expected": "runtime",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/overflow_exp.f90:5:15: non-finite real result\n"
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null
+    },
+    {
+      "name": "undefined_scalar",
+      "expected": "runtime",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/undefined_scalar.f90:5:15: read of uninitialized variable x\n"
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null
+    },
+    {
+      "name": "undefined_array",
+      "expected": "runtime",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/undefined_array.f90:5:15: read of uninitialized array element x\n"
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null
+    },
+    {
+      "name": "unallocated_array",
+      "expected": "runtime",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/unallocated_array.f90:5:15: reference to unallocated array x\n"
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null
+    },
+    {
+      "name": "reject_integer",
+      "expected": "reject",
+      "passed": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_integer.f90:4:17: ISNAN requires REAL kind 4 or 8 (GNU extension)\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_integer.f90:4:17: ISNAN requires REAL kind 4 or 8 (GNU extension)\n"
+      },
+      "compile": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_integer.f90:4:14:\n\n    4 | print *,isnan(1)\n      |              1\nError: \u2018x\u2019 argument of \u2018isnan\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "oracle": null
+    },
+    {
+      "name": "reject_logical",
+      "expected": "reject",
+      "passed": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_logical.f90:4:22: ISNAN requires REAL kind 4 or 8 (GNU extension)\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_logical.f90:4:22: ISNAN requires REAL kind 4 or 8 (GNU extension)\n"
+      },
+      "compile": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_logical.f90:4:14:\n\n    4 | print *,isnan(.true.)\n      |              1\nError: \u2018x\u2019 argument of \u2018isnan\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "oracle": null
+    },
+    {
+      "name": "reject_character",
+      "expected": "reject",
+      "passed": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_character.f90:4:19: ISNAN requires REAL kind 4 or 8 (GNU extension)\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_character.f90:4:19: ISNAN requires REAL kind 4 or 8 (GNU extension)\n"
+      },
+      "compile": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_character.f90:4:14:\n\n    4 | print *,isnan('x')\n      |              1\nError: \u2018x\u2019 argument of \u2018isnan\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "oracle": null
+    },
+    {
+      "name": "reject_complex",
+      "expected": "reject",
+      "passed": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_complex.f90:4:19: Expected ), found ,\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_complex.f90:4:19: Expected ), found ,\n"
+      },
+      "compile": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_complex.f90:4:14:\n\n    4 | print *,isnan((1.0,0.0))\n      |              1\nError: \u2018x\u2019 argument of \u2018isnan\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "oracle": null
+    },
+    {
+      "name": "reject_real16",
+      "expected": "reject",
+      "passed": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_real16.f90:4:15: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_real16.f90:4:15: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null
+    },
+    {
+      "name": "reject_empty",
+      "expected": "reject",
+      "passed": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_empty.f90:4:16: ISNAN requires one REAL X argument (GNU extension)\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_empty.f90:4:16: ISNAN requires one REAL X argument (GNU extension)\n"
+      },
+      "compile": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_empty.f90:4:8:\n\n    4 | print *,isnan()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018isnan\u2019 at (1)\n"
+      },
+      "oracle": null
+    },
+    {
+      "name": "reject_excess",
+      "expected": "reject",
+      "passed": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_excess.f90:4:21: ISNAN requires one REAL X argument (GNU extension)\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_excess.f90:4:21: ISNAN requires one REAL X argument (GNU extension)\n"
+      },
+      "compile": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_excess.f90:4:8:\n\n    4 | print *,isnan(1.,2.)\n      |        1\nError: Too many arguments in call to \u2018isnan\u2019 at (1)\n"
+      },
+      "oracle": null
+    },
+    {
+      "name": "reject_bad_keyword",
+      "expected": "reject",
+      "passed": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_bad_keyword.f90:4:20: Unknown keyword or excess actual argument: y\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_bad_keyword.f90:4:20: Unknown keyword or excess actual argument: y\n"
+      },
+      "compile": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_bad_keyword.f90:4:8:\n\n    4 | print *,isnan(y=1.)\n      |        1\nError: Cannot find keyword named \u2018y\u2019 in call to \u2018isnan\u2019 at (1)\n"
+      },
+      "oracle": null
+    },
+    {
+      "name": "reject_kind_keyword",
+      "expected": "reject",
+      "passed": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_kind_keyword.f90:4:27: Unknown keyword or excess actual argument: kind\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_kind_keyword.f90:4:27: Unknown keyword or excess actual argument: kind\n"
+      },
+      "compile": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_kind_keyword.f90:4:8:\n\n    4 | print *,isnan(x=1.,kind=4)\n      |        1\nError: Cannot find keyword named \u2018kind\u2019 in call to \u2018isnan\u2019 at (1)\n"
+      },
+      "oracle": null
+    },
+    {
+      "name": "reject_duplicate_keyword",
+      "expected": "reject",
+      "passed": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_duplicate_keyword.f90:4:25: Repeated actual argument for x\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_duplicate_keyword.f90:4:25: Repeated actual argument for x\n"
+      },
+      "compile": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_duplicate_keyword.f90:4:24:\n\n    4 | print *,isnan(x=1.,x=2.)\n      |                        1\nError: Keyword \u2018x\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "oracle": null
+    },
+    {
+      "name": "reject_positional_after_keyword",
+      "expected": "reject",
+      "passed": true,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_positional_after_keyword.f90:4:20: Positional argument cannot follow a keyword argument\n"
+      },
+      "actual": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_positional_after_keyword.f90:4:20: Positional argument cannot follow a keyword argument\n"
+      },
+      "compile": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/isnan_intrinsic/reject_positional_after_keyword.f90:4:20:\n\n    4 | print *,isnan(x=1.,2.)\n      |                    1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "oracle": null
+    },
+    {
+      "name": "original_sort_mixed",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " -2.0000000000000000 -2.0000000000000000 0.0000000000000000 1.0000000000000000 4.0000000000000000 4.0000000000000000 4.0000000000000000 7.0000000000000000\n 7 2 4 6 5 1 8 3\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "  -2.0000000000000000       -2.0000000000000000        0.0000000000000000        1.0000000000000000        4.0000000000000000        4.0000000000000000        4.0000000000000000        7.0000000000000000     \n           7           2           4           6           5           1           8           3\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "original_sort_single",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 7.0000000000000000\n 1\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   7.0000000000000000     \n           1\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "original_sort_empty",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": "\n\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "\n\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "original_sort_ordered",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 0.0000000000000000 1.0000000000000000 2.0000000000000000 3.0000000000000000 4.0000000000000000 5.0000000000000000 6.0000000000000000 7.0000000000000000 8.0000000000000000 9.0000000000000000 10.000000000000000 11.000000000000000 12.000000000000000 13.000000000000000 14.000000000000000\n 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   0.0000000000000000        1.0000000000000000        2.0000000000000000        3.0000000000000000        4.0000000000000000        5.0000000000000000        6.0000000000000000        7.0000000000000000        8.0000000000000000        9.0000000000000000        10.000000000000000        11.000000000000000        12.000000000000000        13.000000000000000        14.000000000000000     \n           1           2           3           4           5           6           7           8           9          10          11          12          13          14          15\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "original_sort_reverse",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 0.0000000000000000 1.0000000000000000 2.0000000000000000 3.0000000000000000 4.0000000000000000 5.0000000000000000 6.0000000000000000 7.0000000000000000 8.0000000000000000 9.0000000000000000 10.000000000000000 11.000000000000000 12.000000000000000 13.000000000000000 14.000000000000000 15.000000000000000 16.000000000000000 17.000000000000000 18.000000000000000\n 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   0.0000000000000000        1.0000000000000000        2.0000000000000000        3.0000000000000000        4.0000000000000000        5.0000000000000000        6.0000000000000000        7.0000000000000000        8.0000000000000000        9.0000000000000000        10.000000000000000        11.000000000000000        12.000000000000000        13.000000000000000        14.000000000000000        15.000000000000000        16.000000000000000        17.000000000000000        18.000000000000000     \n          19          18          17          16          15          14          13          12          11          10           9           8           7           6           5           4           3           2           1\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "original_sort_duplicates",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000 3.0000000000000000\n 9 10 11 12 13 14 15 16 17 1 2 3 4 5 6 7 8\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000        3.0000000000000000     \n           9          10          11          12          13          14          15          16          17           1           2           3           4           5           6           7           8\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "original_sort_signed",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " -10.000000000000000 -6.0000000000000000 -5.0000000000000000 -4.0000000000000000 -3.0000000000000000 -2.0000000000000000 -1.0000000000000000 0.0000000000000000 4.0000000000000000 5.0000000000000000 6.0000000000000000 7.0000000000000000 8.0000000000000000 9.0000000000000000\n 2 14 12 10 8 6 4 1 13 3 11 9 7 5\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "  -10.000000000000000       -6.0000000000000000       -5.0000000000000000       -4.0000000000000000       -3.0000000000000000       -2.0000000000000000       -1.0000000000000000        0.0000000000000000        4.0000000000000000        5.0000000000000000        6.0000000000000000        7.0000000000000000        8.0000000000000000        9.0000000000000000     \n           2          14          12          10           8           6           4           1          13           3          11           9           7           5\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "original_sort_partition",
+      "expected": "run",
+      "passed": true,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": " -20.000000000000000 -19.000000000000000 -17.000000000000000 -15.000000000000000 -14.000000000000000 -13.000000000000000 -12.000000000000000 -11.000000000000000 -10.000000000000000 -9.0000000000000000 -8.0000000000000000 -7.0000000000000000 -6.0000000000000000 -5.0000000000000000 -4.0000000000000000 -3.0000000000000000 -2.0000000000000000 0.0000000000000000 2.0000000000000000 3.0000000000000000 4.0000000000000000 5.0000000000000000 6.0000000000000000 7.0000000000000000 8.0000000000000000 9.0000000000000000 10.000000000000000 11.000000000000000 12.000000000000000 13.000000000000000 14.000000000000000 15.000000000000000 17.000000000000000 19.000000000000000 20.000000000000000 21.000000000000000 22.000000000000000 23.000000000000000 24.000000000000000 25.000000000000000 26.000000000000000 27.000000000000000 28.000000000000000 29.000000000000000 30.000000000000000 31.000000000000000 32.000000000000000\n 1 26 23 20 45 17 42 14 39 11 36 8 33 5 30 2 27 24 21 46 18 43 15 40 12 37 9 34 6 31 3 28 25 22 47 19 44 16 41 13 38 10 35 7 32 4 29\n",
+        "stderr": ""
+      },
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "  -20.000000000000000       -19.000000000000000       -17.000000000000000       -15.000000000000000       -14.000000000000000       -13.000000000000000       -12.000000000000000       -11.000000000000000       -10.000000000000000       -9.0000000000000000       -8.0000000000000000       -7.0000000000000000       -6.0000000000000000       -5.0000000000000000       -4.0000000000000000       -3.0000000000000000       -2.0000000000000000        0.0000000000000000        2.0000000000000000        3.0000000000000000        4.0000000000000000        5.0000000000000000        6.0000000000000000        7.0000000000000000        8.0000000000000000        9.0000000000000000        10.000000000000000        11.000000000000000        12.000000000000000        13.000000000000000        14.000000000000000        15.000000000000000        17.000000000000000        19.000000000000000        20.000000000000000        21.000000000000000        22.000000000000000        23.000000000000000        24.000000000000000        25.000000000000000        26.000000000000000        27.000000000000000        28.000000000000000        29.000000000000000        30.000000000000000        31.000000000000000        32.000000000000000     \n           1          26          23          20          45          17          42          14          39          11          36           8          33           5          30           2          27          24          21          46          18          43          15          40          12          37           9          34           6          31           3          28          25          22          47          19          44          16          41          13          38          10          35           7          32           4          29\n",
+        "stderr": ""
+      }
+    }
+  ]
+}

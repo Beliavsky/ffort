@@ -1,0 +1,963 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 32,
+    "failed": 0,
+    "candidate_checked": 32,
+    "gnu_checked": 31,
+    "gnu_skipped": 1,
+    "gnu_executed": 18,
+    "gnu_compile_only": 3,
+    "gnu_compile_rejections": 10,
+    "gnu_known_defects": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "ranks_and_kinds",
+        "source": "cases/ranks_and_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 2 3 2 3 4 4 8 0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           2           3           2           3           4\n           4           8\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 2 3 2 3 4\n 4 8\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "source_types",
+        "source": "cases/source_types.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 2 2 1 3 4 2 3 0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           2           2           1           3           4           2           3\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 2 2 1 3 4 2 3\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "sections",
+        "source": "cases/sections.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 3 2 5 6 4 0 5 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           3           2\n           5           6           4\n           0           5           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 3 2\n 5 6 4\n 0 5 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_dimensions",
+        "source": "cases/empty_dimensions.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 2 0 0 3 2 3 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           2           0           0           3           2\n           3           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 2 0 0 3 2\n 3 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "constant_shapes",
+        "source": "cases/constant_shapes.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 4 3 4 3 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           4           3                    4                    3           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 4 3 4 3 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "expression_shapes",
+        "source": "cases/expression_shapes.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 2 3 3 2 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           2           3\n           3           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 2 3\n 3 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keyword_order",
+        "source": "cases/keyword_order.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 8 2 3 2 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    2                    3           8\n                    2                    3           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 8\n 2 3 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadowed_name",
+        "source": "cases/shadowed_name.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_dummy",
+        "source": "cases/dynamic_dummy.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 4 1 2 2 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           4           1           2           2           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 4 1 2 2 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "allocated_shape",
+        "source": "cases/allocated_shape.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 3 0 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           3\n           0           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 3\n 0 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_values_inquiry",
+        "source": "cases/undefined_values_inquiry.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "2 3 4 2 5 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 4 2 5 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_source",
+        "source": "cases/unallocated_source.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/unallocated_source.f90:4:15: reference to unallocated array a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_source",
+        "source": "cases/missing_source.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/missing_source.f90:6:8:\n\n    6 | print *,shape()\n      |        1\nError: Missing actual argument \u2018source\u2019 in call to \u2018shape\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/missing_source.f90:6:16: SHAPE requires SOURCE and optional KIND\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/missing_source.f90:6:16: SHAPE requires SOURCE and optional KIND\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_source",
+        "source": "cases/duplicate_source.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/duplicate_source.f90:6:8:\n\n    6 | print *,shape(a,source=a)\n      |        1\nError: Argument \u2018source\u2019 appears twice in call to \u2018shape\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/duplicate_source.f90:6:26: Repeated actual argument for source\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/duplicate_source.f90:6:26: Repeated actual argument for source\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unknown_keyword",
+        "source": "cases/unknown_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/unknown_keyword.f90:6:8:\n\n    6 | print *,shape(a,dim=1)\n      |        1\nError: Cannot find keyword named \u2018dim\u2019 in call to \u2018shape\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/unknown_keyword.f90:6:23: Unknown keyword or excess actual argument: dim\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/unknown_keyword.f90:6:23: Unknown keyword or excess actual argument: dim\n"
+      }
+    },
+    {
+      "case": {
+        "name": "too_many_arguments",
+        "source": "cases/too_many_arguments.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/too_many_arguments.f90:6:8:\n\n    6 | print *,shape(a,4,4)\n      |        1\nError: Too many arguments in call to \u2018shape\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/too_many_arguments.f90:6:21: SHAPE requires SOURCE and optional KIND\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/too_many_arguments.f90:6:21: SHAPE requires SOURCE and optional KIND\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bad_kind_real",
+        "source": "cases/bad_kind_real.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/bad_kind_real.f90:6:16:\n\n    6 | print *,shape(a,4.0)\n      |                1\nError: \u2018kind\u2019 argument of \u2018shape\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/bad_kind_real.f90:6:21: SHAPE KIND must be scalar INTEGER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/bad_kind_real.f90:6:21: SHAPE KIND must be scalar INTEGER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bad_kind_logical",
+        "source": "cases/bad_kind_logical.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/bad_kind_logical.f90:6:16:\n\n    6 | print *,shape(a,.true.)\n      |                1\nError: \u2018kind\u2019 argument of \u2018shape\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/bad_kind_logical.f90:6:24: SHAPE KIND must be scalar INTEGER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/bad_kind_logical.f90:6:24: SHAPE KIND must be scalar INTEGER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bad_kind_array",
+        "source": "cases/bad_kind_array.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/bad_kind_array.f90:6:16:\n\n    6 | print *,shape(a,[4])\n      |                1\nError: \u2018kind\u2019 argument of \u2018shape\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/bad_kind_array.f90:6:21: SHAPE KIND must be scalar INTEGER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/bad_kind_array.f90:6:21: SHAPE KIND must be scalar INTEGER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_kind",
+        "source": "cases/dynamic_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/dynamic_kind.f90:6:16:\n\n    6 | print *,shape(a,k)\n      |                1\nError: Parameter \u2018k\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/dynamic_kind.f90:6:16:\n\n    6 | print *,shape(a,k)\n      |                1\nError: \u2018kind\u2019 argument of \u2018shape\u2019 intrinsic at (1) must be a constant\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/dynamic_kind.f90:6:19: SHAPE KIND must be constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/dynamic_kind.f90:6:19: SHAPE KIND must be constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "positional_after_keyword",
+        "source": "cases/positional_after_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/positional_after_keyword.f90:6:24:\n\n    6 | print *,shape(source=a,4)\n      |                        1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/positional_after_keyword.f90:6:24: Positional argument cannot follow a keyword argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/positional_after_keyword.f90:6:24: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unsupported_kind",
+        "source": "cases/unsupported_kind.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/unsupported_kind.f90:5:25: SHAPE supports INTEGER kinds 4 and 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/unsupported_kind.f90:5:25: SHAPE supports INTEGER kinds 4 and 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nonconstant_parameter_source",
+        "source": "cases/nonconstant_parameter_source.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/nonconstant_parameter_source.f90:4:30:\n\n    4 | integer,parameter::s(1)=shape(a)\n      |                              1\nError: Deferred array \u2018a\u2019 at (1) is not permitted in an initialization expression\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/nonconstant_parameter_source.f90:5:9:\n\n    5 | print *,s\n      |         1\nError: Symbol \u2018s\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/nonconstant_parameter_source.f90:4:33: Declaration initializers must be constant expressions\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/shape_intrinsic/cases/nonconstant_parameter_source.f90:4:33: Declaration initializers must be constant expressions\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_conform",
+        "source": "cases/original_conform.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T F T F T T F T F T"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F\n T F T\n T F\n T F T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T F\n T F T\n T F\n T F T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shape_shadow_procedure",
+        "source": "cases/shape_shadow_procedure.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shape_shadow_generic",
+        "source": "cases/shape_shadow_generic.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5 7"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shape_shadow_scalar",
+        "source": "cases/shape_shadow_scalar.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shape_shadow_result",
+        "source": "cases/shape_shadow_result.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "10"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          10\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 10\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "unevaluated_source_arithmetic",
+        "source": "cases/unevaluated_source_arithmetic.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "2 3 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "constant_variable_kind",
+        "source": "cases/constant_variable_kind.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 2 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    3                    2           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 2 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_nested_shape",
+        "source": "cases/kind_nested_shape.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 4 2 3 4 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           4\n                    2                    3                    4           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 4\n 2 3 4 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "large_empty_dimensions",
+        "source": "cases/large_empty_dimensions.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 2147483647 2147483647 2147483647 0 2147483647 2147483647 2147483647 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0  2147483647  2147483647           2147483647                    0           2147483647  2147483647  2147483647           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 2147483647 2147483647 2147483647 0 2147483647 2147483647 2147483647 0\n",
+        "err": ""
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:31:09.347583+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "limits": "Bounded SHAPE only. Undefined-value inquiry cases are GNU compile-only; unallocated sources are never compiled or run by GNU.",
+  "manifest_sha256": "130ecd66698c96dd3f4ce7857a803d381dfdbbfa298f4ecff84ccb1541750e9d",
+  "source_sha256": {
+    "cases/ranks_and_kinds.f90": "8f2534fafd2075d281b80093b5ef37e5bf470d742309a7322089bb50ff39cbc2",
+    "cases/source_types.f90": "f0832c4eeba9ded059aa7172fa46896c1a7f23d49a1846b06783306bccc44623",
+    "cases/sections.f90": "e4d57bea9a4ea917ac7ab605f879747f4abdaa7bf2dedacfb886d5da27d0096f",
+    "cases/empty_dimensions.f90": "a0f1f5f3c06272c6e5b1f6c6d743b7ed8cef6279b5fcb720306a7ebcf35748ef",
+    "cases/constant_shapes.f90": "be1f53a9617366beba9a683fcfa268493519f801d3e212510b3671ba222b1710",
+    "cases/expression_shapes.f90": "6317b2d2d8172a0b789209f2c33b435158655e08505dc5b6be729512187e38af",
+    "cases/keyword_order.f90": "ca9519f3a8d7335d38dd98a64bc2391d8ade0cc42ba5fa0bf7f13bfccd28a3b9",
+    "cases/shadowed_name.f90": "bf3a9097792d1cce0e83ec4729e7c8d2181cbcfdddbfe2a90bb08226be04c218",
+    "cases/dynamic_dummy.f90": "165e6e767ff8205baea8952471e251d33ce22b61fbddfbde856567cda67f0e92",
+    "cases/allocated_shape.f90": "a49924899e0635feb6c2ba064322e6ca97f56ea9ed37adef4ca58b9e322bc93e",
+    "cases/undefined_values_inquiry.f90": "7d067aea228d142bb059841b8be97649e65aa5e4e33a7ae427ffe2249b4ed1ad",
+    "cases/unallocated_source.f90": "5521024764a845c7373bab32a85297e747c6eb7da22ad7a7d9457148a20cd9ff",
+    "cases/missing_source.f90": "ad020edab05c43fbbcd0ec119c525fd7352b62460c76a036052a3bc13f71d28e",
+    "cases/duplicate_source.f90": "346d71dfa3b6df908d5c4dac3de8f205a48c20e8c015aeea8e838d79c0184220",
+    "cases/unknown_keyword.f90": "18273f54a4b5bcc5d9b06dbdcffd65ba37c3a227dc4add478553aa0bc88dd2c4",
+    "cases/too_many_arguments.f90": "04c6fea5e3e82108bb2297059105757cb806e9a5bb1c36e550459267119f0437",
+    "cases/bad_kind_real.f90": "eec31f9e0b105fd372959a0789303ad93698fef6b135e71b90ecb62bcbe9ccd8",
+    "cases/bad_kind_logical.f90": "2f99865d108108278f9cc3d37396284cd069334601c39e0b747c3f0f087be6ad",
+    "cases/bad_kind_array.f90": "1508667db593f836858381e42f711244627f81342b067d6cc7788a18404ee0f3",
+    "cases/dynamic_kind.f90": "ab8e410bd10fe0253406ad85152de117cd59cd7e92d388b5868128c4b6955d7f",
+    "cases/positional_after_keyword.f90": "920dc839ea169ca276b5929af4437485ef717e377d15732da56ecd25104a2662",
+    "cases/unsupported_kind.f90": "b8e96ef05de73040125be9524d5b97785179192b0470c2b1dd7a6ecd225207e8",
+    "cases/nonconstant_parameter_source.f90": "aab98eda4a5e9d6349106768748d099dd7ae69cdb531d057183234d19151d259",
+    "cases/original_conform.f90": "16d653c244f3362ec21a3dad01314c21f7c494f029e518a4a4bb51b9999e5a4a",
+    "cases/shape_shadow_procedure.f90": "b523ca08313134dd96f2f6090604ef9c32bf9cef0a7a1bc164732789719d94a7",
+    "cases/shape_shadow_generic.f90": "08afbfa29cce544f49d3de0d31b6efaa034e23953b479ce06fdaa8bdece8957a",
+    "cases/shape_shadow_scalar.f90": "3af4af7be229909d30a90d183509d7590c6560fbed1fa69b306761a61303dec4",
+    "cases/shape_shadow_result.f90": "5af26b1347a72d1207fdb63583fafd72912cfd9b115f6f98a7a3fde9c58c1d8a",
+    "cases/unevaluated_source_arithmetic.f90": "ea279e07194295d854ec67a5fb13ac82b25124cf10061cbaafeba6a5453baa3c",
+    "cases/constant_variable_kind.f90": "6cdc4354c024d6d44f829fcfaabcd9beb1aaf903753c0304694e0b81780e14d0",
+    "cases/kind_nested_shape.f90": "224536397b4344bb22cb1817ad029de40417fe381b3b6d7d2b0bea54693a0733",
+    "cases/large_empty_dimensions.f90": "1a02e81e33d840767fee8e5f43f60ef42c9fc85883445f5714102b2ca229626e"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

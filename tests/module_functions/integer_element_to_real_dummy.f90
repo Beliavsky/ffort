@@ -1,0 +1,17 @@
+module m
+
+contains
+function twice(x) result(y)
+real, intent(in) :: x
+real :: y
+y=2*x
+end function twice
+end module m
+program main
+use m
+implicit none
+integer :: a(2)
+a=2
+print *, 123
+print *, twice(a(1))
+end program main

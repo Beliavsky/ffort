@@ -1,0 +1,23 @@
+--- a/src/parser/expressions/parser_expression_arrays.f90
++++ b/src/parser/expressions/parser_expression_arrays.f90
+@@ -191,6 +191,20 @@
+                         current = parser%peek()
+                     end if
+                 end block
++            end if
++
++            ! A type-spec permits an empty legacy constructor as well as [].
++            ! Preserve its element type and consume the complete closing /).
++            if (has_type_spec .and. current%text == "/") then
++                current = parser%consume()
++                current = parser%peek()
++                if (current%text /= ")") return
++                current = parser%consume()
++                allocate (element_indices(0))
++                expr_index = push_array_literal(arena, element_indices, &
++                    paren_token%line, paren_token%column, &
++                    syntax_style="legacy", type_spec=type_spec_text)
++                return
+             end if
+ 
+             if (current%text == "(" .and. .not. is_legacy_array_item(parser)) then

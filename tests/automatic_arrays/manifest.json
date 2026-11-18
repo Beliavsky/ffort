@@ -1,0 +1,291 @@
+{
+  "cases": [
+    {
+      "name": "scalar_frozen_bounds",
+      "source": "cases/scalar_frozen_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 -2 0 6 12\n7\n0 1 0 0 3"
+    },
+    {
+      "name": "matrix_shapes",
+      "source": "cases/matrix_shapes.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 3 18 12 0 -1\n2 0 0 0 1 -1\n0 3 0 0 0 1"
+    },
+    {
+      "name": "integer_kinds",
+      "source": "cases/integer_kinds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "16 10 T"
+    },
+    {
+      "name": "arithmetic_bounds",
+      "source": "cases/arithmetic_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 6 3 32 5"
+    },
+    {
+      "name": "parameter_mixed_dimension",
+      "source": "cases/parameter_mixed_dimension.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 3 12 18"
+    },
+    {
+      "name": "out_array_inquiry",
+      "source": "cases/out_array_inquiry.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "21\n7 7 7"
+    },
+    {
+      "name": "dummy_lower_bound_inquiry",
+      "source": "cases/dummy_lower_bound_inquiry.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 -3 0 8"
+    },
+    {
+      "name": "character_local",
+      "source": "cases/character_local.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 catcatcat"
+    },
+    {
+      "name": "pure_local",
+      "source": "cases/pure_local.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "20"
+    },
+    {
+      "name": "nested_local_calls",
+      "source": "cases/nested_local_calls.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 8\n3 3"
+    },
+    {
+      "name": "negative_extent",
+      "source": "cases/negative_extent.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0 0 0 0 0"
+    },
+    {
+      "name": "large_zero_extent",
+      "source": "cases/large_zero_extent.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 2147483647 0"
+    },
+    {
+      "name": "exact_limit",
+      "source": "cases/exact_limit.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "131072 131072"
+    },
+    {
+      "name": "full_after_partial",
+      "source": "cases/full_after_partial.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "10 1 0"
+    },
+    {
+      "name": "utility_true_positions",
+      "source": "cases/utility_true_positions.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 1 3 4\n0\n0"
+    },
+    {
+      "name": "cap_exceeded",
+      "source": "cases/cap_exceeded.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "total array element limit"
+    },
+    {
+      "name": "aggregate_cap",
+      "source": "cases/aggregate_cap.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "total array element limit"
+    },
+    {
+      "name": "matrix_product_cap",
+      "source": "cases/matrix_product_cap.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "total array element limit"
+    },
+    {
+      "name": "extent_range",
+      "source": "cases/extent_range.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "dimension extent"
+    },
+    {
+      "name": "bound_divzero",
+      "source": "cases/bound_divzero.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "division by zero"
+    },
+    {
+      "name": "bound_arithmetic_overflow",
+      "source": "cases/bound_arithmetic_overflow.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "invalid_dim",
+      "source": "cases/invalid_dim.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "DIM outside array rank"
+    },
+    {
+      "name": "wide_bound_range",
+      "source": "cases/wide_bound_range.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "undefined_local",
+      "source": "cases/undefined_local.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "reallocated_definition_flags",
+      "source": "cases/reallocated_definition_flags.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "optional_bound",
+      "source": "cases/optional_bound.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported automatic array bound"
+    },
+    {
+      "name": "out_scalar_bound",
+      "source": "cases/out_scalar_bound.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported automatic array bound"
+    },
+    {
+      "name": "local_scalar_bound",
+      "source": "cases/local_scalar_bound.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported automatic array bound"
+    },
+    {
+      "name": "main_variable_bound",
+      "source": "cases/main_variable_bound.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Array bounds must be constant"
+    },
+    {
+      "name": "real_bound",
+      "source": "cases/real_bound.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "scalar INTEGER"
+    },
+    {
+      "name": "array_element_bound",
+      "source": "cases/array_element_bound.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported automatic array bound"
+    },
+    {
+      "name": "local_array_inquiry",
+      "source": "cases/local_array_inquiry.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported automatic array bound"
+    },
+    {
+      "name": "automatic_initializer",
+      "source": "cases/automatic_initializer.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "initialized intrinsic scalar"
+    },
+    {
+      "name": "automatic_parameter",
+      "source": "cases/automatic_parameter.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Array bounds must be constant"
+    },
+    {
+      "name": "rank_three",
+      "source": "cases/rank_three.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "",
+      "note": "Rank-three arrays are supported by the bounded rank-three milestone; original source is unchanged."
+    },
+    {
+      "name": "elemental_local",
+      "source": "cases/elemental_local.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 0 0 4"
+    },
+    {
+      "name": "wide_intermediate",
+      "source": "cases/wide_intermediate.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 6"
+    },
+    {
+      "name": "dummy_local_aggregate_cap",
+      "source": "cases/dummy_local_aggregate_cap.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "total array element limit"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+--- a/src/parser/control_flow/parser_do_constructs_part1.inc
++++ b/src/parser/control_flow/parser_do_constructs_part1.inc
+@@ -39,14 +39,33 @@
+         next_token%kind = 0
+         if (parser%current_token + 1 <= size(parser%tokens)) &
+             next_token = parser%tokens(parser%current_token + 1)
+-        if (next_token%kind == TK_KEYWORD) then
+-            if (to_lower(trim(next_token%text)) == "while") then
+-                loop_index = parse_do_while(parser, arena)
+-                return
+-            end if
++        if (while_loop_header(parser, parser%current_token + 1)) then
++            loop_index = parse_do_while(parser, arena)
++            return
+         end if
+         loop_index = parse_do_loop(parser, arena)
+     end function parse_any_do
++
++    logical function while_loop_header(parser,start) result(is_while)
++        type(parser_state_t),intent(in)::parser
++        integer,intent(in)::start
++        integer::j
++        is_while=.false.;j=start
++        do while(j<=size(parser%tokens))
++            if(parser%tokens(j)%kind/=TK_WHITESPACE) exit
++            j=j+1
++        end do
++        if(j>size(parser%tokens)) return
++        if(parser%tokens(j)%kind/=TK_KEYWORD) return
++        if(to_lower(trim(parser%tokens(j)%text))/='while') return
++        j=j+1
++        do while(j<=size(parser%tokens))
++            if(parser%tokens(j)%kind/=TK_WHITESPACE) exit
++            j=j+1
++        end do
++        if(j>size(parser%tokens)) return
++        is_while=parser%tokens(j)%kind==TK_OPERATOR.and.parser%tokens(j)%text=='('
++    end function while_loop_header
+ 
+     subroutine ensure_if_do_registration()
+         call initialize_if_hooks()
+@@ -661,7 +680,7 @@
+ 
+         ! Check if it's a do while loop
+         var_token = parser%peek()
+-        if (var_token%kind == TK_KEYWORD .and. var_token%text == "while") then
++        if (while_loop_header(parser, parser%current_token)) then
+             ! Parse as do while loop
+             if (allocated(loop_label)) then
+                 loop_index = parse_do_while_from_do(parser, arena, line, column, &

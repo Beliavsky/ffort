@@ -1,0 +1,35 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -1014,7 +1014,7 @@
+             call set_intrinsic_metadata(node, TINT, kind_value, result_rank)
+         case ("transpose")
+             call resolve_transpose_metadata(arena, node, visiting)
+-        case ("cshift")
++        case ("cshift", "eoshift")
+             call resolve_cshift_metadata(arena, node, visiting)
+         case ("lbound", "ubound")
+             call resolve_bounds_inquiry_metadata(arena,node,visiting)
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 119
++        integer, parameter :: NUM_INTRINSICS = 120
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -528,6 +528,12 @@
+ 
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="eoshift", return_type="array", &
++            arg_types="array,integer,array,integer", &
++            description="End-off shift preserving ARRAY type and rank")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="cshift", return_type="array", &
+             arg_types="array,integer,integer", &
+             description="Circular shift preserving ARRAY type and rank")

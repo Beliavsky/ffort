@@ -1,0 +1,7 @@
+# 0117: bounded PURE internal element-file READ classification
+
+Applies after 0116. The producer previously rejected every READ encountered in a program-contained PURE procedure, including internal files. Module-contained equivalents could pass because of a pre-existing traversal difference. This patch does not claim to repair every context or scalar internal-file case.
+
+The new exemption requires a directly declared local CHARACTER array element, exact UNIT/list-directed FMT controls, and bounded cycle-checked arithmetic-only INTEGER index ASTs. Every target and IOSTAT must resolve to permitted writable current-procedure storage. Targets are scalar nonallocatable intrinsic INTEGER/REAL/CHARACTER; IOSTAT is INTEGER. Host/use association, SAVE, pointer storage, INTENT(IN), derived I/O and effectful index calls are not newly admitted. Full interpreter IR, structural producer binding, alias, allocation, definedness and resource guards remain mandatory. Ordinary internal READ retains its separately documented target scope.
+
+The focused integrated preview passed 24 producer cases plus the 51-case new source suite. Independent proposal probes additionally exercised eight direct cycle/shared-DAG/control mutations. Earlier literal-schema and host-target proposal failures are preserved in development evidence. This is not a full clean release result. See docs/INTERNAL-READ-ELEMENT.md and docs/VERIFICATION.md in the project root.

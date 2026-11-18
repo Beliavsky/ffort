@@ -1,0 +1,212 @@
+--- a/src/parser/control_flow/parser_do_constructs.f90
++++ b/src/parser/control_flow/parser_do_constructs.f90
+@@ -11,7 +11,7 @@
+     use parser_if_constructs_module, only: parse_if, register_parse_do_loop
+     use parser_statement_callbacks_module, only: register_fallback_do_parser, &
+         register_fallback_if_parser, register_fallback_block_parser, &
+-        register_fallback_select_parsers, register_fallback_forall_parser
++        register_fallback_select_parsers, register_fallback_forall_parser, register_fallback_where_parser
+     use parser_select_constructs_module, only: parse_select_case, parse_select_type, &
+         parse_select_rank
+     use parser_array_constructs_module, only: parse_where_construct, parse_associate, &
+--- a/src/parser/control_flow/parser_do_constructs_part1.inc
++++ b/src/parser/control_flow/parser_do_constructs_part1.inc
+@@ -10,6 +10,7 @@
+             ! dependency and closes no cycle.
+             call register_fallback_if_parser(parse_if)
+             call register_fallback_forall_parser(parse_forall)
++            call register_fallback_where_parser(parse_where_construct)
+             ! And the BLOCK construct, reached the same way: a `block` with
+             ! its own declarations sitting inside a loop or a case arm.
+             call register_fallback_block_parser(parse_block_construct)
+--- a/src/parser/expressions/parser_array_constructs.f90
++++ b/src/parser/expressions/parser_array_constructs.f90
+@@ -58,8 +58,8 @@
+         integer, allocatable :: where_body_indices(:)
+         type(statement_callbacks_t) :: callbacks
+         logical :: single_line
+-        character(len=9), parameter :: where_end_keywords(2) = [ &
+-            'elsewhere', 'end where']
++        character(len=9), parameter :: where_end_keywords(3) = [ &
++            'elsewhere', 'end where', 'endwhere ']
+ 
+         ! Consume 'where' keyword
+         token = parser%peek()
+@@ -122,7 +122,7 @@
+         ! Multi-line WHERE - parse body statements using shared statement body parser
+         callbacks = build_where_callbacks()
+         where_body_indices = parse_statement_body(parser, arena, &
+-            where_end_keywords, callbacks)
++            where_end_keywords, callbacks, physical_locations=.true.)
+ 
+         ! Parse all ELSEWHERE clauses (including masked ones)
+         where_index = create_where_with_elsewhere_clauses(arena, parser, &
+@@ -206,7 +206,7 @@
+ 
+             clause_body_indices = parse_statement_body(parser, arena, &
+                 where_end_keywords, &
+-                callbacks)
++                callbacks, physical_locations=.true.)
+ 
+             num_clauses = num_clauses + 1
+             allocate (temp_clauses(num_clauses))
+@@ -223,7 +223,9 @@
+         end do
+ 
+         token = parser%peek()
+-        if (token%kind == TK_KEYWORD .and. token%text == "end") then
++        if (token%kind == TK_KEYWORD .and. token%text == "endwhere") then
++            token = parser%consume()
++        else if (token%kind == TK_KEYWORD .and. token%text == "end") then
+             token = parser%consume()
+             if (.not. parser%is_at_end()) then
+                 token = parser%peek()
+@@ -262,7 +264,7 @@
+         type(statement_callbacks_t), intent(in) :: callbacks
+         integer, allocatable, intent(out) :: body_indices(:)
+ 
+-        integer :: stmt_start, stmt_end
++        integer :: stmt_start, stmt_end, j
+         type(token_t), allocatable :: stmt_tokens(:)
+         integer, allocatable :: stmt_indices(:)
+ 
+@@ -282,6 +284,10 @@
+ 
+         call allocate_stmt_tokens_with_eof(stmt_tokens, parser%tokens, &
+             stmt_start, stmt_end)
++
++        do j = 1, size(stmt_tokens)
++            if (stmt_tokens(j)%physical_line > 0) stmt_tokens(j)%line = stmt_tokens(j)%physical_line
++        end do
+ 
+         stmt_indices = parse_basic_statement_core(stmt_tokens, arena, &
+             callbacks=callbacks, parent_parser=parser)
+--- a/src/parser/procedures/parser_procedure_definition_bodies.f90
++++ b/src/parser/procedures/parser_procedure_definition_bodies.f90
+@@ -13,7 +13,7 @@
+     use parser_statement_detection_module, only: find_statement_end
+     use parser_select_constructs_module, only: parse_select_case, parse_select_type, &
+         parse_select_rank
+-    use parser_array_constructs_module, only: parse_associate, parse_block_construct
++    use parser_array_constructs_module, only: parse_associate, parse_block_construct, parse_where_construct
+     use parser_block_statement_utils_module, only: block_construct_start, &
+         is_block_construct_keyword, &
+         locate_block_statement_end, &
+@@ -554,7 +554,7 @@
+         ! keyword; the span still has to be located from the terminator of the
+         ! construct, not from the end of the first line (issue #2967).
+         construct_pos = block_construct_start(parser%tokens, stmt_start)
+-        if (to_lower(first_token%text) == "forall") then
++        if (to_lower(first_token%text) == "forall" .or. to_lower(first_token%text) == "where") then
+             stmt_end = find_statement_end(parser%tokens, stmt_start)
+         else if (construct_pos > 0) then
+             stmt_end = locate_block_statement_end(parser%tokens, construct_pos, &
+@@ -811,6 +811,13 @@
+                         block_parser%diagnostic_sink => parent_parser%diagnostic_sink
+                     end if
+                     stmt_index = parse_forall(block_parser, arena)
++                    call parent_parser%absorb_errors(block_parser)
++                else if (trim(token_lower) == "where") then
++                    block_parser = create_parser_state(construct_tokens)
++                    if (associated(parent_parser%diagnostic_sink)) then
++                        block_parser%diagnostic_sink => parent_parser%diagnostic_sink
++                    end if
++                    stmt_index = parse_where_construct(block_parser, arena)
+                     call parent_parser%absorb_errors(block_parser)
+                 else if (trim(token_lower) == "do") then
+                     stmt_index = parse_do_statement_tokens(construct_tokens, arena, &
+--- a/src/parser/statements/parser_basic_statement_module.f90
++++ b/src/parser/statements/parser_basic_statement_module.f90
+@@ -74,17 +74,18 @@
+     ! Unified function for parsing statement bodies (used by if blocks, &
+     ! do while loops, etc.)
+     recursive function parse_statement_body(parser, arena, end_keywords, callbacks, &
+-            parent_index) result(body_indices)
++            parent_index, physical_locations) result(body_indices)
+         type(parser_state_t), intent(inout) :: parser
+         type(ast_arena_t), intent(inout) :: arena
+         character(len=*), intent(in) :: end_keywords(:)
+         type(statement_callbacks_t), intent(in), optional :: callbacks
+         integer, intent(in), optional :: parent_index
++        logical, intent(in), optional :: physical_locations
+         integer, allocatable :: body_indices(:)
+ 
+         type(token_t), allocatable, target :: stmt_tokens(:)
+         type(token_t) :: token
+-        integer :: stmt_start, stmt_end
++        integer :: stmt_start, stmt_end, physical_index
+         type(statement_callbacks_t) :: local_callbacks
+         logical :: has_meaningful
+         integer :: nested_block_index
+@@ -173,6 +174,14 @@
+ 
+                 call extract_statement_tokens(parser%tokens, stmt_start, stmt_end, &
+                     stmt_tokens)
++                if (present(physical_locations)) then
++                    if (physical_locations) then
++                        do physical_index = 1, size(stmt_tokens)
++                            if (stmt_tokens(physical_index)%physical_line > 0) &
++                                stmt_tokens(physical_index)%line = stmt_tokens(physical_index)%physical_line
++                        end do
++                    end if
++                end if
+                 call parse_and_add_statement(stmt_tokens, arena, parent_index, &
+                     local_callbacks, body_indices, &
+                     stmt_count, parser)
+--- a/src/parser/statements/parser_statement_callbacks.f90
++++ b/src/parser/statements/parser_statement_callbacks.f90
+@@ -47,6 +47,7 @@
+     public :: register_fallback_do_parser, fallback_do_parser_is_set, &
+               call_fallback_do_parser
+     public :: register_fallback_forall_parser, call_fallback_forall_parser
++    public :: register_fallback_where_parser, call_fallback_where_parser
+     public :: register_fallback_if_parser, call_fallback_if_parser
+     public :: register_fallback_block_parser, call_fallback_block_parser
+     public :: register_fallback_select_parsers
+@@ -62,6 +63,7 @@
+     !! the same indirection, done once here where the callback type already
+     !! lives.
+     procedure(parse_without_parent_interface), pointer :: forall_parser => null()
++    procedure(parse_without_parent_interface), pointer :: where_parser => null()
+     procedure(parse_without_parent_interface), pointer :: do_parser => null()
+     !! The full IF parser, for the same reason. The definition-level fallback
+     !! reached otherwise handles a single if, not one containing another, and
+@@ -95,6 +97,18 @@
+         if (associated(forall_parser)) node_index = forall_parser(parser, arena)
+     end function call_fallback_forall_parser
+ 
++    subroutine register_fallback_where_parser(proc)
++        procedure(parse_without_parent_interface) :: proc
++        where_parser => proc
++    end subroutine register_fallback_where_parser
++
++    integer function call_fallback_where_parser(parser, arena) result(node_index)
++        type(parser_state_t), intent(inout) :: parser
++        type(ast_arena_t), intent(inout) :: arena
++        node_index = 0
++        if (associated(where_parser)) node_index = where_parser(parser, arena)
++    end function call_fallback_where_parser
++
+     subroutine register_fallback_do_parser(proc)
+         !! Called once by the do parser's own initialisation.
+         procedure(parse_without_parent_interface) :: proc
+--- a/src/parser/statements/parser_statement_core.f90
++++ b/src/parser/statements/parser_statement_core.f90
+@@ -29,7 +29,7 @@
+     use parser_statement_callbacks_module, only: statement_callbacks_t, &
+         null_statement_callbacks, &
+         call_fallback_do_parser, call_fallback_if_parser, &
+-        call_fallback_block_parser, call_fallback_forall_parser, &
++        call_fallback_block_parser, call_fallback_forall_parser, call_fallback_where_parser, &
+         call_fallback_select_case_parser, call_fallback_select_type_parser, &
+         call_fallback_select_rank_parser
+     use parser_statement_data_module, only: parse_data_statement, &
+@@ -377,6 +377,8 @@
+         case ("where")
+             if (associated(callbacks%parse_where)) then
+                 stmt_index = callbacks%parse_where(parser, arena)
++            else
++                stmt_index = call_fallback_where_parser(parser, arena)
+             end if
+         case ("forall")
+             if (associated(callbacks%parse_forall)) then

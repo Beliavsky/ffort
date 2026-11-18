@@ -1,0 +1,57 @@
+--- 
++++ 
+@@ -24,6 +24,8 @@
+     end type
+     integer, parameter :: max_print_values=65536, max_format_operations=262144
+     integer, parameter :: max_list_output_characters=16*1024*1024
++    ! New scalar-session admission only: literals + formats + declared scalar CHARACTER storage.
++    integer(int64), parameter :: session_character_budget=16_int64*1024_int64*1024_int64
+     integer(int64), parameter :: min64=-huge(0_int64)-1_int64, max64=huge(0_int64)
+     integer(int64), parameter :: initial_random_state=104729_int64
+     integer(int64), parameter :: imin=-2147483648_int64, imax=2147483647_int64
+@@ -233,7 +235,9 @@
+         type(instruction_t)::ins
+         type(value_t)::literal
+         integer::j,k,n
++        integer(int64)::character_bytes
+         if(diag%code/=0)return
++        character_bytes=0_int64
+         if(prog%ns<0.or.prog%ns>max_symbols.or.prog%ne<0.or.prog%ne>max_expressions.or. &
+             prog%nc<0.or.prog%nc>max_instructions)goto 900
+         if(prog%np/=0.or.prog%nm/=0.or.prog%nt/=0.or.prog%no/=0.or.prog%ng/=0.or. &
+@@ -253,6 +257,8 @@
+             if(v%real_kind/=4.and.v%real_kind/=8)goto 900
+             if(v%typ==ty_character)then
+                 if(v%real_kind/=4.or.v%character_len<0.or.v%character_len>65536)goto 900
++                character_bytes=character_bytes+int(v%character_len,int64)
++                if(character_bytes>session_character_budget)goto 910
+             else if(v%character_len/=-1)then
+                 goto 900
+             end if
+@@ -285,6 +291,8 @@
+                 case(ty_character)
+                     if(.not.allocated(v%value%s))goto 900
+                     if(len(v%value%s)>65536.or.len(v%value%s)/=v%character_len.or.v%real_kind/=4)goto 900
++                    character_bytes=character_bytes+len(v%value%s,kind=int64)
++                    if(character_bytes>session_character_budget)goto 910
+                     literal%s=v%value%s
+                 end select
+                 if(.not.session_same_value(v%value,literal))goto 900
+@@ -334,6 +342,8 @@
+                 end do
+                 if(allocated(v%format))then
+                     if(len(v%format)>65536)goto 900
++                    character_bytes=character_bytes+len(v%format,kind=int64)
++                    if(character_bytes>session_character_budget)goto 910
+                     ins%format=v%format
+                 end if
+             case default;goto 900
+@@ -343,6 +353,8 @@
+         end do
+         return
+ 900     call fail(diag,'persistent session supports only plain local intrinsic scalars and straight-line assignment, print and random calls',0,0)
++        return
++910     call fail(diag,'persistent session CHARACTER aggregate exceeds 16 MiB',0,0)
+     end subroutine
+     logical function session_same_symbol(a,b) result(same)
+         type(symbol_t),intent(in)::a,b

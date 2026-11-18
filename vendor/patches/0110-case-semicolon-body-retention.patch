@@ -1,0 +1,51 @@
+--- a/src/parser/control_flow/parser_select_constructs_helpers.inc
++++ b/src/parser/control_flow/parser_select_constructs_helpers.inc
+@@ -15,9 +15,10 @@
+     end function skip_layout
+ 
+     ! Consume any remaining tokens on the given source line.
+-    subroutine skip_rest_of_line(parser, current_line)
++    subroutine skip_rest_of_line(parser, current_line, stop_at_semicolon)
+         type(parser_state_t), intent(inout) :: parser
+         integer, intent(in) :: current_line
++        logical, intent(in), optional :: stop_at_semicolon
+ 
+         type(token_t) :: skip_token
+ 
+@@ -25,6 +26,12 @@
+             skip_token = parser%peek()
+             if (skip_token%line == current_line) then
+                 skip_token = parser%consume()
++                ! CASE bodies may start after a statement separator on this line.
++                ! Other SELECT callers retain their existing physical-line policy.
++                if (present(stop_at_semicolon)) then
++                    if (stop_at_semicolon .and. skip_token%kind == TK_OPERATOR .and. &
++                        skip_token%text == ";") exit
++                end if
+             else
+                 exit
+             end if
+--- a/src/parser/control_flow/parser_select_constructs_case.inc
++++ b/src/parser/control_flow/parser_select_constructs_case.inc
+@@ -27,8 +27,8 @@
+             trim(to_lower(value_token%text)) == "default") then
+             value_token = parser%consume()  ! consume default
+ 
+-            ! Skip rest of current line
+-            call skip_rest_of_line(parser, value_token%line)
++            ! Finish this CASE header, retaining any semicolon-separated body
++            call skip_rest_of_line(parser, value_token%line, .true.)
+ 
+             ! Parse default case body using parse_statement_body
+             body_indices = parse_statement_body(parser, arena, &
+@@ -60,8 +60,8 @@
+                 return
+             end if
+ 
+-            ! Skip rest of current line
+-            call skip_rest_of_line(parser, previous_token_line(parser))
++            ! Finish this CASE header, retaining any semicolon-separated body
++            call skip_rest_of_line(parser, previous_token_line(parser), .true.)
+ 
+             ! Parse case body statements using parse_statement_body
+             body_indices = parse_statement_body(parser, arena, &

@@ -1,0 +1,67 @@
+{
+  "executable": "/workspace/scratch/c5319e9549df/recovery/057-repl-evidence/module-smoke/smoke",
+  "sha256": "d315f69d80d1e67cbca78a69ce9ddcd6fa3d20bbc5dcc38d0191830a5b059f65",
+  "scope": "existing module-only smoke, no full CLI claims",
+  "records": [
+    {
+      "name": "plain_end",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:5:1: Only modules followed by one PROGRAM unit are supported\nSTOP 1\n"
+    },
+    {
+      "name": "second_program",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:5:1: Only modules followed by one PROGRAM unit are supported\nSTOP 1\n"
+    },
+    {
+      "name": "module_escape",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:5:1: Only modules followed by one PROGRAM unit are supported\nSTOP 1\n"
+    },
+    {
+      "name": "program_nested",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:3:1: Undeclared variable or unsupported statement: program\nSTOP 1\n"
+    },
+    {
+      "name": "crlf",
+      "returncode": 0,
+      "stdout": " CRLF\n",
+      "stderr": ""
+    },
+    {
+      "name": "eof_run",
+      "returncode": 0,
+      "stdout": " EOF\n",
+      "stderr": ""
+    },
+    {
+      "name": "eof_buffer",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "line4096",
+      "returncode": 0,
+      "stdout": " BOUND\n",
+      "stderr": ""
+    },
+    {
+      "name": "line4097_run_tail",
+      "returncode": 0,
+      "stdout": " BOUND\n",
+      "stderr": "<repl>: line exceeds 4096 bytes; discarded\n"
+    },
+    {
+      "name": "cr_only",
+      "returncode": 0,
+      "stdout": " CR\n",
+      "stderr": ""
+    }
+  ]
+}

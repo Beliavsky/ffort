@@ -1,0 +1,97 @@
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 91
++        integer, parameter :: NUM_INTRINSICS = 95
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -280,6 +280,18 @@
+             name="log_gamma", return_type="real", arg_types="real", &
+             description="Elemental logarithm of absolute gamma")
+         i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t(name="aint", return_type="real", &
++            arg_types="real", description="Elemental real rounding/inverse hyperbolic")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t(name="anint", return_type="real", &
++            arg_types="real", description="Elemental real rounding/inverse hyperbolic")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t(name="asinh", return_type="real", &
++            arg_types="real", description="Elemental real rounding/inverse hyperbolic")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t(name="acosh", return_type="real", &
++            arg_types="real", description="Elemental real rounding/inverse hyperbolic")
++        i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t(name="fraction", return_type="real", &
+             arg_types="real", description="Model fraction")
+         i = i + 1
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -889,7 +889,7 @@
+         ! These elemental intrinsics preserve the conforming actual shape.
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+-        case ("fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
++        case ("aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+               "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "isnan", "erfc_scaled", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+@@ -920,6 +920,11 @@
+             call set_intrinsic_metadata(node, TINT, 4, result_rank)
+         case ("fraction", "set_exponent")
+             call decomposition_x_metadata(arena,node,visiting,kind_value)
++            if(kind_value>0)call set_intrinsic_metadata(node,TREAL,kind_value,result_rank)
++        case ("aint", "anint")
++            call resolve_real_round_metadata(arena,node,visiting)
++        case ("asinh", "acosh")
++            call first_intrinsic_argument_metadata(arena,node,visiting,result_type,kind_value)
+             if(kind_value>0)call set_intrinsic_metadata(node,TREAL,kind_value,result_rank)
+         case ("erfc_scaled")
+             call first_intrinsic_argument_metadata(arena, node, visiting, &
+@@ -1995,6 +2000,34 @@
+         end select
+     end subroutine real_result_kind_from_argument
+ 
++    subroutine resolve_real_round_metadata(arena,node,visiting)
++        type(ast_arena_t),intent(inout)::arena
++        type(call_or_subscript_node),intent(inout)::node
++        logical,intent(inout)::visiting(:)
++        integer::i,idx,kind_value
++        logical::wanted
++        if(.not.allocated(node%arg_indices))return
++        do i=1,size(node%arg_indices)
++            idx=node%arg_indices(i);wanted=i==1
++            if(.not.arena%has_node_at(idx))cycle
++            select type(arg=>arena%entries(idx)%node)
++            type is(assignment_node)
++                wanted=.false.
++                if(.not.arena%has_node_at(arg%target_index))cycle
++                select type(target=>arena%entries(arg%target_index)%node)
++                type is(identifier_node)
++                    wanted=to_lower(target%name)=='a'
++                end select
++                idx=arg%value_index
++            end select
++            if(.not.wanted.or..not.arena%has_node_at(idx))cycle
++            call resolve_node_metadata(arena,idx,visiting)
++            kind_value=intrinsic_kind_argument(arena,node,to_lower(node%name))
++            if(kind_value<=0)kind_value=arena%entries(idx)%node%resolved_kind_value
++            if(kind_value>0)call set_intrinsic_metadata(node,TREAL,kind_value,arena%entries(idx)%node%resolved_rank)
++            return
++        end do
++    end subroutine
+     subroutine decomposition_x_metadata(arena,node,visiting,kind_value)
+         type(ast_arena_t),intent(inout)::arena
+         type(call_or_subscript_node),intent(in)::node
+@@ -2079,7 +2112,7 @@
+         position = 0
+         if (.not. allocated(node%arg_indices)) return
+         select case (intrinsic_name)
+-        case ("char", "achar", "iachar", "nint", "floor", "ceiling", "index", "scan", "verify", "len_trim", "shape")
++        case ("aint", "anint", "char", "achar", "iachar", "nint", "floor", "ceiling", "index", "scan", "verify", "len_trim", "shape")
+             do i = 1, size(node%arg_indices)
+                 argument_index = node%arg_indices(i)
+                 if (.not. arena%has_node_at(argument_index)) cycle

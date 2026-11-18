@@ -1,0 +1,70 @@
+--- recovery/057-repl-session-evidence/runtime/guard-successor/fi_runtime.f90.before
++++ recovery/057-repl-session-work/src/fi_runtime.f90
+@@ -142,8 +142,15 @@
+         if(base_nc<0.or.base_nc/=prog%nc-1)then
+             call fail(diag,'scalar query must add exactly one print instruction',0,0);return
+         end if
+-        if(prog%code(prog%nc)%op/=op_print) &
+-            call fail(diag,'scalar query must be an expression print',0,0)
++        associate(v=>prog%code(prog%nc))
++        if(v%op/=op_print.or.v%advance_mode/=0.or.v%format_expr/=0.or.allocated(v%format))then
++            call fail(diag,'scalar query must be one advancing unformatted expression print',0,0);return
++        end if
++        if(.not.allocated(v%items))then
++            call fail(diag,'scalar query must contain exactly one expression',0,0);return
++        end if
++        if(size(v%items)/=1)call fail(diag,'scalar query must contain exactly one expression',0,0)
++        end associate
+     end subroutine
+     subroutine execute_scalar_session(session,prog,diag,max_steps,commit)
+         type(scalar_session_t),intent(inout)::session
+@@ -208,7 +215,14 @@
+             session%tainted=.true.;return
+         end if
+         if(save_state)then
+-            session%snapshot=prog;session%rng=rng;session%ready=.true.
++            ! Retain only the admitted active prefix, never inactive caller payloads.
++            session%snapshot=program_t()
++            session%snapshot%name=prog%name
++            session%snapshot%ns=prog%ns;session%snapshot%ne=prog%ne;session%snapshot%nc=prog%nc
++            session%snapshot%symbols=prog%symbols(:prog%ns)
++            session%snapshot%expressions=prog%expressions(:prog%ne)
++            session%snapshot%code=prog%code(:prog%nc)
++            session%rng=rng;session%ready=.true.
+         end if
+     end subroutine
+     subroutine validate_scalar_session_program(prog,diag)
+@@ -226,6 +240,9 @@
+             prog%nu/=0.or.prog%entry_pc/=1)goto 900
+         if(.not.allocated(prog%symbols).or..not.allocated(prog%expressions).or..not.allocated(prog%code))goto 900
+         if(size(prog%symbols)<prog%ns.or.size(prog%expressions)<prog%ne.or.size(prog%code)<prog%nc)goto 900
++        if(size(prog%symbols)>max_symbols.or.size(prog%expressions)>max_expressions.or. &
++            size(prog%code)>max_instructions)goto 900
++        if(lbound(prog%symbols,1)/=1.or.lbound(prog%expressions,1)/=1.or.lbound(prog%code,1)/=1)goto 900
+         do j=1,prog%ns
+             associate(v=>prog%symbols(j))
+             symbol=symbol_t();symbol%name=v%name;symbol%typ=v%typ;symbol%real_kind=v%real_kind
+@@ -309,6 +326,7 @@
+             case(op_random_seed)
+             case(op_print)
+                 if(.not.allocated(v%items))goto 900
++                if(lbound(v%items,1)/=1)goto 900
+                 if(size(v%items)>64)goto 900
+                 ins%items=v%items
+                 do k=1,size(v%items)
+@@ -444,6 +462,7 @@
+         end if
+         if(allocated(a%format).neqv.allocated(b%format))return
+         if(allocated(a%format))then
++            if(len(a%format)/=len(b%format))return
+             if(a%format/=b%format)return
+         end if
+         if(a%format_expr/=b%format_expr)return
+@@ -459,6 +478,7 @@
+         if(allocated(a%record).or.allocated(b%record))return
+         if(allocated(a%s).neqv.allocated(b%s))return
+         if(allocated(a%s))then
++            if(len(a%s)/=len(b%s))return
+             if(a%s/=b%s)return
+         end if
+         same=.true.

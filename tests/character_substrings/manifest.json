@@ -1,0 +1,311 @@
+{
+  "cases": [
+    {
+      "name": "basic",
+      "source": "basic.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "aaX  f\n",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "parameter",
+      "source": "parameter.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "bcd\n",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "undef_len",
+      "source": "undef_len.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "test  \n",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "wide_empty",
+      "source": "wide_empty.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "empty\n",
+      "compare_mode": "lines",
+      "note": "GNU 14.2 length arithmetic overflows at opposite int64 bounds; compile-only oracle, independently checked empty result."
+    },
+    {
+      "name": "const_bound_wide",
+      "source": "const_bound_wide.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "ab\n",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "in_actual",
+      "source": "in_actual.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "bc\n",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "forall",
+      "source": "forall.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": " 3\n",
+      "compare_mode": "tokens"
+    },
+    {
+      "name": "empty_undefined",
+      "source": "empty_undefined.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "ok\n",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "strip",
+      "source": "strip.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "abc     \n",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "wide_bounds",
+      "source": "wide_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "acdee\n",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "zero_length",
+      "source": "zero_length.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "zero\n",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "empty_writes",
+      "source": "empty_writes.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "abc\n",
+      "diagnostic": "",
+      "compare_mode": "lines",
+      "note": "GNU 14.2 length arithmetic overflows at opposite int64 bounds; compile-only oracle, independently checked empty result."
+    },
+    {
+      "name": "empty_rhs",
+      "source": "empty_rhs.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "a  d\n",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "nested_bounds",
+      "source": "nested_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "bcd\n",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "undefined_kind",
+      "source": "undefined_kind.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "kind\n",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "full_out",
+      "source": "full_out.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "hell\n",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "fixed_dummy",
+      "source": "fixed_dummy.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "bc\n",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "lower_oob",
+      "source": "lower_oob.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "substring bounds out of range",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "upper_oob",
+      "source": "upper_oob.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "substring bounds out of range",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "undefined_read",
+      "source": "undefined_read.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized substring base",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "partial_initialization",
+      "source": "partial_initialization.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "partial substring assignment requires an initialized base",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "undefined_bound",
+      "source": "undefined_bound.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized variable",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "bad_rhs_empty_target",
+      "source": "bad_rhs_empty_target.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized variable",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "stride_reject",
+      "source": "stride_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "no_colon_reject",
+      "source": "no_colon_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "real_bound_reject",
+      "source": "real_bound_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "array_bound_reject",
+      "source": "array_bound_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "array_element_boundary",
+      "source": "array_element_boundary.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": " ab\n",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "literal_boundary",
+      "source": "literal_boundary.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "parameter_write_reject",
+      "source": "parameter_write_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "intent_in_write_reject",
+      "source": "intent_in_write_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "out_actual_boundary",
+      "source": "out_actual_boundary.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Writable dummy requires",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "alias_reject",
+      "source": "alias_reject.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "overlapping actual arguments",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "module_slice",
+      "source": "module_slice.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "bcd\n",
+      "diagnostic": "",
+      "compare_mode": "lines"
+    },
+    {
+      "name": "mutable_module",
+      "source": "mutable_module.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "az d\n",
+      "compare_mode": "lines"
+    }
+  ]
+}

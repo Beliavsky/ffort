@@ -1,0 +1,64 @@
+{
+  "certifies_exact_negative_contracts": false,
+  "cases": 1,
+  "failed": 0,
+  "identity": null,
+  "gnu_checked": true,
+  "manifest_sha256": "fd882fe9d7f265f7a8f95d9ce13ac2bbf845a6df4be60e5d76e235e7f7ed6b33",
+  "contracts_sha256": "be37fbdb7f9a156f8df661175cb209e411246b34e0c10b8914e6c4e8787fb2d9",
+  "runner_sha256": "5024fb54453dff4c3044761e2aeb42d6f8c164fcf93d72a5dfaf6efca443b7be",
+  "results": [
+    {
+      "case": {
+        "name": "original_demo_shiftr",
+        "source": "cases/original_demo_shiftr.f90",
+        "sha256": "a06f8bbf5be3a35cb385f9f03bb20806391bc2d8b4d60e45c8831cc2ede1f57a",
+        "stage": "check",
+        "gnu": "execute",
+        "expected_records": [],
+        "gnu_record_contract": {
+          "byte_exact": true,
+          "expected_stdout": "  basic usage\n         100          12\n  elemental\n\nSHIFT =  9\nI =      01010101010101010101010101010101 == 1431655765\nRESULT = 00000000001010101010101010101010 == 2796202\n\nI =      10101010101010101010101010101010 == -1431655766\nRESULT = 00000000010101010101010101010101 == 5592405\n\nI =      11111111111111111111111111111111 == -1\nRESULT = 00000000011111111111111111111111 == 8388607\n\n characteristics of the result are the same as input\nkind= 1 shape= 2 2 size= 4\n"
+        },
+        "diagnostics_status": "expected inherited ISO small-kind boundary; pending first candidate observation",
+        "provenance": {
+          "commit": "fc14233036d910e3678d350efc24609e11475067",
+          "url": "https://github.com/urbanjost/M_intrinsics/blob/fc14233036d910e3678d350efc24609e11475067/example/demo_shiftr.f90",
+          "baseline_native_stdout_sha256": "d0d4d69967263272b7ec30f35817e219fcf3a6b115fa1f4dafdc23f57b6c0b7b",
+          "scope_caveat": "No full-pass claim: INT8/INT16 import, actual INT8 usage and BOZ conversions remain outside this feature."
+        }
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/masks-work-049/changed/tests/integer_masks/cases/original_demo_shiftr.f90",
+          "-o",
+          "/tmp/masks-work-049/changed/tests/integer_masks/integer_masks-strict-gnu-2jxcimpp/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_binary": {
+        "path": "/tmp/masks-work-049/changed/tests/integer_masks/gnu-reference/original_demo_shiftr",
+        "sha256": "ef4ea17f51c87b2ed8721f91c0c6b6f269534681972018bfb83632edb50ef86d"
+      },
+      "native_run": {
+        "command": [
+          "/tmp/masks-work-049/changed/tests/integer_masks/integer_masks-strict-gnu-2jxcimpp/test"
+        ],
+        "returncode": 0,
+        "stdout": "  basic usage\n         100          12\n  elemental\n\nSHIFT =  9\nI =      01010101010101010101010101010101 == 1431655765\nRESULT = 00000000001010101010101010101010 == 2796202\n\nI =      10101010101010101010101010101010 == -1431655766\nRESULT = 00000000010101010101010101010101 == 5592405\n\nI =      11111111111111111111111111111111 == -1\nRESULT = 00000000011111111111111111111111 == 8388607\n\n characteristics of the result are the same as input\nkind= 1 shape= 2 2 size= 4\n",
+        "stderr": "",
+        "timeout": false
+      }
+    }
+  ]
+}

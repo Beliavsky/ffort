@@ -1,0 +1,614 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "name": "user_power",
+      "source": "print*,2**5\nend\n",
+      "expected": "32",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "user_parameter",
+      "source": "program main\nimplicit none\ninteger :: i, isum\ninteger, parameter :: imax = 10\nisum = 0\ndo i=1,imax\n   isum = isum + i\nend do\nprint*,isum\nend program main\n",
+      "expected": "55",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "implicit_main_declarations",
+      "source": "integer :: i\ni=3\nprint*,i\nend\n",
+      "expected": "3",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "implicit_main_implicit_none",
+      "source": "implicit none\ninteger, parameter :: p=8\nprint*,p\nend\n",
+      "expected": "8",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "implicit_main_end_program",
+      "source": "print*,42\nend program\n",
+      "expected": "42",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "explicit_main_bare_end",
+      "source": "program probe\nimplicit none\nprint*,7\nend\n",
+      "expected": "7",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "explicit_main_unnamed_end_program",
+      "source": "program probe\nimplicit none\nprint*,7\nend program\n",
+      "expected": "7",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "explicit_no_implicit_none",
+      "source": "program probe\ninteger :: i\ni=3\nprint*,i\nend program probe\n",
+      "expected": "3",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "empty_implicit_main",
+      "source": "end\n",
+      "expected": "",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "comments_semicolons",
+      "source": "! implicit main\ninteger, parameter :: n = 2; print*,n**3; end ! done\n",
+      "expected": "8",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "implicit_named_end_program",
+      "source": "print*,42\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "mismatched_end_name",
+      "source": "program probe\nimplicit none\nprint*,1\nend program other\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "implicit_missing_end",
+      "source": "print*,42\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "implicit_two_programs",
+      "source": "print*,1\nend\nprint*,2\nend\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "implicit_undeclared",
+      "source": "i=3\nprint*,i\nend\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "compile"
+    },
+    {
+      "name": "parameter_chained",
+      "source": "program probe\nimplicit none\ninteger,parameter :: n=3, m=n**2, k=m+n\nprint*,n,m,k\nend program probe\n",
+      "expected": "3 9 12",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_case",
+      "source": "program probe\nimplicit none\ninteger,parameter :: Value=3, NEXT=value+2\nprint*,VALUE,next\nend program probe\n",
+      "expected": "3 5",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_numeric_conversion",
+      "source": "program probe\nimplicit none\ninteger,parameter :: n=3.9\nreal,parameter :: r=n\nprint*,n,r\nend program probe\n",
+      "expected": "3 3",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_logical",
+      "source": "program probe\nimplicit none\nlogical,parameter :: yes=.true., no=.not.yes\nprint*,yes,no\nend program probe\n",
+      "expected": "T F",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_pure_intrinsics",
+      "source": "program probe\nimplicit none\ninteger,parameter :: n=max(2,abs(-4)), m=mod(n+1,3)\nreal,parameter :: r=real(n)/2.0\nprint*,n,m,r\nend program probe\n",
+      "expected": "4 2 2",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_bounds",
+      "source": "program probe\nimplicit none\ninteger,parameter :: lower=-2, upper=2\ninteger :: a(lower:upper), i\ndo i=lower,upper\na(i)=i*i\nend do\nprint*,a(-2),a(0),a(upper)\nend program probe\n",
+      "expected": "4 0 4",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_variable_initializer",
+      "source": "program probe\nimplicit none\ninteger,parameter :: p=2\ninteger :: v=p**5\npRint*,v\nend program probe\n",
+      "expected": "32",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_after_variable_declaration",
+      "source": "program probe\nimplicit none\ninteger :: v\ninteger,parameter :: p=3\nv=p\nprint*,v\nend program probe\n",
+      "expected": "3",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_zero_extent",
+      "source": "program probe\nimplicit none\ninteger,parameter :: n=0\ninteger :: a(n)\nprint*,n\nend program probe\n",
+      "expected": "0",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_assignment",
+      "source": "program probe\nimplicit none\ninteger,parameter :: p=2\nprint*,99\np=4\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_assignment_case",
+      "source": "program probe\nimplicit none\ninteger,parameter :: Param=2\nPARAM=4\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_do_variable",
+      "source": "program probe\nimplicit none\ninteger,parameter :: i=1\ndo i=1,3\nprint*,i\nend do\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_variable_dependency",
+      "source": "program probe\nimplicit none\ninteger :: x=2\ninteger,parameter :: p=x\nprint*,p\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_uninitialized_dependency",
+      "source": "program probe\nimplicit none\ninteger :: x\ninteger,parameter :: p=x\nprint*,p\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_forward_reference",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=b+1, b=2\nprint*,a\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_self_reference",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=a+1\nprint*,a\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_duplicate",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=1, A=2\nprint*,a\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_redeclare_variable",
+      "source": "program probe\nimplicit none\ninteger :: a\ninteger,parameter :: a=2\nprint*,a\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_redeclare_parameter",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=2\ninteger :: a\nprint*,a\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_program_name",
+      "source": "program probe\nimplicit none\ninteger,parameter :: probe=2\nprint*,probe\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_missing_value",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a\nprint*,a\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_missing_second_value",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=1,b\nprint*,a\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_integer_logical",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=.true.\nprint*,a\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_logical_integer",
+      "source": "program probe\nimplicit none\nlogical,parameter :: a=1\nprint*,a\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_array_dependency",
+      "source": "program probe\nimplicit none\ninteger :: a(1)\ninteger,parameter :: p=a(1)\nprint*,p\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_after_executable",
+      "source": "program probe\nimplicit none\nprint*,1\ninteger,parameter :: p=1\nprint*,p\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_bound_real",
+      "source": "program probe\nimplicit none\nreal,parameter :: n=2.0\ninteger :: a(n)\nprint*,n\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_divide_zero",
+      "source": "program probe\nimplicit none\ninteger,parameter :: p=1/0\nprint*,p\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_overflow",
+      "source": "program probe\nimplicit none\ninteger,parameter :: p=2**31\nprint*,p\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_minimum_integer",
+      "source": "program probe\nimplicit none\ninteger,parameter :: p=-2147483647-1\nprint*,p\nend program probe\n",
+      "expected": "-2147483648",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_nonconstant_bound",
+      "source": "program probe\nimplicit none\ninteger :: n=2\ninteger,parameter :: p=3\ninteger :: a(n+p)\nprint*,p\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "power_precedence",
+      "source": "program probe\nimplicit none\nprint*,2**3**2,-2**2,(-2)**2,2*3**2,2**3*2\nend program probe\n",
+      "expected": "512 -4 4 18 16",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "power_negative_integer_exponents",
+      "source": "program probe\nimplicit none\nprint*,2**(-1),2**(-3),(-2)**(-3),(-1)**(-3),(-1)**(-4),1**(-4)\nend program probe\n",
+      "expected": "0 0 0 -1 1 1",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "power_zero_exponents",
+      "source": "program probe\nimplicit none\nprint*,0**0,1**0,(-1)**0,2**0\nend program probe\n",
+      "expected": "1 1 1 1",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "power_extreme_exponents",
+      "source": "program probe\nimplicit none\ninteger :: n\nn=-2147483647-1\nprint*,(-1)**n,1**n,2**n,(-2)**n\nend program probe\n",
+      "expected": "1 1 0 0",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "power_large_positive_exponents",
+      "source": "program probe\nimplicit none\ninteger :: n=2147483647\nprint*,(-1)**n,1**n,0**n\nend program probe\n",
+      "expected": "-1 1 0",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "power_int_boundary",
+      "source": "program probe\nimplicit none\nprint*,2**30,(-2)**31\nend program probe\n",
+      "expected": "1073741824 -2147483648",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "power_mixed_real",
+      "source": "program probe\nimplicit none\nprint*,2.0**3,2**3.0,(-2.0)**3,(-2.0)**(-3)\nend program probe\n",
+      "expected": "8 8 -8 -0.125",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "power_overflow_dynamic",
+      "source": "program probe\nimplicit none\ninteger :: n=31\nprint*,2**n\nend program probe\n",
+      "expected": null,
+      "kind": "runtime",
+      "oracle": "skip"
+    },
+    {
+      "name": "power_zero_negative_dynamic",
+      "source": "program probe\nimplicit none\ninteger :: n=-1\nprint*,0**n\nend program probe\n",
+      "expected": null,
+      "kind": "runtime",
+      "oracle": "skip"
+    },
+    {
+      "name": "power_real_domain_dynamic",
+      "source": "program probe\nimplicit none\nreal :: r=-2.0, n=2.0\nprint*,r**n\nend program probe\n",
+      "expected": null,
+      "kind": "runtime",
+      "oracle": "skip"
+    },
+    {
+      "name": "implicit_main_name_is_variable",
+      "source": "integer :: main\nmain=3\nprint*,main\nend\n",
+      "expected": "3",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "implicit_main_name_is_parameter",
+      "source": "integer,parameter :: main=3\nprint*,main\nend\n",
+      "expected": "3",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_real32_conversion",
+      "source": "program probe\nimplicit none\ninteger,parameter :: n=16777217\nreal,parameter :: r=n\ninteger,parameter :: m=int(r)\nprint*,n,r,m\nend program probe\n",
+      "expected": "16777217 16777216 16777216",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_logic_expression",
+      "source": "program probe\nimplicit none\ninteger,parameter :: n=3\nlogical,parameter :: positive=n>0, bigger=n>4\nif (positive.and..not.bigger) then\nprint*,n\nend if\nend program probe\n",
+      "expected": "3",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_runtime_copy_independent",
+      "source": "program probe\nimplicit none\ninteger,parameter :: n=2\ninteger :: x=n\nx=x+1\nprint*,n,x\nend program probe\n",
+      "expected": "2 3",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_extreme_power",
+      "source": "program probe\nimplicit none\ninteger,parameter :: n=-2147483647-1, p=(-1)**n, q=2**n\nprint*,p,q\nend program probe\n",
+      "expected": "1 0",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_dead_assignment",
+      "source": "program probe\nimplicit none\ninteger,parameter :: p=2\nif (.false.) then\np=4\nend if\nend program probe\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "reject"
+    },
+    {
+      "name": "parameter_dependency_converts_before_use",
+      "source": "program probe\nimplicit none\ninteger,parameter :: n=3.9, m=n*2\nreal,parameter :: r=m/4.0\nprint*,n,m,r\nend program probe\n",
+      "expected": "3 6 1.5",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "unsupported_parameter_name_scalar",
+      "source": "integer :: parameter\nparameter=3\nprint*,parameter\nend\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "compile"
+    },
+    {
+      "name": "unsupported_parameter_name_constant",
+      "source": "integer,parameter :: parameter=3\nprint*,parameter\nend\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "compile"
+    },
+    {
+      "name": "unsupported_parameter_name_program",
+      "source": "program parameter\nprint*,3\nend program parameter\n",
+      "expected": null,
+      "kind": "reject",
+      "oracle": "compile"
+    },
+    {
+      "name": "parameter_model_00",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=-6, b=2, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "-6 2 38 54872 0 54872",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_01",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=1, b=5, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "1 5 6 216 0 216",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_02",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=7, b=4, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "7 4 53 148877 0 148877",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_03",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=1, b=2, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "1 2 3 27 0 27",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_04",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=0, b=1, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "0 1 1 1 0 1",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_05",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=0, b=2, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "0 2 2 8 0 8",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_06",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=-1, b=6, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "-1 6 7 343 0 343",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_07",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=-5, b=1, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "-5 1 26 17576 0 17576",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_08",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=6, b=4, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "6 4 40 64000 0 64000",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_09",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=6, b=5, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "6 5 41 68921 0 68921",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_10",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=3, b=5, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "3 5 14 2744 0 2744",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_11",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=-1, b=4, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "-1 4 5 125 0 125",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_12",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=4, b=3, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "4 3 19 6859 0 6859",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_13",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=-4, b=2, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "-4 2 18 5832 0 5832",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_14",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=0, b=2, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "0 2 2 8 0 8",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_15",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=3, b=5, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "3 5 14 2744 0 2744",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_16",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=2, b=2, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "2 2 6 216 0 216",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_17",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=7, b=3, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "7 3 52 140608 0 140608",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_18",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=6, b=2, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "6 2 38 54872 0 54872",
+      "kind": "success",
+      "oracle": "success"
+    },
+    {
+      "name": "parameter_model_19",
+      "source": "program probe\nimplicit none\ninteger,parameter :: a=-1, b=4, c=a*a+b, d=c**3, e=mod(d,c)\ninteger :: x=d\nprint*,a,b,c,d,e,x\nend program probe\n",
+      "expected": "-1 4 5 125 0 125",
+      "kind": "success",
+      "oracle": "success"
+    }
+  ]
+}

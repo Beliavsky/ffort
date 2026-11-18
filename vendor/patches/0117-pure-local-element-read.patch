@@ -1,0 +1,281 @@
+--- a/src/semantic/analyzers/semantic_pure_validation.f90
++++ b/src/semantic/analyzers/semantic_pure_validation.f90
+@@ -5,7 +5,9 @@
+     ! statement such as STOP or PAUSE. ELEMENTAL implies PURE, so the same
+     ! body restrictions apply.
+     use ast_arena_modern, only: ast_arena_t
+-    use ast_nodes_core, only: assignment_node, identifier_node
++    use ast_types, only: LITERAL_INTEGER
++    use ast_nodes_core, only: assignment_node, identifier_node, call_or_subscript_node, &
++        literal_node, binary_op_node
+     use ast_nodes_io, only: print_statement_node, write_statement_node, &
+         read_statement_node
+     use ast_nodes_data, only: declaration_node, parameter_declaration_node
+@@ -19,7 +21,8 @@
+     use error_handling, only: error_collection_t, ERROR_SEMANTIC
+     use semantic_pure_dummy_validation, only: validate_pure_dummies
+     use frontend_compiler_resolution, only: declaration_binding_t, &
+-        resolve_name_at_node, find_enclosing_scope, ASSOCIATION_DIRECT
++        resolve_name_at_node, find_enclosing_scope, ASSOCIATION_DIRECT, BINDING_DECLARATION, &
++        BINDING_DUMMY_ARGUMENT
+     use string_utils_mod, only: int_to_string, to_lower
+     implicit none
+     private
+@@ -286,7 +289,8 @@
+             if (.not. is_local_internal_write(arena, stmt_index, stmt)) &
+                 call report_impure_stmt(errors, 'WRITE', stmt%line, stmt%column)
+             type is (read_statement_node)
+-            call report_impure_stmt(errors, 'READ', stmt%line, stmt%column)
++            if (.not. is_local_internal_element_read(arena, stmt_index, stmt)) &
++                call report_impure_stmt(errors, 'READ', stmt%line, stmt%column)
+             type is (stop_node)
+             call report_impure_stmt(errors, 'STOP', stmt%line, stmt%column)
+             type is (pause_node)
+@@ -309,6 +313,247 @@
+                     param_indices)
+         end select
+     end subroutine check_pure_statement
++
++    ! Classify only a directly declared local CHARACTER array element as an
++    ! internal input file. This is an external-I/O purity classification, not
++    ! acceptance of the READ: the interpreter IR and producer binding guards
++    ! still validate index effects, control specifiers, targets and IOSTAT.
++    logical function is_local_internal_element_read(arena, stmt_index, stmt) result(local)
++        type(ast_arena_t), intent(in) :: arena
++        integer, intent(in) :: stmt_index
++        type(read_statement_node), intent(in) :: stmt
++        type(declaration_binding_t) :: binding
++        character(len=:), allocatable :: error_msg, type_name, base_name
++        integer :: scope, expression_index, rank, j
++        integer :: marks(arena%size)
++        local = .false.
++        scope = find_enclosing_scope(arena, stmt_index)
++        if (.not. arena%has_node_at(scope)) return
++        select type (proc => arena%entries(scope)%node)
++        type is (function_def_node)
++        type is (subroutine_def_node)
++        class default
++            return
++        end select
++
++        if (.not. allocated(stmt%specifiers)) return
++        if (size(stmt%specifiers) < 2 .or. size(stmt%specifiers) > 3) return
++        if (.not. stmt%is_formatted) return
++        if (stmt%err_label_index /= 0 .or. stmt%end_label_index /= 0 .or. &
++            stmt%format_expr_index /= 0) return
++        if (allocated(stmt%namelist_group)) then
++            if (len_trim(stmt%namelist_group) > 0) return
++        end if
++        if (.not. allocated(stmt%unit_spec) .or. .not. allocated(stmt%format_spec)) return
++        if (stmt%format_spec /= '*') return
++        do j = 1, size(stmt%specifiers)
++            if (.not. allocated(stmt%specifiers(j)%name)) return
++            if (.not. allocated(stmt%specifiers(j)%value)) return
++        end do
++        if (to_lower(stmt%specifiers(1)%name) /= 'unit') return
++        if (stmt%specifiers(1)%value /= stmt%unit_spec) return
++        if (to_lower(stmt%specifiers(2)%name) /= 'fmt') return
++        if (stmt%specifiers(2)%value /= '*') return
++        if (size(stmt%specifiers) == 3) then
++            if (to_lower(stmt%specifiers(3)%name) /= 'iostat') return
++            if (.not. arena%has_node_at(stmt%specifiers(3)%value_node_index)) return
++            select type (status => arena%entries(stmt%specifiers(3)%value_node_index)%node)
++            type is (identifier_node)
++                if (.not. writable_identifier(stmt%specifiers(3)%value_node_index, .true.)) return
++            class default
++                return
++            end select
++        else if (stmt%iostat_var_index /= 0) then
++            return
++        end if
++        if (.not. allocated(stmt%var_indices)) return
++        do j = 1, size(stmt%var_indices)
++            if (.not. arena%has_node_at(stmt%var_indices(j))) return
++            select type (target => arena%entries(stmt%var_indices(j))%node)
++            type is (identifier_node)
++                if (.not. writable_identifier(stmt%var_indices(j), .false.)) return
++            class default
++                return
++            end select
++        end do
++        expression_index = stmt%specifiers(1)%value_node_index
++        if (.not. arena%has_node_at(expression_index)) return
++        select type (file => arena%entries(expression_index)%node)
++        type is (call_or_subscript_node)
++            if (.not. allocated(file%name)) return
++            if (.not. allocated(file%arg_indices)) return
++            rank = size(file%arg_indices)
++            if (rank < 1 .or. rank > 3) return
++            base_name = file%name
++        class default
++            return
++        end select
++        call resolve_name_at_node(arena, stmt_index, base_name, binding, error_msg)
++        if (.not. binding%found) return
++        if (binding%binding_kind /= BINDING_DECLARATION) return
++        if (binding%association /= ASSOCIATION_DIRECT .or. &
++            binding%scope_node_index /= scope) return
++        if (.not. arena%has_node_at(binding%declaration_node_index)) return
++        select type (decl => arena%entries(binding%declaration_node_index)%node)
++        type is (declaration_node)
++            if (.not. allocated(decl%type_name)) return
++            type_name = to_lower(trim(decl%type_name))
++            if (len(type_name) < 9) return
++            if (type_name(:9) /= 'character') return
++            if (len(type_name) > 9) then
++                if (type_name(10:10) /= '(' .and. type_name(10:10) /= '*') return
++            end if
++            if (.not. decl%is_array) return
++            if (.not. allocated(decl%dimension_indices)) return
++            if (size(decl%dimension_indices) /= rank) return
++            if (decl%is_parameter .or. decl%is_save .or. decl%has_initializer .or. &
++                decl%is_pointer .or. decl%is_external .or. decl%is_protected .or. &
++                decl%is_volatile .or. decl%has_intent .or. decl%is_optional) return
++            marks = 0
++        select type (file => arena%entries(expression_index)%node)
++        type is (call_or_subscript_node)
++            if (file%base_expr_index /= 0) return
++            do j = 1, rank
++                if (.not. scalar_index(file%arg_indices(j), 0)) return
++            end do
++        end select
++        local = .true.
++        end select
++    contains
++        logical function writable_identifier(index, status) result(writable)
++            integer, intent(in) :: index
++            logical, intent(in) :: status
++            type(declaration_binding_t) :: target_binding
++            character(len=:), allocatable :: target_error, target_name, intent_name, intrinsic_type
++            integer :: delimiter
++            writable = .false.
++            if (.not. arena%has_node_at(index)) return
++            select type (node => arena%entries(index)%node)
++            type is (identifier_node)
++                if (.not. allocated(node%name)) return
++                target_name = node%name
++            class default
++                return
++            end select
++            call resolve_name_at_node(arena, stmt_index, target_name, target_binding, target_error)
++            if (.not. target_binding%found) return
++            if (target_binding%association /= ASSOCIATION_DIRECT .or. &
++                target_binding%scope_node_index /= scope) return
++            if (target_binding%binding_kind /= BINDING_DECLARATION .and. &
++                target_binding%binding_kind /= BINDING_DUMMY_ARGUMENT) return
++            if (.not. arena%has_node_at(target_binding%declaration_node_index)) return
++            select type (decl => arena%entries(target_binding%declaration_node_index)%node)
++            type is (declaration_node)
++                if (.not. allocated(decl%type_name)) return
++                intrinsic_type = to_lower(trim(decl%type_name))
++                delimiter = scan(intrinsic_type, '(*')
++                if (delimiter > 0) intrinsic_type = intrinsic_type(:delimiter-1)
++                intrinsic_type = trim(intrinsic_type)
++                if (status) then
++                    if (intrinsic_type /= 'integer') return
++                else
++                    select case (intrinsic_type)
++                    case ('integer', 'real', 'character')
++                    case default
++                        return
++                    end select
++                end if
++                if (decl%is_array .or. decl%is_parameter .or. decl%is_save .or. &
++                    decl%has_initializer .or. decl%is_pointer .or. decl%is_allocatable .or. &
++                    decl%is_external .or. decl%is_protected .or. decl%is_volatile .or. &
++                    decl%is_optional) return
++                if (decl%has_intent) then
++                    if (.not. allocated(decl%intent)) return
++                    intent_name = to_lower(trim(decl%intent))
++                    if (intent_name /= 'out' .and. intent_name /= 'inout') return
++                    select type (proc => arena%entries(scope)%node)
++                    type is (function_def_node)
++                        return
++                    end select
++                else if (target_binding%binding_kind == BINDING_DUMMY_ARGUMENT) then
++                    return
++                end if
++            class default
++                ! An incomplete parameter declaration cannot prove writable storage.
++                return
++            end select
++            writable = .true.
++        end function writable_identifier
++        recursive logical function scalar_index(index, depth) result(valid)
++            integer, intent(in) :: index, depth
++            type(declaration_binding_t) :: index_binding
++            integer :: suffix
++            character(len=:), allocatable :: index_error, integer_type
++            valid = .false.
++            if (depth > 256 .or. index < 1 .or. index > size(marks)) return
++            if (.not. arena%has_node_at(index)) return
++            if (marks(index) == 1) return
++            if (marks(index) == 2) then
++                valid = .true.
++                return
++            end if
++            marks(index) = 1
++            select type (node => arena%entries(index)%node)
++            type is (literal_node)
++                if (node%literal_kind /= LITERAL_INTEGER) return
++                if (allocated(node%literal_type)) then
++                    if (to_lower(node%literal_type) /= 'integer') return
++                end if
++                if (.not. allocated(node%value)) return
++                if (len(node%value) == 0) return
++                ! Integer literal spelling, with optional numeric/named KIND.
++                ! Unary signs have separate binary AST nodes (synthetic zero).
++                suffix = scan(node%value, '_')
++                if (suffix == 0) then
++                    if (verify(node%value, '0123456789') /= 0) return
++                else
++                    if (suffix == 1 .or. suffix == len(node%value)) return
++                    if (verify(node%value(:suffix-1), '0123456789') /= 0) return
++                    if (verify(node%value(suffix+1:), '0123456789') /= 0) then
++                        if (verify(node%value(suffix+1:suffix+1), &
++                            'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') /= 0) return
++                        if (verify(node%value(suffix+1:), &
++                            'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_') /= 0) return
++                    end if
++                end if
++            type is (identifier_node)
++                if (.not. allocated(node%name)) return
++                call resolve_name_at_node(arena, stmt_index, node%name, index_binding, index_error)
++                if (.not. index_binding%found) return
++                if (index_binding%association /= ASSOCIATION_DIRECT .or. &
++                    index_binding%scope_node_index /= scope .or. &
++                    index_binding%binding_kind /= BINDING_DECLARATION) return
++                if (.not. arena%has_node_at(index_binding%declaration_node_index)) return
++                select type (decl => arena%entries(index_binding%declaration_node_index)%node)
++                type is (declaration_node)
++                    if (.not. allocated(decl%type_name)) return
++                    integer_type = to_lower(trim(decl%type_name))
++                    if (len(integer_type) < 7) return
++                    if (integer_type(:7) /= 'integer') return
++                    if (len(integer_type) > 7) then
++                        if (integer_type(8:8) /= '(' .and. integer_type(8:8) /= '*') return
++                    end if
++                    if (decl%is_array .or. decl%is_pointer .or. decl%is_allocatable .or. &
++                        decl%has_intent .or. decl%is_optional .or. decl%is_external) return
++                class default
++                    return
++                end select
++            type is (binary_op_node)
++                if (.not. allocated(node%operator)) return
++                select case (trim(node%operator))
++                case ('+', '-', '*', '/', '**')
++                case default
++                    return
++                end select
++                if (.not. scalar_index(node%left_index, depth + 1)) return
++                if (.not. scalar_index(node%right_index, depth + 1)) return
++            class default
++                return
++            end select
++            marks(index) = 2
++            valid = .true.
++        end function scalar_index
++    end function is_local_internal_element_read
+ 
+     ! A local CHARACTER internal file is not an external I/O effect. Keep
+     ! this exemption bounded to a whole scalar writable object declared in

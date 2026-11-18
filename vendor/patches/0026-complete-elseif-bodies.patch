@@ -1,0 +1,233 @@
+--- a/vendor/fortfront/src/parser/control_flow/parser_if_constructs.f90
++++ b/vendor/fortfront/src/parser/control_flow/parser_if_constructs.f90
+@@ -13,7 +13,7 @@
+     use parser_if_inline_module, only: parse_inline_if
+     use parser_if_body_module, only: parse_if_body
+     use ast_arena_modern, only: ast_arena_t, link_children_to_parent
+-    use ast_nodes_conditional, only: if_node
++    use ast_nodes_conditional, only: if_node, elseif_wrapper_t
+     use ast_factory_control, only: push_if
+     use parser_trailing_comment_module, only: capture_trailing_comment
+     implicit none
+@@ -122,7 +122,7 @@
+ 
+         type(token_t) :: then_token
+         integer, allocatable :: then_body_indices(:), else_body_indices(:)
+-        integer, allocatable :: elseif_indices(:)
++        type(elseif_wrapper_t), allocatable :: elseif_indices(:)
+ 
+         ! Consume 'then' keyword
+         then_token = parser%consume()
+@@ -164,7 +164,7 @@
+         type(parser_state_t), intent(inout) :: parser
+         type(ast_arena_t), intent(inout) :: arena
+         integer, intent(in) :: if_index
+-        integer, allocatable, intent(inout) :: elseif_indices(:)
++        type(elseif_wrapper_t), allocatable, intent(inout) :: elseif_indices(:)
+         integer, allocatable, intent(out) :: else_body_indices(:)
+         type(statement_callbacks_t), intent(in) :: callbacks
+ 
+@@ -183,10 +183,10 @@
+ 
+             select case (to_lower(token%text))
+             case ("elseif", "else if")
+-                call append_elseif_block(parser, arena, elseif_indices)
++                call append_elseif_block(parser, arena, elseif_indices, if_index)
+             case ("else")
+                 if (is_else_if_construct(parser)) then
+-                    call append_elseif_block(parser, arena, elseif_indices)
++                    call append_elseif_block(parser, arena, elseif_indices, if_index)
+                     cycle
+                 end if
+                 call parse_else_body(parser, arena, if_index, else_body_indices, &
+@@ -215,15 +215,18 @@
+     end function is_else_if_construct
+ 
+     ! Append an elseif block to the indices array
+-    subroutine append_elseif_block(parser, arena, elseif_indices)
+-        type(parser_state_t), intent(inout) :: parser
+-        type(ast_arena_t), intent(inout) :: arena
+-        integer, allocatable, intent(inout) :: elseif_indices(:)
+-
++    subroutine append_elseif_block(parser, arena, elseif_indices, if_index)
++        type(parser_state_t), intent(inout) :: parser
++        type(ast_arena_t), intent(inout) :: arena
++        type(elseif_wrapper_t), allocatable, intent(inout) :: elseif_indices(:)
++
++        integer,intent(in) :: if_index
+         integer :: elseif_pair(2)
+-
+-    elseif_pair = parse_elseif_block(parser, arena)
+-    elseif_indices = [elseif_indices, elseif_pair]
++        type(elseif_wrapper_t) :: arm
++
++        elseif_pair = parse_elseif_block(parser, arena, arm%body_indices, if_index)
++        arm%condition_index = elseif_pair(1)
++        elseif_indices = [elseif_indices, arm]
+     end subroutine append_elseif_block
+ 
+     ! Parse else body block
+@@ -310,7 +313,7 @@
+         type(ast_arena_t), intent(inout) :: arena
+         integer, intent(in) :: if_index
+         integer, allocatable, intent(in) :: then_body_indices(:)
+-        integer, allocatable, intent(in) :: elseif_indices(:)
++        type(elseif_wrapper_t), allocatable, intent(in) :: elseif_indices(:)
+         integer, allocatable, intent(in) :: else_body_indices(:)
+ 
+         integer :: i
+@@ -328,17 +331,14 @@
+                 call link_children_to_parent(arena, if_index, else_body_indices)
+             end if
+             if (allocated(elseif_indices)) then
+-                if (size(elseif_indices) > 0 .and. &
+-                    mod(size(elseif_indices), 2) == 0) then
+-                    call link_children_to_parent(arena, if_index, elseif_indices)
+-                    allocate (node%elseif_blocks(size(elseif_indices) / 2))
+-                    do i = 1, size(elseif_indices) / 2
+-                        node%elseif_blocks(i)%condition_index = &
+-                            elseif_indices(2 * i - 1)
+-                        node%elseif_blocks(i)%body_indices = &
+-                            [elseif_indices(2 * i)]
+-                    end do
+-                end if
++                node%elseif_blocks = elseif_indices
++                do i = 1, size(elseif_indices)
++                    call link_children_to_parent(arena, if_index, &
++                        [elseif_indices(i)%condition_index])
++                    if (allocated(elseif_indices(i)%body_indices)) &
++                        call link_children_to_parent(arena, if_index, &
++                        elseif_indices(i)%body_indices)
++                end do
+             end if
+         end select
+     end subroutine update_if_node_bodies
+@@ -456,10 +456,12 @@
+     end function parse_if_condition_no_paren
+ 
+     ! Parse elseif block
+-    function parse_elseif_block(parser, arena) result(elseif_indices)
+-        type(parser_state_t), intent(inout) :: parser
+-        type(ast_arena_t), intent(inout) :: arena
+-        integer :: elseif_indices(2) ! condition_index, body_indices_start
++    function parse_elseif_block(parser, arena, full_body, parent_index) result(elseif_indices)
++        type(parser_state_t), intent(inout) :: parser
++        type(ast_arena_t), intent(inout) :: arena
++        integer,allocatable,intent(out),optional :: full_body(:)
++        integer,intent(in),optional :: parent_index
++        integer :: elseif_indices(2) ! compatibility: condition and first statement
+         type(token_t) :: elseif_token
+         type(statement_callbacks_t) :: callbacks
+ 
+@@ -485,7 +487,8 @@
+         callbacks = build_if_body_callbacks()
+         block
+             integer, allocatable :: body_indices(:)
+-            body_indices = parse_if_body(parser, arena, callbacks=callbacks)
++            body_indices = parse_if_body(parser, arena, parent_index, callbacks)
++            if(present(full_body)) full_body=body_indices
+             if (allocated(body_indices) .and. size(body_indices) > 0) then
+             elseif_indices(2) = body_indices(1) ! Store first body statement index
+             else
+--- a/vendor/fortfront/src/parser/control_flow/parser_if_body.f90
++++ b/vendor/fortfront/src/parser/control_flow/parser_if_body.f90
+@@ -115,6 +115,8 @@
+         integer :: stmt_end, last_token_index
+ 
+         stmt_end = find_statement_end(parser%tokens, parser%current_token)
++        ! A named opener begins with an identifier, but still owns its entire DO.
++        stmt_end = extend_do_statement_end(parser%tokens, parser%current_token, stmt_end)
+         first_stmt_token = parser%tokens(parser%current_token)
+         if (first_stmt_token%kind == TK_KEYWORD) then
+             if (first_stmt_token%text == "if") then
+--- a/vendor/fortfront/src/parser/control_flow/parser_if_statements.f90
++++ b/vendor/fortfront/src/parser/control_flow/parser_if_statements.f90
+@@ -3,7 +3,7 @@
+     use lexer_core, only: token_t, TK_KEYWORD, TK_WHITESPACE, TK_NEWLINE, TK_EOF
+     use parser_state_module, only: parser_state_t, create_parser_state
+     use parser_do_constructs_module, only: parse_do_loop
+-    use parser_statement_detection_module, only: extend_do_statement_end
++    use parser_statement_detection_module, only: extend_do_statement_end, do_construct_start
+     use parser_expressions_module, only: parse_range
+     use parser_statement_utilities_module, only: parse_statement_in_if_block
+     use ast_arena_modern, only: ast_arena_t
+@@ -287,10 +287,7 @@
+         type(token_t), intent(in) :: body_tokens(:)
+         integer, intent(in) :: stmt_start
+ 
+-        is_do = .false.
+-        if (stmt_start < 1 .or. stmt_start > size(body_tokens)) return
+-        is_do = body_tokens(stmt_start)%kind == TK_KEYWORD .and. &
+-            to_lower(trim(body_tokens(stmt_start)%text)) == 'do'
++        is_do = do_construct_start(body_tokens, stmt_start) > 0
+     end function is_do_statement_start
+ 
+     subroutine parse_if_body_line_efficient(body_tokens, stmt_start, stmt_end, &
+--- a/vendor/fortfront/src/parser/statements/parser_statement_detection.f90
++++ b/vendor/fortfront/src/parser/statements/parser_statement_detection.f90
+@@ -20,7 +20,7 @@
+     public :: is_block_if, at_top_level, next_significant_index
+     public :: inline_where_parenthetical, inline_where_colon, is_inline_where
+     public :: find_statement_end, extend_if_statement_end, extend_do_statement_end
+-    public :: extend_block_statement_end
++    public :: extend_block_statement_end, do_construct_start
+ 
+ contains
+ 
+@@ -536,6 +536,23 @@
+         end do
+     end function is_select_construct
+ 
++    integer function do_construct_start(tokens, start_index) result(index)
++        type(token_t), intent(in) :: tokens(:)
++        integer, intent(in) :: start_index
++        integer :: first
++        index = 0
++        if (start_index < 1 .or. start_index > size(tokens)) return
++        first = start_index
++        if (tokens(first)%kind == TK_IDENTIFIER) then
++            if (first + 2 > size(tokens)) return
++            if (tokens(first + 1)%kind /= TK_OPERATOR) return
++            if (tokens(first + 1)%text /= ':') return
++            first = first + 2
++        end if
++        if (tokens(first)%kind /= TK_KEYWORD) return
++        if (to_lower(trim(tokens(first)%text)) == 'do') index = first
++    end function do_construct_start
++
+     integer function extend_do_statement_end(tokens, start_index, initial_end) &
+             result(end_index)
+         !! Extend a statement slice over a whole DO construct.
+@@ -549,17 +566,17 @@
+         type(token_t), intent(in) :: tokens(:)
+         integer, intent(in) :: start_index
+         integer, intent(in) :: initial_end
+-        integer :: idx, depth
++        integer :: idx, depth, do_start
+         type(token_t) :: token
+ 
+         end_index = initial_end
+         if (start_index < 1 .or. start_index > size(tokens)) return
+         if (initial_end < start_index) return
+-        if (tokens(start_index)%kind /= TK_KEYWORD) return
+-        if (to_lower(trim(tokens(start_index)%text)) /= "do") return
++        do_start = do_construct_start(tokens, start_index)
++        if (do_start == 0) return
+ 
+         depth = 0
+-        idx = start_index
++        idx = do_start
+         do while (idx <= size(tokens))
+             token = tokens(idx)
+             if (token%kind == TK_KEYWORD) then
+--- a/vendor/fortfront/src/parser/statements/parser_basic_statement_module.f90
++++ b/vendor/fortfront/src/parser/statements/parser_basic_statement_module.f90
+@@ -140,6 +140,8 @@
+                     end if
+                 end if
+                 stmt_end = find_statement_end(parser%tokens, stmt_start)
++                ! Include named DO constructs in CASE and other statement bodies.
++                stmt_end = extend_do_statement_end(parser%tokens, stmt_start, stmt_end)
+                 ! Hand a whole construct over, not just its header. This body
+                 ! parser serves case arms and other block bodies, and an `if`
+                 ! or `do` inside one was sliced at its first line, leaving the

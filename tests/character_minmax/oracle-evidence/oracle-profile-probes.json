@@ -1,0 +1,214 @@
+[
+  {
+    "name": "demo_max",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=gnu",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/demo_max.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/gnu-probes/demo_max-gnu"
+    ],
+    "code": 0,
+    "out": "",
+    "err": "",
+    "run": {
+      "code": 0,
+      "out": " scalars:   30.0000000    \n scalars:  -9.99999975E-05\n characters:words\n characters:c \n characters:b \n\"B\" \"Z\"\n <ERROR> previous line should be \"BB\",\"Z \"\nbox=    -6  -5  -4  -3  -2  -1   1   2   3   4   5   6\nbox**2=-36 -25 -16  -9  -4  -1   1   4   9  16  25  36\nmax     -6  -5  -4  -3  -2  -1   1   4   9  16  25  36\n   20.0000000       21.0000000       32.0000000      -100.000000    \n           0           0           0           0           0           0           1           2           3           4           5           6\n",
+      "err": ""
+    }
+  },
+  {
+    "name": "demo_max",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=legacy",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/demo_max.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/gnu-probes/demo_max-legacy"
+    ],
+    "code": 0,
+    "out": "",
+    "err": "",
+    "run": {
+      "code": 0,
+      "out": " scalars:   30.0000000    \n scalars:  -9.99999975E-05\n characters:words\n characters:c \n characters:b \n\"B\" \"Z\"\n <ERROR> previous line should be \"BB\",\"Z \"\nbox=    -6  -5  -4  -3  -2  -1   1   2   3   4   5   6\nbox**2=-36 -25 -16  -9  -4  -1   1   4   9  16  25  36\nmax     -6  -5  -4  -3  -2  -1   1   4   9  16  25  36\n   20.0000000       21.0000000       32.0000000      -100.000000    \n           0           0           0           0           0           0           1           2           3           4           5           6\n",
+      "err": ""
+    }
+  },
+  {
+    "name": "demo_min",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=gnu",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/demo_min.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/gnu-probes/demo_min-gnu"
+    ],
+    "code": 0,
+    "out": "",
+    "err": "",
+    "run": {
+      "code": 0,
+      "out": " basics\n  -100.000000    \n  -200.000000    \n elemental\n           1           1           1\n           2           3           4\n box:\n -6  -3   0   3\n -5  -2   1   4\n -4  -1   2   5\n make all values 0 or less:\n -6  -3   0   0\n -5  -2   0   0\n -4  -1   0   0\n test1 PASSED\n test2A PASSED\n test2B PASSED\n test2C PASSED\n test2D PASSED\n MIN(['Z', 'A'], ['YY', 'B ']):  Y A\n test3 FAILED\n",
+      "err": ""
+    }
+  },
+  {
+    "name": "demo_min",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=legacy",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/demo_min.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/gnu-probes/demo_min-legacy"
+    ],
+    "code": 0,
+    "out": "",
+    "err": "",
+    "run": {
+      "code": 0,
+      "out": " basics\n  -100.000000    \n  -200.000000    \n elemental\n           1           1           1\n           2           3           4\n box:\n -6  -3   0   3\n -5  -2   1   4\n -4  -1   2   5\n make all values 0 or less:\n -6  -3   0   0\n -5  -2   0   0\n -4  -1   0   0\n test1 PASSED\n test2A PASSED\n test2B PASSED\n test2C PASSED\n test2D PASSED\n MIN(['Z', 'A'], ['YY', 'B ']):  Y A\n test3 FAILED\n",
+      "err": ""
+    }
+  },
+  {
+    "name": "min_deferred_array",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=gnu",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/min_deferred_array.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/gnu-probes/min_deferred_array-gnu"
+    ],
+    "code": 1,
+    "out": "",
+    "err": "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/min_deferred_array.f90:6:10:\n\n    6 | c=min(a,b)\n      |          1\ninternal compiler error: Segmentation fault\n0x12ed873 internal_error(char const*, ...)\n\t???:0\n0x1396cb8 fold_convert_loc(unsigned int, tree_node*, tree_node*)\n\t???:0\n0x1b8cdbe gfc_alloc_allocatable_for_assignment(gfc_loopinfo*, gfc_expr*, gfc_expr*)\n\t???:0\n0x1babe3f gfc_generate_function_code(gfc_namespace*)\n\t???:0\n0x1b224f4 gfc_parse_file()\n\t???:0\nPlease submit a full bug report, with preprocessed source (by using -freport-bug).\nPlease include the complete backtrace with any bug report.\nSee <file:///usr/share/doc/gcc-14/README.Bugs> for instructions.\n"
+  },
+  {
+    "name": "min_deferred_array",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=legacy",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/min_deferred_array.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/gnu-probes/min_deferred_array-legacy"
+    ],
+    "code": 1,
+    "out": "",
+    "err": "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/min_deferred_array.f90:6:10:\n\n    6 | c=min(a,b)\n      |          1\ninternal compiler error: Segmentation fault\n0x12ed873 internal_error(char const*, ...)\n\t???:0\n0x1396cb8 fold_convert_loc(unsigned int, tree_node*, tree_node*)\n\t???:0\n0x1b8cdbe gfc_alloc_allocatable_for_assignment(gfc_loopinfo*, gfc_expr*, gfc_expr*)\n\t???:0\n0x1babe3f gfc_generate_function_code(gfc_namespace*)\n\t???:0\n0x1b224f4 gfc_parse_file()\n\t???:0\nPlease submit a full bug report, with preprocessed source (by using -freport-bug).\nPlease include the complete backtrace with any bug report.\nSee <file:///usr/share/doc/gcc-14/README.Bugs> for instructions.\n"
+  },
+  {
+    "name": "min_deferred_empty",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=gnu",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/min_deferred_empty.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/gnu-probes/min_deferred_empty-gnu"
+    ],
+    "code": 1,
+    "out": "",
+    "err": "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/min_deferred_empty.f90:6:10:\n\n    6 | c=min(a,b)\n      |          1\ninternal compiler error: Segmentation fault\n0x12ed873 internal_error(char const*, ...)\n\t???:0\n0x1396cb8 fold_convert_loc(unsigned int, tree_node*, tree_node*)\n\t???:0\n0x1b8cdbe gfc_alloc_allocatable_for_assignment(gfc_loopinfo*, gfc_expr*, gfc_expr*)\n\t???:0\n0x1babe3f gfc_generate_function_code(gfc_namespace*)\n\t???:0\n0x1b224f4 gfc_parse_file()\n\t???:0\nPlease submit a full bug report, with preprocessed source (by using -freport-bug).\nPlease include the complete backtrace with any bug report.\nSee <file:///usr/share/doc/gcc-14/README.Bugs> for instructions.\n"
+  },
+  {
+    "name": "min_deferred_empty",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=legacy",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/min_deferred_empty.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/gnu-probes/min_deferred_empty-legacy"
+    ],
+    "code": 1,
+    "out": "",
+    "err": "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/min_deferred_empty.f90:6:10:\n\n    6 | c=min(a,b)\n      |          1\ninternal compiler error: Segmentation fault\n0x12ed873 internal_error(char const*, ...)\n\t???:0\n0x1396cb8 fold_convert_loc(unsigned int, tree_node*, tree_node*)\n\t???:0\n0x1b8cdbe gfc_alloc_allocatable_for_assignment(gfc_loopinfo*, gfc_expr*, gfc_expr*)\n\t???:0\n0x1babe3f gfc_generate_function_code(gfc_namespace*)\n\t???:0\n0x1b224f4 gfc_parse_file()\n\t???:0\nPlease submit a full bug report, with preprocessed source (by using -freport-bug).\nPlease include the complete backtrace with any bug report.\nSee <file:///usr/share/doc/gcc-14/README.Bugs> for instructions.\n"
+  },
+  {
+    "name": "min_empty_rank3",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=gnu",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/min_empty_rank3.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/gnu-probes/min_empty_rank3-gnu"
+    ],
+    "code": 4,
+    "out": "",
+    "err": "x86_64-linux-gnu-gfortran-14: internal compiler error: Segmentation fault signal terminated program f951\nPlease submit a full bug report, with preprocessed source (by using -freport-bug).\nSee <file:///usr/share/doc/gcc-14/README.Bugs> for instructions.\n"
+  },
+  {
+    "name": "min_empty_rank3",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=legacy",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/min_empty_rank3.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/gnu-probes/min_empty_rank3-legacy"
+    ],
+    "code": 4,
+    "out": "",
+    "err": "x86_64-linux-gnu-gfortran-14: internal compiler error: Segmentation fault signal terminated program f951\nPlease submit a full bug report, with preprocessed source (by using -freport-bug).\nSee <file:///usr/share/doc/gcc-14/README.Bugs> for instructions.\n"
+  },
+  {
+    "name": "min_kind_no_value",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=gnu",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/min_kind_no_value.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/gnu-probes/min_kind_no_value-gnu"
+    ],
+    "code": 4,
+    "out": "",
+    "err": "x86_64-linux-gnu-gfortran-14: internal compiler error: Segmentation fault signal terminated program f951\nPlease submit a full bug report, with preprocessed source (by using -freport-bug).\nSee <file:///usr/share/doc/gcc-14/README.Bugs> for instructions.\n"
+  },
+  {
+    "name": "min_kind_no_value",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=legacy",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/min_kind_no_value.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/character-minmax-work/gnu-probes/min_kind_no_value-legacy"
+    ],
+    "code": 4,
+    "out": "",
+    "err": "x86_64-linux-gnu-gfortran-14: internal compiler error: Segmentation fault signal terminated program f951\nPlease submit a full bug report, with preprocessed source (by using -freport-bug).\nSee <file:///usr/share/doc/gcc-14/README.Bugs> for instructions.\n"
+  }
+]

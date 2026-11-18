@@ -1,0 +1,26 @@
+{
+  "candidate_sha256": "ba3345d5361f72ea979fb14fd242ccd29b88f32a9d11d0d78abacffd62841fde",
+  "records": [
+    {
+      "name": "trailing",
+      "stdin": "integer::i\ni=4\ni ! note\n.quit\n",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:5:20: Expected ), found ;\n"
+    },
+    {
+      "name": "quoted",
+      "stdin": "'hello!world'\n.quit\n",
+      "returncode": 0,
+      "stdout": " hello!world\n",
+      "stderr": ""
+    },
+    {
+      "name": "splice",
+      "stdin": "print *, \"PREFIX\"\n1), 2 ! splice\n.quit\n",
+      "returncode": 0,
+      "stdout": " PREFIX\n 1 2\n",
+      "stderr": ""
+    }
+  ]
+}

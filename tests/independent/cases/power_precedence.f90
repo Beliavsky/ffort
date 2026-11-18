@@ -1,0 +1,9 @@
+program probe
+  implicit none
+  integer :: a, b, c, d
+  a=-2**2
+  b=(-2)**2
+  c=2**3**2
+  d=2**(-2)
+  print *, a,b,c,d
+end program probe

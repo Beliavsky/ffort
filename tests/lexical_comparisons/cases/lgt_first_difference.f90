@@ -1,0 +1,9 @@
+program p
+implicit none
+print *,lgt('az','ba')
+print *,lgt('ab','aaZ')
+print *,lgt('a'//achar(0),'a')
+print *,lgt('a'//achar(127),'a')
+print *,lgt('az'//achar(0),'ba'//achar(127))
+print *,lgt('a'//achar(0)//'z','a'//achar(0)//'a')
+end program

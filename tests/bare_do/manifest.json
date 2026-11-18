@@ -1,0 +1,324 @@
+{
+  "cases": [
+    {
+      "name": "immediate_exit",
+      "source": "cases/immediate_exit.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "17",
+      "diagnostic": ""
+    },
+    {
+      "name": "single_line_exit",
+      "source": "cases/single_line_exit.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7",
+      "diagnostic": ""
+    },
+    {
+      "name": "cycle_and_endif",
+      "source": "cases/cycle_and_endif.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5 12",
+      "diagnostic": ""
+    },
+    {
+      "name": "named_exit",
+      "source": "cases/named_exit.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1",
+      "diagnostic": ""
+    },
+    {
+      "name": "outer_cycle_releases_counted",
+      "source": "cases/outer_cycle_releases_counted.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 20",
+      "diagnostic": ""
+    },
+    {
+      "name": "counted_outer_bare_inner",
+      "source": "cases/counted_outer_bare_inner.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 4",
+      "diagnostic": ""
+    },
+    {
+      "name": "counted_inner_bare_exit",
+      "source": "cases/counted_inner_bare_exit.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 3",
+      "diagnostic": ""
+    },
+    {
+      "name": "three_levels_outer_exit",
+      "source": "cases/three_levels_outer_exit.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 10",
+      "diagnostic": ""
+    },
+    {
+      "name": "select_arms",
+      "source": "cases/select_arms.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 9",
+      "diagnostic": ""
+    },
+    {
+      "name": "if_arm_loops",
+      "source": "cases/if_arm_loops.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1",
+      "diagnostic": ""
+    },
+    {
+      "name": "comments_and_semicolons",
+      "source": "cases/comments_and_semicolons.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3",
+      "diagnostic": ""
+    },
+    {
+      "name": "all_one_line",
+      "source": "cases/all_one_line.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2",
+      "diagnostic": ""
+    },
+    {
+      "name": "nested_all_one_line",
+      "source": "cases/nested_all_one_line.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1",
+      "diagnostic": ""
+    },
+    {
+      "name": "reentered_counted",
+      "source": "cases/reentered_counted.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 5",
+      "diagnostic": ""
+    },
+    {
+      "name": "procedure_return",
+      "source": "cases/procedure_return.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 15",
+      "diagnostic": ""
+    },
+    {
+      "name": "pure_elemental",
+      "source": "cases/pure_elemental.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 6 15",
+      "diagnostic": ""
+    },
+    {
+      "name": "module_variable_return_cleanup",
+      "source": "cases/module_variable_return_cleanup.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "10",
+      "diagnostic": ""
+    },
+    {
+      "name": "empty_budget",
+      "source": "cases/empty_budget.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "execution step limit exceeded",
+      "args": [
+        "--max-steps",
+        "40"
+      ]
+    },
+    {
+      "name": "cycle_budget",
+      "source": "cases/cycle_budget.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "execution step limit exceeded",
+      "args": [
+        "--max-steps",
+        "40"
+      ]
+    },
+    {
+      "name": "nested_budget",
+      "source": "cases/nested_budget.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "execution step limit exceeded",
+      "args": [
+        "--max-steps",
+        "40"
+      ]
+    },
+    {
+      "name": "shared_call_budget",
+      "source": "cases/shared_call_budget.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "execution step limit exceeded",
+      "args": [
+        "--max-steps",
+        "40"
+      ]
+    },
+    {
+      "name": "default_budget",
+      "source": "cases/default_budget.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "execution step limit exceeded"
+    },
+    {
+      "name": "reject_unknown_exit",
+      "source": "cases/reject_unknown_exit.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "reject_unknown_cycle",
+      "source": "cases/reject_unknown_cycle.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "reject_missing_end_name",
+      "source": "cases/reject_missing_end_name.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "reject_wrong_end_name",
+      "source": "cases/reject_wrong_end_name.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "reject_unexpected_end_name",
+      "source": "cases/reject_unexpected_end_name.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "reject_duplicate_name",
+      "source": "cases/reject_duplicate_name.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "reject_missing_end",
+      "source": "cases/reject_missing_end.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "reject_bad_separator",
+      "source": "cases/reject_bad_separator.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "reject_extra_control",
+      "source": "cases/reject_extra_control.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "reject_active_counted_write",
+      "source": "cases/reject_active_counted_write.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "unsupported_while",
+      "source": "cases/unsupported_while.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "unsupported_concurrent",
+      "source": "cases/unsupported_concurrent.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "unsupported_labeled",
+      "source": "cases/unsupported_labeled.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "nesting_limit",
+      "source": "cases/nesting_limit.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Block nesting limit exceeded"
+    },
+    {
+      "name": "nesting_boundary",
+      "source": "cases/nesting_boundary.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "64",
+      "diagnostic": ""
+    },
+    {
+      "name": "recursive_frames",
+      "source": "cases/recursive_frames.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "120 1",
+      "diagnostic": ""
+    }
+  ]
+}

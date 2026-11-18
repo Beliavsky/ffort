@@ -1,0 +1,7 @@
+program p
+implicit none
+real(4)::x(2,1,2),a(2,1,2)
+x=-3.0_4
+a=rrspacing(x)
+print *,a,shape(a)
+end program

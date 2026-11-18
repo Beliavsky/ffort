@@ -1,0 +1,2547 @@
+{
+  "utc": "2026-11-16T14:47:19.883763+00:00",
+  "summary": {
+    "total": 49,
+    "failed": 0,
+    "candidate_checked": 49,
+    "gnu_checked": 49,
+    "gnu_skipped": 0,
+    "gnu_executed": 28,
+    "gnu_compile_only": 11,
+    "gnu_rejections": 10,
+    "specification_only": 1
+  },
+  "records": [
+    {
+      "case": {
+        "name": "three_objects",
+        "source": "cases/three_objects.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 2 3 0 6 12 0 F F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/three_objects.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-ct4j4q2p/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           2           3           0           6          12\n           0 F F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-ct4j4q2p/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/three_objects.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 2 3 0 6 12\n 0 F F F\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/three_objects.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_types_ranks",
+        "source": "cases/mixed_types_ranks.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 8589934596 9 6 T 0 F F F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/mixed_types_ranks.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-kxddt2hc/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    0           8589934596   9.0000000000000000                6 T\n                    0 F F F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-kxddt2hc/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/mixed_types_ranks.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 8589934596 9.0000000000000000 6 T\n 0 F F F F\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/mixed_types_ranks.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "without_stat",
+        "source": "cases/without_stat.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 4 9 F F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/without_stat.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-rt5594xo/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           4           9\n F F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-rt5594xo/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/without_stat.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 4 9\n F F F\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/without_stat.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "bound_expressions",
+        "source": "cases/bound_expressions.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 5 6 3 -2",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/bound_expressions.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-pxaezuyu/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           5           6           3          -2\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-pxaezuyu/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/bound_expressions.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 5 6 3 -2\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/bound_expressions.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "bound_external_array",
+        "source": "cases/bound_external_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 2 2 5",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/bound_external_array.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-e0yefb3p/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           2           2           5\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-e0yefb3p/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/bound_external_array.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 2 2 5\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/bound_external_array.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "object_named_stat",
+        "source": "cases/object_named_stat.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_named_stat.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-ka9_368v/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3\n F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-ka9_368v/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_named_stat.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3\n F F\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_named_stat.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "allocate_failure_0_stat4",
+        "source": "cases/allocate_failure_0_stat4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T F F 4 36",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_0_stat4.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-z1z45xmk/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T F F           4          36\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-z1z45xmk/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_0_stat4.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T T F F 4 36\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_0_stat4.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "deallocate_failure_0_stat4",
+        "source": "cases/deallocate_failure_0_stat4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T F T T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_0_stat4.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-9lqgzvbb/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F T T\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-9lqgzvbb/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_0_stat4.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T F T T\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_0_stat4.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "allocate_failure_1_stat4",
+        "source": "cases/allocate_failure_1_stat4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T F 4 36",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_1_stat4.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-o_9da19d/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T F           4          36\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-o_9da19d/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_1_stat4.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T F 4 36\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_1_stat4.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "deallocate_failure_1_stat4",
+        "source": "cases/deallocate_failure_1_stat4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T F F T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_1_stat4.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-xd3t96f3/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F F T\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-xd3t96f3/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_1_stat4.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T F F T\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_1_stat4.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "allocate_failure_2_stat4",
+        "source": "cases/allocate_failure_2_stat4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T T 4 36",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_2_stat4.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-47vyxiuq/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T T           4          36\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-47vyxiuq/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_2_stat4.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T T 4 36\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_2_stat4.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "deallocate_failure_2_stat4",
+        "source": "cases/deallocate_failure_2_stat4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T F F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_2_stat4.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-8k_hcchf/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-8k_hcchf/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_2_stat4.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T F F F\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_2_stat4.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "allocate_failure_0_stat8",
+        "source": "cases/allocate_failure_0_stat8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T F F 4 36",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_0_stat8.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-sxmmm7p7/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T F F           4          36\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-sxmmm7p7/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_0_stat8.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T T F F 4 36\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_0_stat8.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "deallocate_failure_0_stat8",
+        "source": "cases/deallocate_failure_0_stat8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T F T T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_0_stat8.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-v6o1zg4o/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F T T\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-v6o1zg4o/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_0_stat8.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T F T T\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_0_stat8.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "allocate_failure_1_stat8",
+        "source": "cases/allocate_failure_1_stat8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T F 4 36",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_1_stat8.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-pjwshbq_/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T F           4          36\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-pjwshbq_/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_1_stat8.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T F 4 36\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_1_stat8.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "deallocate_failure_1_stat8",
+        "source": "cases/deallocate_failure_1_stat8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T F F T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_1_stat8.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-1f4vooai/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F F T\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-1f4vooai/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_1_stat8.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T F F T\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_1_stat8.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "allocate_failure_2_stat8",
+        "source": "cases/allocate_failure_2_stat8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T T 4 36",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_2_stat8.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-vfypgsj0/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T T           4          36\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-vfypgsj0/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_2_stat8.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T T 4 36\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocate_failure_2_stat8.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "deallocate_failure_2_stat8",
+        "source": "cases/deallocate_failure_2_stat8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T F F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_2_stat8.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-dwny3lun/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-dwny3lun/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_2_stat8.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T F F F\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_failure_2_stat8.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "typed_character",
+        "source": "cases/typed_character.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 3 3 T T 4 0 F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/typed_character.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-1crx2ofq/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           3           3 T T           4\n           0 F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-1crx2ofq/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/typed_character.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 3 3 T T 4\n 0 F F\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/typed_character.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "typed_zero_character",
+        "source": "cases/typed_zero_character.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0 0 0 2",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/typed_zero_character.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-fv492bkp/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           0           0           2\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-fv492bkp/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/typed_zero_character.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 0 0 2\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/typed_zero_character.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "fixed_character_mixed_lengths",
+        "source": "cases/fixed_character_mixed_lengths.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 4 T T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/fixed_character_mixed_lengths.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-bcjfubl9/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           4 T T\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-bcjfubl9/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/fixed_character_mixed_lengths.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 4 T T\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/fixed_character_mixed_lengths.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "typed_character_failure_descriptor",
+        "source": "cases/typed_character_failure_descriptor.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "T T T F 4 1 5 -2 T",
+        "diagnostic": "",
+        "reason": "GNU 14.2 corrupts failed B CHARACTER length; expected old descriptor retained under F2018 9.7.4p6, not a GNU execution agreement.",
+        "oracle": {
+          "type": "specification",
+          "reference": "https://j3-fortran.org/doc/year/18/18-007r1.pdf",
+          "clause": "9.7.4 paragraph 6",
+          "gnu_note": "Compile-only; GNU 14.2.0 changes failed object length."
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/typed_character_failure_descriptor.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-57bj9ybv/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/typed_character_failure_descriptor.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T F 4 1 5 -2 T\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/typed_character_failure_descriptor.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "module_storage",
+        "source": "cases/module_storage.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 9 F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/module_storage.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-5zgk04xz/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           9\n F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-5zgk04xz/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/module_storage.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 9\n F F\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/module_storage.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "allocatable_dummy_copyback",
+        "source": "cases/allocatable_dummy_copyback.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "9 8 -1 F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocatable_dummy_copyback.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-_lah8_qw/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           9           8          -1\n F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-_lah8_qw/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocatable_dummy_copyback.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 9 8 -1\n F F\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/allocatable_dummy_copyback.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "loop_repeated_groups",
+        "source": "cases/loop_repeated_groups.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 1 2 0 4 6 0 9 12",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/loop_repeated_groups.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-jnp6orjh/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           1           2\n           0           4           6\n           0           9          12\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-jnp6orjh/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/loop_repeated_groups.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 1 2\n 0 4 6\n 0 9 12\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/loop_repeated_groups.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "total_cap_prefix",
+        "source": "cases/total_cap_prefix.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "T T F F 500001",
+        "diagnostic": "",
+        "reason": "Synthetic 1,000,000-element policy: a(500001) succeeds, b(500000) exceeds the shared pool, and c is not attempted. No GNU allocation-failure agreement claimed."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/total_cap_prefix.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-brn1bhmk/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/total_cap_prefix.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T T F F 500001\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/total_cap_prefix.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "total_cap_exact",
+        "source": "cases/total_cap_exact.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 T T T 131072",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/total_cap_exact.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-s7skdj_r/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0 T T T      131072\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-s7skdj_r/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/total_cap_exact.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 T T T 131072\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/total_cap_exact.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "no_stat_allocate_failure",
+        "source": "cases/no_stat_allocate_failure.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "before",
+        "diagnostic": "already allocated",
+        "reason": "Runtime error stops suffix, no STAT recovery. GNU error text/codes are processor-dependent."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/no_stat_allocate_failure.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-t7mls54d/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/no_stat_allocate_failure.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": " before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/no_stat_allocate_failure.f90:7:1: ALLOCATE target is already allocated\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/no_stat_allocate_failure.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "no_stat_deallocate_failure",
+        "source": "cases/no_stat_deallocate_failure.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "before",
+        "diagnostic": "not allocated",
+        "reason": "Runtime error stops suffix, no STAT recovery."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/no_stat_deallocate_failure.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-k5tpadhb/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/no_stat_deallocate_failure.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": " before\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/no_stat_deallocate_failure.f90:7:1: DEALLOCATE target is not allocated\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/no_stat_deallocate_failure.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_allocate",
+        "source": "cases/duplicate_allocate.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "repeated object",
+        "reason": "Duplicate list objects rejected before execution."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_allocate.f90:6:9-14:\n\n    6 | allocate(a(1),a(2))\n      |         1    2\nError: Allocate-object at (1) also appears at (2)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_allocate.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-ym1s1ar2/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_allocate.f90:6:15: Allocation list contains a repeated object\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_allocate.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_allocate.f90:6:15: Allocation list contains a repeated object\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_allocate.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_deallocate",
+        "source": "cases/duplicate_deallocate.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "repeated object",
+        "reason": "Duplicate list objects rejected before execution."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_deallocate.f90:6:11-13:\n\n    6 | deallocate(a,a)\n      |           1 2\nError: Allocate-object at (1) also appears at (2)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_deallocate.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-r2i532se/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_deallocate.f90:6:14: Allocation list contains a repeated object\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_deallocate.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_deallocate.f90:6:14: Allocation list contains a repeated object\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_deallocate.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_stat",
+        "source": "cases/duplicate_stat.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Repeated allocation option",
+        "reason": "Repeated option is invalid Fortran."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_stat.f90:6:31:\n\n    6 | allocate(a(1),b(1),stat=s,stat=s)\n      |                               1\nError: Redundant STAT tag found at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_stat.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-qg7juwu5/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_stat.f90:6:27: Repeated allocation option\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_stat.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_stat.f90:6:27: Repeated allocation option\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/duplicate_stat.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "stat_dependency",
+        "source": "cases/stat_dependency.f90",
+        "category": "boundary",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "must not reference",
+        "reason": "Standard forbids STAT-dependent allocation bounds; GNU accepts this nonconforming source."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stat_dependency.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-5om3v_18/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stat_dependency.f90:8:1: Multi-object allocation bounds must not reference its objects or STAT, or call user functions\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stat_dependency.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stat_dependency.f90:8:1: Multi-object allocation bounds must not reference its objects or STAT, or call user functions\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stat_dependency.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "object_dependency",
+        "source": "cases/object_dependency.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "must not reference",
+        "reason": "Allocation status must not determine another object bound."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_dependency.f90:6:15:\n\n    6 | allocate(a(2),b(size(a)))\n      |               1\nError: \u2018a\u2019 must not appear in the array specification at (1) in the same ALLOCATE statement where it is itself allocated\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_dependency.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-pzdfzbx8/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_dependency.f90:7:1: Multi-object allocation bounds must not reference its objects or STAT, or call user functions\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_dependency.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_dependency.f90:7:1: Multi-object allocation bounds must not reference its objects or STAT, or call user functions\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_dependency.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "kind_object_boundary",
+        "source": "cases/kind_object_boundary.f90",
+        "category": "boundary",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "must not reference",
+        "reason": "Conservative boundary rejects even metadata-only allocation-list-name references."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/kind_object_boundary.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-1lkc0ows/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/kind_object_boundary.f90:7:1: Multi-object allocation bounds must not reference its objects or STAT, or call user functions\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/kind_object_boundary.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/kind_object_boundary.f90:7:1: Multi-object allocation bounds must not reference its objects or STAT, or call user functions\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/kind_object_boundary.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "source_option",
+        "source": "cases/source_option.f90",
+        "category": "boundary",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "SOURCE/MOLD",
+        "reason": "SOURCE remains unsupported."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/source_option.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-hgt31ecw/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/source_option.f90:6:20: Allocation SOURCE/MOLD options are unsupported\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/source_option.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/source_option.f90:6:20: Allocation SOURCE/MOLD options are unsupported\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/source_option.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "mold_option",
+        "source": "cases/mold_option.f90",
+        "category": "boundary",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "SOURCE/MOLD",
+        "reason": "MOLD remains unsupported."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/mold_option.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-zfwb_td7/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/mold_option.f90:6:20: Allocation SOURCE/MOLD options are unsupported\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/mold_option.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/mold_option.f90:6:20: Allocation SOURCE/MOLD options are unsupported\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/mold_option.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "errmsg_option",
+        "source": "cases/errmsg_option.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/errmsg_option.f90:6:26:\n\n    6 | allocate(a(2),b(2),errmsg=msg)\n      |                          1\nWarning: ERRMSG at (1) is useless without a STAT tag\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/errmsg_option.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-i2fyvs7x/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-i2fyvs7x/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/errmsg_option.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/errmsg_option.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "stat_first_boundary",
+        "source": "cases/stat_first_boundary.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "declared ALLOCATABLE",
+        "reason": "ALLOCATE requires the allocation list before its options."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stat_first_boundary.f90:6:9:\n\n    6 | allocate(stat=s,a(2),b(2))\n      |         1\nError: Allocate-object at (1) is neither a data pointer nor an allocatable variable\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stat_first_boundary.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-pvjdpb7e/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stat_first_boundary.f90:6:10: Allocation requires a declared ALLOCATABLE array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stat_first_boundary.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stat_first_boundary.f90:6:10: Allocation requires a declared ALLOCATABLE array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stat_first_boundary.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "missing_comma",
+        "source": "cases/missing_comma.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Expected )",
+        "reason": "Required comma omitted."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/missing_comma.f90:6:20:\n\n    6 | allocate(a(2),b(2) stat=s)\n      |                    1\nError: Syntax error in ALLOCATE statement at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/missing_comma.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-xepo4wr6/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/missing_comma.f90:6:20: Expected ), found stat\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/missing_comma.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/missing_comma.f90:6:20: Expected ), found stat\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/missing_comma.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "parenthesized_stat",
+        "source": "cases/parenthesized_stat.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "STAT requires",
+        "reason": "STAT must be a definable variable."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/parenthesized_stat.f90:6:24:\n\n    6 | allocate(a(2),b(2),stat=(s))\n      |                        1\nError: Non-variable expression in variable definition context (STAT variable) at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/parenthesized_stat.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-4gu2kw0p/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/parenthesized_stat.f90:6:28: STAT requires a whole writable local scalar INTEGER\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/parenthesized_stat.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/parenthesized_stat.f90:6:28: STAT requires a whole writable local scalar INTEGER\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/parenthesized_stat.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "deallocate_section",
+        "source": "cases/deallocate_section.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Expected )",
+        "reason": "Whole allocatables only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_section.f90:6:11:\n\n    6 | deallocate(a(1:2),b)\n      |           1\nError: Allocate-object at (1) must be ALLOCATABLE or a POINTER\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_section.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-o_9lhhmp/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_section.f90:6:13: Expected ), found (\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_section.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_section.f90:6:13: Expected ), found (\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/deallocate_section.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "stride_boundary",
+        "source": "cases/stride_boundary.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Expected )",
+        "reason": "Allocation shape does not accept strides."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stride_boundary.f90:6:9:\n\n    6 | allocate(a(1:3:2),b(2))\n      |         1\nError: Bad array specification in ALLOCATE statement at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stride_boundary.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-zt8ltbvz/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stride_boundary.f90:6:15: Expected ), found :\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stride_boundary.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stride_boundary.f90:6:15: Expected ), found :\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/stride_boundary.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "function_bound_boundary",
+        "source": "cases/function_bound_boundary.f90",
+        "category": "boundary",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "must not reference",
+        "reason": "User-function bound calls remain outside multi-object subset, even PURE or provably harmless calls."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/function_bound_boundary.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-tsbmph42/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/function_bound_boundary.f90:13:1: Multi-object allocation bounds must not reference its objects or STAT, or call user functions\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/function_bound_boundary.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/function_bound_boundary.f90:13:1: Multi-object allocation bounds must not reference its objects or STAT, or call user functions\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/function_bound_boundary.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "pure_second_module_target",
+        "source": "cases/pure_second_module_target.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "PURE",
+        "reason": "Module effect validation must include later allocation objects."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/pure_second_module_target.f90:7:28:\n\n    7 | allocate(local(2),global(2))\n      |                            1\nError: Bad allocate-object at (1) for a PURE procedure\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/pure_second_module_target.f90:11:5:\n\n   11 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/pure_second_module_target.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-vsomfrhr/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/pure_second_module_target.f90:8:1: PURE/SIMPLE procedure cannot modify module data\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/pure_second_module_target.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/pure_second_module_target.f90:8:1: PURE/SIMPLE procedure cannot modify module data\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/pure_second_module_target.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "object_limit_64",
+        "source": "cases/object_limit_64.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 1",
+        "diagnostic": "",
+        "reason": "Bounded maximum of 64 list objects."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_limit_64.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-_dm6ob6u/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           1\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-_dm6ob6u/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_limit_64.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 1\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_limit_64.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "object_limit_65",
+        "source": "cases/object_limit_65.f90",
+        "category": "boundary",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "object limit",
+        "reason": "Bounded maximum of 64 list objects."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_limit_65.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-6bflwit1/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_limit_65.f90:20:1: Allocation object limit exceeded (64)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_limit_65.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_limit_65.f90:20:1: Allocation object limit exceeded (64)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/object_limit_65.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "contextual_object_names",
+        "source": "cases/contextual_object_names.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 2 3 4 5 0 F F F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/contextual_object_names.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-i7wt5219/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           2           3           4           5\n           0 F F F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/multi-allocation-oracle-i7wt5219/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/contextual_object_names.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 2 3 4 5\n 0 F F F F\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/contextual_object_names.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "overlapping_unallocated_actuals",
+        "source": "cases/overlapping_unallocated_actuals.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "overlapping allocatable descriptors",
+        "reason": "Writable aliased allocatable actuals remain rejected before group execution; GNU not executed for alias-unsafe source."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/overlapping_unallocated_actuals.f90",
+          "-o",
+          "/tmp/multi-allocation-oracle-zragbo0m/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/overlapping_unallocated_actuals.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/overlapping_unallocated_actuals.f90:11:1: overlapping allocatable descriptors with a writable dummy are unsupported\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/multi_allocation/cases/overlapping_unallocated_actuals.f90"
+        ]
+      }
+    }
+  ],
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python_version": "3.12.14",
+  "manifest_sha256": "52ad364f2c64b1ebcfc2c34e8eb903037ab2cfcc9b2d61e985fa21556e970bbf",
+  "source_sha256": {
+    "cases/three_objects.f90": "450a1ad96e103907e866cae83df9d32d14f344219c62fe2ef9bc2b8d38171050",
+    "cases/mixed_types_ranks.f90": "dada8712bb631e8cb7c26f8c27b15ad3ec736f3127d00e64ddfac52bda9ab0f6",
+    "cases/without_stat.f90": "2627fb939fb3d924338b40d74ec804192c560fb327187cc7b3cb2f4131d1fd49",
+    "cases/bound_expressions.f90": "5502b9f88c71e496dfef773c69c66de236cd18152c4390cae9236ddc40f896be",
+    "cases/bound_external_array.f90": "f509ffc9ebdb3cfa2a098695303071a70f59a266f7c048a33a46833750183b62",
+    "cases/object_named_stat.f90": "659c17dbb9d8ad97b74a973adfab6103c35c069619510114d462e2c7639dff99",
+    "cases/allocate_failure_0_stat4.f90": "fbce69614a5aa93a485bafef9e6e27051d44ccf35cd1f84d9b6218720f97d105",
+    "cases/deallocate_failure_0_stat4.f90": "383dfde9b96a69c6a4a67d2b9d8d061292dac8eeb309cbb2a9e300ae77df8110",
+    "cases/allocate_failure_1_stat4.f90": "ef647e0736c3033710beac3f2c5db7c98febc8f3211b6bce7bd16bf16c091d64",
+    "cases/deallocate_failure_1_stat4.f90": "9171b5443216ef59a8e836ee4634c6b9652e67b5b976413528fc15ce63987c97",
+    "cases/allocate_failure_2_stat4.f90": "3c2df16203ba1f2d0933d72310746a8869ce2d7bc66d21894b019d8d5fdfff2a",
+    "cases/deallocate_failure_2_stat4.f90": "292067329c9f2168e055f68cc6360d78f161873c296ad7a07b5ee00d1d8c3776",
+    "cases/allocate_failure_0_stat8.f90": "e6271bd5085d12c4c7bd0e655e16e04493bf839f56f2406afa61f030967e8cd3",
+    "cases/deallocate_failure_0_stat8.f90": "d38f5a1ee5cd405e4232179981f448e357472daa7814565c3f6d5b0f31771a89",
+    "cases/allocate_failure_1_stat8.f90": "7ac51e55eb8ee53af709de64d0ef1793d72c90e0052738b66478fcb702400910",
+    "cases/deallocate_failure_1_stat8.f90": "114c09b01eb72d9aacd789fdb9c54e202f175de37cf9108dbf6e4b7868255261",
+    "cases/allocate_failure_2_stat8.f90": "b32cd75f8800e30980517c2ca15652f0ecad49c85c2f5e2e098531c6025fc2a8",
+    "cases/deallocate_failure_2_stat8.f90": "d22e6d3f730d40c91a544e47fec9fc95b7685dba8c35ae7ca38cf378bb70666c",
+    "cases/typed_character.f90": "5e5f0e9bfcbc8a5bc3acf5638eaeb03896d20ee43558fbe4b1dc15d2824f6df1",
+    "cases/typed_zero_character.f90": "b6b06f7e29ef14fe881c8303fabc9d42595f0ab5a2d2cc7630f1ec2350698f99",
+    "cases/fixed_character_mixed_lengths.f90": "062b081654f749d734d11408d719100a73c5c1781c74106fc3178dfa5590dce2",
+    "cases/typed_character_failure_descriptor.f90": "5e044db55c6ef9dfa91961dd57b2622b6619f428d854a8015d917935831aabe1",
+    "cases/module_storage.f90": "0bc09821b74c9e8c9ba0edb906f1e03ff555429b8d73bc7f70b757348447134b",
+    "cases/allocatable_dummy_copyback.f90": "ab353cee7867f99c4961c4a9641136298dc39637e1be65fa6f1a37a909589abd",
+    "cases/loop_repeated_groups.f90": "1e3bb62c5f70c1b0ff700f8d95dbe6a577f9d02a690b20ff089159d9cdaa6bc3",
+    "cases/total_cap_prefix.f90": "bf1c74062d9ce8932e9e2c31f2547e7ea6496946a2d68a1877903db53914621b",
+    "cases/total_cap_exact.f90": "32d3589e976170a5b25ac518367e79fa2266aeedffd9a0913fb260a3614d8471",
+    "cases/no_stat_allocate_failure.f90": "26bb7de694c151bb24063b6f275b826c869e81a20d28bc00209911f1e2b708b5",
+    "cases/no_stat_deallocate_failure.f90": "326ff51e0f2f2f9861b001504dcdf265ef5b4f1533e6a76f16c3d1a25f3ec1e8",
+    "cases/duplicate_allocate.f90": "36952056e186ce6a42bb2cb2035d3ad28180120d8ad656c1559c1a4c4ab2d391",
+    "cases/duplicate_deallocate.f90": "a8b4237ca6b12093842ffaf048ee8e4ea25d3a891b4d0ae2ed0ff13f83a37b4d",
+    "cases/duplicate_stat.f90": "4c8cb503ec2eb570fa8c45a12f76f0f7120bd21401eab306edb9fa0f989d3aec",
+    "cases/stat_dependency.f90": "9c72e4da00d3e03895a4170b6b9c6ff13da630c93a89e9a9db09301dd2db4768",
+    "cases/object_dependency.f90": "31b06a2719b72679b733270f650982bdae3ccba4f6669bc26dd7c51506e566fb",
+    "cases/kind_object_boundary.f90": "fd5d6a690990982d419b39f1c384c9d840ff40856697fad310f8bcf74de92a5f",
+    "cases/source_option.f90": "114fd28ed9e4a75f6448815c03f9d3a497bebeb04bd8a7ad3ac0afbc30ef2a56",
+    "cases/mold_option.f90": "f49ec5b174d95495557c28978cc0a9d8ef6ab2e27d33cf7154c3cf37aabfd2e1",
+    "cases/errmsg_option.f90": "26afc4238fbc40a50f821a4fe66edfc66169bc9c76f913eebef00cabd9824cf4",
+    "cases/stat_first_boundary.f90": "f1bf460097e376eea1ac9ab5f540a67f532c7f7ac2eab2644f925553b759bf1a",
+    "cases/missing_comma.f90": "7b437213e7eb5144d2b1e1fc0aa85e205491e78515bf4c6e6abcba73f5ecffcf",
+    "cases/parenthesized_stat.f90": "3daf1e75cf0e18f013a88d1d6ec0352d14cd7fd7df2ef89bce233b92255485af",
+    "cases/deallocate_section.f90": "ce3de3d51cff4c05976a8268a28e70495bceb352b67c5d765fa2f8c45ddecdaa",
+    "cases/stride_boundary.f90": "c732efca430108c9c08354b0707b9cd10c61b1c144410bb75923a18476436a0c",
+    "cases/function_bound_boundary.f90": "c4946fcad9a41cd2ef03226dbff57c6ee1062fcdc5512e5702bfe6572ff8a389",
+    "cases/pure_second_module_target.f90": "45227d8cc9d49f540fa7af6e7a71a0e1ec68829156f552ba40469342def8d722",
+    "cases/object_limit_64.f90": "75c787e6ec01c336ff0a71924853736314ed409bac3fabe251bc64b8f24da44a",
+    "cases/object_limit_65.f90": "f5345a1100d5765e029ecb7a23353c0e66b1718fe9069b4e5759b524328cb49c",
+    "cases/contextual_object_names.f90": "58e24cc38a3660a2f7ad6f4414496e7ca0f52088e58d686b65ce449b8c4bcfe9",
+    "cases/overlapping_unallocated_actuals.f90": "df90cf091c619fd9643f46a379515be8397d4844b05f4dd6e4e3e5b338a6686a"
+  },
+  "gfortran_version": {
+    "code": 0,
+    "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "err": "",
+    "argv": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "--version"
+    ]
+  },
+  "candidate_version": {
+    "code": 0,
+    "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+    "err": "",
+    "argv": [
+      "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "--version"
+    ]
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "candidate_final_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

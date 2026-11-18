@@ -1,0 +1,1209 @@
+{
+  "utc": "2026-11-16T14:45:41.144061+00:00",
+  "summary": {
+    "total": 43,
+    "failed": 0,
+    "candidate_checked": 43,
+    "gnu_checked": 38,
+    "gnu_skipped": 5
+  },
+  "records": [
+    {
+      "case": {
+        "name": "constructor",
+        "source": "constructor.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 2.5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4   2.50000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 2.50000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "numeric_conversion",
+        "source": "numeric_conversion.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3   2.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 2.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "component_order",
+        "source": "component_order.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7 2.5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7   2.50000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7 2.50000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "value_copy",
+        "source": "value_copy.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 8 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           8   2.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 8 2.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "partial_component_read",
+        "source": "partial_component_read.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "partial_record_read",
+        "source": "partial_record_read.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/partial_record_read.f90:12:3: read of uninitialized derived components\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_component",
+        "source": "undefined_component.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/undefined_component.f90:11:10: read of uninitialized derived component\n"
+      }
+    },
+    {
+      "case": {
+        "name": "cross_component_expression",
+        "source": "cross_component_expression.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "out_record",
+        "source": "out_record.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "9 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           9   4.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 9 4.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "inout_record",
+        "source": "inout_record.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "9 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           9   4.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 9 4.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_result",
+        "source": "function_result.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6   6.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6 6.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "partial_function_result",
+        "source": "partial_function_result.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/partial_function_result.f90:0:0: function RESULT has uninitialized components\n"
+      }
+    },
+    {
+      "case": {
+        "name": "private_type",
+        "source": "private_type.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/private_type.f90:10:11:\n\n   10 | type(pair)::p\n      |           1\nError: Derived type \u2018pair\u2019 at (1) is being used before it is defined\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/private_type.f90:12:10:\n\n   12 | print*,p%first\n      |          1\nError: Unexpected \u2018%\u2019 for nonderived-type variable \u2018p\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/private_type.f90:10:6: Unknown or inaccessible derived type: pair\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/private_type.f90:10:6: Unknown or inaccessible derived type: pair\n"
+      }
+    },
+    {
+      "case": {
+        "name": "public_type",
+        "source": "public_type.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "unknown_component",
+        "source": "unknown_component.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/unknown_component.f90:11:10:\n\n   11 | p%missing=1\n      |          1\nError: \u2018missing\u2019 at (1) is not a member of the \u2018pair\u2019 structure\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/unknown_component.f90:11:3: Unknown derived type component: missing\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/unknown_component.f90:11:3: Unknown derived type component: missing\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_component",
+        "source": "duplicate_component.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/duplicate_component.f90:5:13:\n\n    4 | integer :: first\n      |                2\n    5 | real :: first\n      |             1\nError: Component \u2018first\u2019 at (1) already declared at (2)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/duplicate_component.f90:9:5:\n\n    9 | use records\n      |     1\nFatal Error: Cannot open module file \u2018records.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/duplicate_component.f90:5:14: Duplicate component name\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/duplicate_component.f90:5:14: Duplicate component name\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_constructor_argument",
+        "source": "missing_constructor_argument.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/missing_constructor_argument.f90:11:3:\n\n   11 | p=pair(1)\n      |   1\nError: No initializer for component \u2018second\u2019 given in the structure constructor at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/missing_constructor_argument.f90:11:10: Omitted structure component requires a default initializer\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/missing_constructor_argument.f90:11:10: Omitted structure component requires a default initializer\n"
+      }
+    },
+    {
+      "case": {
+        "name": "extra_constructor_argument",
+        "source": "extra_constructor_argument.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/extra_constructor_argument.f90:11:13:\n\n   11 | p=pair(1,2.0,3)\n      |             1\nError: Too many components in structure constructor at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/extra_constructor_argument.f90:11:15: Too many structure constructor arguments\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/extra_constructor_argument.f90:11:15: Too many structure constructor arguments\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_constructor_argument",
+        "source": "wrong_constructor_argument.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/wrong_constructor_argument.f90:11:7:\n\n   11 | p=pair(.true.,2.0)\n      |       1\nError: Cannot convert LOGICAL(4) to INTEGER(4) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/wrong_constructor_argument.f90:11:14: Incompatible assignment types\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/wrong_constructor_argument.f90:11:14: Incompatible assignment types\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_component_assignment",
+        "source": "wrong_component_assignment.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/wrong_component_assignment.f90:11:8:\n\n   11 | p%first=.true.\n      |        1\nError: Cannot convert LOGICAL(4) to INTEGER(4) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/wrong_component_assignment.f90:11:15: Incompatible assignment types\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/wrong_component_assignment.f90:11:15: Incompatible assignment types\n"
+      }
+    },
+    {
+      "case": {
+        "name": "component_on_integer",
+        "source": "component_on_integer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/component_on_integer.f90:11:3:\n\n   11 | n%first=1\n      |   1\nError: Unexpected \u2018%\u2019 for nonderived-type variable \u2018n\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/component_on_integer.f90:11:3: Component selection requires a derived type\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/component_on_integer.f90:11:3: Component selection requires a derived type\n"
+      }
+    },
+    {
+      "case": {
+        "name": "component_array_unsupported",
+        "source": "component_array_unsupported.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/component_array_unsupported.f90:4:17: Unexpected trailing token: (\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/component_array_unsupported.f90:4:17: Unexpected trailing token: (\n"
+      }
+    },
+    {
+      "case": {
+        "name": "derived_array_unsupported",
+        "source": "derived_array_unsupported.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/derived_array_unsupported.f90:10:17: Derived type arrays and PARAMETER values are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/derived_array_unsupported.f90:10:17: Derived type arrays and PARAMETER values are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nested_record_unsupported",
+        "source": "nested_record_unsupported.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/nested_record_unsupported.f90:5:20:\n\n    5 | type(pair) :: second\n      |                    1\nError: Component at (1) must have the POINTER attribute\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/nested_record_unsupported.f90:9:5:\n\n    9 | use records\n      |     1\nFatal Error: Cannot open module file \u2018records.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/nested_record_unsupported.f90:5:1: Derived components support scalar INTEGER, REAL, LOGICAL or fixed CHARACTER only\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/nested_record_unsupported.f90:5:1: Derived components support scalar INTEGER, REAL, LOGICAL or fixed CHARACTER only\n"
+      }
+    },
+    {
+      "case": {
+        "name": "constructor_keywords_unsupported",
+        "source": "constructor_keywords_unsupported.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/constructor_keywords_unsupported.f90:11:13: Undeclared variable: first\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/constructor_keywords_unsupported.f90:11:13: Undeclared variable: first\n"
+      }
+    },
+    {
+      "case": {
+        "name": "default_component_init_unsupported",
+        "source": "default_component_init_unsupported.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "readonly_component",
+        "source": "readonly_component.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/readonly_component.f90:10:0:\n\n   10 | p%first=4\nError: Dummy argument \u2018p\u2019 with INTENT(IN) in variable definition context (assignment) at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/readonly_component.f90:14:5:\n\n   14 | use records\n      |     1\nFatal Error: Cannot open module file \u2018records.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/readonly_component.f90:10:1: Cannot assign to an INTENT(IN) dummy argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/readonly_component.f90:10:1: Cannot assign to an INTENT(IN) dummy argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "out_component_invalidates",
+        "source": "out_component_invalidates.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/out_component_invalidates.f90:18:10: read of uninitialized derived component\n"
+      }
+    },
+    {
+      "case": {
+        "name": "distinct_type_identity",
+        "source": "distinct_type_identity.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/distinct_type_identity.f90:17:2:\n\n   17 | q=p\n      |  1\nError: Cannot convert TYPE(pair) to TYPE(other) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/distinct_type_identity.f90:17:4: Incompatible assignment types\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/distinct_type_identity.f90:17:4: Incompatible assignment types\n"
+      }
+    },
+    {
+      "case": {
+        "name": "format_min_digits",
+        "source": "format_min_digits.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0000-01"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "0000-01\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "0000-01\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "format_literal_case_space",
+        "source": "format_literal_case_space.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "01 Upper, 02"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "01 Upper, 02   \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "01 Upper, 02   \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "internal_write_overflow",
+        "source": "internal_write_overflow.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "exceeds"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/internal_write_overflow.f90:3:1: internal WRITE record exceeds CHARACTER length\n"
+      }
+    },
+    {
+      "case": {
+        "name": "public_operator_private_specific",
+        "source": "public_operator_private_specific.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 7"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "operator_only_import",
+        "source": "operator_only_import.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 7"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "private_operator",
+        "source": "private_operator.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/private_operator.f90:24:2:\n\n   24 | q=p+4\n      |  1\nError: Unexpected derived-type entities in binary intrinsic numeric operator \u2018+\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/private_operator.f90:24:6: No matching accessible defined operator: +\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/private_operator.f90:24:6: No matching accessible defined operator: +\n"
+      }
+    },
+    {
+      "case": {
+        "name": "operator_omitted_from_only",
+        "source": "operator_omitted_from_only.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_omitted_from_only.f90:24:2:\n\n   24 | q=p+4\n      |  1\nError: Unexpected derived-type entities in binary intrinsic numeric operator \u2018+\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_omitted_from_only.f90:24:6: No matching accessible defined operator: +\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_omitted_from_only.f90:24:6: No matching accessible defined operator: +\n"
+      }
+    },
+    {
+      "case": {
+        "name": "operator_wrong_operand_type",
+        "source": "operator_wrong_operand_type.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_wrong_operand_type.f90:24:2:\n\n   24 | q=p+.true.\n      |  1\nError: Unexpected derived-type entities in binary intrinsic numeric operator \u2018+\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_wrong_operand_type.f90:24:11: No matching accessible defined operator: +\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_wrong_operand_type.f90:24:11: No matching accessible defined operator: +\n"
+      }
+    },
+    {
+      "case": {
+        "name": "operator_wrong_operand_kind",
+        "source": "operator_wrong_operand_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_wrong_operand_kind.f90:24:2:\n\n   24 | q=p+4_8\n      |  1\nError: Unexpected derived-type entities in binary intrinsic numeric operator \u2018+\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_wrong_operand_kind.f90:24:8: No matching accessible defined operator: +\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_wrong_operand_kind.f90:24:8: No matching accessible defined operator: +\n"
+      }
+    },
+    {
+      "case": {
+        "name": "operator_duplicate_specific",
+        "source": "operator_duplicate_specific.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_duplicate_specific.f90:9:26:\n\n    9 | module procedure plus,plus\n      |                          1\nError: Entity \u2018plus\u2019 at (1) is already present in the interface\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_duplicate_specific.f90:20:5:\n\n   20 | use records\n      |     1\nFatal Error: Cannot open module file \u2018records.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_duplicate_specific.f90:9:27: Duplicate operator specific\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_duplicate_specific.f90:9:27: Duplicate operator specific\n"
+      }
+    },
+    {
+      "case": {
+        "name": "operator_distinct_identity",
+        "source": "operator_distinct_identity.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_distinct_identity.f90:28:2:\n\n   28 | q=p+4\n      |  1\nError: Unexpected derived-type entities in binary intrinsic numeric operator \u2018+\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_distinct_identity.f90:28:6: No matching accessible defined operator: +\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/derived_types/operator_distinct_identity.f90:28:6: No matching accessible defined operator: +\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wide_do_variable",
+        "source": "wide_do_variable.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    1\n                    2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "wide_do_bound",
+        "source": "wide_do_bound.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "wide_do_step",
+        "source": "wide_do_step.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n 2\n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "3d79ef9286f2413e1f4e05e7c2802968471eb7d097f3510f44cd24e094919ee3",
+  "source_sha256": {
+    "constructor.f90": "d93be8b18a7dcb77183edacf5ce0e9be43a6c34a0c65f3c4af5e39595873a558",
+    "numeric_conversion.f90": "843f79b525577ee303f637506bbaa38a458c045c03dad40c9590af00024b3847",
+    "component_order.f90": "380bb128723645407a6602268816ee18ab0d55f824f9c3f1710394960493e0f4",
+    "value_copy.f90": "1d6ff5a46e5b51771a4a3345864948086fa2e39b2429ed01c7db10274cef2409",
+    "partial_component_read.f90": "8ace7ec18d074511754db78fed6758a9c547cec0e2fbaf4e9f5ae98884c855f6",
+    "partial_record_read.f90": "c278dc56eb23b24e432e0db1176b72b72a7734c917c532f5d2a417c77a6585e2",
+    "undefined_component.f90": "db358c67debcda3c877af70cc349413ec2b108e3953d09fe1559cb3727f14d81",
+    "cross_component_expression.f90": "00552fbd47c48a98fb844d788f17ee02b1260c16bd73c3591ab65a7691586e5e",
+    "out_record.f90": "cce7d4731dcf2eb04d9e4ab149d9f3e79636aecd837080f7b1fccce305da4da0",
+    "inout_record.f90": "a02d9e3ed120bad7a941e5c0cf2da0907a2300ce58498804970b1c9089fda4a6",
+    "function_result.f90": "e9c232fc7c7ee6fb7539d9370fcb0e53410332c5522505c49392cc8516edcaa8",
+    "partial_function_result.f90": "f0686f5e62dc3a1461715212cacf91cdc02fb6b17342ed7c303a73c32ea89abb",
+    "private_type.f90": "2efcb6af9383afd9cc68c02fc01939a840472ed5eb8275b0fb71bdcbc96d6790",
+    "public_type.f90": "1467ca7df9825cf62f11b0fd1ee8e80d6c25e6aeac591f41f3ae0895b9fddff7",
+    "unknown_component.f90": "af0629592a207f92fd3ed1b1d774890cc6ab8bf468d87d4a69526b619cc698f3",
+    "duplicate_component.f90": "967243b3a6bb302bfdfc651f901efefcbc1be432f14c194c32b4e66c6c868e5c",
+    "missing_constructor_argument.f90": "fd824dccefb7abc967664e2bb8e7d177b8cd7720a88f79cc13cf221e780656d2",
+    "extra_constructor_argument.f90": "413b0d18821b389d035f381052c2b01d2a8d960f3a0f94746ea1d1b7a7116f0e",
+    "wrong_constructor_argument.f90": "bb3e65e47d0df022ff7c3c7d5059bca203180283813c1a6b46bbb93bfaf28373",
+    "wrong_component_assignment.f90": "a5a78d55b3462e2270e149aa8dce7189c4d76ed0d0faa2b883c9b1d69a475c8f",
+    "component_on_integer.f90": "de1d3a0263b9befbba6e31f2069b71edc518ab8a60884d9a47cf5aa39e09fd9b",
+    "component_array_unsupported.f90": "451215b3beb891c5298c03f1ab07b3eee46bd15790d1d1031b5aa5d8e88c6318",
+    "derived_array_unsupported.f90": "c9a96581fcb8ee72fdf53258f14e948f59d70b388e77ef22b42758029fd87df9",
+    "nested_record_unsupported.f90": "feb7227af6c3743487ac65c035811ad1fc1e9b47ec6e354ebeb5f6858e83a31e",
+    "constructor_keywords_unsupported.f90": "327034d46543151c6501c2031868d1c338c91954c4787b73d5026814560f33f2",
+    "default_component_init_unsupported.f90": "49f3d800ff1145e118a2bba4af5edb7749f18f8b0e0f2a67c2485f719978b3d3",
+    "readonly_component.f90": "123f34a643b44daaded1a353cdd814821f48e53c5ed6126a2c3736bea5d41024",
+    "out_component_invalidates.f90": "de5a1364c221bd51a66e46c6068c0dff2fdb87fd3688a0ad251343db6e61cfac",
+    "distinct_type_identity.f90": "c75a252de07c1c8813d9969261dfb7e1fb9bccf7f0150a704a190382011ffffe",
+    "format_min_digits.f90": "1a8e27d85b9524e2f41130bd96991fa02f3682a59e5f7a0d44c80c43f0c9f40c",
+    "format_literal_case_space.f90": "47df72f02db74f75bfba89798bec7eafc840858bea8f0a1cf84328aa1739f71f",
+    "internal_write_overflow.f90": "d5ba28411361b72ba083888c6104adc464d6471c91ab5af7f1e42a4f3ced78b4",
+    "public_operator_private_specific.f90": "8537891f63dd58a470c40156ae7e86b02a2602cd154721f812479576602b9b9a",
+    "operator_only_import.f90": "81d0278188c1bfb868dcadd4d6c95564a9309b4897b7ecfe68d5f7986391f598",
+    "private_operator.f90": "fb36ff289a56315b852adec6ec1eea4e36b8ed23c72c54dbba7c37d6547a48ca",
+    "operator_omitted_from_only.f90": "f1f239abc1aa8984bae9c2e6e25cdcc8bc1ef8821f0e7e8a9d3fc1b6ec9e6709",
+    "operator_wrong_operand_type.f90": "efa56f56fb8ba6d25340d84d04ac723ddabe85aa398d787c1e817edeab24750b",
+    "operator_wrong_operand_kind.f90": "b2928ffa087b3e652576ede5fc99528033cba5594632f6f95052d07ef764ad97",
+    "operator_duplicate_specific.f90": "0b955e9bca19ebbad9f4ded9108e8ebe347fb4efbc79e86b716f7457cc7460fd",
+    "operator_distinct_identity.f90": "6e9dc701211b8e0d0083680c448088351e6738e6e02e6a7f6a7e0b958a3496c2",
+    "wide_do_variable.f90": "d93b13c6dce27c515affb2bb91f321920645d9b9f10f78ae3ab8c49e43e90e8d",
+    "wide_do_bound.f90": "491cbd9f217529851af3a7101b7f28646d6b3c8048217fe6ddccce0a124bd24a",
+    "wide_do_step.f90": "73b15bc462f89551e3a91e6eeb092973c6973bde66c3ac5ef9f44c3201a720d8"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

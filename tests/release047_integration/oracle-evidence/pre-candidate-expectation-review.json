@@ -1,0 +1,19 @@
+{
+  "changes": [
+    {
+      "case": "positioning_read_nonadvancing",
+      "old": "Ax 5\n7\n",
+      "new": "AxC5\n7\n",
+      "reason": "T2 overwrites column2; next TR1 advances from column3 to4 without erasing retained C; write5 replaces D. First GNU independently confirms.",
+      "source_unchanged": true
+    },
+    {
+      "case": "derived_component_read_boundary",
+      "old_column": 12,
+      "new_column": 13,
+      "reason": "read_statement validates whole target after expression; parser location is EOL, one column after the 12-character source statement. Independently confirmed with source logic and analogous frozen read_element_unsupported contract before candidate execution.",
+      "source_unchanged": true
+    }
+  ],
+  "candidate_executed": false
+}

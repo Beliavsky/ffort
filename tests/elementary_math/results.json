@@ -1,0 +1,1269 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 43,
+    "failed": 0,
+    "candidate_checked": 43,
+    "gnu_checked": 43,
+    "gnu_skipped": 0,
+    "gnu_executed": 16,
+    "gnu_compile_only": 12,
+    "gnu_compile_rejections": 15,
+    "gnu_known_defects": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "original_dim",
+        "source": "cases/demo_dim.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 3.210 0 0 1 0 0 2 0 0 10"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n   3.2100000000000000     \n           0           0           1\n           0           0           2\n           0           0          10\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n 3.2100000000000000\n 0 0 1\n 0 0 2\n 0 0 10\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_sign",
+        "source": "cases/demo_sign.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12 12 -12 12 12 -12 this processor distinguishes +0 from -0 either way, 0==-0 is true! T either way, 0=/-0 is false! F elemental 12 12 -12"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n          12\n         -12\n          12\n          12\n         -12\n this processor distinguishes +0 from -0\n either way, 0==-0 is true! T\n either way, 0=/-0 is false! F\n elemental   12.0000000       12.0000000      -12.0000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 12\n 12\n -12\n 12\n 12\n -12\n this processor distinguishes +0 from -0\n either way, 0==-0 is true! T\n either way, 0=/-0 is false! F\n elemental 12.0000000 12.0000000 -12.0000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_log_gamma",
+        "source": "cases/demo_log_gamma.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 0 1 0.6931471805599453"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.00000000       0.00000000    \n   1.00000000      0.693147182    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1.00000000 0.00000000\n 1.00000000 0.693147182\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keywords",
+        "source": "cases/keywords.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5 -8 0.6931471805599453"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    5                   -8  0.69314718055994529     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5 -8 0.69314718055994529\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameters",
+        "source": "cases/parameters.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "13 7 1.791759469228055 8 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                   13                    7   1.7917594692280550                8           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 13 7 1.7917594692280550 8 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "int64_edges",
+        "source": "cases/int64_edges.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 9223372036854775807 -9223372036854775808 -2147483648"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/int64_edges.f90:3:12:\n\n    3 | print *,dim(-9223372036854775807_8-1_8,9223372036854775807_8)\n      |            1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/int64_edges.f90:5:13:\n\n    5 | print *,sign(-9223372036854775807_8-1_8,-1_8)\n      |             1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/int64_edges.f90:6:13:\n\n    6 | print *,sign(-2147483647-1,-1)\n      |             1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    0\n  9223372036854775807\n -9223372036854775808\n -2147483648\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n 9223372036854775807\n -9223372036854775808\n -2147483648\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "signed_zero",
+        "source": "cases/signed_zero.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-1 -1 1 1 -1 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -1.00000000      -1.0000000000000000        1.00000000       1.0000000000000000     \n  -1.0000000000000000        1.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -1.00000000 -1.0000000000000000 1.00000000 1.0000000000000000\n -1.0000000000000000 1.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "negative_gamma",
+        "source": "cases/negative_gamma.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1.265512123484645 0.8600470153764812 0.5555015450206473 0.5723649429247004"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.2655121234846454       0.86004701537648098       0.55550154502064752       0.57236494292470008     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1.2655121234846454 0.86004701537648087 0.55550154502064741 0.57236494292470008\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_three",
+        "source": "cases/rank_three.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0 2 5 -1 -2 -3 4 0 0 0.6931471805599453 1.791759469228055"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           2           5          -1          -2          -3           4   0.0000000000000000        0.0000000000000000       0.69314718055994529        1.7917594692280550     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 2 5 -1 -2 -3 4 0.0000000000000000 0.0000000000000000 0.69314718055994529 1.7917594692280550\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_shapes",
+        "source": "cases/dynamic_shapes.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 1 0 -1 -4 -7"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           1           0          -1          -4          -7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 1 0 -1 -4 -7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty",
+        "source": "cases/empty.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_undefined",
+        "source": "cases/kind_undefined.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "8 8 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 8 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_unsafe_domain",
+        "source": "cases/kind_unsafe_domain.f90",
+        "category": "success",
+        "baseline": "reject",
+        "expected_stdout": "4 4 4",
+        "baseline_reason": "GNU rejects constant domain/overflow inside KIND. Candidate descriptor-only behavior is tested separately; no GNU execution equivalence is claimed."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/kind_unsafe_domain.f90:3:63:\n\n    3 | print *,kind(log_gamma(0.)),kind(dim(2147483647,-1)),kind(sign(-2147483647-1,1))\n      |                                                               1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/kind_unsafe_domain.f90:3:23:\n\n    3 | print *,kind(log_gamma(0.)),kind(dim(2147483647,-1)),kind(sign(-2147483647-1,1))\n      |                       1\nError: Result of LGAMMA overflows its kind at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/kind_unsafe_domain.f90:3:37:\n\n    3 | print *,kind(log_gamma(0.)),kind(dim(2147483647,-1)),kind(sign(-2147483647-1,1))\n      |                                     1\nError: Result of DIM overflows its kind at (1)\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 4 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_variables",
+        "source": "cases/shadow_variables.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 5 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           5           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 5 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_procedures",
+        "source": "cases/shadow_procedures.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12 23 34"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12          23          34\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 12 23 34\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix",
+        "source": "cases/matrix.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 -8 0 8 0 8 1 -3 0 3 0 3 3 -1 0 1 0 1 4 0 0 0 0 0 5 -1 1 1 0 1 7 -3 3 3 0 3 12 -8 8 8 4 8 -1.3172679424463638 -0.05624371649767457 1.3664317612369756 1.5895753125511862 2.0194183575537954 0.5723649429247004 0.0 -0.12078223763524543 0.0 0.693147180559945 12.801827480081467 71.257038967168"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0          -8\n           0           8\n           0           8\n           1          -3\n           0           3\n           0           3\n           3          -1\n           0           1\n           0           1\n           4           0\n           0           0\n           0           0\n           5          -1\n           1           1\n           0           1\n           7          -3\n           3           3\n           0           3\n          12          -8\n           8           8\n           4           8\n  -1.3172679424463636     \n  -5.6243716497674054E-002\n   1.3664317612369763     \n   1.5895753125511860     \n   2.0194183575537963     \n  0.57236494292470008     \n   0.0000000000000000     \n -0.12078223763524522     \n   0.0000000000000000     \n  0.69314718055994529     \n   12.801827480081469     \n   71.257038967168015     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 -8\n 0 8\n 0 8\n 1 -3\n 0 3\n 0 3\n 3 -1\n 0 1\n 0 1\n 4 0\n 0 0\n 0 0\n 5 -1\n 1 1\n 0 1\n 7 -3\n 3 3\n 0 3\n 12 -8\n 8 8\n 4 8\n -1.3172679424463634\n -0.56243716497674068E-1\n 1.3664317612369761\n 1.5895753125511860\n 2.0194183575537963\n 0.57236494292470008\n 0.0000000000000000\n -0.12078223763524522\n 0.0000000000000000\n 0.69314718055994529\n 12.801827480081471\n 71.257038967168015\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "bad_dim_arity",
+        "source": "cases/bad_dim_arity.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "two arguments"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/bad_dim_arity.f90:3:8:\n\n    3 | print *,dim(1)\n      |        1\nError: Missing actual argument \u2018y\u2019 in call to \u2018dim\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/bad_dim_arity.f90:3:15: Intrinsic requires two arguments: dim\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/bad_dim_arity.f90:3:15: Intrinsic requires two arguments: dim\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bad_sign_arity",
+        "source": "cases/bad_sign_arity.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "two arguments"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/bad_sign_arity.f90:3:8:\n\n    3 | print *,sign(1,2,3)\n      |        1\nError: Too many arguments in call to \u2018sign\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/bad_sign_arity.f90:3:20: Intrinsic requires two arguments: sign\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/bad_sign_arity.f90:3:20: Intrinsic requires two arguments: sign\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bad_gamma_arity",
+        "source": "cases/bad_gamma_arity.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "one argument"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/bad_gamma_arity.f90:3:8:\n\n    3 | print *,log_gamma()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018log_gamma\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/bad_gamma_arity.f90:3:20: Intrinsic requires one argument: log_gamma\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/bad_gamma_arity.f90:3:20: Intrinsic requires one argument: log_gamma\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_type",
+        "source": "cases/mixed_type.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "matching types"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/mixed_type.f90:3:14:\n\n    3 | print *,dim(1,2.)\n      |              1\nError: \u2018x\u2019 and \u2018y\u2019 arguments of \u2018dim\u2019 intrinsic at (1) must have the same type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/mixed_type.f90:3:18: Intrinsic arguments must have matching types\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/mixed_type.f90:3:18: Intrinsic arguments must have matching types\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_kind",
+        "source": "cases/mixed_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "matching types"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/mixed_kind.f90:3:17:\n\n    3 | print *,sign(1_8,2)\n      |                 1\nError: \u2018b\u2019 argument of \u2018sign\u2019 intrinsic at (1) must be the same type and kind as \u2018a\u2019\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/mixed_kind.f90:3:20: Intrinsic arguments must have matching types\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/mixed_kind.f90:3:20: Intrinsic arguments must have matching types\n"
+      }
+    },
+    {
+      "case": {
+        "name": "gamma_integer",
+        "source": "cases/gamma_integer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "REAL"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/gamma_integer.f90:3:18:\n\n    3 | print *,log_gamma(2)\n      |                  1\nError: \u2018x\u2019 argument of \u2018log_gamma\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/gamma_integer.f90:3:21: Transcendental intrinsic requires REAL argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/gamma_integer.f90:3:21: Transcendental intrinsic requires REAL argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dim_logical",
+        "source": "cases/dim_logical.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "numeric"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/dim_logical.f90:3:12:\n\n    3 | print *,dim(.true.,.false.)\n      |            1\nError: \u2018x\u2019 argument of \u2018dim\u2019 intrinsic at (1) must be INTEGER or REAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/dim_logical.f90:3:28: Intrinsic requires numeric arguments\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/dim_logical.f90:3:28: Intrinsic requires numeric arguments\n"
+      }
+    },
+    {
+      "case": {
+        "name": "sign_character",
+        "source": "cases/sign_character.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "numeric"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/sign_character.f90:3:13:\n\n    3 | print *,sign('a','b')\n      |             1\nError: \u2018a\u2019 argument of \u2018sign\u2019 intrinsic at (1) must be INTEGER or REAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/sign_character.f90:3:22: Intrinsic requires numeric arguments\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/sign_character.f90:3:22: Intrinsic requires numeric arguments\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unknown_keyword",
+        "source": "cases/unknown_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "keyword"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/unknown_keyword.f90:3:8:\n\n    3 | print *,dim(a=1,y=2)\n      |        1\nError: Cannot find keyword named \u2018a\u2019 in call to \u2018dim\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/unknown_keyword.f90:3:21: Unknown keyword or excess actual argument: a\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/unknown_keyword.f90:3:21: Unknown keyword or excess actual argument: a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_keyword",
+        "source": "cases/duplicate_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Repeated actual"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/duplicate_keyword.f90:3:21:\n\n    3 | print *,sign(a=1,a=2)\n      |                     1\nError: Keyword \u2018a\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/duplicate_keyword.f90:3:22: Repeated actual argument for a\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/duplicate_keyword.f90:3:22: Repeated actual argument for a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_keyword",
+        "source": "cases/missing_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Missing"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/missing_keyword.f90:3:8:\n\n    3 | print *,dim(y=1)\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018dim\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/missing_keyword.f90:3:17: Missing required actual argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/missing_keyword.f90:3:17: Missing required actual argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_nonconform",
+        "source": "cases/array_nonconform.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "shapes"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/array_nonconform.f90:3:12:\n\n    3 | print *,dim([1,2],[1,2,3])\n      |            1\nError: Different shape for arguments 'x' and 'y' for intrinsic 'dim' at (1) on dimension 1 (2 and 3)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/array_nonconform.f90:3:27: Array expression shapes do not conform\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/array_nonconform.f90:3:27: Array expression shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_rank",
+        "source": "cases/array_rank.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "conform"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/array_rank.f90:5:13:\n\n    5 | print *,sign(a,b)\n      |             1\nError: Incompatible ranks in arguments 'a' and 'b' for intrinsic 'sign' (1 and 2) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/array_rank.f90:5:18: Array expression shapes do not conform\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/array_rank.f90:5:18: Array expression shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unsupported_kind",
+        "source": "cases/unsupported_kind.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "kind"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/unsupported_kind.f90:3:9: Only REAL kinds 4 and 8 are supported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/unsupported_kind.f90:3:9: Only REAL kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "gamma_constant_pole",
+        "source": "cases/gamma_constant_pole.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "negative integer"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/gamma_constant_pole.f90:3:28:\n\n    3 | real,parameter::x=log_gamma(-2.)\n      |                            1\nError: Result of LGAMMA overflows its kind at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/gamma_constant_pole.f90:4:9:\n\n    4 | print *,x\n      |         1\nError: Symbol \u2018x\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/gamma_constant_pole.f90:3:19: Invalid PARAMETER initializer: LOG_GAMMA argument must not be zero or a negative integer\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/gamma_constant_pole.f90:3:19: Invalid PARAMETER initializer: LOG_GAMMA argument must not be zero or a negative integer\n"
+      }
+    },
+    {
+      "case": {
+        "name": "gamma_zero",
+        "source": "cases/gamma_zero.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "negative integer"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/gamma_zero.f90:5:9: LOG_GAMMA argument must not be zero or a negative integer\n"
+      }
+    },
+    {
+      "case": {
+        "name": "gamma_negative_integer",
+        "source": "cases/gamma_negative_integer.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "negative integer"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/gamma_negative_integer.f90:5:9: LOG_GAMMA argument must not be zero or a negative integer\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dim_overflow4",
+        "source": "cases/dim_overflow4.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/dim_overflow4.f90:5:9: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dim_overflow8",
+        "source": "cases/dim_overflow8.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/dim_overflow8.f90:5:9: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "sign_overflow4",
+        "source": "cases/sign_overflow4.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/sign_overflow4.f90:4:2:\n\n    4 | a=-2147483647-1;b=1\n      |  1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/sign_overflow4.f90:5:9: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "sign_overflow8",
+        "source": "cases/sign_overflow8.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/sign_overflow8.f90:4:2:\n\n    4 | a=-9223372036854775807_8-1_8;b=1_8\n      |  1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/sign_overflow8.f90:5:9: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dim_real_overflow",
+        "source": "cases/dim_real_overflow.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "non-finite"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/dim_real_overflow.f90:5:9: non-finite real result\n"
+      }
+    },
+    {
+      "case": {
+        "name": "gamma_real_overflow",
+        "source": "cases/gamma_real_overflow.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "non-finite"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/gamma_real_overflow.f90:5:9: non-finite real result\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_value",
+        "source": "cases/undefined_value.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/undefined_value.f90:4:16: read of uninitialized variable x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_nonconform",
+        "source": "cases/dynamic_nonconform.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "conform"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/elementary_math/cases/dynamic_nonconform.f90:5:9: array expression shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real_kinds",
+        "source": "cases/real_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 1 1.265512123484645 0.5723649429247004 -1 -1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.00000000       1.0000000000000000     \n   1.26551211      0.572364926      -1.00000000      -1.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1.00000000 1.0000000000000000\n 1.26551211 0.572364926 -1.00000000 -1.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_sections",
+        "source": "cases/rank_two_sections.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0 1 2 3 4 -3 -4 -1 -2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           1           2           3           4          -3          -4          -1          -2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 1 2 3 4 -3 -4 -1 -2\n",
+        "err": ""
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:38:41.135317+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "limits": "Elemental DIM/SIGN INTEGER4/8 or REAL4/8 and LOG_GAMMA REAL4/8, rank0\u20133. GNU unsafe or undefined cases compile only; finite results and checked integer arithmetic required.",
+  "manifest_sha256": "48aff5d33da4d9a9aefc5c04755be055c3d9c1a22c6663e9db145f330156e473",
+  "source_sha256": {
+    "cases/demo_dim.f90": "d894b5c29f4ffa0cb81f736dfead6381d7df934d353375eab557e07f40368add",
+    "cases/demo_sign.f90": "f471c0005b0b9fa9d77368bc7d768fbea6e3ea6267b16461dd4592c042f93548",
+    "cases/demo_log_gamma.f90": "735dee251c5a432312db060823831930b7d94879c293f8d218bdf7b29f842aa6",
+    "cases/keywords.f90": "ab1a1cad87aaf5f125bdea0a122c1e52ee7ae9ec17684d0df396065aeadb05ff",
+    "cases/parameters.f90": "a89088166fef7ef142c8877130b8e22ec50c04aaf9dcf190f951a79716f1fabc",
+    "cases/int64_edges.f90": "9b8a313f310d1fa477197150ff69d8719e03856a271c0f7f56a1d72c1a0ee133",
+    "cases/signed_zero.f90": "3095620a8717c25a7fe512bc723325e59a83c6b1ed120092aacf8377eb1a5892",
+    "cases/negative_gamma.f90": "8b033efac816d90200304f77052df2f2c082d48be4edfa1fb31104eb95d1669b",
+    "cases/rank_three.f90": "5bf16f3e9d3a9a622ba8cee3d218813cca9cff483912d8be12946c333446eee9",
+    "cases/dynamic_shapes.f90": "418495d276384e43b79b0731490f20f508df9e7e3aef41ac3c8e252f1e62cde8",
+    "cases/empty.f90": "e75424eb4b3b67fb5b367789a6a1bceaf08dfe58dbadc78350f657803f1d5623",
+    "cases/kind_undefined.f90": "b5edef01798a0f3a5362d72ba540ca60c8f41b758be3694bdc0b86c4df58b545",
+    "cases/kind_unsafe_domain.f90": "693d66f2f0382601b4406c2d74a6cd3d4b3ec0564c8affd9da9b9e304e13580f",
+    "cases/shadow_variables.f90": "6d2483870970c82200c2bfb5e29fde61b09a753330a547a2642aed515ec77ee3",
+    "cases/shadow_procedures.f90": "017bc4fb01497022948d4aac200a7f4706dffafc73e66d66ac2d9397863ce1c4",
+    "cases/matrix.f90": "299967295c65b41a61bc10559a941ee7cd0a377eeeffbee3b86b1a72ea055956",
+    "cases/bad_dim_arity.f90": "4960773c12d0d84e9b0f97bac7efc41b5fd3ee95e86b4d37a561e35e007b8414",
+    "cases/bad_sign_arity.f90": "d074df67e46992fc9d903f76414762f0b1e4d7d3ae2080405e5ede517d7d2f78",
+    "cases/bad_gamma_arity.f90": "1abf591cda34446e1ef7dcc061ea8f50a3a5178ee598b442ebff68f6c06320a8",
+    "cases/mixed_type.f90": "8604fd5de2e642bf5cf6d86477007c2106a9e5dc2563c2d6806e93c5d21f98de",
+    "cases/mixed_kind.f90": "cc4655d7dec0ff0f9a625776acd252be1efcfe8e0152e22dcd2f93d98b4706d7",
+    "cases/gamma_integer.f90": "f98c05ef5c0c0d6614e3bb48e9bb5542c87bf472093a04e037c5c49fc3c68161",
+    "cases/dim_logical.f90": "6e594efd714f5cc36ce03692da058e37b9c699c01747d46fe917d4fbb9ca6b84",
+    "cases/sign_character.f90": "01ba9fa95b73dc47cdd55e55888826137bb3ff121996745a45cd5d85f5f53402",
+    "cases/unknown_keyword.f90": "1e6b3bec78e4c42a42c480acf3976d7efcd48527c6d2177fb495ed8f42680339",
+    "cases/duplicate_keyword.f90": "5ac297f988bc1e7063ee0a16fe408ad9f93d9a19967c713907136da0fc2c616b",
+    "cases/missing_keyword.f90": "11882dd0b7b04cf37a8895e9ee35f2309d72610b56b39a40b41228c8b8214049",
+    "cases/array_nonconform.f90": "bbbdc8492f6fc9392a3af59f184569f5ed4e30578228c50b0b92f34a893fcb66",
+    "cases/array_rank.f90": "a6e2a77078f2abd5835eea1a141e322ad9afde6176d77d72a5bbd8646d0c93ee",
+    "cases/unsupported_kind.f90": "1b6d0b47d38a8651cb749b2a411471ddba28705b543fe4efebeee51a19bb2ace",
+    "cases/gamma_constant_pole.f90": "9657ea79ad913f50f86daaec660e76db9d6b8f63484c6c266352c9d827bb5a5c",
+    "cases/gamma_zero.f90": "cef84375ee8377c406648f89983ddaf7c3b3db642189a6ee02ffb10fec627d09",
+    "cases/gamma_negative_integer.f90": "d8f75a8fe8162738d5b03ee92c450108c83804d31b3818a30f3f34079a6366a1",
+    "cases/dim_overflow4.f90": "cfbbc244d4654bf32c84fcbccb47b264a5151f15e86c91c6f0cfbf9dafb77f94",
+    "cases/dim_overflow8.f90": "2189c6a92515e389e6b9dff15e0583806b73c551f4417d7d50e7d3d067b7d32f",
+    "cases/sign_overflow4.f90": "6d97b3495c7d122509be4be17a6e59e27e53caec1d0d33b576c3fb2608706687",
+    "cases/sign_overflow8.f90": "96f9b7856c6b0a3b751dd052fd5627090ea1a92aaa63a30d21d10db9b54e4788",
+    "cases/dim_real_overflow.f90": "9b0cf24df3a867302dfad510cf7215dc69a3aa2c2abfe2b4ddc6d38ea8697783",
+    "cases/gamma_real_overflow.f90": "7c7141904a069a94d16f6c513b8d6f12e6e41295c912e347a20bb0a23de5f247",
+    "cases/undefined_value.f90": "51f1d4e93d92c43a5ed2f51924a0c0a16e8d779ce2b8be8683aa660df8839d18",
+    "cases/dynamic_nonconform.f90": "79b50f414ac53d49d685c190f25ef3f3656eac3a64b7c986d3b59df28bdad0d9",
+    "cases/real_kinds.f90": "0f2dcddfa1df4a0b474ef62fda78a28deb81c8d62c61e80eff6f203029e25246",
+    "cases/rank_two_sections.f90": "bc9811a57cbad86c98e436631e4651b1e5055d83c24dcd8142e5db42a0fafe92"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

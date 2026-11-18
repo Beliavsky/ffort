@@ -1,0 +1,101 @@
+{
+  "status": "passed",
+  "tests": 10,
+  "failures": 0,
+  "errors": 0,
+  "candidate_sha256": "c615265c4e142a2a866e7363895ef96b93f82ce961b75a85743b4ae4b42ab099",
+  "candidate_after_sha256": "c615265c4e142a2a866e7363895ef96b93f82ce961b75a85743b4ae4b42ab099",
+  "records": [
+    {
+      "source": "integer :: a(-2:1)\na=4\na(-1)=7\na\na(-1)\na\n.quit!\n",
+      "defer": false,
+      "code": 0,
+      "stdout": " 4 7 4 4\n 7\n 4 7 4 4\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: a(-2:1)\na=4\na(-1)=7\na\na(-1)\na\n.quit!\n",
+      "defer": true,
+      "code": 0,
+      "stdout": " 4 7 4 4\n 7\n 4 7 4 4\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: a(2)\na=1\na\n.rep 2 a=5\na\n.run\na\n.quit!\n",
+      "defer": false,
+      "code": 0,
+      "stdout": " 1 1\n 5 5\n",
+      "stderr": "<repl>: source edited; use .run to rebuild state\n"
+    },
+    {
+      "source": "integer :: a(5:2)\na=5\na\n.vars\n.quit!\n",
+      "defer": false,
+      "code": 0,
+      "stdout": "\na(5:2) = <0/0 defined>\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: a(2)\na=1\nif (a(1)==1) then\na(2)=5\nprint '(A)', 'ONCE'\nendif\na\na\na(2)=a(2)+1\na\n.quit!\n",
+      "defer": false,
+      "code": 0,
+      "stdout": "ONCE\n 1 5\n 1 5\n 1 6\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: a(2)\na=1\nif (a(1)==1) then\na(2)=5\nprint '(A)', 'ONCE'\nendif\na\na\na(2)=a(2)+1\na\n.quit!\n",
+      "defer": true,
+      "code": 0,
+      "stdout": "ONCE\n 1 5\n 1 5\n 1 6\n",
+      "stderr": ""
+    },
+    {
+      "source": "logical :: b(2)\nreal :: x(2)\nb=.false.\nb(1)=.true.\nx=1.5\nx(2)=2.5\nb\nx\n.quit!\n",
+      "defer": false,
+      "code": 0,
+      "stdout": " T F\n 1.50000000 2.50000000\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: a(0:2)\na(1)=9\n.vars\n.vars\na(1)\n.quit!\n",
+      "defer": false,
+      "code": 0,
+      "stdout": "a(0:2) = <1/3 defined>\na(0) = <undefined>\na(1) = 9\na(2) = <undefined>\na(0:2) = <1/3 defined>\na(0) = <undefined>\na(1) = 9\na(2) = <undefined>\n 9\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: a(2)\na=1\nprint '(A)', 'FORBIDDEN'\nint(a)\n.clear\n.quit!\n",
+      "defer": true,
+      "code": 0,
+      "stdout": "",
+      "stderr": "<repl>:0:0: persistent session supports plain scalars, fixed rank-one numeric/logical arrays (100000 elements), assignment, print, scalar random calls, forward IF, SELECT CASE and structured DO/WHILE/EXIT/CYCLE\n"
+    },
+    {
+      "source": "integer :: a(2)\na(1)=5\na(2)\n.vars\n.clear\ninteger :: n\nn=8\nn\n.quit!\n",
+      "defer": false,
+      "code": 0,
+      "stdout": " 8\n",
+      "stderr": "<repl>:5:11: read of uninitialized array element a\n<repl>:0:0: scalar session tainted; reset required\n"
+    },
+    {
+      "source": "integer :: a(2)\na(1)=5\na(3)\n.vars\n.clear\ninteger :: n\nn=8\nn\n.quit!\n",
+      "defer": false,
+      "code": 0,
+      "stdout": " 8\n",
+      "stderr": "<repl>:5:11: array subscript 3 out of bounds for a (1:2)\n<repl>:0:0: scalar session tainted; reset required\n"
+    },
+    {
+      "source": "integer :: a(2),n\nn=1\nif (.false.) n=a(2)\na(1)=n\na(1)\n.quit!\n",
+      "defer": false,
+      "code": 0,
+      "stdout": " 1\n",
+      "stderr": ""
+    },
+    {
+      "source": "integer :: a(20)\na=6\n.vars\n.quit!\n",
+      "defer": false,
+      "code": 0,
+      "stdout": "a(1:20) = <20/20 defined>\na(1) = 6\na(2) = 6\na(3) = 6\na(4) = 6\na(5) = 6\na(6) = 6\na(7) = 6\na(8) = 6\na(9) = 6\na(10) = 6\na(11) = 6\na(12) = 6\na(13) = 6\na(14) = 6\na(15) = 6\na(16) = 6\n  ... (first 16 elements shown)\n",
+      "stderr": ""
+    }
+  ]
+}

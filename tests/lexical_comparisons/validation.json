@@ -1,0 +1,119 @@
+{
+  "baseline": {
+    "file": "fortfront-interpreter-0.44.0.zip",
+    "sha256": "0c8db4cb999c0019d9623713a20aa18513a618e46e03c2300e37f21d21f27f2f",
+    "snapshot": {
+      "snapshot": "fortfront-044-integration/fortfront-interpreter-0.44.0-source-test-corrected.zip",
+      "sha256": "23ae0e9de41e489cc0182e72d9fa5d51599374f281e967f9e054bf1d708a61fb",
+      "minimal_source_only": true,
+      "excluded": [
+        "build",
+        "docs/verification",
+        "prior test and example trees"
+      ]
+    }
+  },
+  "candidate_sha256": "306529d60497d29d534cb73b96404baa25c87927aa6c78bff5debca0974e7358",
+  "source": {
+    "total": 169,
+    "failed": 0,
+    "candidate_checked": 169,
+    "gnu_checked": 169,
+    "gnu_executed": 112,
+    "gnu_compile_only": 13,
+    "gnu_compile_rejections": 44
+  },
+  "native_assertions": 134127,
+  "native_guard_checks": 3055,
+  "native_ascii_pair_assertions": 131072,
+  "ascii_family_pairs": 65536,
+  "producer_checks": 20,
+  "harness_checks": 29,
+  "regression_cases": 442,
+  "regressions": [
+    {
+      "suite": "character_intrinsics",
+      "code": 0,
+      "summary": {
+        "total": 37,
+        "failed": 0,
+        "candidate_checked": 37
+      }
+    },
+    {
+      "suite": "character_search",
+      "code": 0,
+      "summary": {
+        "total": 58,
+        "failed": 0,
+        "gnu_executed": 24,
+        "gnu_compile_rejections": 28,
+        "gnu_compile_only": 6,
+        "independent_matrix_values": 2080
+      }
+    },
+    {
+      "suite": "model_character_intrinsics",
+      "code": 0,
+      "summary": {
+        "total": 120,
+        "failed": 0,
+        "candidate_checked": 120
+      }
+    },
+    {
+      "suite": "character_len_inquiry",
+      "code": 0,
+      "summary": {
+        "total": 57,
+        "failed": 0,
+        "candidate_checked": 57
+      }
+    },
+    {
+      "suite": "output_implied_do",
+      "code": 0,
+      "summary": {
+        "total": 101,
+        "failed": 0,
+        "harness_self_tests": 45,
+        "candidate_checked": 101,
+        "gnu_executed": 0,
+        "gnu_compile_only": 0,
+        "gnu_compile_rejections": 0
+      }
+    },
+    {
+      "suite": "runtime_formats",
+      "code": 0,
+      "summary": {
+        "total": 69,
+        "failed": 0
+      }
+    }
+  ],
+  "originals_byte_exact": [
+    "demo_lge",
+    "demo_lgt",
+    "demo_lle",
+    "demo_llt"
+  ],
+  "isolated_build": "standard debug app/library plus two individually linked native targets; no full native aggregate",
+  "core_replay": "byte-exact, zero fuzz/offsets",
+  "vendor_replay": "0085 then0086 zero fuzz/offsets;118 functions,44 subroutines",
+  "old_materialized_fortran_sources_checked": 384,
+  "no_existing_Fortran_test_or_example_edits": true,
+  "source_hashes": {
+    "src/fi_frontend.f90": "4e7cdac1530b28ffb50c59b9678ecb875fb0621249385a8d791995cfdb3d3793",
+    "src/fi_ir.f90": "601979f54638bedc029c9d73d94a60c8df0e47bfcd242aaf88bcae23a4b227c3",
+    "src/fi_parser.f90": "521c005482efacfbe35c350e3256a2835531a101a382a3e67c19933f9b0366b3",
+    "src/fi_runtime.f90": "58ad051b3fde11a80adf21543c7358d88f2c214a9f0358edfff950843dbeb8d2",
+    "vendor/fortfront/src/frontend/frontend_compiler_type_queries.f90": "3df0acde2d08cf2b3f87e40ff4aca76164122f7af3f125576b7affca1c4af9d0",
+    "vendor/fortfront/src/utilities/intrinsic_registry.f90": "49aa71d11f38e40344bfc7b1e0ae9d7f5e943685daba2d0da6dbd379ea4c79dc"
+  },
+  "patches": {
+    "lexical-comparison-core.patch": "7e7033f4627df3e4ab09199ada802e9d63156cdaafd591374e2354bb855d8eb4",
+    "lexical-comparison-vendor-raw.patch": "c38ca7433647ba53512cba9ac4c552662ee5433d42cb4d433ef3b6a840e6b977",
+    "lexical-comparison-vendor-ledger.patch": "3fa98d7462152946ebb72746b430dc5cb29cd76327778287cae81f343a692ad0"
+  }
+}

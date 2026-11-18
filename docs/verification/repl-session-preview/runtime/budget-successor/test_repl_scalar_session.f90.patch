@@ -1,0 +1,41 @@
+--- 
++++ 
+@@ -108,6 +108,38 @@
+     d=diagnostic_t();call execute_scalar_session(session,bad,d)
+     call expect(d%code/=0,'changed old string trailing length')
+     call expect(.not.scalar_session_tainted(session),'string prefix rejection does not taint')
++    ! Admission boundary: 256 * 65536 bytes = exactly 16 MiB.
++    p=program_t();p%name='budget';p%ne=256
++    allocate(p%symbols(1),p%expressions(257),p%code(1))
++    do j=1,257
++        p%expressions(j)%kind=ex_literal;p%expressions(j)%typ=ty_character
++        p%expressions(j)%real_kind=4;p%expressions(j)%character_len=65536
++        p%expressions(j)%value=value_t(tag=ty_character,real_kind=4)
++        p%expressions(j)%value%s=repeat('x',65536)
++    end do
++    d=diagnostic_t();call validate_scalar_session_program(p,d)
++    call expect(d%code==0,'exact 16 MiB literal budget admitted')
++    p%ne=257;p%expressions(257)%value%s='x';p%expressions(257)%character_len=1
++    d=diagnostic_t();call validate_scalar_session_program(p,d)
++    call expect(d%code/=0,'literal byte over budget rejected')
++    p%ne=256;p%ns=1;p%symbols(1)%name='c';p%symbols(1)%typ=ty_character
++    p%symbols(1)%character_len=1;p%symbols(1)%real_kind=4
++    d=diagnostic_t();call validate_scalar_session_program(p,d)
++    call expect(d%code/=0,'scalar storage counts against budget')
++    p%ns=0;p%nc=1;p%code(1)%op=op_print;p%code(1)%items=[1];p%code(1)%format='(A)'
++    d=diagnostic_t();call validate_scalar_session_program(p,d)
++    call expect(d%code/=0,'format bytes count against budget')
++    ! Inactive slots are neither admitted expressions nor retained snapshot data.
++    call reset_scalar_session(session)
++    call parse('program p'//nl//'implicit none'//nl,p)
++    p%expressions(1)%kind=ex_binary;p%expressions(1)%left=1
++    p%expressions(1)%value%s=repeat('x',65537)
++    p%code(1)%format=repeat('x',65537)
++    allocate(p%procedures(1)%args(5));p%procedures(1)%args=-1
++    call execute_scalar_session(session,p,d)
++    call expect(d%code==0,'inactive cyclic oversized payload ignored')
++    call execute_scalar_session(session,p,d)
++    call expect(d%code==0,'inactive payload not part of retained prefix')
+     print *, 'scalar session checks: ',checks
+ contains
+     subroutine parse(source,prog)

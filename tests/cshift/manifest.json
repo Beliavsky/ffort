@@ -1,0 +1,668 @@
+{
+  "description": "Bounded rank-one/rank-two CSHIFT, complete unchanged M_intrinsics example, independently constructed or invariant oracles.",
+  "original": {
+    "local_file": "demo_cshift.f90",
+    "source_path": "example/demo_cshift.f90",
+    "upstream_repository": "https://github.com/urbanjost/M_intrinsics",
+    "upstream_commit": "fc14233036d910e3678d350efc24609e11475067",
+    "sha256": "86868f08e1dc9d4b533e4b170734d02d6006642397486ce4160420b08eaf2fbd",
+    "bytes": 857,
+    "altered": false
+  },
+  "cases": [
+    {
+      "name": "original_demo_cshift",
+      "source": "demo_cshift.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "start with: 10 20 30 40 50 shift -2 40 50 10 20 30 shift +2 30 40 50 10 20 start with a matrix 1 4 7 10 2 5 8 11 3 6 9 12 matrix shifted along rows, each by its own amount [-1,0,1] 4 7 10 1 2 5 8 11 12 3 6 9"
+    },
+    {
+      "name": "rank1_signed_modulo",
+      "source": "cases/rank1_signed_modulo.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "rank2_integer4",
+      "source": "cases/rank2_integer4.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "rank2_integer8",
+      "source": "cases/rank2_integer8.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "rank2_real4",
+      "source": "cases/rank2_real4.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "rank2_real8",
+      "source": "cases/rank2_real8.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "logical_and_character",
+      "source": "cases/logical_and_character.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "rank1_logical_character",
+      "source": "cases/rank1_logical_character.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "character_zero_length",
+      "source": "cases/character_zero_length.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "rank2_keywords_scalar_dim2",
+      "source": "cases/rank2_keywords_scalar_dim2.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "minimum_integer64",
+      "source": "cases/minimum_integer64.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "maximum_integer64",
+      "source": "cases/maximum_integer64.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "minimum_integer32",
+      "source": "cases/minimum_integer32.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "nonunit_bounds_sections",
+      "source": "cases/nonunit_bounds_sections.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "shift_strided_section",
+      "source": "cases/shift_strided_section.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "self_assignment_snapshot",
+      "source": "cases/self_assignment_snapshot.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "shift_aliases_array",
+      "source": "cases/shift_aliases_array.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "dynamic_allocatable_descriptors",
+      "source": "cases/dynamic_allocatable_descriptors.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "assumed_shape_descriptors",
+      "source": "cases/assumed_shape_descriptors.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "one_element_empty_axes",
+      "source": "cases/one_element_empty_axes.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "empty_array_materialization",
+      "source": "cases/empty_array_materialization.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "PASS",
+      "boundary_note": "Valid empty result/SHIFT conformance; GNU14 bounds-checking materialization discrepancy is not adopted."
+    },
+    {
+      "name": "nested_composition",
+      "source": "cases/nested_composition.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "constant_parameters",
+      "source": "cases/constant_parameters.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "pure_function_source",
+      "source": "cases/pure_function_source.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "ordinary_function_source",
+      "source": "cases/ordinary_function_source.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "recursive_function_source",
+      "source": "cases/recursive_function_source.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "character_function_source",
+      "source": "cases/character_function_source.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "pure_where_forall",
+      "source": "cases/pure_where_forall.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "user_procedure_shadowing",
+      "source": "cases/user_procedure_shadowing.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "scalar_variable_shadow",
+      "source": "cases/scalar_variable_shadow.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "array_variable_shadow",
+      "source": "cases/array_variable_shadow.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "scalar_function_shadow",
+      "source": "cases/scalar_function_shadow.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "function_result_shadow",
+      "source": "cases/function_result_shadow.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "generic_shadow_different_type",
+      "source": "cases/generic_shadow_different_type.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "rng_scalar_shift_once",
+      "source": "cases/rng_scalar_shift_once.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "rng_scalar_source_once",
+      "source": "cases/rng_scalar_source_once.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "rng_array_source_once",
+      "source": "cases/rng_array_source_once.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "rng_array_shift_frozen",
+      "source": "cases/rng_array_shift_frozen.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "kind_arguments_unevaluated",
+      "source": "cases/kind_arguments_unevaluated.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "optional_parenthesized_dim",
+      "source": "cases/optional_parenthesized_dim.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "optional_direct_dim",
+      "source": "cases/optional_direct_dim.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "optional_absent_parenthesized_dim",
+      "source": "cases/optional_absent_parenthesized_dim.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "scalar_array",
+      "source": "cases/scalar_array.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "rank3_array",
+      "source": "cases/rank3_array.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "real_shift",
+      "source": "cases/real_shift.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "logical_shift",
+      "source": "cases/logical_shift.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "array_shift_rank1",
+      "source": "cases/array_shift_rank1.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "rank2_shift",
+      "source": "cases/rank2_shift.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "static_shape_mismatch",
+      "source": "cases/static_shape_mismatch.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "real_dim",
+      "source": "cases/real_dim.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "array_dim",
+      "source": "cases/array_dim.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "dim_zero_constant",
+      "source": "cases/dim_zero_constant.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "dim_negative_constant",
+      "source": "cases/dim_negative_constant.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "dim_oversized_constant",
+      "source": "cases/dim_oversized_constant.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "duplicate_shift",
+      "source": "cases/duplicate_shift.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "duplicate_array",
+      "source": "cases/duplicate_array.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "missing_shift",
+      "source": "cases/missing_shift.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "missing_array",
+      "source": "cases/missing_array.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "unknown_keyword",
+      "source": "cases/unknown_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "too_many_arguments",
+      "source": "cases/too_many_arguments.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "positional_after_keyword",
+      "source": "cases/positional_after_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "dynamic_dim_zero",
+      "source": "cases/dynamic_dim_zero.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "DIM"
+    },
+    {
+      "name": "dynamic_dim_negative",
+      "source": "cases/dynamic_dim_negative.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "DIM"
+    },
+    {
+      "name": "dynamic_dim_oversized",
+      "source": "cases/dynamic_dim_oversized.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "DIM"
+    },
+    {
+      "name": "dynamic_dim_huge_integer8",
+      "source": "cases/dynamic_dim_huge_integer8.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "DIM"
+    },
+    {
+      "name": "dynamic_shape_mismatch",
+      "source": "cases/dynamic_shape_mismatch.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "SHIFT shape"
+    },
+    {
+      "name": "undefined_array",
+      "source": "cases/undefined_array.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "undefined_shift",
+      "source": "cases/undefined_shift.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "undefined_shift_entry",
+      "source": "cases/undefined_shift_entry.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "undefined_dim",
+      "source": "cases/undefined_dim.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "unallocated_array",
+      "source": "cases/unallocated_array.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "unallocated_shift",
+      "source": "cases/unallocated_shift.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "absent_optional_array",
+      "source": "cases/absent_optional_array.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "absent_optional_shift",
+      "source": "cases/absent_optional_shift.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "empty_evaluates_scalar_shift",
+      "source": "cases/empty_evaluates_scalar_shift.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "SHIFT evaluated"
+    },
+    {
+      "name": "empty_evaluates_shift_entries",
+      "source": "cases/empty_evaluates_shift_entries.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "SHIFT entry evaluated"
+    },
+    {
+      "name": "empty_evaluates_dim",
+      "source": "cases/empty_evaluates_dim.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "DIM evaluated"
+    },
+    {
+      "name": "empty_source_descriptor_function",
+      "source": "cases/empty_source_descriptor_function.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "ARRAY descriptor evaluated"
+    },
+    {
+      "name": "empty_dynamic_bad_dim",
+      "source": "cases/empty_dynamic_bad_dim.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "DIM"
+    },
+    {
+      "name": "empty_undefined_shift_entry",
+      "source": "cases/empty_undefined_shift_entry.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "where_impure_reject",
+      "source": "cases/where_impure_reject.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "forall_impure_reject",
+      "source": "cases/forall_impure_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "source_io_effect_reject",
+      "source": "cases/source_io_effect_reject.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "source_saved_effect_reject",
+      "source": "cases/source_saved_effect_reject.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "shared_work_budget",
+      "source": "cases/shared_work_budget.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "step limit",
+      "args": [
+        "--max-steps",
+        "1500"
+      ]
+    },
+    {
+      "name": "temporary_element_boundary",
+      "source": "cases/temporary_element_boundary.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "temporary_character_boundary",
+      "source": "cases/temporary_character_boundary.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "temporary_element_limit",
+      "source": "cases/temporary_element_limit.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "temporary element limit",
+      "args": [
+        "--max-steps",
+        "20000000"
+      ]
+    },
+    {
+      "name": "temporary_character_byte_limit",
+      "source": "cases/temporary_character_byte_limit.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "CHARACTER temporary byte limit"
+    },
+    {
+      "name": "failed_output_record",
+      "source": "cases/failed_output_record.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "DIM",
+      "completed_stdout": "BEFORE\n"
+    }
+  ]
+}

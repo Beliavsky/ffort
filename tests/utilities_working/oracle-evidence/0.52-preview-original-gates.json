@@ -1,0 +1,33 @@
+{
+  "candidate_sha256_before": "21a75fabbf300f7fa3907fceeb6ab6be4646e207682bc7854195c18ed5d8ccc4",
+  "candidate_sha256_after": "21a75fabbf300f7fa3907fceeb6ab6be4646e207682bc7854195c18ed5d8ccc4",
+  "source_sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+  "source_bytes_unchanged": true,
+  "rows": [
+    {
+      "phase": "check",
+      "argv": [
+        "/workspace/scratch/c5319e9549df/recovery/052-integration/fourth-preview-cli",
+        "--check",
+        "/workspace/scratch/c5319e9549df/recovery/051-clean-room/fortfront-interpreter-0.51.0/tests/utilities_slices/source/xutilities.f90"
+      ],
+      "status": 1,
+      "stdout": "",
+      "stderr": "/workspace/scratch/c5319e9549df/recovery/051-clean-room/fortfront-interpreter-0.51.0/tests/utilities_slices/source/xutilities.f90:9329:55: Total array element limit exceeded (1000000)\n",
+      "expected_exact": true
+    },
+    {
+      "phase": "run",
+      "argv": [
+        "/workspace/scratch/c5319e9549df/recovery/052-integration/fourth-preview-cli",
+        "--max-steps",
+        "100000000",
+        "/workspace/scratch/c5319e9549df/recovery/051-clean-room/fortfront-interpreter-0.51.0/tests/utilities_slices/source/xutilities.f90"
+      ],
+      "status": 1,
+      "stdout": "",
+      "stderr": "/workspace/scratch/c5319e9549df/recovery/051-clean-room/fortfront-interpreter-0.51.0/tests/utilities_slices/source/xutilities.f90:9329:55: Total array element limit exceeded (1000000)\n",
+      "expected_exact": true
+    }
+  ]
+}

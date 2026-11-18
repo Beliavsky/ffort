@@ -1,0 +1,120 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -429,7 +429,7 @@
+         end if
+     end subroutine resolve_binary_operation
+ 
+-    subroutine resolve_array_slice(arena, node, visiting)
++    recursive subroutine resolve_array_slice(arena, node, visiting)
+         type(ast_arena_t), intent(inout) :: arena
+         type(array_slice_node), intent(inout) :: node
+         logical, intent(inout) :: visiting(:)
+@@ -451,6 +451,12 @@
+                 rank = rank + 1
+             type is (array_bounds_node)
+                 rank = rank + 1
++            class default
++                call resolve_node_metadata(arena, bound, visiting)
++                if (arena%entries(bound)%node%resolved_type_found) then
++                    if (arena%entries(bound)%node%resolved_type_kind == TINT .and. &
++                        arena%entries(bound)%node%resolved_rank == 1) rank = rank + 1
++                end if
+             end select
+         end do
+         node%resolved_rank = rank
+--- a/src/parser/control_flow/parser_if_inline.f90
++++ b/src/parser/control_flow/parser_if_inline.f90
+@@ -198,7 +198,7 @@
+         integer, allocatable, intent(inout) :: then_body_indices(:)
+         type(statement_callbacks_t), intent(in) :: callbacks
+ 
+-        integer :: stmt_start, stmt_end
++        integer :: stmt_start, stmt_end, j
+         integer, allocatable :: stmt_indices(:)
+         type(token_t), allocatable :: stmt_tokens(:)
+         type(token_t) :: tok
+@@ -211,6 +211,12 @@
+             call allocate_stmt_tokens_with_eof(stmt_tokens, parser%tokens, &
+                 stmt_start, stmt_end)
+ 
++            ! Continued inline-IF actions retain their own physical source
++            ! positions, not the first logical line of the surrounding IF.
++            do j = 1, size(stmt_tokens)
++                if (stmt_tokens(j)%physical_line > 0) &
++                    stmt_tokens(j)%line = stmt_tokens(j)%physical_line
++            end do
+             stmt_indices = parse_basic_statement_core(stmt_tokens, arena, &
+                 callbacks=callbacks, parent_parser=parser)
+             if (allocated(stmt_indices)) then
+--- a/src/semantic/analyzers/semantic_array_slice.f90
++++ b/src/semantic/analyzers/semantic_array_slice.f90
+@@ -1,5 +1,5 @@
+ module semantic_array_slice
+-    use type_system_unified, only: mono_type_t, create_mono_type, TARRAY, TCHAR
++    use type_system_unified, only: mono_type_t, create_mono_type, TARRAY, TCHAR, TINT
+     use type_array_safe, only: safe_extract_array_rank
+     use ast_arena_modern, only: ast_arena_t
+     use ast_nodes_bounds, only: array_slice_node, range_expression_node, &
+@@ -19,14 +19,14 @@
+         procedure(get_type_lookup) :: get_type_fn
+         type(mono_type_t) :: typ
+         type(mono_type_t) :: source_type
+-        type(mono_type_t) :: base_type
++        type(mono_type_t) :: base_type, index_type, index_base
+         type(mono_type_t), allocatable :: args(:)
+         logical, allocatable :: keep_dim(:)
+         integer, allocatable :: dim_lengths(:)
+         integer :: max_dims
+         integer :: dims_to_process
+         integer :: i
+-        integer :: bounds_idx
++        integer :: bounds_idx, index_rank
+         logical :: is_range
+         integer :: substring_len
+         integer :: slice_extent
+@@ -75,6 +75,14 @@
+                 slice_extent = infer_slice_extent(arena, bounds_idx)
+                 dim_lengths(i) = slice_extent
+             end if
++            if (.not. is_range .and. arena%has_node_at(bounds_idx)) then
++                index_type = get_type_fn(arena, bounds_idx)
++                call safe_extract_array_rank(index_type, index_rank, index_base)
++                if (index_rank == 1 .and. index_base%kind == TINT) then
++                    keep_dim(i) = .true.
++                    if (index_type%size > 0) dim_lengths(i) = index_type%size
++                end if
++            end if
+         end do
+ 
+         if (slice_node%num_dimensions < max_dims) then
+@@ -178,7 +186,7 @@
+         type(ast_arena_t), intent(inout) :: arena
+         type(array_slice_node), intent(in) :: slice_node
+         integer, intent(in) :: base_length
+-        integer :: bounds_idx
++        integer :: bounds_idx, index_rank
+         integer :: start_expr_idx
+         integer :: end_expr_idx
+         integer :: start_value
+--- a/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
++++ b/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
+@@ -125,7 +125,7 @@
+         type(ast_arena_t), intent(inout) :: arena
+         integer, intent(in) :: expr_index
+         type(mono_type_t) :: typ, declared_type, actual_type
+-        type(resolved_type_query_t) :: resolved
++        type(resolved_type_query_t) :: resolved, bound_resolved
+         integer :: rank, i, bound
+         logical :: inferred_integer, inferred_unsigned
+         type(declaration_binding_t) :: binding
+@@ -265,6 +265,10 @@
+                         rank = rank + 1
+                     type is (array_bounds_node)
+                         rank = rank + 1
++                    class default
++                        bound_resolved = resolve_expression_type(arena, bound)
++                        if (bound_resolved%found .and. bound_resolved%type_kind == TINT .and. &
++                            bound_resolved%rank == 1) rank = rank + 1
+                     end select
+                 end do
+                 if (strict_type_is_known(declared_type) .and. rank > 0) then

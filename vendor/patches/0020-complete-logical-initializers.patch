@@ -1,0 +1,40 @@
+--- a/src/parser/declarations/parser_declarations_core_module.f90
++++ b/src/parser/declarations/parser_declarations_core_module.f90
+@@ -11,7 +11,7 @@
+     use parser_result_types, only: parse_result_t, success_parse_result, &
+         error_parse_result
+     use error_handling, only: ERROR_PARSER
+-    use parser_expressions_module, only: parse_comparison
++    use parser_expressions_module, only: parse_logical_eqv
+     use parser_declaration_attributes_module, only: parse_declaration_attributes, &
+         parse_array_dimensions
+     use declaration_attribute_utils, only: declaration_attribute_info_t
+@@ -462,7 +462,7 @@
+                 initializer_index = handle_complex_initializer( &
+                     parser, arena, type_spec%base_keyword)
+             else
+-                initializer_index = parse_comparison(parser, arena)
++                initializer_index = parse_logical_eqv(parser, arena)
+             end if
+         end if
+     end function parse_variable_initializer
+--- a/src/parser/declarations/parser_declarations_multi_module.f90
++++ b/src/parser/declarations/parser_declarations_multi_module.f90
+@@ -11,7 +11,7 @@
+     use parser_declarations_type_spec_module, only: parse_type_specifier
+     use parser_declaration_attributes_module, only: parse_declaration_attributes, &
+         parse_array_dimensions
+-    use parser_expressions_module, only: parse_comparison
++    use parser_expressions_module, only: parse_logical_eqv
+     use declaration_attribute_utils, only: declaration_attribute_info_t
+     implicit none
+     private
+@@ -266,7 +266,7 @@
+                 init_index = handle_complex_initializer( &
+                     parser, arena, type_spec%base_keyword)
+             else
+-                init_index = parse_comparison(parser, arena)
++                init_index = parse_logical_eqv(parser, arena)
+             end if
+             if (init_index > 0) then
+                 has_any_initializer = .true.

@@ -1,0 +1,26 @@
+--- a/src/frontend_parsing.f90
++++ b/src/frontend_parsing.f90
+@@ -30,7 +30,7 @@
+         not_meaningful_program_unit, &
+         has_any_non_comment_content, &
+         has_executable_statements, &
+-        is_function_start
++        is_function_start, is_module_start
+     use frontend_statement_processing, only: &
+         process_comment_statement, &
+         process_regular_statement, &
+@@ -213,6 +213,14 @@
+             case (TK_WHITESPACE, TK_NEWLINE, TK_COMMENT)
+                 cycle
+             case default
++                ! A module followed by an anonymous main is a sequence of
++                ! complete standard program units. The LF mixed-range detector
++                ! can include its first executable statement in a declaration
++                ! range; keep this source on the unit/statement scanner path.
++                if (is_module_start(tokens, token_idx)) then
++                    require_mixed = .false.
++                    return
++                end if
+                 first_is_type = is_type_start(tokens, token_idx)
+                 exit
+             end select

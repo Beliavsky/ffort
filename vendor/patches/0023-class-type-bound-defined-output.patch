@@ -1,0 +1,80 @@
+--- a/src/parser/declarations/parser_declarations_derived_module.f90
++++ b/src/parser/declarations/parser_declarations_derived_module.f90
+@@ -859,12 +859,24 @@
+         end if
+ 
+         token = parser%peek()
+-        if (token%kind /= TK_IDENTIFIER) then
++        if (token%kind /= TK_IDENTIFIER .and. token%kind /= TK_KEYWORD) then
+             return
+         end if
+ 
+         token = parser%consume()
+         binding_name = trim(token%text)
++        if (to_lower(binding_name) == 'write' .or. to_lower(binding_name) == 'read') then
++            token = parser%peek()
++            if (token%text == '(') then
++                token = parser%consume()
++                token = parser%consume()
++                binding_name = binding_name//'('//trim(token%text)
++                token = parser%peek()
++                if (token%text /= ')') return
++                token = parser%consume()
++                binding_name = binding_name//')'
++            end if
++        end if
+         found_name = .true.
+     end function read_binding_name
+ 
+--- a/src/semantic/analyzers/semantic_explicit_interface_checker.f90
++++ b/src/semantic/analyzers/semantic_explicit_interface_checker.f90
+@@ -596,6 +596,9 @@
+         if (len_trim(expr%name) == 0) return
+ 
+         proc_name = to_lower(trim(expr%name))
++        ! A type-bound designator has its interface in the derived type,
++        ! not in the lexical cache of ordinary procedure names.
++        if (is_part_reference(proc_name)) return
+         if (is_intrinsic_subroutine(proc_name)) return
+         call resolve_name_at_node(arena, expr_index, proc_name, binding, binding_error)
+         if (binding%found .and. binding%binding_kind == BINDING_GENERIC_INTERFACE) return
+--- a/src/frontend/frontend_compiler_queries.f90
++++ b/src/frontend/frontend_compiler_queries.f90
+@@ -34,7 +34,7 @@
+         get_scope_statement_indices, &
+         find_host_scope, resolve_name_in_scope, BINDING_FUNCTION, &
+         BINDING_SUBROUTINE, BINDING_GENERIC_INTERFACE, BINDING_DECLARATION, &
+-        BINDING_ASSOCIATE_NAME, ASSOCIATION_DIRECT
++        BINDING_ASSOCIATE_NAME, ASSOCIATION_DIRECT, BINDING_DERIVED_TYPE
+     use frontend_compiler_type_queries, only: resolved_type_query_t, &
+         query_resolved_type
+     use semantic_procedure_signature, only: type_category
+@@ -7929,6 +7929,8 @@
+         integer, intent(in) :: call_node_index
+         type(type_bound_call_query_t) :: query
+         type(binding_resolution_query_t) :: resolution
++        type(declaration_binding_t) :: declared_binding
++        character(len=:), allocatable :: declared_error
+         character(len=:), allocatable :: receiver_type_name
+         character(len=:), allocatable :: binding_name
+         logical :: is_call
+@@ -7960,8 +7962,17 @@
+             return
+         end if
+ 
+-        query%declared_type_index = find_derived_type_by_name(arena, &
+-            receiver_type_name)
++        ! Prefer the receiver declaration's lexical type identity. A global
++        ! spelling search can select a same-named type in a different module.
++        call resolve_name_at_node(arena, query%receiver_declaration_index, &
++            receiver_type_name, declared_binding, declared_error)
++        if (declared_binding%found .and. &
++            declared_binding%binding_kind == BINDING_DERIVED_TYPE) then
++            query%declared_type_index = declared_binding%declaration_node_index
++        else
++            query%declared_type_index = find_derived_type_by_name(arena, &
++                receiver_type_name)
++        end if
+         if (query%declared_type_index <= 0) then
+             query%is_unresolved = .true.
+             return

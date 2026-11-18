@@ -1,0 +1,345 @@
+{
+  "source_contract": "Bounded explicit specification-length ALLOCATABLE CHARACTER dummy arrays; no full-module support claim.",
+  "cases": [
+    {
+      "name": "compress_repetition_order",
+      "source": "cases/compress_repetition_order.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "original_bodies": [
+        {
+          "procedure": "compress",
+          "sha256": "394c3d781fdad3958812513b07a8404d398db7419e371ac6605e3d37405ee08a",
+          "start_line": 9648,
+          "end_line": 9674,
+          "source": "tests/utilities_slices/source/xutilities.f90",
+          "line_endings": "CRLF"
+        }
+      ]
+    },
+    {
+      "name": "compress_empty_zero",
+      "source": "cases/compress_empty_zero.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "original_bodies": [
+        {
+          "procedure": "compress",
+          "sha256": "394c3d781fdad3958812513b07a8404d398db7419e371ac6605e3d37405ee08a",
+          "start_line": 9648,
+          "end_line": 9674,
+          "source": "tests/utilities_slices/source/xutilities.f90",
+          "line_endings": "CRLF"
+        }
+      ]
+    },
+    {
+      "name": "compress_distinct_widths",
+      "source": "cases/compress_distinct_widths.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "original_bodies": [
+        {
+          "procedure": "compress",
+          "sha256": "394c3d781fdad3958812513b07a8404d398db7419e371ac6605e3d37405ee08a",
+          "start_line": 9648,
+          "end_line": 9674,
+          "source": "tests/utilities_slices/source/xutilities.f90",
+          "line_endings": "CRLF"
+        }
+      ]
+    },
+    {
+      "name": "in_unallocated_and_empty",
+      "source": "cases/in_unallocated_and_empty.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n"
+    },
+    {
+      "name": "out_lifecycle_nested",
+      "source": "cases/out_lifecycle_nested.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n"
+    },
+    {
+      "name": "inout_frozen_reallocate",
+      "source": "cases/inout_frozen_reallocate.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n"
+    },
+    {
+      "name": "len_element_rank_variants",
+      "source": "cases/len_element_rank_variants.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n"
+    },
+    {
+      "name": "negative_length_zero",
+      "source": "cases/negative_length_zero.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n"
+    },
+    {
+      "name": "optional_forwarding",
+      "source": "cases/optional_forwarding.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "oracle_note": "Valid Fortran but OPTIONAL specification-length dummies are outside this milestone; GNU compile-only and candidate source rejection.",
+      "diagnostic": "Runtime CHARACTER length is supported only"
+    },
+    {
+      "name": "integer64_arithmetic_length",
+      "source": "cases/integer64_arithmetic_length.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n"
+    },
+    {
+      "name": "max_length_empty",
+      "source": "cases/max_length_empty.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n"
+    },
+    {
+      "name": "mismatch_unallocated",
+      "source": "cases/mismatch_unallocated.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "oracle_note": "Nonconforming explicit allocatable length mismatch: GNU compile-only, never execute.",
+      "diagnostic": "actual length differs from specification-length dummy"
+    },
+    {
+      "name": "mismatch_allocated",
+      "source": "cases/mismatch_allocated.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "oracle_note": "Nonconforming explicit allocatable length mismatch: GNU compile-only, never execute.",
+      "diagnostic": "actual length differs from specification-length dummy"
+    },
+    {
+      "name": "mismatch_empty",
+      "source": "cases/mismatch_empty.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "oracle_note": "Nonconforming explicit allocatable length mismatch: GNU compile-only, never execute.",
+      "diagnostic": "actual length differs from specification-length dummy"
+    },
+    {
+      "name": "deferred_actual_reject",
+      "source": "cases/deferred_actual_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "oracle_note": "Deferred and nondeferred allocatable length categories must agree.",
+      "diagnostic": "must agree on deferred length"
+    },
+    {
+      "name": "local_length_reject",
+      "source": "cases/local_length_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "supported specification expression"
+    },
+    {
+      "name": "real_length_reject",
+      "source": "cases/real_length_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "CHARACTER LEN requires scalar INTEGER"
+    },
+    {
+      "name": "optional_length_reject",
+      "source": "cases/optional_length_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "supported specification expression"
+    },
+    {
+      "name": "division_zero_runtime",
+      "source": "cases/division_zero_runtime.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "oracle_note": "GNU compile-only: undefined length expression must not be executed.",
+      "diagnostic": "integer division by zero"
+    },
+    {
+      "name": "length_cap_runtime",
+      "source": "cases/length_cap_runtime.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "oracle_note": "Interpreter 65536 per-element length guard; association also nonconforming, so GNU is never executed.",
+      "diagnostic": "CHARACTER length limit exceeded (65536)"
+    },
+    {
+      "name": "aggregate_cap_stat",
+      "source": "cases/aggregate_cap_stat.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "1\n",
+      "oracle_note": "Interpreter 16 MiB live CHARACTER array payload limit; GNU has no equivalent cap."
+    },
+    {
+      "name": "element_cap_stat",
+      "source": "cases/element_cap_stat.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "1\n",
+      "oracle_note": "Configured element cap applies even with zero-length CHARACTER elements; generated cap+1 STAT probe. GNU compiles but does not execute this resource-policy case.",
+      "generated": {
+        "generator": "generate_cap_case.py",
+        "source": "cases/element_cap_stat.f90",
+        "configured_cap_source": "src/fi_ir.f90:max_array_elements",
+        "configured_cap": 1000000,
+        "requested_elements": 1000001,
+        "source_sha256": "4f2fe4ec61dffe4cfcc76a4f71b8305f2898cad2641146669b97229a960818a4",
+        "scope": "Synthetic interpreter resource-policy fixture; no original utility body; GNU compile-only."
+      }
+    },
+    {
+      "name": "ordinary_spec_dummy_reject",
+      "source": "cases/ordinary_spec_dummy_reject.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "oracle_note": "Valid Fortran ordinary nonallocatable specification-length dummy remains outside the interpreter subset.",
+      "diagnostic": "Runtime CHARACTER length is supported only"
+    },
+    {
+      "name": "pure_spec_out_first_keywords",
+      "source": "cases/pure_spec_out_first_keywords.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n"
+    },
+    {
+      "name": "impure_spec_reject",
+      "source": "cases/impure_spec_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "supported specification expression"
+    },
+    {
+      "name": "recursive_distinct_frozen_lengths",
+      "source": "cases/recursive_distinct_frozen_lengths.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n"
+    },
+    {
+      "name": "zero_length_undefined_metadata",
+      "source": "cases/zero_length_undefined_metadata.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n"
+    },
+    {
+      "name": "undefined_value_width_0",
+      "source": "cases/undefined_value_width_0.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "oracle_note": "Undefined element reference is an interpreter safety rejection; no GNU runtime oracle is claimed.",
+      "diagnostic": "uninitialized array element"
+    },
+    {
+      "name": "undefined_value_width_3",
+      "source": "cases/undefined_value_width_3.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "oracle_note": "Undefined element reference is an interpreter safety rejection; no GNU runtime oracle is claimed.",
+      "diagnostic": "uninitialized array element"
+    },
+    {
+      "name": "alias_unallocated",
+      "source": "cases/alias_unallocated.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "oracle_note": "Overlapping writable allocatable arguments violate the bounded association policy; GNU compile-only, never execute.",
+      "diagnostic": "overlapping allocatable descriptors"
+    },
+    {
+      "name": "alias_empty",
+      "source": "cases/alias_empty.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "oracle_note": "Overlapping writable allocatable arguments violate the bounded association policy; GNU compile-only, never execute.",
+      "diagnostic": "overlapping allocatable descriptors"
+    },
+    {
+      "name": "alias_allocated",
+      "source": "cases/alias_allocated.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "oracle_note": "Overlapping writable allocatable arguments violate the bounded association policy; GNU compile-only, never execute.",
+      "diagnostic": "overlapping allocatable descriptors"
+    },
+    {
+      "name": "inout_unallocated_entry",
+      "source": "cases/inout_unallocated_entry.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n"
+    },
+    {
+      "name": "compress_factors_size_error",
+      "source": "cases/compress_factors_size_error.f90",
+      "category": "runtime",
+      "baseline": "runtime",
+      "expected_stdout": "",
+      "original_bodies": [
+        {
+          "procedure": "compress",
+          "sha256": "394c3d781fdad3958812513b07a8404d398db7419e371ac6605e3d37405ee08a",
+          "start_line": 9648,
+          "end_line": 9674,
+          "source": "tests/utilities_slices/source/xutilities.f90",
+          "line_endings": "CRLF"
+        }
+      ],
+      "diagnostic": "in compress, need size(words) == size(factors)",
+      "oracle_note": "Safe GNU execution of the exact original size guard; expected ERROR STOP, not undefined behavior."
+    },
+    {
+      "name": "compress_actual_length_mismatch",
+      "source": "cases/compress_actual_length_mismatch.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "original_bodies": [
+        {
+          "procedure": "compress",
+          "sha256": "394c3d781fdad3958812513b07a8404d398db7419e371ac6605e3d37405ee08a",
+          "start_line": 9648,
+          "end_line": 9674,
+          "source": "tests/utilities_slices/source/xutilities.f90",
+          "line_endings": "CRLF"
+        }
+      ],
+      "oracle_note": "Exact original compress with mismatched actual output length. Nonconforming call; GNU compile-only, never execute.",
+      "diagnostic": "actual length differs from specification-length dummy"
+    }
+  ]
+}

@@ -1,0 +1,944 @@
+{
+  "cases": [
+    {
+      "name": "integer_kinds",
+      "source": "cases/integer_kinds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "-2147483648 0 2147483647 -9223372036854775808 9007199254740993 9223372036854775807\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "-2147483648,0,2147483647, -9223372036854775808,9007199254740993,9223372036854775807\n"
+      }
+    },
+    {
+      "name": "real_kinds",
+      "source": "cases/real_kinds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1.25 -25 3 1.25 -.5 6.25\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1.25,-2.5E+1,3D0, .125d+1,-.5,6.25\n"
+      }
+    },
+    {
+      "name": "real_signed_zero",
+      "source": "cases/real_signed_zero.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "-0 -0\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "-0.0,-0d0\n"
+      }
+    },
+    {
+      "name": "real_tiny_nonzero",
+      "source": "cases/real_tiny_nonzero.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1d-300\n"
+      }
+    },
+    {
+      "name": "numeric_rank_three",
+      "source": "cases/numeric_rank_three.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 3 4 1.5 2.5 3.5 4.5\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1 2\n3 4 1.5\n2.5 3.5 4.5\n"
+      }
+    },
+    {
+      "name": "allocated_rank_two",
+      "source": "cases/allocated_rank_two.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 3 4 1.5 1.5 1.5 1.5\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1 2 3 4\n4*1.5\n"
+      }
+    },
+    {
+      "name": "character_padding_truncation",
+      "source": "cases/character_padding_truncation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "[a   ]\n[abcd]\n[    ]\n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "a abcdef ''\n"
+      }
+    },
+    {
+      "name": "character_delimiters_doubling",
+      "source": "cases/character_delimiters_doubling.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "a,b / * \nsay \"x\" \nit's    \nplain   \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "'a,b / *' \"say \"\"x\"\"\" 'it''s' plain\n"
+      }
+    },
+    {
+      "name": "character_rank_three",
+      "source": "cases/character_rank_three.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "a \nbb\ncc\ndd\n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "a bb ccc dd\n"
+      }
+    },
+    {
+      "name": "allocated_character_lengths",
+      "source": "cases/allocated_character_lengths.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "x  \ny z\nabc\n   \nlo\n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "x 'y z' abcdef '' long\n"
+      }
+    },
+    {
+      "name": "mixed_targets",
+      "source": "cases/mixed_targets.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "a b \nxyz \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "42\n1.5 'a b',xyz\n"
+      }
+    },
+    {
+      "name": "multirecord_discard_tail",
+      "source": "cases/multirecord_discard_tail.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 3 4\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1\n\n2\n3 99 98\n4\n"
+      }
+    },
+    {
+      "name": "record_end_leading_comma",
+      "source": "cases/record_end_leading_comma.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 3 4\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1\n,2,3\n4\n"
+      }
+    },
+    {
+      "name": "record_end_double_comma_null",
+      "source": "cases/record_end_double_comma_null.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 9 2 3 4\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1,\n,2,3\n4\n"
+      }
+    },
+    {
+      "name": "quoted_continuation",
+      "source": "cases/quoted_continuation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "abcd    \nef      \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "'ab\ncd', 'e\nf'\n"
+      }
+    },
+    {
+      "name": "quoted_continuation_spaces",
+      "source": "cases/quoted_continuation_spaces.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "ab    cd  \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "'ab  \n  cd'\n"
+      }
+    },
+    {
+      "name": "quoted_continuation_empty_crlf",
+      "source": "cases/quoted_continuation_empty_crlf.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "abcd    \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "'ab\r\n\r\ncd'\r\n"
+      }
+    },
+    {
+      "name": "nulls_slash_preserve",
+      "source": "cases/nulls_slash_preserve.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 9 3 4 5\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": ",9,2*,/ ignored\n"
+      }
+    },
+    {
+      "name": "character_nulls_slash",
+      "source": "cases/character_nulls_slash.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "one\nx  \ntri\nfor\n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": ",'x',/ tail\n"
+      }
+    },
+    {
+      "name": "repeat_cross_items",
+      "source": "cases/repeat_cross_items.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7 7 7 7\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "4*7\n"
+      }
+    },
+    {
+      "name": "repeat_character_lengths",
+      "source": "cases/repeat_character_lengths.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "ab\nabc  \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "2*'abc'\n"
+      }
+    },
+    {
+      "name": "repeat_null_cross_types",
+      "source": "cases/repeat_null_cross_types.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "old\n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "3*\n"
+      }
+    },
+    {
+      "name": "repeat_reset",
+      "source": "cases/repeat_reset.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7 8\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "5*7\n8\n"
+      }
+    },
+    {
+      "name": "zero_sized_advance",
+      "source": "cases/zero_sized_advance.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "22\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11\n22\n"
+      }
+    },
+    {
+      "name": "empty_list_advance",
+      "source": "cases/empty_list_advance.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "22\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11\n22\n"
+      }
+    },
+    {
+      "name": "zero_length_character",
+      "source": "cases/zero_length_character.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "'long' xyz 7\n"
+      }
+    },
+    {
+      "name": "eof_and_past_endfile",
+      "source": "cases/eof_and_past_endfile.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": ""
+      }
+    },
+    {
+      "name": "empty_target_eof",
+      "source": "cases/empty_target_eof.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": ""
+      }
+    },
+    {
+      "name": "short_multirecord_eof",
+      "source": "cases/short_multirecord_eof.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1\n2\n"
+      }
+    },
+    {
+      "name": "bad_integer",
+      "source": "cases/bad_integer.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "nope\n"
+      }
+    },
+    {
+      "name": "integer_overflow",
+      "source": "cases/integer_overflow.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "2147483648\n"
+      }
+    },
+    {
+      "name": "bad_real",
+      "source": "cases/bad_real.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1.2xyz\n"
+      }
+    },
+    {
+      "name": "real_overflow",
+      "source": "cases/real_overflow.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "1\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1e9999\n"
+      },
+      "reason": "GNU accepts Infinity; FortFront deliberately applies its existing finite-value input policy."
+    },
+    {
+      "name": "keyword_iostat_kind8",
+      "source": "cases/keyword_iostat_kind8.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "4\n"
+      }
+    },
+    {
+      "name": "backspace_parens",
+      "source": "cases/backspace_parens.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 11\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11 99\n22\n"
+      }
+    },
+    {
+      "name": "backspace_bare",
+      "source": "cases/backspace_bare.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 11\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11 99\n22\n"
+      }
+    },
+    {
+      "name": "backspace_keywords",
+      "source": "cases/backspace_keywords.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 11\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11 99\n22\n"
+      }
+    },
+    {
+      "name": "backspace_at_start_connected",
+      "source": "cases/backspace_at_start_connected.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11\n"
+      }
+    },
+    {
+      "name": "backspace_after_eof",
+      "source": "cases/backspace_after_eof.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11\n"
+      }
+    },
+    {
+      "name": "backspace_after_spanning",
+      "source": "cases/backspace_after_spanning.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 22 22\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11\n22\n33\n"
+      }
+    },
+    {
+      "name": "backspace_unterminated_final",
+      "source": "cases/backspace_unterminated_final.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 11\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11"
+      }
+    },
+    {
+      "name": "backspace_crlf_empty_record",
+      "source": "cases/backspace_crlf_empty_record.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "22\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11\r\n\r\n22\r\n"
+      }
+    },
+    {
+      "name": "backspace_read_mode_mixed",
+      "source": "cases/backspace_read_mode_mixed.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "12 34 \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "12 34\n"
+      }
+    },
+    {
+      "name": "independent_units",
+      "source": "cases/independent_units.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 44 11\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11\n22\n",
+        "28": "44\n55\n"
+      }
+    },
+    {
+      "name": "quoted_separate_records",
+      "source": "cases/quoted_separate_records.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "a  \nb  \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "'a'\n'b'\n"
+      }
+    },
+    {
+      "name": "error_then_backspace",
+      "source": "cases/error_then_backspace.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "bad data\n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "bad data\n"
+      }
+    },
+    {
+      "name": "repeat_cross_type_error",
+      "source": "cases/repeat_cross_type_error.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "2*12\n"
+      }
+    },
+    {
+      "name": "repeat_cross_kind_error",
+      "source": "cases/repeat_cross_kind_error.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "2*12\n"
+      }
+    },
+    {
+      "name": "repeat_overflow",
+      "source": "cases/repeat_overflow.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "9223372036854775808*1\n"
+      }
+    },
+    {
+      "name": "trailing_quote_junk",
+      "source": "cases/trailing_quote_junk.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "'a'x\n"
+      }
+    },
+    {
+      "name": "blank_only_records",
+      "source": "cases/blank_only_records.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 22\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": " \n\t\n11\n22\n"
+      }
+    },
+    {
+      "name": "nondelimited_character_end_record",
+      "source": "cases/nondelimited_character_end_record.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "ab \ncd \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "ab\ncd\n"
+      }
+    },
+    {
+      "name": "slash_does_not_consume_next_record",
+      "source": "cases/slash_does_not_consume_next_record.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "9 11\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "/ ignored\n11\n"
+      }
+    },
+    {
+      "name": "backspace_empty_file",
+      "source": "cases/backspace_empty_file.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": ""
+      }
+    },
+    {
+      "name": "backspace_kind8_unit",
+      "source": "cases/backspace_kind8_unit.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11\n"
+      }
+    },
+    {
+      "name": "nested_call_cursor",
+      "source": "cases/nested_call_cursor.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 22 22\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11\n22\n33\n"
+      }
+    },
+    {
+      "name": "backspace_scalar_identifier",
+      "source": "cases/backspace_scalar_identifier.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11\n"
+      }
+    },
+    {
+      "name": "backspace_array_identifier",
+      "source": "cases/backspace_array_identifier.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 27 28\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "11\n"
+      }
+    },
+    {
+      "name": "quoted_repeat_multirecord",
+      "source": "cases/quoted_repeat_multirecord.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "ab  \nab  \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "2*'a\nb',3\n"
+      }
+    },
+    {
+      "name": "null_repeat_record_comma",
+      "source": "cases/null_repeat_record_comma.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 9 9 3 4\n",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1 2*\n,3,4\n"
+      }
+    },
+    {
+      "name": "character_error_invalidates_prefix",
+      "source": "cases/character_error_invalidates_prefix.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "'new' bad\n"
+      }
+    },
+    {
+      "name": "original_next_record",
+      "source": "cases/original_next_record.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "a   \nbb  \nccc \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "3\na bb ccc\n"
+      },
+      "original_body": true
+    },
+    {
+      "name": "original_same_record",
+      "source": "cases/original_same_record.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "a   \nbb  \nccc \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "3 a bb ccc\n"
+      },
+      "original_body": true
+    },
+    {
+      "name": "original_same_record_quoted",
+      "source": "cases/original_same_record_quoted.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "a b \nc,d \ne/f \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "3 'a b' 'c,d' 'e/f'\n"
+      },
+      "original_body": true
+    },
+    {
+      "name": "original_multirecord",
+      "source": "cases/original_multirecord.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "a   \nbb  \nccc \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "3\na\nbb\nccc\n"
+      },
+      "original_body": true
+    },
+    {
+      "name": "original_zero_next",
+      "source": "cases/original_zero_next.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "0\nskipped\n"
+      },
+      "original_body": true
+    },
+    {
+      "name": "original_negative_next",
+      "source": "cases/original_negative_next.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "-2\nskipped\n"
+      },
+      "original_body": true
+    },
+    {
+      "name": "original_zero_same",
+      "source": "cases/original_zero_same.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "0 ignored\n"
+      },
+      "original_body": true
+    },
+    {
+      "name": "original_print_no_label",
+      "source": "cases/original_print_no_label.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "                               : a bb\na   \nbb  \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "2\na bb\n"
+      },
+      "original_body": true
+    },
+    {
+      "name": "original_explicit_false",
+      "source": "cases/original_explicit_false.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "a   \nbb  \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "2\na bb\n"
+      },
+      "original_body": true
+    },
+    {
+      "name": "original_print_label",
+      "source": "cases/original_print_label.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "                          items: a bb\na   \nbb  \n",
+      "compare_mode": "bytes",
+      "inputs": {
+        "27": "2\na bb\n"
+      },
+      "original_body": true
+    },
+    {
+      "name": "eof_invalidates_prefix",
+      "source": "cases/eof_invalidates_prefix.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1\n"
+      }
+    },
+    {
+      "name": "error_invalidates_prefix",
+      "source": "cases/error_invalidates_prefix.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1 bad\n"
+      }
+    },
+    {
+      "name": "null_preserves_undefined",
+      "source": "cases/null_preserves_undefined.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": ",\n"
+      }
+    },
+    {
+      "name": "slash_preserves_undefined",
+      "source": "cases/slash_preserves_undefined.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "/\n"
+      }
+    },
+    {
+      "name": "unbound_read",
+      "source": "cases/unbound_read.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens"
+    },
+    {
+      "name": "unbound_backspace",
+      "source": "cases/unbound_backspace.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens"
+    },
+    {
+      "name": "backspace_negative_unit",
+      "source": "cases/backspace_negative_unit.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens"
+    },
+    {
+      "name": "backspace_undefined_unit",
+      "source": "cases/backspace_undefined_unit.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens"
+    },
+    {
+      "name": "read_logical_unsupported",
+      "source": "cases/read_logical_unsupported.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "T\n"
+      }
+    },
+    {
+      "name": "read_complex_unsupported",
+      "source": "cases/read_complex_unsupported.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "(1,2)\n"
+      }
+    },
+    {
+      "name": "read_element_unsupported",
+      "source": "cases/read_element_unsupported.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1\n"
+      }
+    },
+    {
+      "name": "read_implied_do_unsupported",
+      "source": "cases/read_implied_do_unsupported.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1 2\n"
+      }
+    },
+    {
+      "name": "read_alias_targets",
+      "source": "cases/read_alias_targets.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens",
+      "inputs": {
+        "27": "1 2\n"
+      }
+    },
+    {
+      "name": "backspace_literal_unit",
+      "source": "cases/backspace_literal_unit.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens"
+    },
+    {
+      "name": "backspace_extra_control",
+      "source": "cases/backspace_extra_control.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "tokens"
+    }
+  ]
+}

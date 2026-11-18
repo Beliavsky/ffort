@@ -1,0 +1,831 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:36:01.903323+00:00",
+  "summary": {
+    "total": 28,
+    "failed": 0,
+    "candidate_checked": 28,
+    "gnu_checked": 19,
+    "gnu_skipped": 9,
+    "gnu_executed": 12,
+    "gnu_compile_only": 0,
+    "gnu_compile_rejections": 7
+  },
+  "records": [
+    {
+      "case": {
+        "name": "out_allocates_replaces",
+        "source": "cases/out_allocates_replaces.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T 3 -2 15 1 -2 5",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T           3          -2          15\n           1          -2           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T 3 -2 15\n 1 -2 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "inout_reallocates",
+        "source": "cases/inout_reallocates.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 4 9 1 3",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           4           9           1           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 4 9 1 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "inout_deallocates",
+        "source": "cases/inout_deallocates.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F\n F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "input_descriptor",
+        "source": "cases/input_descriptor.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": " -8 12",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          -8\n          12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -8\n 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "out_deallocates_without_replacement",
+        "source": "cases/out_deallocates_without_replacement.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_forwarding",
+        "source": "cases/nested_forwarding.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 -2 20",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4          -2          20\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 -2 20\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_bounds",
+        "source": "cases/rank_two_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 -1 4 6 17",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6          -1           4           6   17.000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6 -1 4 6 17.000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zero_size_descriptor",
+        "source": "cases/zero_size_descriptor.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 3 4 6 T 0",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           3           4           6\n T           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 3 4 6\n T 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_forwarding",
+        "source": "cases/undefined_forwarding.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5 7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_local_dummy",
+        "source": "cases/pure_local_dummy.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5 5",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "module_actual_no_host_alias",
+        "source": "cases/module_actual_no_host_alias.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 -2 15",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3          -2          15\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 -2 15\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "utilities_unchanged_alloc_sub",
+        "source": "cases/utilities_unchanged_alloc_sub.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 6 2 14 T 0 T 0",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3   6.0000000000000000                2          14\n T           0 T           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 6.0000000000000000 2 14\n T 0 T 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "alias_unallocated",
+        "source": "cases/alias_unallocated.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "overlapping"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/alias_unallocated.f90:13:1: overlapping allocatable descriptors with a writable dummy are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "alias_zero",
+        "source": "cases/alias_zero.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "overlapping"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/alias_zero.f90:14:1: overlapping allocatable descriptors with a writable dummy are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "alias_allocated",
+        "source": "cases/alias_allocated.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "overlapping"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/alias_allocated.f90:15:1: overlapping allocatable descriptors with a writable dummy are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "alias_allocatable_and_section",
+        "source": "cases/alias_allocatable_and_section.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "overlapping"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/alias_allocatable_and_section.f90:14:1: overlapping allocatable descriptors with a writable dummy are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_status_preserved",
+        "source": "cases/undefined_status_preserved.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/undefined_status_preserved.f90:14:9: read of uninitialized array element v\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_nonalloc_dummy",
+        "source": "cases/unallocated_nonalloc_dummy.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "unallocated"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/unallocated_nonalloc_dummy.f90:11:10: reference to unallocated array v\n"
+      }
+    },
+    {
+      "case": {
+        "name": "fixed_actual",
+        "source": "cases/fixed_actual.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "ALLOCATABLE"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/fixed_actual.f90:11:9:\n\n   11 | call see(v)\n      |         1\nError: Actual argument for \u2018a\u2019 must be ALLOCATABLE at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/fixed_actual.f90:11:12: ALLOCATABLE dummy requires an ALLOCATABLE actual\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/fixed_actual.f90:11:12: ALLOCATABLE dummy requires an ALLOCATABLE actual\n"
+      }
+    },
+    {
+      "case": {
+        "name": "section_actual",
+        "source": "cases/section_actual.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "ALLOCATABLE"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/section_actual.f90:11:9:\n\n   11 | call see(v(:))\n      |         1\nError: Actual argument for \u2018a\u2019 must be ALLOCATABLE at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/section_actual.f90:11:15: ALLOCATABLE dummy requires a whole allocatable variable actual\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/section_actual.f90:11:15: ALLOCATABLE dummy requires a whole allocatable variable actual\n"
+      }
+    },
+    {
+      "case": {
+        "name": "expression_actual",
+        "source": "cases/expression_actual.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "ALLOCATABLE"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/expression_actual.f90:11:9:\n\n   11 | call see([1,2])\n      |         1\nError: Actual argument for \u2018a\u2019 must be ALLOCATABLE at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/expression_actual.f90:11:16: ALLOCATABLE dummy requires a whole allocatable variable actual\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/expression_actual.f90:11:16: ALLOCATABLE dummy requires a whole allocatable variable actual\n"
+      }
+    },
+    {
+      "case": {
+        "name": "paren_actual",
+        "source": "cases/paren_actual.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "ALLOCATABLE"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/paren_actual.f90:11:9:\n\n   11 | call see((v))\n      |         1\nError: Actual argument for \u2018a\u2019 must be ALLOCATABLE at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/paren_actual.f90:11:14: ALLOCATABLE dummy requires a whole allocatable variable actual\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/paren_actual.f90:11:14: ALLOCATABLE dummy requires a whole allocatable variable actual\n"
+      }
+    },
+    {
+      "case": {
+        "name": "input_no_allocate",
+        "source": "cases/input_no_allocate.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "writable"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/input_no_allocate.f90:6:9:\n\n    6 | allocate(a(1))\n      |         1\nError: Dummy argument \u2018a\u2019 with INTENT(IN) in variable definition context (ALLOCATE object) at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/input_no_allocate.f90:10:5:\n\n   10 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/input_no_allocate.f90:6:10: Allocation requires a writable ALLOCATABLE array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/input_no_allocate.f90:6:10: Allocation requires a writable ALLOCATABLE array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "input_no_reallocate",
+        "source": "cases/input_no_reallocate.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "INTENT(IN)"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/input_no_reallocate.f90:6:0:\n\n    6 | a=[1,2]\nError: Dummy argument \u2018a\u2019 with INTENT(IN) in variable definition context (assignment) at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/input_no_reallocate.f90:10:5:\n\n   10 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/input_no_reallocate.f90:6:1: Cannot assign to an INTENT(IN) dummy argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/input_no_reallocate.f90:6:1: Cannot assign to an INTENT(IN) dummy argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "input_no_forward_write",
+        "source": "cases/input_no_forward_write.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "INTENT(IN)"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/input_no_forward_write.f90:13:10:\n\n   13 | call make(a,2)\n      |          1\nError: Dummy argument \u2018a\u2019 with INTENT(IN) in variable definition context (actual argument to INTENT = OUT/INOUT) at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/input_no_forward_write.f90:17:5:\n\n   17 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/input_no_forward_write.f90:13:15: Writable actual cannot be a PARAMETER or INTENT(IN) dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/input_no_forward_write.f90:13:15: Writable actual cannot be a PARAMETER or INTENT(IN) dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "caller_capacity_copyout",
+        "source": "cases/caller_capacity_copyout.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "copyout",
+        "args": [
+          "--max-steps",
+          "20000000"
+        ]
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/caller_capacity_copyout.f90:13:1: total array element limit exceeded by allocatable argument copyout\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dummy_and_local_capacity",
+        "source": "cases/dummy_and_local_capacity.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "limit",
+        "args": [
+          "--max-steps",
+          "20000000"
+        ]
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/dummy_and_local_capacity.f90:6:10: total array element limit exceeded\n"
+      }
+    },
+    {
+      "case": {
+        "name": "module_host_alias",
+        "source": "cases/module_host_alias.f90",
+        "category": "reject",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "host/USE"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/module_host_alias.f90:15:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_dummies/cases/module_host_alias.f90:15:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      }
+    }
+  ],
+  "manifest_sha256": "97fdbb2b92f915fab103b4c97e2be05ee27cb764762d5a3e30608347df29e6ed",
+  "source_sha256": {
+    "cases/out_allocates_replaces.f90": "00d6d29f2a70bacb827ad740d0fa7deb5aaf9889927a759d86ebfb1e2b049b3d",
+    "cases/inout_reallocates.f90": "7d88cafd91ef4eb230071c84c49d80ba6d34d680e5f00c842a403777bd18c06a",
+    "cases/inout_deallocates.f90": "5e1c1085ab5dc5df267246d459a4fca897d0834c8b6dbdce447e69ee222343db",
+    "cases/input_descriptor.f90": "4d2652978083e45e0177417c7ce1c08d4cf75c0c52997e3f85a22cb12e11e234",
+    "cases/out_deallocates_without_replacement.f90": "9983b780d79a0cae9f3ff9fa8bc154f1b15900ab5899b2ef6cf170d7a97f9710",
+    "cases/nested_forwarding.f90": "363eea635ed90db9e8db3e72371e29aafce963ae988bb98a0f0093766678478b",
+    "cases/rank_two_bounds.f90": "b5faa4c4a632b9650a334466a19bd227829b432880d8504e9cff19b77a7b3ca0",
+    "cases/zero_size_descriptor.f90": "2000d536715acb264c2dc1de2c91ddb63ed87ffce9ddcf73e9ba3f56c10773c7",
+    "cases/undefined_forwarding.f90": "65e6af2de9b258d150420317b7135e5cc8f858710fc472a9a11a2381b576593a",
+    "cases/pure_local_dummy.f90": "8e20557900c05945d8120d1d742d4aae9377465caa5abd4ad3d76ce0d2e7ac43",
+    "cases/module_actual_no_host_alias.f90": "742b09140ccdeab0c36d20ca0846a632abd88d90389f6956977e4a65d64032f5",
+    "cases/utilities_unchanged_alloc_sub.f90": "7a20e3346729a924163254612f829f8635f1ed55a39a16c8849e940cbc471b73",
+    "cases/alias_unallocated.f90": "8cb2c62e7152dabaf0657c44f45bd6683e6c721f0b16ff4962038f4b60782eae",
+    "cases/alias_zero.f90": "2a873584e9a104c4f879ee2ebfe209acba4aaf7a2d98d3c3452c49a8d7a6bb6a",
+    "cases/alias_allocated.f90": "a0b2b7d17665b54c049f026c3418ec5644a8193f089a52dec112cbbfef494571",
+    "cases/alias_allocatable_and_section.f90": "d538d7870db4f691b3ca9c0daac767bcc8dbdcd161893b7e23ee5a4ecb11ecbc",
+    "cases/undefined_status_preserved.f90": "7a3ef604cf39fb79ea914f44449aae9d2b52677f5b5ed1b105708734c02226fc",
+    "cases/unallocated_nonalloc_dummy.f90": "daeb4d0a45dbb519d3d2c197d32bd703ed0d7196099566c5e2dc7aaf7d264e18",
+    "cases/fixed_actual.f90": "cd22c2300ea633cf74b14271a472460a220bb37ce4022069af698d7e13819b8c",
+    "cases/section_actual.f90": "e8d8be8e559671f9d24e9ebd57566fbc9ae2888bcd0a37f6dbd5e3ac3e6f9fba",
+    "cases/expression_actual.f90": "4a2f11506890b8bdee0236b400d81e9fd9de66fe1237b5bfe7047f3b2ca6c66e",
+    "cases/paren_actual.f90": "baa02362f78709da8b656e22d39935493d0c9778d4e0cf6ecea396abf72900b7",
+    "cases/input_no_allocate.f90": "36f092239aea3fc4bc4b76e84567795b69a59c1c714592b67ed3080ebce0771a",
+    "cases/input_no_reallocate.f90": "18970676a804164fc36b5cf7fcc6a0c62735d0dce5572ff5f8d3fd6228a9bc4d",
+    "cases/input_no_forward_write.f90": "a49ab3f56e852e977477c3d62422f2971efdb8aea73fbb5be35ee3362d56f59b",
+    "cases/caller_capacity_copyout.f90": "f729be98b1ce77fe960b46bbacde0dfe69b7283a56b7873671fd18847b558831",
+    "cases/dummy_and_local_capacity.f90": "a6f94edf1e56036d36494cf8db3709ba18b938b0a607b400f8e6edab2fab20cc",
+    "cases/module_host_alias.f90": "46c10c8c283ac132b9debe37bff2da481fce44480357bb5e8c2734341b8ca60b"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

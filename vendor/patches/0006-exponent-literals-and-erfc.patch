@@ -1,0 +1,52 @@
+--- a/src/parser/expressions/parser_expression_helpers.f90
++++ b/src/parser/expressions/parser_expression_helpers.f90
+@@ -20,14 +20,22 @@
+     function parse_number_literal(current_token, arena) result(expr_index)
+         type(token_t), intent(in) :: current_token
+         type(ast_arena_t), intent(inout) :: arena
+-        integer :: expr_index
++        integer :: expr_index, suffix_pos
++        character(len=:), allocatable :: numeric_part
+ 
+-        if (index(current_token%text, '.') > 0) then
+-            ! Contains decimal point - classify as real
++        ! A real literal may omit its decimal point when it has an exponent.
++        ! Inspect only the number: letters in an integer kind suffix are not
++        ! exponent markers (for example, 1_width is still an integer literal).
++        numeric_part = to_lower(current_token%text)
++        suffix_pos = index(numeric_part, '_')
++        if (suffix_pos > 0) numeric_part = numeric_part(:suffix_pos - 1)
++        if (index(numeric_part, '.') > 0 .or. index(numeric_part, 'e') > 0 .or. &
++            index(numeric_part, 'd') > 0) then
++            ! A decimal point or exponent classifies this token as real.
+             expr_index = push_literal(arena, current_token%text, LITERAL_REAL, &
+                 current_token%line, current_token%column)
+         else
+-            ! No decimal point - classify as integer
++            ! No decimal point or exponent: an integer literal.
+             expr_index = push_literal(arena, current_token%text, &
+                 LITERAL_INTEGER, current_token%line, &
+                 current_token%column)
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 63
++        integer, parameter :: NUM_INTRINSICS = 64
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -230,6 +230,11 @@
+ 
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="erfc", return_type="real", arg_types="real", &
++            description="Complementary error function")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="abs", return_type="real", arg_types="real", &
+             description="Absolute value function")
+ 

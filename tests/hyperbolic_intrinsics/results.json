@@ -1,0 +1,711 @@
+{
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "total": 32,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "scalars",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " -0.822316706       1.29468334     -0.635148942               4           4           4\n -0.82231673193582999        1.2946832846768448      -0.63514895238728730                8           8           8\n  0.521095276       1.1276259652063807        0.00000000       1.0000000000000000        0.00000000    \n  0.12532577524111546        1.00782263       1.0000000000000000     \n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " -0.822316706 1.29468334 -0.635148942 4 4 4\n -0.82231673193582999 1.2946832846768448 -0.63514895238728730 8 8 8\n 0.521095276 1.1276259652063807 0.00000000 1.0000000000000000 0.00000000\n 0.12532577524111546 1.00782263 1.0000000000000000\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "arrays",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "  -1.17520118     -0.125325769       0.00000000       1.17520118       1.5430806348152437        1.0078226778257109        1.0000000000000000        1.5430806348152437      -0.761594176     -0.124352999       0.00000000      0.761594176    \n   1.1752011936438014        0.0000000000000000      -0.12532577524111546       -1.1752011936438014        1.54308069       1.00000000       1.00782263       1.54308069     -0.76159415595576485        0.0000000000000000     \n  -1.17520118     -0.125325769       0.00000000       1.17520118       1.5430806348152437        1.0078226778257109        1.0000000000000000        1.5430806348152437      -0.76159415595576485      -0.12435300177159619        0.0000000000000000       0.76159415595576485     \n   0.00000000       0.00000000       0.00000000    \n   0.00000000       0.00000000       0.00000000               2\n   2.55090332       2.54308081     -0.76159415595576485       0.63724115418416871     \n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " -1.17520118 -0.125325769 0.00000000 1.17520118 1.5430806348152437 1.0078226778257109 1.0000000000000000 1.5430806348152437 -0.761594176 -0.124352999 0.00000000 0.761594176\n 1.1752011936438014 0.0000000000000000 -0.12532577524111546 -1.1752011936438014 1.54308069 1.00000000 1.00782263 1.54308069 -0.76159415595576485 0.0000000000000000\n -1.17520118 -0.125325769 0.00000000 1.17520118 1.5430806348152437 1.0078226778257109 1.0000000000000000 1.5430806348152437 -0.76159415595576485 -0.12435300177159619 0.0000000000000000 0.76159415595576485\n 0.00000000 0.00000000 0.00000000\n 0.00000000 0.00000000 0.00000000 2\n 2.55090332 2.54308081 -0.76159415595576485 0.63724115418416871\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "unevaluated_kind",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           4           8           4           8\n           4           8\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 4 8 4 8\n 4 8\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "procedures",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " -0.92423431452001958        0.0000000000000000       0.24870600354319239       0.92423431452001958       0.60653065971263331        1.0000000000000000        1.1331484530668263        1.6487212707001282     \n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " -0.92423431452001958 0.0000000000000000 0.24870600354319239 0.92423431452001958 0.60653065971263331 1.0000000000000000 1.1331484530668263 1.6487212707001282\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "sinh_integer",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_integer.f90:2:13:\n\n    2 | print *,sinh(1)\n      |             1\nError: \u2018x\u2019 argument of \u2018sinh\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_integer.f90:2:16: Transcendental intrinsic requires REAL argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_integer.f90:2:16: Transcendental intrinsic requires REAL argument\n"
+      }
+    },
+    {
+      "name": "sinh_logical",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_logical.f90:2:13:\n\n    2 | print *,sinh(.true.)\n      |             1\nError: \u2018x\u2019 argument of \u2018sinh\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_logical.f90:2:21: Transcendental intrinsic requires REAL argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_logical.f90:2:21: Transcendental intrinsic requires REAL argument\n"
+      }
+    },
+    {
+      "name": "sinh_character",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_character.f90:2:13:\n\n    2 | print *,sinh('x')\n      |             1\nError: \u2018x\u2019 argument of \u2018sinh\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_character.f90:2:18: Transcendental intrinsic requires REAL argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_character.f90:2:18: Transcendental intrinsic requires REAL argument\n"
+      }
+    },
+    {
+      "name": "sinh_empty",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_empty.f90:2:8:\n\n    2 | print *,sinh()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018sinh\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_empty.f90:2:15: Intrinsic requires one argument: sinh\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_empty.f90:2:15: Intrinsic requires one argument: sinh\n"
+      }
+    },
+    {
+      "name": "sinh_excess",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_excess.f90:2:8:\n\n    2 | print *,sinh(1.0,2.0)\n      |        1\nError: Too many arguments in call to \u2018sinh\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_excess.f90:2:22: Intrinsic requires one argument: sinh\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_excess.f90:2:22: Intrinsic requires one argument: sinh\n"
+      }
+    },
+    {
+      "name": "sinh_unknown_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_unknown_keyword.f90:2:8:\n\n    2 | print *,sinh(a=1.0)\n      |        1\nError: Cannot find keyword named \u2018a\u2019 in call to \u2018sinh\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_unknown_keyword.f90:2:20: Unknown keyword or excess actual argument: a\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_unknown_keyword.f90:2:20: Unknown keyword or excess actual argument: a\n"
+      }
+    },
+    {
+      "name": "sinh_duplicate",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_duplicate.f90:2:25:\n\n    2 | print *,sinh(x=1.0,x=2.0)\n      |                         1\nError: Keyword \u2018x\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_duplicate.f90:2:26: Repeated actual argument for x\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_duplicate.f90:2:26: Repeated actual argument for x\n"
+      }
+    },
+    {
+      "name": "sinh_positional_after_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_positional_after_keyword.f90:2:20:\n\n    2 | print *,sinh(x=1.0,2.0)\n      |                    1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_positional_after_keyword.f90:2:20: Positional argument cannot follow a keyword argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_positional_after_keyword.f90:2:20: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "name": "cosh_integer",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_integer.f90:2:13:\n\n    2 | print *,cosh(1)\n      |             1\nError: \u2018x\u2019 argument of \u2018cosh\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_integer.f90:2:16: Transcendental intrinsic requires REAL argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_integer.f90:2:16: Transcendental intrinsic requires REAL argument\n"
+      }
+    },
+    {
+      "name": "cosh_logical",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_logical.f90:2:13:\n\n    2 | print *,cosh(.true.)\n      |             1\nError: \u2018x\u2019 argument of \u2018cosh\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_logical.f90:2:21: Transcendental intrinsic requires REAL argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_logical.f90:2:21: Transcendental intrinsic requires REAL argument\n"
+      }
+    },
+    {
+      "name": "cosh_character",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_character.f90:2:13:\n\n    2 | print *,cosh('x')\n      |             1\nError: \u2018x\u2019 argument of \u2018cosh\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_character.f90:2:18: Transcendental intrinsic requires REAL argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_character.f90:2:18: Transcendental intrinsic requires REAL argument\n"
+      }
+    },
+    {
+      "name": "cosh_empty",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_empty.f90:2:8:\n\n    2 | print *,cosh()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018cosh\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_empty.f90:2:15: Intrinsic requires one argument: cosh\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_empty.f90:2:15: Intrinsic requires one argument: cosh\n"
+      }
+    },
+    {
+      "name": "cosh_excess",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_excess.f90:2:8:\n\n    2 | print *,cosh(1.0,2.0)\n      |        1\nError: Too many arguments in call to \u2018cosh\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_excess.f90:2:22: Intrinsic requires one argument: cosh\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_excess.f90:2:22: Intrinsic requires one argument: cosh\n"
+      }
+    },
+    {
+      "name": "cosh_unknown_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_unknown_keyword.f90:2:8:\n\n    2 | print *,cosh(a=1.0)\n      |        1\nError: Cannot find keyword named \u2018a\u2019 in call to \u2018cosh\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_unknown_keyword.f90:2:20: Unknown keyword or excess actual argument: a\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_unknown_keyword.f90:2:20: Unknown keyword or excess actual argument: a\n"
+      }
+    },
+    {
+      "name": "cosh_duplicate",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_duplicate.f90:2:25:\n\n    2 | print *,cosh(x=1.0,x=2.0)\n      |                         1\nError: Keyword \u2018x\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_duplicate.f90:2:26: Repeated actual argument for x\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_duplicate.f90:2:26: Repeated actual argument for x\n"
+      }
+    },
+    {
+      "name": "cosh_positional_after_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_positional_after_keyword.f90:2:20:\n\n    2 | print *,cosh(x=1.0,2.0)\n      |                    1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_positional_after_keyword.f90:2:20: Positional argument cannot follow a keyword argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_positional_after_keyword.f90:2:20: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "name": "tanh_integer",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_integer.f90:2:13:\n\n    2 | print *,tanh(1)\n      |             1\nError: \u2018x\u2019 argument of \u2018tanh\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_integer.f90:2:16: Transcendental intrinsic requires REAL argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_integer.f90:2:16: Transcendental intrinsic requires REAL argument\n"
+      }
+    },
+    {
+      "name": "tanh_logical",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_logical.f90:2:13:\n\n    2 | print *,tanh(.true.)\n      |             1\nError: \u2018x\u2019 argument of \u2018tanh\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_logical.f90:2:21: Transcendental intrinsic requires REAL argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_logical.f90:2:21: Transcendental intrinsic requires REAL argument\n"
+      }
+    },
+    {
+      "name": "tanh_character",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_character.f90:2:13:\n\n    2 | print *,tanh('x')\n      |             1\nError: \u2018x\u2019 argument of \u2018tanh\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_character.f90:2:18: Transcendental intrinsic requires REAL argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_character.f90:2:18: Transcendental intrinsic requires REAL argument\n"
+      }
+    },
+    {
+      "name": "tanh_empty",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_empty.f90:2:8:\n\n    2 | print *,tanh()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018tanh\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_empty.f90:2:15: Intrinsic requires one argument: tanh\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_empty.f90:2:15: Intrinsic requires one argument: tanh\n"
+      }
+    },
+    {
+      "name": "tanh_excess",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_excess.f90:2:8:\n\n    2 | print *,tanh(1.0,2.0)\n      |        1\nError: Too many arguments in call to \u2018tanh\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_excess.f90:2:22: Intrinsic requires one argument: tanh\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_excess.f90:2:22: Intrinsic requires one argument: tanh\n"
+      }
+    },
+    {
+      "name": "tanh_unknown_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_unknown_keyword.f90:2:8:\n\n    2 | print *,tanh(a=1.0)\n      |        1\nError: Cannot find keyword named \u2018a\u2019 in call to \u2018tanh\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_unknown_keyword.f90:2:20: Unknown keyword or excess actual argument: a\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_unknown_keyword.f90:2:20: Unknown keyword or excess actual argument: a\n"
+      }
+    },
+    {
+      "name": "tanh_duplicate",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_duplicate.f90:2:25:\n\n    2 | print *,tanh(x=1.0,x=2.0)\n      |                         1\nError: Keyword \u2018x\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_duplicate.f90:2:26: Repeated actual argument for x\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_duplicate.f90:2:26: Repeated actual argument for x\n"
+      }
+    },
+    {
+      "name": "tanh_positional_after_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_positional_after_keyword.f90:2:20:\n\n    2 | print *,tanh(x=1.0,2.0)\n      |                    1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_positional_after_keyword.f90:2:20: Positional argument cannot follow a keyword argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/tanh_positional_after_keyword.f90:2:20: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "name": "sinh_overflow_4",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "         Infinity\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_overflow_4.f90:4:9: non-finite real result\n"
+      }
+    },
+    {
+      "name": "sinh_overflow_8",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "                  Infinity\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/sinh_overflow_8.f90:4:9: non-finite real result\n"
+      }
+    },
+    {
+      "name": "cosh_overflow_4",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "         Infinity\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_overflow_4.f90:4:9: non-finite real result\n"
+      }
+    },
+    {
+      "name": "cosh_overflow_8",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "                  Infinity\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/hyperbolic-od5gm0_b/cosh_overflow_8.f90:4:9: non-finite real result\n"
+      }
+    }
+  ]
+}

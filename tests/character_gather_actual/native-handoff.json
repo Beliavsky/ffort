@@ -1,0 +1,20 @@
+{
+  "status": "passed_fourth_shared_preview_not_full_release_certification",
+  "candidate_cli_sha256": "21a75fabbf300f7fa3907fceeb6ab6be4646e207682bc7854195c18ed5d8ccc4",
+  "matching_archive_sha256": "28987ce2cd414d6e5ce96bb12b46d1db41ec31941a008aea0ec6d0f3c80507be",
+  "tests": [
+    {
+      "source": "test/test_bare_character_gather_actual.f90",
+      "sha256": "38e28acdcca7b141783488a1c90d97026ea0e66888324bfaf1da44383e04fe43",
+      "assertions": 71,
+      "receipt": "tests/character_gather_actual/oracle-evidence/fourth-actual-native-results.json"
+    },
+    {
+      "source": "test/test_gather_actual_source_marker.f90",
+      "sha256": "23b73915e90b4b28ac4ceba282060312716976f50e7208cab8a4c1a28e48380a",
+      "assertions": 60,
+      "receipt": "tests/character_gather_actual/oracle-evidence/fourth-marker-native-results.json"
+    }
+  ],
+  "execution_contract": "Central integration alone compiles each one source with exact active app compile_commands.json profile flags and module paths, links against the static archive from that same source/profile, and records compile/link/run status plus streams and before/after binary/archive identities. If incremental database lacks an older entry, use a current entry only after proving profile flag equivalence. Do not use fpm test --target here: this FPM builds/links the entire automatic test set before filtering execution."
+}

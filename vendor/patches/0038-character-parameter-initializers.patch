@@ -1,0 +1,94 @@
+--- a/vendor/fortfront/src/parser/core/parser_utils.f90
++++ b/vendor/fortfront/src/parser/core/parser_utils.f90
+@@ -116,7 +116,8 @@
+                 seen_entity = .true.
+                 in_attr = .false.
+                 var_count = var_count + 1
+-            else if (pos > 1 .and. .not. is_attribute_keyword(token%text)) then
++            else if (.not. in_brackets .and. pos > 1 .and. &
++                     .not. is_attribute_keyword(token%text)) then
+                 should_exit = .true.
+             end if
+         else if (token%kind == TK_EOF) then
+--- a/vendor/fortfront/src/utilities/intrinsic_registry.f90
++++ b/vendor/fortfront/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 70
++        integer, parameter :: NUM_INTRINSICS = 72
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -457,6 +457,16 @@
+ 
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="char", return_type="character", arg_types="integer", &
++            description="Elemental character from collating-sequence code")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="achar", return_type="character", arg_types="integer", &
++            description="Elemental character from ASCII code")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="len", return_type="integer", &
+             arg_types="character", &
+             description="String length")
+--- a/vendor/fortfront/src/frontend/frontend_compiler_type_queries.f90
++++ b/vendor/fortfront/src/frontend/frontend_compiler_type_queries.f90
+@@ -862,7 +862,7 @@
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+         case ("real", "int", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+-              "exp", "log", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max")
++              "exp", "log", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+                 do i = 1, size(node%arg_indices)
+@@ -876,6 +876,10 @@
+         end select
+ 
+         select case (name)
++        case ("char", "achar")
++            kind_value = intrinsic_kind_argument(arena, node, name)
++            if (kind_value <= 0) kind_value = 1
++            call set_intrinsic_metadata(node, TCHAR, kind_value, result_rank)
+         case ("real", "int", "logical", "cmplx")
+             kind_value = intrinsic_kind_argument(arena, node, name)
+             if (kind_value <= 0 .and. name == "real") then
+@@ -1920,11 +1924,30 @@
+         type(ast_arena_t), intent(in) :: arena
+         type(call_or_subscript_node), intent(in) :: node
+         character(len=*), intent(in) :: intrinsic_name
+-        integer :: second_argument
++        integer :: second_argument, i, argument_index
+ 
+         position = 0
+         if (.not. allocated(node%arg_indices)) return
+         select case (intrinsic_name)
++        case ("char", "achar")
++            do i = 1, size(node%arg_indices)
++                argument_index = node%arg_indices(i)
++                if (.not. arena%has_node_at(argument_index)) cycle
++                select type (argument => arena%entries(argument_index)%node)
++                type is (assignment_node)
++                    if (.not. argument%is_keyword_argument) cycle
++                    if (.not. arena%has_node_at(argument%target_index)) cycle
++                    select type (target => arena%entries(argument%target_index)%node)
++                    type is (identifier_node)
++                        if (to_lower(target%name) == "kind") then
++                            position = i
++                            return
++                        end if
++                    end select
++                class default
++                    if (i == 2) position = i
++                end select
++            end do
+         case ("cmplx")
+             if (size(node%arg_indices) >= 3) then
+                 position = 3

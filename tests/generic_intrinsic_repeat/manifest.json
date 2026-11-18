@@ -1,0 +1,364 @@
+{
+  "cases": [
+    {
+      "name": "positional",
+      "category": "success",
+      "expected_stdout": "ababab\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "keyword_order",
+      "category": "success",
+      "expected_stdout": "xyxy\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "mixed_keywords",
+      "category": "success",
+      "expected_stdout": "qqqq\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "kind8_count",
+      "category": "success",
+      "expected_stdout": "abab\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "runtime_count",
+      "category": "success",
+      "expected_stdout": "kkk\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "zero_count",
+      "category": "success",
+      "expected_stdout": "\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "empty_string",
+      "category": "success",
+      "expected_stdout": "\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "user_specific",
+      "category": "success",
+      "expected_stdout": "USER\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "user_keyword",
+      "category": "success",
+      "expected_stdout": "USER\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "combined_calls",
+      "category": "success",
+      "expected_stdout": "xx\nUSER\nyy\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "nested_intrinsic",
+      "category": "success",
+      "expected_stdout": "xxxxxx\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "substring",
+      "category": "success",
+      "expected_stdout": "bcbc\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "character_actual",
+      "category": "success",
+      "expected_stdout": "abab\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "function_result",
+      "category": "success",
+      "expected_stdout": "abab\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "constant_expression",
+      "category": "success",
+      "expected_stdout": "xxx\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "matching_override",
+      "category": "success",
+      "expected_stdout": "USER\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "matching_override_keywords",
+      "category": "success",
+      "expected_stdout": "USER\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "intrinsic_keywords_distinguish",
+      "category": "success",
+      "expected_stdout": "ababab\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "private_specific_use_only",
+      "category": "success",
+      "expected_stdout": "abab\nUSER\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "invalid_keyword",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 31,
+        "message": "Unknown keyword or excess actual argument: n"
+      },
+      "oracle": "reject"
+    },
+    {
+      "name": "duplicate_keyword",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 41,
+        "message": "Repeated actual argument for string"
+      },
+      "oracle": "reject"
+    },
+    {
+      "name": "positional_after_keyword",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 27,
+        "message": "Positional argument cannot follow a keyword argument"
+      },
+      "oracle": "reject"
+    },
+    {
+      "name": "missing_count",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 20,
+        "message": "REPEAT requires STRING and NCOPIES"
+      },
+      "oracle": "reject"
+    },
+    {
+      "name": "excess_args",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 24,
+        "message": "REPEAT requires STRING and NCOPIES"
+      },
+      "oracle": "reject"
+    },
+    {
+      "name": "real_count",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 24,
+        "message": "REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES"
+      },
+      "oracle": "reject"
+    },
+    {
+      "name": "array_count",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 24,
+        "message": "REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES"
+      },
+      "oracle": "reject"
+    },
+    {
+      "name": "array_string",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 24,
+        "message": "REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES"
+      },
+      "oracle": "reject"
+    },
+    {
+      "name": "wrong_type",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 18,
+        "column": 25,
+        "message": "REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES"
+      },
+      "oracle": "reject"
+    },
+    {
+      "name": "negative_runtime",
+      "category": "runtime",
+      "expected_stdout": "",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 19,
+        "column": 13,
+        "message": "REPEAT NCOPIES must be nonnegative"
+      },
+      "oracle": "compile"
+    },
+    {
+      "name": "subroutine_generic",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 14,
+        "column": 22,
+        "message": "No matching specific procedure for generic repeat"
+      },
+      "oracle": "compile",
+      "note": "GNU accepts; current fallback scope deliberately limited to function generics, so this remains a documented subset rejection."
+    },
+    {
+      "name": "ordinary_procedure_shadow",
+      "category": "success",
+      "expected_stdout": "USER\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "ordinary_shadow_mismatch",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 14,
+        "column": 38,
+        "message": "Unknown keyword or excess actual argument: string"
+      },
+      "oracle": "reject"
+    },
+    {
+      "name": "original_repeat_and_str_int",
+      "category": "success",
+      "expected_stdout": "00042\nxxx\nq\nq\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "matching_intrinsic_keyword_override",
+      "category": "success",
+      "expected_stdout": "USER\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "use_only_intrinsic",
+      "category": "success",
+      "expected_stdout": "ababab\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "internal_host_intrinsic",
+      "category": "success",
+      "expected_stdout": "ababab\n",
+      "oracle": "execute"
+    },
+    {
+      "name": "external_shadow_boundary",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 7,
+        "column": 14,
+        "message": "Unsupported declaration attribute"
+      },
+      "oracle": "compile",
+      "note": "GNU accepts; EXTERNAL remains a documented interpreter boundary."
+    },
+    {
+      "name": "ambiguous_generic",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 19,
+        "column": 1,
+        "message": "Ambiguous generic specific procedures"
+      },
+      "oracle": "reject"
+    },
+    {
+      "name": "no_call_fallback",
+      "category": "reject",
+      "expected_stdout": null,
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 17,
+        "column": 20,
+        "message": "No matching specific procedure for generic repeat"
+      },
+      "oracle": "reject"
+    }
+  ],
+  "original_source_sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+  "exact_body_sha256": "ac965d1e0cf8fb5da156cf942acfeec493a60b4600c54f2d13abe96a2f02767c",
+  "exact_body_line_ranges": [
+    [
+      1041,
+      1048
+    ],
+    [
+      2096,
+      2118
+    ]
+  ],
+  "source_check_run_distinct": true,
+  "exact_body_separator_hex": "0d0a",
+  "individual_body_sha256": [
+    "95e551647043aa8d5e8e94ab45a3266ff1765184d23d09adb7aefa8dfab8e2ee",
+    "3a313eaa1b02dd62ebe6486160353fe816633dfef2deca59e84ee74a93260f04"
+  ],
+  "diagnostic_contract": "Exact source path, line, column, complete message, terminating newline, status and source/runtime phase; both --check and execution are checked."
+}

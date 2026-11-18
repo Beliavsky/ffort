@@ -1,0 +1,17 @@
+# Internal list-directed READ section contract
+
+Read-only review and GNU Fortran14.2 observations, 2026-11-17.
+
+Baseline valid_internal_read delegates valid_read, which admits distinct whole local targets. execute_internal_read validates descriptors before transfer, reads no old destination values, supports null/repeat/slash, and writes array data(k). Nonzero conversion/EOF status deliberately makes input-list objects undefined, including already-transferred prefixes. This is stronger than exposing incidental GNU stored values and should remain unchanged as a definedness contract.
+
+For a section target, freeze its selected element offsets before transfer, write in section order, and invalidate only selected elements on nonzero I/O status. Untouched base-array elements are not input-list objects and remain defined/unchanged. Null fields/repeat-null/slash preserve prior selected-element value and definedness. New elements successfully assigned become defined. A zero-element section consumes no input fields; successful status is zero.
+
+GNU evidence: 23 compiled cases in gnu-read-sections.json cover slices, dynamic bounds, strides, nonunit/negative declared lower bounds, INTEGER8/REAL4/8, nulls/repeats/slash, empty sections/base arrays, short records/conversion errors and following scalar items. Compare only status sign and untouched elements on error: selected objects are undefined, so GNU incidental partial values are not a portable expected result.
+
+Important observed default: a(::-1) for a(1:5) is EMPTY, not a Python-like reversal. Declared lower/upper bounds are default endpoints irrespective stride sign. Explicit a(5:1:-2) reverses three selected cells. GNU accepts empty a(10:9) against a(1:5), consumes no data, and returns zero. A resolver should validate actual selected subscripts rather than reject a harmless empty range merely for out-of-range syntactic endpoints.
+
+Keep scope conservative: rankone local INTEGER/REAL4/8 section destinations, no vector subscripts, procedures/user calls/derived objects or broadened external I/O. Expression/section rank/type/kind/extent/default metadata must be proven through independent adapter checks; no generic trusting of cached extent. Bound controls must be defined scalar INTEGER arithmetic and independent of file, IOSTAT and every destination modified by the same READ. Require exact writable target provenance, no parenthesized expression target, and preserve current whole-symbol alias restrictions (including disjoint same-base sections unless separately designed).
+
+All descriptors/offset totals and bounds must be validated before reading the first field or mutating any target. Freeze input text before destination modifications, but do not use this to allow forbidden aliasing. IOSTAT aliases/dependencies are particularly unsafe because processors may define it before item address evaluation. Zero stride/out-of-range selected cells/undefined address controls are runtime validation errors, not successful zero-element I/O; malformed source is rejected before any program output.
+
+A GNU differential oracle cannot verify interpreter definedness after failed input, so separate candidate tests must ensure selected reads fail as undefined while untouched cells remain usable. Native mutation tests should cover forged section metadata, ownership aliases, stale dynamic caches, index DAG cycles, exhausted budgets, and error paths before any destination mutation.

@@ -1,0 +1,38 @@
+--- a/src/parser/expressions/parser_expression_arrays.f90
++++ b/src/parser/expressions/parser_expression_arrays.f90
+@@ -1138,8 +1138,8 @@
+         if (.not. lower_known .or. .not. upper_known) return
+         ! Empty ranges are valid even when their endpoints lie outside the string.
+         if (lo > up) then
+-            folded = push_literal(arena, quote//quote, LITERAL_STRING, &
+-                                  close_token%line, close_token%column)
++            folded = push_array_slice(arena, base_expr, arg_indices, &
++                                      size(arg_indices), close_token%line, close_token%column)
+             return
+         end if
+         if (lo < 1 .or. up > inner_len) then
+@@ -1150,9 +1150,10 @@
+             return
+         end if
+         if (escaped) return
+-        inner = inner(lo:up)
+-        folded = push_literal(arena, quote//inner//quote, LITERAL_STRING, &
+-                              close_token%line, close_token%column)
++        ! Retain the literal base and bounds for independent adapters. Constant
++        ! folding erased source structure and orphaned the range in strict mode.
++        folded = push_array_slice(arena, base_expr, arg_indices, &
++                                  size(arg_indices), close_token%line, close_token%column)
+     end function fold_literal_substring
+ 
+     recursive logical function literal_integer_value(arena, node_index, value, &
+--- a/src/parser/statements/parser_statement_core.f90
++++ b/src/parser/statements/parser_statement_core.f90
+@@ -292,7 +292,7 @@
+         end block
+     end function parse_keyword_statement
+ 
+-    integer function handle_control_keyword(keyword, parser, arena, parent_index, &
++    recursive integer function handle_control_keyword(keyword, parser, arena, parent_index, &
+             callbacks) result(stmt_index)
+         character(len=*), intent(in) :: keyword
+         type(parser_state_t), intent(inout) :: parser

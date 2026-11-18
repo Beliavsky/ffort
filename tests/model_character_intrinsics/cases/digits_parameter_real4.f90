@@ -1,0 +1,6 @@
+program p
+implicit none
+real(4)::x
+integer,parameter::n=digits(x)
+print *,n
+end program

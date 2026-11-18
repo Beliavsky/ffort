@@ -1,0 +1,159 @@
+{
+  "cases": [
+    {
+      "name": "local_integer",
+      "expected": "run",
+      "output": "local integer"
+    },
+    {
+      "name": "local_character_substring",
+      "expected": "run",
+      "output": "aXYd"
+    },
+    {
+      "name": "array_integer",
+      "expected": "run",
+      "output": "9 19"
+    },
+    {
+      "name": "array_character",
+      "expected": "run"
+    },
+    {
+      "name": "matrix_section",
+      "expected": "run",
+      "output": "9 10"
+    },
+    {
+      "name": "parameter_char",
+      "expected": "run",
+      "output": "parameter char"
+    },
+    {
+      "name": "dummy_keyword_and_intrinsic",
+      "expected": "run",
+      "output": "Abd d"
+    },
+    {
+      "name": "optional_mutable_dummy",
+      "expected": "run",
+      "output": "5"
+    },
+    {
+      "name": "function_char",
+      "expected": "run",
+      "output": "8"
+    },
+    {
+      "name": "function_result_char",
+      "expected": "run",
+      "output": "7 d"
+    },
+    {
+      "name": "module_data",
+      "expected": "run",
+      "output": "8 9"
+    },
+    {
+      "name": "use_local_rename",
+      "expected": "boundary",
+      "output": "10 11",
+      "diagnostic_contains": "ONLY name is absent or PRIVATE",
+      "reason": "Existing module data USE renaming boundary, independent of CHAR."
+    },
+    {
+      "name": "use_remote_rename",
+      "expected": "boundary",
+      "output": "12 e",
+      "diagnostic_contains": "ONLY name is absent or PRIVATE",
+      "reason": "Existing module data USE renaming boundary, independent of CHAR."
+    },
+    {
+      "name": "host_data",
+      "expected": "run",
+      "output": "13 14 A"
+    },
+    {
+      "name": "local_shadows_host",
+      "expected": "run",
+      "output": "d 18"
+    },
+    {
+      "name": "component_char",
+      "expected": "run",
+      "output": "19 d"
+    },
+    {
+      "name": "intrinsic_unshadowed",
+      "expected": "run"
+    },
+    {
+      "name": "shadowed_scalar_call",
+      "expected": "reject"
+    },
+    {
+      "name": "shadowed_scalar_keywords",
+      "expected": "reject"
+    },
+    {
+      "name": "undeclared_char_read",
+      "expected": "reject",
+      "diagnostic_contains": "Undeclared variable"
+    },
+    {
+      "name": "duplicate_char",
+      "expected": "reject",
+      "diagnostic_contains": "Duplicate"
+    },
+    {
+      "name": "intrinsic_wrong_type",
+      "expected": "reject",
+      "diagnostic_contains": "INTEGER"
+    },
+    {
+      "name": "intrinsic_wrong_kind",
+      "expected": "reject",
+      "diagnostic_contains": "kind 1"
+    },
+    {
+      "name": "other_reserved_unchanged",
+      "expected": "reject",
+      "diagnostic_contains": "Reserved"
+    },
+    {
+      "name": "original_positions_char_string",
+      "expected": "run",
+      "output": "2 4 6 3 5 0 0 1 2 3 2 4 0"
+    },
+    {
+      "name": "mixed_case",
+      "expected": "run",
+      "output": "A"
+    },
+    {
+      "name": "generic_char",
+      "expected": "run",
+      "output": "Z"
+    },
+    {
+      "name": "implicit_result_char",
+      "expected": "run",
+      "output": "66"
+    },
+    {
+      "name": "character_parameter",
+      "expected": "run",
+      "output": "AdE"
+    },
+    {
+      "name": "intrinsic_constant",
+      "expected": "run",
+      "output": "d"
+    },
+    {
+      "name": "duplicate_dummy_char",
+      "expected": "reject",
+      "diagnostic_contains": "Duplicate"
+    }
+  ]
+}

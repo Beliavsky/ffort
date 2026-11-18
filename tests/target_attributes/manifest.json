@@ -1,0 +1,112 @@
+{
+  "cases": [
+    {
+      "name": "scalar_kinds",
+      "source": "cases/scalar_kinds.f90",
+      "expected_stdout": "2 3 4000000000 1.5 2.25 T abc",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "ranks_integer",
+      "source": "cases/ranks_integer.f90",
+      "expected_stdout": "7 7 7 7 7 7",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "ranks_real",
+      "source": "cases/ranks_real.f90",
+      "expected_stdout": "2.5 2.5 2.5 2.5 2.5 2.5",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "ranks_logical",
+      "source": "cases/ranks_logical.f90",
+      "expected_stdout": "T T T T T T",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "ranks_character",
+      "source": "cases/ranks_character.f90",
+      "expected_stdout": "xy xy xy xy xy xy",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "dimension_group_order",
+      "source": "cases/dimension_group_order.f90",
+      "expected_stdout": "2 2 3 3 4 4 5 5",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "dummy_intents_optional",
+      "source": "cases/dummy_intents_optional.f90",
+      "expected_stdout": "F T 4 4 4 4 6 6 6",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "module_procedure",
+      "source": "cases/module_procedure.f90",
+      "expected_stdout": "7 7",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "allocatable_lifecycle",
+      "source": "cases/allocatable_lifecycle.f90",
+      "expected_stdout": "2 2 3.5 3.5 T T -1 3 3 F F F",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "allocatable_dummy",
+      "source": "cases/allocatable_dummy.f90",
+      "expected_stdout": "T 4 4 5 5",
+      "category": "success",
+      "baseline": "run"
+    },
+    {
+      "name": "reject_parameter",
+      "source": "cases/reject_parameter.f90",
+      "expected_stdout": "",
+      "category": "invalid",
+      "baseline": "reject",
+      "diagnostic": "TARGET cannot be PARAMETER"
+    },
+    {
+      "name": "reject_parameter_order",
+      "source": "cases/reject_parameter_order.f90",
+      "expected_stdout": "",
+      "category": "invalid",
+      "baseline": "reject",
+      "diagnostic": "TARGET cannot be PARAMETER"
+    },
+    {
+      "name": "reject_duplicate",
+      "source": "cases/reject_duplicate.f90",
+      "expected_stdout": "",
+      "category": "invalid",
+      "baseline": "reject",
+      "diagnostic": "Repeated TARGET attribute"
+    },
+    {
+      "name": "reject_pointer",
+      "source": "cases/reject_pointer.f90",
+      "expected_stdout": "",
+      "category": "invalid",
+      "baseline": "compile"
+    },
+    {
+      "name": "reject_association",
+      "source": "cases/reject_association.f90",
+      "expected_stdout": "",
+      "category": "invalid",
+      "baseline": "reject"
+    }
+  ]
+}

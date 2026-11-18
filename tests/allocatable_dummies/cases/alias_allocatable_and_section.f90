@@ -1,0 +1,15 @@
+module m
+
+contains
+subroutine pair(a,b)
+integer,allocatable,intent(inout)::a(:)
+integer,intent(in)::b(:)
+a=[1]
+end subroutine
+end module
+program main
+use m
+integer,allocatable::v(:)
+allocate(v(0))
+call pair(v,v(:))
+end program

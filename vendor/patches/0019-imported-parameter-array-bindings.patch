@@ -1,0 +1,20 @@
+--- a/src/semantic/analyzers/semantic_explicit_interface_checker.f90
++++ b/src/semantic/analyzers/semantic_explicit_interface_checker.f90
+@@ -556,6 +556,17 @@
+         ! external function requiring a procedure interface.
+         call resolve_name_at_node(arena, expr_index, proc_name, binding, binding_error)
+         if (binding%found .and. binding%binding_kind == BINDING_DERIVED_TYPE) return
++        ! The semantic scope table can omit USE-associated PARAMETER arrays.
++        ! Resolve the actual declaration rather than treating a(name) as an
++        ! external function, or accepting a same-named inaccessible array.
++        if (binding%found) then
++            if (arena%has_node_at(binding%declaration_node_index)) then
++                select type (decl => arena%entries(binding%declaration_node_index)%node)
++                type is (declaration_node)
++                    if (decl%is_array) return
++                end select
++            end if
++        end if
+         if (is_known_array_reference(scopes, proc_name)) return
+         if (has_explicit_interface_in_cache(cache, proc_name)) return
+ 

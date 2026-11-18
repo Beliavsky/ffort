@@ -1,0 +1,106 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -890,7 +890,7 @@
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+         case ("aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+-              "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "isnan", "erfc_scaled", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
++              "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "isnan", "erfc_scaled", "erf", "bessel_j0", "bessel_j1", "bessel_jn", "bessel_y0", "bessel_y1", "bessel_yn", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+                 do i = 1, size(node%arg_indices)
+@@ -926,6 +926,10 @@
+         case ("asinh", "acosh")
+             call first_intrinsic_argument_metadata(arena,node,visiting,result_type,kind_value)
+             if(kind_value>0)call set_intrinsic_metadata(node,TREAL,kind_value,result_rank)
++        case ("erf", "bessel_j0", "bessel_j1", "bessel_jn", "bessel_y0", "bessel_y1", "bessel_yn")
++            call erf_bessel_x_metadata(arena,node,visiting,name,result_type,kind_value)
++            if (result_type > 0 .and. kind_value > 0) &
++                call set_intrinsic_metadata(node,result_type,kind_value,result_rank)
+         case ("erfc_scaled")
+             call first_intrinsic_argument_metadata(arena, node, visiting, &
+                 result_type, kind_value)
+@@ -2056,6 +2060,37 @@
+             return
+         end do
+     end subroutine
++    subroutine erf_bessel_x_metadata(arena,node,visiting,name,type_kind,kind_value)
++        type(ast_arena_t),intent(inout)::arena
++        type(call_or_subscript_node),intent(in)::node
++        logical,intent(inout)::visiting(:)
++        character(*),intent(in)::name
++        integer,intent(out)::type_kind,kind_value
++        integer::i,idx,position
++        logical::wanted
++        type_kind=0;kind_value=0;position=1
++        if(name=='bessel_jn'.or.name=='bessel_yn')position=2
++        if(.not.allocated(node%arg_indices))return
++        do i=1,size(node%arg_indices)
++            idx=node%arg_indices(i);wanted=i==position
++            if(.not.arena%has_node_at(idx))cycle
++            select type(arg=>arena%entries(idx)%node)
++            type is(assignment_node)
++                wanted=.false.
++                if(.not.arena%has_node_at(arg%target_index))cycle
++                select type(target=>arena%entries(arg%target_index)%node)
++                type is(identifier_node)
++                    wanted=to_lower(target%name)=='x'
++                end select
++                idx=arg%value_index
++            end select
++            if(.not.wanted.or..not.arena%has_node_at(idx))cycle
++            call resolve_node_metadata(arena,idx,visiting)
++            type_kind=normalize_type_kind(arena%entries(idx)%node%resolved_type_kind)
++            kind_value=arena%entries(idx)%node%resolved_kind_value
++            return
++        end do
++    end subroutine
+     subroutine first_intrinsic_argument_metadata(arena, node, visiting, &
+             type_kind, kind_value)
+         type(ast_arena_t), intent(inout) :: arena
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 95
++        integer, parameter :: NUM_INTRINSICS = 102
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -321,6 +321,34 @@
+             description="Elemental exponentially scaled complementary error function")
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="erf", return_type="real", arg_types="real", &
++            description="Elemental error or Bessel function")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="bessel_j0", return_type="real", arg_types="real", &
++            description="Elemental error or Bessel function")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="bessel_j1", return_type="real", arg_types="real", &
++            description="Elemental error or Bessel function")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="bessel_jn", return_type="real", arg_types="integer,real", &
++            description="Elemental error or Bessel function")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="bessel_y0", return_type="real", arg_types="real", &
++            description="Elemental error or Bessel function")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="bessel_y1", return_type="real", arg_types="real", &
++            description="Elemental error or Bessel function")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="bessel_yn", return_type="real", arg_types="integer,real", &
++            description="Elemental error or Bessel function")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="sinh", return_type="real", arg_types="real", &
+             description="Elemental real hyperbolic function")
+ 

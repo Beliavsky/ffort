@@ -1,0 +1,13 @@
+--- a/src/parser/control_flow/parser_do_constructs_part1.inc
++++ b/src/parser/control_flow/parser_do_constructs_part1.inc
+@@ -76,6 +76,10 @@
+             case (TK_WHITESPACE, TK_COMMENT)
+                 idx = idx + 1
+             case (TK_NEWLINE, TK_EOF)
++                return
++            case (TK_OPERATOR)
++                if (parser%tokens(idx)%text == ";") return
++                bare = .false.
+                 return
+             case default
+                 bare = .false.

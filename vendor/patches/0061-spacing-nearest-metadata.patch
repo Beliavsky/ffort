@@ -1,0 +1,82 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -890,7 +890,7 @@
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+         case ("fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+-              "exp", "log", "log10", "log_gamma", "dim", "sign", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
++              "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+                 do i = 1, size(node%arg_indices)
+@@ -943,6 +943,8 @@
+                 result_type = TCOMPLEX
+             end select
+             call set_intrinsic_metadata(node, result_type, kind_value, result_rank)
++        case ("spacing", "nearest")
++            call resolve_spacing_nearest_metadata(arena,node,visiting,result_rank)
+         case ("exp", "log", "log10", "log_gamma", "dim", "sign", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max")
+             call first_intrinsic_argument_metadata(arena, node, visiting, &
+                 result_type, kind_value)
+@@ -1045,6 +1047,35 @@
+         call set_intrinsic_metadata(node, result_type, kind_value, rank)
+     end subroutine resolve_reduction_metadata
+ 
++    subroutine resolve_spacing_nearest_metadata(arena,node,visiting,result_rank)
++        type(ast_arena_t),intent(inout)::arena
++        type(call_or_subscript_node),intent(inout)::node
++        logical,intent(inout)::visiting(:)
++        integer,intent(in)::result_rank
++        integer::j,arg,source
++        source=0
++        if(.not.allocated(node%arg_indices)) return
++        do j=1,size(node%arg_indices)
++            arg=node%arg_indices(j)
++            if(.not.arena%has_node_at(arg)) return
++            select type(actual=>arena%entries(arg)%node)
++            type is(assignment_node)
++                if(.not.actual%is_keyword_argument) return
++                if(.not.arena%has_node_at(actual%target_index)) return
++                select type(label=>arena%entries(actual%target_index)%node)
++                type is(identifier_node)
++                    if(to_lower(label%name)=='x') source=actual%value_index
++                end select
++            class default
++                if(j==1) source=arg
++            end select
++        end do
++        if(.not.arena%has_node_at(source)) return
++        call resolve_node_metadata(arena,source,visiting)
++        call set_intrinsic_metadata(node,arena%entries(source)%node%resolved_type_kind, &
++            arena%entries(source)%node%resolved_kind_value,result_rank)
++    end subroutine resolve_spacing_nearest_metadata
++
+     subroutine resolve_merge_metadata(arena,node,visiting,result_rank)
+         type(ast_arena_t),intent(inout)::arena
+         type(call_or_subscript_node),intent(inout)::node
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 86
++        integer, parameter :: NUM_INTRINSICS = 88
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -293,6 +293,14 @@
+             arg_types="character", description="ASCII character code")
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="spacing", return_type="real", arg_types="real", &
++            description="Elemental model spacing")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="nearest", return_type="real", arg_types="real,real", &
++            description="Elemental adjacent representable real")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="sinh", return_type="real", arg_types="real", &
+             description="Elemental real hyperbolic function")
+ 

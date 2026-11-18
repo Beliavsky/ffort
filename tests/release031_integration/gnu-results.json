@@ -1,0 +1,547 @@
+{
+  "tools": {
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "--version"
+        ],
+        "cwd": "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration"
+      }
+    }
+  },
+  "summary": {
+    "total": 14,
+    "failed": 0,
+    "integrity_failed": 0,
+    "gnu_checked": 12,
+    "gnu_compiler_discrepancies": 0,
+    "gnu_executed": 10,
+    "gnu_compile_only": 1,
+    "gnu_compile_rejections": 1,
+    "gnu_skipped": 2
+  },
+  "records": [
+    {
+      "case": {
+        "name": "target_optional_logical_descriptor",
+        "source": "cases/target_optional_logical_descriptor.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F T F 2 2 1 -2 5 9 21 1 2 2 2 T T 2 2 1 -2 5 9 31 1 1 1 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/target_optional_logical_descriptor.f90",
+          "-o",
+          "/tmp/release031-gnu-rlw6t641/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-rlw6t641"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n T\n F\n           2           2           1          -2           5           9          21\n           1           2           2           2\n T\n T\n           2           2           1          -2           5           9          31\n           1           1           1           2\n",
+        "err": "",
+        "argv": [
+          "/tmp/release031-gnu-rlw6t641/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-rlw6t641"
+      }
+    },
+    {
+      "case": {
+        "name": "target_character_descriptor_lengths",
+        "source": "cases/target_character_descriptor_lengths.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 1 1 5 2 1 5 1 1 2 1 0 2 1 7 0 2 7 0 0 0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/target_character_descriptor_lengths.f90",
+          "-o",
+          "/tmp/release031-gnu-dpz2ihbl/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-dpz2ihbl"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           1           1           5           2           1           5\n           1           1           2           1\n           0           2           1           7           0           2           7\n           0           0           0           0\n",
+        "err": "",
+        "argv": [
+          "/tmp/release031-gnu-dpz2ihbl/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-dpz2ihbl"
+      }
+    },
+    {
+      "case": {
+        "name": "target_section_copyback_search",
+        "source": "cases/target_section_copyback_search.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 44 2 1 13 3 14 5 17 4 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/target_section_copyback_search.f90",
+          "-o",
+          "/tmp/release031-gnu-ltx6d1nk/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-ltx6d1nk"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3          44           2\n           1          13           3          14           5          17\n           4           0\n",
+        "err": "",
+        "argv": [
+          "/tmp/release031-gnu-ltx6d1nk/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-ltx6d1nk"
+      }
+    },
+    {
+      "case": {
+        "name": "target_recursive_descriptor_result",
+        "source": "cases/target_recursive_descriptor_result.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T 2 2 3 1 1 1 2 1 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/target_recursive_descriptor_result.f90",
+          "-o",
+          "/tmp/release031-gnu-ec9u5si1/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-ec9u5si1"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T           2           2           3           1           1\n           1           2           1           2\n",
+        "err": "",
+        "argv": [
+          "/tmp/release031-gnu-ec9u5si1/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-ec9u5si1"
+      }
+    },
+    {
+      "case": {
+        "name": "target_optional_character_search",
+        "source": "cases/target_optional_character_search.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F 3 3 T 3 3 3 1 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/target_optional_character_search.f90",
+          "-o",
+          "/tmp/release031-gnu-khx4twz4/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-khx4twz4"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F           3           3\n T           3           3\n           3           1           3\n",
+        "err": "",
+        "argv": [
+          "/tmp/release031-gnu-khx4twz4/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-khx4twz4"
+      }
+    },
+    {
+      "case": {
+        "name": "target_logical_reallocation_bounds",
+        "source": "cases/target_logical_reallocation_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-3 2 2 8 3 3 F -1 2 2 F"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/target_logical_reallocation_bounds.f90",
+          "-o",
+          "/tmp/release031-gnu-q4_topdw/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-q4_topdw"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          -3           2           2\n           8           3           3\n F\n          -1           2           2\n F\n",
+        "err": "",
+        "argv": [
+          "/tmp/release031-gnu-q4_topdw/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-q4_topdw"
+      }
+    },
+    {
+      "case": {
+        "name": "target_pointer_remains_unsupported",
+        "source": "cases/target_pointer_remains_unsupported.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Unsupported declaration attribute",
+        "scope_note": "GNU accepts POINTER association. Candidate scope is TARGET declarations only, not aliases; GNU evidence is compile-only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/target_pointer_remains_unsupported.f90",
+          "-o",
+          "/tmp/release031-gnu-_48a8m2m/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-_48a8m2m"
+      }
+    },
+    {
+      "case": {
+        "name": "target_parameter_conflict",
+        "source": "cases/target_parameter_conflict.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "TARGET cannot be PARAMETER",
+        "scope_note": "TARGET and PARAMETER cannot coexist. Both processors must reject the unchanged invalid source."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/target_parameter_conflict.f90:4:14:\n\n    4 | integer,target,parameter :: size_hint=2\n      |              1\nError: PARAMETER attribute conflicts with TARGET attribute at (1)\n/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/target_parameter_conflict.f90:6:24:\n\n    6 | allocate(flags(size_hint));flags=.true.\n      |                        1\nError: Symbol \u2018size_hint\u2019 at (1) has no IMPLICIT type\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/target_parameter_conflict.f90",
+          "-o",
+          "/tmp/release031-gnu-erv1y0cg/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-erv1y0cg"
+      }
+    },
+    {
+      "case": {
+        "name": "target_mask_runtime_shape",
+        "source": "cases/target_mask_runtime_shape.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "location intrinsic MASK shape does not conform",
+        "scope_note": "Nonconforming FINDLOC MASK is invalid Fortran. Candidate-only runtime guard: no GNU compilation or execution oracle."
+      },
+      "errors": [],
+      "gnu_skipped": "Nonconforming FINDLOC MASK is invalid Fortran. Candidate-only runtime guard: no GNU compilation or execution oracle."
+    },
+    {
+      "case": {
+        "name": "target_repeat_character_filter",
+        "source": "cases/target_repeat_character_filter.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 6 3 1 3 ab ab cd cd",
+        "formatted_lines": {
+          "2": "ab ab ",
+          "3": "cd cd "
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/target_repeat_character_filter.f90",
+          "-o",
+          "/tmp/release031-gnu-pmpazg_2/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-pmpazg_2"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           6           3\n           1           3\nab ab \ncd cd \n",
+        "err": "",
+        "argv": [
+          "/tmp/release031-gnu-pmpazg_2/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-pmpazg_2"
+      }
+    },
+    {
+      "case": {
+        "name": "target_repeat_optional_recursive",
+        "source": "cases/target_repeat_optional_recursive.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F 8 T 8 xxxxxxxx",
+        "formatted_lines": {
+          "2": "xxxxxxxx"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/target_repeat_optional_recursive.f90",
+          "-o",
+          "/tmp/release031-gnu-3gvw__12/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-3gvw__12"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F           8\n T           8\nxxxxxxxx\n",
+        "err": "",
+        "argv": [
+          "/tmp/release031-gnu-3gvw__12/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-3gvw__12"
+      }
+    },
+    {
+      "case": {
+        "name": "target_literal_repeat_composition",
+        "source": "cases/target_literal_repeat_composition.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 3 1212 2323",
+        "formatted_lines": {
+          "2": "1212",
+          "3": "2323"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/target_literal_repeat_composition.f90",
+          "-o",
+          "/tmp/release031-gnu-pa81tge7/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-pa81tge7"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3\n           3\n1212\n2323\n",
+        "err": "",
+        "argv": [
+          "/tmp/release031-gnu-pa81tge7/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-pa81tge7"
+      }
+    },
+    {
+      "case": {
+        "name": "target_repeat_runtime_negative",
+        "source": "cases/target_repeat_runtime_negative.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "REPEAT NCOPIES must be nonnegative",
+        "scope_note": "Negative runtime NCOPIES violates Fortran REPEAT requirements. Candidate-only safety guard, no GNU oracle."
+      },
+      "errors": [],
+      "gnu_skipped": "Negative runtime NCOPIES violates Fortran REPEAT requirements. Candidate-only safety guard, no GNU oracle."
+    },
+    {
+      "case": {
+        "name": "variable_names_original",
+        "source": "cases/variable_names_original.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "v-2_x v-1_x v0_x v1_x 1 2 0 100 0",
+        "formatted_lines": {
+          "0": "v-2_x",
+          "1": "v-1_x",
+          "2": "v0_x",
+          "3": "v1_x",
+          "4": "1",
+          "5": "2"
+        },
+        "scope_note": "Original variable_names with unchanged str_int/default_integer dependencies, wrapped by a synthetic minimal module and driver; provenance.json records exact bytes."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-031-integration/fortfront-interpreter-0.31.0/tests/release031_integration/cases/variable_names_original.f90",
+          "-o",
+          "/tmp/release031-gnu-9m999zse/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-9m999zse"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "v-2_x\nv-1_x\nv0_x\nv1_x\n1\n2\n           0         100           0\n",
+        "err": "",
+        "argv": [
+          "/tmp/release031-gnu-9m999zse/reference"
+        ],
+        "cwd": "/tmp/release031-gnu-9m999zse"
+      }
+    }
+  ],
+  "utc": "2026-11-15T05:09:59.650477+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "scope": "Synthetic bounded composition tests plus one exact variable_names wrapper. Only the three procedure bodies named in provenance.json are original; no full xutilities execution is claimed. Compile-only and policy-skip cases are not GNU execution comparisons.",
+  "provenance": {
+    "source": "../utilities_slices/source/xutilities.f90",
+    "source_sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+    "wrapper": "cases/variable_names_original.f90",
+    "wrapper_sha256": "19ccd7e233a2a83bedc07195e4da46d136426ab9a2cdf39ec9615df6b21c4ebf",
+    "bodies": [
+      {
+        "name": "variable_names",
+        "first_line": 2078,
+        "last_line": 2094,
+        "role": "new original utility coverage",
+        "sha256": "98dab77062cf54159f299bec3bb3c68ae714b0ec77c8f4d50d2f3df354f3f17f",
+        "byte_count": 661,
+        "wrapper_start_byte": 209,
+        "wrapper_end_byte": 870
+      },
+      {
+        "name": "str_int",
+        "first_line": 2096,
+        "last_line": 2118,
+        "role": "original dependency; standalone provenance owned by REPEAT suite",
+        "sha256": "3a313eaa1b02dd62ebe6486160353fe816633dfef2deca59e84ee74a93260f04",
+        "byte_count": 735,
+        "wrapper_start_byte": 870,
+        "wrapper_end_byte": 1605
+      },
+      {
+        "name": "default_integer",
+        "first_line": 3699,
+        "last_line": 3709,
+        "role": "original dependency, not new standalone coverage",
+        "sha256": "e3db7c2790237a5cc0cd4ae29f45f92ea26b0354857be2f9a02b977697328f64",
+        "byte_count": 340,
+        "wrapper_start_byte": 1605,
+        "wrapper_end_byte": 1945
+      }
+    ],
+    "scope": "Only named procedure bodies are original, byte-for-byte including CRLF. Module/interface/driver are synthetic. Full xutilities module is not executed; POINTER support is not claimed."
+  },
+  "manifest_sha256": "e0b5a13cd32f1bae608829d2e6a4869eacae1de1927efefcc0fb0eb3d5ef6890",
+  "source_sha256": {
+    "cases/target_optional_logical_descriptor.f90": "48f822e4ba1a254d4969ef7a7d5c67df0db81d1af2cc7aa948679e4699794c54",
+    "cases/target_character_descriptor_lengths.f90": "893a5645595f86daae7102c97c91f2f0206d02f4ec296d9919dc11ede3b97b11",
+    "cases/target_section_copyback_search.f90": "f338e4a94cda6fbf5b768032717b1321c8205c12eb7b778cad9a92733d1f0ece",
+    "cases/target_recursive_descriptor_result.f90": "7b5d2bf3952e5b4005471f712cb1d3677d82a5e070f2a846402508133aa23207",
+    "cases/target_optional_character_search.f90": "f324030d888c51ca5687bf29abb66cf0e2c1bc77ea1c724046f8348338419a21",
+    "cases/target_logical_reallocation_bounds.f90": "b2e6cb8903f029b2df029987e7d4ddf270b4ceaaf178aee40bbb187ec310acdd",
+    "cases/target_pointer_remains_unsupported.f90": "be76566381b9c049ca41686c2880716c6c5860a6efb130b3f5277fd9bb6c87a0",
+    "cases/target_parameter_conflict.f90": "a4f4379d361bfd3eddabfcfde0af6101024384d4e04579436924dbbe5a5996db",
+    "cases/target_mask_runtime_shape.f90": "1912dd4e0f7f5d7183f129e8fce91606bb1dc67e6ae38f8db9a8bf6bc2bbe3ff",
+    "cases/target_repeat_character_filter.f90": "e599d647d796649c821cc0cc5f5a8b93daa0d2ccd9a95348af38919640ec0604",
+    "cases/target_repeat_optional_recursive.f90": "39acf61d9db11e153476773ca4467d4539a641b9192a6dcb4e1cfdff885f5f94",
+    "cases/target_literal_repeat_composition.f90": "45ee6c07839853df3b1f70e5ff55fae3262325ed52c11a6f4e66cc6ba95eaf9b",
+    "cases/target_repeat_runtime_negative.f90": "840a9fbcc5fdcdfac065c26e5d76167ddb87b92dfc776ef61d8f549187271eee",
+    "cases/variable_names_original.f90": "19ccd7e233a2a83bedc07195e4da46d136426ab9a2cdf39ec9615df6b21c4ebf"
+  },
+  "integrity_errors": []
+}

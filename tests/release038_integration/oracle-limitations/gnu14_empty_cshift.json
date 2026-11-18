@@ -1,0 +1,60 @@
+{
+  "source_sha256": "d26651c1d271fbab56b3fefa79680f0019582058798fe4b38ba1cf90db1ffed7",
+  "classification": "GNU14 runtime materialization discrepancy on valid zero selected axis; exact candidate empty-shape oracle retained.",
+  "records": [
+    {
+      "optimization": "-O0",
+      "compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-038-integration/fortfront-interpreter-0.38.0/tests/release038_integration/oracle-limitations/gnu14_empty_cshift.f90",
+          "-o",
+          "/tmp/tmpsrrczz3w/probe"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "Fortran runtime error: Incorrect size in SHIFT argument of CSHIFT intrinsic: should not be zero-sized\n\nError termination. Backtrace:\n#0  0x7f2a7f6f02ba in ???\n#1  0x7f2a7f6f0db9 in ???\n#2  0x7f2a7f6ef148 in ???\n#3  0x7f2a7f888463 in ???\n#4  0x5560d0877333 in MAIN__\n#5  0x5560d0877500 in main\n",
+        "argv": [
+          "/tmp/tmpsrrczz3w/probe"
+        ]
+      }
+    },
+    {
+      "optimization": "-O2",
+      "compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-O2",
+          "/workspace/scratch/c5319e9549df/fortfront-038-integration/fortfront-interpreter-0.38.0/tests/release038_integration/oracle-limitations/gnu14_empty_cshift.f90",
+          "-o",
+          "/tmp/tmp2qlae3x8/probe"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "Fortran runtime error: Incorrect size in SHIFT argument of CSHIFT intrinsic: should not be zero-sized\n\nError termination. Backtrace:\n#0  0x7fd94f1982ba in ???\n#1  0x7fd94f198db9 in ???\n#2  0x7fd94f197148 in ???\n#3  0x7fd94f330463 in ???\n#4  0x5635cde1f2ec in MAIN__\n#5  0x5635cde1f0b8 in main\n",
+        "argv": [
+          "/tmp/tmp2qlae3x8/probe"
+        ]
+      }
+    }
+  ]
+}

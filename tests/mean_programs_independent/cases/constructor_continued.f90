@@ -1,0 +1,8 @@
+program p
+implicit none
+real(8)::aa(3)
+aa=[1d0, &
+! a comment
+& 2d0,3d0]
+print *,aa
+end program p

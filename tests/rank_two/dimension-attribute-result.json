@@ -1,0 +1,91 @@
+{
+  "utc": "2026-11-14T23:29:08.156378+00:00",
+  "summary": {
+    "total": 1,
+    "failed": 0,
+    "candidate_checked": 1,
+    "gnu_checked": 1,
+    "gnu_skipped": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "dimension_attribute",
+        "source": "cases/dimension_attribute.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "111 1 1 1 1 1 1",
+        "note": "DIMENSION attributes supported in 0.23.0; original source unchanged."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/release-023-work/fortfront-interpreter-0.23.0/tests/rank_two/cases/dimension_attribute.f90",
+          "-o",
+          "/tmp/rank-two-oracle-y9_wnpxd/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         111\n           1           1           1           1           1           1\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-two-oracle-y9_wnpxd/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/release-023-work/fortfront-interpreter-0.23.0/build/gfortran_C48A8F1D6CFAA2C2/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/release-023-work/fortfront-interpreter-0.23.0/tests/rank_two/cases/dimension_attribute.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " 111\n 1 1 1 1 1 1\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/release-023-work/fortfront-interpreter-0.23.0/build/gfortran_C48A8F1D6CFAA2C2/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/release-023-work/fortfront-interpreter-0.23.0/tests/rank_two/cases/dimension_attribute.f90"
+        ]
+      }
+    }
+  ],
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python_version": "3.12.14",
+  "manifest_sha256": "74d3d6623ad4181ed4c067200be99fc68f099102b47ae6dcbffa4067f846ae93",
+  "source_sha256": {
+    "cases/dimension_attribute.f90": "66fe3a7d363c51ecdd5bbf2135cab77bf8c4a632dc1408d7775baab11b30cada"
+  },
+  "gfortran_version": {
+    "code": 0,
+    "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "err": "",
+    "argv": [
+      "gfortran",
+      "--version"
+    ]
+  },
+  "candidate_version": {
+    "code": 0,
+    "out": "fortfront-interpreter 0.22.0; FortFront 9a5896a + documented local patches\n",
+    "err": "",
+    "argv": [
+      "/workspace/scratch/c5319e9549df/release-023-work/fortfront-interpreter-0.23.0/build/gfortran_C48A8F1D6CFAA2C2/app/fortfront-interpreter",
+      "--version"
+    ]
+  },
+  "candidate_sha256": "448234ae5aa1fdd03dd68af03ac39a6511c0308734c93fb80dd654cc09e797b8",
+  "candidate_final_sha256": "448234ae5aa1fdd03dd68af03ac39a6511c0308734c93fb80dd654cc09e797b8"
+}

@@ -1,0 +1,177 @@
+{
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "passed": 7,
+  "failed": 0,
+  "total": 7,
+  "cases": [
+    {
+      "name": "out_inout_result",
+      "kind": "pass",
+      "diagnostic": "",
+      "sha256": "25573d3fbe64bef6a3b2e792b0e6265f6c49cf81b14893b5f479df2bbe32c94a",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": "   2   4   6\n  -1   1\n   2   4\n   6   8\n   4   6   8\n   2   4   6   8    \n",
+        "stderr": ""
+      },
+      "reference_compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "status": 0,
+        "stdout": "   2   4   6\n  -1   1\n   2   4\n   6   8\n   4   6   8\n   2   4   6   8    \n",
+        "stderr": ""
+      },
+      "pass": true
+    },
+    {
+      "name": "module_rank_two",
+      "kind": "pass",
+      "diagnostic": "",
+      "sha256": "3ce3f7306d2e7c5d1374e0d6a5be8cd4714016692469580655221457a72489ac",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": "   1   2   3\n   4   5   6\n   6   5\n   4   3\n   2   1\n   3   7  11\n   1   1\n   2   3\n F\n",
+        "stderr": ""
+      },
+      "reference_compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "status": 0,
+        "stdout": "   1   2   3\n   4   5   6\n   6   5\n   4   3\n   2   1\n   3   7  11\n   1   1\n   2   3\n F\n",
+        "stderr": ""
+      },
+      "pass": true
+    },
+    {
+      "name": "real_result",
+      "kind": "pass",
+      "diagnostic": "",
+      "sha256": "866e9d514725cdbd66d2093ae0e3c28252cfae0f47cf32fbb2690c30af4fb75c",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": "   0.0000   0.5000\n   0.0000   0.5211\n   1.0000   1.1276\n",
+        "stderr": ""
+      },
+      "reference_compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "status": 0,
+        "stdout": "   0.0000   0.5000\n   0.0000   0.5211\n   1.0000   1.1276\n",
+        "stderr": ""
+      },
+      "pass": true
+    },
+    {
+      "name": "zero_and_reallocation",
+      "kind": "pass",
+      "diagnostic": "",
+      "sha256": "13bf425614c73d4c02cbddff0920500fd8452cd932fa1ee9b5deff159730e500",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": "empty\n   7\n   9\nempty again\n T   1   0\n",
+        "stderr": ""
+      },
+      "reference_compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "status": 0,
+        "stdout": "empty\n   7\n   9\nempty again\n T   1   0\n",
+        "stderr": ""
+      },
+      "pass": true
+    },
+    {
+      "name": "undefined_output_atomic",
+      "kind": "runtime",
+      "diagnostic": "Uninitialized",
+      "sha256": "8502cee2082af6ac07b7291ebf158b096a8d596b80680dda93f5070cb9048974",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_output/cases/undefined_output_atomic.f90:6:17: read of uninitialized array element b\n"
+      },
+      "pass": true
+    },
+    {
+      "name": "unallocated_output_atomic",
+      "kind": "runtime",
+      "diagnostic": "unallocated",
+      "sha256": "fa0ec770444fcb38ad0d22042bb69dcbe9022e691300ab184acdf534e314acd3",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_output/cases/unallocated_output_atomic.f90:5:17: reference to unallocated array b\n"
+      },
+      "pass": true
+    },
+    {
+      "name": "empty_internal_array",
+      "kind": "pass",
+      "diagnostic": "",
+      "sha256": "0a8b7c3fb20373b0653f2ed432532efebeeb6f745cacd613944bf45d4950650c",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": "empty           \n",
+        "stderr": ""
+      },
+      "reference_compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "status": 0,
+        "stdout": "empty           \n",
+        "stderr": ""
+      },
+      "pass": true
+    }
+  ]
+}

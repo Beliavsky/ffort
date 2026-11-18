@@ -1,0 +1,73 @@
+{
+  "source": "narrow_result.f90",
+  "sha256": "3e9737f167d902546dd440a3922e69eb4a863227d7ff19e8c027a019c0ad72df",
+  "GNU_version": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all"
+  ],
+  "GNU": [
+    {
+      "compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rounding-inverse-hyperbolic-work/fortfront-interpreter/tests/rounding_inverse_hyperbolic/oracle-limitations/narrow_result.f90",
+          "-o",
+          "/tmp/rounding-observation-5922jagt/reference"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/tmp/rounding-observation-5922jagt/reference"
+        ],
+        "exit": 0,
+        "stdout": "   0.00000000      -0.00000000       2.00000000      -2.00000000       1.00000000      -1.00000000       2.00000000      -2.00000000    \n   1.00000000       0.00000000    \n   0.00000000      -0.00000000       1.00000000      -1.00000000       0.00000000      -0.00000000       2.00000000      -2.00000000    \n",
+        "stderr": ""
+      }
+    },
+    {
+      "compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O2",
+          "/workspace/scratch/c5319e9549df/rounding-inverse-hyperbolic-work/fortfront-interpreter/tests/rounding_inverse_hyperbolic/oracle-limitations/narrow_result.f90",
+          "-o",
+          "/tmp/rounding-observation-iu9fmal_/reference"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/tmp/rounding-observation-iu9fmal_/reference"
+        ],
+        "exit": 0,
+        "stdout": "   0.00000000      -0.00000000       2.00000000      -2.00000000       1.00000000      -1.00000000       2.00000000      -2.00000000    \n   1.00000000       0.00000000    \n   0.00000000      -0.00000000       1.00000000      -1.00000000       0.00000000      -0.00000000       2.00000000      -2.00000000    \n",
+        "stderr": ""
+      }
+    }
+  ],
+  "candidate": {
+    "argv": [
+      "/workspace/scratch/c5319e9549df/rounding-inverse-hyperbolic-work/fortfront-interpreter/build/gfortran_C48A8F1D6CFAA2C2/app/fortfront-interpreter",
+      "/workspace/scratch/c5319e9549df/rounding-inverse-hyperbolic-work/fortfront-interpreter/tests/rounding_inverse_hyperbolic/oracle-limitations/narrow_result.f90"
+    ],
+    "exit": 0,
+    "stdout": " 0.00000000 -0.00000000 1.00000000 -1.00000000 0.00000000 -0.00000000 2.00000000 -2.00000000\n 1.00000000 0.00000000\n 0.00000000 -0.00000000 1.00000000 -1.00000000 0.00000000 -0.00000000 2.00000000 -2.00000000\n",
+    "stderr": ""
+  },
+  "candidate_sha256": "9467bedc6d6859b9427800de61dda9868687c2587061a16111687c3386f9e5d4",
+  "interpretation": "Runtime GNU optional-KIND results are retained as observation only. Independent candidate expectation rounds the input before result conversion; no generic comparator is changed."
+}

@@ -1,0 +1,79 @@
+{
+  "original_sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+  "routine": "filter_matrix_rows",
+  "start_line": 8657,
+  "end_line": 8679,
+  "body_sha256": "2988489e747a2cdc7f9045e0deae9af543a6121642d9a70632cc66a0a2969473",
+  "body_bytes": 1090,
+  "wrapper_prefix_bytes": 66,
+  "case": "cases/original_filter_matrix_rows_gnu.f90",
+  "claim": "Exact complete filter body preserved. GNU and candidate execute the complete unchanged historical driver. Synthetic support helpers and driver are not original source. The release034 and row_gather suites independently execute the original full dependency closure.",
+  "retained_fragments": {
+    "case": "cases/original_filter_predicate_fragments.f90",
+    "spans": [
+      {
+        "start_line": 8659,
+        "end_line": 8663,
+        "offset": 158,
+        "bytes": 351,
+        "sha256": "d4e3c389f257dce629bf0eb8450728f03430ca36f5d0fe0262fdb8db556d9a88"
+      },
+      {
+        "start_line": 8664,
+        "end_line": 8664,
+        "offset": 509,
+        "bytes": 26,
+        "sha256": "aee1a4c6a8f7b982106f631178e5b8be41ffefcc467689e69ab4d7a602e72add"
+      },
+      {
+        "start_line": 8670,
+        "end_line": 8677,
+        "offset": 535,
+        "bytes": 227,
+        "sha256": "b47f641bd42fb2f9066534f2398317688958cae73d0a73e8d78ca41397d307b7"
+      }
+    ],
+    "claim": "Only declaration and predicate-loop fragments are original. Header/output copy/driver are synthetic. This fragment now executes under GNU and the candidate after continued-inline-IF source locations are preserved; it omits the original I/O and vector-subscript gather and is not full routine execution."
+  },
+  "adapted_fragments": {
+    "case": "cases/adapted_filter_predicate.f90",
+    "spans": [
+      {
+        "start_line": 8659,
+        "end_line": 8663,
+        "offset": 158,
+        "bytes": 351,
+        "sha256": "d4e3c389f257dce629bf0eb8450728f03430ca36f5d0fe0262fdb8db556d9a88"
+      },
+      {
+        "start_line": 8664,
+        "end_line": 8664,
+        "offset": 509,
+        "bytes": 26,
+        "sha256": "aee1a4c6a8f7b982106f631178e5b8be41ffefcc467689e69ab4d7a602e72add"
+      },
+      {
+        "start_line": 8670,
+        "end_line": 8674,
+        "offset": 535,
+        "bytes": 103,
+        "sha256": "567fc6546bd1784bafca5b1c15a37343ccfecf7221b206381ceba855c6d210b2"
+      },
+      {
+        "start_line": 8676,
+        "end_line": 8676,
+        "offset": 676,
+        "bytes": 77,
+        "sha256": "88abe58a2ec39fb0047025afe796ef96eb70f6fa90667e4b9afb5bcccb14ec9c"
+      },
+      {
+        "start_line": 8677,
+        "end_line": 8677,
+        "offset": 760,
+        "bytes": 8,
+        "sha256": "6f3987fccf01dcb85fda861e20eef2d7c333326b9d26ed01e76a262ada43586b"
+      }
+    ],
+    "claim": "Retained declarations and predicate assignment in a synthetic helper. Original continued single-line IF is replaced by equivalent block IF to avoid a separate producer location mismatch. Independent WRITE and vector gather omitted; not full routine execution."
+  }
+}

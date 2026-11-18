@@ -1,0 +1,104 @@
+{
+  "cases": [
+    {
+      "name": "optional_descriptor_where",
+      "source": "cases/optional_descriptor_where.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F T F 2 2 2 -1 4 7 20 8 T T 2 2 2 -1 4 7 32 8"
+    },
+    {
+      "name": "assumed_section_copyback",
+      "source": "cases/assumed_section_copyback.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 2 3 8 2 2 -942 -930 1742 1730 831"
+    },
+    {
+      "name": "reallocation_bounds",
+      "source": "cases/reallocation_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 1 2 -2 4 7 14 1 3 2 3 -1 9 12 1 3 2 1 1 1 12 1 3 2 3 -1 9 15"
+    },
+    {
+      "name": "character_length_reallocation",
+      "source": "cases/character_length_reallocation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 1 2 4 3 5 9 test 2 1 2 4 9 1 2 2 3 -2 end 1 2 2 3 1 1 1 end"
+    },
+    {
+      "name": "character_assumed_section",
+      "source": "cases/character_assumed_section.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 2 2 4 2 2 xy abcd",
+      "formatted_lines": {
+        "1": "xy  ",
+        "2": "abcd"
+      }
+    },
+    {
+      "name": "empty_axis_shapes",
+      "source": "cases/empty_axis_shapes.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 2 3 0 0 2 3 0 2 0 3 0 2 0 3 0 2 3 0 0 2 3 0 0 F"
+    },
+    {
+      "name": "recursive_result_lifetime",
+      "source": "cases/recursive_result_lifetime.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 1 2 2 1 2 1 1 1 9.0 9.0 2 1 0 T 2 1 0 0"
+    },
+    {
+      "name": "stat_descriptor_shape",
+      "source": "cases/stat_descriptor_shape.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T 2 2 2 2 2 2 -1 4 7 20 0 F"
+    },
+    {
+      "name": "where_rank_three_boundary",
+      "source": "cases/where_rank_three_boundary.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "WHERE mask must be a LOGICAL array",
+      "scope_note": "GNU accepts rank-three WHERE; the interpreter intentionally supports only rank-one/rank-two masks."
+    },
+    {
+      "name": "unallocated_shape_boundary",
+      "source": "cases/unallocated_shape_boundary.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "scope_note": "SHAPE of an unallocated allocatable is invalid. The interpreter must reject safely at runtime; GNU is neither compiled nor executed as an oracle.",
+      "diagnostic": "unallocated"
+    },
+    {
+      "name": "conflicting_intent_boundary",
+      "source": "cases/conflicting_intent_boundary.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Repeated or conflicting INTENT",
+      "scope_note": "Both processors must reject repeated/conflicting declaration attributes after continuation normalization."
+    },
+    {
+      "name": "deferred_section_compiler_caveat",
+      "source": "cases/deferred_section_compiler_caveat.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "2 2 2 4 2 2 xy abcd",
+      "formatted_lines": {
+        "1": "xy  ",
+        "2": "abcd"
+      },
+      "scope_note": "Observed GNU 14.2.0 discrepancy: the reversed deferred-length CHARACTER section probe leaves the selected element unchanged; the fixed-length control copies back correctly. GNU compile-only evidence is not execution agreement. Candidate output is checked against independently reasoned literal output.",
+      "compiler_discrepancy": true
+    }
+  ]
+}

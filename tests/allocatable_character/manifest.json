@@ -1,0 +1,295 @@
+{
+  "cases": [
+    {
+      "name": "fixed_rank_one",
+      "source": "cases/fixed_rank_one.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "  abcd  xy    z   \n           4          -2           0\n  z     xy    abcd\n"
+    },
+    {
+      "name": "fixed_rank_two",
+      "source": "cases/fixed_rank_two.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           3           6          -1           3\n abc abc xy  xy  abc abc\n"
+    },
+    {
+      "name": "assumed_out_nested",
+      "source": "cases/assumed_out_nested.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": " 3  2  abc def\n 4 -1  hell hell\n 2  3  aa bb cc\n 5  4  test  test \n"
+    },
+    {
+      "name": "assumed_inout_forward",
+      "source": "cases/assumed_inout_forward.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           4           7           2\n abcd abcd\n"
+    },
+    {
+      "name": "unallocated_inputs",
+      "source": "cases/unallocated_inputs.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": ""
+    },
+    {
+      "name": "runtime_local_length",
+      "source": "cases/runtime_local_length.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           6           2\n hello  world \n"
+    },
+    {
+      "name": "deferred_runtime_allocate",
+      "source": "cases/deferred_runtime_allocate.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           0           5          -1           5\n abc   abc   abc   abc  \n"
+    },
+    {
+      "name": "deferred_assignment_bounds",
+      "source": "cases/deferred_assignment_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           4           5           6\n           4           5           6\n"
+    },
+    {
+      "name": "deferred_same_length_preserves_bounds",
+      "source": "cases/deferred_same_length_preserves_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           2          -1           0\n          -1\n"
+    },
+    {
+      "name": "deferred_self_growth",
+      "source": "cases/deferred_self_growth.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           4           3           1\n ab   cd   efgh\n"
+    },
+    {
+      "name": "deferred_empty_reallocation",
+      "source": "cases/deferred_empty_reallocation.f90",
+      "category": "success",
+      "baseline": "compile",
+      "diagnostic": "",
+      "expected_stdout": "T 6 0 1 0\nT 2 0\n",
+      "oracle_note": "GNU 14.2 compiles but incorrectly reports length zero for empty typed constructors; language-expected descriptor lengths are checked independently."
+    },
+    {
+      "name": "zero_length_elements",
+      "source": "cases/zero_length_elements.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": " T           0           4 T           0\n"
+    },
+    {
+      "name": "deferred_out_no_replacement",
+      "source": "cases/deferred_out_no_replacement.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": " F\n           1           1\n"
+    },
+    {
+      "name": "deferred_inout_rank_two",
+      "source": "cases/deferred_inout_rank_two.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           4           2          -3           7\n z    z   \n"
+    },
+    {
+      "name": "module_descriptors",
+      "source": "cases/module_descriptors.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           4          -2\n           1           3           1\n x y z\n"
+    },
+    {
+      "name": "fixed_function_result",
+      "source": "cases/fixed_function_result.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           3           1           2\n hi  hi \n"
+    },
+    {
+      "name": "deferred_function_result",
+      "source": "cases/deferred_function_result.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           4           1           2\n ab   cdef\n"
+    },
+    {
+      "name": "allocation_status",
+      "source": "cases/allocation_status.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           2           3\n abc abc\n F\n"
+    },
+    {
+      "name": "length_limit_stat",
+      "source": "cases/length_limit_stat.f90",
+      "category": "success",
+      "baseline": "skip",
+      "diagnostic": "",
+      "expected_stdout": "F\n"
+    },
+    {
+      "name": "fixed_length_mismatch",
+      "source": "cases/fixed_length_mismatch.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "diagnostic": "Type mismatch",
+      "expected_stdout": ""
+    },
+    {
+      "name": "deferred_actual_fixed_dummy",
+      "source": "cases/deferred_actual_fixed_dummy.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "diagnostic": "agree on deferred length",
+      "expected_stdout": ""
+    },
+    {
+      "name": "fixed_actual_deferred_dummy",
+      "source": "cases/fixed_actual_deferred_dummy.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "diagnostic": "agree on deferred length",
+      "expected_stdout": ""
+    },
+    {
+      "name": "unallocated_deferred_length",
+      "source": "cases/unallocated_deferred_length.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "diagnostic": "reference to unallocated",
+      "expected_stdout": ""
+    },
+    {
+      "name": "undefined_allocated_element",
+      "source": "cases/undefined_allocated_element.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "diagnostic": "uninitialized",
+      "expected_stdout": ""
+    },
+    {
+      "name": "scalar_allocatable_rejected",
+      "source": "cases/scalar_allocatable_rejected.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": ""
+    },
+    {
+      "name": "deferred_allocate_missing_type",
+      "source": "cases/deferred_allocate_missing_type.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "diagnostic": "requires CHARACTER",
+      "expected_stdout": ""
+    },
+    {
+      "name": "typed_fixed_allocate_rejected",
+      "source": "cases/typed_fixed_allocate_rejected.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "diagnostic": "requires a deferred-length",
+      "expected_stdout": ""
+    },
+    {
+      "name": "deferred_nonallocatable_rejected",
+      "source": "cases/deferred_nonallocatable_rejected.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "diagnostic": "requires ALLOCATABLE",
+      "expected_stdout": ""
+    },
+    {
+      "name": "source_allocate_rejected",
+      "source": "cases/source_allocate_rejected.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "diagnostic": "SOURCE/MOLD",
+      "expected_stdout": ""
+    },
+    {
+      "name": "typed_empty_allocation",
+      "source": "cases/typed_empty_allocation.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": " T           6           0\n"
+    },
+    {
+      "name": "byte_limit_stat",
+      "source": "cases/byte_limit_stat.f90",
+      "category": "success",
+      "baseline": "skip",
+      "diagnostic": "",
+      "expected_stdout": "200 65536 F"
+    },
+    {
+      "name": "byte_limit_copyout",
+      "source": "cases/byte_limit_copyout.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "diagnostic": "byte limit exceeded at copyout",
+      "expected_stdout": ""
+    },
+    {
+      "name": "deferred_pack_rejected",
+      "source": "cases/deferred_pack_rejected.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "diagnostic": "PACK requires a known CHARACTER length",
+      "expected_stdout": ""
+    },
+    {
+      "name": "original_utilities_set_alloc_character",
+      "source": "cases/original_utilities_set_alloc_character.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           3           4           3\n one  two  tri \n           5           2           2\n abc   abc   abc   abc  \n T           5           0\n",
+      "original_bodies": [
+        {
+          "procedure": "set_alloc_character_vec",
+          "sha256": "c8b986c2e7fae2e4e5c9e97f3b7eace0db747bdb8ead88ede72f4ca2d69c578d"
+        },
+        {
+          "procedure": "set_alloc_character_mat",
+          "sha256": "46b2907a55a62dfde8df850bbe6a7f2ece971ed678489a667b57ecf731cea2e4"
+        }
+      ]
+    },
+    {
+      "name": "typed_allocation_literal_length",
+      "source": "cases/typed_allocation_literal_length.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": "           3\nabc\n"
+    }
+  ]
+}

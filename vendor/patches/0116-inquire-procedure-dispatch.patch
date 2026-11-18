@@ -1,0 +1,20 @@
+--- a/src/parser/statements/parser_statement_utilities.f90
++++ b/src/parser/statements/parser_statement_utilities.f90
+@@ -15,7 +15,7 @@
+         parse_write_statement, &
+         parse_open_statement, &
+         parse_close_statement, &
+-        parse_read_statement, parse_backspace_statement
++        parse_read_statement, parse_backspace_statement, parse_inquire_statement
+     use parser_control_statements_module, only: parse_stop_statement, &
+         parse_return_statement, &
+         parse_entry_statement, &
+@@ -115,6 +115,8 @@
+                 stmt_index = parse_read_statement(parser, arena)
+             case ("backspace")
+                 stmt_index = parse_backspace_statement(parser, arena)
++            case ("inquire")
++                stmt_index = parse_inquire_statement(parser, arena)
+             case ("data")
+                 stmt_index = parse_data_statement(parser, arena)
+             case ("call")

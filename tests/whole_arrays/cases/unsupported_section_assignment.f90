@@ -1,0 +1,7 @@
+program probe
+implicit none
+integer :: a(3)
+a=1
+a(2:3)=a(1:2)
+print *,a
+end program probe

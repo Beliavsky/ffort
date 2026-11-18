@@ -1,0 +1,173 @@
+{
+  "cases": [
+    {
+      "name": "lifecycle_all_ranks",
+      "source": "cases/lifecycle_all_ranks.f90",
+      "expected_stdout": "F F F 3 -2 4 -1 6 7 9 T T T F F F F T T T T T F T 6 7 F 0 F T",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": ""
+    },
+    {
+      "name": "capacity_atomic",
+      "source": "cases/capacity_atomic.f90",
+      "expected_stdout": "T F 131072 T 0 2 7 F F",
+      "category": "success",
+      "baseline": "skip",
+      "diagnostic": "",
+      "reason": "Synthetic 1,000,000-element policy: retain 131,072 logical elements, reject an additional 1,000,000-element block, then recover with two elements. The 131072 output is the retained object size, not the cap."
+    },
+    {
+      "name": "zero_extents",
+      "source": "cases/zero_extents.f90",
+      "expected_stdout": "T T T T 0 0 0 0 2 2 0 -1 4 1 0",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": ""
+    },
+    {
+      "name": "boolean_assignment",
+      "source": "cases/boolean_assignment.f90",
+      "expected_stdout": "T F T F F T F F F T T T T F T T T T T T T F F F F F",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": ""
+    },
+    {
+      "name": "reallocation_bounds_sections",
+      "source": "cases/reallocation_bounds_sections.f90",
+      "expected_stdout": "-1 4 7 T T T T T F T T 1 2 3 3 -1 9 F F F F F F",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": ""
+    },
+    {
+      "name": "module_lifetime",
+      "source": "cases/module_lifetime.f90",
+      "expected_stdout": "F 7 T T T F F",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": ""
+    },
+    {
+      "name": "descriptor_dummies",
+      "source": "cases/descriptor_dummies.f90",
+      "expected_stdout": "T -1 7 T T T T F T 3 -2 T T",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": ""
+    },
+    {
+      "name": "optional_descriptors",
+      "source": "cases/optional_descriptors.f90",
+      "expected_stdout": "F T F T T T T",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": ""
+    },
+    {
+      "name": "function_results",
+      "source": "cases/function_results.f90",
+      "expected_stdout": "T F F F T T T T 1 T 0 2 1 0",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": ""
+    },
+    {
+      "name": "undefined_element",
+      "source": "cases/undefined_element.f90",
+      "expected_stdout": "",
+      "category": "runtime",
+      "baseline": "skip",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "undefined_copyout",
+      "source": "cases/undefined_copyout.f90",
+      "expected_stdout": "",
+      "category": "runtime",
+      "baseline": "skip",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "unallocated_read",
+      "source": "cases/unallocated_read.f90",
+      "expected_stdout": "",
+      "category": "runtime",
+      "baseline": "skip",
+      "diagnostic": "unallocated"
+    },
+    {
+      "name": "reject_type_assignment",
+      "source": "cases/reject_type_assignment.f90",
+      "expected_stdout": "",
+      "category": "invalid",
+      "baseline": "reject",
+      "diagnostic": "Incompatible assignment types"
+    },
+    {
+      "name": "reject_rank_four",
+      "source": "cases/reject_rank_four.f90",
+      "expected_stdout": "",
+      "category": "invalid",
+      "baseline": "skip",
+      "diagnostic": "Only rank-one, rank-two and rank-three ALLOCATABLE arrays are supported"
+    },
+    {
+      "name": "reject_dummy_type",
+      "source": "cases/reject_dummy_type.f90",
+      "expected_stdout": "",
+      "category": "invalid",
+      "baseline": "reject",
+      "diagnostic": "Procedure argument type or rank does not match its dummy declaration"
+    },
+    {
+      "name": "reject_dummy_rank",
+      "source": "cases/reject_dummy_rank.f90",
+      "expected_stdout": "",
+      "category": "invalid",
+      "baseline": "reject",
+      "diagnostic": "Procedure argument type or rank does not match its dummy declaration"
+    },
+    {
+      "name": "reject_input_allocation",
+      "source": "cases/reject_input_allocation.f90",
+      "expected_stdout": "",
+      "category": "invalid",
+      "baseline": "reject",
+      "diagnostic": "Allocation requires a writable ALLOCATABLE array"
+    },
+    {
+      "name": "reject_fixed_actual",
+      "source": "cases/reject_fixed_actual.f90",
+      "expected_stdout": "",
+      "category": "invalid",
+      "baseline": "reject",
+      "diagnostic": "ALLOCATABLE dummy requires an ALLOCATABLE actual"
+    },
+    {
+      "name": "runtime_third_bounds",
+      "source": "cases/runtime_third_bounds.f90",
+      "expected_stdout": "",
+      "category": "runtime",
+      "baseline": "runtime",
+      "diagnostic": "bound"
+    },
+    {
+      "name": "original_set_alloc_logical",
+      "source": "cases/original_set_alloc_logical.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T F T F T T F T T T F 3 2 2 2 1 2 T F T F T T F T T T F T 0 2 1 0",
+      "diagnostic": ""
+    },
+    {
+      "name": "optional_lower_ranks",
+      "source": "cases/optional_lower_ranks.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F F T T F F T T T -1 T T T 3 7 F F F F",
+      "diagnostic": ""
+    }
+  ]
+}

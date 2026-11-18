@@ -1,0 +1,787 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:35:59.791287+00:00",
+  "summary": {
+    "total": 26,
+    "failed": 0,
+    "candidate_checked": 26,
+    "gnu_checked": 19,
+    "gnu_skipped": 7,
+    "gnu_executed": 19,
+    "gnu_compile_only": 0,
+    "gnu_compile_rejections": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "first_assignment",
+        "source": "first_assignment.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T 3 1 3 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T           3           1           3           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T 3 1 3 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "preserve_and_resize_bounds",
+        "source": "preserve_and_resize_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-2 0 1 2 3 1 2 4 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          -2           0           1           2           3\n           1           2           4           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -2 0 1 2 3\n 1 2 4 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "copy_whole_bounds",
+        "source": "copy_whole_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-3 -1 1 2 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          -3          -1           1           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -3 -1 1 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "copy_fixed_bounds",
+        "source": "copy_fixed_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-3 -1 1 2 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          -3          -1           1           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -3 -1 1 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parenthesized_bounds",
+        "source": "parenthesized_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 3 1 2 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           3           1           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 3 1 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "section_bounds",
+        "source": "section_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 2 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "self_growth",
+        "source": "self_growth.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 1 2 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           1           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 1 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "self_section",
+        "source": "self_section.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_assignment",
+        "source": "empty_assignment.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T 0 1 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T           0           1           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T 0 1 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_reshape",
+        "source": "rank_two_reshape.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-2 -1 5 7 1 2 3 4 5 6 1 3 1 2 1 2 3 4 5 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          -2          -1           5           7           1           2           3           4           5           6\n           1           3           1           2           1           2           3           4           5           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -2 -1 5 7 1 2 3 4 5 6\n 1 3 1 2 1 2 3 4 5 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "numeric_conversion",
+        "source": "numeric_conversion.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 4 1 2 3 1 2 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           4   1.0000000000000000        2.0000000000000000        3.0000000000000000                1           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 4 1.0000000000000000 2.0000000000000000 3.0000000000000000 1 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_expansion",
+        "source": "scalar_expansion.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-2 0 2 2 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          -2           0   2.0000000000000000        2.0000000000000000        2.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -2 0 2.0000000000000000 2.0000000000000000 2.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "allocated_result",
+        "source": "allocated_result.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 3 7 7 7 T 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           3           7           7           7\n T           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 3 7 7 7\n T 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "result_from_assignment",
+        "source": "result_from_assignment.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 3 1 2 3 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           3           1           2           3\n           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 3 1 2 3\n 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_result",
+        "source": "rank_two_result.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2 1 1 1 2 3 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           1           1           1           2           3           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2 1 1 1 2 3 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_scalar_expansion",
+        "source": "unallocated_scalar_expansion.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_assignment/unallocated_scalar_expansion.f90:4:1: reference to unallocated array a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_section_assignment",
+        "source": "unallocated_section_assignment.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_assignment/unallocated_section_assignment.f90:4:3: reference to unallocated array a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_result",
+        "source": "unallocated_result.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_assignment/unallocated_result.f90:0:0: array function RESULT has no storage\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_result",
+        "source": "undefined_result.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_assignment/undefined_result.f90:10:1: array function RESULT has uninitialized elements\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_rhs_reallocation",
+        "source": "undefined_rhs_reallocation.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_assignment/undefined_rhs_reallocation.f90:7:3: read of uninitialized array element b\n"
+      }
+    },
+    {
+      "case": {
+        "name": "section_no_reallocation",
+        "source": "section_no_reallocation.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_assignment/section_no_reallocation.f90:5:1: array assignment shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_bounds",
+        "source": "parameter_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-3 -1 1 2 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          -3          -1           1           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -3 -1 1 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_empty_bounds",
+        "source": "rank_two_empty_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T 0 -2 -1 1 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T           0          -2          -1           1           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T 0 -2 -1 1 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "module_assignment",
+        "source": "module_assignment.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 4 1 2 3 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           4           1           2           3           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 4 1 2 3 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "assignment_pool_cap",
+        "source": "assignment_pool_cap.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "total array element limit"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/allocatable_assignment/assignment_pool_cap.f90:7:1: total array element limit exceeded during allocatable assignment\n"
+      }
+    },
+    {
+      "case": {
+        "name": "replacement_discounts_old",
+        "source": "replacement_discounts_old.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 1 2 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           1           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 1 2 3\n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "3d5da488fcd1b8047f97cc5339a6662c6425ac73547ca2b49ee2ce4ee5519788",
+  "source_sha256": {
+    "first_assignment.f90": "bd377fef78774608a0dc0e068c73c2f504d4d5d3ffeb645e61d296f1f1d4034b",
+    "preserve_and_resize_bounds.f90": "f152331556282b2982c7f535b4f23527d096fff8958164962cc8b05e2b475825",
+    "copy_whole_bounds.f90": "886e0c7189fcdf01cb9b835d3ec54355d8615db8ba913306621debbf4b0654af",
+    "copy_fixed_bounds.f90": "7f02d0249739603040b8fd28aa4a0ff2053942919e19552b466425025b2cde3c",
+    "parenthesized_bounds.f90": "edaed1031eddcc058e07b7fb05e7a65c7e668563d0740ac8d2cf01b2719a7ecf",
+    "section_bounds.f90": "38b64265db9b19ede3defa0fad2c59035594499439f188d7d71a84435ed9d123",
+    "self_growth.f90": "b8216fd9b873a440e7d3e83e9960165c05b34be649e329697137f2cded8b9269",
+    "self_section.f90": "eb538916151b76b5820be89437fe7ba0f6df98d531402d396f626b57b17162fd",
+    "empty_assignment.f90": "7cddbf1f3aa6043952e2e19cfcae8e21ad9c6fc69023e1a44cbd8e72282f9730",
+    "rank_two_reshape.f90": "2d6753993e86d5a185e0b05a51d8809c85f0194174ec56790cb8aa781773ca35",
+    "numeric_conversion.f90": "bcfba0d39a0335e0fa3d5da6ed6c7fae8d70fca68e14100678d673eca69a803f",
+    "scalar_expansion.f90": "e821068992ec2ce572eee6dce1619cd61f2a70e0b3e8921b12588d2ad3aedd31",
+    "allocated_result.f90": "cbebb8ec1d5ff0a04b34ca02de13160e417495fef0579acae44fe481c045c919",
+    "result_from_assignment.f90": "333bc8c15cc32ca90d6e8db7b8fd9ea03a1cf8ba184514297895e478636c29a9",
+    "rank_two_result.f90": "a2b8b01b021eadcaee9106dd821f7665cca1a2e2b152ce73c6bf075cd67da362",
+    "unallocated_scalar_expansion.f90": "4f53482cf5b57d9833f21cb8f3b29b2ba029d2d18c0219931f5f41051af2fe2f",
+    "unallocated_section_assignment.f90": "803f9e797362877f7381064ef713de1575eeb08c4451f15980b89f80f987f018",
+    "unallocated_result.f90": "931c1d6a19a54cc032b724a623d44a80bd600885353a36dc3fadac56ed82196e",
+    "undefined_result.f90": "150c8808dcc52c55378477454c62f0641777c6a78e017c2e95cc91a971fc1061",
+    "undefined_rhs_reallocation.f90": "64480626b2dffbc81f89aaa3332e40510d532ec4c282edc31aa78738dd24995e",
+    "section_no_reallocation.f90": "b963b25462e45df65c437aa620790e454b71eb719dfa11dfa9d051e95ca929b4",
+    "parameter_bounds.f90": "d000efca3c5b43d455cdb0e818445858a234f1bedf71c7a9acc88f8464a049e5",
+    "rank_two_empty_bounds.f90": "39b9c3742bb66bea262a113f8c1bd981a958b9d92cabdd95455634145679b15a",
+    "module_assignment.f90": "1a1f8d2e184c58143a60d180222eb3d439ff46faec529969f122898840df7c9f",
+    "assignment_pool_cap.f90": "49a57ff52db4355d1a42f96d18434ea8268250f4cbdd842367564ec74a795fab",
+    "replacement_discounts_old.f90": "3ee26595f50d497ae647b7998f99a5a6cffb041d830d9b1b7c0ffe299c1bc03e"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

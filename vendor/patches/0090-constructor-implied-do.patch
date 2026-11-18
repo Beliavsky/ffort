@@ -1,0 +1,1350 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -4,6 +4,8 @@
+         LITERAL_STRING, LITERAL_LOGICAL
+     use ast_nodes_core, only: literal_node, identifier_node, binary_op_node, &
+         call_or_subscript_node, component_access_node, assignment_node, array_literal_node
++    use ast_nodes_loops, only: do_loop_node
++    use semantic_implied_do_validation, only: is_array_constructor_implied_do
+     use ast_nodes_bounds, only: array_slice_node, range_expression_node, array_bounds_node
+     use ast_nodes_data, only: declaration_node, parameter_declaration_node, &
+         derived_type_node, module_node
+@@ -141,6 +143,12 @@
+             call resolve_literal(arena, node_index, node)
+             type is (array_literal_node)
+             call resolve_array_literal(arena, node_index, node, visiting)
++            type is (do_loop_node)
++            if (is_array_constructor_implied_do(arena, node_index)) then
++                call resolve_constructor_loop(arena, node, visiting)
++            else
++                call resolve_from_inferred_type(node)
++            end if
+             type is (complex_literal_node)
+             call resolve_complex_literal(arena, node, visiting)
+             type is (declaration_node)
+@@ -230,6 +238,36 @@
+         end do
+         call set_intrinsic_metadata(node, element_type, element_kind, 1)
+     end subroutine resolve_array_literal
++
++    recursive subroutine resolve_constructor_loop(arena, node, visiting)
++        type(ast_arena_t), intent(inout) :: arena
++        type(do_loop_node), intent(inout) :: node
++        logical, intent(inout) :: visiting(:)
++        integer :: i, child, element_type, element_kind
++
++        ! The executable-DO inference marker cannot supply constructor kind.
++        ! Resolve every ordered body value, including nested implied-DOs and
++        ! array-valued leaves, and retain its exact element type and kind.
++        call clear_resolved_metadata(node)
++        if (.not. allocated(node%body_indices)) return
++        if (size(node%body_indices) == 0) return
++        element_type = 0
++        element_kind = 0
++        do i = 1, size(node%body_indices)
++            child = node%body_indices(i)
++            if (.not. arena%has_node_at(child)) return
++            call resolve_node_metadata(arena, child, visiting)
++            if (.not. arena%entries(child)%node%resolved_type_found) return
++            if (i == 1) then
++                element_type = arena%entries(child)%node%resolved_type_kind
++                element_kind = arena%entries(child)%node%resolved_kind_value
++            else
++                if (element_type /= arena%entries(child)%node%resolved_type_kind .or. &
++                    element_kind /= arena%entries(child)%node%resolved_kind_value) return
++            end if
++        end do
++        call set_intrinsic_metadata(node, element_type, element_kind, 1)
++    end subroutine resolve_constructor_loop
+ 
+     subroutine resolve_literal(arena, node_index, node)
+         type(ast_arena_t), intent(in) :: arena
+--- a/src/parser/expressions/parser_expression_arrays.f90
++++ b/src/parser/expressions/parser_expression_arrays.f90
+@@ -39,402 +39,166 @@
+ 
+ contains
+ 
+-    function parse_simple_array_elements(parser, arena, terminator, style, &
+-            start_token, helpers, type_spec) &
++    recursive function parse_legacy_array_literal(parser, arena, helpers) &
+             result(expr_index)
+         type(parser_state_t), intent(inout) :: parser
+         type(ast_arena_t), intent(inout) :: arena
+-        character(len=*), intent(in) :: terminator
+-        character(len=*), intent(in) :: style
++        type(array_parse_helpers_t), intent(in) :: helpers
++        integer :: expr_index
++        type(token_t) :: start_token, token
++
++        start_token = parser%consume()
++        token = parser%consume() ! Opening slash, checked by the caller.
++        expr_index = parse_constructor_items(parser, arena, helpers, &
++            start_token, "legacy", "/")
++        if (expr_index <= 0) return
++        token = parser%peek()
++        if (.not. is_array_operator(token, ")")) then
++            call parser%error_at_token("Expected ')' after array constructor '/'", token)
++            expr_index = 0
++            return
++        end if
++        token = parser%consume()
++    end function parse_legacy_array_literal
++
++    recursive function parse_modern_array_literal(parser, arena, start_token, &
++            helpers) result(expr_index)
++        type(parser_state_t), intent(inout) :: parser
++        type(ast_arena_t), intent(inout) :: arena
+         type(token_t), intent(in) :: start_token
+         type(array_parse_helpers_t), intent(in) :: helpers
+-        character(len=*), intent(in), optional :: type_spec
+         integer :: expr_index
+-        integer, allocatable :: temp_indices(:)
+-        integer, allocatable :: element_indices(:)
+-        integer :: element_count
+-        type(token_t) :: current
+-        integer :: value_index
+-
+-        if (.not. associated(helpers%parse_comparison) .or. &
+-            .not. associated(helpers%parse_unary)) then
+-            expr_index = 0
+-            return
+-        end if
+-
+-        element_count = 0
+-        allocate (temp_indices(20))
+-
+-        do while (element_count < 100000)
+-            element_count = element_count + 1
+-            if (element_count > size(temp_indices)) then
+-                block
+-                    integer, allocatable :: new_indices(:)
+-                    allocate (new_indices(size(temp_indices) + 20))
+-                    new_indices(1:size(temp_indices)) = temp_indices
+-                    call move_alloc(new_indices, temp_indices)
+-                end block
+-            end if
+-
+-            ! Use parse_comparison for both modern and legacy styles to support
+-            ! binary expressions like 2.0*x in array constructors
+-            value_index = helpers%parse_comparison(parser, arena)
+-
+-            if (value_index <= 0) then
+-                expr_index = 0
+-                return
+-            end if
+-            temp_indices(element_count) = value_index
+-
+-            current = parser%peek()
+-            if (current%text == ",") then
+-                current = parser%consume()
+-            else if (current%text == terminator) then
+-                current = parser%consume()
+-                exit
+-            else
+-                expr_index = 0
+-                return
+-            end if
+-        end do
+-
+-        allocate (element_indices(element_count))
+-        element_indices = temp_indices(1:element_count)
+-        if (present(type_spec)) then
+-            expr_index = push_array_literal(arena, element_indices, &
+-                start_token%line, start_token%column, &
+-                syntax_style=style, &
++
++        expr_index = parse_constructor_items(parser, arena, helpers, &
++            start_token, "modern", "]")
++    end function parse_modern_array_literal
++
++    ! Both spellings use exactly the same ac-value list grammar. An implied-DO
++    ! is one list item, not an alternate parser for the entire constructor.
++    recursive function parse_constructor_items(parser, arena, helpers, &
++            start_token, style, terminator) result(expr_index)
++        type(parser_state_t), intent(inout) :: parser
++        type(ast_arena_t), intent(inout) :: arena
++        type(array_parse_helpers_t), intent(in) :: helpers
++        type(token_t), intent(in) :: start_token
++        character(len=*), intent(in) :: style, terminator
++        integer :: expr_index, item_index, count
++        integer, allocatable :: items(:)
++        character(len=:), allocatable :: type_spec
++        type(token_t) :: token
++
++        expr_index = 0
++        if (.not. associated(helpers%parse_comparison)) return
++        call skip_constructor_trivia(parser)
++        call parse_constructor_type_spec(parser, type_spec)
++        call skip_constructor_trivia(parser)
++        allocate (items(20))
++        count = 0
++        token = parser%peek()
++        if (is_array_operator(token, terminator)) then
++            token = parser%consume()
++        else
++            do
++                item_index = parse_constructor_item(parser, arena, helpers)
++                if (item_index <= 0) return
++                call append_constructor_item(items, count, item_index)
++                call skip_constructor_trivia(parser)
++                token = parser%peek()
++                if (is_array_operator(token, terminator)) then
++                    token = parser%consume()
++                    exit
++                end if
++                if (.not. is_array_operator(token, ",")) then
++                    call parser%error_at_token("Expected ',' or array constructor end", token)
++                    return
++                end if
++                token = parser%consume()
++                call skip_constructor_trivia(parser)
++                token = parser%peek()
++                if (is_array_operator(token, terminator) .or. parser%is_at_end()) then
++                    call parser%error_at_token("Expected array constructor item after ','", token)
++                    return
++                end if
++                if (count >= 100000) then
++                    call parser%error("Too many array constructor items")
++                    return
++                end if
++            end do
++        end if
++        if (len(type_spec) > 0) then
++            expr_index = push_array_literal(arena, items(:count), &
++                start_token%line, start_token%column, syntax_style=style, &
+                 type_spec=type_spec)
+         else
+-            expr_index = push_array_literal(arena, element_indices, &
+-                start_token%line, start_token%column, &
+-                syntax_style=style)
+-        end if
+-    end function parse_simple_array_elements
+-
+-    function parse_legacy_array_literal(parser, arena, helpers) result(expr_index)
+-        type(parser_state_t), intent(inout) :: parser
+-        type(ast_arena_t), intent(inout) :: arena
+-        type(array_parse_helpers_t), intent(in) :: helpers
+-        integer :: expr_index
+-
+-        expr_index = 0
+-        if (.not. associated(helpers%parse_comparison) .or. &
+-            .not. associated(helpers%parse_unary)) return
+-
+-        block
+-            type(token_t) :: paren_token
+-            type(token_t) :: current
+-            integer, allocatable :: element_indices(:)
+-            integer :: saved_pos
+-            character(len=:), allocatable :: type_spec_text
+-            logical :: has_type_spec
+-
+-            paren_token = parser%consume()
+-            current = parser%consume()
+-            current = parser%peek()
+-            type_spec_text = ""
+-            has_type_spec = .false.
+-
+-            if (current%text == "/") then
+-                current = parser%consume()
+-                current = parser%peek()
+-                if (current%text == ")") then
+-                    current = parser%consume()
+-                    allocate (element_indices(0))
+-                    expr_index = push_array_literal(arena, element_indices, &
+-                        paren_token%line, &
+-                        paren_token%column, &
+-                        syntax_style="legacy")
+-                end if
+-                return
+-            end if
+-
+-            ! Check for type specification: (/ type-spec :: elements /)
+-            ! e.g., (/ real :: 1, 2, 3 /) or (/ integer(kind=4) :: 1, 2 /)
+-            if (current%kind == TK_IDENTIFIER .or. current%kind == TK_KEYWORD) then
+-                saved_pos = parser%current_token
+-                block
+-                    type(token_t) :: spec_token
+-                    integer :: paren_depth
+-
+-                    spec_token = parser%consume()
+-                    type_spec_text = spec_token%text
+-                    current = parser%peek()
+-
+-                    if (current%text == "(") then
+-                        spec_token = parser%consume()
+-                        type_spec_text = trim(type_spec_text) // spec_token%text
+-                        paren_depth = 1
+-                        do while (paren_depth > 0)
+-                            current = parser%peek()
+-                            if (current%text == "(") then
+-                                paren_depth = paren_depth + 1
+-                            else if (current%text == ")") then
+-                                paren_depth = paren_depth - 1
+-                            end if
+-                            spec_token = parser%consume()
+-                            type_spec_text = type_spec_text // spec_token%text
+-                        end do
+-                        current = parser%peek()
+-                    end if
+-
+-                    if (current%text == "::") then
+-                        spec_token = parser%consume()
+-                        has_type_spec = .true.
+-                        type_spec_text = trim(adjustl(type_spec_text))
+-                        current = parser%peek()
+-                    else
+-                        parser%current_token = saved_pos
+-                        type_spec_text = ""
+-                        has_type_spec = .false.
+-                        current = parser%peek()
+-                    end if
+-                end block
+-            end if
+-
+-            ! A type-spec permits an empty legacy constructor as well as [].
+-            ! Preserve its element type and consume the complete closing /).
+-            if (has_type_spec .and. current%text == "/") then
+-                current = parser%consume()
+-                current = parser%peek()
+-                if (current%text /= ")") return
+-                current = parser%consume()
+-                allocate (element_indices(0))
+-                expr_index = push_array_literal(arena, element_indices, &
+-                    paren_token%line, paren_token%column, &
+-                    syntax_style="legacy", type_spec=type_spec_text)
+-                return
+-            end if
+-
+-            if (current%text == "(" .and. .not. is_legacy_array_item(parser)) then
+-                if (is_malformed_parenthesized_item(parser)) then
+-                    expr_index = 0
+-                    return
+-                end if
+-                saved_pos = parser%current_token
+-                if (has_type_spec) then
+-                    expr_index = parse_legacy_implied_do_constructor(parser, arena, &
+-                        paren_token, &
+-                        helpers, &
+-                        type_spec_text)
+-                else
+-                    expr_index = parse_legacy_implied_do_constructor(parser, arena, &
+-                        paren_token, &
+-                        helpers)
+-                end if
+-                if (expr_index > 0) return
+-                parser%current_token = saved_pos
+-                expr_index = 0
+-            end if
+-
+-            if (has_type_spec) then
+-                expr_index = parse_simple_array_elements(parser, arena, "/", &
+-                    "legacy", paren_token, &
+-                    helpers, type_spec_text)
+-            else
+-                expr_index = parse_simple_array_elements(parser, arena, "/", &
+-                    "legacy", paren_token, &
+-                    helpers)
+-            end if
+-            if (expr_index <= 0) return
+-
+-            current = parser%peek()
+-            if (current%text /= ")") then
+-                expr_index = 0
+-                return
+-            end if
+-            current = parser%consume()
+-        end block
+-    end function parse_legacy_array_literal
+-
+-    recursive function parse_modern_array_literal(parser, arena, start_token, &
+-            helpers) result(expr_index)
+-        type(parser_state_t), intent(inout) :: parser
+-        type(ast_arena_t), intent(inout) :: arena
+-        type(token_t), intent(in) :: start_token
+-        type(array_parse_helpers_t), intent(in) :: helpers
+-        integer :: expr_index
+-        integer, allocatable :: temp_indices(:)
+-        integer, allocatable :: element_indices(:)
+-        integer :: element_count
+-        type(token_t) :: current
+-        type(token_t) :: peek_token
+-        integer :: saved_pos
+-        type(token_t) :: spec_token
+-        integer :: paren_depth
+-        character(len=:), allocatable :: type_spec_text
+-        logical :: has_type_spec
+-
+-        expr_index = 0
+-        if (.not. associated(helpers%parse_comparison) .or. &
+-            .not. associated(helpers%parse_unary)) return
+-
+-        element_count = 0
+-        allocate (temp_indices(20))
+-        type_spec_text = ""
+-        has_type_spec = .false.
+-
++            expr_index = push_array_literal(arena, items(:count), &
++                start_token%line, start_token%column, syntax_style=style)
++        end if
++    end function parse_constructor_items
++
++    ! Look ahead for a type-spec without constructing expression nodes. This
++    ! also bounds malformed, unterminated type parameter lists at end of input.
++    subroutine parse_constructor_type_spec(parser, type_spec)
++        type(parser_state_t), intent(inout) :: parser
++        character(len=:), allocatable, intent(out) :: type_spec
++        type(token_t) :: token
++        integer :: pos, depth, end_pos, i
++
++        type_spec = ""
++        token = parser%peek()
++        if (token%kind /= TK_IDENTIFIER .and. token%kind /= TK_KEYWORD) return
++        pos = parser%current_token + 1
++        depth = 0
++        end_pos = 0
++        do while (pos <= parser%get_token_count())
++            token = parser%get_token_at_index(pos)
++            if (is_array_operator(token, "(")) then
++                depth = depth + 1
++            else if (is_array_operator(token, ")")) then
++                if (depth == 0) return
++                depth = depth - 1
++            else if (depth == 0) then
++                if (is_array_operator(token, "::")) end_pos = pos
++                exit
++            end if
++            pos = pos + 1
++        end do
++        if (end_pos == 0) return
++        do i = parser%current_token, end_pos - 1
++            token = parser%get_token_at_index(i)
++            type_spec = type_spec // token%text
++        end do
++        parser%current_token = end_pos + 1
++    end subroutine parse_constructor_type_spec
++
++    subroutine skip_constructor_trivia(parser)
++        type(parser_state_t), intent(inout) :: parser
++        type(token_t) :: token
+         do
+-            peek_token = parser%peek()
+-            if (peek_token%kind /= TK_NEWLINE .and. peek_token%kind /= &
+-                TK_COMMENT) exit
+-            current = parser%consume()
+-        end do
+-
+-        peek_token = parser%peek()
+-        if (peek_token%kind == TK_IDENTIFIER .or. &
+-            peek_token%kind == TK_KEYWORD) then
+-            saved_pos = parser%current_token
+-            spec_token = parser%consume()
+-            type_spec_text = spec_token%text
+-            peek_token = parser%peek()
+-
+-            if (peek_token%text == "(") then
+-                spec_token = parser%consume()
+-                type_spec_text = trim(type_spec_text) // spec_token%text
+-                paren_depth = 1
+-                block
+-                    integer :: paren_count
+-                    integer, parameter :: MAX_PAREN_DEPTH = 1000
+-                    paren_count = 0
+-                    do while (paren_depth > 0 .and. paren_count < MAX_PAREN_DEPTH)
+-                        paren_count = paren_count + 1
+-                        peek_token = parser%peek()
+-                        if (peek_token%text == "(") then
+-                            paren_depth = paren_depth + 1
+-                        else if (peek_token%text == ")") then
+-                            paren_depth = paren_depth - 1
+-                        end if
+-                        spec_token = parser%consume()
+-                        type_spec_text = type_spec_text // spec_token%text
+-                    end do
+-                end block
+-                peek_token = parser%peek()
+-            end if
+-
+-            if (peek_token%text == "::") then
+-                current = parser%consume()
+-                has_type_spec = .true.
+-                type_spec_text = trim(adjustl(type_spec_text))
+-                do
+-                    peek_token = parser%peek()
+-                    if (peek_token%kind /= TK_NEWLINE .and. &
+-                        peek_token%kind /= TK_COMMENT) exit
+-                    current = parser%consume()
+-                end do
+-            else
+-                parser%current_token = saved_pos
+-                type_spec_text = ""
+-                has_type_spec = .false.
+-            end if
+-        end if
+-
+-        do while (element_count < 100000)
+-            ! Skip newlines and comments inside array literals
+-            do
+-                peek_token = parser%peek()
+-                if (peek_token%kind /= TK_NEWLINE .and. peek_token%kind /= &
+-                    TK_COMMENT) &
+-                    exit
+-                current = parser%consume()
+-            end do
+-
+-            peek_token = parser%peek()
+-            if (peek_token%text == "]") then
+-                current = parser%consume() ! Consume the closing bracket
+-                exit
+-            else if (peek_token%text == "(" .and. .not. is_legacy_array_item(parser)) then
+-                if (is_malformed_parenthesized_item(parser)) then
+-                    expr_index = 0
+-                    return
+-                end if
+-                saved_pos = parser%current_token
+-                if (has_type_spec) then
+-                    expr_index = parse_implied_do_constructor(parser, arena, &
+-                        start_token, &
+-                        helpers, &
+-                        type_spec_text)
+-                else
+-                    expr_index = parse_implied_do_constructor(parser, arena, &
+-                        start_token, &
+-                        helpers)
+-                end if
+-                if (expr_index > 0) return
+-                parser%current_token = saved_pos
+-                expr_index = 0
+-            else if (peek_token%text == "[") then
+-                current = parser%consume()
+-                expr_index = parse_modern_array_literal(parser, arena, &
+-                    current, helpers)
+-                if (expr_index <= 0) return
+-            end if
+-
+-            if (expr_index <= 0) then
+-                expr_index = helpers%parse_comparison(parser, arena)
+-                if (expr_index <= 0) return
+-            end if
+-
+-            element_count = element_count + 1
+-            if (element_count > size(temp_indices)) then
+-                block
+-                    integer, allocatable :: new_indices(:)
+-                    allocate (new_indices(size(temp_indices) + 20))
+-                    new_indices(1:size(temp_indices)) = temp_indices
+-                    call move_alloc(new_indices, temp_indices)
+-                end block
+-            end if
+-            temp_indices(element_count) = expr_index
+-
+-            if (has_type_spec) then
+-                expr_index = try_parse_implied_do_loop(parser, arena, &
+-                    temp_indices, &
+-                    element_count, &
+-                    start_token, &
+-                    type_spec_text)
+-            else
+-                expr_index = try_parse_implied_do_loop(parser, arena, &
+-                    temp_indices, &
+-                    element_count, &
+-                    start_token)
+-            end if
+-            if (expr_index > 0) exit
+-
+-            current = parser%peek()
+-            if (current%text == ",") then
+-                current = parser%consume()
+-                ! Skip newlines and comments after comma
+-                do
+-                    peek_token = parser%peek()
+-                    if (peek_token%kind /= TK_NEWLINE .and. &
+-                        peek_token%kind /= TK_COMMENT) exit
+-                    current = parser%consume()
+-                end do
+-            else if (current%text == "]") then
+-                current = parser%consume() ! Consume the closing bracket
+-                exit
+-            else
+-                expr_index = 0
+-                return
+-            end if
+-        end do
+-
+-        if (expr_index > 0) return
+-        allocate (element_indices(element_count))
+-        element_indices = temp_indices(1:element_count)
+-        if (has_type_spec) then
+-            expr_index = push_array_literal(arena, element_indices, &
+-                start_token%line, &
+-                start_token%column, &
+-                syntax_style="modern", &
+-                type_spec=type_spec_text)
+-        else
+-            expr_index = push_array_literal(arena, element_indices, &
+-                start_token%line, &
+-                start_token%column, &
+-                syntax_style="modern")
+-        end if
+-    end function parse_modern_array_literal
++            token = parser%peek()
++            if (token%kind /= TK_NEWLINE .and. token%kind /= TK_COMMENT) return
++            token = parser%consume()
++        end do
++    end subroutine skip_constructor_trivia
++
++    pure logical function is_array_operator(token, text) result(matches)
++        type(token_t), intent(in) :: token
++        character(len=*), intent(in) :: text
++        matches = token%kind == TK_OPERATOR .and. token%text == text
++    end function is_array_operator
++
++    subroutine append_constructor_item(items, count, item)
++        integer, allocatable, intent(inout) :: items(:)
++        integer, intent(inout) :: count
++        integer, intent(in) :: item
++        integer, allocatable :: grown(:)
++        if (count == size(items)) then
++            allocate (grown(max(20, 2 * size(items))))
++            grown(:count) = items
++            call move_alloc(grown, items)
++        end if
++        count = count + 1
++        items(count) = item
++    end subroutine append_constructor_item
+ 
+     ! Do not speculatively parse the opening slash of a nested legacy array
+     ! constructor as an implied-do expression. A failed speculative parse can
+@@ -505,367 +269,137 @@
+             "with a do-variable", open_paren)
+     end function is_malformed_parenthesized_item
+ 
+-    recursive function parse_nested_implied_do(parser, arena, helpers) &
++    recursive function parse_constructor_item(parser, arena, helpers) &
+             result(expr_index)
+         type(parser_state_t), intent(inout) :: parser
+         type(ast_arena_t), intent(inout) :: arena
+         type(array_parse_helpers_t), intent(in) :: helpers
+         integer :: expr_index
+-        type(token_t) :: current
+-        type(token_t) :: peek_token
+-        type(token_t) :: lookahead_token
+-        integer :: expr_elem_index
++        type(token_t) :: token
++
++        expr_index = 0
++        call skip_constructor_trivia(parser)
++        token = parser%peek()
++        if (is_array_operator(token, "(")) then
++            if (.not. is_legacy_array_item(parser)) then
++                if (is_malformed_parenthesized_item(parser)) return
++                if (is_constructor_implied_do(parser)) then
++                    expr_index = parse_constructor_implied_do(parser, arena, helpers)
++                    return
++                end if
++            end if
++        end if
++        expr_index = helpers%parse_comparison(parser, arena)
++        if (expr_index <= 0) call parser%error("Expected array constructor expression")
++    end function parse_constructor_item
++
++    ! A top-level '=' distinguishes ac-implied-do from a grouped expression
++    ! or complex literal. Nested keyword arguments and quoted punctuation do
++    ! not participate. Classify before parsing, so failure leaves no orphan
++    ! speculative expression tree and malformed iterators cannot fall back.
++    logical function is_constructor_implied_do(parser) result(implied)
++        type(parser_state_t), intent(in) :: parser
++        type(token_t) :: token
++        integer :: pos, depth
++        implied = .false.
++        depth = 1
++        do pos = parser%current_token + 1, parser%get_token_count()
++            token = parser%get_token_at_index(pos)
++            if (token%kind /= TK_OPERATOR) cycle
++            select case (token%text)
++            case ("(", "[")
++                depth = depth + 1
++            case (")", "]")
++                depth = depth - 1
++                if (depth == 0) return
++            case ("=")
++                if (depth == 1) then
++                    implied = .true.
++                    return
++                end if
++            end select
++        end do
++    end function is_constructor_implied_do
++
++    recursive function parse_constructor_implied_do(parser, arena, helpers) &
++            result(expr_index)
++        type(parser_state_t), intent(inout) :: parser
++        type(ast_arena_t), intent(inout) :: arena
++        type(array_parse_helpers_t), intent(in) :: helpers
++        integer :: expr_index, body_index, count, start_index, end_index, step_index
++        integer, allocatable :: body(:)
+         character(len=:), allocatable :: var_name
+-        integer :: start_index, end_index, step_index
+-        integer, allocatable :: body_indices(:)
+-        integer :: saved_pos
+-        logical :: is_legacy_array
++        type(token_t) :: open_token, token, next_token
+ 
+         expr_index = 0
+-
+-        current = parser%peek()
+-        if (current%text /= "(") return
+-        current = parser%consume()
+-
+-        saved_pos = parser%current_token
+-        peek_token = parser%peek()
+-        ! Check if this is a nested implied-do or a legacy array constructor.
+-        ! A legacy array starts with (/ so we should NOT try to recurse into it.
+-        is_legacy_array = .false.
+-        if (peek_token%text == "(") then
+-            lookahead_token = parser%get_token_at_index(parser%current_token + 1)
+-            if (lookahead_token%text == "/") then
+-                is_legacy_array = .true.
+-            end if
+-        end if
+-
+-        if (peek_token%text == "(" .and. .not. is_legacy_array) then
+-            expr_elem_index = parse_nested_implied_do(parser, arena, helpers)
+-            if (expr_elem_index <= 0) then
+-                parser%current_token = saved_pos
+-                expr_elem_index = helpers%parse_comparison(parser, arena)
+-            end if
+-        else
+-            expr_elem_index = helpers%parse_comparison(parser, arena)
+-        end if
+-        if (expr_elem_index <= 0) return
+-
+-        current = parser%peek()
+-        if (current%text /= ",") return
+-        current = parser%consume()
+-
+-        current = parser%peek()
+-        if (current%kind /= TK_IDENTIFIER) return
+-        var_name = current%text
+-        current = parser%consume()
+-
+-        current = parser%peek()
+-        if (current%text /= "=") return
+-        current = parser%consume()
+-
+-        start_index = helpers%parse_comparison(parser, arena)
+-        if (start_index <= 0) return
+-
+-        current = parser%peek()
+-        if (current%text /= ",") return
+-        current = parser%consume()
+-
+-        end_index = helpers%parse_comparison(parser, arena)
+-        if (end_index <= 0) return
+-
+-        step_index = 0
+-        current = parser%peek()
+-        if (current%text == ",") then
+-            current = parser%consume()
+-            step_index = helpers%parse_comparison(parser, arena)
+-            if (step_index <= 0) return
+-        end if
+-
+-        current = parser%peek()
+-        if (current%text /= ")") return
+-        current = parser%consume()
+-
+-        allocate (body_indices(1))
+-        body_indices(1) = expr_elem_index
+-
+-        expr_index = push_do_loop(arena, var_name, start_index, end_index, &
+-            step_index=step_index, body_indices=body_indices, &
+-            line=0, column=0)
+-    end function parse_nested_implied_do
+-
+-    logical function parse_implied_do_header(parser, arena, expr_elem_index, &
+-            var_name, start_index, end_index, &
+-            step_index, helpers) result(success)
+-        type(parser_state_t), intent(inout) :: parser
+-        type(ast_arena_t), intent(inout) :: arena
+-        integer, intent(out) :: expr_elem_index
+-        character(len=:), allocatable, intent(out) :: var_name
+-        integer, intent(out) :: start_index
+-        integer, intent(out) :: end_index
+-        integer, intent(out) :: step_index
+-        type(array_parse_helpers_t), intent(in) :: helpers
+-        type(token_t) :: current
+-        type(token_t) :: peek_ahead
+-        type(token_t) :: lookahead_token
+-        integer :: saved_pos
+-        logical :: is_legacy_array
+-
+-        success = .false.
+-        if (.not. associated(helpers%parse_comparison)) return
+-
+-        current = parser%consume()
+-
+-        peek_ahead = parser%peek()
+-        ! Check if this is a nested implied-do or a legacy array constructor.
+-        ! A legacy array starts with (/ so we should NOT try to recurse into it.
+-        is_legacy_array = .false.
+-        if (peek_ahead%text == "(") then
+-            lookahead_token = parser%get_token_at_index(parser%current_token + 1)
+-            if (lookahead_token%text == "/") then
+-                is_legacy_array = .true.
+-            end if
+-        end if
+-
+-        if (peek_ahead%text == "(" .and. .not. is_legacy_array) then
+-            saved_pos = parser%current_token
+-            expr_elem_index = parse_nested_implied_do(parser, arena, helpers)
+-            if (expr_elem_index <= 0) then
+-                parser%current_token = saved_pos
+-                expr_elem_index = helpers%parse_comparison(parser, arena)
+-            end if
+-        else
+-            expr_elem_index = helpers%parse_comparison(parser, arena)
+-        end if
+-
+-        current = parser%peek()
+-        if (current%text /= ",") return
+-        current = parser%consume()
+-
+-        current = parser%peek()
+-        if (current%kind /= TK_IDENTIFIER) return
+-        var_name = current%text
+-        current = parser%consume()
+-
+-        current = parser%peek()
+-        if (current%text /= "=") return
+-        current = parser%consume()
+-
+-        ! Past "name =" the construct can only be an implied-DO control
+-        ! (F2023 R777 ac-implied-do-control), so a malformed remainder is a
+-        ! syntax error in the iterator rather than a speculative parse failure.
++        open_token = parser%consume()
++        allocate (body(20))
++        count = 0
++        do
++            body_index = parse_constructor_item(parser, arena, helpers)
++            if (body_index <= 0) return
++            call append_constructor_item(body, count, body_index)
++            call skip_constructor_trivia(parser)
++            token = parser%peek()
++            if (.not. is_array_operator(token, ",")) then
++                call parser%error_at_token("Expected ',' before implied-DO control", token)
++                return
++            end if
++            token = parser%consume()
++            call skip_constructor_trivia(parser)
++            token = parser%peek()
++            next_token = parser%get_token_at_index(parser%current_token + 1)
++            if (token%kind == TK_IDENTIFIER .or. token%kind == TK_KEYWORD) then
++                if (is_array_operator(next_token, "=")) exit
++            end if
++            if (count >= 100000 .or. parser%is_at_end()) then
++                call parser%error("Expected implied-DO control variable")
++                return
++            end if
++        end do
++        var_name = token%text
++        token = parser%consume()
++        token = parser%consume() ! '='
+         start_index = helpers%parse_comparison(parser, arena)
+         if (start_index <= 0) then
+-            call parser%error("Syntax error in iterator: expected an initial "// &
+-                "bound expression")
+-            return
+-        end if
+-
+-        current = parser%peek()
+-        if (current%text /= ",") then
+-            call parser%error_at_token("Syntax error in iterator: expected "// &
+-                "',' after the initial bound", current, &
+-                suggestion="write the iterator as (expr, var = start, end)")
+-            return
+-        end if
+-        current = parser%consume()
+-
++            call parser%error("Syntax error in iterator: expected an initial bound expression")
++            return
++        end if
++        call skip_constructor_trivia(parser)
++        token = parser%peek()
++        if (.not. is_array_operator(token, ",")) then
++            call parser%error_at_token( &
++                "Syntax error in iterator: expected ',' after initial bound", token)
++            return
++        end if
++        token = parser%consume()
+         end_index = helpers%parse_comparison(parser, arena)
+         if (end_index <= 0) then
+-            call parser%error("Syntax error in iterator: expected a terminal "// &
+-                "bound expression")
+-            return
+-        end if
+-
++            call parser%error("Syntax error in iterator: expected a terminal bound expression")
++            return
++        end if
+         step_index = 0
+-        current = parser%peek()
+-        if (current%text == ",") then
+-            current = parser%consume()
++        call skip_constructor_trivia(parser)
++        token = parser%peek()
++        if (is_array_operator(token, ",")) then
++            token = parser%consume()
+             step_index = helpers%parse_comparison(parser, arena)
+             if (step_index <= 0) then
+-                call parser%error("Syntax error in iterator: expected a "// &
+-                    "stride expression")
++                call parser%error("Syntax error in iterator: expected a stride expression")
+                 return
+             end if
+-        end if
+-
+-        success = .true.
+-    end function parse_implied_do_header
+-
+-    logical function consume_implied_do_closers(parser) result(success)
+-        type(parser_state_t), intent(inout) :: parser
+-        type(token_t) :: current
+-
+-        success = .false.
+-        current = parser%peek()
+-        if (current%text /= ")") return
+-        current = parser%consume()
+-
+-        current = parser%peek()
+-        if (current%text /= "]") return
+-        current = parser%consume()
+-
+-        success = .true.
+-    end function consume_implied_do_closers
+-
+-    integer function build_implied_do_node(arena, bracket_token, expr_elem_index, &
+-            var_name, start_index, end_index, &
+-            step_index, type_spec) result(expr_index)
+-        type(ast_arena_t), intent(inout) :: arena
+-        type(token_t), intent(in) :: bracket_token
+-        integer, intent(in) :: expr_elem_index
+-        character(len=*), intent(in) :: var_name
+-        integer, intent(in) :: start_index
+-        integer, intent(in) :: end_index
+-        integer, intent(in) :: step_index
+-        character(len=*), intent(in), optional :: type_spec
+-        integer :: do_index
+-        integer, allocatable :: body_indices(:)
+-        integer, allocatable :: element_indices(:)
+-
+-        allocate (body_indices(1))
+-        body_indices(1) = expr_elem_index
+-
+-        do_index = push_do_loop(arena, var_name, start_index, end_index, &
+-            step_index=step_index, body_indices=body_indices, &
+-            line=bracket_token%line, column=bracket_token%column)
+-
+-        allocate (element_indices(1))
+-        element_indices(1) = do_index
+-        if (present(type_spec)) then
+-            expr_index = push_array_literal(arena, element_indices, &
+-                bracket_token%line, bracket_token%column, &
+-                syntax_style="implied_do", &
+-                type_spec=type_spec)
+-        else
+-            expr_index = push_array_literal(arena, element_indices, &
+-                bracket_token%line, bracket_token%column, &
+-                syntax_style="implied_do")
+-        end if
+-    end function build_implied_do_node
+-
+-    function parse_implied_do_constructor(parser, arena, bracket_token, helpers, &
+-            type_spec) result(expr_index)
+-        type(parser_state_t), intent(inout) :: parser
+-        type(ast_arena_t), intent(inout) :: arena
+-        type(token_t), intent(in) :: bracket_token
+-        type(array_parse_helpers_t), intent(in) :: helpers
+-        character(len=*), intent(in), optional :: type_spec
+-        integer :: expr_index
+-        integer :: expr_elem_index
+-        integer :: start_index
+-        integer :: end_index
+-        integer :: step_index
+-        character(len=:), allocatable :: var_name
+-
+-        expr_index = 0
+-        if (.not. parse_implied_do_header(parser, arena, expr_elem_index, var_name, &
+-            start_index, end_index, step_index, &
+-            helpers)) return
+-        if (.not. consume_implied_do_closers(parser)) return
+-
+-        if (present(type_spec)) then
+-            expr_index = build_implied_do_node(arena, bracket_token, &
+-                expr_elem_index, var_name, &
+-                start_index, end_index, &
+-                step_index, type_spec)
+-        else
+-            expr_index = build_implied_do_node(arena, bracket_token, &
+-                expr_elem_index, var_name, &
+-                start_index, end_index, &
+-                step_index)
+-        end if
+-    end function parse_implied_do_constructor
+-
+-    function parse_legacy_implied_do_constructor(parser, arena, paren_token, &
+-            helpers, type_spec) result(expr_index)
+-        type(parser_state_t), intent(inout) :: parser
+-        type(ast_arena_t), intent(inout) :: arena
+-        type(token_t), intent(in) :: paren_token
+-        type(array_parse_helpers_t), intent(in) :: helpers
+-        character(len=*), intent(in), optional :: type_spec
+-        integer :: expr_index
+-        integer :: expr_elem_index
+-        integer :: start_index
+-        integer :: end_index
+-        integer :: step_index
+-        character(len=:), allocatable :: var_name
+-        type(token_t) :: current
+-
+-        expr_index = 0
+-        if (.not. parse_implied_do_header(parser, arena, expr_elem_index, var_name, &
+-            start_index, end_index, step_index, &
+-            helpers)) return
+-
+-        current = parser%peek()
+-        if (current%text /= ")") return
+-        current = parser%consume()
+-
+-        current = parser%peek()
+-        if (current%text /= "/") return
+-        current = parser%consume()
+-
+-        current = parser%peek()
+-        if (current%text /= ")") return
+-        current = parser%consume()
+-
+-        if (present(type_spec)) then
+-            expr_index = build_implied_do_node(arena, paren_token, &
+-                expr_elem_index, var_name, &
+-                start_index, end_index, &
+-                step_index, type_spec)
+-        else
+-            expr_index = build_implied_do_node(arena, paren_token, &
+-                expr_elem_index, var_name, &
+-                start_index, end_index, &
+-                step_index)
+-        end if
+-    end function parse_legacy_implied_do_constructor
+-
+-    function try_parse_implied_do_loop(parser, arena, temp_indices, element_count, &
+-            bracket_token, type_spec) result(expr_index)
+-        type(parser_state_t), intent(inout) :: parser
+-        type(ast_arena_t), intent(inout) :: arena
+-        integer, intent(in) :: temp_indices(:)
+-        integer, intent(in) :: element_count
+-        type(token_t), intent(in) :: bracket_token
+-        character(len=*), intent(in), optional :: type_spec
+-        integer :: expr_index
+-        type(token_t) :: next1
+-        type(token_t) :: next2
+-        integer :: saved_pos
+-
+-        next1 = parser%peek()
+-        if (next1%kind == TK_IDENTIFIER) then
+-            saved_pos = parser%current_token
+-            next1 = parser%consume()
+-            next2 = parser%peek()
+-
+-            if (next2%kind == TK_OPERATOR .and. next2%text == "=") then
+-                block
+-                    integer, allocatable :: element_indices(:)
+-                    allocate (element_indices(element_count))
+-                    element_indices = temp_indices(1:element_count)
+-                    if (present(type_spec)) then
+-                        expr_index = push_array_literal(arena, element_indices, &
+-                            bracket_token%line, &
+-                            bracket_token%column, &
+-                            syntax_style="modern", &
+-                            type_spec=type_spec)
+-                    else
+-                        expr_index = push_array_literal(arena, element_indices, &
+-                            bracket_token%line, &
+-                            bracket_token%column, &
+-                            syntax_style="modern")
+-                    end if
+-                end block
+-                return
+-            else
+-                parser%current_token = saved_pos
+-            end if
+-        end if
+-
+-        expr_index = 0
+-    end function try_parse_implied_do_loop
++            call skip_constructor_trivia(parser)
++            token = parser%peek()
++        end if
++        if (.not. is_array_operator(token, ")")) then
++            call parser%error_at_token("Syntax error in iterator: expected ')'", token)
++            return
++        end if
++        token = parser%consume()
++        expr_index = push_do_loop(arena, var_name, start_index, end_index, &
++            step_index=step_index, body_indices=body(:count), &
++            line=open_token%line, column=open_token%column)
++    end function parse_constructor_implied_do
+ 
+     recursive function parse_array_indexing_postfix(parser, arena, base_expr, helpers) &
+             result(expr_index)
+--- a/src/semantic/analyzers/semantic_analyzer_infer_impl.f90
++++ b/src/semantic/analyzers/semantic_analyzer_infer_impl.f90
+@@ -24,7 +24,8 @@
+     validate_bind_c_procedure
+ use semantic_elemental_validation, only: validate_elemental_procedure
+ use semantic_abstract_validation, only: validate_abstract_extension
+-use semantic_implied_do_validation, only: validate_implied_do_array
++use semantic_implied_do_validation, only: validate_implied_do_array, &
++    is_array_constructor_implied_do
+ use string_utils_mod, only: int_to_string
+ implicit none
+ 
+--- a/src/semantic/analyzers/semantic_analyzer_infer_type_locals_part1.inc
++++ b/src/semantic/analyzers/semantic_analyzer_infer_type_locals_part1.inc
+@@ -433,8 +433,14 @@
+             end if
+ 
+             call process_do_loop_body(expr, int_scheme, control_type)
+-            if (allocated(expr%var_name)) then
+-                call this%scopes%define(expr%var_name, int_scheme)
++            ! A constructor index has statement scope and inherits no storage
++            ! attributes. Never redefine the surrounding variable's scheme.
++            ! Exact INTEGER kind is resolved from its source declaration by
++            ! frontend_compiler_type_queries, not the broad TINT scheme.
++            if (.not. is_array_constructor_implied_do(arena, current%node_index)) then
++                if (allocated(expr%var_name)) then
++                    call this%scopes%define(expr%var_name, int_scheme)
++                end if
+             end if
+             call this%scopes%enter_block()
+             if (allocated(expr%var_name)) then
+--- a/src/semantic/analyzers/semantic_analyzer_infer_type_locals_part2.inc
++++ b/src/semantic/analyzers/semantic_analyzer_infer_type_locals_part2.inc
+@@ -781,24 +781,11 @@
+             type(mono_type_t) :: node_type
+             type(mono_type_t) :: element_type
+             type(mono_type_t) :: child_type
+-            integer :: parent_index
+             integer :: i
+             logical :: is_implied_do
+ 
+             element_type = create_mono_type(TINT)
+-            is_implied_do = .false.
+-
+-            if (node_index > 0 .and. node_index <= arena%size) then
+-                parent_index = arena%entries(node_index)%parent_index
+-                if (parent_index > 0 .and. parent_index <= arena%size) then
+-                    if (allocated(arena%entries(parent_index)%node)) then
+-                        select type (parent_node => arena%entries(parent_index)%node)
+-                        type is (array_literal_node)
+-                            is_implied_do = .true.
+-                        end select
+-                    end if
+-                end if
+-            end if
++            is_implied_do = is_array_constructor_implied_do(arena, node_index)
+ 
+             if (is_implied_do) then
+                 element_type%kind = 0
+@@ -809,6 +796,12 @@
+                         if (allocated(loop_node%body_indices)) then
+                             do i = 1, size(loop_node%body_indices)
+                                 child_type = get_node_type(loop_node%body_indices(i))
++                                ! A body array contributes its elements, never
++                                ! another constructor dimension.
++                                do while (child_type%kind == TARRAY)
++                                    if (.not. child_type%has_args()) exit
++                                    child_type = child_type%get_arg(1)
++                                end do
+                                 if (child_type%kind == 0) cycle
+                                 if (element_type%kind == 0) then
+                                     element_type = child_type
+--- a/src/semantic/analyzers/semantic_array_literal.f90
++++ b/src/semantic/analyzers/semantic_array_literal.f90
+@@ -84,6 +84,12 @@
+ 
+         elem_count = size(array_lit%element_indices)
+ 
++        if (has_implied_do_item(arena, array_lit)) then
++            typ = infer_expanded_constructor_type(arena, array_lit, &
++                get_type_fn, explicit_type)
++            return
++        end if
++
+         if (explicit_type%kind > 0) then
+             typ = build_explicit_array_type(explicit_type, elem_count)
+             return
+@@ -103,6 +109,54 @@
+             max_char_len, first_array_size, &
+             has_dynamic_implied_do)
+     end function infer_array_literal_type
++
++    logical function has_implied_do_item(arena, array_lit) result(found)
++        type(ast_arena_t), intent(in) :: arena
++        type(array_literal_node), intent(in) :: array_lit
++        integer :: i, child
++        found = .false.
++        do i = 1, size(array_lit%element_indices)
++            child = array_lit%element_indices(i)
++            if (.not. arena%has_node_at(child)) cycle
++            select type (node => arena%entries(child)%node)
++            type is (do_loop_node)
++                found = .true.
++                return
++            end select
++        end do
++    end function has_implied_do_item
++
++    function infer_expanded_constructor_type(arena, array_lit, get_type_fn, &
++            explicit_type) result(typ)
++        type(ast_arena_t), intent(inout) :: arena
++        type(array_literal_node), intent(in) :: array_lit
++        procedure(get_type_lookup_array_lit) :: get_type_fn
++        type(mono_type_t), intent(in) :: explicit_type
++        type(mono_type_t) :: typ, element_type, common_type
++        integer :: i
++        common_type%kind = 0
++        do i = 1, size(array_lit%element_indices)
++            element_type = resolve_constructor_element_type(arena, &
++                array_lit%element_indices(i), get_type_fn)
++            do while (element_type%kind == TARRAY)
++                if (.not. element_type%has_args()) exit
++                element_type = element_type%get_arg(1)
++            end do
++            if (common_type%kind == 0) then
++                common_type = element_type
++            else
++                common_type = get_common_type(common_type, element_type)
++            end if
++        end do
++        if (explicit_type%kind > 0) common_type = explicit_type
++        if (common_type%kind == 0) common_type = create_mono_type(TINT)
++        ! Repetition and array-valued leaves determine extent at runtime. Do
++        ! not confuse the number of syntax items with the number of values.
++        typ = create_mono_type(TARRAY, args=[common_type])
++        typ%size = -1
++        typ%alloc_info%is_allocatable = .true.
++        typ%alloc_info%needs_allocation_check = .true.
++    end function infer_expanded_constructor_type
+ 
+     function parse_explicit_element_type(array_lit) result(explicit_type)
+         type(array_literal_node), intent(in) :: array_lit
+--- a/src/semantic/analyzers/semantic_implied_do_validation.f90
++++ b/src/semantic/analyzers/semantic_implied_do_validation.f90
+@@ -2,9 +2,9 @@
+     ! Validates implied-DO index locality in array constructors (F2018 R773).
+     ! An implied-DO variable is local to its controlling implied-DO. Two rules
+     ! are enforced here:
+-    !   1. The index is not in scope within its own controlling triplet, so a
+-    !      reference to the index name inside that loop's bound expressions is
+-    !      an out-of-scope reference unless an enclosing implied-DO defines it.
++    !   1. The index has no value while its own controlling triplet is
++    !      evaluated. KIND/DIGITS/RADIX/HUGE inspect operand metadata only and
++    !      therefore do not reference the value of the index.
+     !   2. A nested implied-DO must not reuse the index name of an enclosing
+     !      implied-DO, which would shadow the outer index within the same
+     !      array constructor.
+@@ -13,13 +13,46 @@
+         binary_op_node, call_or_subscript_node
+     use ast_nodes_loops, only: do_loop_node
+     use error_handling, only: error_collection_t, ERROR_SEMANTIC
+-    use string_utils_mod, only: int_to_string
++    use string_utils_mod, only: int_to_string, to_lower
++    use frontend_compiler_resolution, only: declaration_binding_t, resolve_name_at_node
+     implicit none
+     private
+ 
+-    public :: validate_implied_do_array
++    public :: validate_implied_do_array, is_array_constructor_implied_do
+ 
+ contains
++
++    ! Only constructor ac-value/body edges identify an implied-DO. Executable
++    ! DOs and loops reached through a control expression are not constructors.
++    logical function is_array_constructor_implied_do(arena, node_index) result(implied)
++        type(ast_arena_t), intent(in) :: arena
++        integer, intent(in) :: node_index
++        integer :: child, parent, depth
++        implied = .false.
++        child = node_index
++        if (.not. arena%has_node_at(child)) return
++        select type (node => arena%entries(child)%node)
++        type is (do_loop_node)
++        class default
++            return
++        end select
++        do depth = 1, arena%size
++            parent = arena%entries(child)%parent_index
++            if (.not. arena%has_node_at(parent)) return
++            select type (node => arena%entries(parent)%node)
++            type is (array_literal_node)
++                if (.not. allocated(node%element_indices)) return
++                implied = any(node%element_indices == child)
++                return
++            type is (do_loop_node)
++                if (.not. allocated(node%body_indices)) return
++                if (.not. any(node%body_indices == child)) return
++                child = parent
++            class default
++                return
++            end select
++        end do
++    end function is_array_constructor_implied_do
+ 
+     ! Validate an array_literal_node for implied-DO index locality. Array
+     ! literals without implied-DO elements are accepted unchanged.
+@@ -74,7 +107,7 @@
+             call report_duplicate_index(errors, index_name, loop%line, loop%column)
+         end if
+ 
+-        ! The index is not in scope within its own controlling triplet.
++        ! Reject value references, but preserve metadata-only inquiries.
+         if (bounds_reference_index(arena, loop, index_name)) then
+             call report_out_of_scope(errors, index_name, loop%line, loop%column)
+         end if
+@@ -145,6 +178,10 @@
+             if (.not. found) &
+                 found = expr_references_name(arena, node%right_index, name)
+             type is (call_or_subscript_node)
++            ! These intrinsic inquiries use only operand type/kind metadata.
++            ! A source array or function with the same spelling still reads
++            ! its actuals and must not receive the intrinsic exception.
++            if (is_metadata_inquiry(arena, expr_index, node)) return
+             if (allocated(node%arg_indices)) then
+                 do i = 1, size(node%arg_indices)
+                     found = expr_references_name(arena, node%arg_indices(i), name)
+@@ -153,6 +190,24 @@
+             end if
+         end select
+     end function expr_references_name
++
++    logical function is_metadata_inquiry(arena, expr_index, node) result(inquiry)
++        type(ast_arena_t), intent(in) :: arena
++        integer, intent(in) :: expr_index
++        type(call_or_subscript_node), intent(in) :: node
++        type(declaration_binding_t) :: binding
++        character(len=:), allocatable :: diagnostic
++        inquiry = .false.
++        if (.not. allocated(node%name)) return
++        if (node%base_expr_index /= 0) return
++        if (.not. allocated(node%arg_indices)) return
++        if (size(node%arg_indices) /= 1) return
++        select case (to_lower(node%name))
++        case ('kind', 'digits', 'radix', 'huge', 'len')
++            call resolve_name_at_node(arena, expr_index, node%name, binding, diagnostic)
++            inquiry = .not. binding%found .and. len_trim(diagnostic) == 0
++        end select
++    end function is_metadata_inquiry
+ 
+     ! Whether name is present in a set of index names.
+     function name_in_set(name, names) result(is_present)

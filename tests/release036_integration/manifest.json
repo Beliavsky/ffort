@@ -1,0 +1,318 @@
+{
+  "cases": [
+    {
+      "name": "gather_elemental_reduction",
+      "source": "cases/gather_elemental_reduction.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "rows: 3 0 3 7 2 7\nreduce: 22 5 1 1\nkinds: 8 8 2 8\n",
+      "compare_mode": "exact"
+    },
+    {
+      "name": "reallocate_snapshot_models",
+      "source": "cases/reallocate_snapshot_models.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "snapshot: 3 2 -3 -1 -3 -6 -4 -6\nagain: 2 2 -1 -3 -4 -6\nmodel: 8 2 0\n",
+      "compare_mode": "exact"
+    },
+    {
+      "name": "gather_function_snapshot_once",
+      "source": "cases/gather_function_snapshot_once.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "first: 2 3 1 6 4\nsecond: 4 -2 -2 -5 -5\nreduced: 0 2\n",
+      "compare_mode": "exact"
+    },
+    {
+      "name": "model_function_not_executed",
+      "source": "cases/model_function_not_executed.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "metadata: 2 8 8 8 0\narray: 8 2 0\n",
+      "compare_mode": "exact"
+    },
+    {
+      "name": "gamma_gather_float_kinds",
+      "source": "cases/gamma_gather_float_kinds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0.6931471805599453 0.0 4.787491742782046 1.791759469228055 zero: -1 1 4 8",
+      "compare_mode": "tokens"
+    },
+    {
+      "name": "empty_gather_masks",
+      "source": "cases/empty_gather_masks.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "empty: 0 3 0 0 0 0\nmodels: 8 2 8 8\n",
+      "compare_mode": "exact"
+    },
+    {
+      "name": "model_without_values",
+      "source": "cases/model_without_values.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "unallocated: 8 2 8 8\nunevaluated: 2 8 0\noptional: 8 2 8 8\nstatus: 0\n",
+      "compare_mode": "exact",
+      "scope_note": "Candidate descriptor-only inquiry contract; GNU compiles but undefined indices, unallocated and absent operands are not executed as GNU safety probes."
+    },
+    {
+      "name": "tiny_epsilon_huge_exact",
+      "source": "cases/tiny_epsilon_huge_exact.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "binary: 1 1 1 2 2 8 2.220446049250313e-16 2.2250738585072014e-308 1.7976931348623157e308 9223372036854775807",
+      "compare_mode": "tokens"
+    },
+    {
+      "name": "integer8_edge_composition",
+      "source": "cases/integer8_edge_composition.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "edges: -9223372036854775808 0 0 9223372036854775807\ngather: -9223372036854775807 -9223372036854775808 0 -1\n",
+      "compare_mode": "exact"
+    },
+    {
+      "name": "gnu_dim_wrapped_negative_difference",
+      "source": "cases/gnu_dim_wrapped_negative_difference.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "0\n",
+      "compare_mode": "exact",
+      "compiler_discrepancy": "GNU 14.2 emits 2 for DIM(-HUGE(0_8),HUGE(0_8)) consistent with subtraction wrapping before max. The independent mathematical result is zero. This probe is compiled, not executed or called GNU-equivalent.",
+      "scope_note": "Overflow-avoiding DIM contract independently checked against zero; no GNU runtime equivalence claimed."
+    },
+    {
+      "name": "array_models_specification",
+      "source": "cases/array_models_specification.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "spec: 10 10 8\n",
+      "compare_mode": "exact"
+    },
+    {
+      "name": "dim_integer_overflow",
+      "source": "cases/dim_integer_overflow.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "integer overflow",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "sign_integer_overflow",
+      "source": "cases/sign_integer_overflow.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "integer overflow",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "gamma_pole",
+      "source": "cases/gamma_pole.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "must not be zero or a negative integer",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "gamma_finite_policy",
+      "source": "cases/gamma_finite_policy.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "non-finite",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "gather_bad_row",
+      "source": "cases/gather_bad_row.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "bound",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "gather_undefined_index",
+      "source": "cases/gather_undefined_index.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "uninitialized",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "parity_undefined_after_true",
+      "source": "cases/parity_undefined_after_true.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "uninitialized",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "empty_column_bad_index",
+      "source": "cases/empty_column_bad_index.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "bound",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "parity_rank3_boundary",
+      "source": "cases/parity_rank3_boundary.f90",
+      "category": "reject",
+      "baseline": "run",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "rank",
+      "gnu_stdout": "1\n"
+    },
+    {
+      "name": "numeric_component_boundary",
+      "source": "cases/numeric_component_boundary.f90",
+      "category": "reject",
+      "baseline": "run",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "component",
+      "gnu_stdout": "2\n"
+    },
+    {
+      "name": "gather_scatter_boundary",
+      "source": "cases/gather_scatter_boundary.f90",
+      "category": "reject",
+      "baseline": "run",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "vector",
+      "gnu_stdout": "8\n"
+    },
+    {
+      "name": "gather_writable_actual_boundary",
+      "source": "cases/gather_writable_actual_boundary.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "gathered row value"
+    },
+    {
+      "name": "mismatched_kind_boundary",
+      "source": "cases/mismatched_kind_boundary.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "matching types"
+    },
+    {
+      "name": "original_filter_cross_features",
+      "source": "cases/original_filter_cross_features.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "filtered: 2 2 2 3 20 30\ncombined: 0 2 8 0\nremoved: 0 2 0 0\nrepeat: 0 2\n",
+      "compare_mode": "exact",
+      "support_sources": [
+        "original/filter_module.f90"
+      ]
+    },
+    {
+      "name": "unchanged_demo_dim",
+      "source": "original/demo_dim.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 3.21 0 0 1 0 0 2 0 0 10",
+      "compare_mode": "tokens",
+      "support_sources": [
+        "original/filter_module.f90"
+      ],
+      "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+    },
+    {
+      "name": "unchanged_demo_sign",
+      "source": "original/demo_sign.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "12 12 -12 12 12 -12 this processor distinguishes +0 from -0 either way, 0==-0 is true! T either way, 0=/-0 is false! F elemental 12 12 -12",
+      "compare_mode": "tokens",
+      "support_sources": [
+        "original/filter_module.f90"
+      ],
+      "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+    },
+    {
+      "name": "unchanged_demo_log_gamma",
+      "source": "original/demo_log_gamma.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 0 1 0.6931471805599453",
+      "compare_mode": "tokens",
+      "support_sources": [
+        "original/filter_module.f90"
+      ],
+      "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+    },
+    {
+      "name": "unchanged_demo_parity",
+      "source": "original/demo_parity.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T F T F T T T T F F F",
+      "compare_mode": "tokens",
+      "support_sources": [
+        "original/filter_module.f90"
+      ],
+      "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+    },
+    {
+      "name": "unchanged_demo_radix",
+      "source": "original/demo_radix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "The radix for the default integer kind is 2 The radix for the default real kind is 2 The radix for the doubleprecision real kind is 2",
+      "compare_mode": "tokens",
+      "support_sources": [
+        "original/filter_module.f90"
+      ],
+      "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+    },
+    {
+      "name": "unchanged_demo_tiny",
+      "source": "original/demo_tiny.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "default real is from 1.1754943508222875e-38 to 3.4028234663852886e38 doubleprecision is from 2.2250738585072014e-308 to 1.7976931348623157e308",
+      "compare_mode": "tokens",
+      "support_sources": [
+        "original/filter_module.f90"
+      ],
+      "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+    },
+    {
+      "name": "unchanged_demo_floor",
+      "source": "original/demo_floor.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "63.29 63 -63.59 -64 -3 -3 -3 -2 -2 -1 -1 0 0 1 1 2 2 2 2 2.0 1.9999998807907104 1.999999761581421 2 1 1",
+      "compare_mode": "tokens",
+      "support_sources": [
+        "original/filter_module.f90"
+      ],
+      "scope_note": "Full unchanged M_intrinsics program plus exact original utility closure; no program rewrite. Whitespace-insensitive token comparison is limited to upstream list output."
+    }
+  ]
+}

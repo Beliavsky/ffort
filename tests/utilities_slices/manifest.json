@@ -1,0 +1,390 @@
+{
+  "source_file": "xutilities.f90",
+  "source_sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+  "source_lines": 9806,
+  "procedure_count": 551,
+  "cases": [
+    {
+      "name": "logical_runs",
+      "expected": "pass",
+      "functions": [
+        {
+          "name": "max_consecutive",
+          "first_line": 8727,
+          "last_line": 8741,
+          "body_sha256": "9d60539d09006ccb38e0b3b019364f1effbdb0bc8e044846f570e685ebec1127"
+        },
+        {
+          "name": "first_true",
+          "first_line": 5799,
+          "last_line": 5811,
+          "body_sha256": "e07c157e8d704bdd78a99f225328261803f705c6e4777558e58c43b24b00d52b"
+        },
+        {
+          "name": "first_false",
+          "first_line": 3957,
+          "last_line": 3969,
+          "body_sha256": "0cd89854c85048288f65512e356351531564528d25f56ad624f73ed14053eabf"
+        },
+        {
+          "name": "last_true",
+          "first_line": 5813,
+          "last_line": 5825,
+          "body_sha256": "9b8c3a5a8c81fcc194b0d3fb085f10b42bc8d1b1bcad1bf50cf911d9c507c045"
+        }
+      ],
+      "rationale": ""
+    },
+    {
+      "name": "elemental_factorial",
+      "expected": "pass",
+      "functions": [
+        {
+          "name": "factorial",
+          "first_line": 7872,
+          "last_line": 7880,
+          "body_sha256": "c660f3fe790fd2f0b2d042571f47a085111302b68687cafb82b139c0feab5366"
+        }
+      ],
+      "rationale": ""
+    },
+    {
+      "name": "generic_if_else",
+      "expected": "pass",
+      "functions": [
+        {
+          "name": "if_else_real",
+          "first_line": 1446,
+          "last_line": 1455,
+          "body_sha256": "2cb77025d70615bf6d450805dd804e374d912e701aef513de9b469b90a254e81"
+        },
+        {
+          "name": "if_else_int",
+          "first_line": 1457,
+          "last_line": 1466,
+          "body_sha256": "fcec0f662494e8865dc090aaa4727c3a9e843dea5189efd15c3725dee89a9be2"
+        },
+        {
+          "name": "int_tf",
+          "first_line": 2067,
+          "last_line": 2076,
+          "body_sha256": "1440e913753553d0cedc823902cf487bc2687792c6555c0492ce51b03932bae0"
+        }
+      ],
+      "rationale": ""
+    },
+    {
+      "name": "activation_functions",
+      "expected": "pass",
+      "functions": [
+        {
+          "name": "elu",
+          "first_line": 8320,
+          "last_line": 8328,
+          "body_sha256": "430dd1f85ac0c5f25bb1146ec6c838e98618d3fc94fd6c4dcdf590367c61efe8"
+        },
+        {
+          "name": "logistic",
+          "first_line": 8356,
+          "last_line": 8360,
+          "body_sha256": "0d165e08e89e47cb5e2a3075ef9fd60fbb842c4dd6507c0ce470684165954fac"
+        },
+        {
+          "name": "elu_logistic",
+          "first_line": 8350,
+          "last_line": 8354,
+          "body_sha256": "ed5297dae23f32eb3c34cf24db9f5e1590e5631e3e2f8c3d06c5bba2898a8909"
+        },
+        {
+          "name": "x_times_logistic",
+          "first_line": 8344,
+          "last_line": 8348,
+          "body_sha256": "9e8931038f23a85043d6acb423ace106b7be5396e29aacd92b1730867e9d4c73"
+        }
+      ],
+      "rationale": ""
+    },
+    {
+      "name": "bounded_values",
+      "expected": "pass",
+      "functions": [
+        {
+          "name": "int_within",
+          "first_line": 8715,
+          "last_line": 8719,
+          "body_sha256": "a3dca31b4c08c886c314a1abd7b23b019dec76d2a37ab9f6228d740913c57410"
+        },
+        {
+          "name": "real_within",
+          "first_line": 8721,
+          "last_line": 8725,
+          "body_sha256": "2abd373150dc64e4f66d990185e484ecbeceac2bb3cbc5b9155229956e4a52d1"
+        },
+        {
+          "name": "first_pos_positive",
+          "first_line": 6719,
+          "last_line": 6730,
+          "body_sha256": "ae7d916f1fd8429cd16fe4f73455fe4154bccec773e4008910e9b501c8a732d7"
+        }
+      ],
+      "rationale": ""
+    },
+    {
+      "name": "ordered_search",
+      "expected": "run",
+      "functions": [
+        {
+          "name": "first_pos_ge_int",
+          "first_line": 2256,
+          "last_line": 2270,
+          "body_sha256": "8fac4614878f9e150e85b972cc161819f6a9a86eff117cd75acfd2544833d3d7"
+        },
+        {
+          "name": "first_pos_ge_real",
+          "first_line": 2290,
+          "last_line": 2304,
+          "body_sha256": "270af981be2b4b4b758b7c570f1be67d26e82b85a5dc301a742941bf40c0cf94"
+        }
+      ],
+      "rationale": "Supported counted-loop control flow and ELSE IF"
+    },
+    {
+      "name": "blocked_automatic_result",
+      "expected": "run",
+      "functions": [
+        {
+          "name": "normalize",
+          "first_line": 771,
+          "last_line": 775,
+          "body_sha256": "0f6d57c71b328f0ef78279693e94dce3137c990b8b6171cace93585a42d5af10"
+        }
+      ],
+      "rationale": "Supported bounded automatic numeric array function result"
+    },
+    {
+      "name": "blocked_optional",
+      "expected": "run",
+      "functions": [
+        {
+          "name": "default_integer",
+          "first_line": 3699,
+          "last_line": 3709,
+          "body_sha256": "3774bf3a4c37e6f7cdb406f667f26fac73e4466702ff7d8986b310c224480c77"
+        }
+      ],
+      "rationale": "OPTIONAL dummy and PRESENT"
+    },
+    {
+      "name": "blocked_hyperbolic",
+      "expected": "run",
+      "functions": [
+        {
+          "name": "sech",
+          "first_line": 542,
+          "last_line": 547,
+          "body_sha256": "9e9829452d23dbee9cdc80941b6e1f04467920cce6d36f825cb33c2426e63499"
+        }
+      ],
+      "rationale": "Kind-preserving elemental COSH support; original sech body unchanged."
+    },
+    {
+      "name": "blocked_count_dble",
+      "expected": "pass",
+      "functions": [
+        {
+          "name": "frac_true",
+          "first_line": 6165,
+          "last_line": 6169,
+          "body_sha256": "45fe2ab80876d4e55d26eb7cb8e361d4f369cc605ab606685410b416a971ecbe"
+        }
+      ],
+      "rationale": "Enabled by logical/selection/conversion intrinsic support; historical fixture name retained.",
+      "literal_expected": [
+        0.5
+      ]
+    },
+    {
+      "name": "blocked_character_result",
+      "expected": "pass",
+      "functions": [
+        {
+          "name": "concat_char_vec",
+          "first_line": 8128,
+          "last_line": 8135,
+          "body_sha256": "5ac2cfad18d6ca300c60c00fb1961b43369671f60c55a4ee434ed1b21a833bda"
+        }
+      ],
+      "rationale": "Exact original CHARACTER concatenation routine; assumed-length array dummies and automatic length/shape result now supported",
+      "literal_expected": [
+        "dog cat fourfive"
+      ]
+    },
+    {
+      "name": "blocked_merge",
+      "expected": "run",
+      "functions": [
+        {
+          "name": "choose",
+          "first_line": 7892,
+          "last_line": 7919,
+          "body_sha256": "25918f22419f6461898c77c1a8268073409b9a2fe230b0473f92166e81d676c9"
+        },
+        {
+          "name": "factorial_long",
+          "first_line": 7882,
+          "last_line": 7890,
+          "body_sha256": "c88e77332222b39fe2169f40e2326d9a70cbb9cf125a6b9bf0835a91d72e3846"
+        }
+      ],
+      "rationale": "Enabled by combined ELSE IF and MERGE support; original routine bodies unchanged.",
+      "diagnostic_contains": "Unsupported procedure or array reference: merge"
+    },
+    {
+      "name": "blocked_allocatable",
+      "expected": "run",
+      "functions": [
+        {
+          "name": "alloc_sub_vec_int",
+          "first_line": 784,
+          "last_line": 789,
+          "body_sha256": "91bd5c867b41e8ab574007d78a2680b8fe7c11fe078d267c229a3864e61a4869"
+        }
+      ],
+      "rationale": "Original allocatable OUT dummy declaration and body now supported; independent allocatable_dummies suite also invokes both unchanged integer and real routines."
+    },
+    {
+      "name": "blocked_integer64_do",
+      "expected": "run",
+      "functions": [
+        {
+          "name": "factorial_long",
+          "first_line": 7882,
+          "last_line": 7890,
+          "body_sha256": "c88e77332222b39fe2169f40e2326d9a70cbb9cf125a6b9bf0835a91d72e3846"
+        }
+      ],
+      "rationale": "Supported counted-loop control flow and ELSE IF"
+    },
+    {
+      "name": "blocked_else_if",
+      "expected": "run",
+      "functions": [
+        {
+          "name": "elu_smooth",
+          "first_line": 8330,
+          "last_line": 8342,
+          "body_sha256": "4223093a8eb4cd0b41d2426c12dc13a89714251f0f1ffba3ba0ab56c700dbc43"
+        }
+      ],
+      "rationale": "Supported counted-loop control flow and ELSE IF"
+    },
+    {
+      "name": "kinds_positional",
+      "expected": "pass",
+      "literal_expected": null
+    },
+    {
+      "name": "kinds_keywords",
+      "expected": "pass",
+      "literal_expected": null
+    },
+    {
+      "name": "kinds_runtime",
+      "expected": "pass",
+      "literal_expected": null
+    },
+    {
+      "name": "kinds_fail_codes",
+      "expected": "pass",
+      "literal_expected": null
+    },
+    {
+      "name": "kinds_supported_model",
+      "expected": "pass",
+      "literal_expected": [
+        -1,
+        -2,
+        -3
+      ]
+    },
+    {
+      "name": "kinds_direct_declaration",
+      "expected": "pass",
+      "literal_expected": null
+    },
+    {
+      "name": "kinds_not_evaluated",
+      "expected": "pass",
+      "literal_expected": null
+    },
+    {
+      "name": "invalid_real_precision",
+      "expected": "reject",
+      "gnu_invalid": true,
+      "diagnostic_contains": "SELECTED_REAL_KIND arguments must be scalar INTEGER"
+    },
+    {
+      "name": "invalid_array_precision",
+      "expected": "reject",
+      "gnu_invalid": true,
+      "diagnostic_contains": "SELECTED_REAL_KIND arguments must be scalar INTEGER"
+    },
+    {
+      "name": "invalid_array_range",
+      "expected": "reject",
+      "gnu_invalid": true,
+      "diagnostic_contains": "SELECTED_REAL_KIND arguments must be scalar INTEGER"
+    },
+    {
+      "name": "invalid_real_radix",
+      "expected": "reject",
+      "gnu_invalid": true,
+      "diagnostic_contains": "SELECTED_REAL_KIND arguments must be scalar INTEGER"
+    },
+    {
+      "name": "invalid_keyword",
+      "expected": "reject",
+      "gnu_invalid": true,
+      "diagnostic_contains": "Unknown keyword or excess actual argument: precision"
+    },
+    {
+      "name": "invalid_duplicate",
+      "expected": "reject",
+      "gnu_invalid": true,
+      "diagnostic_contains": "Repeated actual argument for p"
+    },
+    {
+      "name": "invalid_positional_after_keyword",
+      "expected": "reject",
+      "gnu_invalid": true,
+      "diagnostic_contains": "Positional argument cannot follow a keyword argument"
+    },
+    {
+      "name": "invalid_excess",
+      "expected": "reject",
+      "gnu_invalid": true,
+      "diagnostic_contains": "SELECTED_REAL_KIND accepts at most P, R and RADIX"
+    },
+    {
+      "name": "blocked_merge_intrinsic",
+      "expected": "pass",
+      "rationale": "Enabled by logical/selection/conversion intrinsic support; historical fixture name retained."
+    },
+    {
+      "name": "kinds_keyword_declaration",
+      "expected": "pass"
+    },
+    {
+      "name": "kinds_empty_direct_selector",
+      "expected": "pass"
+    }
+  ],
+  "harness_adaptations": [
+    "Procedure bodies preserve source text except CRLF-to-LF normalization.",
+    "Reduced utility module exports selected routines and needed kind names only.",
+    "Kinds and shared constants are declared locally one per declaration to avoid unsupported module USE and chained-declarator producer issues.",
+    "Small purpose-built main programs exercise the selected routines."
+  ],
+  "top_level_procedure_count": 549,
+  "internal_procedure_count": 2
+}

@@ -1,0 +1,6 @@
+program main
+implicit none
+real,pointer::q(:)
+q=>null()
+print *,ubound(q)
+end program

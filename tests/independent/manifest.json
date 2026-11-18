@@ -1,0 +1,2139 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "name": "integer_arithmetic",
+      "category": "success",
+      "source": "cases/integer_arithmetic.f90",
+      "note": "",
+      "expected_stdout": "13 20 2 -2 -2",
+      "baseline": "run"
+    },
+    {
+      "name": "power_precedence",
+      "category": "success",
+      "source": "cases/power_precedence.f90",
+      "note": "",
+      "expected_stdout": "-4 4 512 0",
+      "baseline": "run"
+    },
+    {
+      "name": "mixed_numeric",
+      "category": "success",
+      "source": "cases/mixed_numeric.f90",
+      "note": "",
+      "expected_stdout": "-3 2 2.5 2.5 8",
+      "baseline": "run"
+    },
+    {
+      "name": "real_literals",
+      "category": "success",
+      "source": "cases/real_literals.f90",
+      "note": "",
+      "expected_stdout": "0.5 2 0.0125 -0.0125",
+      "baseline": "run"
+    },
+    {
+      "name": "declaration_initializers",
+      "category": "success",
+      "source": "cases/declaration_initializers.f90",
+      "note": "",
+      "expected_stdout": "5 -2 0.25 T",
+      "baseline": "run"
+    },
+    {
+      "name": "case_insensitivity",
+      "category": "success",
+      "source": "cases/case_insensitivity.f90",
+      "note": "",
+      "expected_stdout": "4",
+      "baseline": "run"
+    },
+    {
+      "name": "relational_operators",
+      "category": "success",
+      "source": "cases/relational_operators.f90",
+      "note": "",
+      "expected_stdout": "T T F F F T",
+      "baseline": "run"
+    },
+    {
+      "name": "dotted_relations",
+      "category": "success",
+      "source": "cases/dotted_relations.f90",
+      "note": "",
+      "expected_stdout": "T T F F F T",
+      "baseline": "run"
+    },
+    {
+      "name": "logical_operators",
+      "category": "success",
+      "source": "cases/logical_operators.f90",
+      "note": "",
+      "expected_stdout": "F T F T",
+      "baseline": "run"
+    },
+    {
+      "name": "logical_precedence",
+      "category": "success",
+      "source": "cases/logical_precedence.f90",
+      "note": "",
+      "expected_stdout": "T T",
+      "baseline": "run"
+    },
+    {
+      "name": "if_else",
+      "category": "success",
+      "source": "cases/if_else.f90",
+      "note": "",
+      "expected_stdout": "10",
+      "baseline": "run"
+    },
+    {
+      "name": "if_false_branch",
+      "category": "success",
+      "source": "cases/if_false_branch.f90",
+      "note": "",
+      "expected_stdout": "4",
+      "baseline": "run"
+    },
+    {
+      "name": "nested_if",
+      "category": "success",
+      "source": "cases/nested_if.f90",
+      "note": "",
+      "expected_stdout": "9",
+      "baseline": "run"
+    },
+    {
+      "name": "unexecuted_uninitialized_read",
+      "category": "success",
+      "source": "cases/unexecuted_uninitialized_read.f90",
+      "note": "",
+      "expected_stdout": "5",
+      "baseline": "run"
+    },
+    {
+      "name": "do_sum_final",
+      "category": "success",
+      "source": "cases/do_sum_final.f90",
+      "note": "",
+      "expected_stdout": "15 6",
+      "baseline": "run"
+    },
+    {
+      "name": "do_descending_final",
+      "category": "success",
+      "source": "cases/do_descending_final.f90",
+      "note": "",
+      "expected_stdout": "9 -1",
+      "baseline": "run"
+    },
+    {
+      "name": "do_zero_trip",
+      "category": "success",
+      "source": "cases/do_zero_trip.f90",
+      "note": "",
+      "expected_stdout": "7 5",
+      "baseline": "run"
+    },
+    {
+      "name": "do_zero_trip_descending",
+      "category": "success",
+      "source": "cases/do_zero_trip_descending.f90",
+      "note": "",
+      "expected_stdout": "7 1",
+      "baseline": "run"
+    },
+    {
+      "name": "do_overshoot_final",
+      "category": "success",
+      "source": "cases/do_overshoot_final.f90",
+      "note": "",
+      "expected_stdout": "12 10",
+      "baseline": "run"
+    },
+    {
+      "name": "do_bounds_snapshot",
+      "category": "success",
+      "source": "cases/do_bounds_snapshot.f90",
+      "note": "",
+      "expected_stdout": "9 7 1 1",
+      "baseline": "run"
+    },
+    {
+      "name": "do_nested",
+      "category": "success",
+      "source": "cases/do_nested.f90",
+      "note": "",
+      "expected_stdout": "102 3 4",
+      "baseline": "run"
+    },
+    {
+      "name": "do_sequential_reuse",
+      "category": "success",
+      "source": "cases/do_sequential_reuse.f90",
+      "note": "",
+      "expected_stdout": "6 0",
+      "baseline": "run"
+    },
+    {
+      "name": "comments_and_strings",
+      "category": "success",
+      "source": "cases/comments_and_strings.f90",
+      "note": "",
+      "expected_stdout": "hello! 4 it's",
+      "baseline": "run"
+    },
+    {
+      "name": "integer_boundary_valid",
+      "category": "success",
+      "source": "cases/integer_boundary_valid.f90",
+      "note": "",
+      "expected_stdout": "-2147483648 -2147483647 2147483647",
+      "baseline": "run"
+    },
+    {
+      "name": "malformed_missing_rhs",
+      "category": "syntax",
+      "source": "cases/malformed_missing_rhs.f90",
+      "note": "Regression for upstream silent syntax repair; the original invalid source must be rejected before output.",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_missing_lhs",
+      "category": "syntax",
+      "source": "cases/malformed_missing_lhs.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_empty_parentheses",
+      "category": "syntax",
+      "source": "cases/malformed_empty_parentheses.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_extra_rparen",
+      "category": "syntax",
+      "source": "cases/malformed_extra_rparen.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_missing_rparen",
+      "category": "syntax",
+      "source": "cases/malformed_missing_rparen.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_trailing_tokens",
+      "category": "syntax",
+      "source": "cases/malformed_trailing_tokens.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_missing_assignment_rhs",
+      "category": "syntax",
+      "source": "cases/malformed_missing_assignment_rhs.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_missing_if_condition",
+      "category": "syntax",
+      "source": "cases/malformed_missing_if_condition.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_unmatched_else",
+      "category": "syntax",
+      "source": "cases/malformed_unmatched_else.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_unclosed_if",
+      "category": "syntax",
+      "source": "cases/malformed_unclosed_if.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_unclosed_do",
+      "category": "syntax",
+      "source": "cases/malformed_unclosed_do.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_do_missing_bound",
+      "category": "syntax",
+      "source": "cases/malformed_do_missing_bound.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_unterminated_string",
+      "category": "syntax",
+      "source": "cases/malformed_unterminated_string.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_trailing_print_comma",
+      "category": "syntax",
+      "source": "cases/malformed_trailing_print_comma.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_end_name",
+      "category": "syntax",
+      "source": "cases/malformed_end_name.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_garbage_after_end",
+      "category": "syntax",
+      "source": "cases/malformed_garbage_after_end.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "undeclared_assignment",
+      "category": "semantic",
+      "source": "cases/undeclared_assignment.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "undeclared_expression",
+      "category": "semantic",
+      "source": "cases/undeclared_expression.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "duplicate_declaration",
+      "category": "semantic",
+      "source": "cases/duplicate_declaration.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "logical_to_integer",
+      "category": "semantic",
+      "source": "cases/logical_to_integer.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "integer_to_logical",
+      "category": "semantic",
+      "source": "cases/integer_to_logical.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "string_to_integer",
+      "category": "semantic",
+      "source": "cases/string_to_integer.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "logical_arithmetic",
+      "category": "semantic",
+      "source": "cases/logical_arithmetic.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "numeric_logical_operator",
+      "category": "semantic",
+      "source": "cases/numeric_logical_operator.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "logical_ordering",
+      "category": "semantic",
+      "source": "cases/logical_ordering.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "logical_numeric_equality",
+      "category": "semantic",
+      "source": "cases/logical_numeric_equality.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "nonlogical_if",
+      "category": "semantic",
+      "source": "cases/nonlogical_if.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "unreachable_type_error",
+      "category": "semantic",
+      "source": "cases/unreachable_type_error.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "unreachable_undeclared",
+      "category": "semantic",
+      "source": "cases/unreachable_undeclared.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "nonconstant_initializer",
+      "category": "semantic",
+      "source": "cases/nonconstant_initializer.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "declaration_after_execution",
+      "category": "semantic",
+      "source": "cases/declaration_after_execution.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "do_real_control",
+      "category": "semantic",
+      "source": "cases/do_real_control.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "do_real_bound",
+      "category": "semantic",
+      "source": "cases/do_real_bound.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "do_logical_bound",
+      "category": "semantic",
+      "source": "cases/do_logical_bound.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "do_variable_assignment",
+      "category": "semantic",
+      "source": "cases/do_variable_assignment.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "do_variable_assignment_dead",
+      "category": "semantic",
+      "source": "cases/do_variable_assignment_dead.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "do_nested_same_variable",
+      "category": "semantic",
+      "source": "cases/do_nested_same_variable.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "runtime_uninitialized_read",
+      "category": "runtime",
+      "source": "cases/runtime_uninitialized_read.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_uninitialized_rhs",
+      "category": "runtime",
+      "source": "cases/runtime_uninitialized_rhs.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_integer_zero_divide",
+      "category": "runtime",
+      "source": "cases/runtime_integer_zero_divide.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_real_zero_divide",
+      "category": "runtime",
+      "source": "cases/runtime_real_zero_divide.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_integer_add_overflow",
+      "category": "runtime",
+      "source": "cases/runtime_integer_add_overflow.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_integer_multiply_overflow",
+      "category": "runtime",
+      "source": "cases/runtime_integer_multiply_overflow.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_integer_power_overflow",
+      "category": "runtime",
+      "source": "cases/runtime_integer_power_overflow.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_integer_min_divide",
+      "category": "runtime",
+      "source": "cases/runtime_integer_min_divide.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_integer_min_negate",
+      "category": "runtime",
+      "source": "cases/runtime_integer_min_negate.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_zero_negative_power",
+      "category": "runtime",
+      "source": "cases/runtime_zero_negative_power.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_real_nonfinite",
+      "category": "runtime",
+      "source": "cases/runtime_real_nonfinite.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_real_to_integer_range",
+      "category": "runtime",
+      "source": "cases/runtime_real_to_integer_range.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_do_zero_step",
+      "category": "runtime",
+      "source": "cases/runtime_do_zero_step.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_do_uninitialized_bound",
+      "category": "runtime",
+      "source": "cases/runtime_do_uninitialized_bound.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_do_terminal_overflow",
+      "category": "runtime",
+      "source": "cases/runtime_do_terminal_overflow.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_step_budget",
+      "category": "runtime",
+      "source": "cases/runtime_step_budget.f90",
+      "note": "Must terminate via the documented execution budget, not loop for billions of steps.",
+      "baseline": "skip"
+    },
+    {
+      "name": "unsupported_array",
+      "category": "success",
+      "source": "cases/unsupported_array.f90",
+      "note": "Whole arrays supported since 0.4.0; source unchanged.",
+      "expected_stdout": "1 1",
+      "baseline": "run"
+    },
+    {
+      "name": "unsupported_character_variable",
+      "category": "success",
+      "source": "cases/unsupported_character_variable.f90",
+      "note": "",
+      "baseline": "run",
+      "expected_stdout": "abc"
+    },
+    {
+      "name": "unsupported_integer_kind",
+      "category": "success",
+      "source": "cases/unsupported_integer_kind.f90",
+      "note": "",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "unsupported_complex",
+      "category": "unsupported",
+      "source": "cases/unsupported_complex.f90",
+      "note": "",
+      "baseline": "compile"
+    },
+    {
+      "name": "unsupported_do_while",
+      "category": "success",
+      "source": "cases/unsupported_do_while.f90",
+      "note": "",
+      "baseline": "run",
+      "expected_stdout": "2"
+    },
+    {
+      "name": "unsupported_select_case",
+      "category": "success",
+      "source": "cases/unsupported_select_case.f90",
+      "note": "",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "unsupported_write",
+      "category": "success",
+      "source": "cases/unsupported_write.f90",
+      "note": "Historical WRITE rejection fixture promoted without changing source; positional stdout WRITE is now supported.",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "unsupported_read",
+      "category": "unsupported",
+      "source": "cases/unsupported_read.f90",
+      "note": "",
+      "baseline": "compile"
+    },
+    {
+      "name": "unsupported_fail_closed",
+      "category": "success",
+      "source": "cases/unsupported_fail_closed.f90",
+      "note": "Historical WRITE rejection fixture promoted without changing source; positional stdout WRITE is now supported.",
+      "baseline": "run",
+      "expected_stdout": "SHOULD_NOT_EXECUTE 1"
+    },
+    {
+      "name": "unsupported_no_implicit_none",
+      "category": "success",
+      "source": "cases/unsupported_no_implicit_none.f90",
+      "note": "Promoted to supported in 0.3.0: IMPLICIT NONE is optional; fixture and legacy name retained unchanged.",
+      "expected_stdout": "1",
+      "baseline": "run"
+    },
+    {
+      "name": "unsupported_multiple_programs",
+      "category": "unsupported",
+      "source": "cases/unsupported_multiple_programs.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "unsupported_module",
+      "category": "success",
+      "source": "cases/unsupported_module.f90",
+      "note": "",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "unsupported_internal_procedure",
+      "category": "success",
+      "source": "cases/unsupported_internal_procedure.f90",
+      "note": "",
+      "baseline": "run",
+      "expected_stdout": "4"
+    },
+    {
+      "name": "logical_equivalence",
+      "category": "success",
+      "source": "cases/logical_equivalence.f90",
+      "note": "",
+      "expected_stdout": "F T T T",
+      "baseline": "run"
+    },
+    {
+      "name": "intrinsic_abs_min_max",
+      "category": "success",
+      "source": "cases/intrinsic_abs_min_max.f90",
+      "note": "",
+      "expected_stdout": "3 2.5 2 9 1.5 2.5",
+      "baseline": "run"
+    },
+    {
+      "name": "intrinsic_conversions",
+      "category": "success",
+      "source": "cases/intrinsic_conversions.f90",
+      "note": "",
+      "expected_stdout": "-3 7 -1 1 -1.5",
+      "baseline": "run"
+    },
+    {
+      "name": "intrinsic_wrong_count",
+      "category": "semantic",
+      "source": "cases/intrinsic_wrong_count.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "intrinsic_wrong_type",
+      "category": "semantic",
+      "source": "cases/intrinsic_wrong_type.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "intrinsic_mixed_min",
+      "category": "semantic",
+      "source": "cases/intrinsic_mixed_min.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "runtime_abs_min_integer",
+      "category": "runtime",
+      "source": "cases/runtime_abs_min_integer.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "runtime_mod_zero",
+      "category": "runtime",
+      "source": "cases/runtime_mod_zero.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "unsupported_single_line_if",
+      "category": "success",
+      "source": "cases/unsupported_single_line_if.f90",
+      "note": "Single-line IF is supported from 0.7.0; source retained as a regression.",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "unsupported_else_if",
+      "category": "success",
+      "source": "cases/unsupported_else_if.f90",
+      "note": "Historical boundary fixture, supported by the control-flow extension.",
+      "baseline": "run",
+      "expected_stdout": "1"
+    },
+    {
+      "name": "real32_expression_rounding",
+      "category": "success",
+      "source": "cases/real32_expression_rounding.f90",
+      "note": "",
+      "expected_stdout": "16777216",
+      "baseline": "run"
+    },
+    {
+      "name": "real32_literal_rounding",
+      "category": "success",
+      "source": "cases/real32_literal_rounding.f90",
+      "note": "",
+      "expected_stdout": "16777216",
+      "baseline": "run"
+    },
+    {
+      "name": "integer_negative_powers",
+      "category": "success",
+      "source": "cases/integer_negative_powers.f90",
+      "note": "",
+      "expected_stdout": "-1 1 0 0 1",
+      "baseline": "run"
+    },
+    {
+      "name": "numeric_dotted_relations",
+      "category": "success",
+      "source": "cases/numeric_dotted_relations.f90",
+      "note": "",
+      "expected_stdout": "T T T T",
+      "baseline": "run"
+    },
+    {
+      "name": "unusual_real_literals",
+      "category": "success",
+      "source": "cases/unusual_real_literals.f90",
+      "note": "",
+      "expected_stdout": "100 100 100 5 0.01",
+      "baseline": "run"
+    },
+    {
+      "name": "semicolon_statements",
+      "category": "success",
+      "source": "cases/semicolon_statements.f90",
+      "note": "",
+      "expected_stdout": "2 0.5 T",
+      "baseline": "run"
+    },
+    {
+      "name": "semicolon_control_flow",
+      "category": "success",
+      "source": "cases/semicolon_control_flow.f90",
+      "note": "",
+      "expected_stdout": "15 4",
+      "baseline": "run"
+    },
+    {
+      "name": "empty_nested_blocks",
+      "category": "success",
+      "source": "cases/empty_nested_blocks.f90",
+      "note": "",
+      "expected_stdout": "7 3",
+      "baseline": "run"
+    },
+    {
+      "name": "empty_print",
+      "category": "success",
+      "source": "cases/empty_print.f90",
+      "note": "",
+      "expected_stdout": "",
+      "baseline": "run",
+      "expected_stdout_lines": 2
+    },
+    {
+      "name": "malformed_empty_print_comma",
+      "category": "syntax",
+      "source": "cases/malformed_empty_print_comma.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_adjacent_multiply_sign",
+      "category": "syntax",
+      "source": "cases/malformed_adjacent_multiply_sign.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_adjacent_power_sign",
+      "category": "syntax",
+      "source": "cases/malformed_adjacent_power_sign.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_adjacent_add_sign",
+      "category": "syntax",
+      "source": "cases/malformed_adjacent_add_sign.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "malformed_adjacent_unary_signs",
+      "category": "syntax",
+      "source": "cases/malformed_adjacent_unary_signs.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "initializer_integer_zero_divide",
+      "category": "semantic",
+      "source": "cases/initializer_integer_zero_divide.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "initializer_real_zero_divide",
+      "category": "semantic",
+      "source": "cases/initializer_real_zero_divide.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "initializer_integer_overflow",
+      "category": "safety_static",
+      "source": "cases/initializer_integer_overflow.f90",
+      "note": "Interpreter safety contract requires static rejection of an overflowing constant initializer. GNU folds this expression to INT_MIN even under strict standard flags, so no compiler-rejection oracle is claimed.",
+      "baseline": "skip"
+    },
+    {
+      "name": "initializer_real_overflow",
+      "category": "safety_static",
+      "source": "cases/initializer_real_overflow.f90",
+      "note": "",
+      "baseline": "skip"
+    },
+    {
+      "name": "unsupported_keyword_identifier",
+      "category": "unsupported",
+      "source": "cases/unsupported_keyword_identifier.f90",
+      "note": "Fortran has no reserved keywords; rejecting these names is an explicit prototype boundary, not a Fortran semantic error.",
+      "baseline": "compile"
+    },
+    {
+      "name": "unsupported_intrinsic_identifier",
+      "category": "unsupported",
+      "source": "cases/unsupported_intrinsic_identifier.f90",
+      "note": "Intrinsic names can be ordinary variable names in Fortran; this prototype explicitly reserves its intrinsic allowlist.",
+      "baseline": "compile"
+    },
+    {
+      "name": "generated_integer_000",
+      "category": "success",
+      "source": "cases/generated_integer_000.f90",
+      "note": "",
+      "expected_stdout": "8",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_001",
+      "category": "success",
+      "source": "cases/generated_integer_001.f90",
+      "note": "",
+      "expected_stdout": "3",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_002",
+      "category": "success",
+      "source": "cases/generated_integer_002.f90",
+      "note": "",
+      "expected_stdout": "7",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_003",
+      "category": "success",
+      "source": "cases/generated_integer_003.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_004",
+      "category": "success",
+      "source": "cases/generated_integer_004.f90",
+      "note": "",
+      "expected_stdout": "-6",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_005",
+      "category": "success",
+      "source": "cases/generated_integer_005.f90",
+      "note": "",
+      "expected_stdout": "104",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_006",
+      "category": "success",
+      "source": "cases/generated_integer_006.f90",
+      "note": "",
+      "expected_stdout": "9",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_007",
+      "category": "success",
+      "source": "cases/generated_integer_007.f90",
+      "note": "",
+      "expected_stdout": "1",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_008",
+      "category": "success",
+      "source": "cases/generated_integer_008.f90",
+      "note": "",
+      "expected_stdout": "-81",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_009",
+      "category": "success",
+      "source": "cases/generated_integer_009.f90",
+      "note": "",
+      "expected_stdout": "45",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_010",
+      "category": "success",
+      "source": "cases/generated_integer_010.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_011",
+      "category": "success",
+      "source": "cases/generated_integer_011.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_012",
+      "category": "success",
+      "source": "cases/generated_integer_012.f90",
+      "note": "",
+      "expected_stdout": "-1",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_013",
+      "category": "success",
+      "source": "cases/generated_integer_013.f90",
+      "note": "",
+      "expected_stdout": "-8",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_014",
+      "category": "success",
+      "source": "cases/generated_integer_014.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_015",
+      "category": "success",
+      "source": "cases/generated_integer_015.f90",
+      "note": "",
+      "expected_stdout": "-14",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_016",
+      "category": "success",
+      "source": "cases/generated_integer_016.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_017",
+      "category": "success",
+      "source": "cases/generated_integer_017.f90",
+      "note": "",
+      "expected_stdout": "-1",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_018",
+      "category": "success",
+      "source": "cases/generated_integer_018.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_019",
+      "category": "success",
+      "source": "cases/generated_integer_019.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_020",
+      "category": "success",
+      "source": "cases/generated_integer_020.f90",
+      "note": "",
+      "expected_stdout": "-7",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_021",
+      "category": "success",
+      "source": "cases/generated_integer_021.f90",
+      "note": "",
+      "expected_stdout": "10",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_022",
+      "category": "success",
+      "source": "cases/generated_integer_022.f90",
+      "note": "",
+      "expected_stdout": "3",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_023",
+      "category": "success",
+      "source": "cases/generated_integer_023.f90",
+      "note": "",
+      "expected_stdout": "5",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_024",
+      "category": "success",
+      "source": "cases/generated_integer_024.f90",
+      "note": "",
+      "expected_stdout": "125",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_025",
+      "category": "success",
+      "source": "cases/generated_integer_025.f90",
+      "note": "",
+      "expected_stdout": "-2",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_026",
+      "category": "success",
+      "source": "cases/generated_integer_026.f90",
+      "note": "",
+      "expected_stdout": "-1",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_027",
+      "category": "success",
+      "source": "cases/generated_integer_027.f90",
+      "note": "",
+      "expected_stdout": "-9",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_028",
+      "category": "success",
+      "source": "cases/generated_integer_028.f90",
+      "note": "",
+      "expected_stdout": "-1",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_029",
+      "category": "success",
+      "source": "cases/generated_integer_029.f90",
+      "note": "",
+      "expected_stdout": "9",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_030",
+      "category": "success",
+      "source": "cases/generated_integer_030.f90",
+      "note": "",
+      "expected_stdout": "6",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_031",
+      "category": "success",
+      "source": "cases/generated_integer_031.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_032",
+      "category": "success",
+      "source": "cases/generated_integer_032.f90",
+      "note": "",
+      "expected_stdout": "-7",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_033",
+      "category": "success",
+      "source": "cases/generated_integer_033.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_034",
+      "category": "success",
+      "source": "cases/generated_integer_034.f90",
+      "note": "",
+      "expected_stdout": "7",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_035",
+      "category": "success",
+      "source": "cases/generated_integer_035.f90",
+      "note": "",
+      "expected_stdout": "-8",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_036",
+      "category": "success",
+      "source": "cases/generated_integer_036.f90",
+      "note": "",
+      "expected_stdout": "1",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_037",
+      "category": "success",
+      "source": "cases/generated_integer_037.f90",
+      "note": "",
+      "expected_stdout": "1",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_038",
+      "category": "success",
+      "source": "cases/generated_integer_038.f90",
+      "note": "",
+      "expected_stdout": "6",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_039",
+      "category": "success",
+      "source": "cases/generated_integer_039.f90",
+      "note": "",
+      "expected_stdout": "2",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_040",
+      "category": "success",
+      "source": "cases/generated_integer_040.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_041",
+      "category": "success",
+      "source": "cases/generated_integer_041.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_042",
+      "category": "success",
+      "source": "cases/generated_integer_042.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_043",
+      "category": "success",
+      "source": "cases/generated_integer_043.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_044",
+      "category": "success",
+      "source": "cases/generated_integer_044.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_045",
+      "category": "success",
+      "source": "cases/generated_integer_045.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_046",
+      "category": "success",
+      "source": "cases/generated_integer_046.f90",
+      "note": "",
+      "expected_stdout": "-6",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_047",
+      "category": "success",
+      "source": "cases/generated_integer_047.f90",
+      "note": "",
+      "expected_stdout": "-141",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_048",
+      "category": "success",
+      "source": "cases/generated_integer_048.f90",
+      "note": "",
+      "expected_stdout": "-9",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_049",
+      "category": "success",
+      "source": "cases/generated_integer_049.f90",
+      "note": "",
+      "expected_stdout": "-7",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_050",
+      "category": "success",
+      "source": "cases/generated_integer_050.f90",
+      "note": "",
+      "expected_stdout": "-8",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_051",
+      "category": "success",
+      "source": "cases/generated_integer_051.f90",
+      "note": "",
+      "expected_stdout": "-288",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_052",
+      "category": "success",
+      "source": "cases/generated_integer_052.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_053",
+      "category": "success",
+      "source": "cases/generated_integer_053.f90",
+      "note": "",
+      "expected_stdout": "0",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_054",
+      "category": "success",
+      "source": "cases/generated_integer_054.f90",
+      "note": "",
+      "expected_stdout": "-2",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_055",
+      "category": "success",
+      "source": "cases/generated_integer_055.f90",
+      "note": "",
+      "expected_stdout": "-4",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_056",
+      "category": "success",
+      "source": "cases/generated_integer_056.f90",
+      "note": "",
+      "expected_stdout": "-19683",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_057",
+      "category": "success",
+      "source": "cases/generated_integer_057.f90",
+      "note": "",
+      "expected_stdout": "512",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_058",
+      "category": "success",
+      "source": "cases/generated_integer_058.f90",
+      "note": "",
+      "expected_stdout": "-10",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_integer_059",
+      "category": "success",
+      "source": "cases/generated_integer_059.f90",
+      "note": "",
+      "expected_stdout": "1",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_000",
+      "category": "success",
+      "source": "cases/generated_real_000.f90",
+      "note": "",
+      "expected_stdout": "20.7000008",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_001",
+      "category": "success",
+      "source": "cases/generated_real_001.f90",
+      "note": "",
+      "expected_stdout": "1.25",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_002",
+      "category": "success",
+      "source": "cases/generated_real_002.f90",
+      "note": "",
+      "expected_stdout": "2.25",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_003",
+      "category": "success",
+      "source": "cases/generated_real_003.f90",
+      "note": "",
+      "expected_stdout": "-13.3382349",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_004",
+      "category": "success",
+      "source": "cases/generated_real_004.f90",
+      "note": "",
+      "expected_stdout": "-9",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_005",
+      "category": "success",
+      "source": "cases/generated_real_005.f90",
+      "note": "",
+      "expected_stdout": "-22.5",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_006",
+      "category": "success",
+      "source": "cases/generated_real_006.f90",
+      "note": "",
+      "expected_stdout": "-34.75",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_007",
+      "category": "success",
+      "source": "cases/generated_real_007.f90",
+      "note": "",
+      "expected_stdout": "0.0559080467",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_008",
+      "category": "success",
+      "source": "cases/generated_real_008.f90",
+      "note": "",
+      "expected_stdout": "5.125",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_009",
+      "category": "success",
+      "source": "cases/generated_real_009.f90",
+      "note": "",
+      "expected_stdout": "4.25",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_010",
+      "category": "success",
+      "source": "cases/generated_real_010.f90",
+      "note": "",
+      "expected_stdout": "0.666666687",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_011",
+      "category": "success",
+      "source": "cases/generated_real_011.f90",
+      "note": "",
+      "expected_stdout": "5.25",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_012",
+      "category": "success",
+      "source": "cases/generated_real_012.f90",
+      "note": "",
+      "expected_stdout": "-0.382434338",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_013",
+      "category": "success",
+      "source": "cases/generated_real_013.f90",
+      "note": "",
+      "expected_stdout": "105",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_014",
+      "category": "success",
+      "source": "cases/generated_real_014.f90",
+      "note": "",
+      "expected_stdout": "78.0340881",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_015",
+      "category": "success",
+      "source": "cases/generated_real_015.f90",
+      "note": "",
+      "expected_stdout": "3.10344839",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_016",
+      "category": "success",
+      "source": "cases/generated_real_016.f90",
+      "note": "",
+      "expected_stdout": "12.6944447",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_017",
+      "category": "success",
+      "source": "cases/generated_real_017.f90",
+      "note": "",
+      "expected_stdout": "2.65625",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_018",
+      "category": "success",
+      "source": "cases/generated_real_018.f90",
+      "note": "",
+      "expected_stdout": "7.5",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_019",
+      "category": "success",
+      "source": "cases/generated_real_019.f90",
+      "note": "",
+      "expected_stdout": "1.73245609",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_020",
+      "category": "success",
+      "source": "cases/generated_real_020.f90",
+      "note": "",
+      "expected_stdout": "-21.25",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_021",
+      "category": "success",
+      "source": "cases/generated_real_021.f90",
+      "note": "",
+      "expected_stdout": "344.850006",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_022",
+      "category": "success",
+      "source": "cases/generated_real_022.f90",
+      "note": "",
+      "expected_stdout": "0.0833333731",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_023",
+      "category": "success",
+      "source": "cases/generated_real_023.f90",
+      "note": "",
+      "expected_stdout": "-0.400000006",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_024",
+      "category": "success",
+      "source": "cases/generated_real_024.f90",
+      "note": "",
+      "expected_stdout": "6",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_025",
+      "category": "success",
+      "source": "cases/generated_real_025.f90",
+      "note": "",
+      "expected_stdout": "-7.5",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_026",
+      "category": "success",
+      "source": "cases/generated_real_026.f90",
+      "note": "",
+      "expected_stdout": "5.25",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_027",
+      "category": "success",
+      "source": "cases/generated_real_027.f90",
+      "note": "",
+      "expected_stdout": "2",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_028",
+      "category": "success",
+      "source": "cases/generated_real_028.f90",
+      "note": "",
+      "expected_stdout": "-8.25",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_029",
+      "category": "success",
+      "source": "cases/generated_real_029.f90",
+      "note": "",
+      "expected_stdout": "-2.5",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_030",
+      "category": "success",
+      "source": "cases/generated_real_030.f90",
+      "note": "",
+      "expected_stdout": "8.46153831",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_031",
+      "category": "success",
+      "source": "cases/generated_real_031.f90",
+      "note": "",
+      "expected_stdout": "-0.564935088",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_032",
+      "category": "success",
+      "source": "cases/generated_real_032.f90",
+      "note": "",
+      "expected_stdout": "-2.14285707",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_033",
+      "category": "success",
+      "source": "cases/generated_real_033.f90",
+      "note": "",
+      "expected_stdout": "42.375",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_034",
+      "category": "success",
+      "source": "cases/generated_real_034.f90",
+      "note": "",
+      "expected_stdout": "-0.639999986",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_035",
+      "category": "success",
+      "source": "cases/generated_real_035.f90",
+      "note": "",
+      "expected_stdout": "8",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_036",
+      "category": "success",
+      "source": "cases/generated_real_036.f90",
+      "note": "",
+      "expected_stdout": "1.38461542",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_037",
+      "category": "success",
+      "source": "cases/generated_real_037.f90",
+      "note": "",
+      "expected_stdout": "1.75",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_038",
+      "category": "success",
+      "source": "cases/generated_real_038.f90",
+      "note": "",
+      "expected_stdout": "4.54513884",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "generated_real_039",
+      "category": "success",
+      "source": "cases/generated_real_039.f90",
+      "note": "",
+      "expected_stdout": "1.75",
+      "baseline": "run",
+      "tags": [
+        "generated",
+        "seed:20261114"
+      ]
+    },
+    {
+      "name": "adjacent_print_strings",
+      "category": "success",
+      "source": "cases/adjacent_print_strings.f90",
+      "note": "",
+      "expected_stdout": "abc",
+      "baseline": "run"
+    },
+    {
+      "name": "adjacent_print_mixed",
+      "category": "success",
+      "source": "cases/adjacent_print_mixed.f90",
+      "note": "",
+      "expected_stdout": "x 3 yz",
+      "baseline": "run"
+    },
+    {
+      "name": "malformed_repeated_not",
+      "category": "syntax",
+      "source": "cases/malformed_repeated_not.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "parenthesized_double_not",
+      "category": "success",
+      "source": "cases/parenthesized_double_not.f90",
+      "note": "",
+      "expected_stdout": "T",
+      "baseline": "run"
+    },
+    {
+      "name": "program_name_variable_collision",
+      "category": "semantic",
+      "source": "cases/program_name_variable_collision.f90",
+      "note": "",
+      "baseline": "reject"
+    },
+    {
+      "name": "program_name_intrinsic_collision",
+      "category": "semantic",
+      "source": "cases/program_name_intrinsic_collision.f90",
+      "note": "",
+      "baseline": "reject"
+    }
+  ]
+}

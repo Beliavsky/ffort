@@ -1,0 +1,1055 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:39:45.733502+00:00",
+  "summary": {
+    "total": 34,
+    "failed": 0,
+    "candidate_checked": 34,
+    "gnu_checked": 34,
+    "gnu_skipped": 0,
+    "gnu_executed": 18,
+    "gnu_compile_only": 7,
+    "gnu_compile_rejections": 9
+  },
+  "records": [
+    {
+      "case": {
+        "name": "demo_parity",
+        "source": "demo_parity.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T F T F T T T T F F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T\n T\n F\n T\n F\n T T T T\n F F F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T\n T\n F\n T\n F\n T T T T\n F F F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "vectors",
+        "source": "vectors.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F T F T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F T F T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F T F T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_dims",
+        "source": "matrix_dims.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F T T F F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F T T F F F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F T T F F F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_vector",
+        "source": "empty_vector.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_first_dimension",
+        "source": "empty_first_dimension.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F F F F 0",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F F F F           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F F F F 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_second_dimension",
+        "source": "empty_second_dimension.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F 0 F F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F           0 F F F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F 0 F F F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "lower_bounds_reverse",
+        "source": "lower_bounds_reverse.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keyword_order_dim8",
+        "source": "keyword_order_dim8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T F T F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F T F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T F T F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_dim",
+        "source": "runtime_dim.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_numeric_mask",
+        "source": "nested_numeric_mask.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "constant_parameter",
+        "source": "constant_parameter.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "logical_parameter_array",
+        "source": "logical_parameter_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_assignment",
+        "source": "array_assignment.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F T F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F T F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F T F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "allocatable_mask",
+        "source": "allocatable_mask.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_function",
+        "source": "pure_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_mask_once",
+        "source": "function_mask_once.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F 3",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F\n 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_shadow",
+        "source": "function_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "13",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          13\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 13\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "optional_present",
+        "source": "optional_present.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_mask",
+        "source": "undefined_mask.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/undefined_mask.f90:5:16: read of uninitialized array element a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_mask",
+        "source": "unallocated_mask.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "unallocated"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/unallocated_mask.f90:4:16: reference to unallocated array a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "absent_optional",
+        "source": "absent_optional.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "absent"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/absent_optional.f90:7:30: absent OPTIONAL dummy referenced: x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_mask",
+        "source": "scalar_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/scalar_mask.f90:4:15:\n\n    4 | print *,parity(.true.)\n      |               1\nError: \u2018mask\u2019 argument of \u2018parity\u2019 intrinsic at (1) must be an array\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/scalar_mask.f90:4:23: Array intrinsic requires a rank-one or rank-two array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/scalar_mask.f90:4:23: Array intrinsic requires a rank-one or rank-two array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "integer_mask",
+        "source": "integer_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/integer_mask.f90:4:15:\n\n    4 | print *,parity([1,2])\n      |               1\nError: \u2018mask\u2019 argument of \u2018parity\u2019 intrinsic at (1) must be LOGICAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/integer_mask.f90:4:22: Logical reduction requires LOGICAL array MASK\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/integer_mask.f90:4:22: Logical reduction requires LOGICAL array MASK\n"
+      }
+    },
+    {
+      "case": {
+        "name": "rank_three",
+        "source": "rank_three.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/rank_three.f90:4:18: Array intrinsic requires a rank-one or rank-two array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/rank_three.f90:4:18: Array intrinsic requires a rank-one or rank-two array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_dim_type",
+        "source": "wrong_dim_type.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/wrong_dim_type.f90:4:24:\n\n    4 | print *,parity([.true.],.true.)\n      |                        1\nError: \u2018dim\u2019 argument of \u2018parity\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/wrong_dim_type.f90:4:32: Logical reduction DIM must be scalar INTEGER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/wrong_dim_type.f90:4:32: Logical reduction DIM must be scalar INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dim_array",
+        "source": "dim_array.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/dim_array.f90:4:24:\n\n    4 | print *,parity([.true.],[1])\n      |                        1\nError: \u2018dim\u2019 argument of \u2018parity\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/dim_array.f90:4:29: Logical reduction DIM must be scalar INTEGER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/dim_array.f90:4:29: Logical reduction DIM must be scalar INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "extra_kind",
+        "source": "extra_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/extra_kind.f90:4:8:\n\n    4 | print *,parity([.true.],kind=4)\n      |        1\nError: Cannot find keyword named \u2018kind\u2019 in call to \u2018parity\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/extra_kind.f90:4:32: Unknown keyword or excess actual argument: kind\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/extra_kind.f90:4:32: Unknown keyword or excess actual argument: kind\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_mask",
+        "source": "duplicate_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/duplicate_mask.f90:4:44:\n\n    4 | print *,parity(mask=[.true.],mask=[.false.])\n      |                                            1\nError: Keyword \u2018mask\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/duplicate_mask.f90:4:45: Repeated actual argument for mask\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/duplicate_mask.f90:4:45: Repeated actual argument for mask\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unknown_keyword",
+        "source": "unknown_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/unknown_keyword.f90:4:8:\n\n    4 | print *,parity(array=[.true.])\n      |        1\nError: Cannot find keyword named \u2018array\u2019 in call to \u2018parity\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/unknown_keyword.f90:4:31: Unknown keyword or excess actual argument: array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/unknown_keyword.f90:4:31: Unknown keyword or excess actual argument: array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_mask",
+        "source": "missing_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/missing_mask.f90:4:8:\n\n    4 | print *,parity(dim=1)\n      |        1\nError: Missing actual argument \u2018mask\u2019 in call to \u2018parity\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/missing_mask.f90:4:22: Missing required actual argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/missing_mask.f90:4:22: Missing required actual argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bad_runtime_dim0",
+        "source": "bad_runtime_dim0.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "DIM outside"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/bad_runtime_dim0.f90:7:9: reduction DIM outside array rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bad_runtime_dim3",
+        "source": "bad_runtime_dim3.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "DIM outside"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/bad_runtime_dim3.f90:7:9: reduction DIM outside array rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "optional_dim_rejected",
+        "source": "optional_dim_rejected.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "OPTIONAL"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/optional_dim_rejected.f90:8:28:\n\n    8 | print *,parity([.true.],dim=d)\n      |                            1\nError: \u2018dim\u2019 argument of \u2018parity\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/optional_dim_rejected.f90:8:31: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/optional_dim_rejected.f90:8:31: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "budget",
+        "source": "budget.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "step limit",
+        "args": [
+          "--max-steps",
+          "50"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/parity_intrinsic/budget.f90:4:1: execution step limit exceeded (current limit: 50); use --max-steps N to set the execution budget (positive 64-bit integer)\n"
+      }
+    }
+  ],
+  "manifest_sha256": "9227ac1f5d5fc683e2bb8f818d29e96ac673dc2e4a5e59070363d20e1e1f12d0",
+  "source_sha256": {
+    "demo_parity.f90": "d3c8632021980a15da5fe1f81c6a7808284b68e18b37c38f6b4580c879965c50",
+    "vectors.f90": "034dd1d0b4f20fa16aa2ccfee844aac4517d75bcb2c29da15c0c3d041bdbd89f",
+    "matrix_dims.f90": "b10d035a56d012678e36cb8a8933684189c9690e90ca4229e190755469f66c72",
+    "empty_vector.f90": "67c28197c7b789511d3af438e928607bd065324bb02ec657ed25ea39c711f51d",
+    "empty_first_dimension.f90": "e196401b206e9dda27094b24d22807b226d12a2c906e39616061fefbddc22eed",
+    "empty_second_dimension.f90": "7442853b35d01175f88b657b3b37f48dac85b2def1a19f1a35f49b633f957eaf",
+    "lower_bounds_reverse.f90": "7bfe4f86358c9d640ba1875aaf34e03f7c9a313ec2964677a65829219d409b0b",
+    "keyword_order_dim8.f90": "0e8c672ac7e91f09c51622637f45be68c91e60266dff3d74148a404119f05f05",
+    "runtime_dim.f90": "25657814f2c78be7fcfd20bb7310533909338506e16e86a450d5927badbed2fa",
+    "nested_numeric_mask.f90": "95db40e71b4e89cb2731d1cd66fa1d3d6092f73cb5e3ec936c0d21372b107639",
+    "constant_parameter.f90": "ae1604e03a7c2a2633839215fc4ee8ab8f0120b9d00f3d4b3afa704c49b156e5",
+    "logical_parameter_array.f90": "2312b08d5fd41003bcc68369237bc9d94025736901ed3379db5a139eaf90a8c8",
+    "array_assignment.f90": "aa479be0686c42e946f7071f4c40ec8139cbf4bd1db7faaf4f1e7327f4cddaa0",
+    "allocatable_mask.f90": "afcb2952d5afcb5606b44254e72cffec3189200ac64ba0123ea3f4ccc6106f88",
+    "pure_function.f90": "d57e5ee05bf437f5c53e10e5aa26ecc1a640e6888283e60dc838516bf63c784f",
+    "function_mask_once.f90": "7241356e1e6ca506c732094b5fd3fdf4d708847180de14a388395e74eab4dc21",
+    "function_shadow.f90": "552dc281bdff4dc6406d4cb6dda79fb58cef6a3ba083b27b3d8879963bc481b4",
+    "optional_present.f90": "5215687cfc6c0bb2283450af287087bfea73bbb6c4b86f6352b63c732628398f",
+    "undefined_mask.f90": "d595e4508ae9c4b117225f6756d6df06621b197278105dab272c6db09a17acd0",
+    "unallocated_mask.f90": "f63ae84151ee4399a58f2c2064e9bb1c8380e5f185d5c932ef2e35c56923fa13",
+    "absent_optional.f90": "882e7df5aaf97558e17ffc59c4400de166913d4ec323992acd5142e84aaad758",
+    "scalar_mask.f90": "ab04ec5ff425c4976accd57de22e7b9aa73eeb77e9032d52834bb2f2419f52e4",
+    "integer_mask.f90": "d3ae6a2cb889356cbb7c9c16dae578310b1d7ce09c06d0c2c10c1e439a3202db",
+    "rank_three.f90": "4f68c6208342ad763403429945717da6916dcbf28fe541686dc53e511e112dd7",
+    "wrong_dim_type.f90": "6360dfefe3e1eb7c9bd25c388ecadb993852a088922c50f8f3f343e252a3b7a2",
+    "dim_array.f90": "2eccae421a840f624490f982a5e57a10377a6472180051ecb1e47cc15590b7ee",
+    "extra_kind.f90": "5fad8bbf31dea8291bb95d740a5dbc8a782438e5c0016b47a6acbb325adffc19",
+    "duplicate_mask.f90": "17797170bc14e1f9880c726e953850c0014ca9c5005c9cacb3825695c012525a",
+    "unknown_keyword.f90": "cad13f7de01541370cc6c4ee5accef3fc486772319a77ccceb64e695d940b5c8",
+    "missing_mask.f90": "8a8bef08ac216524cfd997c370c3c9ed1d0aaec255d612879214d07b9614ca98",
+    "bad_runtime_dim0.f90": "393416e71bf19ddd75f4dd74e2a814671cd1f827fb78c2602a77b528df35a6dc",
+    "bad_runtime_dim3.f90": "ae189c99e7ab978b550f38a43e8af053df596dc6fbed1bb96ab52d59499a1db3",
+    "optional_dim_rejected.f90": "91fc100ac52b738461fd3b57a500ec37cec736ea018f5f5e73889e753b735365",
+    "budget.f90": "67de1b0b57aafe725f2a5efce32690ca2918eddba91492e62433a5d01c06cde7"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

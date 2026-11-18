@@ -1,0 +1,1131 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:36:14.559151+00:00",
+  "summary": {
+    "total": 37,
+    "failed": 0,
+    "candidate_checked": 37,
+    "gnu_checked": 37,
+    "gnu_skipped": 0,
+    "gnu_executed": 17,
+    "gnu_compile_only": 11,
+    "gnu_compile_rejections": 9
+  },
+  "records": [
+    {
+      "case": {
+        "name": "counter",
+        "source": "cases/counter.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 0 3 1 3 2 3 0 4",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n           2\n           0           3\n           1           3\n           2           3\n           0           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n 2\n 0 3\n 1 3\n 2 3\n 0 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kinds",
+        "source": "cases/kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2147483649 0.75 T B  x\n2147483650 1 F   xx",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2147483649  0.75000000000000000      T B  x\n           2147483650   1.0000000000000000      F   xx\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2147483649 0.75000000000000000 T B  x\n 2147483650 1.0000000000000000 F   xx\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_recursive_gen",
+        "source": "cases/original_recursive_gen.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 1 1 2 2 3\n2 3 4 3 4 4\n-12\n1 1 2 -1 -1 -1\n2 3 3 -1 -1 -1",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           1           1           2           2           3\n           2           3           4           3           4           4\n         -12\n           1           1           2          -1          -1          -1\n           2           3           3          -1          -1          -1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 1 1 2 2 3\n 2 3 4 3 4 4\n -12\n 1 1 2 -1 -1 -1\n 2 3 3 -1 -1 -1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "implicit_save",
+        "source": "cases/implicit_save.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6\n           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6\n 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "multiple_entities",
+        "source": "cases/multiple_entities.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 10 4 12",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3          10\n           4          12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 10\n 4 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "constant_expression",
+        "source": "cases/constant_expression.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 9",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8\n 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_conversion",
+        "source": "cases/kind_conversion.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 5",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4\n 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zero_character",
+        "source": "cases/zero_character.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "early_return",
+        "source": "cases/early_return.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "saved_counted_do",
+        "source": "cases/saved_counted_do.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 3",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "saved_do_early_return",
+        "source": "cases/saved_do_early_return.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 1",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "safe_writable_actual",
+        "source": "cases/safe_writable_actual.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "readonly_function",
+        "source": "cases/readonly_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 3",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_elemental",
+        "source": "cases/impure_elemental.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 12 13 14",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          12          13\n          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 12 13\n 14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "independent_scopes",
+        "source": "cases/independent_scopes.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 101 2 102",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n         101\n           2\n         102\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n 101\n 2\n 102\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "snapshot_recursive_actual",
+        "source": "cases/snapshot_recursive_actual.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 2 3 1 1 3 2 0 3",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           2           3\n           1           1           3\n           2           0           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 2 3\n 1 1 3\n 2 0 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_active_do",
+        "source": "cases/recursive_active_do.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "active DO variable"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/recursive_active_do.f90:7:1: nested reuse of active DO variable\n"
+      }
+    },
+    {
+      "case": {
+        "name": "initializer_budget",
+        "source": "cases/initializer_budget.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "execution step limit exceeded",
+        "args": [
+          "--max-steps",
+          "1"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/initializer_budget.f90:13:1: execution step limit exceeded (current limit: 1); use --max-steps N to set the execution budget (positive 64-bit integer)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "increment_overflow",
+        "source": "cases/increment_overflow.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/increment_overflow.f90:6:4: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_explicit",
+        "source": "cases/pure_explicit.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "PURE/SIMPLE"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_explicit.f90:5:12:\n\n    5 | integer,save::n=0\n      |            1\nError: SAVE attribute at (1) cannot be specified in a PURE procedure\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_explicit.f90:6:1:\n\n    6 | n=n+1\n      | 1\nError: Symbol \u2018n\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_explicit.f90:10:5:\n\n   10 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_explicit.f90:5:17: PURE/SIMPLE procedures cannot declare SAVE or initialized mutable locals\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_explicit.f90:5:17: PURE/SIMPLE procedures cannot declare SAVE or initialized mutable locals\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_implicit",
+        "source": "cases/pure_implicit.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "PURE/SIMPLE"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_implicit.f90:5:12:\n\n    5 | integer::n=0\n      |            1\nError: Initialization of variable at (1) is not allowed in a PURE procedure\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_implicit.f90:6:1:\n\n    6 | n=n+1\n      | 1\nError: Symbol \u2018n\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_implicit.f90:10:5:\n\n   10 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_implicit.f90:5:12: PURE/SIMPLE procedures cannot declare SAVE or initialized mutable locals\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_implicit.f90:5:12: PURE/SIMPLE procedures cannot declare SAVE or initialized mutable locals\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_transitive",
+        "source": "cases/pure_transitive.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_transitive.f90:9:11:\n\n    9 | call tick()\n      |           1\nError: Subroutine call to \u2018tick\u2019 at (1) is not PURE\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_transitive.f90:13:5:\n\n   13 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_transitive.f90:9:12: PURE procedure cannot invoke an impure procedure\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/pure_transitive.f90:9:12: PURE procedure cannot invoke an impure procedure\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_function_write",
+        "source": "cases/ordinary_function_write.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "SAVE state writes"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/ordinary_function_write.f90:7:1: SAVE state writes inside ordinary functions or PURE procedures are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/ordinary_function_write.f90:7:1: SAVE state writes inside ordinary functions or PURE procedures are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_function_indirect_write",
+        "source": "cases/ordinary_function_indirect_write.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "External side effects"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/ordinary_function_indirect_write.f90:18:1: External side effects inside ordinary functions are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/ordinary_function_indirect_write.f90:18:1: External side effects inside ordinary functions are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_function_writable_actual",
+        "source": "cases/ordinary_function_writable_actual.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "SAVE state writes"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/ordinary_function_writable_actual.f90:6:13: SAVE state writes inside ordinary functions or PURE procedures are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/ordinary_function_writable_actual.f90:6:13: SAVE state writes inside ordinary functions or PURE procedures are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_saved_alias",
+        "source": "cases/recursive_saved_alias.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Module actual"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/recursive_saved_alias.f90:16:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/recursive_saved_alias.f90:16:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "no_initializer",
+        "source": "cases/no_initializer.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "SAVE requires"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/no_initializer.f90:5:16: SAVE requires a constant initializer in this subset\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/no_initializer.f90:5:16: SAVE requires a constant initializer in this subset\n"
+      }
+    },
+    {
+      "case": {
+        "name": "saved_array",
+        "source": "cases/saved_array.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "initialized intrinsic scalar"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_array.f90:5:20: SAVE supports initialized intrinsic scalar procedure locals only\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_array.f90:5:20: SAVE supports initialized intrinsic scalar procedure locals only\n"
+      }
+    },
+    {
+      "case": {
+        "name": "automatic_saved_array",
+        "source": "cases/automatic_saved_array.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "initialized intrinsic scalar"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/automatic_saved_array.f90:6:18:\n\n    6 | integer,save::n(k)=0\n      |                  1\nError: Automatic object \u2018n\u2019 at (1) cannot have the SAVE attribute\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/automatic_saved_array.f90:11:5:\n\n   11 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/automatic_saved_array.f90:6:20: SAVE supports initialized intrinsic scalar procedure locals only\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/automatic_saved_array.f90:6:20: SAVE supports initialized intrinsic scalar procedure locals only\n"
+      }
+    },
+    {
+      "case": {
+        "name": "variable_initializer",
+        "source": "cases/variable_initializer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "constant expressions"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/variable_initializer.f90:6:16:\n\n    6 | integer,save::n=k\n      |                1\nError: Parameter \u2018k\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/variable_initializer.f90:7:1:\n\n    7 | n=n+1\n      | 1\nError: Symbol \u2018n\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/variable_initializer.f90:12:5:\n\n   12 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/variable_initializer.f90:6:18: Declaration initializers must be constant expressions\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/variable_initializer.f90:6:18: Declaration initializers must be constant expressions\n"
+      }
+    },
+    {
+      "case": {
+        "name": "saved_dummy",
+        "source": "cases/saved_dummy.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "initialized intrinsic scalar"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_dummy.f90:5:26:\n\n    5 | integer,intent(in),save::k\n      |                          1\nError: DUMMY attribute conflicts with SAVE attribute at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_dummy.f90:4:17:\n\n    4 | subroutine tick(k)\n      |                 1\nError: Symbol \u2018k\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_dummy.f90:11:5:\n\n   11 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_dummy.f90:5:24: SAVE supports initialized intrinsic scalar procedure locals only\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_dummy.f90:5:24: SAVE supports initialized intrinsic scalar procedure locals only\n"
+      }
+    },
+    {
+      "case": {
+        "name": "saved_parameter",
+        "source": "cases/saved_parameter.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "initialized intrinsic scalar"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_parameter.f90:5:22:\n\n    5 | integer,parameter,save::n=0\n      |                      1\nError: PARAMETER attribute conflicts with SAVE attribute at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_parameter.f90:6:9:\n\n    6 | print *,n\n      |         1\nError: Symbol \u2018n\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_parameter.f90:10:5:\n\n   10 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_parameter.f90:5:23: SAVE supports initialized intrinsic scalar procedure locals only\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_parameter.f90:5:23: SAVE supports initialized intrinsic scalar procedure locals only\n"
+      }
+    },
+    {
+      "case": {
+        "name": "saved_result",
+        "source": "cases/saved_result.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "RESULT cannot"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_result.f90:5:15:\n\n    5 | integer,save::n=0\n      |               1\nError: RESULT attribute conflicts with SAVE attribute at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_result.f90:4:25:\n\n    4 | function tick() result(n)\n      |                         1\nError: Function result \u2018n\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_result.f90:10:5:\n\n   10 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_result.f90:6:1: Function RESULT cannot have SAVE or initialization\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_result.f90:6:1: Function RESULT cannot have SAVE or initialization\n"
+      }
+    },
+    {
+      "case": {
+        "name": "saved_target",
+        "source": "cases/saved_target.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "initialized intrinsic scalar"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_target.f90:5:20: SAVE supports initialized intrinsic scalar procedure locals only\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/saved_target.f90:5:20: SAVE supports initialized intrinsic scalar procedure locals only\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_save",
+        "source": "cases/duplicate_save.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Repeated SAVE"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/duplicate_save.f90:5:17:\n\n    5 | integer,save,save::n=0\n      |                 1\nError: Duplicate SAVE attribute at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/duplicate_save.f90:6:1:\n\n    6 | n=n+1\n      | 1\nError: Symbol \u2018n\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/duplicate_save.f90:11:5:\n\n   11 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/duplicate_save.f90:5:18: Repeated SAVE attribute\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/duplicate_save.f90:5:18: Repeated SAVE attribute\n"
+      }
+    },
+    {
+      "case": {
+        "name": "standalone_save",
+        "source": "cases/standalone_save.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/standalone_save.f90:6:1: Undeclared variable or unsupported statement: save\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/saved_locals/cases/standalone_save.f90:6:1: Undeclared variable or unsupported statement: save\n"
+      }
+    },
+    {
+      "case": {
+        "name": "main_explicit_save",
+        "source": "cases/main_explicit_save.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "04242fdc8eeb921a89e7f044ecbceea2bda83452dddf1eea810a4e37e389df55",
+  "source_sha256": {
+    "cases/counter.f90": "3ac5a0bc1830ef01ab613588b851dadfca571ca47deceb5362401c9783deadcb",
+    "cases/kinds.f90": "09206e502fa08da35109166a0e837e6d96cfba94fe3d004654e0d3ab103e525c",
+    "cases/original_recursive_gen.f90": "e15fdddebaafbb4e197696fc6f0f8fa8d64150a851361ee357a8314db3f689c2",
+    "cases/implicit_save.f90": "1736dc5aae51c8f93288e98adebe2d5286b16f4395535b38a416917eb97024bd",
+    "cases/multiple_entities.f90": "3850d81d75d9c3a75b8ecac9e73fb49721aff0244a63fd3ddbe30d6350ad8004",
+    "cases/constant_expression.f90": "6aad8db361438db9d5ebd8d7b6898471d2aea25979d9392a0cdbf2e068c38779",
+    "cases/kind_conversion.f90": "a60381f052fa33930eb60db39d8d620902aa083aa1606b88f26984bca9750dce",
+    "cases/zero_character.f90": "3440d225718301e02f0c0c775696ba796aec8183d44f6bc2b5353228e3323dd8",
+    "cases/early_return.f90": "5be6b12a2dfe97d86339d75918c98745b2c6f309f1277de61d7dfb0c1848b6d7",
+    "cases/saved_counted_do.f90": "7040d1c8c1f03798f35b438835990dfb82079367f6e06746f7b7e9c093175961",
+    "cases/saved_do_early_return.f90": "a1a670fc7280ecbddac8d9175a34ba83788db36cf8828b16cb3035e1fda9b5f9",
+    "cases/safe_writable_actual.f90": "1555bc63cc0408c542f125e00611a0b5696e0745e1848befe314d988c502bf98",
+    "cases/readonly_function.f90": "84e4cf60428500c75f4c985aaef27877c49a49bc03dc262437f4f708e83bdca9",
+    "cases/impure_elemental.f90": "ff34acf81071b6e05156c1879b6db39a1c4c6f6bda6b2c9613b9f0ecf577eaa4",
+    "cases/independent_scopes.f90": "46256ba54208d51b517dabee2d3d8f1b8a4a2808676e729dcde14e00bd08ceac",
+    "cases/snapshot_recursive_actual.f90": "b7e4b519a73fbff1784fcdea886c7dad4861307873914f8d8451b4f4abdabeee",
+    "cases/recursive_active_do.f90": "1fb27ad34ae04bcfd95751ec1008a1b9ba4ade152d9cf273361321e62d3cc78c",
+    "cases/initializer_budget.f90": "ab974a82895451b6d2f42b9a5fde670938eb03a177b8a6c86b37b9aaf3b88af9",
+    "cases/increment_overflow.f90": "da853cac7f6c8ceb166030a6f905f37bbf498b4525cad628abeb465f38ec63d5",
+    "cases/pure_explicit.f90": "18fbaa463149d9e67b78e2b244306d64cad9bef8e09794ea19915737a6f9a653",
+    "cases/pure_implicit.f90": "18356c51e5aafd87cb6d46a2180b06f3312a892bc318d485a72fb923dc7a0c3a",
+    "cases/pure_transitive.f90": "3f36950243706371d8b9b86618208bf0bb0590346d7a648005de344fca736ad5",
+    "cases/ordinary_function_write.f90": "ca69e61c8743f9bdb1bc75f157a0e5f745dfffa34d97e3f1c5fa038854cd83b4",
+    "cases/ordinary_function_indirect_write.f90": "0523df3df9b789f8ced9b0a1e0867351c2e30964c0d1f636cf0e5b04d2fd23bd",
+    "cases/ordinary_function_writable_actual.f90": "b2d3d42bfe562621b3bd581f2e55bae59764d97e6df48ebb724d93851028837a",
+    "cases/recursive_saved_alias.f90": "a94bdffda9ae84816a9e00950a1d72670044f6c3967ac837f2091b08071a1482",
+    "cases/no_initializer.f90": "5a70c9d31b2c24f346d34acf293e6f7b051672f4cf08e15b40e48f6991d6d613",
+    "cases/saved_array.f90": "14435e1647dccf3ce8892133922608bd727884035e7aec14afff1ea47cfe2c34",
+    "cases/automatic_saved_array.f90": "fd17c70a0eb6a2b76e7d6f0c2a26888541eea6319a2696e9dd5abcf9367bda83",
+    "cases/variable_initializer.f90": "6d7a7b0e27b5f16a5d98d18a44d40a4123b735e417bbb417ad4838274063356a",
+    "cases/saved_dummy.f90": "c6ed8769d8da59fa39e453dec34ecd09b7b7e028f9a5441e10b34889bdabd017",
+    "cases/saved_parameter.f90": "3696efb570155e3a40fc1efad0c95baf135faaeea94ee911dbc4e2d73573f411",
+    "cases/saved_result.f90": "37ea8363cc6c05198541663cda58e141c7a06e3d1cd9a461f1aeed47296df456",
+    "cases/saved_target.f90": "514e101d041636a12fc4b55258446f0dd043a9dd94d1cf9bf0364ab8701cd778",
+    "cases/duplicate_save.f90": "d6ee4211e27c218deb8cf86d9ee930f55d9b141ac9f35fb62a0bb214553156a4",
+    "cases/standalone_save.f90": "95c8aabed5f3a928e52cb6c1a028fab7666a6c6149dd215e73b3ed5d18d52594",
+    "cases/main_explicit_save.f90": "4ebd5dd26770a9e89cd5ba59c948954411ed083e391ae7e08a8f6c8815f88222"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

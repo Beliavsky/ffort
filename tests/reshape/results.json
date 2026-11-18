@@ -1,0 +1,1987 @@
+{
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "total": 88,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "basic",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3           4           5           6           1           2           3           4           5           6           1           2           3           4           5           6\n           1           3           5           2           4           6\n           1           9           9           2           8           8\n           7           8           7           8           7\n           5           6           3           4           1           2\n           1           2\n     9007199254740993          -2147483649     9007199254740993          -2147483649\n   1.5000000000000000        2.5000000000000000        3.5000000000000000        3.5000000000000000      T F F T\n ab cd ef ef\n           0           0           0\n           8\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3 4 5 6 1 2 3 4 5 6 1 2 3 4 5 6\n 1 3 5 2 4 6\n 1 9 9 2 8 8\n 7 8 7 8 7\n 5 6 3 4 1 2\n 1 2\n 9007199254740993 -2147483649 9007199254740993 -2147483649\n 1.5000000000000000 2.5000000000000000 3.5000000000000000 3.5000000000000000 T F F T\n ab cd ef ef\n 0 0 0\n 8\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "original_vector",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "   1.0000000000000000        2.0000000000000000        3.0000000000000000        4.0000000000000000        5.0000000000000000        6.0000000000000000     \n   5.0000000000000000        6.0000000000000000        3.0000000000000000        4.0000000000000000        1.0000000000000000        2.0000000000000000     \n           0\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1.0000000000000000 2.0000000000000000 3.0000000000000000 4.0000000000000000 5.0000000000000000 6.0000000000000000\n 5.0000000000000000 6.0000000000000000 3.0000000000000000 4.0000000000000000 1.0000000000000000 2.0000000000000000\n 0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "procedures",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "          20\n           4           6           5           7\n           1           2           3           4\n   1.50000000       3.50000000       2.50000000       3.50000000    \n           1           3           2           4\n           4           1           4\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 20\n 4 6 5 7\n 1 2 3 4\n 1.50000000 3.50000000 2.50000000 3.50000000\n 1 3 2 4\n 4 1 4\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "initializers",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           4           2           3           3           4           3           4           2           3          11          14          12          13          13          14   1.2500000000000000        2.5000000000000000        3.7500000000000000        3.7500000000000000      T F T T ab cd ef ef            0           0          10000000000          20000000000          30000000000          30000000000   1.00000000       2.00000000       3.00000000       4.00000000     F T T F xx zz yy qq \n           5           7           6           8\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 4 2 3 3 4 3 4 2 3 11 14 12 13 13 14 1.2500000000000000 2.5000000000000000 3.7500000000000000 3.7500000000000000 T F T T ab cd ef ef  0 0 10000000000 20000000000 30000000000 30000000000 1.00000000 2.00000000 3.00000000 4.00000000 F T T F xx zz yy qq \n 5 7 6 8\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "demo_unpack_initializers",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": " T F F F T F F F T\n           1           2           3           4           5           6           7           8           9\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " T F F F T F F F T\n 1 2 3 4 5 6 7 8 9\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "scalar_source",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/scalar_source.f90:2:16:\n\n    2 | print *,reshape(1,[1])\n      |                1\nError: \u2018source\u2019 argument of \u2018reshape\u2019 intrinsic at (1) must be an array\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/scalar_source.f90:2:23: RESHAPE SOURCE must be a rank-one or rank-two intrinsic array\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/scalar_source.f90:2:23: RESHAPE SOURCE must be a rank-one or rank-two intrinsic array\n"
+      }
+    },
+    {
+      "name": "real_shape",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/real_shape.f90:2:20:\n\n    2 | print *,reshape([1],[1.0])\n      |                    1\nError: \u2018shape\u2019 argument of \u2018reshape\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/real_shape.f90:2:27: RESHAPE SHAPE must be an INTEGER vector of known size 1 or 2\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/real_shape.f90:2:27: RESHAPE SHAPE must be an INTEGER vector of known size 1 or 2\n"
+      }
+    },
+    {
+      "name": "scalar_shape",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/scalar_shape.f90:2:20:\n\n    2 | print *,reshape([1],1)\n      |                    1\nError: \u2018shape\u2019 argument of \u2018reshape\u2019 intrinsic at (1) must be of rank 1\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/scalar_shape.f90:2:23: RESHAPE SHAPE must be an INTEGER vector of known size 1 or 2\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/scalar_shape.f90:2:23: RESHAPE SHAPE must be an INTEGER vector of known size 1 or 2\n"
+      }
+    },
+    {
+      "name": "rank_three",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/rank_three.f90:2:29: RESHAPE SHAPE must be an INTEGER vector of known size 1 or 2\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/rank_three.f90:2:29: RESHAPE SHAPE must be an INTEGER vector of known size 1 or 2\n"
+      }
+    },
+    {
+      "name": "pad_type",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/pad_type.f90:2:28:\n\n    2 | print *,reshape([1],[2],pad=[1.0])\n      |                            1\nError: \u2018pad\u2019 argument of \u2018reshape\u2019 intrinsic at (1) must be the same type and kind as \u2018source\u2019\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/pad_type.f90:2:35: RESHAPE PAD must be an array matching SOURCE type and kind\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/pad_type.f90:2:35: RESHAPE PAD must be an array matching SOURCE type and kind\n"
+      }
+    },
+    {
+      "name": "pad_kind",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/pad_kind.f90:2:28:\n\n    2 | print *,reshape([1],[2],pad=[1_8])\n      |                            1\nError: \u2018pad\u2019 argument of \u2018reshape\u2019 intrinsic at (1) must be the same type and kind as \u2018source\u2019\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/pad_kind.f90:2:35: RESHAPE PAD must be an array matching SOURCE type and kind\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/pad_kind.f90:2:35: RESHAPE PAD must be an array matching SOURCE type and kind\n"
+      }
+    },
+    {
+      "name": "scalar_pad",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/scalar_pad.f90:2:28:\n\n    2 | print *,reshape([1],[2],pad=2)\n      |                            1\nError: \u2018pad\u2019 argument of \u2018reshape\u2019 intrinsic at (1) must be an array\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/scalar_pad.f90:2:31: RESHAPE PAD must be an array matching SOURCE type and kind\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/scalar_pad.f90:2:31: RESHAPE PAD must be an array matching SOURCE type and kind\n"
+      }
+    },
+    {
+      "name": "order_type",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/order_type.f90:2:30:\n\n    2 | print *,reshape([1],[1],order=[1.0])\n      |                              1\nError: \u2018order\u2019 argument of \u2018reshape\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/order_type.f90:2:37: RESHAPE ORDER must be an INTEGER vector\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/order_type.f90:2:37: RESHAPE ORDER must be an INTEGER vector\n"
+      }
+    },
+    {
+      "name": "order_scalar",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/order_scalar.f90:2:30:\n\n    2 | print *,reshape([1],[1],order=1)\n      |                              1\nError: \u2018order\u2019 argument of \u2018reshape\u2019 intrinsic at (1) must be an array\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/order_scalar.f90:2:33: RESHAPE ORDER must be an INTEGER vector\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/order_scalar.f90:2:33: RESHAPE ORDER must be an INTEGER vector\n"
+      }
+    },
+    {
+      "name": "order_length",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/order_length.f90:2:30:\n\n    2 | print *,reshape([1],[1],order=[1,2])\n      |                              1\nError: \u2018order\u2019 argument of \u2018reshape\u2019 intrinsic at (1) has wrong number of elements (2/1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/order_length.f90:2:37: RESHAPE ORDER size must match result rank\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/order_length.f90:2:37: RESHAPE ORDER size must match result rank\n"
+      }
+    },
+    {
+      "name": "unknown_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/unknown_keyword.f90:2:8:\n\n    2 | print *,reshape([1],[1],extra=[1])\n      |        1\nError: Cannot find keyword named \u2018extra\u2019 in call to \u2018reshape\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/unknown_keyword.f90:2:35: Unknown keyword or excess actual argument: extra\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/unknown_keyword.f90:2:35: Unknown keyword or excess actual argument: extra\n"
+      }
+    },
+    {
+      "name": "duplicate",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/duplicate.f90:2:8:\n\n    2 | print *,reshape([1],[1],shape=[1])\n      |        1\nError: Argument \u2018shape\u2019 appears twice in call to \u2018reshape\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/duplicate.f90:2:35: Repeated actual argument for shape\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/duplicate.f90:2:35: Repeated actual argument for shape\n"
+      }
+    },
+    {
+      "name": "missing_source",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/missing_source.f90:2:8:\n\n    2 | print *,reshape(shape=[1])\n      |        1\nError: Missing actual argument \u2018source\u2019 in call to \u2018reshape\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/missing_source.f90:2:27: Missing required actual argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/missing_source.f90:2:27: Missing required actual argument\n"
+      }
+    },
+    {
+      "name": "missing_shape",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/missing_shape.f90:2:8:\n\n    2 | print *,reshape([1])\n      |        1\nError: Missing actual argument \u2018shape\u2019 in call to \u2018reshape\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/missing_shape.f90:2:21: Missing required actual argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/missing_shape.f90:2:21: Missing required actual argument\n"
+      }
+    },
+    {
+      "name": "too_many",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/too_many.f90:2:8:\n\n    2 | print *,reshape([1],[1],[1],[1],[1])\n      |        1\nError: Too many arguments in call to \u2018reshape\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/too_many.f90:2:37: Unknown keyword or excess actual argument: \n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/too_many.f90:2:37: Unknown keyword or excess actual argument: \n"
+      }
+    },
+    {
+      "name": "positional_after_keyword",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/positional_after_keyword.f90:2:28:\n\n    2 | print *,reshape(source=[1],[1])\n      |                            1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/positional_after_keyword.f90:2:28: Positional argument cannot follow a keyword argument\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/positional_after_keyword.f90:2:28: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "name": "char_length",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/char_length.f90:2:38: RESHAPE PAD and SOURCE CHARACTER lengths must match\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/char_length.f90:2:38: RESHAPE PAD and SOURCE CHARACTER lengths must match\n"
+      }
+    },
+    {
+      "name": "negative",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/negative.f90:4:16: RESHAPE SHAPE extents must be nonnegative INTEGER\n"
+      }
+    },
+    {
+      "name": "short_source",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/short_source.f90:4:15: RESHAPE SOURCE too small without PAD\n"
+      }
+    },
+    {
+      "name": "empty_pad",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/empty_pad.f90:4:15: RESHAPE requires nonempty PAD when SOURCE is too small\n"
+      }
+    },
+    {
+      "name": "duplicate_order",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/duplicate_order.f90:4:17: RESHAPE ORDER must be a permutation of result dimensions\n"
+      }
+    },
+    {
+      "name": "low_order",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/low_order.f90:4:17: RESHAPE ORDER must be a permutation of result dimensions\n"
+      }
+    },
+    {
+      "name": "high_order",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/high_order.f90:4:17: RESHAPE ORDER must be a permutation of result dimensions\n"
+      }
+    },
+    {
+      "name": "zero_bad_order",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/zero_bad_order.f90:4:22: RESHAPE ORDER must be a permutation of result dimensions\n"
+      }
+    },
+    {
+      "name": "dynamic_order_size",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/dynamic_order_size.f90:4:21: RESHAPE ORDER size must match result rank\n"
+      }
+    },
+    {
+      "name": "product_cap",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/product_cap.f90:4:28: RESHAPE result element limit exceeded\n"
+      }
+    },
+    {
+      "name": "int64_overflow",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/int64_overflow.f90:4:62: RESHAPE extent limit exceeded\n"
+      }
+    },
+    {
+      "name": "zero_huge",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/zero_huge.f90:4:44: RESHAPE extent limit exceeded\n"
+      }
+    },
+    {
+      "name": "undefined_shape",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/undefined_shape.f90:4:26: read of uninitialized array element s\n"
+      }
+    },
+    {
+      "name": "undefined_source",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/undefined_source.f90:4:17: read of uninitialized array element s\n"
+      }
+    },
+    {
+      "name": "undefined_pad",
+      "expected": "runtime",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/undefined_pad.f90:4:29: read of uninitialized array element s\n"
+      }
+    },
+    {
+      "name": "mapping_1_1_12",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_1_1_21",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_1_2_12",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_1_2_21",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_1_3_12",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_1_3_21",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_2_1_12",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_2_1_21",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_2_2_12",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3           7\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3 7\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_2_2_21",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           3           2           7\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 3 2 7\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_2_3_12",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3           7           8           7\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3 7 8 7\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_2_3_21",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           7           2           8           3           7\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 7 2 8 3 7\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_3_1_12",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_3_1_21",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_3_2_12",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3           7           8           7\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3 7 8 7\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_3_2_21",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           3           8           2           7           7\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 3 8 2 7 7\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_3_3_12",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3           7           8           7           8           7           8\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3 7 8 7 8 7 8\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_3_3_21",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           7           8           2           8           7           3           7           8\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 7 8 2 8 7 3 7 8\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_4_1_12",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3           7\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3 7\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_4_1_21",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3           7\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3 7\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_4_2_12",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3           7           8           7           8           7\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3 7 8 7 8 7\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_4_2_21",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           3           8           8           2           7           7           7\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 3 8 8 2 7 7 7\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_4_3_12",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           2           3           7           8           7           8           7           8           7           8           7\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 2 3 7 8 7 8 7 8 7 8 7\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mapping_4_3_21",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           7           8           7           2           8           7           8           3           7           8           7\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 7 8 7 2 8 7 8 3 7 8 7\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "optional_pad",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/optional_pad.f90:6:27: RESHAPE direct OPTIONAL PAD or ORDER is unsupported\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/optional_pad.f90:6:27: RESHAPE direct OPTIONAL PAD or ORDER is unsupported\n"
+      }
+    },
+    {
+      "name": "parameter_initializer",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           1           3           2           4           1           3           2           4\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 1 3 2 4 1 3 2 4\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mutable_swapped_dimensions",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_swapped_dimensions.f90:3:15:\n\n    3 | integer::a(2,3)=reshape([1,2,3,4,5,6],[3,2])\n      |               1\nError: Different shape for array assignment at (1) on dimension 1 (2 and 3)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_swapped_dimensions.f90:3:45: Array initializer shapes do not conform\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_swapped_dimensions.f90:3:45: Array initializer shapes do not conform\n"
+      }
+    },
+    {
+      "name": "mutable_empty_dimensions",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_empty_dimensions.f90:3:15:\n\n    3 | integer::a(0,2)=reshape([1],[0,3])\n      |               1\nError: Different shape for array assignment at (1) on dimension 2 (2 and 3)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_empty_dimensions.f90:3:35: Array initializer shapes do not conform\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_empty_dimensions.f90:3:35: Array initializer shapes do not conform\n"
+      }
+    },
+    {
+      "name": "mutable_negative_shape",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_negative_shape.f90:3:28:\n\n    3 | integer::a(1,1)=reshape([1],[-1,1])\n      |                            1\nError: \u2018shape\u2019 argument of \u2018reshape\u2019 intrinsic at (1) has negative element (-1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_negative_shape.f90:3:17: Invalid declaration initializer shape: RESHAPE SHAPE extents must be nonnegative INTEGER\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_negative_shape.f90:3:17: Invalid declaration initializer shape: RESHAPE SHAPE extents must be nonnegative INTEGER\n"
+      }
+    },
+    {
+      "name": "mutable_too_few_values",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_too_few_values.f90:3:24:\n\n    3 | integer::a(2,2)=reshape([1],[2,2])\n      |                        1\nError: Without padding, there are not enough elements in the intrinsic RESHAPE source at (1) to match the shape\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_too_few_values.f90:3:17: Invalid declaration initializer shape: RESHAPE SOURCE too small without PAD\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_too_few_values.f90:3:17: Invalid declaration initializer shape: RESHAPE SOURCE too small without PAD\n"
+      }
+    },
+    {
+      "name": "mutable_bad_order",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_bad_order.f90:3:49:\n\n    3 | integer::a(2,2)=reshape([1,2,3,4],[2,2],order=[1,1])\n      |                                                 1\nError: \u2018order\u2019 argument of \u2018reshape\u2019 intrinsic at (1) has invalid permutation of dimensions (dimension \u20181\u2019 duplicated)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_bad_order.f90:3:17: Invalid declaration initializer shape: RESHAPE ORDER must be a permutation of result dimensions\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_bad_order.f90:3:17: Invalid declaration initializer shape: RESHAPE ORDER must be a permutation of result dimensions\n"
+      }
+    },
+    {
+      "name": "mutable_empty_bad_order",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_empty_bad_order.f90:3:43:\n\n    3 | integer::a(0,2)=reshape([1],[0,2],order=[1,1])\n      |                                           1\nError: \u2018order\u2019 argument of \u2018reshape\u2019 intrinsic at (1) has invalid permutation of dimensions (dimension \u20181\u2019 duplicated)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_empty_bad_order.f90:3:17: Invalid declaration initializer shape: RESHAPE ORDER must be a permutation of result dimensions\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_empty_bad_order.f90:3:17: Invalid declaration initializer shape: RESHAPE ORDER must be a permutation of result dimensions\n"
+      }
+    },
+    {
+      "name": "mutable_oversized_shape",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_oversized_shape.f90:3:16:\n\n    3 | integer::a(1,1)=reshape([1],[1000000,2],pad=[1])\n      |                1\nError: The number of elements in the array constructor at (1) requires an increase of the allowed 65535 upper limit.   See \u2018-fmax-array-constructor\u2019 option\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_oversized_shape.f90:3:17: Invalid declaration initializer shape: RESHAPE result element limit exceeded\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_oversized_shape.f90:3:17: Invalid declaration initializer shape: RESHAPE result element limit exceeded\n"
+      }
+    },
+    {
+      "name": "mutable_empty_huge_shape",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_empty_huge_shape.f90:3:15:\n\n    3 | integer::a(0,1)=reshape([1],[0_8,9223372036854775807_8])\n      |               1\nError: Different shape for array assignment at (1) on dimension 2 (1 and 0)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_empty_huge_shape.f90:3:17: Invalid declaration initializer shape: RESHAPE extent limit exceeded\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_empty_huge_shape.f90:3:17: Invalid declaration initializer shape: RESHAPE extent limit exceeded\n"
+      }
+    },
+    {
+      "name": "mutable_nonconstant_shape",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_nonconstant_shape.f90:3:29:\n\n    3 | integer::a(1,1)=reshape([1],[n,1])\n      |                             1\nError: Parameter \u2018n\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_nonconstant_shape.f90:3:35: Declaration initializers must be constant expressions\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_nonconstant_shape.f90:3:35: Declaration initializers must be constant expressions\n"
+      }
+    },
+    {
+      "name": "mutable_nested_bad_shape",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_nested_bad_shape.f90:3:16-48:\n\n    3 | integer::a(2,2)=reshape([1,2,3,4],[2,2])+reshape([1,2,3,4],[1,4])\n      |                1                               2\nError: Shapes for operands at (1) and (2) are not conformable\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_nested_bad_shape.f90:3:41: Invalid declaration initializer shape: array expression shapes do not conform\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_nested_bad_shape.f90:3:41: Invalid declaration initializer shape: array expression shapes do not conform\n"
+      }
+    },
+    {
+      "name": "parameter_swapped_dimensions",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_swapped_dimensions.f90:3:25:\n\n    3 | integer,parameter::a(2,3)=reshape([1,2,3,4,5,6],[3,2])\n      |                         1\nError: Different shape for array assignment at (1) on dimension 1 (2 and 3)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_swapped_dimensions.f90:3:55: Array initializer shapes do not conform\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_swapped_dimensions.f90:3:55: Array initializer shapes do not conform\n"
+      }
+    },
+    {
+      "name": "parameter_empty_dimensions",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_empty_dimensions.f90:3:25:\n\n    3 | integer,parameter::a(0,2)=reshape([1],[0,3])\n      |                         1\nError: Different shape for array assignment at (1) on dimension 2 (2 and 3)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_empty_dimensions.f90:3:45: Array initializer shapes do not conform\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_empty_dimensions.f90:3:45: Array initializer shapes do not conform\n"
+      }
+    },
+    {
+      "name": "parameter_negative_shape",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_negative_shape.f90:3:38:\n\n    3 | integer,parameter::a(1,1)=reshape([1],[-1,1])\n      |                                      1\nError: \u2018shape\u2019 argument of \u2018reshape\u2019 intrinsic at (1) has negative element (-1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_negative_shape.f90:3:27: Invalid declaration initializer shape: RESHAPE SHAPE extents must be nonnegative INTEGER\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_negative_shape.f90:3:27: Invalid declaration initializer shape: RESHAPE SHAPE extents must be nonnegative INTEGER\n"
+      }
+    },
+    {
+      "name": "parameter_too_few_values",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_too_few_values.f90:3:34:\n\n    3 | integer,parameter::a(2,2)=reshape([1],[2,2])\n      |                                  1\nError: Without padding, there are not enough elements in the intrinsic RESHAPE source at (1) to match the shape\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_too_few_values.f90:3:27: Invalid declaration initializer shape: RESHAPE SOURCE too small without PAD\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_too_few_values.f90:3:27: Invalid declaration initializer shape: RESHAPE SOURCE too small without PAD\n"
+      }
+    },
+    {
+      "name": "parameter_bad_order",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_bad_order.f90:3:59:\n\n    3 | integer,parameter::a(2,2)=reshape([1,2,3,4],[2,2],order=[1,1])\n      |                                                           1\nError: \u2018order\u2019 argument of \u2018reshape\u2019 intrinsic at (1) has invalid permutation of dimensions (dimension \u20181\u2019 duplicated)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_bad_order.f90:3:27: Invalid declaration initializer shape: RESHAPE ORDER must be a permutation of result dimensions\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_bad_order.f90:3:27: Invalid declaration initializer shape: RESHAPE ORDER must be a permutation of result dimensions\n"
+      }
+    },
+    {
+      "name": "parameter_empty_bad_order",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_empty_bad_order.f90:3:53:\n\n    3 | integer,parameter::a(0,2)=reshape([1],[0,2],order=[1,1])\n      |                                                     1\nError: \u2018order\u2019 argument of \u2018reshape\u2019 intrinsic at (1) has invalid permutation of dimensions (dimension \u20181\u2019 duplicated)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_empty_bad_order.f90:3:27: Invalid declaration initializer shape: RESHAPE ORDER must be a permutation of result dimensions\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_empty_bad_order.f90:3:27: Invalid declaration initializer shape: RESHAPE ORDER must be a permutation of result dimensions\n"
+      }
+    },
+    {
+      "name": "parameter_oversized_shape",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_oversized_shape.f90:3:26:\n\n    3 | integer,parameter::a(1,1)=reshape([1],[1000000,2],pad=[1])\n      |                          1\nError: The number of elements in the array constructor at (1) requires an increase of the allowed 65535 upper limit.   See \u2018-fmax-array-constructor\u2019 option\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_oversized_shape.f90:3:27: Invalid declaration initializer shape: RESHAPE result element limit exceeded\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_oversized_shape.f90:3:27: Invalid declaration initializer shape: RESHAPE result element limit exceeded\n"
+      }
+    },
+    {
+      "name": "parameter_empty_huge_shape",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_empty_huge_shape.f90:3:25:\n\n    3 | integer,parameter::a(0,1)=reshape([1],[0_8,9223372036854775807_8])\n      |                         1\nError: Different shape for array assignment at (1) on dimension 2 (1 and 0)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_empty_huge_shape.f90:3:27: Invalid declaration initializer shape: RESHAPE extent limit exceeded\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_empty_huge_shape.f90:3:27: Invalid declaration initializer shape: RESHAPE extent limit exceeded\n"
+      }
+    },
+    {
+      "name": "parameter_nonconstant_shape",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_nonconstant_shape.f90:3:39:\n\n    3 | integer,parameter::a(1,1)=reshape([1],[n,1])\n      |                                       1\nError: Parameter \u2018n\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_nonconstant_shape.f90:3:45: Declaration initializers must be constant expressions\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_nonconstant_shape.f90:3:45: Declaration initializers must be constant expressions\n"
+      }
+    },
+    {
+      "name": "parameter_nested_bad_shape",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_nested_bad_shape.f90:3:26-58:\n\n    3 | integer,parameter::a(2,2)=reshape([1,2,3,4],[2,2])+reshape([1,2,3,4],[1,4])\n      |                          1                               2\nError: Shapes for operands at (1) and (2) are not conformable\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_nested_bad_shape.f90:3:51: Invalid declaration initializer shape: array expression shapes do not conform\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_nested_bad_shape.f90:3:51: Invalid declaration initializer shape: array expression shapes do not conform\n"
+      }
+    },
+    {
+      "name": "mutable_section_swapped_dimensions",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_section_swapped_dimensions.f90:3:15:\n\n    3 | integer::a(3,2)=m(:,:)\n      |               1\nError: Different shape for array assignment at (1) on dimension 1 (3 and 2)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_section_swapped_dimensions.f90:3:23: Array initializer shapes do not conform\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/mutable_section_swapped_dimensions.f90:3:23: Array initializer shapes do not conform\n"
+      }
+    },
+    {
+      "name": "parameter_section_swapped_dimensions",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_section_swapped_dimensions.f90:3:25:\n\n    3 | integer,parameter::a(3,2)=m(:,:)\n      |                         1\nError: Different shape for array assignment at (1) on dimension 1 (3 and 2)\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_section_swapped_dimensions.f90:3:33: Array initializer shapes do not conform\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/parameter_section_swapped_dimensions.f90:3:33: Array initializer shapes do not conform\n"
+      }
+    },
+    {
+      "name": "unknown_shape_size",
+      "expected": "reject",
+      "pass_": true,
+      "gfortran": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/unknown_shape_size.f90:4:22:\n\n    4 | print *,reshape([1,2],s(:n))\n      |                      1\nError: \u2018shape\u2019 argument of \u2018reshape\u2019 intrinsic at (1) must be an array of constant size\n"
+      },
+      "oracle": null,
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/unknown_shape_size.f90:4:29: RESHAPE SHAPE must be an INTEGER vector of known size 1 or 2\n"
+      },
+      "candidate": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/reshape-s7oohdqx/unknown_shape_size.f90:4:29: RESHAPE SHAPE must be an INTEGER vector of known size 1 or 2\n"
+      }
+    },
+    {
+      "name": "initializer_cap_boundary",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "      131072      262143\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 131072 262143\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "cap_boundary",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "      131072      262143\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 131072 262143\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "zero_unused_values",
+      "expected": "pass",
+      "pass_": true,
+      "gfortran": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "status": 0,
+        "stdout": "           0           4\n",
+        "stderr": ""
+      },
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "status": 0,
+        "stdout": " 0 4\n",
+        "stderr": ""
+      }
+    }
+  ]
+}

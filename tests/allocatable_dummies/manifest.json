@@ -1,0 +1,236 @@
+{
+  "cases": [
+    {
+      "name": "out_allocates_replaces",
+      "source": "cases/out_allocates_replaces.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T 3 -2 15 1 -2 5",
+      "diagnostic": ""
+    },
+    {
+      "name": "inout_reallocates",
+      "source": "cases/inout_reallocates.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 4 9 1 3",
+      "diagnostic": ""
+    },
+    {
+      "name": "inout_deallocates",
+      "source": "cases/inout_deallocates.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "input_descriptor",
+      "source": "cases/input_descriptor.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": " -8 12",
+      "diagnostic": ""
+    },
+    {
+      "name": "out_deallocates_without_replacement",
+      "source": "cases/out_deallocates_without_replacement.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F",
+      "diagnostic": ""
+    },
+    {
+      "name": "nested_forwarding",
+      "source": "cases/nested_forwarding.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 -2 20",
+      "diagnostic": ""
+    },
+    {
+      "name": "rank_two_bounds",
+      "source": "cases/rank_two_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 -1 4 6 17",
+      "diagnostic": ""
+    },
+    {
+      "name": "zero_size_descriptor",
+      "source": "cases/zero_size_descriptor.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 3 4 6 T 0",
+      "diagnostic": ""
+    },
+    {
+      "name": "undefined_forwarding",
+      "source": "cases/undefined_forwarding.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5 7",
+      "diagnostic": ""
+    },
+    {
+      "name": "pure_local_dummy",
+      "source": "cases/pure_local_dummy.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5 5",
+      "diagnostic": ""
+    },
+    {
+      "name": "module_actual_no_host_alias",
+      "source": "cases/module_actual_no_host_alias.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 -2 15",
+      "diagnostic": ""
+    },
+    {
+      "name": "utilities_unchanged_alloc_sub",
+      "source": "cases/utilities_unchanged_alloc_sub.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 6 2 14 T 0 T 0",
+      "diagnostic": ""
+    },
+    {
+      "name": "alias_unallocated",
+      "source": "cases/alias_unallocated.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "overlapping"
+    },
+    {
+      "name": "alias_zero",
+      "source": "cases/alias_zero.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "overlapping"
+    },
+    {
+      "name": "alias_allocated",
+      "source": "cases/alias_allocated.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "overlapping"
+    },
+    {
+      "name": "alias_allocatable_and_section",
+      "source": "cases/alias_allocatable_and_section.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "overlapping"
+    },
+    {
+      "name": "undefined_status_preserved",
+      "source": "cases/undefined_status_preserved.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "unallocated_nonalloc_dummy",
+      "source": "cases/unallocated_nonalloc_dummy.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "unallocated"
+    },
+    {
+      "name": "fixed_actual",
+      "source": "cases/fixed_actual.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "ALLOCATABLE"
+    },
+    {
+      "name": "section_actual",
+      "source": "cases/section_actual.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "ALLOCATABLE"
+    },
+    {
+      "name": "expression_actual",
+      "source": "cases/expression_actual.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "ALLOCATABLE"
+    },
+    {
+      "name": "paren_actual",
+      "source": "cases/paren_actual.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "ALLOCATABLE"
+    },
+    {
+      "name": "input_no_allocate",
+      "source": "cases/input_no_allocate.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "writable"
+    },
+    {
+      "name": "input_no_reallocate",
+      "source": "cases/input_no_reallocate.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "INTENT(IN)"
+    },
+    {
+      "name": "input_no_forward_write",
+      "source": "cases/input_no_forward_write.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "INTENT(IN)"
+    },
+    {
+      "name": "caller_capacity_copyout",
+      "source": "cases/caller_capacity_copyout.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "copyout",
+      "args": [
+        "--max-steps",
+        "20000000"
+      ]
+    },
+    {
+      "name": "dummy_and_local_capacity",
+      "source": "cases/dummy_and_local_capacity.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "limit",
+      "args": [
+        "--max-steps",
+        "20000000"
+      ]
+    },
+    {
+      "name": "module_host_alias",
+      "source": "cases/module_host_alias.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "host/USE"
+    }
+  ]
+}

@@ -1,0 +1,789 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 26,
+    "failed": 0,
+    "candidate_checked": 26,
+    "gnu_checked": 26,
+    "gnu_executed": 15,
+    "gnu_compile_only": 1,
+    "gnu_compile_rejections": 10
+  },
+  "records": [
+    {
+      "case": {
+        "name": "spaced",
+        "source": "cases/spaced.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 8 6 2 4\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8           6           2           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 8 6 2 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "compact",
+        "source": "cases/compact.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 8 6 2 4\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8           6           2           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 8 6 2 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_case",
+        "source": "cases/mixed_case.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 8 6 2 4\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8           6           2           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 8 6 2 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tabbed",
+        "source": "cases/tabbed.f90",
+        "category": "success",
+        "baseline": "reject",
+        "expected_stdout": "8 8 6 2 4\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/tabbed.f90:3:8:\n\n    3 | double  precision,parameter::factor=2.0d0,values(2)=[1.0d0,3.0d0]\n      |         1\nError: Nonconforming tab character at (1) [-Werror=tabs]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/tabbed.f90:4:8:\n\n    4 | double  precision,public::counter\n      |         1\nError: Nonconforming tab character at (1) [-Werror=tabs]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/tabbed.f90:9:13:\n\n    9 | pure double     precision function twice_dp(x) result(y)\n      |                 1\nError: Nonconforming tab character at (1) [-Werror=tabs]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/tabbed.f90:10:9:\n\n   10 |  double precision,intent(in)::x\n      |         1\nError: Nonconforming tab character at (1) [-Werror=tabs]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/tabbed.f90:13:8:\n\n   13 | double  precision elemental function plus_one(x) result(y)\n      |         1\nError: Nonconforming tab character at (1) [-Werror=tabs]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/tabbed.f90:14:9:\n\n   14 |  double precision,intent(in)::x\n      |         1\nError: Nonconforming tab character at (1) [-Werror=tabs]\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/tabbed.f90:19:5:\n\n   19 | use kinds_and_functions\n      |     1\nFatal Error: Cannot open module file \u2018kinds_and_functions.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\nf951: some warnings being treated as errors\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 8 6 2 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "continued",
+        "source": "cases/continued.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 8 6 2 4\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8           6           2           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 8 6 2 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "internal_function",
+        "source": "cases/internal_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 2.25\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8   2.2500000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 2.2500000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "derived_component",
+        "source": "cases/derived_component.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2.25\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   2.2500000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2.2500000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_conversion",
+        "source": "cases/parameter_conversion.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 5.19999980926513671875 5.2 8\n",
+        "rel_tol": 1e-15,
+        "abs_tol": 1e-15
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8   5.1999998092651367        5.2000000000000002                8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 5.1999998092651367 5.2000000000000002 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_three",
+        "source": "cases/rank_three.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 2.5\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8   2.5000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 2.5000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "typed_result_array",
+        "source": "cases/typed_result_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 3 3\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8   3.0000000000000000        3.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 3.0000000000000000 3.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "missing_precision",
+        "source": "cases/missing_precision.f90",
+        "category": "frontend",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/missing_precision.f90:3:1:\n\n    3 | double::x\n      | 1\nError: Unclassifiable statement at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/missing_precision.f90:3:1: Undeclared variable or unsupported statement: double\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/missing_precision.f90:3:1: Undeclared variable or unsupported statement: double\n"
+      }
+    },
+    {
+      "case": {
+        "name": "double_complex",
+        "source": "cases/double_complex.f90",
+        "category": "frontend",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/double_complex.f90:3:15:\n\n    3 | double complex::x\n      |               1\nError: GNU Extension: DOUBLE COMPLEX at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/double_complex.f90:3:1: Undeclared variable or unsupported statement: double\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/double_complex.f90:3:1: Undeclared variable or unsupported statement: double\n"
+      }
+    },
+    {
+      "case": {
+        "name": "compact_kind",
+        "source": "cases/compact_kind.f90",
+        "category": "frontend",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/compact_kind.f90:3:16:\n\n    3 | doubleprecision(8)::x\n      |                1\nError: Syntax error in data declaration at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/compact_kind.f90:3:1: Undeclared variable or unsupported statement: doubleprecision\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/compact_kind.f90:3:1: Undeclared variable or unsupported statement: doubleprecision\n"
+      }
+    },
+    {
+      "case": {
+        "name": "spaced_kind",
+        "source": "cases/spaced_kind.f90",
+        "category": "frontend",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/spaced_kind.f90:3:17:\n\n    3 | double precision(kind=8)::x\n      |                 1\nError: Syntax error in data declaration at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/spaced_kind.f90:3:17: DOUBLE PRECISION does not accept a kind selector\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/spaced_kind.f90:3:17: DOUBLE PRECISION does not accept a kind selector\n"
+      }
+    },
+    {
+      "case": {
+        "name": "compact_star",
+        "source": "cases/compact_star.f90",
+        "category": "frontend",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/compact_star.f90:3:17:\n\n    3 | doubleprecision*8::x\n      |                 1\nError: Invalid character in name at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/compact_star.f90:3:16: DOUBLE PRECISION does not accept a kind selector\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/compact_star.f90:3:16: DOUBLE PRECISION does not accept a kind selector\n"
+      }
+    },
+    {
+      "case": {
+        "name": "misspelled_precision",
+        "source": "cases/misspelled_precision.f90",
+        "category": "frontend",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/misspelled_precision.f90:3:1:\n\n    3 | double precisio::x\n      | 1\nError: Unclassifiable statement at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/misspelled_precision.f90:3:1: Undeclared variable or unsupported statement: double\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/misspelled_precision.f90:3:1: Undeclared variable or unsupported statement: double\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real16",
+        "source": "cases/real16.f90",
+        "category": "frontend",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/real16.f90:3:9: Only REAL kinds 4 and 8 are supported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/real16.f90:3:9: Only REAL kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_continuation",
+        "source": "cases/missing_continuation.f90",
+        "category": "frontend",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/missing_continuation.f90:3:1:\n\n    3 | double\n      | 1\nError: Unclassifiable statement at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/missing_continuation.f90:3:1: Undeclared variable or unsupported statement: double\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/missing_continuation.f90:3:1: Undeclared variable or unsupported statement: double\n"
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_assignment",
+        "source": "cases/parameter_assignment.f90",
+        "category": "frontend",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/parameter_assignment.f90:4:0:\n\n    4 | x=3.0d0\nError: Named constant \u2018x\u2019 in variable definition context (assignment) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/parameter_assignment.f90:4:1: Cannot assign to a PARAMETER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/parameter_assignment.f90:4:1: Cannot assign to a PARAMETER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_actual_kind",
+        "source": "cases/wrong_actual_kind.f90",
+        "category": "frontend",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/wrong_actual_kind.f90:4:2:\n\n    4 | x=identity(1.0)\n      |  1\nError: Type mismatch in argument \u2018y\u2019 at (1); passed REAL(4) to REAL(8)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/wrong_actual_kind.f90:4:16: Procedure argument REAL kind does not match its dummy declaration\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/double_precision/cases/wrong_actual_kind.f90:4:16: Procedure argument REAL kind does not match its dummy declaration\n"
+      }
+    },
+    {
+      "case": {
+        "name": "optional_dimension_save",
+        "source": "cases/optional_dimension_save.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 8\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   8.0000000000000000        8.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8.0000000000000000 8.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "contextual_names",
+        "source": "cases/contextual_names.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 4 6\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           4           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 4 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "contextual_arrays",
+        "source": "cases/contextual_arrays.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 6\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "contextual_functions",
+        "source": "cases/contextual_functions.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 4 6\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           4           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 4 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "contextual_type_entities",
+        "source": "cases/contextual_type_entities.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 1 2 3\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8   1.0000000000000000        2.0000000000000000        3.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 1.0000000000000000 2.0000000000000000 3.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "contextual_typed_function",
+        "source": "cases/contextual_typed_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   4.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4.0000000000000000\n",
+        "err": ""
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:41:21.556433+00:00",
+  "manifest_sha256": "f51bfa283f7908124c8a16b088b424a2b1fe3ec9214d5baedc0fbaaa2b8c3b0f",
+  "source_sha256": {
+    "cases/spaced.f90": "cfb0e166dabbc65baaccdc16bc1ff035a96e140f9b7eb56a6f09f0d933cb8fda",
+    "cases/compact.f90": "4f2e62517316b078728244477a865bd20d8a94f2bceab860d174bd7efdc80e74",
+    "cases/mixed_case.f90": "5f0f12bca68af8d49bd2a522702fba95c881b1a3e6b06dfafbe3b93fc31cdcc5",
+    "cases/tabbed.f90": "34390b296e860650d8a79c44c81b1368b99227270e3d549298320e88c197bab9",
+    "cases/continued.f90": "fd9eba9f7d40bf0b03c6339d05f725e9c3bfbd4cb7e20f36674f73f98387f606",
+    "cases/internal_function.f90": "e3789672e6a0a99c624e59aacfb084f007c0d18e83b62825c79c583284d33e0e",
+    "cases/derived_component.f90": "d1176520e90f8fdd88a7680e9d02b5ed52f2bf3c5157226db5169ec2bde47afc",
+    "cases/parameter_conversion.f90": "01824d94ede3742c66354a0258f32b3aba7f0eae29422f5c333f6166b82a9522",
+    "cases/rank_three.f90": "740bdd78000aba67777ce99a77efbee3dffed71eff4ecf4bd7dffc8e3d2ade39",
+    "cases/typed_result_array.f90": "b654394c148ea8a62d6f0baf33d50b6ce670697bff87f0f8ba81cfe6acfd0453",
+    "cases/missing_precision.f90": "9f19485080ff897bea467889de410cc30a46b387b81ca3026a0ffc8f247ef14c",
+    "cases/double_complex.f90": "707f8660942dcf3522aadff1a8795de47eee11d274b2bb5ee298c5c279a035a5",
+    "cases/compact_kind.f90": "e2607682ba98d2b2fba90bef02ba52686ee410a40deb6bf2cf078b399b6ac2a2",
+    "cases/spaced_kind.f90": "99e8519624114fe68f499ffe9503c26ceaf6e44b032b09a0fb7fca82c79d563e",
+    "cases/compact_star.f90": "282d6975b2044b38ba093ddbb569dc90df7cdbaa4961820b68e886242b8982de",
+    "cases/misspelled_precision.f90": "8102edd1ed4e13d0826bbc8e72b2ff7e9b76611a54ac9254674c0a11c34adc85",
+    "cases/real16.f90": "f379b5a5e981d8e1c6fb354bc8ed73b59cf1d4330ce9fb42bbfc457df773bade",
+    "cases/missing_continuation.f90": "ff46e7d867b6774310ef39fe1ddba4e0bece907b374fa6ca96a2f87aebba065c",
+    "cases/parameter_assignment.f90": "85211b4f7354d63b71eb2accaa81e6968456349328d0494fc0b3cb0ac66e17c2",
+    "cases/wrong_actual_kind.f90": "c5cf63961a1d7c1af2d9e7987b312d2bde57a06fc6f6b301f2639140e2cd1ecd",
+    "cases/optional_dimension_save.f90": "6f9c4157677549e987c34436bd71dd5459af7b1005e5040ff4812e12f3a42434",
+    "cases/contextual_names.f90": "5fb2978e4821d87accb5ca05c873cba0b67181e7e1a035b4d7b2e84c81bad8a2",
+    "cases/contextual_arrays.f90": "dee5cdf45eadb11429a80d65e9bd3779f2229d91f63832fdae90b9bb24a5a889",
+    "cases/contextual_functions.f90": "80e07043dd62dbbc294ae98f6f9c5c70e36d94ca7ee404d512ea527bf22c2739",
+    "cases/contextual_type_entities.f90": "5a9c43d0d1bed2fee6d500e223fe41eef83cdf14105aaab8d3b8fbfa2cb8f929",
+    "cases/contextual_typed_function.f90": "c26ee8962a5a4bdbc2628f1cadcc5da156a862214f3eba45a21221c54709ebe6"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

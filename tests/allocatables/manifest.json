@@ -1,0 +1,363 @@
+{
+  "cases": [
+    {
+      "name": "local_lifecycle_bounds",
+      "source": "cases/local_lifecycle_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F 4 T 3 -2 0 15 5 F 9",
+      "diagnostic": ""
+    },
+    {
+      "name": "rank_two",
+      "source": "cases/rank_two.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 2 3 -1 5 21 4 8 9",
+      "diagnostic": ""
+    },
+    {
+      "name": "zero_extent",
+      "source": "cases/zero_extent.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T 0 1 0 T 0 4 3 6",
+      "diagnostic": ""
+    },
+    {
+      "name": "stat_lifecycle",
+      "source": "cases/stat_lifecycle.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T F 0 T T 2 14 0 F",
+      "diagnostic": ""
+    },
+    {
+      "name": "module_lifetime",
+      "source": "cases/module_lifetime.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F T -2 6 46 F",
+      "diagnostic": ""
+    },
+    {
+      "name": "local_lifetime_pure",
+      "source": "cases/local_lifetime_pure.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "12 8",
+      "diagnostic": ""
+    },
+    {
+      "name": "ordinary_dummy",
+      "source": "cases/ordinary_dummy.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5 7 9 -1 1",
+      "diagnostic": ""
+    },
+    {
+      "name": "allocated_undefined_inquiry",
+      "source": "cases/allocated_undefined_inquiry.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 T 4",
+      "diagnostic": ""
+    },
+    {
+      "name": "int64_values",
+      "source": "cases/int64_values.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4294967297 8",
+      "diagnostic": ""
+    },
+    {
+      "name": "if_allocate",
+      "source": "cases/if_allocate.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F",
+      "diagnostic": ""
+    },
+    {
+      "name": "allocation_cap_stat",
+      "source": "cases/allocation_cap_stat.f90",
+      "category": "success",
+      "baseline": "skip",
+      "expected_stdout": "T F 0 1000000",
+      "diagnostic": ""
+    },
+    {
+      "name": "two_module_cap",
+      "source": "cases/two_module_cap.f90",
+      "category": "success",
+      "baseline": "skip",
+      "expected_stdout": "T F 500001",
+      "diagnostic": ""
+    },
+    {
+      "name": "zero_large_dimension",
+      "source": "cases/zero_large_dimension.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T 0 2147483647",
+      "diagnostic": ""
+    },
+    {
+      "name": "unallocated_read",
+      "source": "cases/unallocated_read.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "unallocated"
+    },
+    {
+      "name": "unallocated_size",
+      "source": "cases/unallocated_size.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "unallocated"
+    },
+    {
+      "name": "unallocated_section",
+      "source": "cases/unallocated_section.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "unallocated"
+    },
+    {
+      "name": "unallocated_element",
+      "source": "cases/unallocated_element.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "unallocated"
+    },
+    {
+      "name": "unallocated_scalar_assign",
+      "source": "cases/unallocated_scalar_assign.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "unallocated"
+    },
+    {
+      "name": "unallocated_element_assign",
+      "source": "cases/unallocated_element_assign.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "unallocated"
+    },
+    {
+      "name": "unallocated_section_assign",
+      "source": "cases/unallocated_section_assign.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "unallocated"
+    },
+    {
+      "name": "double_allocate",
+      "source": "cases/double_allocate.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "already allocated"
+    },
+    {
+      "name": "double_deallocate",
+      "source": "cases/double_deallocate.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "not allocated"
+    },
+    {
+      "name": "undefined_allocated_element",
+      "source": "cases/undefined_allocated_element.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "scalar_alloc",
+      "source": "cases/scalar_alloc.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "deferred-shape"
+    },
+    {
+      "name": "rank_three",
+      "source": "cases/rank_three.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "",
+      "note": "Rank-three allocatables are now supported; original source retained unchanged."
+    },
+    {
+      "name": "explicit_alloc_shape",
+      "source": "cases/explicit_alloc_shape.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "Expected"
+    },
+    {
+      "name": "character_alloc",
+      "source": "cases/character_alloc.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "logical_alloc",
+      "source": "cases/logical_alloc.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": ""
+    },
+    {
+      "name": "alloc_parameter",
+      "source": "cases/alloc_parameter.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "PARAMETER"
+    },
+    {
+      "name": "alloc_initializer",
+      "source": "cases/alloc_initializer.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "initialization"
+    },
+    {
+      "name": "allocated_nonalloc",
+      "source": "cases/allocated_nonalloc.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "ALLOCATABLE"
+    },
+    {
+      "name": "allocated_section",
+      "source": "cases/allocated_section.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "whole"
+    },
+    {
+      "name": "allocated_parentheses",
+      "source": "cases/allocated_parentheses.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "whole"
+    },
+    {
+      "name": "allocate_two",
+      "source": "cases/allocate_two.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "source_option",
+      "source": "cases/source_option.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "SOURCE"
+    },
+    {
+      "name": "errmsg_option",
+      "source": "cases/errmsg_option.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "real_bounds",
+      "source": "cases/real_bounds.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "scalar INTEGER"
+    },
+    {
+      "name": "stat_literal",
+      "source": "cases/stat_literal.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "STAT"
+    },
+    {
+      "name": "pure_module_allocate",
+      "source": "cases/pure_module_allocate.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "PURE"
+    },
+    {
+      "name": "alloc_dummy_boundary",
+      "source": "cases/alloc_dummy_boundary.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "huge_bound",
+      "source": "cases/huge_bound.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "INTEGER range"
+    },
+    {
+      "name": "huge_extent",
+      "source": "cases/huge_extent.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "extent"
+    },
+    {
+      "name": "nested_kind_allocated",
+      "source": "cases/nested_kind_allocated.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 4 F",
+      "diagnostic": ""
+    },
+    {
+      "name": "module_parameter_descriptors",
+      "source": "cases/module_parameter_descriptors.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 3 21 6 -2 0 45 45 -3 14",
+      "diagnostic": ""
+    },
+    {
+      "name": "module_parameter_empty",
+      "source": "cases/module_parameter_empty.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 3 1 0 4 6 0 0 13 13",
+      "diagnostic": ""
+    }
+  ]
+}

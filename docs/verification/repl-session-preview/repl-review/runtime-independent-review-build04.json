@@ -1,0 +1,30 @@
+{
+  "status": "passed_source_review_and_five_focused_probes_full_native_run_pending",
+  "runtime_sha256": "2c7a790b0be32354a7d5100cb319ca204993e19bbcfab1da8f7e7bc597f1ebd3",
+  "repl_sha256": "22aa5bb3de3de2c310194c0bd799b506416aca0ebc1abe5fd649cb23b6025427",
+  "native_test_sha256": "e159bf2c3a7beb4c76cc7860697dac362660ea079f6b3f5ed318f16dd8449245",
+  "docs_sha256": "2737e12589c2123677a7362543ec20c1a12054f6ff66b9fe732e302f48fd8b2e",
+  "candidate_sha256": "81ce673609ae78b43d1749cc66341f7be6e72b8b2cdb014063cae3a22d9fc39d",
+  "resolved_findings": [
+    "Ephemeral query exactly one advancing unformatted PRINT item",
+    "Dynamic format/value strings compare exact LEN and bytes",
+    "Active symbol/expression/code arrays canonical1-based and bounded capacity; PRINT items canonical1-based<=64"
+  ],
+  "additional_review": [
+    "Success snapshot contains only active admitted arrays/name/counts, not unused caller payloads",
+    "Persistent-only16MiB aggregate CHARACTER budget counts scalar declaration lengths/literal strings/PRINT formats with int64 checked before copying dynamic payload",
+    "Private frame injection/capture and opaque values/RNG retained; no ordinaryexecute_program signature change",
+    "Native adversarial cases cover queryshape, formatlength, shiftedbounds, capacity, nonpositivebudget, freshquery, budgetboundary/mixedcontributions and ignoredinactivepayload"
+  ],
+  "focused_probes": 5,
+  "probe_sha256": "a35f6f54cfeb7b0129c7ea57514a0bcd247c4ae3a41d5964fef96ca02a0c850d",
+  "docs_updates": [
+    "Explicit literal-only emptybuffer query freezes empty declaration layout; .clear required beforedeclarations",
+    "Persistent-only16MiB aggregate CHARACTER admission budget",
+    "Exact ofort deferred-assignment/PRINT and preflight-beforepending divergence; no Windows/fullclean certification claim"
+  ],
+  "limitations": [
+    "Full native/test transcript outcomes owned by parent, still running at review time",
+    "Initial local exact-stdout check omitted list-directed leading space; corrected explicit oracles match allfive actual outputs. No product change or failedproductcheck relabeled."
+  ]
+}

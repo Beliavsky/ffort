@@ -1,0 +1,140 @@
+--- a/vendor/fortfront/src/utilities/intrinsic_registry.f90
++++ b/vendor/fortfront/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 65
++        integer, parameter :: NUM_INTRINSICS = 67
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -180,6 +180,14 @@
+         call register_variadic_intrinsics(i)
+         call register_inquiry_intrinsics(i)
+         call register_c_interop_intrinsics(i)
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="dble", return_type="real", arg_types="numeric", &
++            description="Convert to double precision real")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="merge", return_type="numeric", arg_types="any,any,logical", &
++            description="Elemental selection between matching source types")
+ 
+         if (i /= NUM_INTRINSICS) then
+             write (error_unit, '(A)') &
+--- a/vendor/fortfront/src/semantic/analyzers/semantic_function_call.f90
++++ b/vendor/fortfront/src/semantic/analyzers/semantic_function_call.f90
+@@ -83,7 +83,7 @@
+ 
+         if (is_intrinsic_func) then
+             select case (lowered_name)
+-            case ("int", "real", "dble", "cmplx", "logical", "uint")
++            case ("int", "real", "dble", "cmplx", "logical", "uint", "merge")
+                 ! Conversion intrinsics are elemental, unlike reductions. Keep
+                 ! their result element type while retaining an array's shape.
+                 do i = 1, size(arg_types)
+--- a/vendor/fortfront/src/frontend/frontend_compiler_type_queries.f90
++++ b/vendor/fortfront/src/frontend/frontend_compiler_type_queries.f90
+@@ -712,7 +712,7 @@
+         ! These elemental intrinsics preserve the conforming actual shape.
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+-        case ("real", "int", "logical", "cmplx", "aimag", "abs", &
++        case ("real", "int", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+               "exp", "log", "sqrt", "erfc", "min", "max")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+@@ -750,7 +750,11 @@
+                 result_type, kind_value)
+             if (result_type > 0 .and. kind_value > 0) &
+                 call set_intrinsic_metadata(node, result_type, kind_value, result_rank)
+-        case ("sum", "product", "minval", "maxval")
++        case ("dble")
++            call set_intrinsic_metadata(node, TREAL, 8, result_rank)
++        case ("merge")
++            call resolve_merge_metadata(arena, node, visiting, result_rank)
++        case ("sum", "product", "minval", "maxval", "all", "any", "count")
+             call resolve_reduction_metadata(arena, node, visiting)
+         case ("kind", "selected_int_kind", "selected_real_kind")
+             call set_intrinsic_metadata(node, TINT, 4, 0)
+@@ -775,12 +779,14 @@
+         type(ast_arena_t), intent(inout) :: arena
+         type(call_or_subscript_node), intent(inout) :: node
+         logical, intent(inout) :: visiting(:)
+-        integer :: i, idx, value_index, array_index, positional, rank
+-        logical :: has_dim, keyword
++        integer :: i, idx, value_index, array_index, positional, rank, kind_value, result_type
++        logical :: has_dim, keyword, logical_reduction
+         character(:), allocatable :: argument_name
+ 
+         if (.not. allocated(node%arg_indices)) return
+         array_index = 0
++        kind_value = 4
++        logical_reduction = any(to_lower(node%name) == [character(5)::'all','any','count'])
+         positional = 0
+         has_dim = .false.
+         do i = 1, size(node%arg_indices)
+@@ -805,11 +811,16 @@
+             call resolve_node_metadata(arena, value_index, visiting)
+             if (.not. arena%has_node_at(value_index)) cycle
+             if (keyword) then
+-                if (argument_name == 'array') array_index = value_index
++                if (argument_name == 'array'.or.(logical_reduction.and.argument_name == 'mask')) &
++                    array_index = value_index
++                if (logical_reduction.and.argument_name == 'kind') &
++                    call evaluate_integer_constant(arena,value_index,kind_value,visiting)
+                 if (argument_name == 'dim') has_dim = .true.
+             else
+                 positional = positional + 1
+                 if (positional == 1) array_index = value_index
++                if (logical_reduction.and.positional == 3) &
++                    call evaluate_integer_constant(arena,value_index,kind_value,visiting)
+                 if (positional == 2) then
+                     has_dim = arena%entries(value_index)%node%resolved_type_kind == TINT
+                 end if
+@@ -819,10 +830,40 @@
+         if (.not. arena%entries(array_index)%node%resolved_type_found) return
+         rank = 0
+         if (has_dim) rank = max(0, arena%entries(array_index)%node%resolved_rank - 1)
+-        call set_intrinsic_metadata(node, &
+-            arena%entries(array_index)%node%resolved_type_kind, &
+-            arena%entries(array_index)%node%resolved_kind_value, rank)
++        result_type = arena%entries(array_index)%node%resolved_type_kind
++        if (.not.logical_reduction) kind_value = arena%entries(array_index)%node%resolved_kind_value
++        if (to_lower(node%name) == 'count') result_type = TINT
++        call set_intrinsic_metadata(node, result_type, kind_value, rank)
+     end subroutine resolve_reduction_metadata
++
++    subroutine resolve_merge_metadata(arena,node,visiting,result_rank)
++        type(ast_arena_t),intent(inout)::arena
++        type(call_or_subscript_node),intent(inout)::node
++        logical,intent(inout)::visiting(:)
++        integer,intent(in)::result_rank
++        integer::j,arg,source
++        source=0
++        if(.not.allocated(node%arg_indices)) return
++        do j=1,size(node%arg_indices)
++            arg=node%arg_indices(j)
++            if(.not.arena%has_node_at(arg)) return
++            select type(actual=>arena%entries(arg)%node)
++            type is(assignment_node)
++                if(.not.actual%is_keyword_argument) return
++                if(.not.arena%has_node_at(actual%target_index)) return
++                select type(label=>arena%entries(actual%target_index)%node)
++                type is(identifier_node)
++                    if(to_lower(label%name)=='tsource') source=actual%value_index
++                end select
++            class default
++                if(j==1) source=arg
++            end select
++        end do
++        if(.not.arena%has_node_at(source)) return
++        call resolve_node_metadata(arena,source,visiting)
++        call set_intrinsic_metadata(node,arena%entries(source)%node%resolved_type_kind, &
++            arena%entries(source)%node%resolved_kind_value,result_rank)
++    end subroutine resolve_merge_metadata
+ 
+     subroutine resolve_unary_same_kind_intrinsic(arena, node, visiting, name, &
+             result_rank)

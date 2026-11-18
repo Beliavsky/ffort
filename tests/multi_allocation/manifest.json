@@ -1,0 +1,424 @@
+{
+  "cases": [
+    {
+      "name": "three_objects",
+      "source": "cases/three_objects.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 2 3 0 6 12 0 F F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "mixed_types_ranks",
+      "source": "cases/mixed_types_ranks.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 8589934596 9 6 T 0 F F F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "without_stat",
+      "source": "cases/without_stat.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 4 9 F F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "bound_expressions",
+      "source": "cases/bound_expressions.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 5 6 3 -2",
+      "diagnostic": ""
+    },
+    {
+      "name": "bound_external_array",
+      "source": "cases/bound_external_array.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 2 2 5",
+      "diagnostic": ""
+    },
+    {
+      "name": "object_named_stat",
+      "source": "cases/object_named_stat.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 3 F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "allocate_failure_0_stat4",
+      "source": "cases/allocate_failure_0_stat4.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T F F 4 36",
+      "diagnostic": ""
+    },
+    {
+      "name": "deallocate_failure_0_stat4",
+      "source": "cases/deallocate_failure_0_stat4.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T F T T",
+      "diagnostic": ""
+    },
+    {
+      "name": "allocate_failure_1_stat4",
+      "source": "cases/allocate_failure_1_stat4.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T T F 4 36",
+      "diagnostic": ""
+    },
+    {
+      "name": "deallocate_failure_1_stat4",
+      "source": "cases/deallocate_failure_1_stat4.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T F F T",
+      "diagnostic": ""
+    },
+    {
+      "name": "allocate_failure_2_stat4",
+      "source": "cases/allocate_failure_2_stat4.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T T T 4 36",
+      "diagnostic": ""
+    },
+    {
+      "name": "deallocate_failure_2_stat4",
+      "source": "cases/deallocate_failure_2_stat4.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T F F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "allocate_failure_0_stat8",
+      "source": "cases/allocate_failure_0_stat8.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T F F 4 36",
+      "diagnostic": ""
+    },
+    {
+      "name": "deallocate_failure_0_stat8",
+      "source": "cases/deallocate_failure_0_stat8.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T F T T",
+      "diagnostic": ""
+    },
+    {
+      "name": "allocate_failure_1_stat8",
+      "source": "cases/allocate_failure_1_stat8.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T T F 4 36",
+      "diagnostic": ""
+    },
+    {
+      "name": "deallocate_failure_1_stat8",
+      "source": "cases/deallocate_failure_1_stat8.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T F F T",
+      "diagnostic": ""
+    },
+    {
+      "name": "allocate_failure_2_stat8",
+      "source": "cases/allocate_failure_2_stat8.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T T T 4 36",
+      "diagnostic": ""
+    },
+    {
+      "name": "deallocate_failure_2_stat8",
+      "source": "cases/deallocate_failure_2_stat8.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T F F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "typed_character",
+      "source": "cases/typed_character.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 3 3 T T 4 0 F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "typed_zero_character",
+      "source": "cases/typed_zero_character.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0 0 0 2",
+      "diagnostic": ""
+    },
+    {
+      "name": "fixed_character_mixed_lengths",
+      "source": "cases/fixed_character_mixed_lengths.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 4 T T",
+      "diagnostic": ""
+    },
+    {
+      "name": "typed_character_failure_descriptor",
+      "source": "cases/typed_character_failure_descriptor.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "T T T F 4 1 5 -2 T",
+      "diagnostic": "",
+      "reason": "GNU 14.2 corrupts failed B CHARACTER length; expected old descriptor retained under F2018 9.7.4p6, not a GNU execution agreement.",
+      "oracle": {
+        "type": "specification",
+        "reference": "https://j3-fortran.org/doc/year/18/18-007r1.pdf",
+        "clause": "9.7.4 paragraph 6",
+        "gnu_note": "Compile-only; GNU 14.2.0 changes failed object length."
+      }
+    },
+    {
+      "name": "module_storage",
+      "source": "cases/module_storage.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 9 F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "allocatable_dummy_copyback",
+      "source": "cases/allocatable_dummy_copyback.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "9 8 -1 F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "loop_repeated_groups",
+      "source": "cases/loop_repeated_groups.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 1 2 0 4 6 0 9 12",
+      "diagnostic": ""
+    },
+    {
+      "name": "total_cap_prefix",
+      "source": "cases/total_cap_prefix.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "T T F F 500001",
+      "diagnostic": "",
+      "reason": "Synthetic 1,000,000-element policy: a(500001) succeeds, b(500000) exceeds the shared pool, and c is not attempted. No GNU allocation-failure agreement claimed."
+    },
+    {
+      "name": "total_cap_exact",
+      "source": "cases/total_cap_exact.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 T T T 131072",
+      "diagnostic": ""
+    },
+    {
+      "name": "no_stat_allocate_failure",
+      "source": "cases/no_stat_allocate_failure.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "before",
+      "diagnostic": "already allocated",
+      "reason": "Runtime error stops suffix, no STAT recovery. GNU error text/codes are processor-dependent."
+    },
+    {
+      "name": "no_stat_deallocate_failure",
+      "source": "cases/no_stat_deallocate_failure.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "before",
+      "diagnostic": "not allocated",
+      "reason": "Runtime error stops suffix, no STAT recovery."
+    },
+    {
+      "name": "duplicate_allocate",
+      "source": "cases/duplicate_allocate.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "repeated object",
+      "reason": "Duplicate list objects rejected before execution."
+    },
+    {
+      "name": "duplicate_deallocate",
+      "source": "cases/duplicate_deallocate.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "repeated object",
+      "reason": "Duplicate list objects rejected before execution."
+    },
+    {
+      "name": "duplicate_stat",
+      "source": "cases/duplicate_stat.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Repeated allocation option",
+      "reason": "Repeated option is invalid Fortran."
+    },
+    {
+      "name": "stat_dependency",
+      "source": "cases/stat_dependency.f90",
+      "category": "boundary",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "must not reference",
+      "reason": "Standard forbids STAT-dependent allocation bounds; GNU accepts this nonconforming source."
+    },
+    {
+      "name": "object_dependency",
+      "source": "cases/object_dependency.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "must not reference",
+      "reason": "Allocation status must not determine another object bound."
+    },
+    {
+      "name": "kind_object_boundary",
+      "source": "cases/kind_object_boundary.f90",
+      "category": "boundary",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "must not reference",
+      "reason": "Conservative boundary rejects even metadata-only allocation-list-name references."
+    },
+    {
+      "name": "source_option",
+      "source": "cases/source_option.f90",
+      "category": "boundary",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "SOURCE/MOLD",
+      "reason": "SOURCE remains unsupported."
+    },
+    {
+      "name": "mold_option",
+      "source": "cases/mold_option.f90",
+      "category": "boundary",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "SOURCE/MOLD",
+      "reason": "MOLD remains unsupported."
+    },
+    {
+      "name": "errmsg_option",
+      "source": "cases/errmsg_option.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "stat_first_boundary",
+      "source": "cases/stat_first_boundary.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "declared ALLOCATABLE",
+      "reason": "ALLOCATE requires the allocation list before its options."
+    },
+    {
+      "name": "missing_comma",
+      "source": "cases/missing_comma.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Expected )",
+      "reason": "Required comma omitted."
+    },
+    {
+      "name": "parenthesized_stat",
+      "source": "cases/parenthesized_stat.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "STAT requires",
+      "reason": "STAT must be a definable variable."
+    },
+    {
+      "name": "deallocate_section",
+      "source": "cases/deallocate_section.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Expected )",
+      "reason": "Whole allocatables only."
+    },
+    {
+      "name": "stride_boundary",
+      "source": "cases/stride_boundary.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Expected )",
+      "reason": "Allocation shape does not accept strides."
+    },
+    {
+      "name": "function_bound_boundary",
+      "source": "cases/function_bound_boundary.f90",
+      "category": "boundary",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "must not reference",
+      "reason": "User-function bound calls remain outside multi-object subset, even PURE or provably harmless calls."
+    },
+    {
+      "name": "pure_second_module_target",
+      "source": "cases/pure_second_module_target.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "PURE",
+      "reason": "Module effect validation must include later allocation objects."
+    },
+    {
+      "name": "object_limit_64",
+      "source": "cases/object_limit_64.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 1",
+      "diagnostic": "",
+      "reason": "Bounded maximum of 64 list objects."
+    },
+    {
+      "name": "object_limit_65",
+      "source": "cases/object_limit_65.f90",
+      "category": "boundary",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "object limit",
+      "reason": "Bounded maximum of 64 list objects."
+    },
+    {
+      "name": "contextual_object_names",
+      "source": "cases/contextual_object_names.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 2 3 4 5 0 F F F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "overlapping_unallocated_actuals",
+      "source": "cases/overlapping_unallocated_actuals.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "overlapping allocatable descriptors",
+      "reason": "Writable aliased allocatable actuals remain rejected before group execution; GNU not executed for alias-unsafe source."
+    }
+  ]
+}

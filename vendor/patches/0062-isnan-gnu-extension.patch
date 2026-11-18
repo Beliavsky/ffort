@@ -1,0 +1,42 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -890,7 +890,7 @@
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+         case ("fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+-              "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
++              "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "isnan", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+                 do i = 1, size(node%arg_indices)
+@@ -917,6 +917,8 @@
+         case ("fraction", "set_exponent")
+             call decomposition_x_metadata(arena,node,visiting,kind_value)
+             if(kind_value>0)call set_intrinsic_metadata(node,TREAL,kind_value,result_rank)
++        case ("isnan")
++            call set_intrinsic_metadata(node, TLOGICAL, 4, result_rank)
+         case ("repeat")
+             call set_intrinsic_metadata(node, TCHAR, 1, 0)
+         case ("adjustl", "adjustr")
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 88
++        integer, parameter :: NUM_INTRINSICS = 89
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -301,6 +301,10 @@
+             description="Elemental adjacent representable real")
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="isnan", return_type="logical", arg_types="real", &
++            description="GNU extension: elemental IEEE NaN predicate")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="sinh", return_type="real", arg_types="real", &
+             description="Elemental real hyperbolic function")
+ 

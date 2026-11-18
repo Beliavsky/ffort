@@ -1,0 +1,2625 @@
+{
+  "original": {
+    "local_file": "demo_cshift.f90",
+    "source_path": "example/demo_cshift.f90",
+    "upstream_repository": "https://github.com/urbanjost/M_intrinsics",
+    "upstream_commit": "fc14233036d910e3678d350efc24609e11475067",
+    "sha256": "86868f08e1dc9d4b533e4b170734d02d6006642397486ce4160420b08eaf2fbd",
+    "bytes": 857,
+    "altered": false
+  },
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "resolved_path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      },
+      "sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "resolved_path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      },
+      "sha256": "406a8ebf8691187132f55a124d6ca47d99978645f6d03bb1d6926a7e5efcd730"
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:33:27.819037+00:00",
+  "summary": {
+    "total": 90,
+    "failed": 0,
+    "candidate_checked": 90,
+    "gnu_checked": 90,
+    "gnu_skipped": 0,
+    "gnu_executed": 41,
+    "gnu_compile_only": 30,
+    "gnu_compile_rejections": 19
+  },
+  "records": [
+    {
+      "case": {
+        "name": "original_demo_cshift",
+        "source": "demo_cshift.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "start with: 10 20 30 40 50 shift -2 40 50 10 20 30 shift +2 30 40 50 10 20 start with a matrix 1 4 7 10 2 5 8 11 3 6 9 12 matrix shifted along rows, each by its own amount [-1,0,1] 4 7 10 1 2 5 8 11 12 3 6 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " start with:\n  10 20 30 40 50\n shift -2\n  40 50 10 20 30\n shift +2\n  30 40 50 10 20\n start with a matrix\n  1  4  7 10\n  2  5  8 11\n  3  6  9 12\n matrix shifted along rows, each by its own amount [-1,0,1]\n\n  4  7 10  1\n  2  5  8 11\n 12  3  6  9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " start with:\n  10 20 30 40 50\n shift -2\n  40 50 10 20 30\n shift +2\n  30 40 50 10 20\n start with a matrix\n  1  4  7 10\n  2  5  8 11\n  3  6  9 12\n matrix shifted along rows, each by its own amount [-1,0,1]\n\n  4  7 10  1\n  2  5  8 11\n 12  3  6  9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank1_signed_modulo",
+        "source": "cases/rank1_signed_modulo.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank2_integer4",
+        "source": "cases/rank2_integer4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank2_integer8",
+        "source": "cases/rank2_integer8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank2_real4",
+        "source": "cases/rank2_real4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank2_real8",
+        "source": "cases/rank2_real8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "logical_and_character",
+        "source": "cases/logical_and_character.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank1_logical_character",
+        "source": "cases/rank1_logical_character.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_zero_length",
+        "source": "cases/character_zero_length.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank2_keywords_scalar_dim2",
+        "source": "cases/rank2_keywords_scalar_dim2.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "minimum_integer64",
+        "source": "cases/minimum_integer64.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/minimum_integer64.f90:6:33:\n\n    6 | s=[(-9223372036854775807_8-1_8),(-9223372036854775807_8-1_8)+1_8]\n      |                                 1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/minimum_integer64.f90:8:23:\n\n    8 | if(any(cshift([1,2,3],(-9223372036854775807_8-1_8))/=[2,3,1])) error stop 2\n      |                       1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "maximum_integer64",
+        "source": "cases/maximum_integer64.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "minimum_integer32",
+        "source": "cases/minimum_integer32.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/minimum_integer32.f90:4:2:\n\n    4 | s=-2147483647-1\n      |  1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nonunit_bounds_sections",
+        "source": "cases/nonunit_bounds_sections.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shift_strided_section",
+        "source": "cases/shift_strided_section.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "self_assignment_snapshot",
+        "source": "cases/self_assignment_snapshot.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shift_aliases_array",
+        "source": "cases/shift_aliases_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_allocatable_descriptors",
+        "source": "cases/dynamic_allocatable_descriptors.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "assumed_shape_descriptors",
+        "source": "cases/assumed_shape_descriptors.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "one_element_empty_axes",
+        "source": "cases/one_element_empty_axes.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/one_element_empty_axes.f90:9:18:\n\n    9 | if(any(cshift(one,-9223372036854775807_8-1_8)/=one)) error stop 1\n      |                  1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_array_materialization",
+        "source": "cases/empty_array_materialization.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "PASS",
+        "boundary_note": "Valid empty result/SHIFT conformance; GNU14 bounds-checking materialization discrepancy is not adopted."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_composition",
+        "source": "cases/nested_composition.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "constant_parameters",
+        "source": "cases/constant_parameters.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_function_source",
+        "source": "cases/pure_function_source.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_function_source",
+        "source": "cases/ordinary_function_source.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_function_source",
+        "source": "cases/recursive_function_source.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_function_source",
+        "source": "cases/character_function_source.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_where_forall",
+        "source": "cases/pure_where_forall.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/pure_where_forall.f90:8:35:\n\n    8 | forall(i=1:4) b(i)=sum(cshift(a,i))\n      |                                   1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "user_procedure_shadowing",
+        "source": "cases/user_procedure_shadowing.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_variable_shadow",
+        "source": "cases/scalar_variable_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_variable_shadow",
+        "source": "cases/array_variable_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_function_shadow",
+        "source": "cases/scalar_function_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_result_shadow",
+        "source": "cases/function_result_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "generic_shadow_different_type",
+        "source": "cases/generic_shadow_different_type.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rng_scalar_shift_once",
+        "source": "cases/rng_scalar_shift_once.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rng_scalar_source_once",
+        "source": "cases/rng_scalar_source_once.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rng_array_source_once",
+        "source": "cases/rng_array_source_once.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rng_array_shift_frozen",
+        "source": "cases/rng_array_shift_frozen.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_arguments_unevaluated",
+        "source": "cases/kind_arguments_unevaluated.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "optional_parenthesized_dim",
+        "source": "cases/optional_parenthesized_dim.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "optional_direct_dim",
+        "source": "cases/optional_direct_dim.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/optional_direct_dim.f90:11:16: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/optional_direct_dim.f90:11:16: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "optional_absent_parenthesized_dim",
+        "source": "cases/optional_absent_parenthesized_dim.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/optional_absent_parenthesized_dim.f90:8:30: absent OPTIONAL dummy referenced: d\n"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_array",
+        "source": "cases/scalar_array.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/scalar_array.f90:4:9:\n\n    4 | x=cshift(1,1)\n      |         1\nError: \u2018array\u2019 argument of \u2018cshift\u2019 intrinsic at (1) must be an array\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/scalar_array.f90:4:14: CSHIFT supports intrinsic rank-one/rank-two ARRAY\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/scalar_array.f90:4:14: CSHIFT supports intrinsic rank-one/rank-two ARRAY\n"
+      }
+    },
+    {
+      "case": {
+        "name": "rank3_array",
+        "source": "cases/rank3_array.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/rank3_array.f90:5:14: CSHIFT supports intrinsic rank-one/rank-two ARRAY\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/rank3_array.f90:5:14: CSHIFT supports intrinsic rank-one/rank-two ARRAY\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real_shift",
+        "source": "cases/real_shift.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/real_shift.f90:4:17:\n\n    4 | a=cshift([1,2,3],1.0)\n      |                 1\nError: \u2018shift\u2019 argument of \u2018cshift\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/real_shift.f90:4:22: CSHIFT SHIFT must be scalar INTEGER or rank-one INTEGER for a matrix\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/real_shift.f90:4:22: CSHIFT SHIFT must be scalar INTEGER or rank-one INTEGER for a matrix\n"
+      }
+    },
+    {
+      "case": {
+        "name": "logical_shift",
+        "source": "cases/logical_shift.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/logical_shift.f90:4:17:\n\n    4 | a=cshift([1,2,3],.true.)\n      |                 1\nError: \u2018shift\u2019 argument of \u2018cshift\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/logical_shift.f90:4:25: CSHIFT SHIFT must be scalar INTEGER or rank-one INTEGER for a matrix\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/logical_shift.f90:4:25: CSHIFT SHIFT must be scalar INTEGER or rank-one INTEGER for a matrix\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_shift_rank1",
+        "source": "cases/array_shift_rank1.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/array_shift_rank1.f90:4:17:\n\n    4 | a=cshift([1,2,3],[1])\n      |                 1\nError: \u2018shift\u2019 argument of \u2018cshift\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/array_shift_rank1.f90:4:22: CSHIFT SHIFT must be scalar INTEGER or rank-one INTEGER for a matrix\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/array_shift_rank1.f90:4:22: CSHIFT SHIFT must be scalar INTEGER or rank-one INTEGER for a matrix\n"
+      }
+    },
+    {
+      "case": {
+        "name": "rank2_shift",
+        "source": "cases/rank2_shift.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/rank2_shift.f90:6:11:\n\n    6 | a=cshift(a,s)\n      |           1\nError: \u2018shift\u2019 argument of intrinsic \u2018cshift\u2019 at (1) of must have rank 1 or be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/rank2_shift.f90:6:14: CSHIFT SHIFT must be scalar INTEGER or rank-one INTEGER for a matrix\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/rank2_shift.f90:6:14: CSHIFT SHIFT must be scalar INTEGER or rank-one INTEGER for a matrix\n"
+      }
+    },
+    {
+      "case": {
+        "name": "static_shape_mismatch",
+        "source": "cases/static_shape_mismatch.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/static_shape_mismatch.f90:5:11:\n\n    5 | a=cshift(a,[1,2])\n      |           1\nError: \u2018shift\u2019 argument of \u2018cshift\u2019 intrinsic at (1) has invalid shape in dimension 2 (3/2)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/static_shape_mismatch.f90:5:18: CSHIFT SHIFT shape must match ARRAY with DIM removed\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/static_shape_mismatch.f90:5:18: CSHIFT SHIFT shape must match ARRAY with DIM removed\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real_dim",
+        "source": "cases/real_dim.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/real_dim.f90:4:19:\n\n    4 | a=cshift([1,2,3],1,1.0)\n      |                   1\nError: \u2018dim\u2019 argument of \u2018cshift\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/real_dim.f90:4:24: CSHIFT DIM must be scalar INTEGER kind 4 or 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/real_dim.f90:4:24: CSHIFT DIM must be scalar INTEGER kind 4 or 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_dim",
+        "source": "cases/array_dim.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/array_dim.f90:4:19:\n\n    4 | a=cshift([1,2,3],1,[1])\n      |                   1\nError: \u2018dim\u2019 argument of \u2018cshift\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/array_dim.f90:4:24: CSHIFT DIM must be scalar INTEGER kind 4 or 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/array_dim.f90:4:24: CSHIFT DIM must be scalar INTEGER kind 4 or 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dim_zero_constant",
+        "source": "cases/dim_zero_constant.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dim_zero_constant.f90:4:19:\n\n    4 | a=cshift([1,2,3],1,0)\n      |                   1\nError: \u2018dim\u2019 argument of \u2018cshift\u2019 intrinsic at (1) is not a valid dimension index\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dim_zero_constant.f90:4:22: CSHIFT DIM is outside ARRAY rank\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dim_zero_constant.f90:4:22: CSHIFT DIM is outside ARRAY rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dim_negative_constant",
+        "source": "cases/dim_negative_constant.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dim_negative_constant.f90:4:19:\n\n    4 | a=cshift([1,2,3],1,-1)\n      |                   1\nError: \u2018dim\u2019 argument of \u2018cshift\u2019 intrinsic at (1) is not a valid dimension index\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dim_negative_constant.f90:4:23: CSHIFT DIM is outside ARRAY rank\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dim_negative_constant.f90:4:23: CSHIFT DIM is outside ARRAY rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dim_oversized_constant",
+        "source": "cases/dim_oversized_constant.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dim_oversized_constant.f90:4:19:\n\n    4 | a=cshift([1,2,3],1,2)\n      |                   1\nError: \u2018dim\u2019 argument of \u2018cshift\u2019 intrinsic at (1) is not a valid dimension index\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dim_oversized_constant.f90:4:22: CSHIFT DIM is outside ARRAY rank\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dim_oversized_constant.f90:4:22: CSHIFT DIM is outside ARRAY rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_shift",
+        "source": "cases/duplicate_shift.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/duplicate_shift.f90:4:2:\n\n    4 | a=cshift([1,2,3],1,shift=2)\n      |  1\nError: Argument \u2018shift\u2019 appears twice in call to \u2018cshift\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/duplicate_shift.f90:4:28: Repeated actual argument for shift\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/duplicate_shift.f90:4:28: Repeated actual argument for shift\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_array",
+        "source": "cases/duplicate_array.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/duplicate_array.f90:4:2:\n\n    4 | a=cshift([1,2,3],shift=1,array=[1,2,3])\n      |  1\nError: Argument \u2018array\u2019 appears twice in call to \u2018cshift\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/duplicate_array.f90:4:40: Repeated actual argument for array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/duplicate_array.f90:4:40: Repeated actual argument for array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_shift",
+        "source": "cases/missing_shift.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/missing_shift.f90:4:2:\n\n    4 | a=cshift([1,2,3])\n      |  1\nError: Missing actual argument \u2018shift\u2019 in call to \u2018cshift\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/missing_shift.f90:4:18: Missing required actual argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/missing_shift.f90:4:18: Missing required actual argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_array",
+        "source": "cases/missing_array.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/missing_array.f90:4:2:\n\n    4 | a=cshift(shift=1)\n      |  1\nError: Missing actual argument \u2018array\u2019 in call to \u2018cshift\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/missing_array.f90:4:18: Missing required actual argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/missing_array.f90:4:18: Missing required actual argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unknown_keyword",
+        "source": "cases/unknown_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/unknown_keyword.f90:4:2:\n\n    4 | a=cshift([1,2,3],1,kind=4)\n      |  1\nError: Cannot find keyword named \u2018kind\u2019 in call to \u2018cshift\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/unknown_keyword.f90:4:27: Unknown keyword or excess actual argument: kind\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/unknown_keyword.f90:4:27: Unknown keyword or excess actual argument: kind\n"
+      }
+    },
+    {
+      "case": {
+        "name": "too_many_arguments",
+        "source": "cases/too_many_arguments.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/too_many_arguments.f90:4:2:\n\n    4 | a=cshift([1,2,3],1,1,1)\n      |  1\nError: Too many arguments in call to \u2018cshift\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/too_many_arguments.f90:4:24: Unknown keyword or excess actual argument: \n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/too_many_arguments.f90:4:24: Unknown keyword or excess actual argument: \n"
+      }
+    },
+    {
+      "case": {
+        "name": "positional_after_keyword",
+        "source": "cases/positional_after_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/positional_after_keyword.f90:4:24:\n\n    4 | a=cshift(array=[1,2,3],1)\n      |                        1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/positional_after_keyword.f90:4:24: Positional argument cannot follow a keyword argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/positional_after_keyword.f90:4:24: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_dim_zero",
+        "source": "cases/dynamic_dim_zero.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "DIM"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dynamic_dim_zero.f90:7:3: CSHIFT DIM is outside ARRAY rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_dim_negative",
+        "source": "cases/dynamic_dim_negative.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "DIM"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dynamic_dim_negative.f90:7:3: CSHIFT DIM is outside ARRAY rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_dim_oversized",
+        "source": "cases/dynamic_dim_oversized.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "DIM"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dynamic_dim_oversized.f90:7:3: CSHIFT DIM is outside ARRAY rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_dim_huge_integer8",
+        "source": "cases/dynamic_dim_huge_integer8.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "DIM"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dynamic_dim_huge_integer8.f90:7:3: CSHIFT DIM is outside ARRAY rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_shape_mismatch",
+        "source": "cases/dynamic_shape_mismatch.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "SHIFT shape"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/dynamic_shape_mismatch.f90:10:3: CSHIFT SHIFT shape must match ARRAY with DIM removed\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_array",
+        "source": "cases/undefined_array.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/undefined_array.f90:4:10: read of uninitialized array element a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_shift",
+        "source": "cases/undefined_shift.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/undefined_shift.f90:5:12: read of uninitialized variable s\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_shift_entry",
+        "source": "cases/undefined_shift_entry.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/undefined_shift_entry.f90:7:12: read of uninitialized array element s\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_dim",
+        "source": "cases/undefined_dim.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/undefined_dim.f90:5:14: read of uninitialized variable d\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_array",
+        "source": "cases/unallocated_array.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/unallocated_array.f90:4:10: reference to unallocated array a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_shift",
+        "source": "cases/unallocated_shift.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/unallocated_shift.f90:6:12: reference to unallocated array s\n"
+      }
+    },
+    {
+      "case": {
+        "name": "absent_optional_array",
+        "source": "cases/absent_optional_array.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/absent_optional_array.f90:8:30: absent OPTIONAL dummy referenced: a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "absent_optional_shift",
+        "source": "cases/absent_optional_shift.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/absent_optional_shift.f90:8:30: absent OPTIONAL dummy referenced: s\n"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_evaluates_scalar_shift",
+        "source": "cases/empty_evaluates_scalar_shift.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "SHIFT evaluated"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/empty_evaluates_scalar_shift.f90:9:1: ERROR STOP: SHIFT evaluated\n"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_evaluates_shift_entries",
+        "source": "cases/empty_evaluates_shift_entries.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "SHIFT entry evaluated"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/empty_evaluates_shift_entries.f90:9:1: ERROR STOP: SHIFT entry evaluated\n"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_evaluates_dim",
+        "source": "cases/empty_evaluates_dim.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "DIM evaluated"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/empty_evaluates_dim.f90:9:1: ERROR STOP: DIM evaluated\n"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_source_descriptor_function",
+        "source": "cases/empty_source_descriptor_function.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "ARRAY descriptor evaluated"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/empty_source_descriptor_function.f90:10:1: ERROR STOP: ARRAY descriptor evaluated\n"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_dynamic_bad_dim",
+        "source": "cases/empty_dynamic_bad_dim.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "DIM"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/empty_dynamic_bad_dim.f90:6:3: CSHIFT DIM is outside ARRAY rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_undefined_shift_entry",
+        "source": "cases/empty_undefined_shift_entry.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/empty_undefined_shift_entry.f90:7:12: read of uninitialized array element s\n"
+      }
+    },
+    {
+      "case": {
+        "name": "where_impure_reject",
+        "source": "cases/where_impure_reject.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/where_impure_reject.f90:6:1: WHERE expressions may reference only PURE user functions\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/where_impure_reject.f90:6:1: WHERE expressions may reference only PURE user functions\n"
+      }
+    },
+    {
+      "case": {
+        "name": "forall_impure_reject",
+        "source": "cases/forall_impure_reject.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/forall_impure_reject.f90:5:41:\n\n    5 | forall(i=1:3) a(i)=sum(cshift(a,shift()))\n      |                                         1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/forall_impure_reject.f90:5:32:\n\n    5 | forall(i=1:3) a(i)=sum(cshift(a,shift()))\n      |                                1\nError: Reference to impure function \u2018shift\u2019 at (1) inside a FORALL block\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/forall_impure_reject.f90:6:1: FORALL expressions may reference only PURE user functions\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/forall_impure_reject.f90:6:1: FORALL expressions may reference only PURE user functions\n"
+      }
+    },
+    {
+      "case": {
+        "name": "source_io_effect_reject",
+        "source": "cases/source_io_effect_reject.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/source_io_effect_reject.f90:9:1: I/O requires the main program, an impure subroutine or IMPURE ELEMENTAL function\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/source_io_effect_reject.f90:9:1: I/O requires the main program, an impure subroutine or IMPURE ELEMENTAL function\n"
+      }
+    },
+    {
+      "case": {
+        "name": "source_saved_effect_reject",
+        "source": "cases/source_saved_effect_reject.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/source_saved_effect_reject.f90:11:1: SAVE state writes inside ordinary functions or PURE procedures are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/source_saved_effect_reject.f90:11:1: SAVE state writes inside ordinary functions or PURE procedures are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "shared_work_budget",
+        "source": "cases/shared_work_budget.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "step limit",
+        "args": [
+          "--max-steps",
+          "1500"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/shared_work_budget.f90:5:3: execution step limit exceeded (current limit: 1500); use --max-steps N to set the execution budget (positive 64-bit integer)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "temporary_element_boundary",
+        "source": "cases/temporary_element_boundary.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "temporary_character_boundary",
+        "source": "cases/temporary_character_boundary.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "temporary_element_limit",
+        "source": "cases/temporary_element_limit.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "temporary element limit",
+        "args": [
+          "--max-steps",
+          "20000000"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/temporary_element_limit.f90:5:7: CSHIFT temporary element limit exceeded\n"
+      }
+    },
+    {
+      "case": {
+        "name": "temporary_character_byte_limit",
+        "source": "cases/temporary_character_byte_limit.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "CHARACTER temporary byte limit"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/temporary_character_byte_limit.f90:6:3: CSHIFT CHARACTER temporary byte limit exceeded (16777216)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "failed_output_record",
+        "source": "cases/failed_output_record.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "DIM",
+        "completed_stdout": "BEFORE\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "BEFORE\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/cshift/cases/failed_output_record.f90:7:21: CSHIFT DIM is outside ARRAY rank\n"
+      }
+    }
+  ],
+  "manifest_sha256": "0742c03fe4ff12a9ba67ae654529a76c7192e0aa198d2311ec857e52ab51dd7e",
+  "source_sha256": {
+    "demo_cshift.f90": "86868f08e1dc9d4b533e4b170734d02d6006642397486ce4160420b08eaf2fbd",
+    "cases/rank1_signed_modulo.f90": "6a2aa3e8a4516f72a0f324b79d0cc60b512c7de5fdc86f20571b2c35c290d4f4",
+    "cases/rank2_integer4.f90": "eb5616d857e0cfd2d9bc7a85511908a2535a1da3f104b9210f54baa23e26e42f",
+    "cases/rank2_integer8.f90": "4a4fcdd43e525a995b41242118fb954c611f9dfc8ef73718d9df21bf22dc778e",
+    "cases/rank2_real4.f90": "67cf826a19b8d721b16fea7b1c30b77d13e600561afe27147cbff23b79d1f5e8",
+    "cases/rank2_real8.f90": "cc9bda2cdf9e55e302592b4aca7bcd8b20fbbf6e8aebd1d4daeeafe395298a94",
+    "cases/logical_and_character.f90": "6e7d5b60f4a7e63de1b5d54f9dbdb296139eb2e0e6072c9bbaf6e19cf4609b00",
+    "cases/rank1_logical_character.f90": "9bc7278f13c58d6a28713d09a8cd9ff262a1fb80b3bfc3dc3d8450b0603dd9a7",
+    "cases/character_zero_length.f90": "261c03dabbfb2fedf5f38d859748fb508f3e06d77764fecc439892a5e31c0149",
+    "cases/rank2_keywords_scalar_dim2.f90": "a1828432e53fe2914cbeb51f9291fd35a40f31a5f699e9539ae924f7c2efc5e0",
+    "cases/minimum_integer64.f90": "dafd63568c648b0929e63041d8e6169e2c6f7a17c9be56ae8e37dde7c159654f",
+    "cases/maximum_integer64.f90": "02035e82742a9baf327e1076c05c46fb43f3f3636e58069c52c088bccfae9c75",
+    "cases/minimum_integer32.f90": "af263fbd325f98b717ac1a222cf4eeba7d014d00424d02c38ed7215ea3f34491",
+    "cases/nonunit_bounds_sections.f90": "4ae4355458e1c27621c8ec82eb90ace0d134dd7e50091e871edd8ce5e2aa3c48",
+    "cases/shift_strided_section.f90": "8aa7fa9e9de73af137a7ecdee76b602136fcf6433dd4c3bb37742567a9009387",
+    "cases/self_assignment_snapshot.f90": "c1b92c45f88c58f95291f84264e95306ff52987d47920bbd3617c597015ac9af",
+    "cases/shift_aliases_array.f90": "0ddb9bc8942fbc9e6083e12912428533da8742bee3c9bc2b812c530d6f291bd7",
+    "cases/dynamic_allocatable_descriptors.f90": "36686a2fef802364f51bef3bde9b353d6b90c20dafa2e15876f135c18972a5d6",
+    "cases/assumed_shape_descriptors.f90": "c15205b5dea445092f664ba7bde8fd7ebe4cc0c87c9c3cce3374fe65c91e4a41",
+    "cases/one_element_empty_axes.f90": "f47c6858e48da61d1e509ae94d94334087c20db1a8c80135ae563d604d83f808",
+    "cases/empty_array_materialization.f90": "1b7eb238d3721825c9860257951edf4e0a99fb1ba4cc0d5fee45f9fb815b0daa",
+    "cases/nested_composition.f90": "42e35e92b6ccdafe6b4393274d305dba0fd7717be510a897058d28b8e98ef44e",
+    "cases/constant_parameters.f90": "4cbe8e0bbd916297012f9646f626259f9f8fbfa90b5d1b7fc6a93fa23d848526",
+    "cases/pure_function_source.f90": "b44dbc36297689a6729f11cb4442efac253a631273b3889ca12e29f768af9af8",
+    "cases/ordinary_function_source.f90": "2842deab2b0dae7230efe1c0a5533655c2c68b155422288ced4ea7f14e10b9c9",
+    "cases/recursive_function_source.f90": "3d408c88c8e72c64c2f1e50a0e788cb3d53bc69f22fbce3b3f366cba1f8d6f45",
+    "cases/character_function_source.f90": "66eca6f51c6a49e57987868828b14329438a73835dc0012bd65d2d27807347c6",
+    "cases/pure_where_forall.f90": "da7fef67e8b56010a39ab3a8673af2012e5d6d05642423533d595526b3ffddcb",
+    "cases/user_procedure_shadowing.f90": "a8f06e21c262ef2b009eeb71cb6fc20ae4770f11d46c54dc34aa824b4a1a85da",
+    "cases/scalar_variable_shadow.f90": "e34736ecbcb281cea152b0a80cb1a52fbeccf4c8815909b0c9db37b5c5e5a26e",
+    "cases/array_variable_shadow.f90": "1deb9611cdd26b0c7b9dcced92e03759b01137db720227e6a28248310372aded",
+    "cases/scalar_function_shadow.f90": "00f583667d778620e286df7de1877746e7d210bae7df3c7f88e5aee068fb96c1",
+    "cases/function_result_shadow.f90": "a41e3bade73abbbb768660f8f27dab45519d727d23ec6eba135366278a46facb",
+    "cases/generic_shadow_different_type.f90": "8f948936108e46614152b53354781b427171fab1e7b27111cba936f2c838abf2",
+    "cases/rng_scalar_shift_once.f90": "4420d4acb9c8c1114b9107e85636fc934608288315f99697cfae0a1ffcc82e60",
+    "cases/rng_scalar_source_once.f90": "62ee724e67181e000726724e6f6608fb7ed361e24aaf295943bd7a733d0ddc7b",
+    "cases/rng_array_source_once.f90": "3d6b6642f1fcc73f9050c1802d52ab6f51652ffd4c720864a260fff42eef4af2",
+    "cases/rng_array_shift_frozen.f90": "5f228de5553c9385da6e9294ffeca19fa622d4586465b6591dea7bc76c680384",
+    "cases/kind_arguments_unevaluated.f90": "2ee12bcdc09a974a818ebad0d6a03823b545e46a4b00662c1832c3929d5a2a0c",
+    "cases/optional_parenthesized_dim.f90": "3a2114ce1987e1593bc5daad9a73e6bb6faa439320d5d08fe31520b30b02564c",
+    "cases/optional_direct_dim.f90": "274c60f4b8684d082c7dac0df0f9e9cb8da9efa429b933d9ba2c7b13a9721437",
+    "cases/optional_absent_parenthesized_dim.f90": "287a470a1f139fb19398cbb40efe7d20053f4bb41e7c34b8c36cc735ed1ef16f",
+    "cases/scalar_array.f90": "3e20c9d9c05cb84db95ba8de484eeb71d40eba342365c8eaaa716a6ff60de8bf",
+    "cases/rank3_array.f90": "e80eecf869326974ef0bb987004dfd9004729fffc18d286c0335efebdf84d80c",
+    "cases/real_shift.f90": "caccceee5bdaeac04f14f8ddc787f4461b79690eeab1684faab883a547c1e88c",
+    "cases/logical_shift.f90": "e790120af2102370ba8c5e3b4574a46f55b064b91a66c1d068e1d8417388a447",
+    "cases/array_shift_rank1.f90": "7e29f63e2e3025e0716d161c939757843e28eb61368e3fc8c0de9a2f638abe80",
+    "cases/rank2_shift.f90": "441bccade1901a241df7fe13ff3405e3aa471568bd7e4eb5e7a4d5cbd3bc6d99",
+    "cases/static_shape_mismatch.f90": "b3d4748c7cb164a4b78a7cc58bbcf2cb5f687969b095ad23b28035103d210c83",
+    "cases/real_dim.f90": "53e6d11093f14a8ed2815b16996aa3490022053ace603e112f7a93fbd3ce4419",
+    "cases/array_dim.f90": "0723142f44b83e999f838384e3545e4157fec0222303d2967286c1b586d07440",
+    "cases/dim_zero_constant.f90": "c9e4d85591ed51c5aa6d244abe7400dcf557d795dc4a6930a2177c9f906002c9",
+    "cases/dim_negative_constant.f90": "a03bc60f814871382a2c045120fe4bbc9ac4de090e76900a216c4403cb60a353",
+    "cases/dim_oversized_constant.f90": "7acc2d33830f2c908f9307f88e5520b3889813eceb476bc65528db06bab63f8f",
+    "cases/duplicate_shift.f90": "1761fbe1c78ed52e200b04c85eca14df89fb9235cb152b35761841a50dc29402",
+    "cases/duplicate_array.f90": "9df073009c1ee2eda66165d50d8a923c4221af388665ed8e5044c693d099a5ae",
+    "cases/missing_shift.f90": "3b5631b4ef01887a9c4b5979432cb95d14e10996c5de6cc08e8527f91f7c253d",
+    "cases/missing_array.f90": "3849bf10a00ed40920624ede84e1b420562b184f59715961261449bd353a0841",
+    "cases/unknown_keyword.f90": "65b3732450bec29d2a00e6e8e6e0693e3fff9086f481b9d97b66cb3f94c5b0e3",
+    "cases/too_many_arguments.f90": "0b2ad2bc67829ad1f30f2bfba19680cdc31acb5c789ba72e171a70576f77f96e",
+    "cases/positional_after_keyword.f90": "8344adea992826d25b4023ecdb1bfe746dd1a483cc7d6ae1faa299937eaef736",
+    "cases/dynamic_dim_zero.f90": "31359666d8613dd1538ba1729ba8a6ed8c2ed8d6c26aa368c3cbe0f826eef9ad",
+    "cases/dynamic_dim_negative.f90": "dbaa40e96f79f0acffe732d4746d06a4a23c3a43d56503f311da5106a6cec58d",
+    "cases/dynamic_dim_oversized.f90": "a339b49bf03fbbf55ffed50f27fed2107d357698af69479045d11cc3085d08cd",
+    "cases/dynamic_dim_huge_integer8.f90": "b762d41b2749e2bedc566125f0f50a271a90a686cad3f5970cba1d15596be29f",
+    "cases/dynamic_shape_mismatch.f90": "13a4decf44124b94761b8cf2c910768e59e1dc71f069a4f876db5d07d33f62db",
+    "cases/undefined_array.f90": "fdb14cefc656f21fd47fec2c96c2f0e8d86490f24e7c5ef6dd8a78e83713b7ba",
+    "cases/undefined_shift.f90": "fc6e73b2a854c858b6b8c3000712bc3547360115eaf45ac09f004d7d9ca406c0",
+    "cases/undefined_shift_entry.f90": "bf33f67c1ad5eafcd9ed8acf2008e82e6a5c7366c1752734f33a740f41d95c7a",
+    "cases/undefined_dim.f90": "61ce1f99d433bf1de8307c41489b55c36bb885eae0f6cc3a3c5d5ce1bfde005a",
+    "cases/unallocated_array.f90": "d2758d680bdb9a96ed876e4ae27f6b4292c18929e85783d084a02481b9170832",
+    "cases/unallocated_shift.f90": "b1da139e67af4fa56bd69433b1b513d0baa9ec4229c801b0865e6bf17597f437",
+    "cases/absent_optional_array.f90": "a72eee086b3fafb9f9abbf2cfc34486edf703ea24ec1022909583890bc141841",
+    "cases/absent_optional_shift.f90": "66b50bd3de031c84e0e8075a0c04e83b819fc4bd8c3b8e8abd98054fe119d44d",
+    "cases/empty_evaluates_scalar_shift.f90": "fc970ae03e566371f620099f644af73d52fb83efff2d8621b9849393b72f157e",
+    "cases/empty_evaluates_shift_entries.f90": "9ad21d02044cf7181b61dc77d6c6663bb10e65184f91bef4b9cafef6637631dd",
+    "cases/empty_evaluates_dim.f90": "daebe9777c9fc360acb794b7682b7af11e23ec9c71976d26b44d274afb80d4a6",
+    "cases/empty_source_descriptor_function.f90": "9fca6532b8245d312e3068f8bee8d025519172329128b7329c00bce2d640d001",
+    "cases/empty_dynamic_bad_dim.f90": "744516a57a481443af4c847fa34ca99f348b63114f907509bb16274453d2df48",
+    "cases/empty_undefined_shift_entry.f90": "3fb134071fa3835e4eef0a57287398dbadd7962208f88d827060f286111b7d16",
+    "cases/where_impure_reject.f90": "ddbe9b82d0b76c754b164de82f378a4b0d5d2019384fb0b72a757608fd493a76",
+    "cases/forall_impure_reject.f90": "4251ef867eafa7323f614a256dda58628f487424e2879de203ffa74c4c05ebf5",
+    "cases/source_io_effect_reject.f90": "39cf7fb7f0e1bdaa77540ce160b852bdc1a0c4cb5d477d5d90fa40ccfd638cbf",
+    "cases/source_saved_effect_reject.f90": "953988ebd20e2f3a2c62ed79848b36942e10e525cb84b3d8de26fc4fb6a4dd99",
+    "cases/shared_work_budget.f90": "db2cb83f67a40a5643e7fb7eab7258dbb312998cf9779edd80492e17cd8a840f",
+    "cases/temporary_element_boundary.f90": "7b543ae12dbb1b49f68a391fcf8d2b8121d95512f97dfae6131750574c098623",
+    "cases/temporary_character_boundary.f90": "16eb8819bef68934c68ace974c453dcc0629aae2d5a70eb65c8c5e3cf21b71b2",
+    "cases/temporary_element_limit.f90": "a3e24e8c54f253bd5b8c81950ddb982a23a87e28812cdcca255e21869df21b78",
+    "cases/temporary_character_byte_limit.f90": "5d58c5d5f92c60164431315781e0393f6a79ce1b20878030cde6f5c5f8169c19",
+    "cases/failed_output_record.f90": "ad95ebeec7adcb3e771c007be1719c4136716e1a2515022904325d1f19de527d"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

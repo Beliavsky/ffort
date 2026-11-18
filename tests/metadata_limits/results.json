@@ -1,0 +1,137 @@
+{
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "limits": {
+    "max_symbols": 8192,
+    "max_procedures": 1024,
+    "max_generics": 256,
+    "max_access_names": 1024,
+    "max_only_names": 1024
+  },
+  "cases": [
+    {
+      "name": "utilities_metadata_scale",
+      "source_bytes": 68349,
+      "source_sha256": "3ea817a40ad08a9a9bc9b951f0c1b3ac4345d67a44d9686129938c5f9f23ee2e",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "status": 0,
+        "stdout": " 552\n",
+        "stderr": ""
+      },
+      "oracle_compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": "/tmp/fi-metadata-yit977xs/utilities_metadata_scale.f90:3813:1:\n\n 3813 | p256, &\n      | 1\nWarning: Limit of 255 continuations exceeded in statement at (1)\n"
+      },
+      "oracle_run": {
+        "status": 0,
+        "stdout": "         552\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "procedure_capacity",
+      "source_bytes": 45966,
+      "source_sha256": "7ff4114031e4081592a27063ad7970f563e318b355e8a788f1d55b071b808552",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "status": 0,
+        "stdout": " 1\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "long_recursive_cycle",
+      "source_bytes": 3484,
+      "source_sha256": "f4068dc1140260f1d915e24679dc809744a673e168663841ef0a61c447b638c0",
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-metadata-yit977xs/long_recursive_cycle.f90:247:1: Recursive module function cycles require RECURSIVE on every participating procedure\n"
+      },
+      "run": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-metadata-yit977xs/long_recursive_cycle.f90:247:1: Recursive module function cycles require RECURSIVE on every participating procedure\n"
+      }
+    },
+    {
+      "name": "above_procedure_capacity",
+      "source_bytes": 46013,
+      "source_sha256": "31133ced01b1ede82a0418910b642c03434207902602d2e0c2d93ff13902350d",
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-metadata-yit977xs/above_procedure_capacity.f90:3075:1: Procedure limit exceeded\n"
+      },
+      "run": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-metadata-yit977xs/above_procedure_capacity.f90:3075:1: Procedure limit exceeded\n"
+      }
+    },
+    {
+      "name": "symbol_count_8192",
+      "source_bytes": 138171,
+      "source_sha256": "78cc5fe2217e7b1e8efaace43cff199f654348f7976b8837687694eb0a8c2d9c",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "symbol_count_8193",
+      "source_bytes": 138188,
+      "source_sha256": "196ec708336da34000c02e7fe6cbf602956b5725b960bea387a74081cb2974ad",
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-metadata-yit977xs/symbol_count_8193.f90:8194:12: Symbol limit exceeded\n"
+      },
+      "run": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-metadata-yit977xs/symbol_count_8193.f90:8194:12: Symbol limit exceeded\n"
+      }
+    },
+    {
+      "name": "generic_capacity",
+      "source_bytes": 13555,
+      "source_sha256": "00fee6d6eb98064869aa4934ce9527d55377c8c51c5df755efa5bef117cc9e96",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "status": 0,
+        "stdout": " 1\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "untouched_utilities",
+      "source_bytes": 338883,
+      "source_sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-metadata-yit977xs/xutilities.f90:9329:55: Total array element limit exceeded (1000000)\n"
+      }
+    }
+  ]
+}

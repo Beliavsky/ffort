@@ -1,0 +1,80 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -832,7 +832,19 @@
+                 winning_elemental = elemental; ambiguous = .false.
+             end if
+         end do
+-        if (winner <= 0 .or. ambiguous) return
++        if (ambiguous) return
++        if (winner <= 0) then
++            ! A function generic extends the intrinsic only when none of its
++            ! source specifics match. Do not turn a declared specific or an
++            ! ambiguous call into an intrinsic based on its spelling alone.
++            if (to_lower(node%name) == "repeat") then
++                if (matches_intrinsic_repeat(arena, node, visiting)) then
++                    node%is_intrinsic = .true.
++                    call resolve_intrinsic_call(arena, node, visiting)
++                end if
++            end if
++            return
++        end if
+         call resolve_node_metadata(arena, winner, visiting)
+         call copy_metadata_from_index(arena, winner, node)
+         if (.not. node%resolved_type_found) return
+@@ -848,6 +860,56 @@
+             end if
+         end if
+     end subroutine resolve_named_generic_result
++
++    recursive logical function matches_intrinsic_repeat(arena, node, visiting) result(matches)
++        type(ast_arena_t), intent(inout) :: arena
++        type(call_or_subscript_node), intent(in) :: node
++        logical, intent(inout) :: visiting(:)
++        integer :: slots(2), j, k, argument
++        logical :: seen_keyword
++        character(:), allocatable :: keyword
++        matches = .false.; slots = 0; seen_keyword = .false.
++        if (.not. allocated(node%arg_indices)) return
++        if (size(node%arg_indices) /= 2) return
++        do j = 1, 2
++            argument = node%arg_indices(j); k = j
++            if (.not. arena%has_node_at(argument)) return
++            select type (arg => arena%entries(argument)%node)
++            type is (assignment_node)
++                if (.not. arg%is_keyword_argument) return
++                seen_keyword = .true.
++                if (.not. arena%has_node_at(arg%target_index)) return
++                select type (target => arena%entries(arg%target_index)%node)
++                type is (identifier_node)
++                    if (.not. allocated(target%name)) return
++                    keyword = to_lower(target%name)
++                class default
++                    return
++                end select
++                select case (keyword)
++                case ("string"); k = 1
++                case ("ncopies"); k = 2
++                case default; return
++                end select
++                argument = arg%value_index
++            class default
++                if (seen_keyword) return
++            end select
++            if (slots(k) /= 0) return
++            slots(k) = argument
++        end do
++        do j = 1, 2
++            argument = slots(j)
++            if (.not. arena%has_node_at(argument)) return
++            call resolve_node_metadata(arena, argument, visiting)
++            if (.not. arena%entries(argument)%node%resolved_type_found) return
++            if (arena%entries(argument)%node%resolved_rank /= 0) return
++        end do
++        if (arena%entries(slots(1))%node%resolved_type_kind /= TCHAR) return
++        if (arena%entries(slots(1))%node%resolved_kind_value /= 1) return
++        if (arena%entries(slots(2))%node%resolved_type_kind /= TINT) return
++        matches = .true.
++    end function matches_intrinsic_repeat
+ 
+     recursive subroutine match_named_generic_candidate(arena, procedure_index, actuals, visiting, score, rank, elemental, allow_optional)
+         type(ast_arena_t), intent(inout) :: arena

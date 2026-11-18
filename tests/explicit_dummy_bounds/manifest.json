@@ -1,0 +1,431 @@
+{
+  "cases": [
+    {
+      "name": "constant_prefix",
+      "source": "constant_prefix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 12 13 40 50 2 4 30 40 F T T F"
+    },
+    {
+      "name": "scalar_order_keywords",
+      "source": "scalar_order_keywords.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 5 6 4 5"
+    },
+    {
+      "name": "arithmetic_bounds",
+      "source": "arithmetic_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "8 -3 4 32"
+    },
+    {
+      "name": "frozen_repeated",
+      "source": "frozen_repeated.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 -1 0 2\n12 8 9 3 4 5 6\n4 -1 2 4\n14 15 16 10 11 5 6"
+    },
+    {
+      "name": "rank2_reshape_prefix",
+      "source": "rank2_reshape_prefix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 2 1 6\n11 12 13 14 15 16 70 80"
+    },
+    {
+      "name": "rank3_reshape_prefix",
+      "source": "rank3_reshape_prefix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 2 2 1 8\n2 4 6 8 10 12 14 16 90"
+    },
+    {
+      "name": "strided_reverse_prefix",
+      "source": "strided_reverse_prefix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 3 30 5 20 7 10"
+    },
+    {
+      "name": "rank2_section_copyback",
+      "source": "rank2_section_copyback.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 3 4 5 106 7 8 9 110 111 112"
+    },
+    {
+      "name": "rank3_section_copyback",
+      "source": "rank3_section_copyback.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 3 4 5 6 7 8 50 50 50 50"
+    },
+    {
+      "name": "expression_inputs",
+      "source": "expression_inputs.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "9 0 2 aabb"
+    },
+    {
+      "name": "numeric_kinds",
+      "source": "numeric_kinds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "10000000001 20000000001 30000000000 2.5 5 9"
+    },
+    {
+      "name": "character_lengths",
+      "source": "character_lengths.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "q   q   ijklmnopxyztcc",
+      "compare_mode": "tokens"
+    },
+    {
+      "name": "character_rank3_zero_length",
+      "source": "character_rank3_zero_length.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 1 2 0 4"
+    },
+    {
+      "name": "logical_rank2_out_tail",
+      "source": "logical_rank2_out_tail.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F F T T T T"
+    },
+    {
+      "name": "empty_negative_extents",
+      "source": "empty_negative_extents.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 1 0\n0 3 1 0 4 6\n2 0 2 1 0"
+    },
+    {
+      "name": "out_local_size",
+      "source": "out_local_size.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "12 12 12 99 99"
+    },
+    {
+      "name": "partial_input_flags",
+      "source": "partial_input_flags.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 17"
+    },
+    {
+      "name": "inout_assign_undefined",
+      "source": "inout_assign_undefined.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "9 9 9 44 55"
+    },
+    {
+      "name": "recursive_explicit",
+      "source": "recursive_explicit.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "15 6"
+    },
+    {
+      "name": "nested_forwarding",
+      "source": "nested_forwarding.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 3 4 80 80 7"
+    },
+    {
+      "name": "short_actual",
+      "source": "short_actual.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "fewer elements than explicit-shape dummy"
+    },
+    {
+      "name": "undefined_scalar_bound",
+      "source": "undefined_scalar_bound.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized variable"
+    },
+    {
+      "name": "out_prefix_undefined",
+      "source": "out_prefix_undefined.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized array element"
+    },
+    {
+      "name": "partial_input_read",
+      "source": "partial_input_read.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized array element"
+    },
+    {
+      "name": "bound_divzero",
+      "source": "bound_divzero.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "division by zero"
+    },
+    {
+      "name": "bound_overflow",
+      "source": "bound_overflow.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "bound_power_overflow",
+      "source": "bound_power_overflow.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "bound_wide_range",
+      "source": "bound_wide_range.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "extent_range",
+      "source": "extent_range.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "extent exceeds supported range"
+    },
+    {
+      "name": "frame_limit",
+      "source": "frame_limit.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "total array element limit",
+      "args": [
+        "--max-steps",
+        "20000000"
+      ]
+    },
+    {
+      "name": "conservative_alias",
+      "source": "conservative_alias.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "overlapping actual arguments"
+    },
+    {
+      "name": "boundary_optional_explicit",
+      "source": "boundary_optional_explicit.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "OPTIONAL explicit-shape"
+    },
+    {
+      "name": "boundary_assumed_size",
+      "source": "boundary_assumed_size.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "boundary_optional_bound",
+      "source": "boundary_optional_bound.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported explicit-shape dummy bound"
+    },
+    {
+      "name": "boundary_out_bound",
+      "source": "boundary_out_bound.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported explicit-shape dummy bound"
+    },
+    {
+      "name": "boundary_local_bound",
+      "source": "boundary_local_bound.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported explicit-shape dummy bound"
+    },
+    {
+      "name": "boundary_array_inquiry",
+      "source": "boundary_array_inquiry.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "boundary_inquiry_dependency",
+      "source": "boundary_inquiry_dependency.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported explicit-shape dummy bound"
+    },
+    {
+      "name": "boundary_value_dependency",
+      "source": "boundary_value_dependency.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Unsupported explicit-shape dummy bound"
+    },
+    {
+      "name": "boundary_mixed_shape",
+      "source": "boundary_mixed_shape.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "boundary_rank_mismatch",
+      "source": "boundary_rank_mismatch.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "type or rank does not match"
+    },
+    {
+      "name": "original_fold_bounds",
+      "source": "original_fold_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 5 8 90 90 4 7 10 80 80\n1 2 3 3 3 1 2 2 2 2\n0 0 0 3 3 0 0 0 2 2\n0 0 0 3 3 0 0 0 2 2"
+    },
+    {
+      "name": "function_size_result",
+      "source": "function_size_result.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 4 6"
+    },
+    {
+      "name": "forward_assumed_explicit",
+      "source": "forward_assumed_explicit.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5 -2 2\n2 1 2 3 4 5 99 99"
+    },
+    {
+      "name": "exact_limit",
+      "source": "exact_limit.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "131072 131072"
+    },
+    {
+      "name": "empty_large_extent",
+      "source": "empty_large_extent.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2147483647 0 0"
+    },
+    {
+      "name": "empty_extent_range",
+      "source": "empty_extent_range.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "extent exceeds supported range"
+    },
+    {
+      "name": "logical_rank3_prefix",
+      "source": "logical_rank3_prefix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F F F F T T"
+    },
+    {
+      "name": "real_rank3_prefix",
+      "source": "real_rank3_prefix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3.75 3.75 3.75 3.75 2.5 2.5"
+    },
+    {
+      "name": "character_rank2_section",
+      "source": "character_rank2_section.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "ababababq q"
+    },
+    {
+      "name": "character_rank3_prefix",
+      "source": "character_rank3_prefix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "q q q q abab"
+    },
+    {
+      "name": "boundary_missing_upper",
+      "source": "boundary_missing_upper.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Array bounds must be constant"
+    },
+    {
+      "name": "character_default_length",
+      "source": "character_default_length.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2\nqqcd"
+    },
+    {
+      "name": "character_fixed_zero",
+      "source": "character_fixed_zero.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 2"
+    },
+    {
+      "name": "character_actual_shorter",
+      "source": "character_actual_shorter.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "array actual length must match"
+    },
+    {
+      "name": "character_actual_longer",
+      "source": "character_actual_longer.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "array actual length must match"
+    },
+    {
+      "name": "boundary_known_character_length",
+      "source": "boundary_known_character_length.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Type mismatch"
+    }
+  ]
+}

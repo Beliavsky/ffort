@@ -1,0 +1,189 @@
+{
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "limits": {
+    "max_source_bytes": 1048576,
+    "max_tokens": 262144
+  },
+  "cases": [
+    {
+      "name": "past_old_byte_limit",
+      "bytes": 65537,
+      "sha256": "2bdf97db27ec9ee37c4c4d4af9193581628c2bb8593b23279113c705843eac07",
+      "check": {
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "code": 0,
+        "stdout": " 42\n",
+        "stderr": ""
+      },
+      "oracle_compile": {
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle_run": {
+        "code": 0,
+        "stdout": "          42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "source_below_limit",
+      "bytes": 1048575,
+      "sha256": "bc5ead353dc3ce6976acc14b24b18d3441c6d6d11cc1edf6160ca07875989eed",
+      "check": {
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "code": 0,
+        "stdout": " 42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "source_at_limit",
+      "bytes": 1048576,
+      "sha256": "6358195f325d1dc3b63dfb06b7360ef0e0267b347b04176a7f93b88aafd3082c",
+      "check": {
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "code": 0,
+        "stdout": " 42\n",
+        "stderr": ""
+      },
+      "oracle_compile": {
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle_run": {
+        "code": 0,
+        "stdout": "          42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "crlf_source_at_limit",
+      "bytes": 1048576,
+      "sha256": "d177c23e4b1e8d796f3560808474836fa072fa8b75775661bc0dd1e29d329bc0",
+      "check": {
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "code": 0,
+        "stdout": " 42\n",
+        "stderr": ""
+      },
+      "oracle_compile": {
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle_run": {
+        "code": 0,
+        "stdout": "          42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "source_above_limit",
+      "bytes": 1048577,
+      "sha256": "142321897e9bce670debbaebfd292829dc82a6ef9fd30f436bbd8398a862baa7",
+      "check": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-source-limits-78fwliup/source_above_limit.f90:0:0: Source file exceeds 1048576-byte limit\n"
+      },
+      "run": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-source-limits-78fwliup/source_above_limit.f90:0:0: Source file exceeds 1048576-byte limit\n"
+      }
+    },
+    {
+      "name": "past_old_token_limit",
+      "bytes": 20008,
+      "sha256": "53c85d78122664eec42cd25ac09ef2a7799f320d585e7e81570fc8d2fc100127",
+      "check": {
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "tokens_at_limit",
+      "bytes": 262151,
+      "sha256": "f2322ebc75858305b3d5b71f83f14e1d5e73197d91f4684713196af8b3c51195",
+      "check": {
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "tokens_above_limit",
+      "bytes": 262152,
+      "sha256": "7fc57c74440452ce0618b76d858affd1c4ea4fd1f1f5fe62672b11447180845b",
+      "check": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-source-limits-78fwliup/tokens_above_limit.f90:262141:1: Token limit exceeded (262144 including final separator and EOF)\n"
+      },
+      "run": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-source-limits-78fwliup/tokens_above_limit.f90:262141:1: Token limit exceeded (262144 including final separator and EOF)\n"
+      }
+    },
+    {
+      "name": "long_line_still_rejected",
+      "bytes": 148,
+      "sha256": "d19ef44510e19c072a520a8389aefb4ffd28e15db67a151664f23dc7df2e6f52",
+      "check": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-source-limits-78fwliup/long_line_still_rejected.f90:2:133: Source lines longer than 132 columns are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-source-limits-78fwliup/long_line_still_rejected.f90:2:133: Source lines longer than 132 columns are unsupported\n"
+      }
+    },
+    {
+      "name": "nonascii_still_rejected",
+      "bytes": 16,
+      "sha256": "a6a6e56be68087d9b76d979ef733b2e53cda821831358b39fa686d6fbd214d04",
+      "check": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-source-limits-78fwliup/nonascii_still_rejected.f90:2:1: Only ASCII free-form source is supported\n"
+      },
+      "run": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "/tmp/fi-source-limits-78fwliup/nonascii_still_rejected.f90:2:1: Only ASCII free-form source is supported\n"
+      }
+    }
+  ]
+}

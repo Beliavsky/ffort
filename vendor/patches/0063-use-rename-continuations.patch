@@ -1,0 +1,161 @@
+--- a/src/parser/core/parser_import_resolution.f90
++++ b/src/parser/core/parser_import_resolution.f90
+@@ -45,7 +45,7 @@
+ 
+         ! Parse additional identifiers (comma-separated)
+         do while (.not. parser%is_at_end())
+-            token = parser%peek()
++            token = peek_use_token(parser)
+             if (token%kind == TK_OPERATOR .and. token%text == ",") then
+                 token = parser%consume() ! consume ','
+                 call parse_single_identifier_with_rename(parser)
+@@ -143,17 +143,17 @@
+             type(token_t) :: token
+             character(len=:), allocatable :: local_name, remote_name
+ 
+-            token = parser%peek()
++            token = peek_use_token(parser)
+             if (parse_generic_spec_entry(parser)) return
+             if (token%kind == TK_IDENTIFIER .or. &
+                 (token%kind == TK_KEYWORD .and. to_lower(token%text) == "procedure")) then
+                 token = parser%consume()
+                 local_name = trimmed_or_empty(token%text)
+ 
+-                token = parser%peek()
++                token = peek_use_token(parser)
+                 if (token%kind == TK_OPERATOR .and. token%text == "=>") then
+                     token = parser%consume() ! consume '=>'
+-                    token = parser%peek()
++                    token = peek_use_token(parser)
+                     if (token%kind == TK_IDENTIFIER .or. &
+                 (token%kind == TK_KEYWORD .and. to_lower(token%text) == "procedure")) then
+                         token = parser%consume()
+@@ -182,7 +182,7 @@
+             character(len=:), allocatable :: target_spec
+ 
+             handled = .false.
+-            token = parser%peek()
++            token = peek_use_token(parser)
+             if (token%kind /= TK_IDENTIFIER .and. token%kind /= TK_KEYWORD) return
+             spec_kind = to_lower(trim(token%text))
+             if (spec_kind /= "operator" .and. spec_kind /= "assignment") return
+@@ -193,16 +193,16 @@
+             handled = .true.
+             token = parser%consume() ! spec keyword
+             token = parser%consume() ! '('
+-            token = parser%peek()
++            token = peek_use_token(parser)
+             symbol = trim(token%text)
+             if (token%kind /= TK_EOF) token = parser%consume()
+-            token = parser%peek()
++            token = peek_use_token(parser)
+             if (token%kind == TK_OPERATOR .and. trim(token%text) == ")") then
+                 token = parser%consume()
+             end if
+             spec = make_generic_spec(spec_kind, symbol)
+ 
+-            token = parser%peek()
++            token = peek_use_token(parser)
+             if (token%kind == TK_OPERATOR .and. trim(token%text) == "=>") then
+                 token = parser%consume()
+                 if (parse_generic_spec_target(parser, target_spec)) then
+@@ -225,7 +225,7 @@
+ 
+             parsed = .false.
+             spec = ""
+-            token = parser%peek()
++            token = peek_use_token(parser)
+             if (token%kind /= TK_IDENTIFIER .and. token%kind /= TK_KEYWORD) return
+             spec_kind = to_lower(trim(token%text))
+             if (spec_kind /= "operator" .and. spec_kind /= "assignment") return
+@@ -236,10 +236,10 @@
+             parsed = .true.
+             token = parser%consume() ! spec keyword
+             token = parser%consume() ! '('
+-            token = parser%peek()
++            token = peek_use_token(parser)
+             symbol = trim(token%text)
+             if (token%kind /= TK_EOF) token = parser%consume()
+-            token = parser%peek()
++            token = peek_use_token(parser)
+             if (token%kind == TK_OPERATOR .and. trim(token%text) == ")") then
+                 token = parser%consume()
+             end if
+@@ -286,12 +286,12 @@
+         non_intrinsic_nature = .false.
+ 
+         ! Get module name (can be identifier or string for Go-style imports)
+-        token = parser%peek()
++        token = peek_use_token(parser)
+ 
+         ! Handle optional comma with module nature or double colon
+         if (token%kind == TK_OPERATOR .and. token%text == ",") then
+             token = parser%consume() ! consume ','
+-            token = parser%peek()
++            token = peek_use_token(parser)
+             if ((token%kind == TK_KEYWORD .or. token%kind == TK_IDENTIFIER)) then
+                 block
+                     character(len=:), allocatable :: attr_text
+@@ -304,17 +304,17 @@
+                         token = parser%consume()
+                     end if
+                 end block
+-                token = parser%peek()
++                token = peek_use_token(parser)
+             end if
+             if (token%kind == TK_OPERATOR .and. token%text == "::") then
+                 token = parser%consume()
+                 has_double_colon = .true.
+             end if
+-            token = parser%peek()
++            token = peek_use_token(parser)
+         else if (token%kind == TK_OPERATOR .and. token%text == "::") then
+             token = parser%consume()
+             has_double_colon = .true.
+-            token = parser%peek()
++            token = peek_use_token(parser)
+         end if
+ 
+         if (token%kind == TK_IDENTIFIER) then
+@@ -361,19 +361,19 @@
+         has_only = .false.
+ 
+         ! Check for optional only clause or rename list
+-        token = parser%peek()
++        token = peek_use_token(parser)
+         if (token%kind == TK_OPERATOR .and. token%text == ",") then
+             token = parser%consume() ! consume ','
+ 
+             ! Check for 'only' keyword
+-            token = parser%peek()
++            token = peek_use_token(parser)
+             if ((token%kind == TK_KEYWORD .or. token%kind == TK_IDENTIFIER) .and. &
+                 trim(to_lower(token%text)) == "only") then
+                 token = parser%consume() ! consume 'only'
+                 has_only = .true.
+ 
+                 ! Expect ':'
+-                token = parser%peek()
++                token = peek_use_token(parser)
+                 if (token%kind == TK_OPERATOR .and. token%text == ":") then
+                     token = parser%consume() ! consume ':'
+                     ! Parse only list - collect identifiers
+@@ -414,6 +414,18 @@
+         end if
+     end function parse_use_statement
+ 
++    function peek_use_token(parser) result(token)
++        type(parser_state_t),intent(inout)::parser
++        type(token_t)::token
++        ! Normalized continuations retain comments but remove continued
++        ! newlines. Never skip a remaining logical statement boundary.
++        do
++            token=parser%peek()
++            if(token%kind/=TK_COMMENT.and.token%kind/=TK_WHITESPACE) return
++            token=parser%consume()
++        end do
++    end function peek_use_token
++
+     function parse_include_statement(parser, arena) result(stmt_index)
+         type(parser_state_t), intent(inout) :: parser
+         type(ast_arena_t), intent(inout) :: arena

@@ -1,0 +1,623 @@
+module semantic_strict_argument_type_checker_validation
+    use ast_arena_modern, only: ast_arena_t
+    use ast_nodes_core, only: assignment_node, identifier_node
+    use ast_nodes_data, only: declaration_node, parameter_declaration_node
+    use ast_nodes_procedure, only: function_def_node, subroutine_def_node
+    use error_handling, only: ERROR_SEMANTIC, create_error_result, &
+        error_collection_t
+    use semantic_unsigned_integer_mix_diagnostics, only: &
+        emit_unsigned_integer_mix_error, extract_integer_signedness, &
+        is_integer_literal_expr
+    use semantic_strict_argument_type_checker_types, only: &
+        strict_actual_argument_type, &
+        strict_dummy_type, strict_type_is_known, strict_type_name, &
+        strict_types_match
+    use frontend_compiler_type_queries, only: resolve_expression_type, resolved_type_query_t
+    use string_utils_mod, only: to_lower
+    use type_system_unified, only: mono_type_t, TARRAY, TCHAR
+    implicit none
+    private
+
+    public :: validate_call_against_interface
+    public :: validate_value_dummy_attributes
+    public :: validate_value_dummy_attributes_in_arena
+
+contains
+
+    ! Whole-arena sweep for the VALUE attribute conflicts of C863. Running it
+    ! once over the arena covers every procedure definition, including the
+    ! ones the per-node inference dispatch never reaches.
+    subroutine validate_value_dummy_attributes_in_arena(arena, errors)
+        type(ast_arena_t), intent(in) :: arena
+        type(error_collection_t), intent(inout) :: errors
+        integer :: i
+
+        do i = 1, arena%size
+            if (.not. arena%has_node_at(i)) cycle
+            select type (node => arena%entries(i)%node)
+                type is (function_def_node)
+                call validate_value_dummy_attributes(arena, node%param_indices, &
+                    node%body_indices, node%name, errors)
+                type is (subroutine_def_node)
+                call validate_value_dummy_attributes(arena, node%param_indices, &
+                    node%body_indices, node%name, errors)
+            end select
+        end do
+
+        do i = 1, arena%size
+            if (.not. arena%has_node_at(i)) cycle
+            select type (decl => arena%entries(i)%node)
+                type is (declaration_node)
+                if (.not. decl%is_value) cycle
+                if (declaration_is_in_procedure_body(arena, i)) cycle
+                call emit_value_scope_error(decl, decl%var_name, errors)
+            class default
+                cycle
+            end select
+        end do
+    end subroutine validate_value_dummy_attributes_in_arena
+
+    ! Reject dummy arguments whose VALUE attribute conflicts with another
+    ! declared attribute (F2018 C863: an entity with the VALUE attribute
+    ! shall not have the ALLOCATABLE, INTENT(INOUT), INTENT(OUT), POINTER,
+    ! or VOLATILE attribute). Only declarations that name a dummy argument
+    ! of this procedure are inspected.
+    subroutine validate_value_dummy_attributes(arena, param_indices, &
+            body_indices, proc_name, errors)
+        type(ast_arena_t), intent(in) :: arena
+        integer, allocatable, intent(in) :: param_indices(:)
+        integer, allocatable, intent(in) :: body_indices(:)
+        character(len=*), intent(in) :: proc_name
+        type(error_collection_t), intent(inout) :: errors
+        character(len=:), allocatable :: param_names(:)
+        integer :: i
+
+        if (.not. allocated(body_indices)) return
+
+        if (allocated(param_indices)) then
+            allocate (character(len=64) :: param_names(size(param_indices)))
+            do i = 1, size(param_indices)
+                param_names(i) = resolve_param_name(arena, param_indices(i), i)
+            end do
+        else
+            allocate (character(len=64) :: param_names(0))
+        end if
+
+        do i = 1, size(body_indices)
+            if (body_indices(i) <= 0) cycle
+            if (body_indices(i) > arena%size) cycle
+            if (.not. allocated(arena%entries(body_indices(i))%node)) cycle
+            select type (decl => arena%entries(body_indices(i))%node)
+                type is (declaration_node)
+                call check_value_dummy_declaration(decl, param_names, &
+                    proc_name, errors)
+            end select
+        end do
+    end subroutine validate_value_dummy_attributes
+
+    subroutine check_value_dummy_declaration(decl, param_names, proc_name, errors)
+        type(declaration_node), intent(in) :: decl
+        character(len=*), intent(in) :: param_names(:)
+        character(len=*), intent(in) :: proc_name
+        type(error_collection_t), intent(inout) :: errors
+        integer :: i
+
+        if (.not. decl%is_value) return
+        if (decl%is_multi_declaration .and. allocated(decl%var_names)) then
+            do i = 1, size(decl%var_names)
+                call check_value_named_declaration(decl, decl%var_names(i), &
+                    param_names, proc_name, errors)
+            end do
+        else if (allocated(decl%var_name)) then
+            call check_value_named_declaration(decl, decl%var_name, param_names, &
+                proc_name, errors)
+        end if
+    end subroutine check_value_dummy_declaration
+
+    subroutine check_value_named_declaration(decl, name, param_names, proc_name, &
+            errors)
+        type(declaration_node), intent(in) :: decl
+        character(len=*), intent(in) :: name
+        character(len=*), intent(in) :: param_names(:)
+        character(len=*), intent(in) :: proc_name
+        type(error_collection_t), intent(inout) :: errors
+        character(len=:), allocatable :: conflict
+        integer :: i
+        logical :: is_dummy
+
+        is_dummy = .false.
+        do i = 1, size(param_names)
+            if (to_lower(trim(param_names(i))) == to_lower(trim(name))) then
+                is_dummy = .true.
+                exit
+            end if
+        end do
+        if (.not. is_dummy) then
+            call emit_value_scope_error(decl, name, errors)
+            return
+        end if
+
+        conflict = ''
+        if (decl%is_array) then
+            conflict = 'DIMENSION'
+        else if (decl%is_pointer) then
+            conflict = 'POINTER'
+        else if (decl%is_allocatable) then
+            conflict = 'ALLOCATABLE'
+        else if (decl%is_volatile) then
+            conflict = 'VOLATILE'
+        else if (decl%has_intent) then
+            if (allocated(decl%intent)) then
+                if (to_lower(trim(decl%intent)) == 'out') conflict = 'INTENT(OUT)'
+                if (to_lower(trim(decl%intent)) == 'inout') conflict = 'INTENT(INOUT)'
+            end if
+        end if
+        if (len_trim(conflict) == 0) return
+
+        call errors%add_result(create_error_result( &
+            'VALUE dummy argument "'//trim(name)//'" of "'// &
+            trim(proc_name)//'" must not have the '//trim(conflict)// &
+            ' attribute', ERROR_SEMANTIC, &
+            component="semantic_strict_argument_type_checker_validation", &
+            context="value_dummy_attribute_check", &
+            suggestion="drop VALUE or drop the conflicting attribute", &
+            line=decl%line, column=decl%column, end_line=decl%line, &
+            end_column=decl%column + 1))
+    end subroutine check_value_named_declaration
+
+    subroutine emit_value_scope_error(decl, name, errors)
+        type(declaration_node), intent(in) :: decl
+        character(len=*), intent(in) :: name
+        type(error_collection_t), intent(inout) :: errors
+
+        if (len_trim(name) == 0) return
+        call errors%add_result(create_error_result( &
+            'VALUE attribute is only permitted on dummy argument "'// &
+            trim(name)//'"', ERROR_SEMANTIC, &
+            component="semantic_strict_argument_type_checker_validation", &
+            context="value_dummy_attribute_check", &
+            suggestion="remove VALUE or declare the name as a dummy argument", &
+            line=decl%line, column=decl%column, end_line=decl%line, &
+            end_column=decl%column + 1))
+    end subroutine emit_value_scope_error
+
+    logical function declaration_is_in_procedure_body(arena, decl_index) result(found)
+        type(ast_arena_t), intent(in) :: arena
+        integer, intent(in) :: decl_index
+        integer :: i, j
+
+        found = .false.
+        do i = 1, arena%size
+            if (.not. arena%has_node_at(i)) cycle
+            select type (node => arena%entries(i)%node)
+                type is (function_def_node)
+                if (.not. allocated(node%body_indices)) cycle
+                do j = 1, size(node%body_indices)
+                    if (node%body_indices(j) == decl_index) then
+                        found = .true.
+                        return
+                    end if
+                end do
+                type is (subroutine_def_node)
+                if (.not. allocated(node%body_indices)) cycle
+                do j = 1, size(node%body_indices)
+                    if (node%body_indices(j) == decl_index) then
+                        found = .true.
+                        return
+                    end if
+                end do
+            class default
+                cycle
+            end select
+        end do
+
+    end function declaration_is_in_procedure_body
+
+    subroutine validate_call_against_interface(arena, errors, proc_name, &
+            arg_indices, param_indices, body_indices, elemental)
+        type(ast_arena_t), intent(inout) :: arena
+        type(error_collection_t), intent(inout) :: errors
+        character(len=*), intent(in) :: proc_name
+        integer, allocatable, intent(in) :: arg_indices(:)
+        integer, allocatable, intent(in) :: param_indices(:)
+        integer, allocatable, intent(in) :: body_indices(:)
+        logical, intent(in), optional :: elemental
+
+        integer :: i
+        integer :: next_positional
+        integer :: dummy_count
+        integer :: actual_count
+        integer, allocatable :: arg_for_param(:)
+        integer, allocatable :: decl_for_param(:)
+        character(len=:), allocatable :: param_names(:)
+        character(len=64) :: keyword
+        logical :: is_keyword
+
+        if (.not. allocated(param_indices)) return
+        dummy_count = size(param_indices)
+        if (dummy_count <= 0) return
+
+        actual_count = 0
+        if (allocated(arg_indices)) actual_count = size(arg_indices)
+
+        allocate (arg_for_param(dummy_count))
+        arg_for_param = 0
+        allocate (character(len=64) :: param_names(dummy_count))
+        allocate (decl_for_param(dummy_count))
+        decl_for_param = 0
+
+        do i = 1, dummy_count
+            param_names(i) = resolve_param_name(arena, param_indices(i), i)
+        end do
+        call collect_param_decl_indices(arena, body_indices, param_names, &
+            decl_for_param)
+
+        if (allocated(arg_indices)) then
+            do i = 1, actual_count
+                call map_keyword_argument(arena, errors, arg_indices(i), param_names, &
+                    arg_for_param)
+            end do
+
+            next_positional = 1
+            do i = 1, actual_count
+                call extract_keyword_name_if_present(arena, arg_indices(i), keyword, &
+                    is_keyword)
+                if (is_keyword) cycle
+                call map_positional_argument(arena, errors, arg_indices(i), &
+                    next_positional, arg_for_param)
+            end do
+        end if
+
+        do i = 1, dummy_count
+            if (arg_for_param(i) == 0) cycle
+            call validate_mapped_argument(arena, errors, proc_name, &
+                trim(param_names(i)), arg_for_param(i), &
+                merge(decl_for_param(i), param_indices(i), &
+                decl_for_param(i) > 0), elemental)
+        end do
+    end subroutine validate_call_against_interface
+
+    subroutine collect_param_decl_indices(arena, body_indices, param_names, &
+            decl_for_param)
+        type(ast_arena_t), intent(in) :: arena
+        integer, allocatable, intent(in) :: body_indices(:)
+        character(len=*), intent(in) :: param_names(:)
+        integer, intent(inout) :: decl_for_param(:)
+
+        integer :: i
+        integer :: j
+        integer :: stmt_index
+        character(len=:), allocatable :: lowered
+
+        if (.not. allocated(body_indices)) return
+        if (size(body_indices) == 0) return
+
+        do i = 1, size(body_indices)
+            stmt_index = body_indices(i)
+            if (.not. arena%has_node_at(stmt_index)) cycle
+            select type (node => arena%entries(stmt_index)%node)
+                type is (declaration_node)
+                if (node%is_multi_declaration .and. allocated(node%var_names)) then
+                    do j = 1, size(node%var_names)
+                        lowered = to_lower(trim(node%var_names(j)))
+                        call bind_decl_index(param_names, lowered, stmt_index, &
+                            decl_for_param)
+                    end do
+                else if (allocated(node%var_name)) then
+                    lowered = to_lower(trim(node%var_name))
+                    call bind_decl_index(param_names, lowered, stmt_index, &
+                        decl_for_param)
+                end if
+                type is (parameter_declaration_node)
+                if (.not. allocated(node%name)) cycle
+                lowered = to_lower(trim(node%name))
+                call bind_decl_index(param_names, lowered, stmt_index, decl_for_param)
+            class default
+                cycle
+            end select
+        end do
+    end subroutine collect_param_decl_indices
+
+    subroutine bind_decl_index(param_names, lowered_name, decl_index, decl_for_param)
+        character(len=*), intent(in) :: param_names(:)
+        character(len=*), intent(in) :: lowered_name
+        integer, intent(in) :: decl_index
+        integer, intent(inout) :: decl_for_param(:)
+
+        integer :: i
+
+        if (len_trim(lowered_name) == 0) return
+        do i = 1, size(param_names)
+            if (decl_for_param(i) /= 0) cycle
+            if (to_lower(trim(param_names(i))) == lowered_name) then
+                decl_for_param(i) = decl_index
+                return
+            end if
+        end do
+    end subroutine bind_decl_index
+
+    subroutine map_keyword_argument(arena, errors, arg_index, param_names, &
+            arg_for_param)
+        type(ast_arena_t), intent(in) :: arena
+        type(error_collection_t), intent(inout) :: errors
+        integer, intent(in) :: arg_index
+        character(len=*), intent(in) :: param_names(:)
+        integer, intent(inout) :: arg_for_param(:)
+
+        integer :: i
+        character(len=64) :: keyword
+        logical :: is_keyword
+
+        call extract_keyword_name_if_present(arena, arg_index, keyword, is_keyword)
+        if (.not. is_keyword) return
+
+        do i = 1, size(param_names)
+            if (to_lower(trim(param_names(i))) == to_lower(trim(keyword))) then
+                if (arg_for_param(i) /= 0) then
+                    call emit_argument_error(errors, &
+                        "Duplicate argument for dummy '"// &
+                        trim(param_names(i))//"'", arena, arg_index)
+                    return
+                end if
+                arg_for_param(i) = value_index_if_keyword_arg(arena, arg_index)
+                return
+            end if
+        end do
+
+        call emit_argument_error(errors, &
+            "Unknown keyword argument '"//trim(keyword)//"'", arena, arg_index)
+    end subroutine map_keyword_argument
+
+    subroutine map_positional_argument(arena, errors, arg_index, next_positional, &
+            arg_for_param)
+        type(ast_arena_t), intent(in) :: arena
+        type(error_collection_t), intent(inout) :: errors
+        integer, intent(in) :: arg_index
+        integer, intent(inout) :: next_positional
+        integer, intent(inout) :: arg_for_param(:)
+
+        do while (next_positional <= size(arg_for_param))
+            if (arg_for_param(next_positional) == 0) exit
+            next_positional = next_positional + 1
+        end do
+
+        if (next_positional > size(arg_for_param)) then
+            call emit_argument_error(errors, "Too many actual arguments", arena, &
+                arg_index)
+            return
+        end if
+
+        arg_for_param(next_positional) = arg_index
+        next_positional = next_positional + 1
+    end subroutine map_positional_argument
+
+    subroutine validate_mapped_argument(arena, errors, proc_name, dummy_name, &
+            arg_expr_index, dummy_index, elemental)
+        type(ast_arena_t), intent(inout) :: arena
+        type(error_collection_t), intent(inout) :: errors
+        character(len=*), intent(in) :: proc_name
+        character(len=*), intent(in) :: dummy_name
+        integer, intent(in) :: arg_expr_index
+        integer, intent(in) :: dummy_index
+        logical, intent(in), optional :: elemental
+
+        type(mono_type_t) :: actual_type
+        type(mono_type_t) :: dummy_type
+        character(len=:), allocatable :: actual_string
+        character(len=:), allocatable :: dummy_string
+        logical :: actual_is_int
+        logical :: dummy_is_int
+        logical :: actual_is_unsigned
+        logical :: dummy_is_unsigned
+        logical :: actual_is_int_literal
+        type(resolved_type_query_t) :: actual_resolved, dummy_resolved
+        character(len=16) :: actual_kind, dummy_kind
+
+        if (.not. arena%has_node_at(arg_expr_index)) return
+        if (.not. arena%has_node_at(dummy_index)) return
+
+        actual_type = strict_actual_argument_type(arena, arg_expr_index)
+        dummy_type = strict_dummy_type(arena, dummy_index)
+        call actual_type%sync_from_arena()
+        call dummy_type%sync_from_arena()
+
+        ! ELEMENTAL array actuals associate each element with a scalar dummy.
+        ! Keep type checking active on the element, not on the array wrapper.
+        if (present(elemental)) then
+            if (elemental .and. dummy_type%kind /= TARRAY) then
+                do while (actual_type%kind == TARRAY)
+                    if (.not. actual_type%has_args()) exit
+                    actual_type = actual_type%get_arg(1)
+                    call actual_type%sync_from_arena()
+                end do
+            end if
+        end if
+        if (.not. strict_type_is_known(actual_type)) return
+        if (.not. strict_type_is_known(dummy_type)) return
+
+        call extract_integer_signedness(actual_type, actual_is_int, &
+            actual_is_unsigned)
+        call extract_integer_signedness(dummy_type, dummy_is_int, &
+            dummy_is_unsigned)
+        actual_is_int_literal = is_integer_literal_expr(arena, arg_expr_index)
+
+        if (actual_is_int .and. dummy_is_int) then
+            if (actual_is_unsigned .neqv. dummy_is_unsigned) then
+                if (.not. actual_is_int_literal) then
+                    call emit_unsigned_integer_mix_error(errors, &
+                        arena%entries(arg_expr_index)%node%line, &
+                        arena%entries(arg_expr_index)%node%column)
+                    return
+                end if
+            end if
+            ! The mono-type INTEGER tag does not encode kind width. Compare
+            ! canonical kinds explicitly rather than accepting 4/8 mismatches.
+            actual_resolved = resolve_expression_type(arena, arg_expr_index)
+            dummy_resolved = resolve_expression_type(arena, dummy_index)
+            if (actual_resolved%found .and. dummy_resolved%found .and. &
+                actual_resolved%kind_value > 0 .and. dummy_resolved%kind_value > 0) then
+                if (actual_resolved%kind_value /= dummy_resolved%kind_value) then
+                    write (actual_kind, '(I0)') actual_resolved%kind_value
+                    write (dummy_kind, '(I0)') dummy_resolved%kind_value
+                    call emit_argument_error(errors, &
+                        "Type mismatch in call to '"//trim(proc_name)// &
+                        "': actual argument '"//trim(dummy_name)// &
+                        "' has INTEGER kind "//trim(actual_kind)// &
+                        ", but dummy expects INTEGER kind "//trim(dummy_kind), &
+                        arena, arg_expr_index)
+                    return
+                end if
+            end if
+        end if
+
+        actual_resolved = resolve_expression_type(arena, arg_expr_index)
+        dummy_resolved = resolve_expression_type(arena, dummy_index)
+        if (actual_resolved%found .and. dummy_resolved%found) then
+            if (actual_resolved%type_kind == TCHAR .and. dummy_resolved%type_kind == TCHAR) then
+                if (actual_resolved%kind_value /= dummy_resolved%kind_value) then
+                    call emit_argument_error(errors, &
+                        "CHARACTER kind mismatch in call to '"//trim(proc_name)//"'", &
+                        arena, arg_expr_index)
+                    return
+                end if
+            end if
+        end if
+
+        ! Scalar CHARACTER association may expose a shorter dummy view of a
+        ! longer actual. Length is not part of scalar type compatibility; the
+        ! interpreter validates available/writable storage at association time.
+        ! Keep rank-bearing array matching below unchanged.
+        if (dummy_type%kind == TCHAR .and. actual_type%kind == TCHAR) return
+        if (strict_types_match(dummy_type, actual_type)) return
+
+        call strict_type_name(actual_type, actual_string)
+        call strict_type_name(dummy_type, dummy_string)
+        call emit_argument_error(errors, &
+            "Type mismatch in call to '"//trim(proc_name)// &
+            "': actual argument '"//trim(dummy_name)// &
+            "' is "//trim(actual_string)// &
+            ", but dummy expects "//trim(dummy_string), arena, arg_expr_index)
+    end subroutine validate_mapped_argument
+
+    subroutine extract_keyword_name_if_present(arena, arg_index, keyword, is_keyword)
+        type(ast_arena_t), intent(in) :: arena
+        integer, intent(in) :: arg_index
+        character(len=64), intent(out) :: keyword
+        logical, intent(out) :: is_keyword
+
+        keyword = ""
+        is_keyword = .false.
+        if (.not. arena%has_node_at(arg_index)) return
+
+        select type (node => arena%entries(arg_index)%node)
+            type is (assignment_node)
+            if (.not. node%is_keyword_argument) return
+            keyword = keyword_target_name(arena, node%target_index)
+            if (len_trim(keyword) == 0) return
+            is_keyword = .true.
+        class default
+            return
+        end select
+    end subroutine extract_keyword_name_if_present
+
+    integer function value_index_if_keyword_arg(arena, arg_index) result(value_index)
+        type(ast_arena_t), intent(in) :: arena
+        integer, intent(in) :: arg_index
+
+        value_index = arg_index
+        if (.not. arena%has_node_at(arg_index)) return
+
+        select type (node => arena%entries(arg_index)%node)
+            type is (assignment_node)
+            if (.not. node%is_keyword_argument) return
+            value_index = node%value_index
+        class default
+            value_index = arg_index
+        end select
+    end function value_index_if_keyword_arg
+
+    character(len=64) function keyword_target_name(arena, target_index) result(name)
+        type(ast_arena_t), intent(in) :: arena
+        integer, intent(in) :: target_index
+
+        name = ""
+        if (.not. arena%has_node_at(target_index)) return
+
+        select type (node => arena%entries(target_index)%node)
+            type is (identifier_node)
+            if (allocated(node%name)) name = trim(node%name)
+            type is (declaration_node)
+            if (allocated(node%var_name)) name = trim(node%var_name)
+            type is (parameter_declaration_node)
+            if (allocated(node%name)) name = trim(node%name)
+        class default
+            return
+        end select
+    end function keyword_target_name
+
+    character(len=64) function resolve_param_name(arena, param_index, position) &
+            result(name)
+        type(ast_arena_t), intent(in) :: arena
+        integer, intent(in) :: param_index
+        integer, intent(in) :: position
+
+        name = "arg"
+        if (param_index <= 0 .or. param_index > arena%size) then
+            write (name, '(A,I0)') "arg", position
+            return
+        end if
+        if (.not. allocated(arena%entries(param_index)%node)) then
+            write (name, '(A,I0)') "arg", position
+            return
+        end if
+
+        select type (node => arena%entries(param_index)%node)
+            type is (identifier_node)
+            if (allocated(node%name)) then
+                if (len_trim(node%name) > 0) then
+                    name = trim(node%name)
+                    return
+                end if
+            end if
+            type is (parameter_declaration_node)
+            if (allocated(node%name)) then
+                if (len_trim(node%name) > 0) then
+                    name = trim(node%name)
+                    return
+                end if
+            end if
+            type is (declaration_node)
+            if (allocated(node%var_name)) then
+                if (len_trim(node%var_name) > 0) then
+                    name = trim(node%var_name)
+                    return
+                end if
+            end if
+        class default
+            continue
+        end select
+
+        write (name, '(A,I0)') "arg", position
+    end function resolve_param_name
+
+    subroutine emit_argument_error(errors, message, arena, node_index)
+        type(error_collection_t), intent(inout) :: errors
+        character(len=*), intent(in) :: message
+        type(ast_arena_t), intent(in) :: arena
+        integer, intent(in) :: node_index
+        integer :: line, column
+
+        line = arena%entries(node_index)%node%line
+        column = arena%entries(node_index)%node%column
+
+        call errors%add_result(create_error_result( &
+            trim(message), ERROR_SEMANTIC, &
+            component="semantic_analyzer", &
+            context="strict_argument_type_check", &
+            suggestion="Use explicit conversion functions "// &
+            "(real/int/dble) to match dummy "// &
+            "argument types", line=line, column=column, end_line=line, &
+            end_column=column + 1))
+    end subroutine emit_argument_error
+
+end module semantic_strict_argument_type_checker_validation

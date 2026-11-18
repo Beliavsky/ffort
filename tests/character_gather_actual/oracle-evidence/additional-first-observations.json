@@ -1,0 +1,149 @@
+{
+  "candidate_sha256": "c75015954df558fe895150dfefb8feac59c379ae8e136e89f2f5bf7a5779021e",
+  "candidate_sha256_after": "c75015954df558fe895150dfefb8feac59c379ae8e136e89f2f5bf7a5779021e",
+  "records": [
+    {
+      "name": "empty_same_base_boundary",
+      "source": "cases/empty_same_base_boundary.f90",
+      "sha256": "c8c3da26712caea3b29e463a2b2b8938d1df0efd5bbe5a35a7134bb924c5368a",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Conservative whole-base alias restriction retained even for an empty bare section; GNU compile only.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/empty_same_base_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/empty_same_base_boundary.f90:17:28: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/empty_same_base_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/empty_same_base_boundary.f90:17:28: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/empty_same_base_boundary.f90",
+          "-o",
+          "/tmp/bare-char-gather-extra-hxav8ljy/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "output_first_same_base_boundary",
+      "source": "cases/output_first_same_base_boundary.f90",
+      "sha256": "00f916a1b3dc10d3329a16fc04568216e20eb1739319d0c284755d22a8f32ed5",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "note": "Invalid alias; output descriptor staged first must not be invalidated before input staging/alias checks. Never execute GNU.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/output_first_same_base_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/output_first_same_base_boundary.f90:17:22: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/output_first_same_base_boundary.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/output_first_same_base_boundary.f90:17:22: Parenthesize a gathered row value when passing it to a user procedure\n"
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/output_first_same_base_boundary.f90",
+          "-o",
+          "/tmp/bare-char-gather-extra-yk5x7zbs/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "empty_parenthesized_same_base_control",
+      "source": "cases/empty_parenthesized_same_base_control.f90",
+      "sha256": "ae9fa8c41b081fa1fd8131b66317a9f3d7c1043b5ed74e68dad1cd95ba7c1237",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "0\n",
+      "note": "Parenthesized zero-size expression is an independent value snapshot.",
+      "check": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/empty_parenthesized_same_base_control.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/052-integration/first-preview-cli",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/empty_parenthesized_same_base_control.f90"
+        ],
+        "status": 0,
+        "stdout": "0\n",
+        "stderr": ""
+      },
+      "gnu_compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-O0",
+          "-fcheck=all",
+          "-ffpe-trap=invalid,zero,overflow",
+          "-ffree-line-length-none",
+          "/workspace/scratch/c5319e9549df/recovery/character-gather-actual-052/tests/cases/empty_parenthesized_same_base_control.f90",
+          "-o",
+          "/tmp/bare-char-gather-extra-890x_vws/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "gnu_run": {
+        "argv": [
+          "/tmp/bare-char-gather-extra-890x_vws/oracle"
+        ],
+        "status": 0,
+        "stdout": "0\n",
+        "stderr": ""
+      }
+    }
+  ]
+}

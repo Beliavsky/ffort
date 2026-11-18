@@ -1,0 +1,51 @@
+{
+  "source_sha256": "4fc372944932538f71a71a7a74161f0561018321a71816ff0fb7eb3738b7115c",
+  "rows": [
+    {
+      "flags": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-ffpe-trap=invalid,zero,overflow",
+        "-O0",
+        "/workspace/scratch/c5319e9549df/release048-composition-work/tests/release048_integration/cases/host_clock_absent_count_pending.f90",
+        "-o",
+        "/tmp/release048-gnu-clock-4eh5xfid/oracle0"
+      ],
+      "compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": -11,
+        "out": "A0F",
+        "err": "\nProgram received signal SIGSEGV: Segmentation fault - invalid memory reference.\n\nBacktrace for this error:\n#0  0x7fa336f332ba in ???\n#1  0x7fa336f32375 in ???\n#2  0x7fa336c6bd6f in ???\n#3  0x5578056ee29e in __m_MOD_sample\n#4  0x5578056ee77e in MAIN__\n#5  0x5578056ee8b2 in main\n"
+      }
+    },
+    {
+      "flags": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-ffpe-trap=invalid,zero,overflow",
+        "-O2",
+        "/workspace/scratch/c5319e9549df/release048-composition-work/tests/release048_integration/cases/host_clock_absent_count_pending.f90",
+        "-o",
+        "/tmp/release048-gnu-clock-4eh5xfid/oracle2"
+      ],
+      "compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": -11,
+        "out": "A0F",
+        "err": "\nProgram received signal SIGSEGV: Segmentation fault - invalid memory reference.\n\nBacktrace for this error:\n#0  0x7f35f67792ba in ???\n#1  0x7f35f6778375 in ???\n#2  0x7f35f64b1d6f in ???\n#3  0x55f5c9af2288 in __m_MOD_sample\n#4  0x55f5c9af23f0 in MAIN__\n#5  0x55f5c9af2148 in main\n"
+      }
+    }
+  ]
+}

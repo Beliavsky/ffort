@@ -1,0 +1,78 @@
+--- a/src/parser/statements/parser_io_statements_common.inc
++++ b/src/parser/statements/parser_io_statements_common.inc
+@@ -303,6 +303,57 @@
+         end if
+     end subroutine parse_argument_list
+ 
++    logical function has_io_implied_do_control(parser) result(found)
++        ! A parenthesized ordinary expression is not an implied-DO. Avoid
++        ! speculative AST construction unless a top-level control marker exists;
++        ! failed speculation restores tokens but leaves allocated arena nodes.
++        type(parser_state_t), intent(in) :: parser
++        integer :: i, j, k, parens, brackets
++        found = .false.
++        parens = 0
++        brackets = 0
++        do i = parser%current_token, size(parser%tokens)
++            if (parser%tokens(i)%kind == TK_EOF) return
++            if (parser%tokens(i)%kind /= TK_OPERATOR) cycle
++            select case (parser%tokens(i)%text)
++            case ("(")
++                parens = parens + 1
++            case (")")
++                parens = parens - 1
++                if (parens <= 0) return
++            case ("[")
++                brackets = brackets + 1
++            case ("]")
++                brackets = brackets - 1
++            case (",")
++                if (parens /= 1 .or. brackets /= 0) cycle
++                j = i + 1
++                do while (j <= size(parser%tokens))
++                    if (parser%tokens(j)%kind /= TK_WHITESPACE .and. &
++                        parser%tokens(j)%kind /= TK_NEWLINE .and. &
++                        parser%tokens(j)%kind /= TK_COMMENT) exit
++                    j = j + 1
++                end do
++                if (j > size(parser%tokens)) return
++                if (parser%tokens(j)%kind /= TK_IDENTIFIER) cycle
++                k = j + 1
++                do while (k <= size(parser%tokens))
++                    if (parser%tokens(k)%kind /= TK_WHITESPACE .and. &
++                        parser%tokens(k)%kind /= TK_NEWLINE .and. &
++                        parser%tokens(k)%kind /= TK_COMMENT) exit
++                    k = k + 1
++                end do
++                if (k > size(parser%tokens)) return
++                if (parser%tokens(k)%kind == TK_OPERATOR) then
++                    if (parser%tokens(k)%text == "=") then
++                        found = .true.
++                        return
++                    end if
++                end if
++            end select
++        end do
++    end function has_io_implied_do_control
++
+     ! Parse an I/O implied-do, including nested loops and object lists:
+     ! (object [, object ...], var = start, end [, step])
+     recursive function parse_io_implied_do(parser, arena) result(expr_index)
+@@ -323,6 +374,7 @@
+ 
+         token = parser%peek()
+         if (token%kind /= TK_OPERATOR .or. token%text /= "(") return
++        if (.not. has_io_implied_do_control(parser)) return
+         line = token%line
+         column = token%column
+         token = parser%consume()  ! consume (
+--- a/src/parser/statements/parser_io_statements.f90
++++ b/src/parser/statements/parser_io_statements.f90
+@@ -34,6 +34,7 @@
+ 
+ contains
+ 
++    ! Common parser preflights implied-DO controls before allocating AST nodes.
+     include 'parser_io_statements_common.inc'
+     include 'parser_io_statements_parsers.inc'
+ 

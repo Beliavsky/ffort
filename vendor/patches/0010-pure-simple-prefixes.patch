@@ -1,0 +1,280 @@
+--- a/vendor/fortfront/src/codegen/decls/codegen_procedure_shared.f90
++++ b/vendor/fortfront/src/codegen/decls/codegen_procedure_shared.f90
+@@ -276,7 +276,7 @@
+ 
+         do j = 1, size(prefix_keywords)
+             select case (trim(prefix_keywords(j)))
+-            case ("pure", "elemental")
++            case ("pure", "simple", "elemental")
+                 do i = 1, size(param_map)
+                     if (.not. allocated(param_map(i)%name)) cycle
+                     ! F2018 C1583: POINTER dummies are exempt from the
+--- a/vendor/fortfront/src/frontend/frontend_program_unit_scanner_part1.inc
++++ b/vendor/fortfront/src/frontend/frontend_program_unit_scanner_part1.inc
+@@ -212,7 +212,7 @@
+         character(len=*), intent(in) :: word
+ 
+         select case (trim(word))
+-        case ("pure", "impure", "elemental", "recursive", "nonrecursive", &
++        case ("pure", "simple", "impure", "elemental", "recursive", "nonrecursive", &
+               "non_recursive", "module")
+             is_attr = .true.
+         case default
+--- a/vendor/fortfront/src/frontend/frontend_program_unit_scanner_part3.inc
++++ b/vendor/fortfront/src/frontend/frontend_program_unit_scanner_part3.inc
+@@ -84,7 +84,7 @@
+     logical function token_may_prefix_procedure(lowered) result(is_prefix)
+         character(len=*), intent(in) :: lowered
+ 
+-        is_prefix = (lowered == "pure" .or. lowered == "elemental" .or. &
++        is_prefix = (lowered == "pure" .or. lowered == "simple" .or. lowered == "elemental" .or. &
+                      lowered == "impure" .or. lowered == "recursive" .or. &
+                      lowered == "module" .or. lowered == "nonrecursive")
+     end function token_may_prefix_procedure
+--- a/vendor/fortfront/src/frontend/frontend_program_units.f90
++++ b/vendor/fortfront/src/frontend/frontend_program_units.f90
+@@ -428,7 +428,7 @@
+                     procedure_pos = i
+                     return
+                 end if
+-                if (lowered == "pure" .or. lowered == "elemental" .or. &
++                if (lowered == "pure" .or. lowered == "simple" .or. lowered == "elemental" .or. &
+                     lowered == "impure" .or. lowered == "recursive" .or. &
+                     lowered == "nonrecursive" .or. lowered == "non_recursive" .or. &
+                     lowered == "module") then
+--- a/vendor/fortfront/src/frontend/frontend_statement_contains_section_helpers_impl.f90
++++ b/vendor/fortfront/src/frontend/frontend_statement_contains_section_helpers_impl.f90
+@@ -180,7 +180,7 @@
+ 
+     logical function is_contains_proc_prefix_keyword(lowered) result(is_prefix)
+         character(len=*), intent(in) :: lowered
+-        is_prefix = (lowered == "pure" .or. lowered == "elemental" .or. &
++        is_prefix = (lowered == "pure" .or. lowered == "simple" .or. lowered == "elemental" .or. &
+             lowered == "impure" .or. lowered == "recursive" .or. &
+             lowered == "module" .or. lowered == "nonrecursive")
+     end function is_contains_proc_prefix_keyword
+--- a/vendor/fortfront/src/frontend/frontend_statement_token_parsing.f90
++++ b/vendor/fortfront/src/frontend/frontend_statement_token_parsing.f90
+@@ -271,7 +271,7 @@
+             case (TK_IDENTIFIER)
+                 lowered = to_lower(tokens(idx)%text)
+                 select case (trim(lowered))
+-                case ('elemental', 'pure', 'impure', 'recursive', 'module', &
++                case ('elemental', 'pure', 'simple', 'impure', 'recursive', 'module', &
+                         'nonrecursive', 'non_recursive')
+                     is_prefix = .true.
+                 case default
+--- a/vendor/fortfront/src/lexer/lexer_scanners.f90
++++ b/vendor/fortfront/src/lexer/lexer_scanners.f90
+@@ -898,7 +898,7 @@
+                 'template', 'endtemplate', 'instantiate', &
+                 'trait', 'endtrait', 'requirement', 'endrequirement', &
+                 'implements', 'endimplements', &
+-                'elemental', 'pure', 'impure', 'recursive', 'nonrecursive', &
++                'elemental', 'pure', 'simple', 'impure', 'recursive', 'nonrecursive', &
+                 'non_recursive', 'intrinsic', 'non_intrinsic', 'external')
+             keyword = .true.
+         case default
+--- a/vendor/fortfront/src/parser/core/mixed_construct_detector.f90
++++ b/vendor/fortfront/src/parser/core/mixed_construct_detector.f90
+@@ -233,6 +233,16 @@
+             end do
+             if (idx > size(tokens)) return
+ 
++            do while (idx <= size(tokens))
++                select case (to_lower(trim(tokens(idx)%text)))
++                case ("pure", "simple", "elemental", "impure", "recursive", &
++                      "nonrecursive", "non_recursive", "module")
++                    idx = idx + 1
++                case default
++                    exit
++                end select
++            end do
++            if (idx > size(tokens)) return
+             if (tokens(idx)%kind == TK_KEYWORD .and. &
+                 to_lower(trim(tokens(idx)%text)) == "function") then
+                 is_typed_function = .true.
+--- a/vendor/fortfront/src/parser/core/parser_dispatcher_part1.inc
++++ b/vendor/fortfront/src/parser/core/parser_dispatcher_part1.inc
+@@ -1132,7 +1132,7 @@
+             lowered = to_lower(token%text)
+             if (token%kind == TK_KEYWORD .or. token%kind == TK_IDENTIFIER) then
+                 select case (trim(lowered))
+-                case ("elemental", "pure", "impure", "recursive", &
++                case ("elemental", "pure", "simple", "impure", "recursive", &
+                       "nonrecursive", "non_recursive", "module")
+                     call append_prefix_token(prefixes, trim(lowered))
+                     token = parser%consume()
+--- a/vendor/fortfront/src/parser/core/parser_statement_placement.f90
++++ b/vendor/fortfront/src/parser/core/parser_statement_placement.f90
+@@ -732,7 +732,7 @@
+         character(len=*), intent(in) :: word
+ 
+         select case (word)
+-        case ("pure", "impure", "elemental", "recursive", "non_recursive", &
++        case ("pure", "simple", "impure", "elemental", "recursive", "non_recursive", &
+                 "module", "real", "integer", "complex", "logical", "character", &
+                 "double", "precision", "type", "class", "*", ",", "::", "(", ")")
+             is_prefix = .true.
+--- a/vendor/fortfront/src/parser/declarations/parser_interface_prefix_module.f90
++++ b/vendor/fortfront/src/parser/declarations/parser_interface_prefix_module.f90
+@@ -17,6 +17,7 @@
+         character(len=*), intent(in) :: lowered_text
+ 
+         is_prefix = trim(lowered_text) == "pure" .or. &
++            trim(lowered_text) == "simple" .or. &
+             trim(lowered_text) == "elemental" .or. &
+             trim(lowered_text) == "recursive" .or. &
+             trim(lowered_text) == "impure" .or. &
+--- a/vendor/fortfront/src/parser/declarations/parser_module_structures.f90
++++ b/vendor/fortfront/src/parser/declarations/parser_module_structures.f90
+@@ -247,7 +247,7 @@
+         if (token%kind == TK_KEYWORD .or. token%kind == TK_IDENTIFIER) then
+             lowered = to_lower(token%text)
+             select case (trim(lowered))
+-            case ("pure", "elemental", "impure", "recursive", &
++            case ("pure", "simple", "elemental", "impure", "recursive", &
+                     "nonrecursive", "non_recursive", "module")
+                 call prefix_buffer%get_all(stored)
+                 call reject_repeated_procedure_prefix(parser, stored, token, &
+--- a/vendor/fortfront/src/parser/declarations/parser_submodule_helpers.f90
++++ b/vendor/fortfront/src/parser/declarations/parser_submodule_helpers.f90
+@@ -129,7 +129,7 @@
+         handled = .false.
+ 
+         select case (trim(lowered))
+-        case ("pure", "elemental", "impure", "recursive", &
++        case ("pure", "simple", "elemental", "impure", "recursive", &
+                 "nonrecursive", "non_recursive")
+             call prefix_buffer%get_all(stored)
+             call append_prefix_token(stored, trim(lowered))
+--- a/vendor/fortfront/src/parser/procedures/parser_procedure_definition_bodies.f90
++++ b/vendor/fortfront/src/parser/procedures/parser_procedure_definition_bodies.f90
+@@ -1068,7 +1068,7 @@
+ 
+         lowered = to_lower(token%text)
+         select case (trim(lowered))
+-        case ("pure", "elemental", "impure", "recursive", "nonrecursive", &
++        case ("pure", "simple", "elemental", "impure", "recursive", "nonrecursive", &
+                 "non_recursive", "module")
+             call prefix_buffer%get_all(stored)
+             call append_prefix_token(stored, trim(lowered))
+--- a/vendor/fortfront/src/parser/procedures/parser_procedure_signatures.f90
++++ b/vendor/fortfront/src/parser/procedures/parser_procedure_signatures.f90
+@@ -55,11 +55,19 @@
+             pending_prefixes)
+         call append_pending_prefixes(pending_prefixes, prefix_keywords, &
+             has_recursive_keyword, local_return_type)
+-        if (present(return_type_from_prefix)) then
+-            return_type_from_prefix = local_return_type
+-        end if
+         call consume_function_prefix_tokens(parser, prefix_keywords, &
+             has_recursive_keyword)
++        if (present(return_type_from_prefix)) then
++            ! R1529 allows procedure attributes on either side of the type.
++            ! Collect trailing attributes rather than losing them when this
++            ! routine is called directly for an internal typed function.
++            if (len_trim(local_return_type) == 0) then
++                call consume_optional_return_type(parser, local_return_type)
++            end if
++            call consume_function_prefix_tokens(parser, prefix_keywords, &
++                has_recursive_keyword)
++            return_type_from_prefix = local_return_type
++        end if
+     end subroutine parse_function_prefix_keywords
+ 
+     subroutine initialise_function_prefix_sources(prefix_buffer, prefix_list, &
+@@ -198,8 +206,8 @@
+                 has_recursive_keyword = .true.
+                 call append_prefix_token(prefix_keywords, "recursive")
+                 token = parser%consume()
+-            case ("pure")
+-                call append_prefix_token(prefix_keywords, "pure")
++            case ("pure", "simple")
++                call append_prefix_token(prefix_keywords, trim(lowered_text))
+                 token = parser%consume()
+             case ("elemental")
+                 call append_prefix_token(prefix_keywords, "elemental")
+--- a/vendor/fortfront/src/parser/statements/parser_execution_statements_module.inc
++++ b/vendor/fortfront/src/parser/statements/parser_execution_statements_module.inc
+@@ -329,7 +329,7 @@
+             end if
+ 
+             select case (lowered)
+-            case ("elemental", "pure", "impure", "recursive", "nonrecursive", &
++            case ("elemental", "pure", "simple", "impure", "recursive", "nonrecursive", &
+                   "non_recursive", "module")
+                 if (lowered == "module") then
+                     if (.not. module_keyword_starts_procedure(parser_ref)) then
+@@ -818,6 +818,18 @@
+                 end if
+             end if
+ 
++            ! Procedure attributes may follow the return type (R1529).
++            do while (parser%current_token + offset <= size(parser%tokens))
++                lookahead = parser%tokens(parser%current_token + offset)
++                select case (to_lower(trim(lookahead%text)))
++                case ("pure", "simple", "elemental", "impure", "recursive", &
++                      "nonrecursive", "non_recursive", "module")
++                    offset = offset + 1
++                case default
++                    exit
++                end select
++            end do
++
+             ! Now check if function or subroutine follows
+             if (parser%current_token + offset <= size(parser%tokens)) then
+                 lookahead = parser%tokens(parser%current_token + offset)
+--- a/vendor/fortfront/src/semantic/analyzers/semantic_pure_dummy_validation.f90
++++ b/vendor/fortfront/src/semantic/analyzers/semantic_pure_dummy_validation.f90
+@@ -375,7 +375,7 @@
+         if (.not. allocated(prefix_keywords)) return
+         do i = 1, size(prefix_keywords)
+             select case (to_lower(trim(prefix_keywords(i))))
+-            case ('pure', 'elemental')
++            case ('pure', 'simple', 'elemental')
+                 is_pure = .true.
+             case ('impure')
+                 is_pure = .false.
+--- a/vendor/fortfront/src/semantic/analyzers/semantic_pure_validation.f90
++++ b/vendor/fortfront/src/semantic/analyzers/semantic_pure_validation.f90
+@@ -55,7 +55,7 @@
+         has_impure = .false.
+         do i = 1, size(prefix_keywords)
+             select case (trim(prefix_keywords(i)))
+-            case ('pure')
++            case ('pure', 'simple')
+                 has_pure = .true.
+             case ('elemental')
+                 has_elemental = .true.
+--- a/vendor/fortfront/src/standardizers/standardizer_function_parameters.f90
++++ b/vendor/fortfront/src/standardizers/standardizer_function_parameters.f90
+@@ -94,7 +94,7 @@
+         if (.not. allocated(func_def%prefix_keywords)) return
+         do i = 1, size(func_def%prefix_keywords)
+             select case (trim(func_def%prefix_keywords(i)))
+-            case ("pure", "elemental")
++            case ("pure", "simple", "elemental")
+                 needs_intent_in = .true.
+                 return
+             end select
+--- a/vendor/fortfront/src/utilities/procedure_classification.f90
++++ b/vendor/fortfront/src/utilities/procedure_classification.f90
+@@ -120,7 +120,7 @@
+             do i = 1, size(proc_node%prefix_keywords)
+                 keyword = to_lower(trim(proc_node%prefix_keywords(i)))
+                 select case (keyword)
+-                case ('pure', 'elemental')
++                case ('pure', 'simple', 'elemental')
+                     has_prefix = .true.
+                     return
+                 end select
+@@ -130,7 +130,7 @@
+                 do i = 1, size(proc_node%prefix_keywords)
+                     keyword = to_lower(trim(proc_node%prefix_keywords(i)))
+                     select case (keyword)
+-                    case ('pure', 'elemental')
++                    case ('pure', 'simple', 'elemental')
+                         has_prefix = .true.
+                         return
+                     end select

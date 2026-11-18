@@ -1,0 +1,125 @@
+{
+  "description": "Independently authored synthetic cross-feature cases; no original programs or extracted utility bodies.",
+  "cases": [
+    {
+      "name": "allocated_buffer_read",
+      "source": "cases/allocated_buffer_read.f90",
+      "sha256": "6fe67de45990dea35656c01c09eb5d7a09f930fc133c4911c2e3523b7d8b01a5",
+      "category": "success",
+      "gnu": "run",
+      "expected": "ok\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "defined_plus_result_generic_read",
+      "source": "cases/defined_plus_result_generic_read.f90",
+      "sha256": "b58f523475c4e01054342914024d6de7c5387a863d95d3bc7c8aac373d0cc54a",
+      "category": "success",
+      "gnu": "run",
+      "expected": "[9,8]\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "pure_allocated_reader",
+      "source": "cases/pure_allocated_reader.f90",
+      "sha256": "ec9b99dcd83e45df08b38bc3139a37af60115f4288a9711037a7185322897d25",
+      "category": "success",
+      "gnu": "run",
+      "expected": "ok\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "colon_model_character_bytes",
+      "source": "cases/colon_model_character_bytes.f90",
+      "sha256": "ca7397562539661b46f73346c6b794b00843dd6f0970ecf4ba00086c864d3132",
+      "category": "success",
+      "gnu": "run",
+      "expected": "A \nB \n[x ] [y  ]\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "internal_colon_allocation_read",
+      "source": "cases/internal_colon_allocation_read.f90",
+      "sha256": "4349d41c96ce9f25e06106b5f482f3fa578617a8360ba23b7539de1a667003ca",
+      "category": "success",
+      "gnu": "run",
+      "expected": "[31          ]\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "null_slash_reallocation",
+      "source": "cases/null_slash_reallocation.f90",
+      "sha256": "af1b77a7a166cb1570b4bf938e917ae987bda1880de749e924ff70d18e50e7a2",
+      "category": "success",
+      "gnu": "run",
+      "expected": "ok\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "error_status_redefine",
+      "source": "cases/error_status_redefine.f90",
+      "sha256": "39f73badc9d41a8d357ad95201186c4200b08eed8366a4a05366bf4f9c90e982",
+      "category": "success",
+      "gnu": "run",
+      "expected": "ok\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "error_atomic_definedness",
+      "source": "cases/error_atomic_definedness.f90",
+      "sha256": "a3051896af100cdb788b5e20a675eb6ceb7ecb8033b6a91c3c35d16adc805d1e",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected": "before\n",
+      "diagnostic": "uninitialized",
+      "note": "Input error/EOF undefines every input object; do not execute GNU undefined values. A failing output statement must emit no prefix."
+    },
+    {
+      "name": "eof_atomic_definedness",
+      "source": "cases/eof_atomic_definedness.f90",
+      "sha256": "290a78d1215e567c15f679d4fe08ea17a4aaea25830ea7f77a73b3ee531849c5",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected": "before\n",
+      "diagnostic": "uninitialized",
+      "note": "Input error/EOF undefines every input object; do not execute GNU undefined values. A failing output statement must emit no prefix."
+    },
+    {
+      "name": "newline_read_boundary",
+      "source": "cases/newline_read_boundary.f90",
+      "sha256": "35eedd1f70b67f850fde04fe1a7c0e87de78867056f1f24f8fac2727f831d2c1",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected": "",
+      "diagnostic": "single text record",
+      "note": "Embedded newline rejected by bounded record parser; GNU multiline input semantics are not this policy."
+    },
+    {
+      "name": "allocated_read_source_undefined",
+      "source": "cases/allocated_read_source_undefined.f90",
+      "sha256": "e5552097233ac7f1fbc8a996840a77d53467502a234c7f0aa6cbd5ca59d86cd4",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected": "",
+      "diagnostic": "uninitialized",
+      "note": "Allocation does not initialize the internal file; no GNU undefined execution."
+    },
+    {
+      "name": "result_lifetime_read",
+      "source": "cases/result_lifetime_read.f90",
+      "sha256": "739422c093581511f7cd26a53d6fdea141e2bbe0795359034374a2474d39ba36",
+      "category": "success",
+      "gnu": "run",
+      "expected": "[71, 82]\n",
+      "diagnostic": "",
+      "note": ""
+    }
+  ]
+}

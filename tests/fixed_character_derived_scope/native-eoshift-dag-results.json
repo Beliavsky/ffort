@@ -1,0 +1,74 @@
+{
+  "source_sha256": "b211a5001cae46153264f8ba5e7120ee22087177424a9f359689c51d69f53d72",
+  "records": [
+    {
+      "label": "compile",
+      "command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-c",
+        "/tmp/fixed-character-derived-regression/stronger-scope-package/test/test_fixed_character_derived_scope.f90",
+        "-Wall",
+        "-Wextra",
+        "-Wimplicit-interface",
+        "-Wno-external-argument-mismatch",
+        "-fPIC",
+        "-fmax-errors=1",
+        "-g",
+        "-fcheck=bounds",
+        "-fcheck=array-temps",
+        "-fbacktrace",
+        "-fcoarray=single",
+        "-fimplicit-none",
+        "-Werror=implicit-interface",
+        "-ffree-form",
+        "-J",
+        "build/gfortran_C95531B253A90636",
+        "-Ibuild/gfortran_C95531B253A90636",
+        "-o",
+        "/tmp/fixed-character-derived-regression/test_fixed_character_derived_scope-eoshift.o"
+      ],
+      "code": 0,
+      "out": "",
+      "err": "/tmp/fixed-character-derived-regression/stronger-scope-package/test/test_fixed_character_derived_scope.f90:97:20:\n\n   97 |   type(program_t)::r\n      |                    1\nWarning: Array \u2018r\u2019 at (1) is larger than limit set by \u2018-fmax-stack-var-size=\u2019, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the \u2018-fmax-stack-var-size=\u2019 limit (or use \u2018-frecursive\u2019, which implies unlimited \u2018-fmax-stack-var-size\u2019) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]\nf951: note: unrecognized command-line option \u2018-Wno-external-argument-mismatch\u2019 may have been intended to silence earlier diagnostics\n"
+    },
+    {
+      "label": "link",
+      "command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "/tmp/fixed-character-derived-regression/test_fixed_character_derived_scope-eoshift.o",
+        "/tmp/dynamic-character-constructor-work/fortfront-interpreter-0.47.0/build/gfortran_BF401197FF969414/fortfront-interpreter/libfortfront-interpreter.a",
+        "-Wall",
+        "-Wextra",
+        "-Wimplicit-interface",
+        "-Wno-external-argument-mismatch",
+        "-fPIC",
+        "-fmax-errors=1",
+        "-g",
+        "-fcheck=bounds",
+        "-fcheck=array-temps",
+        "-fbacktrace",
+        "-fcoarray=single",
+        "-fimplicit-none",
+        "-Werror=implicit-interface",
+        "-ffree-form",
+        "-J",
+        "build/gfortran_C95531B253A90636",
+        "-Ibuild/gfortran_C95531B253A90636",
+        "-o",
+        "/tmp/fixed-character-derived-regression/test_fixed_character_derived_scope-eoshift"
+      ],
+      "code": 0,
+      "out": "",
+      "err": ""
+    },
+    {
+      "label": "run",
+      "command": [
+        "/tmp/fixed-character-derived-regression/test_fixed_character_derived_scope-eoshift"
+      ],
+      "code": 0,
+      "out": "",
+      "err": "derived CHARACTER actual scope guards: 48\n"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+test_allocatable_real_kinds (__main__.ReadSections.test_allocatable_real_kinds) ... ok
+test_bad_stride (__main__.ReadSections.test_bad_stride) ... ok
+test_character (__main__.ReadSections.test_character) ... FAIL
+test_empty_outside_bounds (__main__.ReadSections.test_empty_outside_bounds) ... ok
+test_eof_untouched (__main__.ReadSections.test_eof_untouched) ... ok
+test_error_untouched (__main__.ReadSections.test_error_untouched) ... ok
+test_exclusions (__main__.ReadSections.test_exclusions) ... ok
+test_failure_selected_undefined (__main__.ReadSections.test_failure_selected_undefined) ... ok
+test_integer8 (__main__.ReadSections.test_integer8) ... ok
+test_no_iostat_failure (__main__.ReadSections.test_no_iostat_failure) ... ok
+test_no_iostat_success (__main__.ReadSections.test_no_iostat_success) ... ok
+test_null_preserve (__main__.ReadSections.test_null_preserve) ... ok
+test_omitted_negative_empty (__main__.ReadSections.test_omitted_negative_empty) ... ok
+test_prefix_variable (__main__.ReadSections.test_prefix_variable) ... ok
+test_slash_preserve (__main__.ReadSections.test_slash_preserve) ... ok
+test_stride_negative (__main__.ReadSections.test_stride_negative) ... ok
+test_stride_positive (__main__.ReadSections.test_stride_positive) ... ok
+test_utility_retry_pattern (__main__.ReadSections.test_utility_retry_pattern) ... ok
+
+======================================================================
+FAIL: test_character (__main__.ReadSections.test_character)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/c5319e9549df/recovery/057-read-sections-work/tests/internal_read_sections/test_read_sections.py", line 22, in test_character
+    def test_character(self):self.assertEqual(self.good('character(len=4) :: a(3)\ncharacter(len=20) :: t\ninteger :: s\na="old"\nt="red,blue"\nread(t,*,iostat=s)a(2:3)\nprint *,s\nprint "(A)",a'),['0','old','red','blue'])
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c5319e9549df/recovery/057-read-sections-work/tests/internal_read_sections/test_read_sections.py", line 11, in good
+    p=self.invoke(body);self.assertEqual(p.returncode,0,p.stderr);self.assertEqual(p.stderr,'');return p.stdout.split()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 0 : <stdin>:8:25: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets or rank-one sections with independent INTEGER arithmetic bounds, and optional INTEGER IOSTAT
+
+
+----------------------------------------------------------------------
+Ran 18 tests in 1.013s
+
+FAILED (failures=1)

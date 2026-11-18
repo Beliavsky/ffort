@@ -1,0 +1,35 @@
+--- a/src/parser/control_flow/parser_do_constructs.f90
++++ b/src/parser/control_flow/parser_do_constructs.f90
+@@ -5,7 +5,7 @@
+         TK_NEWLINE, TK_COMMENT, TK_WHITESPACE, to_lower
+     use parser_state_module, only: parser_state_t
+     use parser_expressions_module, only: parse_logical_or
+-    use ast_arena_modern, only: ast_arena_t
++    use ast_arena_modern, only: ast_arena_t, link_children_to_parent
+     use ast_nodes_loops, only: do_loop_node, do_while_node
+     use ast_factory_control, only: push_do_loop, push_do_while
+     use parser_if_constructs_module, only: parse_if, register_parse_do_loop
+--- a/src/parser/control_flow/parser_do_constructs_part1.inc
++++ b/src/parser/control_flow/parser_do_constructs_part1.inc
+@@ -1075,6 +1075,10 @@
+                 type is (do_loop_node)
+                     if (allocated(body_indices)) then
+                         node%body_indices = body_indices
++                        ! The loop was created before its body was parsed. Link
++                        ! the completed body now, as push_do_loop would do for
++                        ! a body supplied at construction time.
++                        call link_children_to_parent(arena, loop_index, body_indices)
+                     end if
+                 end select
+             end if
+--- a/src/parser/control_flow/parser_do_constructs_part2.inc
++++ b/src/parser/control_flow/parser_do_constructs_part2.inc
+@@ -225,6 +225,8 @@
+                 type is (do_while_node)
+                     if (allocated(body_indices)) then
+                         node%body_indices = body_indices
++                        ! As for counted DO, this body was parsed after node creation.
++                        call link_children_to_parent(arena, loop_index, body_indices)
+                     end if
+                 end select
+             end if

@@ -1,0 +1,15 @@
+{
+  "original": {
+    "path": "/tmp/rank-three-vector-050-work/test_rank_three_vectors.f90",
+    "sha256": "dd936eb224996591c9d97c4eaeaae3e36332f8a4c98f292750d8e8d548f9adc3",
+    "bytes": 7122
+  },
+  "corrected": {
+    "path": "/tmp/rank-three-vector-050-work/test_rank_three_vectors_direct.f90",
+    "sha256": "4cd19ee1d4344a5896e90c3abe4dcf4b459b90a44e169cb7947880c85f485e96",
+    "bytes": 7290
+  },
+  "change": "Replace sole unsupported SUM(rank3) with exact total size, selected-axis extent, and nested-loop per-element equality checks. No core change.",
+  "audit": "All baseline/oracle snippets inspected; remaining operations are scalar arithmetic/element access, SIZE rank3 and KIND metadata inquiries already covered by focused source fixtures.",
+  "validation": "Source-only; not compiled or executed. Central native link pending."
+}

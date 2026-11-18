@@ -1,0 +1,211 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -7,10 +7,11 @@
+     use ast_nodes_bounds, only: array_slice_node, range_expression_node, array_bounds_node
+     use ast_nodes_data, only: declaration_node, parameter_declaration_node, &
+         derived_type_node
+-    use ast_nodes_misc, only: complex_literal_node, use_statement_node
++    use ast_nodes_misc, only: complex_literal_node, use_statement_node, interface_block_node, module_procedure_node
+     use ast_nodes_procedure, only: function_def_node
+     use frontend_compiler_resolution, only: declaration_binding_t, &
+-        resolve_name_at_node, resolve_identifier_binding, BINDING_DERIVED_TYPE
++        resolve_name_at_node, resolve_identifier_binding, BINDING_DERIVED_TYPE, &
++        resolve_name_in_scope, find_enclosing_scope, find_host_scope, BINDING_FUNCTION, BINDING_GENERIC_INTERFACE
+     use string_utils_mod, only: to_lower
+     use type_system_unified, only: mono_type_t, create_mono_type, TINT, TREAL, TCHAR, &
+         TLOGICAL, TARRAY, TCOMPLEX, TDOUBLE, TDERIVED
+@@ -452,6 +453,10 @@
+ 
+         call resolve_name_at_node(arena, node_index, node%name, binding, error_msg)
+         if (binding%found) then
++            if (binding%binding_kind == BINDING_GENERIC_INTERFACE) then
++                call resolve_named_generic_result(arena, binding%declaration_node_index, node, visiting)
++                return
++            end if
+             call resolve_node_metadata(arena, binding%declaration_node_index, visiting)
+             call copy_metadata_from_index(arena, binding%declaration_node_index, node)
+             if (node%resolved_type_found) then
+@@ -516,6 +521,183 @@
+         call resolve_from_inferred_type(node)
+     end subroutine resolve_call_or_subscript
+ 
++    recursive subroutine resolve_named_generic_result(arena, interface_index, node, visiting)
++        type(ast_arena_t), intent(inout) :: arena
++        integer, intent(in) :: interface_index
++        type(call_or_subscript_node), intent(inout) :: node
++        logical, intent(inout) :: visiting(:)
++        type(declaration_binding_t) :: binding
++        character(len=:), allocatable :: error_msg
++        integer, allocatable :: specifics(:)
++        integer :: scope, i, j, p, candidate, score, best, winner, rank, actual_rank
++        integer :: inferred_kind, inferred_rank
++        logical :: ambiguous, elemental, winning_elemental
++        type(mono_type_t) :: result_type
++
++        ! A generic interface has no single result type. Resolve each occurrence
++        ! against its scoped specifics and declared actual types, never infer its
++        ! kind or rank from an unrelated invocation or the generic name.
++        call clear_resolved_metadata(node)
++        scope = find_enclosing_scope(arena, interface_index)
++        if (scope == interface_index) scope = find_host_scope(arena, scope)
++        if (scope <= 0) return
++        allocate(specifics(0))
++        select type (iface => arena%entries(interface_index)%node)
++        type is (interface_block_node)
++            if (.not. allocated(iface%procedure_indices)) return
++            do i = 1, size(iface%procedure_indices)
++                p = iface%procedure_indices(i)
++                if (.not. arena%has_node_at(p)) return
++                select type (specific => arena%entries(p)%node)
++                type is (module_procedure_node)
++                    if (.not. allocated(specific%procedure_names)) return
++                    do j = 1, size(specific%procedure_names)
++                        call resolve_name_in_scope(arena, scope, specific%procedure_names(j)%s, binding, error_msg)
++                        if (.not. binding%found .or. binding%binding_kind /= BINDING_FUNCTION) return
++                        specifics = [specifics, binding%declaration_node_index]
++                    end do
++                type is (function_def_node)
++                    specifics = [specifics, p]
++                class default
++                    return
++                end select
++            end do
++        class default
++            return
++        end select
++        winner = 0; best = -1; rank = 0; ambiguous = .false.; winning_elemental = .false.
++        do i = 1, size(specifics)
++            candidate = specifics(i)
++            call match_named_generic_candidate(arena, candidate, node%arg_indices, visiting, score, actual_rank, elemental)
++            if (score < 0 .or. score < best) cycle
++            if (score == best) then
++                ambiguous = .true.
++            else
++                winner = candidate; best = score; rank = actual_rank
++                winning_elemental = elemental; ambiguous = .false.
++            end if
++        end do
++        if (winner <= 0 .or. ambiguous) return
++        call resolve_node_metadata(arena, winner, visiting)
++        call copy_metadata_from_index(arena, winner, node)
++        if (.not. node%resolved_type_found) return
++        if (winning_elemental) then
++            node%resolved_rank = rank
++            inferred_kind = inferred_base_kind(node%inferred_type, inferred_rank)
++            if (inferred_rank /= rank .or. normalize_type_kind(inferred_kind) /= node%resolved_type_kind) then
++                result_type = create_mono_type(node%resolved_type_kind)
++                do i = 1, rank
++                    result_type = create_mono_type(TARRAY, args=[result_type])
++                end do
++                node%inferred_type = result_type
++            end if
++        end if
++    end subroutine resolve_named_generic_result
++
++    recursive subroutine match_named_generic_candidate(arena, procedure_index, actuals, visiting, score, rank, elemental)
++        type(ast_arena_t), intent(inout) :: arena
++        integer, intent(in) :: procedure_index
++        integer, allocatable, intent(in) :: actuals(:)
++        logical, intent(inout) :: visiting(:)
++        integer, intent(out) :: score, rank
++        logical, intent(out) :: elemental
++        integer, allocatable :: formals(:), values(:), positions(:)
++        type(string_t), allocatable :: names(:)
++        type(declaration_binding_t) :: binding
++        character(len=:), allocatable :: error_msg, keyword
++        integer :: n, j, a, d, position, target
++        logical :: seen_keyword
++
++        score = -1; rank = 0; elemental = .false.
++        if (.not. arena%has_node_at(procedure_index)) return
++        n = 0
++        if (allocated(actuals)) n = size(actuals)
++        select type (proc => arena%entries(procedure_index)%node)
++        type is (function_def_node)
++            elemental = is_elemental_prefix(proc%prefix_keywords)
++            if (.not. allocated(proc%param_indices)) then
++                if (n == 0) score = 1
++                return
++            end if
++            if (size(proc%param_indices) /= n) return
++            formals = proc%param_indices
++        class default
++            return
++        end select
++        allocate(names(n), values(n), positions(n))
++        positions = 0; values = 0
++        do j = 1, n
++            if (.not. arena%has_node_at(formals(j))) return
++            select type (formal => arena%entries(formals(j))%node)
++            type is (parameter_declaration_node)
++                if (.not. allocated(formal%name)) return
++                names(j)%s = to_lower(formal%name)
++            class default
++                return
++            end select
++            call resolve_name_in_scope(arena, procedure_index, names(j)%s, binding, error_msg)
++            if (.not. binding%found) return
++            formals(j) = binding%declaration_node_index
++            call resolve_node_metadata(arena, formals(j), visiting)
++        end do
++        seen_keyword = .false.
++        do j = 1, n
++            a = actuals(j); keyword = ''
++            if (.not. arena%has_node_at(a)) return
++            select type (actual => arena%entries(a)%node)
++            type is (assignment_node)
++                if (.not. actual%is_keyword_argument) return
++                target = actual%target_index
++                if (.not. arena%has_node_at(target)) return
++                select type (name => arena%entries(target)%node)
++                type is (identifier_node)
++                    if (.not. allocated(name%name)) return
++                    keyword = to_lower(name%name)
++                class default
++                    return
++                end select
++                a = actual%value_index; seen_keyword = .true.
++            class default
++                if (seen_keyword) return
++            end select
++            position = j
++            if (len_trim(keyword) > 0) then
++                do position = 1, n
++                    if (names(position)%s == keyword) exit
++                end do
++            end if
++            if (position > n) return
++            if (positions(position) /= 0) return
++            positions(position) = j; values(position) = a
++        end do
++        score = 1
++        do j = 1, n
++            a = values(j); d = formals(j)
++            if (.not. arena%has_node_at(a)) then
++                score = -1; return
++            end if
++            call resolve_node_metadata(arena, a, visiting)
++            associate(actual => arena%entries(a)%node, dummy => arena%entries(d)%node)
++                if (.not. actual%resolved_type_found .or. .not. dummy%resolved_type_found) then
++                    score = -1; return
++                end if
++                if (actual%resolved_type_kind /= dummy%resolved_type_kind .or. &
++                    actual%resolved_kind_value /= dummy%resolved_kind_value .or. &
++                    actual%resolved_derived_type_name /= dummy%resolved_derived_type_name) then
++                    score = -1; return
++                end if
++                if (actual%resolved_rank /= dummy%resolved_rank) then
++                    if (elemental .and. dummy%resolved_rank == 0 .and. actual%resolved_rank > 0) then
++                        score = 0
++                    else
++                        score = -1; return
++                    end if
++                end if
++                rank = max(rank, actual%resolved_rank)
++            end associate
++        end do
++    end subroutine match_named_generic_candidate
++
+     subroutine resolve_intrinsic_call(arena, node, visiting)
+         type(ast_arena_t), intent(inout) :: arena
+         type(call_or_subscript_node), intent(inout) :: node

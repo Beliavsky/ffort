@@ -1,0 +1,37 @@
+diff --git a/src/frontend/frontend_compiler_api.f90 b/src/frontend/frontend_compiler_api.f90
+index 579c759..7e7143c 100644
+--- a/src/frontend/frontend_compiler_api.f90
++++ b/src/frontend/frontend_compiler_api.f90
+@@ -71,6 +71,9 @@ contains
+ 
+         call initialize_result(result)
+ 
++        ! Local adapter fix: type queries use this mode even without rewriting.
++        call set_standardizer_input_mode(opts%input_mode)
++
+         call lex_source(source_code, local_tokens, lex_error)
+         if (message_has_error(lex_error)) then
+             call set_result_error(result, lex_error)
+diff --git a/src/frontend/frontend_compiler_type_queries.f90 b/src/frontend/frontend_compiler_type_queries.f90
+index 197ea0e..0201796 100644
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -223,6 +223,18 @@ contains
+         if (node%is_array) then
+             if (allocated(node%dimension_indices)) rank = size(node%dimension_indices)
+         end if
++        ! Local adapter fix: CHARACTER kind_value is legacy length storage.
++        ! The explicit kind selector has its own expression index; do not
++        ! interpret CHARACTER(LEN=8) as character kind 8.
++        if (type_kind_from_spec(compact_lower(node%type_name)) == TCHAR) then
++            selected_kind = 1
++            if (node%kind_selector_index > 0) then
++                call evaluate_integer_constant(arena, node%kind_selector_index, &
++                    selected_kind, visiting)
++            end if
++            call set_intrinsic_metadata(node, TCHAR, selected_kind, rank)
++            return
++        end if
+         call resolve_type_spec(arena, node_index, node%type_name, node%has_kind, &
+             node%kind_value, rank, node)
+         if (.not. node%resolved_type_found .and. node%kind_selector_index > 0) then

@@ -1,0 +1,19 @@
+name = "fortfront-interpreter"
+version = "0.56.0"
+license = "MIT"
+description = "Fail-closed scalar and rank-one/rank-two array Fortran interpreter prototype with a pinned FortFront adapter"
+[build]
+auto-executables = false
+auto-tests = true
+auto-examples = false
+[fortran]
+implicit-typing = false
+implicit-external = false
+source-form = "free"
+[dependencies]
+fortfront = { path = "vendor/fortfront" }
+
+[[executable]]
+name = "fortfront-interpreter"
+source-dir = "app"
+main = "main.f90"

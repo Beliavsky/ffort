@@ -1,0 +1,120 @@
+--- a/src/frontend/frontend_statement_boundary.f90
++++ b/src/frontend/frontend_statement_boundary.f90
+@@ -321,6 +321,7 @@
+         integer, intent(inout) :: nesting_level
+         integer, intent(inout) :: stmt_end
+         logical, intent(out) :: found_end
++        integer :: previous
+ 
+         found_end = .false.
+         select case (trim(to_lower(tokens(idx)%text)))
+@@ -328,6 +329,17 @@
+             call maybe_increment_if_nesting(tokens, stmt_start, idx, &
+                 nesting_level)
+         case ("do")
++            ! END DO was already handled at END; DO is not another opener.
++            previous = idx - 1
++            do while (previous >= stmt_start)
++                if (tokens(previous)%kind /= TK_WHITESPACE) exit
++                previous = previous - 1
++            end do
++            if (previous >= stmt_start) then
++                if (tokens(previous)%kind == TK_KEYWORD) then
++                    if (trim(to_lower(tokens(previous)%text)) == "end") return
++                end if
++            end if
+             if (idx > stmt_start) nesting_level = nesting_level + 1
+         case ("select")
+             if (idx > stmt_start) then
+@@ -482,10 +494,6 @@
+         if (idx + 1 <= size(tokens)) then
+             if (tokens(idx + 1)%kind == TK_KEYWORD) then
+                 select case (trim(to_lower(tokens(idx + 1)%text)))
+-                case ("do")
+-                    call try_close_construct(tokens, stmt_start, "do", idx + 1, &
+-                        nesting_level, stmt_end, &
+-                        found_end, .false.)
+                 case ("select")
+                     call try_close_construct(tokens, stmt_start, "select", &
+                         idx + 1, nesting_level, stmt_end, &
+@@ -716,7 +724,7 @@
+         type(token_t), intent(in) :: tokens(:)
+         integer, intent(in) :: start_pos
+         integer, intent(out) :: stmt_start, stmt_end
+-        integer :: nesting_level
++        integer :: nesting_level, construct_start, next_idx
+         logical :: is_multiline
+ 
+         stmt_start = find_statement_start(tokens, start_pos)
+@@ -725,11 +733,34 @@
+             return
+         end if
+ 
+-        call detect_multiline_construct(tokens, stmt_start, is_multiline, &
++        ! Named DO has the same multiline body as DO. Keep the label in
++        ! the returned slice, but use the DO token for nesting/matching.
++        construct_start = stmt_start
++        if (tokens(stmt_start)%kind == TK_IDENTIFIER) then
++            next_idx = next_significant_token_index(tokens, stmt_start + 1)
++            if (next_idx > 0) then
++                if (tokens(next_idx)%kind == TK_OPERATOR .and. &
++                    tokens(next_idx)%text == ":") then
++                    next_idx = next_significant_token_index(tokens, next_idx + 1)
++                    if (next_idx > 0) then
++                        if (tokens(next_idx)%kind == TK_KEYWORD) then
++                            if (to_lower(trim(tokens(next_idx)%text)) == "do") &
++                                construct_start = next_idx
++                        end if
++                    end if
++                end if
++            end if
++        end if
++        call detect_multiline_construct(tokens, construct_start, is_multiline, &
+             nesting_level)
+         if (is_multiline) then
+-            call locate_multiline_end(tokens, stmt_start, stmt_end, &
++            call locate_multiline_end(tokens, construct_start, stmt_end, &
+                 nesting_level)
++            if (construct_start /= stmt_start) then
++                ! END DO/ENDDO must retain its construct name for validation.
++                call extend_with_identifier(tokens, stmt_end)
++                call extend_with_trailing_comment(tokens, stmt_end)
++            end if
+         else
+             call locate_single_line_end(tokens, stmt_start, stmt_end)
+         end if
+--- a/src/parser/core/parser_dispatcher.f90
++++ b/src/parser/core/parser_dispatcher.f90
+@@ -56,6 +56,7 @@
+     use parser_value_statements_module, only: parse_value_statement
+     use parser_enum_statement_module, only: parse_enum_construct
+     use parser_control_flow_router_module, only: route_control_flow
++    use parser_do_constructs_module, only: parse_do_loop
+     use parser_keyword_disambiguation_module, only: keyword_should_parse_as_identifier
+     use ast_arena_modern, only: ast_arena_t
+     use ast_nodes_misc, only: comment_node, blank_line_node, directive_node
+--- a/src/parser/core/parser_dispatcher_part1.inc
++++ b/src/parser/core/parser_dispatcher_part1.inc
+@@ -661,7 +661,21 @@
+         type(token_t), intent(in) :: first_token
+         integer, intent(out) :: stmt_index
+         character(len=:), allocatable :: lowered_keyword
+-
++        integer :: pos
++
++        ! The implicit-main dispatcher must retain a named DO header, just
++        ! as the program-body parser does. parse_do_loop owns its label.
++        pos = parser%current_token
++        if (pos + 2 <= size(parser%tokens)) then
++            if (parser%tokens(pos + 1)%kind == TK_OPERATOR .and. &
++                parser%tokens(pos + 1)%text == ":" .and. &
++                parser%tokens(pos + 2)%kind == TK_KEYWORD) then
++                if (to_lower(trim(parser%tokens(pos + 2)%text)) == "do") then
++                    stmt_index = parse_do_loop(parser, arena)
++                    return
++                end if
++            end if
++        end if
+         lowered_keyword = to_lower(trim(first_token%text))
+         if (lowered_keyword == "class") then
+             stmt_index = parse_type_or_declaration(parser, arena, prefix_buffer)

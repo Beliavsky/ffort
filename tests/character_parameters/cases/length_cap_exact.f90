@@ -1,0 +1,21 @@
+implicit none
+character(*),parameter::p0="x"
+character(*),parameter::p1=p0//p0
+character(*),parameter::p2=p1//p1
+character(*),parameter::p3=p2//p2
+character(*),parameter::p4=p3//p3
+character(*),parameter::p5=p4//p4
+character(*),parameter::p6=p5//p5
+character(*),parameter::p7=p6//p6
+character(*),parameter::p8=p7//p7
+character(*),parameter::p9=p8//p8
+character(*),parameter::p10=p9//p9
+character(*),parameter::p11=p10//p10
+character(*),parameter::p12=p11//p11
+character(*),parameter::p13=p12//p12
+character(*),parameter::p14=p13//p13
+character(*),parameter::p15=p14//p14
+character(*),parameter::p16=p15//p15
+if(p16/=p15//p15) error stop 1
+print *,1
+end

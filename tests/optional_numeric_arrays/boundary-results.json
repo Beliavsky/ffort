@@ -1,0 +1,212 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/build/gfortran_A86CEF2075723C1E/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.27.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-15T02:34:28.491076+00:00",
+  "summary": {
+    "total": 6,
+    "failed": 0,
+    "candidate_checked": 6,
+    "gnu_checked": 6,
+    "gnu_skipped": 0,
+    "gnu_executed": 2,
+    "gnu_compile_only": 0,
+    "gnu_compile_rejections": 4
+  },
+  "records": [
+    {
+      "case": {
+        "name": "original_utilities",
+        "source": "original_utilities.f90",
+        "category": "reject",
+        "baseline": "run",
+        "expected_stdout": "",
+        "diagnostic": "recursive",
+        "gnu_expected_stdout": "PASS\n",
+        "scope_note": "Unmodified integer callee requires currently unsupported RECURSIVE/PACK; not claimed as implemented."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/original_utilities.f90:44:6: Expected function, found recursive\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/original_utilities.f90:44:6: Expected function, found recursive\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_real_utilities",
+        "source": "original_real_utilities.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "PASS\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " PASS\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_forward_integer_kind",
+        "source": "invalid_forward_integer_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/invalid_forward_integer_kind.f90:7:13:\n\n    7 | call inner(a)\n      |             1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to INTEGER(8)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/invalid_forward_integer_kind.f90:7:14: Procedure argument REAL kind does not match its dummy declaration\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/invalid_forward_integer_kind.f90:7:14: Procedure argument REAL kind does not match its dummy declaration\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_forward_real_kind",
+        "source": "invalid_forward_real_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/invalid_forward_real_kind.f90:7:13:\n\n    7 | call inner(a)\n      |             1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed REAL(4) to REAL(8)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/invalid_forward_real_kind.f90:7:14: Procedure argument REAL kind does not match its dummy declaration\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/invalid_forward_real_kind.f90:7:14: Procedure argument REAL kind does not match its dummy declaration\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_forward_rank",
+        "source": "invalid_forward_rank.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/invalid_forward_rank.f90:7:11:\n\n    7 | call inner(a)\n      |           1\nError: Rank mismatch in argument \u2018x\u2019 at (1) (rank-2 and rank-1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/invalid_forward_rank.f90:7:14: Procedure argument type or rank does not match its dummy declaration\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/invalid_forward_rank.f90:7:14: Procedure argument type or rank does not match its dummy declaration\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_forward_allocatable_actual",
+        "source": "invalid_forward_allocatable_actual.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/invalid_forward_allocatable_actual.f90:7:11:\n\n    7 | call inner(a)\n      |           1\nError: Actual argument for \u2018x\u2019 must be ALLOCATABLE at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/invalid_forward_allocatable_actual.f90:7:14: ALLOCATABLE dummy requires an ALLOCATABLE actual\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/optional-numeric-arrays-work/work/tests/optional_numeric_arrays/invalid_forward_allocatable_actual.f90:7:14: ALLOCATABLE dummy requires an ALLOCATABLE actual\n"
+      }
+    }
+  ],
+  "manifest_sha256": "7ddf8eef42b4eb0868b186a107388bcc5672b01308a980f236dfad2a3896ade2",
+  "source_sha256": {
+    "original_utilities.f90": "d755ea5f96fe802d5fbdcd9a46631297a64a4496b497cf1f63cdff2772176818",
+    "original_real_utilities.f90": "ac953548544800fc62cadf8b085430ec76746b9261e1f0d772fe649e7a012a84",
+    "invalid_forward_integer_kind.f90": "8942836480e82144cb0126d2136f83581cef3b6c5d1761dec2b996080a925f1c",
+    "invalid_forward_real_kind.f90": "849c4eb632866c1f3fa7ead40a9ce07826854874cf1a9284aca530e7658b4d84",
+    "invalid_forward_rank.f90": "508cbb24cc1f0f8c208698b9306897f2a3332a0051817ecc161302341aa91173",
+    "invalid_forward_allocatable_actual.f90": "3d2aa2fcee39681822fb9c7d783caf137c0bb0f797ae863c6569e03e03dd959f"
+  },
+  "candidate_sha256": "d84b181d4432d7e4ae27119252a39c46754b65ba39385d135f6f003186be158c"
+}

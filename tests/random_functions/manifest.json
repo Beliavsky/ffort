@@ -1,0 +1,358 @@
+{
+  "description": "Bounded RANDOM_NUMBER effects in ordinary functions; invariant oracles, never matching GNU sequences.",
+  "original": {
+    "source": "tests/utilities_slices/source/xutilities.f90",
+    "sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+    "routines": [
+      {
+        "name": "ran_uni_vec",
+        "start_line": 510,
+        "end_line": 514,
+        "body_sha256": "312c71eaec10db632f2ba6a53a19daab76a1f174a9b25e8db74c0d4ea28b5ac1",
+        "body_bytes": 148,
+        "crlf_lines": 5,
+        "source": "cases/original_ran_uni_vec.f90"
+      },
+      {
+        "name": "runif_vec",
+        "start_line": 2651,
+        "end_line": 2658,
+        "body_sha256": "f852e063312c3de550d52d2f5eadc0131885a30473e00229e741dd2285df10e2",
+        "body_bytes": 324,
+        "crlf_lines": 8,
+        "source": "cases/original_runif_vec.f90"
+      },
+      {
+        "name": "random_matrix",
+        "start_line": 7847,
+        "end_line": 7851,
+        "body_sha256": "d81d96a437e46b5b58be45978b56067e028b7337a5af83f309fcda4af98bfe41",
+        "body_bytes": 176,
+        "crlf_lines": 5,
+        "source": "cases/original_random_matrix.f90"
+      },
+      {
+        "name": "random_logical_vec",
+        "start_line": 6192,
+        "end_line": 6200,
+        "body_sha256": "37d747d8c3cded9700b1039a469e667c5f522c5fd85a474c31b42e8116f20efd",
+        "body_bytes": 310,
+        "crlf_lines": 9,
+        "source": "cases/original_random_logical_vec.f90"
+      },
+      {
+        "name": "random_logical_matrix",
+        "start_line": 6202,
+        "end_line": 6210,
+        "body_sha256": "59f9ec828b184615ad2324ddc665e962eb2b1f04500ada33ecdbdb01e7a426fe",
+        "body_bytes": 367,
+        "crlf_lines": 9,
+        "source": "cases/original_random_logical_matrix.f90"
+      },
+      {
+        "name": "random_logical_3d",
+        "start_line": 6212,
+        "end_line": 6220,
+        "body_sha256": "fe16ab433961759064948a9a9a68229107033a4c1d962fe8ed661d338c7da893",
+        "body_bytes": 373,
+        "crlf_lines": 9,
+        "source": "cases/original_random_logical_3d.f90"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "original_ran_uni_vec",
+      "source": "cases/original_ran_uni_vec.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "original_runif_vec",
+      "source": "cases/original_runif_vec.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "original_random_matrix",
+      "source": "cases/original_random_matrix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "original_random_logical_vec",
+      "source": "cases/original_random_logical_vec.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "original_random_logical_matrix",
+      "source": "cases/original_random_logical_matrix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "original_random_logical_3d",
+      "source": "cases/original_random_logical_3d.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "scalar_broadcast",
+      "source": "cases/scalar_broadcast.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "scalar_occurrences",
+      "source": "cases/scalar_occurrences.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "scalar_loop_refresh",
+      "source": "cases/scalar_loop_refresh.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "real_kinds_sections",
+      "source": "cases/real_kinds_sections.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "transitive_subroutine",
+      "source": "cases/transitive_subroutine.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "recursive_scalar",
+      "source": "cases/recursive_scalar.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "recursive_array",
+      "source": "cases/recursive_array.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "kind_unevaluated",
+      "source": "cases/kind_unevaluated.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "array_actual_once",
+      "source": "cases/array_actual_once.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "nested_local_rng",
+      "source": "cases/nested_local_rng.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "allocatable_result_usage",
+      "source": "cases/allocatable_result_usage.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "pure_reject",
+      "source": "cases/pure_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "elemental_reject",
+      "source": "cases/elemental_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "simple_reject",
+      "source": "cases/simple_reject.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "gnu_skip_reason": "SIMPLE is Fortran 2023 and not supported by this GNU oracle"
+    },
+    {
+      "name": "pure_transitive_reject",
+      "source": "cases/pure_transitive_reject.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "direct_io",
+      "source": "cases/direct_io.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "transitive_io",
+      "source": "cases/transitive_io.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "saved_harvest",
+      "source": "cases/saved_harvest.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "saved_transitive",
+      "source": "cases/saved_transitive.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "explicit_impure_nonelemental",
+      "source": "cases/explicit_impure_nonelemental.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_intent_in",
+      "source": "cases/invalid_intent_in.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_parenthesized",
+      "source": "cases/invalid_parenthesized.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_nonreal",
+      "source": "cases/invalid_nonreal.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "module_harvest",
+      "source": "cases/module_harvest.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "host_harvest",
+      "source": "cases/host_harvest.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "oversized_result",
+      "source": "cases/oversized_result.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "limit"
+    },
+    {
+      "name": "budget_exhaustion",
+      "source": "cases/budget_exhaustion.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "step limit",
+      "args": [
+        "--max-steps",
+        "50"
+      ]
+    },
+    {
+      "name": "recursion_depth",
+      "source": "cases/recursion_depth.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "depth"
+    },
+    {
+      "name": "specification_impure",
+      "source": "cases/specification_impure.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "where_impure_reject",
+      "source": "cases/where_impure_reject.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "kind_array_unevaluated",
+      "source": "cases/kind_array_unevaluated.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "inquiry_result",
+      "source": "cases/inquiry_result.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "empty_scalar_suppression",
+      "source": "cases/empty_scalar_suppression.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "PASS"
+    },
+    {
+      "name": "unbounded_loop_budget",
+      "source": "cases/unbounded_loop_budget.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "step limit",
+      "args": [
+        "--max-steps",
+        "1000"
+      ]
+    }
+  ]
+}

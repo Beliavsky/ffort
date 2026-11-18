@@ -1,0 +1,9 @@
+module io_names
+use iso_fortran_env,only:u=>output_unit
+implicit none
+end module
+program p
+use io_names,only:u
+implicit none
+write(u,'(a,i0)') 'module=',u
+end program

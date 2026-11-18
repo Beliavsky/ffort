@@ -1,0 +1,948 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:32:09.367081+00:00",
+  "summary": {
+    "total": 31,
+    "failed": 0,
+    "candidate_checked": 31,
+    "gnu_checked": 29,
+    "gnu_skipped": 2,
+    "gnu_executed": 15,
+    "gnu_compile_only": 1,
+    "gnu_compile_rejections": 13
+  },
+  "records": [
+    {
+      "case": {
+        "name": "joined",
+        "source": "cases/joined.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "two_words",
+        "source": "cases/two_words.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_case",
+        "source": "cases/mixed_case.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "many_spaces",
+        "source": "cases/many_spaces.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tab_space",
+        "source": "cases/tab_space.f90",
+        "category": "success",
+        "baseline": "skip",
+        "expected_stdout": "7",
+        "diagnostic": "",
+        "scope_note": "Interpreter accepts tab whitespace; GNU strict pedantic flags reject nonstandard tab characters, so no GNU oracle is claimed."
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "continuation",
+        "source": "cases/continuation.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "comment_continuation",
+        "source": "cases/comment_continuation.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "grouped_optional",
+        "source": "cases/grouped_optional.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "13",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          13\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 13\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_section",
+        "source": "cases/array_section.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 12 3 14",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1          12           3          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 12 3 14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_dummy",
+        "source": "cases/character_dummy.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "aXYd",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "aXYd\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "aXYd\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "allocatable_dummy",
+        "source": "cases/allocatable_dummy.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 3",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_dummy",
+        "source": "cases/recursive_dummy.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "comma_separator",
+        "source": "cases/comma_separator.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/comma_separator.f90:8:15:\n\n    8 | integer,intent(in,out)::x\n      |               1\nError: Bad INTENT specification at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/comma_separator.f90:4:12:\n\n    4 | call bump(a)\n      |            1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to REAL(4)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/comma_separator.f90:8:18: Expected ), found ,\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/comma_separator.f90:8:18: Expected ), found ,\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reversed",
+        "source": "cases/reversed.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/reversed.f90:8:15:\n\n    8 | integer,intent(out in)::x\n      |               1\nError: Bad INTENT specification at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/reversed.f90:4:12:\n\n    4 | call bump(a)\n      |            1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to REAL(4)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/reversed.f90:8:20: Expected ), found in\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/reversed.f90:8:20: Expected ), found in\n"
+      }
+    },
+    {
+      "case": {
+        "name": "extra_out",
+        "source": "cases/extra_out.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/extra_out.f90:8:15:\n\n    8 | integer,intent(in out out)::x\n      |               1\nError: Bad INTENT specification at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/extra_out.f90:4:12:\n\n    4 | call bump(a)\n      |            1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to REAL(4)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/extra_out.f90:8:23: Expected ), found out\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/extra_out.f90:8:23: Expected ), found out\n"
+      }
+    },
+    {
+      "case": {
+        "name": "extra_in",
+        "source": "cases/extra_in.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/extra_in.f90:8:15:\n\n    8 | integer,intent(in in out)::x\n      |               1\nError: Bad INTENT specification at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/extra_in.f90:4:12:\n\n    4 | call bump(a)\n      |            1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to REAL(4)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/extra_in.f90:8:19: Expected ), found in\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/extra_in.f90:8:19: Expected ), found in\n"
+      }
+    },
+    {
+      "case": {
+        "name": "split_in",
+        "source": "cases/split_in.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/split_in.f90:8:15:\n\n    8 | integer,intent(i nout)::x\n      |               1\nError: Bad INTENT specification at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/split_in.f90:4:12:\n\n    4 | call bump(a)\n      |            1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to REAL(4)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/split_in.f90:8:16: Expected IN, OUT or INOUT intent\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/split_in.f90:8:16: Expected IN, OUT or INOUT intent\n"
+      }
+    },
+    {
+      "case": {
+        "name": "split_out",
+        "source": "cases/split_out.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/split_out.f90:8:15:\n\n    8 | integer,intent(in o ut)::x\n      |               1\nError: Bad INTENT specification at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/split_out.f90:4:12:\n\n    4 | call bump(a)\n      |            1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to REAL(4)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/split_out.f90:8:19: Expected ), found o\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/split_out.f90:8:19: Expected ), found o\n"
+      }
+    },
+    {
+      "case": {
+        "name": "split_joined",
+        "source": "cases/split_joined.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/split_joined.f90:8:15:\n\n    8 | integer,intent(inou t)::x\n      |               1\nError: Bad INTENT specification at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/split_joined.f90:4:12:\n\n    4 | call bump(a)\n      |            1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to REAL(4)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/split_joined.f90:8:16: Expected IN, OUT or INOUT intent\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/split_joined.f90:8:16: Expected IN, OUT or INOUT intent\n"
+      }
+    },
+    {
+      "case": {
+        "name": "empty",
+        "source": "cases/empty.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/empty.f90:8:15:\n\n    8 | integer,intent()::x\n      |               1\nError: Bad INTENT specification at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/empty.f90:4:12:\n\n    4 | call bump(a)\n      |            1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to REAL(4)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/empty.f90:8:16: Expected IN, OUT or INOUT intent\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/empty.f90:8:16: Expected IN, OUT or INOUT intent\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unknown",
+        "source": "cases/unknown.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/unknown.f90:8:15:\n\n    8 | integer,intent(both)::x\n      |               1\nError: Bad INTENT specification at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/unknown.f90:4:12:\n\n    4 | call bump(a)\n      |            1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to REAL(4)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/unknown.f90:8:16: Expected IN, OUT or INOUT intent\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/unknown.f90:8:16: Expected IN, OUT or INOUT intent\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_close",
+        "source": "cases/missing_close.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/missing_close.f90:8:15:\n\n    8 | integer,intent(in out::x\n      |               1\nError: Bad INTENT specification at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/missing_close.f90:4:12:\n\n    4 | call bump(a)\n      |            1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to REAL(4)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/missing_close.f90:8:22: Expected ), found ::\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/missing_close.f90:8:22: Expected ), found ::\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_same",
+        "source": "cases/duplicate_same.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Repeated or conflicting INTENT"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/duplicate_same.f90:8:36:\n\n    8 | integer,intent(in out),intent(inout)::x\n      |                                    1\nError: Duplicate INTENT (IN OUT) attribute at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/duplicate_same.f90:4:12:\n\n    4 | call bump(a)\n      |            1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to REAL(4)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/duplicate_same.f90:8:30: Repeated or conflicting INTENT attributes are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/duplicate_same.f90:8:30: Repeated or conflicting INTENT attributes are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_conflicting",
+        "source": "cases/duplicate_conflicting.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Repeated or conflicting INTENT"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/duplicate_conflicting.f90:8:22:\n\n    8 | integer,intent(in out),intent(in)::x\n      |                      1\nError: INTENT (IN) conflicts with INTENT(INOUT) at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/duplicate_conflicting.f90:4:12:\n\n    4 | call bump(a)\n      |            1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to REAL(4)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/duplicate_conflicting.f90:8:30: Repeated or conflicting INTENT attributes are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/duplicate_conflicting.f90:8:30: Repeated or conflicting INTENT attributes are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "function_writable_boundary",
+        "source": "cases/function_writable_boundary.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "Function dummy arguments must have INTENT(IN)"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/function_writable_boundary.f90:8:23: Function dummy arguments must have INTENT(IN)\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/function_writable_boundary.f90:8:23: Function dummy arguments must have INTENT(IN)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "writable_alias",
+        "source": "cases/writable_alias.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "overlapping actual arguments"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/writable_alias.f90:4:1: overlapping actual arguments with a writable dummy are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_set_offdiagonal",
+        "source": "cases/original_set_offdiagonal.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 -2 -2 -2 5 -2 -2 -2 9 42 0 1 -2 10 -2 5 -2 10 -2 9",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.0000000000000000       -2.0000000000000000       -2.0000000000000000       -2.0000000000000000        5.0000000000000000       -2.0000000000000000       -2.0000000000000000       -2.0000000000000000        9.0000000000000000     \n   42.000000000000000     \n           0\n   1.0000000000000000       -2.0000000000000000        10.000000000000000       -2.0000000000000000        5.0000000000000000       -2.0000000000000000        10.000000000000000       -2.0000000000000000        9.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1.0000000000000000 -2.0000000000000000 -2.0000000000000000 -2.0000000000000000 5.0000000000000000 -2.0000000000000000 -2.0000000000000000 -2.0000000000000000 9.0000000000000000\n 42.000000000000000\n 0\n 1.0000000000000000 -2.0000000000000000 10.000000000000000 -2.0000000000000000 5.0000000000000000 -2.0000000000000000 10.000000000000000 -2.0000000000000000 9.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "leading_comment_continuation",
+        "source": "cases/leading_comment_continuation.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "trailing_comment_continuation",
+        "source": "cases/trailing_comment_continuation.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "blank_comment_continuation",
+        "source": "cases/blank_comment_continuation.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "uncontinued_newline",
+        "source": "cases/uncontinued_newline.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/uncontinued_newline.f90:8:15:\n\n    8 | integer,intent(in\n      |               1\nError: Bad INTENT specification at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/uncontinued_newline.f90:4:12:\n\n    4 | call bump(a)\n      |            1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to REAL(4)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/uncontinued_newline.f90:8:18: Expected ), found ;\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/intent_spelling/cases/uncontinued_newline.f90:8:18: Expected ), found ;\n"
+      }
+    }
+  ],
+  "manifest_sha256": "961ffa7909cbf3c4ab5c51873686804b0b7f06131ae0b8c72c83745f7fd6f0ef",
+  "source_sha256": {
+    "cases/joined.f90": "f753c1ec58b66fe8ce36a63690e705c1a43174d31b35524bae8044a1493b56b4",
+    "cases/two_words.f90": "381b1efac3bd3ce868828b2fd13894e01b9c02e738180535e7fc40da2f0569ab",
+    "cases/mixed_case.f90": "20172da36ba3266041ca8014e45ffa3997668ce2637585e25114cdf861ee8904",
+    "cases/many_spaces.f90": "557e29334ccff8d8b1f6223fb7b354f2e241b2ca2882f691dd70bfd2aa5f496a",
+    "cases/tab_space.f90": "840d3c0077fdcb376fcd5865eb89fd832de37e7411947c7497582380ceff3835",
+    "cases/continuation.f90": "247976e3cc4c8d5531e4258400a0f7f17f637e566fba7dcf3ad8d1128d10903e",
+    "cases/comment_continuation.f90": "dc6412e2e45c85edbed909eb5016e09428cc51e457d17d2f5d4e0c68b615e9d2",
+    "cases/grouped_optional.f90": "e37f688fa35fe0ffaba55b29047b4d8eb6793b0911f5c9d21e2aa1a21072ba69",
+    "cases/array_section.f90": "1997d73dc0322c1f55f70bcba65608f27dffb1e4147bb9b87538b185e167e75d",
+    "cases/character_dummy.f90": "bc51e8496fd67c9525cc49be8d1b82c3cdebbce0119230e9d3ea310e92a5f82b",
+    "cases/allocatable_dummy.f90": "ebf46133f234ee8c9f0707fdd19512dbd8a0aa606ae9c96190a2bf4ea72bdbcf",
+    "cases/recursive_dummy.f90": "a91380cac0e32ee2cd03cd14493bd652f0e06ae8cee5054a7311fa129f5d281d",
+    "cases/comma_separator.f90": "0edba8d6dbc10889fae8f13e0ae249f696f92a40fcb8cabdce51fdb3ee64abfa",
+    "cases/reversed.f90": "3a255c4fab48a234568201a9a5196b87744d1222f2389d7bfe9ce459de37f65b",
+    "cases/extra_out.f90": "42c41472a91790d3ff04683dca807db619dfb8465744231d275c45f61455b075",
+    "cases/extra_in.f90": "ba544045db7d7f3da00f0cbdc843ee74b6f6a8356028311a069ee64e17d596bb",
+    "cases/split_in.f90": "b7987ce03678bb12abf9e9127eac0eed0fab62fc32f54f749b1c9b4d4c9d9d2a",
+    "cases/split_out.f90": "964b2bba79a1b04c9588ffb36f6f601abeb706870403ead654baa22528426bc0",
+    "cases/split_joined.f90": "b2171b685692a6880f2145d071384acc20d10982bfd60a9695e09b0092368272",
+    "cases/empty.f90": "a3bd89792a9ac651730944298a196e101d46155c3f71799b306d1eca8df060b3",
+    "cases/unknown.f90": "0627ba89f639d8c0a24f6a5b1d3ba8f827b39f6cf1a7fcf3abf7eb6cb13b544e",
+    "cases/missing_close.f90": "1815e43970dde8fdf24da49d12b6c00d8cdeb0ee4049ba2ca10ee182a68ba71d",
+    "cases/duplicate_same.f90": "c3ee4174f35cadcaf02a8b8dfa7554b4c2f73afc0fad73ccd53633c3e3e9c6e8",
+    "cases/duplicate_conflicting.f90": "383851e12dbae031ab9960ccd73d7c0c59579241a25285456d40b60765b08ed7",
+    "cases/function_writable_boundary.f90": "fb125338ceb0bb45c402a30c509b154480129ded09dbd8d4a551152fc72feb82",
+    "cases/writable_alias.f90": "9663c1a87700c63167505224e3a85fa07963a49f3ab1d4c0ee2421a7c71a843f",
+    "cases/original_set_offdiagonal.f90": "6bd8f5b0c62b009905ae03352eaa6a258c89ce32224bd7ddb0636fa0184dd882",
+    "cases/leading_comment_continuation.f90": "da6fb69f4bfa58470ad92d35fb0066c01e83337c8aa8665444ebda55cd1c9abc",
+    "cases/trailing_comment_continuation.f90": "024eb135166e9ccda1541acd32974c64e343b0a1677df6b18b1cc629308cccdc",
+    "cases/blank_comment_continuation.f90": "74cc243341e3e0d00630a8b8f62d5c171613710bf8d87dd95c62362475c8937a",
+    "cases/uncontinued_newline.f90": "114cc84b4ccbcbd4863de819f397e66ea0418ad794fa28c741e341f877bd7499"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

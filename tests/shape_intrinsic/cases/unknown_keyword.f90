@@ -1,0 +1,7 @@
+program p
+implicit none
+integer::a(2),k
+a=0
+k=4
+print *,shape(a,dim=1)
+end program

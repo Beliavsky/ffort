@@ -1,0 +1,415 @@
+{
+  "cases": [
+    {
+      "name": "demo_associated",
+      "source": "demo_associated.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "POINTER ASSOCIATED POINTER ASSOCIATED TO TARGET"
+    },
+    {
+      "name": "integer4",
+      "source": "integer4.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T T T F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "integer8",
+      "source": "integer8.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T T T F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "real4",
+      "source": "real4.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T T T F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "real8",
+      "source": "real8.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T T T F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "strides",
+      "source": "strides.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T F F T F T",
+      "diagnostic": ""
+    },
+    {
+      "name": "singleton",
+      "source": "singleton.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T T F",
+      "diagnostic": ""
+    },
+    {
+      "name": "empty",
+      "source": "empty.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T F F T F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "matrix",
+      "source": "matrix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T T F T F T T",
+      "diagnostic": ""
+    },
+    {
+      "name": "repoint",
+      "source": "repoint.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T F F T F F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "null_first",
+      "source": "null_first.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "F F F",
+      "diagnostic": ""
+    },
+    {
+      "name": "frozen_mapping",
+      "source": "frozen_mapping.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T F",
+      "diagnostic": ""
+    },
+    {
+      "name": "unevaluated_kind",
+      "source": "unevaluated_kind.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 4",
+      "diagnostic": ""
+    },
+    {
+      "name": "undefined_pointer",
+      "source": "undefined_pointer.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "undefined"
+    },
+    {
+      "name": "undefined_target_pointer",
+      "source": "undefined_target_pointer.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "undefined"
+    },
+    {
+      "name": "invalid_bounds",
+      "source": "invalid_bounds.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "bounds"
+    },
+    {
+      "name": "zero_stride",
+      "source": "zero_stride.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "stride is zero"
+    },
+    {
+      "name": "first_not_pointer",
+      "source": "first_not_pointer.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "POINTER"
+    },
+    {
+      "name": "first_section",
+      "source": "first_section.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "whole"
+    },
+    {
+      "name": "target_value",
+      "source": "target_value.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "designator"
+    },
+    {
+      "name": "target_parenthesized",
+      "source": "target_parenthesized.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "designator"
+    },
+    {
+      "name": "target_pointer_section",
+      "source": "target_pointer_section.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "whole"
+    },
+    {
+      "name": "null_target",
+      "source": "null_target.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "NULL"
+    },
+    {
+      "name": "missing_pointer",
+      "source": "missing_pointer.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Missing required"
+    },
+    {
+      "name": "unknown_keyword",
+      "source": "unknown_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "keyword"
+    },
+    {
+      "name": "duplicate_keyword",
+      "source": "duplicate_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Repeated"
+    },
+    {
+      "name": "too_many",
+      "source": "too_many.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "optional TARGET"
+    },
+    {
+      "name": "kind_mismatch",
+      "source": "kind_mismatch.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "matching"
+    },
+    {
+      "name": "type_mismatch",
+      "source": "type_mismatch.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "matching"
+    },
+    {
+      "name": "scalar_target",
+      "source": "scalar_target.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "rank-one"
+    },
+    {
+      "name": "matrix_target",
+      "source": "matrix_target.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "rank-one"
+    },
+    {
+      "name": "plain_target",
+      "source": "plain_target.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "TARGET"
+    },
+    {
+      "name": "rank_three_target",
+      "source": "rank_three_target.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "rank-one/two"
+    },
+    {
+      "name": "allocatable_target",
+      "source": "allocatable_target.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "rank-one/two"
+    },
+    {
+      "name": "caller_target",
+      "source": "caller_target.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T",
+      "diagnostic": ""
+    },
+    {
+      "name": "copied_target",
+      "source": "copied_target.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "shareable"
+    },
+    {
+      "name": "out_flags",
+      "source": "out_flags.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T",
+      "diagnostic": ""
+    },
+    {
+      "name": "optional_present",
+      "source": "optional_present.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T",
+      "diagnostic": ""
+    },
+    {
+      "name": "optional_target_absent",
+      "source": "optional_target_absent.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "T",
+      "diagnostic": "",
+      "oracle": "F2018 specification; GNU14.2 known false result, compile-only"
+    },
+    {
+      "name": "optional_pointer_target_absent",
+      "source": "optional_pointer_target_absent.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "absent"
+    },
+    {
+      "name": "optional_first_absent",
+      "source": "optional_first_absent.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "absent"
+    },
+    {
+      "name": "nested_forward",
+      "source": "nested_forward.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T",
+      "diagnostic": ""
+    },
+    {
+      "name": "expired_local",
+      "source": "expired_local.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "lifetime"
+    },
+    {
+      "name": "shared_budget",
+      "source": "shared_budget.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "step limit",
+      "args": [
+        "--max-steps",
+        "100"
+      ]
+    },
+    {
+      "name": "optional_target_absent_null",
+      "source": "optional_target_absent_null.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "F",
+      "diagnostic": "",
+      "oracle": "F2018 specification-only optional omission"
+    },
+    {
+      "name": "optional_target_absent_empty",
+      "source": "optional_target_absent_empty.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "T",
+      "diagnostic": "",
+      "oracle": "F2018 specification-only optional omission"
+    },
+    {
+      "name": "optional_target_absent_section",
+      "source": "optional_target_absent_section.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "absent"
+    },
+    {
+      "name": "optional_target_absent_undefined",
+      "source": "optional_target_absent_undefined.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "undefined"
+    },
+    {
+      "name": "maximum_identity",
+      "source": "maximum_identity.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T"
+    },
+    {
+      "name": "scalar_expansion",
+      "source": "scalar_expansion.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T F"
+    },
+    {
+      "name": "empty_enclosing",
+      "source": "empty_enclosing.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "done"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "scope": "Synthetic release 0.41 compositions. Original utility and intrinsic programs are tested separately and are not rewritten here.",
+  "cases": [
+    {
+      "name": "module_parameter_inverse_formats",
+      "source": "cases/module_parameter_inverse_formats.f90",
+      "sha256": "14cd7dc7a44aec15145d490c3015403d01bd33ce0968514fe9cc31e9fbf4e0ab",
+      "category": "success",
+      "gnu": "run",
+      "expected": " -1.570796   0.000000   1.570796\n -0.785398   0.000000   0.785398\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "keyword_quadrants_named_format",
+      "source": "cases/keyword_quadrants_named_format.f90",
+      "sha256": "3e7416471910808ba412c37ca46b5ee3edc3e0c90ee589018ac430518e35185d",
+      "category": "success",
+      "gnu": "run",
+      "expected": "  3.141593   1.570796   0.000000  -1.570796\n  3.141593   1.570796   0.000000  -1.570796\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "empty_real_inverse_allocation",
+      "source": "cases/empty_real_inverse_allocation.f90",
+      "sha256": "d5e2601adbb484300aebe7cbb9dd5a3dee75d23bf1026dca0ce932867c273d59",
+      "category": "success",
+      "gnu": "run",
+      "expected": "0 8 8\n0 8 4\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "empty_integer_dummy_host_format",
+      "source": "cases/empty_integer_dummy_host_format.f90",
+      "sha256": "164e0ac236433589f67c0f3b175556ee80543bd00017eb3c2a362e3b0202ee34",
+      "category": "success",
+      "gnu": "run",
+      "expected": "0 8\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "empty_logical_reduction_metadata",
+      "source": "cases/empty_logical_reduction_metadata.f90",
+      "sha256": "698d1d14fb49c74e25f821a81d3e74412b26daa83b596b72b329f772a6288c0e",
+      "category": "success",
+      "gnu": "run",
+      "expected": "T F T 4\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "empty_gather_allocation_snapshot",
+      "source": "cases/empty_gather_allocation_snapshot.f90",
+      "sha256": "d4b7fd9ff04d86e0c4280fcf2cfac94cfb3a1c74f74f8d1c82409d3b2da7ccec",
+      "category": "success",
+      "gnu": "run",
+      "expected": "0 2 T\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "named_format_record_traversal",
+      "source": "cases/named_format_record_traversal.f90",
+      "sha256": "b67e5a26df164ad0f19785285271d8abc28a80a90375cf1ac704af2d06a30f65",
+      "category": "success",
+      "gnu": "run",
+      "expected": "1\n2\n3\np1sp2sp\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "named_format_signed_zero",
+      "source": "cases/named_format_signed_zero.f90",
+      "sha256": "36b80959a9ea4e34d661809f0e26761554d1d1a1eb6996827b6e78f0b7709692",
+      "category": "success",
+      "gnu": "run",
+      "expected": "  -0.000   -0.000\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "constant_format_concat_parameter",
+      "source": "cases/constant_format_concat_parameter.f90",
+      "sha256": "34fe77bb273e760b41a0f3847fcef9732952643a08652ece0075a4f410fa4d0c",
+      "category": "success",
+      "gnu": "run",
+      "expected": "0 T\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "strided_inverse_scalar_expansion",
+      "source": "cases/strided_inverse_scalar_expansion.f90",
+      "sha256": "b9342c11f712bc6a1a717e85af2901b67193983fd2bf44155d586898763476f0",
+      "category": "success",
+      "gnu": "run",
+      "expected": "  0.785398   0.000000  -0.785398\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "parameter_unlimited_defined_output",
+      "source": "cases/parameter_unlimited_defined_output.f90",
+      "sha256": "c0eebb514fc3636991dbafcd0ce5763075a7f081587c9eed387961ab0c03fe26",
+      "category": "success",
+      "gnu": "run",
+      "expected": "11 12\n2\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "asin_named_atomic_rejection",
+      "source": "cases/asin_named_atomic_rejection.f90",
+      "sha256": "45afa21b3789df25b4704d7e9bc1cd745e7c3a1038f66e70f9155034b7c050b2",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected": "before\n",
+      "diagnostic": "ASIN requires -1 <= X <= 1",
+      "note": "GNU compilation only: out-of-domain ASIN is not executed under the finite-value policy. The named-format failing record is atomic."
+    },
+    {
+      "name": "atan_named_atomic_rejection",
+      "source": "cases/atan_named_atomic_rejection.f90",
+      "sha256": "e25f050192876a42eab026525413b94d2b5fd2db0680fd0266672222fb817838",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected": "before\n",
+      "diagnostic": "ATAN/ATAN2 require X or Y to be nonzero",
+      "note": "GNU compilation only: the both-zero direction is rejected by the bounded interpreter contract; no GNU execution agreement is claimed."
+    }
+  ]
+}

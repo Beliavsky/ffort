@@ -1,0 +1,11 @@
+--- a/src/ast/factory/ast_factory_io.f90
++++ b/src/ast/factory/ast_factory_io.f90
+@@ -134,6 +134,8 @@
+         if (present(io_control_list)) then
+             if (len(io_control_list) > 0) read_stmt%io_control_list = io_control_list
+         end if
++        read_stmt%is_formatted = allocated(read_stmt%format_spec) .or. &
++            read_stmt%format_expr_index > 0 .or. allocated(read_stmt%namelist_group)
+         if (present(line)) read_stmt%line = line
+         if (present(column)) read_stmt%column = column
+         call apply_io_specifiers(read_stmt%specifiers, &

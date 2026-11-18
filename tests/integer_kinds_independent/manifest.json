@@ -1,0 +1,189 @@
+{
+  "cases": [
+    {
+      "name": "large_add",
+      "source": "cases/large_add.f90",
+      "category": "success",
+      "expected_stdout": "9007199254740995",
+      "baseline": "run"
+    },
+    {
+      "name": "comparison",
+      "source": "cases/comparison.f90",
+      "category": "success",
+      "expected_stdout": "T",
+      "baseline": "run"
+    },
+    {
+      "name": "min64",
+      "source": "cases/min64.f90",
+      "category": "success",
+      "expected_stdout": "-9223372036854775808",
+      "baseline": "run"
+    },
+    {
+      "name": "mod_min",
+      "source": "cases/mod_min.f90",
+      "category": "success",
+      "expected_stdout": "0",
+      "baseline": "run"
+    },
+    {
+      "name": "modulo_signs",
+      "source": "cases/modulo_signs.f90",
+      "category": "success",
+      "expected_stdout": "1 -1 -2",
+      "baseline": "run"
+    },
+    {
+      "name": "overflow_add",
+      "source": "cases/overflow_add.f90",
+      "category": "runtime",
+      "expected_stdout": "",
+      "baseline": "skip",
+      "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "overflow_sub",
+      "source": "cases/overflow_sub.f90",
+      "category": "runtime",
+      "expected_stdout": "",
+      "baseline": "skip",
+      "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "overflow_mul",
+      "source": "cases/overflow_mul.f90",
+      "category": "runtime",
+      "expected_stdout": "",
+      "baseline": "skip",
+      "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "overflow_div",
+      "source": "cases/overflow_div.f90",
+      "category": "runtime",
+      "expected_stdout": "",
+      "baseline": "skip",
+      "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "overflow_neg",
+      "source": "cases/overflow_neg.f90",
+      "category": "runtime",
+      "expected_stdout": "",
+      "baseline": "skip",
+      "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "overflow_abs",
+      "source": "cases/overflow_abs.f90",
+      "category": "runtime",
+      "expected_stdout": "",
+      "baseline": "skip",
+      "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "overflow_pow",
+      "source": "cases/overflow_pow.f90",
+      "category": "runtime",
+      "expected_stdout": "",
+      "baseline": "skip",
+      "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "negative_pow",
+      "source": "cases/negative_pow.f90",
+      "category": "success",
+      "expected_stdout": "1",
+      "baseline": "run"
+    },
+    {
+      "name": "default_overflow",
+      "source": "cases/default_overflow.f90",
+      "category": "runtime",
+      "expected_stdout": "",
+      "baseline": "skip",
+      "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "narrowing",
+      "source": "cases/narrowing.f90",
+      "category": "runtime",
+      "expected_stdout": "",
+      "baseline": "skip",
+      "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "bad_kind",
+      "source": "cases/bad_kind.f90",
+      "category": "invalid",
+      "expected_stdout": "",
+      "baseline": "skip",
+      "baseline_note": "INTEGER kind16 is outside the interpreter subset but supported by GNU; not a GNU rejection oracle.",
+      "diagnostic": "INT supports kinds"
+    },
+    {
+      "name": "real_bound",
+      "source": "cases/real_bound.f90",
+      "category": "runtime",
+      "expected_stdout": "",
+      "baseline": "skip",
+      "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "real_min",
+      "source": "cases/real_min.f90",
+      "category": "success",
+      "expected_stdout": "-9223372036854775808",
+      "baseline": "skip",
+      "baseline_note": "Interpreter explicitly supports signed two-complement minimum; strict GNU constant conversion diagnoses the standard symmetric-range boundary."
+    },
+    {
+      "name": "kind_int",
+      "source": "cases/kind_int.f90",
+      "category": "success",
+      "expected_stdout": "8",
+      "baseline": "run"
+    },
+    {
+      "name": "mixed_wide_compare",
+      "source": "cases/mixed_wide_compare.f90",
+      "category": "success",
+      "expected_stdout": "T T",
+      "baseline": "run"
+    },
+    {
+      "name": "mixed_kind_arithmetic",
+      "source": "cases/mixed_kind_arithmetic.f90",
+      "category": "success",
+      "expected_stdout": "3000000002 6000000000",
+      "baseline": "run"
+    },
+    {
+      "name": "selected_kinds",
+      "source": "cases/selected_kinds.f90",
+      "category": "success",
+      "expected_stdout": "4 8 -1",
+      "expected_gnu_stdout": "4 8 16",
+      "baseline": "run"
+    },
+    {
+      "name": "int_keywords",
+      "source": "cases/int_keywords.f90",
+      "category": "success",
+      "expected_stdout": "42 8",
+      "baseline": "run"
+    }
+  ]
+}

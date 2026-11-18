@@ -1,0 +1,20 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -1999,7 +1999,7 @@
+         call first_intrinsic_argument_metadata(arena, node, visiting, &
+             argument_type, argument_kind)
+         select case (argument_type)
+-        case (TREAL, TCOMPLEX)
++        case (TCOMPLEX)
+             kind_value = argument_kind
+         end select
+     end subroutine real_result_kind_from_argument
+@@ -2147,7 +2147,7 @@
+         position = 0
+         if (.not. allocated(node%arg_indices)) return
+         select case (intrinsic_name)
+-        case ("aint", "anint", "char", "achar", "iachar", "nint", "floor", "ceiling", "index", "scan", "verify", "len_trim", "shape")
++        case ("real", "aint", "anint", "char", "achar", "iachar", "nint", "floor", "ceiling", "index", "scan", "verify", "len_trim", "shape")
+             do i = 1, size(node%arg_indices)
+                 argument_index = node%arg_indices(i)
+                 if (.not. arena%has_node_at(argument_index)) cycle

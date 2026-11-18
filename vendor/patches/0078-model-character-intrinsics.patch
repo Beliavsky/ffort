@@ -1,0 +1,68 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -951,7 +951,7 @@
+         ! These elemental intrinsics preserve the conforming actual shape.
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+-        case ("asin", "atan", "atan2", "acos", "dprod", "tand", "aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
++        case ("rrspacing", "asin", "atan", "atan2", "acos", "dprod", "tand", "aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+               "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "isnan", "erfc_scaled", "erf", "bessel_j0", "bessel_j1", "bessel_jn", "bessel_y0", "bessel_y1", "bessel_yn", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+@@ -987,7 +987,7 @@
+             call resolve_real_round_metadata(arena,node,visiting)
+         case ("dprod")
+             call set_intrinsic_metadata(node,TREAL,8,result_rank)
+-        case ("asin", "atan", "atan2", "acos", "tand", "asinh", "acosh")
++        case ("rrspacing", "asin", "atan", "atan2", "acos", "tand", "asinh", "acosh")
+             call first_intrinsic_argument_metadata(arena,node,visiting,result_type,kind_value)
+             if(kind_value>0)call set_intrinsic_metadata(node,TREAL,kind_value,result_rank)
+         case ("erf", "bessel_j0", "bessel_j1", "bessel_jn", "bessel_y0", "bessel_y1", "bessel_yn")
+@@ -1001,7 +1001,7 @@
+                 call set_intrinsic_metadata(node, result_type, kind_value, result_rank)
+         case ("isnan")
+             call set_intrinsic_metadata(node, TLOGICAL, 4, result_rank)
+-        case ("repeat")
++        case ("repeat", "new_line")
+             call set_intrinsic_metadata(node, TCHAR, 1, 0)
+         case ("adjustl", "adjustr")
+             call set_intrinsic_metadata(node, TCHAR, 1, result_rank)
+@@ -1045,7 +1045,7 @@
+                 result_type, kind_value)
+             if (result_type > 0 .and. kind_value > 0) &
+                 call set_intrinsic_metadata(node, result_type, kind_value, 0)
+-        case ("kind", "selected_int_kind", "selected_real_kind", "radix", "minexponent", "maxexponent")
++        case ("kind", "selected_int_kind", "selected_real_kind", "digits", "radix", "minexponent", "maxexponent")
+             call set_intrinsic_metadata(node, TINT, 4, 0)
+         case ("aimag", "abs")
+             call resolve_unary_same_kind_intrinsic(arena, node, visiting, name, &
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 107
++        integer, parameter :: NUM_INTRINSICS = 110
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -194,6 +194,18 @@
+             description="Elemental quadrant-aware arctangent")
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="digits", return_type="integer", arg_types="numeric", &
++            description="Significant model digits inquiry")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="new_line", return_type="character", arg_types="character", &
++            description="Character newline inquiry")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="rrspacing", return_type="real", arg_types="real", &
++            description="Reciprocal relative model spacing")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="dble", return_type="real", arg_types="numeric", &
+             description="Convert to double precision real")
+         i = i + 1

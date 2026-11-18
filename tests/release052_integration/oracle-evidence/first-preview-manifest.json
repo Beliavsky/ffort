@@ -1,0 +1,273 @@
+[
+  {
+    "name": "while_rotation_refresh",
+    "mode": "run",
+    "gnu_mode": "execute",
+    "stdout": "C A B \nA B C \nB C A \n",
+    "features": [
+      "DO WHILE",
+      "gather cache refresh",
+      "alias assignment"
+    ],
+    "source_sha256": "3669422692c764cb932a18dce25cae204f98a3a3d4f34343f50bb538f99b1651"
+  },
+  {
+    "name": "while_gather_condition",
+    "mode": "run",
+    "gnu_mode": "execute",
+    "stdout": "1 bca\n",
+    "features": [
+      "array LOGICAL condition",
+      "gather in condition",
+      "body refresh"
+    ],
+    "source_sha256": "f4f94a531d2f1f856bc8a5c4ce5667b9f2cc9880937947fd21e9383e42ec46ab"
+  },
+  {
+    "name": "mask_shift_indices",
+    "mode": "run",
+    "gnu_mode": "execute",
+    "stdout": "CC BB CC DD\n",
+    "features": [
+      "INTEGER8 masks/SHIFTR",
+      "duplicate gather ordering"
+    ],
+    "source_sha256": "e01fc82e9342bd644205de3542a688c348d41245b7fc9c897b7decd33876bbcb"
+  },
+  {
+    "name": "element_file_rank3",
+    "mode": "run",
+    "gnu_mode": "execute",
+    "stdout": "KEEP    \ncc:aa   \n",
+    "features": [
+      "gather output items",
+      "rank3 element internal WRITE",
+      "neighbor preservation"
+    ],
+    "source_sha256": "1294b3b29c792b5b3b3dd5760f88e193d03e41ffcfe4f4119835f7df2583a009"
+  },
+  {
+    "name": "allocatable_alias_rebounds",
+    "mode": "run",
+    "gnu_mode": "execute",
+    "stdout": "1 4 ccaaccbb\n",
+    "features": [
+      "allocatable self-gather",
+      "lower bounds",
+      "snapshot before reallocation"
+    ],
+    "source_sha256": "931d192d873facebe7126729a6c6ddb781d311eecc335aecbdf15507ca53a322"
+  },
+  {
+    "name": "deferred_typed_concat",
+    "mode": "run",
+    "gnu_mode": "execute",
+    "stdout": "b   \na   \nZ   \n",
+    "features": [
+      "deferred descriptor",
+      "typed constructor padding",
+      "gather leaf"
+    ],
+    "source_sha256": "a967c4c5729116ac13611401d2a8cfc03e0490786f44f482ce6be8c7db262302"
+  },
+  {
+    "name": "output_do_index_overlay",
+    "mode": "run",
+    "gnu_mode": "execute",
+    "stdout": "a\nc\nb\nb\nc\na\n4\n",
+    "features": [
+      "output implied-DO",
+      "gather indices refresh",
+      "control final value"
+    ],
+    "source_sha256": "83a28511a2b31ffa52e370cd3d739ae2ccaffd54d5fb6fb23540497ef1e8576b"
+  },
+  {
+    "name": "constructor_index_cache",
+    "mode": "run",
+    "gnu_mode": "execute",
+    "stdout": "2 2 1 9\n",
+    "features": [
+      "constructor index ownership",
+      "gather inside INDEX",
+      "outer index preserved"
+    ],
+    "source_sha256": "31b128c0ef122fa97de50d2718aa93e29bfac7b22c96be278acd8c8c5d9404a4"
+  },
+  {
+    "name": "empty_deferred_metadata",
+    "mode": "run",
+    "gnu_mode": "execute",
+    "stdout": "0 5 1\n",
+    "features": [
+      "empty deferred gather",
+      "assignment descriptor",
+      "no base values"
+    ],
+    "source_sha256": "c7da75416e64d0874cab0e9382754f035316c0b2cfc19fad4ae077f2345a3d58"
+  },
+  {
+    "name": "fixed_unallocated_kind_len",
+    "mode": "run",
+    "gnu_mode": "execute",
+    "stdout": "6 1\n",
+    "features": [
+      "fixed LEN",
+      "KIND",
+      "undefined index and unavailable base non-evaluation"
+    ],
+    "source_sha256": "9b476bd5a14810efaea3d486bd16a008b785224375f474b77fa075bf469f4552"
+  },
+  {
+    "name": "minmax_gather_padding",
+    "mode": "run",
+    "gnu_mode": "execute",
+    "stdout": "bb \nbb \ncc \n",
+    "features": [
+      "CHARACTER MAX",
+      "scalar expansion",
+      "gather result lengths"
+    ],
+    "source_sha256": "3f523d47155bd49c92aee3cd43c7dcbaf82c6268e80d466794f544a9dbb6757c"
+  },
+  {
+    "name": "derived_field_staging",
+    "mode": "reject",
+    "gnu_mode": "compile-only",
+    "stdout": "",
+    "features": [
+      "derived CHAR default",
+      "component index scalar",
+      "ordinary CHAR gather"
+    ],
+    "diagnostic": {
+      "line": 4,
+      "column": 5,
+      "message": "Expected (, found ::"
+    },
+    "source_sha256": "cb1b22f6ab345f3f4fa540d7b09d6727cadef33b13a060c0eb5f467e702fbb33"
+  },
+  {
+    "name": "bounds_failure_pending",
+    "mode": "runtime",
+    "gnu_mode": "compile-only",
+    "stdout": "SAFE",
+    "features": [
+      "bounds check",
+      "pending stdout atomicity"
+    ],
+    "diagnostic": {
+      "line": 8,
+      "column": 15,
+      "message": "vector row index out of bounds"
+    },
+    "source_sha256": "d2581f6f371e95f0b8b7f382fee1c9dce4308764cb3c2fbf8497bd3c52dcd92c"
+  },
+  {
+    "name": "undefined_element_file",
+    "mode": "runtime",
+    "gnu_mode": "compile-only",
+    "stdout": "SAFE",
+    "features": [
+      "undefined selected element",
+      "element file staging",
+      "pending stdout"
+    ],
+    "diagnostic": {
+      "line": 8,
+      "column": 23,
+      "message": "read of uninitialized gathered array element"
+    },
+    "source_sha256": "4c635f9340d4f9f672c81b6bf097b0d3d164499532ed422905f3940468ee78a1"
+  },
+  {
+    "name": "dynamic_untyped_boundary",
+    "mode": "reject",
+    "gnu_mode": "compile-only",
+    "stdout": "",
+    "features": [
+      "preserved dynamic untyped constructor boundary",
+      "pending stdout"
+    ],
+    "diagnostic": {
+      "line": 7,
+      "column": 22,
+      "message": "Untyped CHARACTER constructor requires descriptor-known item lengths"
+    },
+    "source_sha256": "3fbe96c2ad3cf1804bdce1b0a4da845298cdb8f2e83b6394d6a60e067b42a65e"
+  },
+  {
+    "name": "dynamic_internal_slash",
+    "mode": "runtime",
+    "gnu_mode": "compile-only",
+    "stdout": "SAFE",
+    "features": [
+      "runtime format",
+      "reached internal slash retained boundary",
+      "gather staging"
+    ],
+    "diagnostic": {
+      "line": 10,
+      "column": 1,
+      "message": "slash record editing requires another record; scalar internal/child WRITE is unsupported"
+    },
+    "source_sha256": "88dbb791e6f8b02014f3da4dcaf098432d47c3a07e82f64f646164ac930d18f8"
+  },
+  {
+    "name": "in_actual_out_alias",
+    "mode": "run",
+    "gnu_mode": "execute",
+    "stdout": "ccaacc\n",
+    "features": [
+      "parenthesized INTENT(IN) actual",
+      "INTENT(OUT) alias deallocation",
+      "deep-copy"
+    ],
+    "source_sha256": "824e60d1235fdcbfe6c6accec5b54b934fdb4c258524a81bc3fff28c7c906c41"
+  },
+  {
+    "name": "unparenthesized_actual_boundary",
+    "mode": "reject",
+    "gnu_mode": "compile-only",
+    "stdout": "",
+    "features": [
+      "retained unparenthesized actual boundary",
+      "no writable gather expansion"
+    ],
+    "diagnostic": {
+      "line": 17,
+      "column": 27,
+      "message": "Parenthesize a gathered row value when passing it to a user procedure"
+    },
+    "source_sha256": "9f735304c61656eb1e89b7ba6c937bd8e55e19212c006d99502a401001027006"
+  },
+  {
+    "name": "module_derived_field_staging",
+    "mode": "runtime",
+    "gnu_mode": "compile-only",
+    "stdout": "",
+    "features": [
+      "module derived default",
+      "component staging",
+      "gather indices"
+    ],
+    "diagnostic": {
+      "line": 15,
+      "column": 18,
+      "message": "invalid KIND argument opcode"
+    },
+    "source_sha256": "91dd74c5787e67151516f8ebaf68bc9764cb677c8b5c8da0bf8afe59bae7695d"
+  },
+  {
+    "name": "module_component_scalar_staging",
+    "mode": "run",
+    "gnu_mode": "execute",
+    "stdout": "DEF\nabc\nDEF\n",
+    "features": [
+      "module derived default",
+      "scalar component staging",
+      "gather indices"
+    ],
+    "source_sha256": "65c8363046205d1863da3900dfba8bea0d3cca82043f25ddf5a76aa56d9af6b1"
+  }
+]

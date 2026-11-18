@@ -1,0 +1,423 @@
+{
+  "schema": 1,
+  "cases": [
+    {
+      "name": "constructor_norm_scalar_expansion",
+      "source": "cases/constructor_norm_scalar_expansion.f90",
+      "sha256": "f70896e4da73dd9fa91c0cc18641ca1c19b9f5a608f922aa43f7b191bf3202ca",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": " 6.0 7.0 8.0  99\n",
+      "features": [
+        "constructor index isolation",
+        "NORM2 scalar expansion"
+      ]
+    },
+    {
+      "name": "reverse_constructor_whole_bounds",
+      "source": "cases/reverse_constructor_whole_bounds.f90",
+      "sha256": "1846a9fab5a2fc2723c32f8517745125e27a90234f4f8c992d2c7e1bdff77086",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  -2   0   3   2   1  77\n",
+      "features": [
+        "negative stride",
+        "vector bounds"
+      ]
+    },
+    {
+      "name": "transpose_constructor_bounds",
+      "source": "cases/transpose_constructor_bounds.f90",
+      "sha256": "945157b66cde7028d6a4f4b5b0871676fcfda0c3a9b9858edab50fe5c9ad99f5",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  1  1  3  2\n  6.0  8.0 10.0  7.0  9.0 11.0\n",
+      "features": [
+        "constructor RESHAPE",
+        "TRANSPOSE",
+        "scalar norm expansion",
+        "allocated bounds"
+      ]
+    },
+    {
+      "name": "nested_outer_dependent_controls",
+      "source": "cases/nested_outer_dependent_controls.f90",
+      "sha256": "faa621ff60eac0806b3e401ffaae70ed5768545c196a8c7b85fde04c4985e807",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "   1   6  11  21  22  31  32  33  77  88\n",
+      "features": [
+        "nested ownership",
+        "outer-dependent control",
+        "KIND8 bounds"
+      ]
+    },
+    {
+      "name": "character_min_constructor",
+      "source": "cases/character_min_constructor.f90",
+      "sha256": "a13f32306c3343cdb9f04d0da3a8ff187fdbea99b3eccccc6d84b808a28713ec",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[b ][a ][bb]\n9\n",
+      "features": [
+        "CHARACTER MIN",
+        "constructor values",
+        "outer index preservation"
+      ]
+    },
+    {
+      "name": "typed_character_max_expansion",
+      "source": "cases/typed_character_max_expansion.f90",
+      "sha256": "f0d2b3d652c1b26bb6b938fceb188e62a8d19fcccf55af05e735f598590a17c5",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[c   ][c   ][c   ]\n",
+      "features": [
+        "typed CHARACTER constructor",
+        "unequal length MIN",
+        "MAX scalar expansion"
+      ]
+    },
+    {
+      "name": "read_character_max_reverse",
+      "source": "cases/read_character_max_reverse.f90",
+      "sha256": "7f557cc9d943c8dc85b53c80fff42b15a410d11e5becf5808429c62a7eefd329",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "[m ][b ][z ]\n",
+      "features": [
+        "internal CHARACTER READ",
+        "reverse constructor",
+        "MAX"
+      ]
+    },
+    {
+      "name": "allocated_character_result_length",
+      "source": "cases/allocated_character_result_length.f90",
+      "sha256": "0c1fa5c6aca2727a970f9c0472e3c336ceabd125ced182be67effea2d6234694",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "4[a   ][a   ]\n",
+      "features": [
+        "scalar allocated CHARACTER",
+        "maximum result length",
+        "constructor snapshot"
+      ]
+    },
+    {
+      "name": "character_keywords_and_bounds",
+      "source": "cases/character_keywords_and_bounds.f90",
+      "sha256": "195ad7d0367bc827f1ce8aa7fa5cf912735c66f0f9e52c6716864a526f8f2949",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  1  2[mmm][zzz]\n",
+      "features": [
+        "reordered MIN/MAX keywords",
+        "scalar expansion",
+        "bounds vector leaves"
+      ]
+    },
+    {
+      "name": "matrix_character_padding_bounds",
+      "source": "cases/matrix_character_padding_bounds.f90",
+      "sha256": "ec97b800755e742d9f14c9cdc5b13d68b8ce9ec06ea648b48833cde139b4c743",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  -1   2   0   3\n[m  ][z  ][m  ][y  ]\n",
+      "features": [
+        "rank-two CHARACTER expansion",
+        "whole nonunit bounds"
+      ]
+    },
+    {
+      "name": "empty_axis_bounds_norm",
+      "source": "cases/empty_axis_bounds_norm.f90",
+      "sha256": "6bef75cef1843ad5e6c9cc626abfc34a0800dd8bfcbd22e47ee40800bf9764a5",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  1  4  0  6 0.0\n",
+      "features": [
+        "per-axis zero extent",
+        "vector bounds",
+        "empty NORM2"
+      ]
+    },
+    {
+      "name": "empty_expression_bounds",
+      "source": "cases/empty_expression_bounds.f90",
+      "sha256": "d04bd24c884d9cb480fa97497b9bb4dcdc0ee5a97a354c908460b654e0599260",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  1  1  0  3\n",
+      "features": [
+        "empty surrounding array",
+        "scalar NORM2",
+        "expression normalization"
+      ]
+    },
+    {
+      "name": "undefined_values_metadata_bounds",
+      "source": "cases/undefined_values_metadata_bounds.f90",
+      "sha256": "d7bcf2cc0b018fec4b4052c4bed2251091b0fddff1f0d199df7cb6619a8460ee",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  -2   0   8\n  -2  -1   0\n",
+      "features": [
+        "metadata-only undefined data",
+        "bounds-driven constructor"
+      ]
+    },
+    {
+      "name": "zero_trip_undefined_norm",
+      "source": "cases/zero_trip_undefined_norm.f90",
+      "sha256": "a3623995fc22fface41679b325a9722a177bdc6a70ab70b50b550ed62a0e9652",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  0  1  0\n",
+      "features": [
+        "zero-trip body non-evaluation",
+        "NORM2 undefined operand",
+        "allocated zero bounds"
+      ]
+    },
+    {
+      "name": "zero_trip_undefined_character_min",
+      "source": "cases/zero_trip_undefined_character_min.f90",
+      "sha256": "0e5fb920e00d98fa0b36f6350455b08bc4f273c457ea6d42a33e9a048ac9b446",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  0  1  0\n",
+      "features": [
+        "zero-trip CHARACTER metadata",
+        "MIN length",
+        "empty bounds"
+      ]
+    },
+    {
+      "name": "callee_reads_host_not_index",
+      "source": "cases/callee_reads_host_not_index.f90",
+      "sha256": "b8c01680b4b122583a3617d2edbcf8323d475465d055898813be30ac25c61dd6",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "features": [
+        "constructor overlay not inherited by callee",
+        "host variable"
+      ],
+      "diagnostic": "Undeclared variable: i",
+      "diagnostic_line": 9,
+      "diagnostic_column": 10
+    },
+    {
+      "name": "optional_dummy_index_overlay",
+      "source": "cases/optional_dummy_index_overlay.f90",
+      "sha256": "b86a5098eea342d789812b84ec4a6342dd4e79027f46ed7e06be6d8d2a649bba",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  1  2  3 F  1  3\n",
+      "features": [
+        "absent OPTIONAL outer index",
+        "independent ownership",
+        "bounds"
+      ]
+    },
+    {
+      "name": "active_outer_do_isolation",
+      "source": "cases/active_outer_do_isolation.f90",
+      "sha256": "7d6020948ce75a6ba6a032cf5ad08bae28534da62c6bec7a56e8b59afe79afa0",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  1  2  7\n  1  2  8\n",
+      "features": [
+        "active DO variable shadowing",
+        "separate constructor index"
+      ]
+    },
+    {
+      "name": "sibling_index_reuse_bounds",
+      "source": "cases/sibling_index_reuse_bounds.f90",
+      "sha256": "1a1beb9376f9f350810b828e4d759611f2f039bef5b66bec472e2661a4cd5c65",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  1  2  4  5  1  4 50\n",
+      "features": [
+        "sibling index owner reuse",
+        "parenthesized bounds normalization"
+      ]
+    },
+    {
+      "name": "kind8_runtime_constructor_controls",
+      "source": "cases/kind8_runtime_constructor_controls.f90",
+      "sha256": "6ceb7d2d0bdb05290475324cff3154fa05c8ee29a56c18908f8e3c68a8075952",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "9007199254740993 9007199254740995 9007199254740997 1 3\n77\n",
+      "features": [
+        "INTEGER8 runtime controls",
+        "exact large integer comparator",
+        "KIND8 bounds"
+      ],
+      "numeric_lines": [
+        0
+      ]
+    },
+    {
+      "name": "norm_scalar_rank_three_context",
+      "source": "cases/norm_scalar_rank_three_context.f90",
+      "sha256": "f6f650543350ba278c8c102d446cdd1c92961acada3a9babe4150448a0d54e47",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "features": [
+        "rank-three scalar expansion",
+        "constructor REAL8",
+        "zero norm",
+        "bounds"
+      ],
+      "diagnostic": "RESHAPE SHAPE must be an INTEGER vector of known size 1 or 2",
+      "diagnostic_line": 5,
+      "diagnostic_column": 39
+    },
+    {
+      "name": "own_index_kind_metadata_control",
+      "source": "cases/own_index_kind_metadata_control.f90",
+      "sha256": "e384adac63081537663be641c319446fff163ad3ee41622bc0effc626b361468",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  1  2  3  4\n",
+      "features": [
+        "own control index metadata inquiry",
+        "constructor control ownership"
+      ]
+    },
+    {
+      "name": "norm_scalar_dim_and_signed_zero",
+      "source": "cases/norm_scalar_dim_and_signed_zero.f90",
+      "sha256": "4e6a8d817b9890d17ad30b4aaeb9d76529041a6adc6e298f2dc4d51e6cc67c8e",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "6.0 7.0 0.0 -0.0\n",
+      "features": [
+        "rank-one DIM scalar norm",
+        "surrounding array positions",
+        "signed zero"
+      ],
+      "numeric_lines": [
+        0
+      ]
+    },
+    {
+      "name": "dynamic_zero_constructor_step",
+      "source": "cases/dynamic_zero_constructor_step.f90",
+      "sha256": "27d5be1ae6730606e3e31b9fc4d50a03b0a435897d16efc1be6437cc6ae2bf85",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "features": [
+        "bounds controls",
+        "dynamic zero step",
+        "atomic failure"
+      ],
+      "diagnostic": "constructor implied-DO step is zero",
+      "diagnostic_line": 7,
+      "diagnostic_column": 4
+    },
+    {
+      "name": "unallocated_vector_bounds",
+      "source": "cases/unallocated_vector_bounds.f90",
+      "sha256": "8c8e42c76e8f5e8af5a53410665cb5336f668d2b90d241ccfce8d38d2ecb50b4",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "SAFE\n",
+      "features": [
+        "evaluated descriptor availability",
+        "vector bounds",
+        "atomic output"
+      ],
+      "diagnostic": "reference to unallocated array a",
+      "diagnostic_line": 5,
+      "diagnostic_column": 22
+    },
+    {
+      "name": "undefined_character_min_pending_output",
+      "source": "cases/undefined_character_min_pending_output.f90",
+      "sha256": "169df6ea3d9aa6aebae6da5155640eeeb453ed9c3f3a7db1e9fa5b6661250637",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "AxCD",
+      "features": [
+        "CHARACTER MIN data guard",
+        "nonadvancing atomicity"
+      ],
+      "diagnostic": "read of uninitialized variable a",
+      "diagnostic_line": 6,
+      "diagnostic_column": 17
+    },
+    {
+      "name": "rank_two_constructor_leaf_boundary",
+      "source": "cases/rank_two_constructor_leaf_boundary.f90",
+      "sha256": "849f6fe6adc4fa51f55f28aba2853b4ad532e059e24ee9eb0ea8c0f309dc388b",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "features": [
+        "bounded rank-one constructor leaves",
+        "TRANSPOSE boundary"
+      ],
+      "diagnostic": "Constructor implied-DO items must be intrinsic scalars or rank-one arrays",
+      "diagnostic_line": 5,
+      "diagnostic_column": 17
+    },
+    {
+      "name": "constant_character_min_gnu_rejection",
+      "source": "cases/constant_character_min_gnu_rejection.f90",
+      "sha256": "ae92649e922c17f28bd48bcfa62979988dd7f15f676a2366694c876c44b59666",
+      "category": "success",
+      "gnu": "known-reject",
+      "expected_stdout": "[YY][A ]\n",
+      "features": [
+        "independent CHARACTER padding oracle",
+        "explicit GNU14 constant-array limitation"
+      ],
+      "gnu_compile_diagnostic": "same length"
+    },
+    {
+      "name": "typed_allocated_character_result_length",
+      "source": "cases/typed_allocated_character_result_length.f90",
+      "sha256": "9ed82d3cf911e1c59cdeb232ffbe1e4929e9cda44cf3fe888b6353b4b3feea12",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "4[a   ][a   ]\n",
+      "features": [
+        "allocated scalar MIN length",
+        "typed CHARACTER constructor"
+      ]
+    },
+    {
+      "name": "module_callee_reads_host_not_index",
+      "source": "cases/module_callee_reads_host_not_index.f90",
+      "sha256": "fa44d4bc09d2f91880f7179e0e4448af8a5e87e9ffb147c7147d74162fdb837f",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  41  42  43  40\n",
+      "features": [
+        "module mutable host",
+        "constructor overlay not inherited by callee"
+      ]
+    },
+    {
+      "name": "direct_rank_three_norm_context",
+      "source": "cases/direct_rank_three_norm_context.f90",
+      "sha256": "d5898808ce71bc653f7f994bb79094fd9ac26bc7c3a3f7d34e43334194ea2709",
+      "category": "success",
+      "gnu": "run",
+      "expected_stdout": "  6.0  7.0  8.0  9.0\n  1  1  1  2  1  2\n",
+      "features": [
+        "rank-three surrounding array",
+        "rank-one slice setup",
+        "scalar NORM2 broadcast",
+        "vector bounds"
+      ]
+    }
+  ]
+}

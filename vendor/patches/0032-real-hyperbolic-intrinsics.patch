@@ -1,0 +1,53 @@
+--- a/vendor/fortfront/src/utilities/intrinsic_registry.f90
++++ b/vendor/fortfront/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 67
++        integer, parameter :: NUM_INTRINSICS = 70
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -266,6 +266,21 @@
+             name="sign", return_type="real", &
+             arg_types="real,real", &
+             description="Sign transfer function")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="sinh", return_type="real", arg_types="real", &
++            description="Elemental real hyperbolic function")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="cosh", return_type="real", arg_types="real", &
++            description="Elemental real hyperbolic function")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="tanh", return_type="real", arg_types="real", &
++            description="Elemental real hyperbolic function")
++
+     end subroutine register_mathematical_intrinsics
+ 
+     subroutine register_type_conversion_intrinsics(i)
+--- a/vendor/fortfront/src/frontend/frontend_compiler_type_queries.f90
++++ b/vendor/fortfront/src/frontend/frontend_compiler_type_queries.f90
+@@ -862,7 +862,7 @@
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+         case ("real", "int", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+-              "exp", "log", "sqrt", "erfc", "min", "max")
++              "exp", "log", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+                 do i = 1, size(node%arg_indices)
+@@ -894,7 +894,7 @@
+                 result_type = TCOMPLEX
+             end select
+             call set_intrinsic_metadata(node, result_type, kind_value, result_rank)
+-        case ("exp", "log", "sqrt", "erfc", "min", "max")
++        case ("exp", "log", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max")
+             call first_intrinsic_argument_metadata(arena, node, visiting, &
+                 result_type, kind_value)
+             if (result_type > 0 .and. kind_value > 0) &

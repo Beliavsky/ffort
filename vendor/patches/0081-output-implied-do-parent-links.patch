@@ -1,0 +1,19 @@
+--- a/src/ast/factory/ast_factory_statements.f90
++++ b/src/ast/factory/ast_factory_statements.f90
+@@ -270,6 +270,16 @@
+ 
+         call arena%push(node, "io_implied_do", parent_index)
+         node_index = arena%size
++        ! Output expressions and controls need the enclosing statement scope.
++        ! Retaining only their indices leaves nested array/function bindings
++        ! unresolved when the independent metadata pass walks these nodes.
++        if (allocated(node%object_indices)) then
++            call link_children_to_parent(arena, node_index, node%object_indices)
++        else
++            call link_children_to_parent(arena, node_index, [node%expr_index])
++        end if
++        call link_children_to_parent(arena, node_index, &
++            [node%start_expr_index, node%end_expr_index, node%step_expr_index])
+     end function push_io_implied_do
+ 
+     ! Create implicit statement node and add to stack

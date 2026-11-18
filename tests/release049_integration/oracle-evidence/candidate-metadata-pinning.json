@@ -1,0 +1,21 @@
+{
+  "candidate_sha256": "b973c397ab029cc60bc6cc855152b2f7efc7a211e5e4ae97e203890b884d398c",
+  "initial_sources_unchanged": 28,
+  "negative_diagnostics_pinned": 8,
+  "changes": [
+    {
+      "case": "internal_executed_slash_boundary",
+      "old_category": "runtime",
+      "new_category": "reject",
+      "old_stdout": "SAFE\n",
+      "new_stdout": "",
+      "reason": "Literal-known reached internal slash is statically validated; owner independently confirms. Source bytes preserved."
+    },
+    {
+      "case": "internal_dynamic_slash_atomic",
+      "change": "separate additional source",
+      "reason": "Runtime format makes reached internal slash fail during execution; prior SAFE newline remains committed."
+    }
+  ],
+  "no_candidate_core_changes": true
+}

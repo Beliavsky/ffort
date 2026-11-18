@@ -1,0 +1,205 @@
+! SPDX-License-Identifier: MIT
+program test_integer_bits
+use,intrinsic::iso_fortran_env,only:int64
+use fi_ir
+use fi_parser,only:parse_subset
+use fi_frontend,only:verify_frontend
+use fi_runtime,only:execute_program,evaluate_constant,evaluate_constant_array
+implicit none
+character(*),parameter::nl=new_line('a')
+character(8),parameter::names(6)=[character(8)::'iand','ior','ieor','not','btest','bit_size']
+type(program_t)::p
+type(diagnostic_t)::d
+type(value_t)::v
+type(value_t),allocatable::values(:)
+character(:),allocatable::source,expr,decl
+integer::checks,name,form,mutation,e,a,b,s,j,k,lit,n,q,pos
+integer(int64)::expected,acc,power,state
+checks=0
+! All metadata guards also run below KIND and zero-sized outer expressions.
+do name=1,6
+ do form=1,3
+  n=2;if(form==3)n=0
+  decl='integer(8)::a('//itoa(n)//')'//nl//'a=1_8'//nl
+  expr=trim(names(name))//'(a'
+  if(name<=3)expr=expr//',3_8'
+  if(name==5)expr=expr//',0_8'
+  expr=expr//')'
+  if(form==2)expr='kind('//expr//')'
+  source='program p'//nl//'implicit none'//nl//decl//'print *,'//expr//nl//'end program'
+  do mutation=0,41
+   call parse_subset(source,p,d);call expect(d%code==0,'baseline parse')
+   e=0
+   do j=1,p%ne
+    if(p%expressions(j)%op==trim(names(name)))e=j
+   end do
+   call expect(e>0,'intrinsic occurrence')
+   a=p%expressions(e)%args(1);s=p%expressions(a)%symbol
+   b=a;if(size(p%expressions(e)%args)==2)b=p%expressions(e)%args(2)
+   select case(mutation)
+   case(1);p%expressions(e)%typ=ty_real
+   case(2);p%expressions(e)%real_kind=16
+   case(3);p%expressions(e)%rank=4
+   case(4);p%expressions(e)%extent=99
+   case(5);p%expressions(e)%dims=[1_int64,2_int64,3_int64]
+   case(6);p%expressions(e)%intrinsic_mask=1
+   case(7);p%expressions(e)%args=[integer::]
+   case(8);p%expressions(e)%args=[a,a,a]
+   case(9);deallocate(p%expressions(e)%args)
+   case(10);p%expressions(e)%args(1)=0
+   case(11);p%expressions(e)%args(1)=p%ne+1
+   case(12);p%expressions(e)%args(1)=e
+   case(13);p%expressions(a)%typ=ty_real
+   case(14);p%expressions(a)%real_kind=16
+   case(15);p%expressions(a)%rank=4
+   case(16);p%expressions(a)%extent=99
+   case(17);p%expressions(a)%character_len=0
+   case(18);p%expressions(e)%character_len=0
+   case(19);p%expressions(e)%left=a
+   case(20);p%expressions(e)%right=a
+   case(21);p%expressions(e)%symbol=s
+   case(22);p%expressions(e)%length_expr=a
+   case(23);p%expressions(e)%constructor_kind_expr=a
+   case(24);p%expressions(e)%triplet(2)=.true.
+   case(25);p%expressions(e)%constructor_owner=1
+   case(26);p%expressions(e)%generic_id=1
+   case(27);p%expressions(e)%bound_type=1
+   case(28);p%expressions(e)%bound_binding=1
+   case(29);p%expressions(e)%stride2=a
+   case(30);p%expressions(e)%left3=a
+   case(31);p%expressions(e)%third=a
+   case(32);p%expressions(a)%dims=[1_int64,0_int64,0_int64]
+   case(33);p%expressions(b)%character_len=0
+   case(34);p%symbols(s)%real_kind=4
+   case(35);p%symbols(s)%typ=ty_real
+   case(36);p%symbols(s)%rank=2
+   case(37);p%expressions(e)%stride=a
+   case(38);p%expressions(e)%right3=a
+   case(39);p%expressions(e)%stride3=a
+   case(40);p%expressions(e)%triplet(1)=.false.
+   case(41);p%expressions(a)%extent=-2_int64
+   end select
+   call verify_frontend(source,p,d)
+   call expect((d%code==0).eqv.(mutation==0),'adapter metadata guard')
+   d=diagnostic_t();call execute_program(p,d,max_steps=20000_int64)
+   call expect((d%code==0).eqv.(mutation==0),'runtime metadata guard')
+   k=p%ne+1;p%ne=k;p%expressions(k)=expr_t(kind=ex_call,op='kind',typ=ty_integer,args=[e])
+   d=diagnostic_t();call evaluate_constant(p,k,v,d)
+   call expect((d%code==0).eqv.(mutation==0),'KIND metadata guard')
+   if(mutation==0)then
+    q=8;if(name==5)q=4
+    call expect(v%i==q,'result kind')
+   end if
+  end do
+ end do
+end do
+! Independent arithmetic oracle, NOT/IAND/IOR/IEOR at both widths.
+! The low-byte matrix uses quotients and remainders, not host bit intrinsics.
+do q=4,8,4
+ do name=1,4
+  do a=-17,17
+   do b=-3,3
+    expr=trim(names(name))//'('//itoa(a)//'_'//itoa(q)
+    if(name<=3)expr=expr//','//itoa(b)//'_'//itoa(q)
+    expr=expr//')'
+    source='program p'//nl//'print *,'//expr//nl//'end program'
+    call parse_subset(source,p,d);call expect(d%code==0,'matrix parse')
+    e=0
+    do j=1,p%ne
+     if(p%expressions(j)%op==trim(names(name)))e=j
+    end do
+    call evaluate_constant(p,e,v,d);call expect(d%code==0,'matrix evaluate')
+    if(name==4)then
+     expected=-int(a,int64)-1_int64
+    else
+     acc=0;power=1
+     do pos=0,7
+      j=int(modulo(floor(real(a,8)/real(power,8)),2))
+      k=int(modulo(floor(real(b,8)/real(power,8)),2))
+      lit=0
+      if(name==1.and.j==1.and.k==1)lit=1
+      if(name==2.and.(j==1.or.k==1))lit=1
+      if(name==3.and.j/=k)lit=1
+      acc=acc+lit*power;power=power*2
+     end do
+     expected=acc;if(acc>=128)expected=acc-256
+    end if
+    call expect(v%tag==ty_integer.and.v%real_kind==q.and.v%i==expected,'independent arithmetic bit oracle')
+   end do
+  end do
+ end do
+end do
+! Scalar BIT_SIZE in an array expression ignores its caller's position,
+! even for empty and unallocated arrays. No descriptor value is fetched.
+do q=4,8,4
+ source='program p'//nl//'integer('//itoa(q)//'),allocatable::a(:,:)'//nl// &
+     'print *,bit_size(a)+[1_'//itoa(q)//',2_'//itoa(q)//',3_'//itoa(q)//']'//nl//'end program'
+ call parse_subset(source,p,d);call expect(d%code==0,'BIT_SIZE expansion parse')
+ call verify_frontend(source,p,d);call expect(d%code==0,'BIT_SIZE expansion adapter')
+ e=0
+ do j=1,p%ne
+  if(p%expressions(j)%kind==ex_binary.and.p%expressions(j)%op=='+')e=j
+ end do
+ call evaluate_constant_array(p,e,values,d);call expect(d%code==0,'BIT_SIZE expansion evaluate')
+ call expect(size(values)==3,'BIT_SIZE expansion shape')
+ do j=1,3
+  call expect(values(j)%real_kind==q.and.values(j)%i==8*q+j,'BIT_SIZE expansion element')
+ end do
+ source='program p'//nl//'integer('//itoa(q)//'),allocatable::a(:,:)'//nl// &
+     'print *,size([integer('//itoa(q)//')::]+bit_size(a))'//nl//'end program'
+ call parse_subset(source,p,d);call expect(d%code==0,'empty BIT_SIZE expansion parse')
+ call verify_frontend(source,p,d);call expect(d%code==0,'empty BIT_SIZE expansion adapter')
+ call execute_program(p,d);call expect(d%code==0,'empty BIT_SIZE expansion execute')
+end do
+! Inquiries suppress function effects; evaluated array operands are frozen once.
+source='program p'//nl//'if(bit_size(draw())/=64_8)error stop 1'//nl//'contains'//nl// &
+    'function draw() result(a)'//nl//'integer(8)::a(3)'//nl//'real(8)::r'//nl// &
+    'call random_number(r)'//nl//'a=[2_8,4_8,8_8]'//nl//'end function'//nl//'end program'
+call parse_subset(source,p,d);call expect(d%code==0,'BIT_SIZE function parse')
+state=104729_int64;call execute_program(p,d,random_state=state)
+call expect(d%code==0,'BIT_SIZE function inquiry');call expect(state==104729_int64,'BIT_SIZE suppresses function draw')
+source='program p'//nl//'integer(8)::b(3)'//nl//'b=ior(draw(),1_8)'//nl// &
+    source(index(source,'contains'):)
+call parse_subset(source,p,d);call expect(d%code==0,'array function bit operation parse')
+state=104729_int64;call execute_program(p,d,random_state=state)
+call expect(d%code==0,'array function bit operation')
+call expect(state==modulo(104729_int64*16807_int64,2147483647_int64),'array function evaluated once')
+! Shared subexpressions are a DAG, not a cycle; a back edge is rejected.
+source='program p'//nl//'print *,iand(7_8,3_8)'//nl//'end program'
+call parse_subset(source,p,d);call expect(d%code==0,'DAG parse')
+e=0
+do j=1,p%ne
+ if(p%expressions(j)%op=='iand')e=j
+end do
+p%expressions(e)%args(2)=p%expressions(e)%args(1)
+call evaluate_constant(p,e,v,d);call expect(d%code==0.and.v%i==7,'shared operand DAG')
+a=p%expressions(e)%args(1)
+p%expressions(a)%kind=ex_unary;p%expressions(a)%op='-';p%expressions(a)%left=e
+call evaluate_constant(p,e,v,d);call expect(d%code/=0,'indirect operand cycle')
+! Positions never narrow from INTEGER8 before the width domain check.
+source='program p'//nl//'print *,btest(1_8,9223372036854775807_8)'//nl//'end program'
+call parse_subset(source,p,d);call expect(d%code==0,'wide POS parse')
+e=0
+do j=1,p%ne
+ if(p%expressions(j)%op=='btest')e=j
+end do
+call evaluate_constant(p,e,v,d);call expect(d%code/=0,'wide POS rejects before narrowing')
+print '(a,i0,a)','PASS ',checks,' integer-bit checks'
+contains
+subroutine expect(ok,label)
+ logical,intent(in)::ok
+ character(*),intent(in)::label
+ checks=checks+1
+ if(.not.ok)then
+  print *,'FAIL ',label,' name/form/mutation=',name,form,mutation
+  if(allocated(d%message))print *,d%message
+  error stop 1
+ end if
+end subroutine
+function itoa(i) result(s)
+ integer,intent(in)::i
+ character(:),allocatable::s
+ character(40)::buf
+ write(buf,'(i0)')i;s=trim(buf)
+end function
+end program

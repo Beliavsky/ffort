@@ -1,0 +1,236 @@
+module parser_statement_callbacks_module
+    use parser_state_module, only: parser_state_t
+    use ast_arena_modern, only: ast_arena_t
+    implicit none
+    private
+
+    abstract interface
+        recursive function parse_with_parent_interface(parser, arena, parent_index) &
+                result(node_index)
+            import :: parser_state_t, ast_arena_t
+            type(parser_state_t), intent(inout) :: parser
+            type(ast_arena_t), intent(inout) :: arena
+            integer, intent(in), optional :: parent_index
+            integer :: node_index
+        end function parse_with_parent_interface
+
+        recursive function parse_without_parent_interface(parser, arena) &
+                result(node_index)
+            import :: parser_state_t, ast_arena_t
+            type(parser_state_t), intent(inout) :: parser
+            type(ast_arena_t), intent(inout) :: arena
+            integer :: node_index
+        end function parse_without_parent_interface
+    end interface
+
+    type, public :: statement_callbacks_t
+        procedure(parse_with_parent_interface), pointer, nopass :: parse_if => null()
+        procedure(parse_without_parent_interface), pointer, nopass :: &
+            parse_do_loop => null()
+        procedure(parse_without_parent_interface), pointer, nopass :: &
+            parse_select_case => null()
+        procedure(parse_without_parent_interface), pointer, nopass :: &
+            parse_select_type => null()
+        procedure(parse_without_parent_interface), pointer, nopass :: &
+            parse_select_rank => null()
+        procedure(parse_without_parent_interface), pointer, nopass :: &
+            parse_where => null()
+        procedure(parse_without_parent_interface), pointer, nopass :: &
+            parse_forall => null()
+        procedure(parse_without_parent_interface), pointer, nopass :: &
+            parse_associate => null()
+        procedure(parse_without_parent_interface), pointer, nopass :: &
+            parse_block => null()
+    end type statement_callbacks_t
+
+    public :: null_statement_callbacks
+    public :: register_fallback_do_parser, fallback_do_parser_is_set, &
+              call_fallback_do_parser
+    public :: register_fallback_forall_parser, call_fallback_forall_parser
+    public :: register_fallback_where_parser, call_fallback_where_parser
+    public :: register_fallback_if_parser, call_fallback_if_parser
+    public :: register_fallback_block_parser, call_fallback_block_parser
+    public :: register_fallback_select_parsers
+    public :: call_fallback_select_case_parser, call_fallback_select_type_parser
+    public :: call_fallback_select_rank_parser
+
+    !! The DO parser, registered rather than imported.
+    !!
+    !! handle_control_keyword needs a parser for `do` when its caller supplied
+    !! no callback - `select case` populates only its own entry, so a loop
+    !! inside a case arm had none. Importing the do parser closes a module
+    !! cycle, which is why `if` reaches its own through a forwarder. This is
+    !! the same indirection, done once here where the callback type already
+    !! lives.
+    procedure(parse_without_parent_interface), pointer :: forall_parser => null()
+    procedure(parse_without_parent_interface), pointer :: where_parser => null()
+    procedure(parse_without_parent_interface), pointer :: do_parser => null()
+    !! The full IF parser, for the same reason. The definition-level fallback
+    !! reached otherwise handles a single if, not one containing another, and
+    !! a nested if inside a case arm is exactly that.
+    procedure(parse_with_parent_interface), pointer :: if_parser => null()
+    !! The BLOCK construct parser, for the same reason. A `block` holding its
+    !! own declarations appears inside loops and case arms whose callers filled
+    !! in no callback, and without this it was reported as an unrecognized
+    !! statement - which failed the whole enclosing file.
+    procedure(parse_without_parent_interface), pointer :: block_parser => null()
+    !! The SELECT CASE and SELECT TYPE parsers, for the same reason. A
+    !! `select type` inside any body whose caller populated no select
+    !! callback was the single most common parse failure in a large tree.
+    procedure(parse_without_parent_interface), pointer :: select_case_parser => null()
+    procedure(parse_without_parent_interface), pointer :: select_type_parser => null()
+    procedure(parse_without_parent_interface), pointer :: select_rank_parser => null()
+    public :: parse_with_parent_interface
+    public :: parse_without_parent_interface
+
+contains
+
+    subroutine register_fallback_forall_parser(proc)
+        procedure(parse_without_parent_interface) :: proc
+        forall_parser => proc
+    end subroutine register_fallback_forall_parser
+
+    integer function call_fallback_forall_parser(parser, arena) result(node_index)
+        type(parser_state_t), intent(inout) :: parser
+        type(ast_arena_t), intent(inout) :: arena
+        node_index = 0
+        if (associated(forall_parser)) node_index = forall_parser(parser, arena)
+    end function call_fallback_forall_parser
+
+    subroutine register_fallback_where_parser(proc)
+        procedure(parse_without_parent_interface) :: proc
+        where_parser => proc
+    end subroutine register_fallback_where_parser
+
+    integer function call_fallback_where_parser(parser, arena) result(node_index)
+        type(parser_state_t), intent(inout) :: parser
+        type(ast_arena_t), intent(inout) :: arena
+        node_index = 0
+        if (associated(where_parser)) node_index = where_parser(parser, arena)
+    end function call_fallback_where_parser
+
+    subroutine register_fallback_do_parser(proc)
+        !! Called once by the do parser's own initialisation.
+        procedure(parse_without_parent_interface) :: proc
+
+        do_parser => proc
+    end subroutine register_fallback_do_parser
+
+    logical function fallback_do_parser_is_set() result(yes)
+        yes = associated(do_parser)
+    end function fallback_do_parser_is_set
+
+    integer function call_fallback_do_parser(parser, arena) result(node_index)
+        type(parser_state_t), intent(inout) :: parser
+        type(ast_arena_t), intent(inout) :: arena
+
+        node_index = 0
+        if (associated(do_parser)) node_index = do_parser(parser, arena)
+    end function call_fallback_do_parser
+
+    subroutine register_fallback_if_parser(proc)
+        !! Called once by the if parser's own initialisation.
+        procedure(parse_with_parent_interface) :: proc
+
+        if_parser => proc
+    end subroutine register_fallback_if_parser
+
+    integer function call_fallback_if_parser(parser, arena, parent_index) &
+        result(node_index)
+        type(parser_state_t), intent(inout) :: parser
+        type(ast_arena_t), intent(inout) :: arena
+        integer, intent(in), optional :: parent_index
+
+        node_index = 0
+        if (.not. associated(if_parser)) return
+        if (present(parent_index)) then
+            node_index = if_parser(parser, arena, parent_index)
+        else
+            node_index = if_parser(parser, arena)
+        end if
+    end function call_fallback_if_parser
+
+    subroutine register_fallback_block_parser(proc)
+        !! Called once by the block parser's own initialisation.
+        procedure(parse_without_parent_interface) :: proc
+
+        block_parser => proc
+    end subroutine register_fallback_block_parser
+
+    integer function call_fallback_block_parser(parser, arena) result(node_index)
+        type(parser_state_t), intent(inout) :: parser
+        type(ast_arena_t), intent(inout) :: arena
+
+        node_index = 0
+        if (associated(block_parser)) node_index = block_parser(parser, arena)
+    end function call_fallback_block_parser
+
+    subroutine register_fallback_select_parsers(case_proc, type_proc, rank_proc)
+        !! Called once by the select parser's own initialisation.
+        procedure(parse_without_parent_interface) :: case_proc
+        procedure(parse_without_parent_interface) :: type_proc
+        procedure(parse_without_parent_interface), optional :: rank_proc
+
+        select_case_parser => case_proc
+        select_type_parser => type_proc
+        if (present(rank_proc)) select_rank_parser => rank_proc
+    end subroutine register_fallback_select_parsers
+
+    integer function call_fallback_select_case_parser(parser, arena) &
+        result(node_index)
+        type(parser_state_t), intent(inout) :: parser
+        type(ast_arena_t), intent(inout) :: arena
+
+        node_index = 0
+        if (associated(select_case_parser)) then
+            node_index = select_case_parser(parser, arena)
+        end if
+    end function call_fallback_select_case_parser
+
+    integer function call_fallback_select_type_parser(parser, arena) &
+        result(node_index)
+        type(parser_state_t), intent(inout) :: parser
+        type(ast_arena_t), intent(inout) :: arena
+
+        node_index = 0
+        if (associated(select_type_parser)) then
+            node_index = select_type_parser(parser, arena)
+        end if
+    end function call_fallback_select_type_parser
+
+    integer function call_fallback_select_rank_parser(parser, arena) &
+        result(node_index)
+        type(parser_state_t), intent(inout) :: parser
+        type(ast_arena_t), intent(inout) :: arena
+
+        node_index = 0
+        if (associated(select_rank_parser)) then
+            node_index = select_rank_parser(parser, arena)
+        end if
+    end function call_fallback_select_rank_parser
+
+    pure function null_statement_callbacks() result(callbacks)
+        !! Every component explicitly nullified, rather than left to the
+        !! type's default initialisation.
+        !!
+        !! A function result of a derived type whose components are procedure
+        !! pointers is not reliably default-initialised by gfortran 13.3 - the
+        !! compiler on Ubuntu 24.04, and so on every GitHub runner. The
+        !! components came back holding whatever was on the stack, `associated`
+        !! on one of them answered true, and the parser called into it. That is
+        !! the segfault on an `if` block inside a `case` arm: `parse_select_case`
+        !! builds its callbacks from this function.
+        type(statement_callbacks_t) :: callbacks
+
+        callbacks%parse_if => null()
+        callbacks%parse_do_loop => null()
+        callbacks%parse_select_case => null()
+        callbacks%parse_select_type => null()
+        callbacks%parse_select_rank => null()
+        callbacks%parse_where => null()
+        callbacks%parse_forall => null()
+        callbacks%parse_associate => null()
+        callbacks%parse_block => null()
+    end function null_statement_callbacks
+
+end module parser_statement_callbacks_module

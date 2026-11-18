@@ -1,0 +1,39 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -981,7 +981,7 @@
+                 result_type, kind_value)
+             if (result_type > 0 .and. kind_value > 0) &
+                 call set_intrinsic_metadata(node, result_type, kind_value, 0)
+-        case ("kind", "selected_int_kind", "selected_real_kind", "radix")
++        case ("kind", "selected_int_kind", "selected_real_kind", "radix", "minexponent", "maxexponent")
+             call set_intrinsic_metadata(node, TINT, 4, 0)
+         case ("aimag", "abs")
+             call resolve_unary_same_kind_intrinsic(arena, node, visiting, name, &
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 102
++        integer, parameter :: NUM_INTRINSICS = 104
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -698,6 +698,16 @@
+ 
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="minexponent", return_type="integer", arg_types="real", &
++            description="Minimum exponent of the real model")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="maxexponent", return_type="integer", arg_types="real", &
++            description="Maximum exponent of the real model")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="kind", return_type="integer", &
+             arg_types="any", &
+             description="Kind type parameter value")

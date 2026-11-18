@@ -1,0 +1,36 @@
+from pathlib import Path
+import hashlib,json
+R=Path(__file__).parent; rows=[]
+def add(name,decl,body,expected='',category='success',extra='',procs=''):
+ s='module statistics_mod\nimplicit none\n'+extra+'type :: dt\n'+decl+'\nend type dt\n'+('contains\n'+procs if procs else '')+'end module\n\nuse statistics_mod\nimplicit none\ntype(dt) :: x\n'+body+'\nend\n'
+ p=R/'cases'/(name+'.f90');p.write_text(s);rows.append(dict(name=name,source='cases/'+p.name,sha256=hashlib.sha256(s.encode()).hexdigest(),category=category,expected=expected))
+add('exact_user','   real :: a, y=1000.0','print*,x%y','1000', 'numeric')
+add('first_default','integer :: a=7,b',"print '(i0)',x%a",'7\n')
+add('last_default','integer :: a,b=8',"print '(i0)',x%b",'8\n')
+add('both_default','integer :: a=7,b=8',"print '(i0,1x,i0)',x%a,x%b",'7 8\n')
+add('alternating','integer :: a,b=8,c,d=10',"x%a=1\nx%c=3\nprint '(4(i0,1x))',x%a,x%b,x%c,x%d",'1 8 3 10\n')
+add('overwrite','integer :: a=7,b=8',"x%a=9\nprint '(i0,1x,i0)',x%a,x%b",'9 8\n')
+add('constructor_override','integer :: a=7,b=8',"x=dt(2,3)\nprint '(i0,1x,i0)',x%a,x%b",'2 3\n')
+add('constructor_omission','integer :: a,b=8',"x=dt(2)\nprint '(i0,1x,i0)',x%a,x%b",'2 8\n')
+add('constructor_empty','integer :: a=7,b=8',"x=dt()\nprint '(i0,1x,i0)',x%a,x%b",'7 8\n')
+add('logical_group','logical :: a=.true.,b,c=.false.',"x%b=.true.\nprint '(3l2)',x%a,x%b,x%c",' T T F\n')
+add('real_kind','real(8) :: a=1.25_8,b,c=2.5_8',"x%b=3.75_8\nprint '(3f6.2)',x%a,x%b,x%c",'  1.25  3.75  2.50\n')
+add('integer_kind','integer(8) :: a=2147483648_8,b=2147483649_8',"print '(i0,1x,i0)',x%a,x%b",'2147483648 2147483649\n')
+add('parameter_expression','integer :: a=k,b=max(2,k+1)',"print '(i0,1x,i0)',x%a,x%b",'7 8\n',extra='integer,parameter :: k=7\n')
+add('continued','integer :: a=7, &\n& b, &\n& c=9',"x%b=8\nprint '(3(i0,1x))',x%a,x%b,x%c",'7 8 9\n')
+add('intent_out','integer :: a=7,b',"x%a=99\nx%b=10\ncall reset(x)\nprint '(i0)',x%a",'7\n',procs='subroutine reset(v)\ntype(dt),intent(out)::v\nend subroutine\n')
+add('fresh_locals','integer :: a=7,b=8','call f()\ncall f()','7 8\n7 8\n',procs="subroutine f()\ntype(dt)::v\nprint '(i0,1x,i0)',v%a,v%b\nv%a=99\nv%b=100\nend subroutine\n")
+add('undefined_last','integer :: a=7,b','print*,x%b',category='runtime')
+add('undefined_first','integer :: a,b=8','print*,x%a',category='runtime')
+add('undefined_middle','integer :: a=7,b,c=9','print*,x%b',category='runtime')
+add('no_double_colon','integer a=7,b=8','',category='reject')
+add('duplicate','integer :: a=7,a=8','',category='reject')
+add('wrong_type','integer :: a=7,b=.true.','',category='reject')
+add('nonconstant','integer :: a=7,b=k','',category='reject',extra='integer :: k=7\n')
+add('trailing_comma','integer :: a=7,b=8,','',category='reject')
+add('multiple_declarations','integer :: a=7,b\nreal :: c,d=2.5\nlogical :: yes=.true.,no',"x%b=8\nx%c=1.5\nx%no=.false.\nprint '(2(i0,1x),2f5.1,2l2)',x%a,x%b,x%c,x%d,x%yes,x%no",'7 8   1.5  2.5 T F\n')
+add('intent_out_undefined','integer :: a=7,b',"x%b=9\ncall reset(x)\nprint*,x%b",category='runtime',procs='subroutine reset(v)\ntype(dt),intent(out)::v\nend subroutine\n')
+add('missing_required_first','integer :: a,b=8','x=dt()',category='reject')
+add('grouped_copy','integer :: a=7,b=8',"call copy_test(x)\nprint '(2(i0,1x))',x%a,x%b",'10 8\n7 8\n',procs="subroutine copy_test(v)\ntype(dt),intent(in)::v\ntype(dt)::w\nw=v\nw%a=10\nprint '(2(i0,1x))',w%a,w%b\nend subroutine\n")
+for c in rows:c['gnu_mode']='execute' if c['category'] in ('success','numeric') else 'compile_only' if c['category']=='runtime' else 'reject'
+(R/'manifest.json').write_text(json.dumps(dict(cases=rows),indent=2)+'\n')

@@ -1,0 +1,301 @@
+{
+  "extension": "ISNAN is a GNU extension; GNU oracle explicitly enables -fall-intrinsics.",
+  "cases": [
+    {
+      "name": "finite_scalars",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "42cc4f535c6360907c5be0541bb2f47980de6b47d3e19cccdd85367794fd3873",
+      "output": "F F F F 4"
+    },
+    {
+      "name": "finite_extremes",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "e3f03e8884a5679893668fa16efae800956e8516fb65c3d6303f0bc19fff6cea",
+      "output": "F F F F F"
+    },
+    {
+      "name": "keyword_x",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "51ef6f900be3b839e295cf20b732f0f36e9f492e5291cdf7b4ab085aa19c3246",
+      "output": "F F"
+    },
+    {
+      "name": "rank1",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "d0164fe327ad883e0eea3d30f97d3ad317923226c9132d269762428551ae656d",
+      "output": "F F F 0"
+    },
+    {
+      "name": "rank2",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "edbe65fb4e3352cc890911a2747992a0711a71791a8a2856886c5d7995669201",
+      "output": "3 2 F F F F F F"
+    },
+    {
+      "name": "rank3",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "3e13e25030453a41ef17076e49edf53ee11eb26894cf56b5d54b87ff2c1edc05",
+      "output": "2 1 2 F F F F"
+    },
+    {
+      "name": "sections",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "321d145c0662e27ffba3f0977753817489d940e3ac4a48b37294df41a15e8b03",
+      "output": "F F F F F F F"
+    },
+    {
+      "name": "empty_arrays",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "fde7853dbad5e0daed82fddda2875501ae7edb0544676b80dec5229bd69e57f3",
+      "output": "0 0 0 F"
+    },
+    {
+      "name": "gathered_rows",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "7139dc3e3557cb44532e0b03e261a241750c88c5252c1469765d301c9624f950",
+      "output": "F F F F"
+    },
+    {
+      "name": "constant_scalar",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "fb16674114b198d8f7304d781081f96c6c88893c1ed3bfaac18902b50576aae5",
+      "output": "F"
+    },
+    {
+      "name": "constant_array",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "1d09abcc3e7e2035f05f816b92da2713ac65acef85082ba8b43a6744cae15795",
+      "output": "F F"
+    },
+    {
+      "name": "kind_undefined",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "49bd816593ace15b092128afd662a3ffdc126544d717ed4f4914ba289334607b",
+      "output": "4 4"
+    },
+    {
+      "name": "kind_unallocated",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "ed78899c7d960db801d9f05e4f4f561901899566b12bcb89c1e056f86f91f3f5",
+      "output": "4"
+    },
+    {
+      "name": "where_masked",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "e152870bc79c0efff56491ee7b802c9d109dad91e707eb1a0d231599f1770d1c",
+      "output": "T F F"
+    },
+    {
+      "name": "forall_masked",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "0bd5048447bcdefb8ba9061558a2240d18c3df8f78e4b0500f857ec1fdb2bd3b",
+      "output": "T F F"
+    },
+    {
+      "name": "array_function",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "49a0360e0f19a6a885f7153ba4157215192d0587f26837b81fb1746f1fe34f55",
+      "output": "F F"
+    },
+    {
+      "name": "user_name_shadow",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "38519a7ffe64cb11fe35c5594919d1042f446e43dde7daa32a5da57428eaad26",
+      "output": "T"
+    },
+    {
+      "name": "array_name_shadow",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "804caf98878c57e9167a3402aabf5844596b65efe5ece3b22cd1f134fef936c0",
+      "output": "2"
+    },
+    {
+      "name": "generic_name_shadow",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "9e830bec368415b72084557bfa219392552ac4c8ff6852b070e9cb2ced8b6a57",
+      "output": "T"
+    },
+    {
+      "name": "negative_sqrt",
+      "expected": "runtime",
+      "gnu_compile": "accept",
+      "sha256": "4cc3d98c77db4f8e76a5d93acba5761b26b2b02212060b8adcc4a8310db06cbd",
+      "diagnostic_contains": "SQRT"
+    },
+    {
+      "name": "zero_log",
+      "expected": "runtime",
+      "gnu_compile": "accept",
+      "sha256": "b4ff2df2210f8742bd7ddd31749af7b6731efb04ddd8466831d5842dc835f39d",
+      "diagnostic_contains": "LOG"
+    },
+    {
+      "name": "divide_zero",
+      "expected": "runtime",
+      "gnu_compile": "accept",
+      "sha256": "d1885fc6135d6c44e1ccd286d87caa5f81873945b5d6b0ee7bd10d6560ef31bf",
+      "diagnostic_contains": "division"
+    },
+    {
+      "name": "overflow_exp",
+      "expected": "runtime",
+      "gnu_compile": "accept",
+      "sha256": "ea84fa0e7f9ba082220cbff912efa3136dd2de8e3fff45b96d1b2783b2790f06",
+      "diagnostic_contains": "non-finite"
+    },
+    {
+      "name": "undefined_scalar",
+      "expected": "runtime",
+      "gnu_compile": "accept",
+      "sha256": "263f4f5c2c5de351194a069d222d31725048dfdca9f6bb43368da0192daae7d0",
+      "diagnostic_contains": "uninitialized"
+    },
+    {
+      "name": "undefined_array",
+      "expected": "runtime",
+      "gnu_compile": "accept",
+      "sha256": "8391a23c38c97905af350efe7e2e0c26f193d053f27d7b1b3eb7d8c21936109b",
+      "diagnostic_contains": "uninitialized"
+    },
+    {
+      "name": "unallocated_array",
+      "expected": "runtime",
+      "gnu_compile": "accept",
+      "sha256": "c902cb13e44d71a914101c3954993793fc2b8800b5d8360417e9d16e4411e803",
+      "diagnostic_contains": "unallocated"
+    },
+    {
+      "name": "reject_integer",
+      "expected": "reject",
+      "gnu_compile": "reject",
+      "sha256": "7dfb2bf6ef9698929f25aab6d68706f1b97a70f4134b99ef9b9268807d34763c"
+    },
+    {
+      "name": "reject_logical",
+      "expected": "reject",
+      "gnu_compile": "reject",
+      "sha256": "43b6e2ccb1238ec8ee9a6dd168a28917fa9d660d3d67770b119b80a6799f4a9d"
+    },
+    {
+      "name": "reject_character",
+      "expected": "reject",
+      "gnu_compile": "reject",
+      "sha256": "d96d3b3c2a164623cd90b5ce575d58882569f06388f061c066635d1ddabee6ee"
+    },
+    {
+      "name": "reject_complex",
+      "expected": "reject",
+      "gnu_compile": "reject",
+      "sha256": "6008f02ea086da48d59be757bfbd1eae91d6621b37032d808771e3f643064b53"
+    },
+    {
+      "name": "reject_real16",
+      "expected": "reject",
+      "gnu_compile": "accept",
+      "sha256": "fd5b431e025b4f2c64d6bbb9d7ae21cea3930c78ccade1d29485eb022b95a70b"
+    },
+    {
+      "name": "reject_empty",
+      "expected": "reject",
+      "gnu_compile": "reject",
+      "sha256": "3e327a38e1f732c5d2c7e44427486eeff78b51e90d55374eb475612edacfbb63"
+    },
+    {
+      "name": "reject_excess",
+      "expected": "reject",
+      "gnu_compile": "reject",
+      "sha256": "7e647221521ac6c67bc0691f86eb6cdcfd803012f2a6f9f437581cf252ffb95f"
+    },
+    {
+      "name": "reject_bad_keyword",
+      "expected": "reject",
+      "gnu_compile": "reject",
+      "sha256": "1bf12c6360146c9e627a76e50280fb9cbe235f4333979158ef2bda6c20fc6080"
+    },
+    {
+      "name": "reject_kind_keyword",
+      "expected": "reject",
+      "gnu_compile": "reject",
+      "sha256": "81b04fbaf08cac067b3df8efa5bf24b3a720ddf4e56d010064bf1b8f672d10a6"
+    },
+    {
+      "name": "reject_duplicate_keyword",
+      "expected": "reject",
+      "gnu_compile": "reject",
+      "sha256": "6dacb69430df4fcd0a3abf20f7fc902d5d8f101a11c02b66a715c3805520c64d"
+    },
+    {
+      "name": "reject_positional_after_keyword",
+      "expected": "reject",
+      "gnu_compile": "reject",
+      "sha256": "527374c5a4b735a4ead1cdff48e0b5d9c6f8fc260d9a3174f23b6d896210135b"
+    },
+    {
+      "name": "original_sort_mixed",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "6e312f0d734c4b491ca625ca0db5ee6d96b8c4b12379f6e3619ca25d20b5ab8a"
+    },
+    {
+      "name": "original_sort_single",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "1cf3a40d25a9c46a1b9bba8553c768bb5a1c4690c14d8fd00aa90024bad995cd"
+    },
+    {
+      "name": "original_sort_empty",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "cad8e56cb69c1566e7c638572a66121ef5c54a40620e24f3270359cfd1bbd9ff"
+    },
+    {
+      "name": "original_sort_ordered",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "b0bdb5ec2a7ecc616b7c6567ce5c64205d74de031313a2f0831123aff374d01a"
+    },
+    {
+      "name": "original_sort_reverse",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "89deee2eb9b79b229d346c6b62cab5ba713e0f563e96a140c8849555734f8fa5"
+    },
+    {
+      "name": "original_sort_duplicates",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "046b613b707d6e5a02e73803cc4309d7cb6817089981899409dd8b54c623caa5"
+    },
+    {
+      "name": "original_sort_signed",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "bf4e8c613f1e9ec1aeec6de4508f5b78bb607213c2b6b1087703de8adedf7a0d"
+    },
+    {
+      "name": "original_sort_partition",
+      "expected": "run",
+      "gnu_compile": "accept",
+      "sha256": "53dce59ccbe4b103827b4ab0d12afcd85b031c0377d3df24e2641f4b58d3bab7"
+    }
+  ]
+}

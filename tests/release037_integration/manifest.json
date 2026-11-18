@@ -1,0 +1,374 @@
+{
+  "cases": [
+    {
+      "name": "gather_roundtrip_ascii",
+      "source": "cases/gather_roundtrip_ascii.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "roundtrip: 6 0 6 6\nexponents: 2 4 2 0 5 0\nascii: 65 122 48 8 1\n",
+      "compare_mode": "exact",
+      "gnu_extension": "isnan"
+    },
+    {
+      "name": "binary_edges_real4",
+      "source": "cases/binary_edges_real4.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "subnormal: -148 1 1 1 1 1 zero: -1 0 -1 -1 1 normal: 1 1 1 1 1 1 1.401298464324817070923729583289916131280e-45 2.0282409603651670423947251286016e31",
+      "compare_mode": "tokens"
+    },
+    {
+      "name": "binary_edges_real8",
+      "source": "cases/binary_edges_real8.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "subnormal: -1073 1 1 1 1 1 zero: -1 0 -1 -1 1 normal: 1 1 1 1 1 1 4.940656458412465441765687928682213723651e-324 1.995840309534719811656372713036838566067e292",
+      "compare_mode": "tokens"
+    },
+    {
+      "name": "mixed_direction_keyword",
+      "source": "cases/mixed_direction_keyword.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "mixed: 1 4 1 8\nkeywords: 16 -1 1 4 8 8\n",
+      "compare_mode": "exact"
+    },
+    {
+      "name": "wide_exponent_signed_underflow",
+      "source": "cases/wide_exponent_signed_underflow.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "wide: 1 -1 2 -1 4\n",
+      "compare_mode": "exact",
+      "compiler_discrepancy": "GNU 14.2 returns nonzero SET_EXPONENT for I=-HUGE(0_8). The bounded interpreter contract returns signed zero without narrowing the exponent. This case has an independent signed-zero oracle, not a GNU runtime equivalence claim.",
+      "scope_note": "Extreme INTEGER8 exponent policy independently tested; GNU compiles only."
+    },
+    {
+      "name": "ascii_exact_records",
+      "source": "cases/ascii_exact_records.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "codes: 65 122 0 127\ntext:[A] 48\n",
+      "compare_mode": "exact"
+    },
+    {
+      "name": "empty_rank3_composition",
+      "source": "cases/empty_rank3_composition.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "empty: 0 2 3 0 0 0 0 8\n",
+      "compare_mode": "exact",
+      "gnu_extension": "isnan"
+    },
+    {
+      "name": "rank3_elemental_masks",
+      "source": "cases/rank3_elemental_masks.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "rank3: 2 1 2 4 10 266 0\n",
+      "compare_mode": "exact",
+      "gnu_extension": "isnan"
+    },
+    {
+      "name": "optional_allocatable_composition",
+      "source": "cases/optional_allocatable_composition.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "optional: 2 2 2 1 8 4 8\nnext: 4 4\n",
+      "compare_mode": "exact"
+    },
+    {
+      "name": "metadata_no_evaluation",
+      "source": "cases/metadata_no_evaluation.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "meta: 8 4 8 8 8 4 8\nstatus: 0\n",
+      "compare_mode": "exact",
+      "gnu_extension": "isnan",
+      "scope_note": "Descriptor-only KIND contract; GNU compilation only, never execute undefined/unallocated metadata probes."
+    },
+    {
+      "name": "nearest_zero_direction",
+      "source": "cases/nearest_zero_direction.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "nonzero",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "nearest_outward_overflow",
+      "source": "cases/nearest_outward_overflow.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "finite REAL range",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "set_exponent_wide_overflow",
+      "source": "cases/set_exponent_wide_overflow.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "overflow",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "fraction_undefined",
+      "source": "cases/fraction_undefined.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "uninitialized",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "exponent_undefined",
+      "source": "cases/exponent_undefined.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "uninitialized",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "spacing_undefined_array",
+      "source": "cases/spacing_undefined_array.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "uninitialized",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "isnan_undefined_after_finite",
+      "source": "cases/isnan_undefined_after_finite.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "uninitialized",
+      "completed_stdout": "before\n",
+      "gnu_extension": "isnan"
+    },
+    {
+      "name": "isnan_nonfinite_policy",
+      "source": "cases/isnan_nonfinite_policy.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "non-finite",
+      "completed_stdout": "before\n",
+      "gnu_extension": "isnan"
+    },
+    {
+      "name": "iachar_nonascii",
+      "source": "cases/iachar_nonascii.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "ASCII",
+      "completed_stdout": "before\n",
+      "scope_note": "Single high-byte literal tests IACHAR ASCII policy directly, without failing earlier in CHAR/ACHAR."
+    },
+    {
+      "name": "iachar_dynamic_nonunit",
+      "source": "cases/iachar_dynamic_nonunit.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "length",
+      "completed_stdout": "before\n"
+    },
+    {
+      "name": "fraction_integer_boundary",
+      "source": "cases/fraction_integer_boundary.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "real"
+    },
+    {
+      "name": "set_exponent_real_power_boundary",
+      "source": "cases/set_exponent_real_power_boundary.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "integer"
+    },
+    {
+      "name": "nearest_integer_direction_boundary",
+      "source": "cases/nearest_integer_direction_boundary.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "real"
+    },
+    {
+      "name": "iachar_length_boundary",
+      "source": "cases/iachar_length_boundary.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "length"
+    },
+    {
+      "name": "iachar_kind_boundary",
+      "source": "cases/iachar_kind_boundary.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "kind"
+    },
+    {
+      "name": "isnan_integer_boundary",
+      "source": "cases/isnan_integer_boundary.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "real",
+      "gnu_extension": "isnan"
+    },
+    {
+      "name": "original_rng_all_six",
+      "source": "cases/original_rng_all_six.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "ranges: 7 4 4 6 0\nlogical: 0 6 0 2 1 3\nmodels: 7 6 6 8\n",
+      "compare_mode": "exact",
+      "support_sources": [
+        "original/utility_module.f90"
+      ],
+      "gnu_extension": "isnan"
+    },
+    {
+      "name": "original_rng_empty_shapes",
+      "source": "cases/original_rng_empty_shapes.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "empty_rng: 0 0 3 0 2 0 1 0 3 0\n",
+      "compare_mode": "exact",
+      "support_sources": [
+        "original/utility_module.f90"
+      ],
+      "gnu_extension": "isnan"
+    },
+    {
+      "name": "original_sort_rng_composition",
+      "source": "cases/original_sort_rng_composition.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "sort_rng: 11 10 11 0 11\n",
+      "compare_mode": "exact",
+      "support_sources": [
+        "original/utility_module.f90"
+      ],
+      "gnu_extension": "isnan"
+    },
+    {
+      "name": "original_sort_known_edges",
+      "source": "cases/original_sort_known_edges.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "sort: 8 9 0 45 9\nedges: 1 1 1 0 1 -1\n",
+      "compare_mode": "exact",
+      "support_sources": [
+        "original/utility_module.f90"
+      ],
+      "gnu_extension": "isnan"
+    },
+    {
+      "name": "pure_rng_boundary",
+      "source": "cases/pure_rng_boundary.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "pure"
+    },
+    {
+      "name": "ordinary_io_boundary",
+      "source": "cases/ordinary_io_boundary.f90",
+      "category": "reject",
+      "baseline": "run",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "function",
+      "gnu_stdout": "           1\n"
+    },
+    {
+      "name": "ordinary_module_write_boundary",
+      "source": "cases/ordinary_module_write_boundary.f90",
+      "category": "reject",
+      "baseline": "run",
+      "expected_stdout": "",
+      "compare_mode": "exact",
+      "diagnostic": "function",
+      "gnu_stdout": "1\n"
+    },
+    {
+      "name": "unchanged_demo_fraction",
+      "source": "original/demo_fraction.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0.5700438618659973 0.5700438618659973 0.625 10.0",
+      "compare_mode": "tokens",
+      "support_sources": [
+        "original/utility_module.f90"
+      ],
+      "gnu_extension": "isnan"
+    },
+    {
+      "name": "unchanged_demo_set_exponent",
+      "source": "original/demo_set_exponent.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "74716.7890625 74716.7890625",
+      "compare_mode": "tokens",
+      "support_sources": [
+        "original/utility_module.f90"
+      ],
+      "gnu_extension": "isnan"
+    },
+    {
+      "name": "unchanged_demo_iachar",
+      "source": "original/demo_iachar.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "65 65 90 97 122 abcdefg abcdefg",
+      "compare_mode": "tokens",
+      "support_sources": [
+        "original/utility_module.f90"
+      ],
+      "gnu_extension": "isnan"
+    },
+    {
+      "name": "unchanged_demo_spacing",
+      "source": "original/demo_spacing.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1.1920928955078125e-7 1.00000011920928955078125 1.1920928955078125e-7 2.220446049250313080847263336181640625e-16",
+      "compare_mode": "tokens",
+      "support_sources": [
+        "original/utility_module.f90"
+      ],
+      "gnu_extension": "isnan"
+    }
+  ]
+}

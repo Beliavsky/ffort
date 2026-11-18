@@ -1,0 +1,148 @@
+--- a/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
++++ b/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
+@@ -4,6 +4,7 @@
+     use ast_arena_modern, only: ast_arena_t
+     use ast_nodes_core, only: assignment_node, identifier_node, literal_node, &
+         call_or_subscript_node
++    use ast_nodes_bounds, only: array_slice_node, range_expression_node, array_bounds_node
+     use ast_nodes_data, only: declaration_node, parameter_declaration_node
+     use ast_nodes_procedure, only: function_def_node
+     use frontend_compiler_resolution, only: declaration_binding_t, &
+@@ -28,6 +29,7 @@
+         type(ast_arena_t), intent(in) :: arena
+         integer, intent(in) :: decl_index
+         type(mono_type_t) :: typ
++        integer :: rank, i
+         typ%kind = 0
+         if (.not. arena%has_node_at(decl_index)) return
+ 
+@@ -42,6 +44,13 @@
+                     typ%is_unsigned = .true.
+                 end if
+             end if
++            if (node%is_array) then
++                rank = 1
++                if (allocated(node%dimension_indices)) rank = size(node%dimension_indices)
++                do i = 1, rank
++                    typ = create_mono_type(TARRAY, args=[typ])
++                end do
++            end if
+             type is (declaration_node)
+             if (allocated(node%type_name)) then
+                 typ = declaration_type_to_mono(node%type_name)
+@@ -55,6 +64,13 @@
+                     typ%is_unsigned = .true.
+                 end if
+             end if
++            if (node%is_array .and. typ%kind /= TARRAY) then
++                rank = 1
++                if (allocated(node%dimension_indices)) rank = size(node%dimension_indices)
++                do i = 1, rank
++                    typ = create_mono_type(TARRAY, args=[typ])
++                end do
++            end if
+         class default
+             typ = arena%entries(decl_index)%node%inferred_type
+         end select
+@@ -64,6 +80,7 @@
+         type(ast_arena_t), intent(in) :: arena
+         integer, intent(in) :: expr_index
+         type(mono_type_t) :: typ, declared_type
++        integer :: rank, i, bound
+         type(declaration_binding_t) :: binding
+         character(len=:), allocatable :: error_msg
+ 
+@@ -83,23 +100,33 @@
+                     select type (decl => &
+                             arena%entries(binding%declaration_node_index)%node)
+                     type is (declaration_node)
+-                        if (.not. decl%is_array) then
++                        block
+                             declared_type = strict_dummy_type(arena, &
+                                 binding%declaration_node_index)
+                             if (strict_type_is_known(declared_type)) typ = declared_type
+-                        end if
++                        end block
+                     end select
+                 end if
+             end if
+             type is (call_or_subscript_node)
+             typ = node%inferred_type
+             if (.not. allocated(node%name)) return
+-            if (node%is_array_access) return
+             call resolve_name_at_node(arena, expr_index, node%name, binding, error_msg)
+             if (binding%found) then
+                 if (arena%has_node_at(binding%declaration_node_index)) then
+                     select type (func => &
+                             arena%entries(binding%declaration_node_index)%node)
++                    type is (declaration_node)
++                        if (func%is_array) then
++                            declared_type = strict_dummy_type(arena, binding%declaration_node_index)
++                            call declared_type%sync_from_arena()
++                            do while (declared_type%kind == TARRAY)
++                                if (.not. declared_type%has_args()) exit
++                                declared_type = declared_type%get_arg(1)
++                                call declared_type%sync_from_arena()
++                            end do
++                            if (strict_type_is_known(declared_type)) typ = with_element_type(typ, declared_type)
++                        end if
+                     type is (function_def_node)
+                         if (allocated(func%return_type)) then
+                             declared_type = declaration_type_to_mono(func%return_type)
+@@ -111,6 +138,34 @@
+                     end select
+                 end if
+             end if
++            type is (array_slice_node)
++            typ = node%inferred_type
++            if (.not. node%is_character_substring) then
++                declared_type = strict_actual_argument_type(arena, node%array_index)
++                call declared_type%sync_from_arena()
++                do while (declared_type%kind == TARRAY)
++                    if (.not. declared_type%has_args()) exit
++                    declared_type = declared_type%get_arg(1)
++                    call declared_type%sync_from_arena()
++                end do
++                rank = 0
++                do i = 1, node%num_dimensions
++                    bound = node%bounds_indices(i)
++                    if (.not. arena%has_node_at(bound)) cycle
++                    select type (triplet => arena%entries(bound)%node)
++                    type is (range_expression_node)
++                        rank = rank + 1
++                    type is (array_bounds_node)
++                        rank = rank + 1
++                    end select
++                end do
++                if (strict_type_is_known(declared_type) .and. rank > 0) then
++                    typ = declared_type
++                    do i = 1, rank
++                        typ = create_mono_type(TARRAY, args=[typ])
++                    end do
++                end if
++            end if
+             type is (assignment_node)
+             if (node%is_keyword_argument) then
+                 typ = strict_actual_argument_type(arena, node%value_index)
+@@ -122,6 +177,21 @@
+         end select
+     end function strict_actual_argument_type
+ 
++    recursive function with_element_type(shape, element) result(typ)
++        type(mono_type_t), intent(in) :: shape, element
++        type(mono_type_t) :: typ, copy, child
++        copy = shape
++        call copy%sync_from_arena()
++        typ = element
++        if (copy%kind /= TARRAY) return
++        if (.not. copy%has_args()) then
++            typ = shape
++            return
++        end if
++        child = with_element_type(copy%get_arg(1), element)
++        typ = create_mono_type(TARRAY, args=[child], array_size=copy%size)
++    end function with_element_type
++
+     function strict_literal_type(arena, expr_index, node) result(typ)
+         type(ast_arena_t), intent(in) :: arena
+         integer, intent(in) :: expr_index

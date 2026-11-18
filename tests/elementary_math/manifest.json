@@ -1,0 +1,331 @@
+{
+  "cases": [
+    {
+      "name": "original_dim",
+      "source": "cases/demo_dim.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 3.210 0 0 1 0 0 2 0 0 10"
+    },
+    {
+      "name": "original_sign",
+      "source": "cases/demo_sign.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "12 12 -12 12 12 -12 this processor distinguishes +0 from -0 either way, 0==-0 is true! T either way, 0=/-0 is false! F elemental 12 12 -12"
+    },
+    {
+      "name": "original_log_gamma",
+      "source": "cases/demo_log_gamma.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 0 1 0.6931471805599453"
+    },
+    {
+      "name": "keywords",
+      "source": "cases/keywords.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5 -8 0.6931471805599453"
+    },
+    {
+      "name": "parameters",
+      "source": "cases/parameters.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "13 7 1.791759469228055 8 8"
+    },
+    {
+      "name": "int64_edges",
+      "source": "cases/int64_edges.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 9223372036854775807 -9223372036854775808 -2147483648"
+    },
+    {
+      "name": "signed_zero",
+      "source": "cases/signed_zero.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "-1 -1 1 1 -1 1"
+    },
+    {
+      "name": "negative_gamma",
+      "source": "cases/negative_gamma.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1.265512123484645 0.8600470153764812 0.5555015450206473 0.5723649429247004"
+    },
+    {
+      "name": "rank_three",
+      "source": "cases/rank_three.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0 2 5 -1 -2 -3 4 0 0 0.6931471805599453 1.791759469228055"
+    },
+    {
+      "name": "dynamic_shapes",
+      "source": "cases/dynamic_shapes.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 1 0 -1 -4 -7"
+    },
+    {
+      "name": "empty",
+      "source": "cases/empty.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0 0"
+    },
+    {
+      "name": "kind_undefined",
+      "source": "cases/kind_undefined.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "8 8 8"
+    },
+    {
+      "name": "kind_unsafe_domain",
+      "source": "cases/kind_unsafe_domain.f90",
+      "category": "success",
+      "baseline": "reject",
+      "expected_stdout": "4 4 4",
+      "baseline_reason": "GNU rejects constant domain/overflow inside KIND. Candidate descriptor-only behavior is tested separately; no GNU execution equivalence is claimed."
+    },
+    {
+      "name": "shadow_variables",
+      "source": "cases/shadow_variables.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 5 6"
+    },
+    {
+      "name": "shadow_procedures",
+      "source": "cases/shadow_procedures.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "12 23 34"
+    },
+    {
+      "name": "matrix",
+      "source": "cases/matrix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 -8 0 8 0 8 1 -3 0 3 0 3 3 -1 0 1 0 1 4 0 0 0 0 0 5 -1 1 1 0 1 7 -3 3 3 0 3 12 -8 8 8 4 8 -1.3172679424463638 -0.05624371649767457 1.3664317612369756 1.5895753125511862 2.0194183575537954 0.5723649429247004 0.0 -0.12078223763524543 0.0 0.693147180559945 12.801827480081467 71.257038967168"
+    },
+    {
+      "name": "bad_dim_arity",
+      "source": "cases/bad_dim_arity.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "two arguments"
+    },
+    {
+      "name": "bad_sign_arity",
+      "source": "cases/bad_sign_arity.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "two arguments"
+    },
+    {
+      "name": "bad_gamma_arity",
+      "source": "cases/bad_gamma_arity.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "one argument"
+    },
+    {
+      "name": "mixed_type",
+      "source": "cases/mixed_type.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "matching types"
+    },
+    {
+      "name": "mixed_kind",
+      "source": "cases/mixed_kind.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "matching types"
+    },
+    {
+      "name": "gamma_integer",
+      "source": "cases/gamma_integer.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "REAL"
+    },
+    {
+      "name": "dim_logical",
+      "source": "cases/dim_logical.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "numeric"
+    },
+    {
+      "name": "sign_character",
+      "source": "cases/sign_character.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "numeric"
+    },
+    {
+      "name": "unknown_keyword",
+      "source": "cases/unknown_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "keyword"
+    },
+    {
+      "name": "duplicate_keyword",
+      "source": "cases/duplicate_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Repeated actual"
+    },
+    {
+      "name": "missing_keyword",
+      "source": "cases/missing_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Missing"
+    },
+    {
+      "name": "array_nonconform",
+      "source": "cases/array_nonconform.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "shapes"
+    },
+    {
+      "name": "array_rank",
+      "source": "cases/array_rank.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "conform"
+    },
+    {
+      "name": "unsupported_kind",
+      "source": "cases/unsupported_kind.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "kind"
+    },
+    {
+      "name": "gamma_constant_pole",
+      "source": "cases/gamma_constant_pole.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "negative integer"
+    },
+    {
+      "name": "gamma_zero",
+      "source": "cases/gamma_zero.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "negative integer"
+    },
+    {
+      "name": "gamma_negative_integer",
+      "source": "cases/gamma_negative_integer.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "negative integer"
+    },
+    {
+      "name": "dim_overflow4",
+      "source": "cases/dim_overflow4.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "dim_overflow8",
+      "source": "cases/dim_overflow8.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "sign_overflow4",
+      "source": "cases/sign_overflow4.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "sign_overflow8",
+      "source": "cases/sign_overflow8.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "dim_real_overflow",
+      "source": "cases/dim_real_overflow.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "non-finite"
+    },
+    {
+      "name": "gamma_real_overflow",
+      "source": "cases/gamma_real_overflow.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "non-finite"
+    },
+    {
+      "name": "undefined_value",
+      "source": "cases/undefined_value.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "dynamic_nonconform",
+      "source": "cases/dynamic_nonconform.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "conform"
+    },
+    {
+      "name": "real_kinds",
+      "source": "cases/real_kinds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 1 1.265512123484645 0.5723649429247004 -1 -1"
+    },
+    {
+      "name": "rank_two_sections",
+      "source": "cases/rank_two_sections.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0 1 2 3 4 -3 -4 -1 -2"
+    }
+  ]
+}

@@ -1,0 +1,585 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -4,6 +4,7 @@
+         LITERAL_STRING, LITERAL_LOGICAL
+     use ast_nodes_core, only: literal_node, identifier_node, binary_op_node, &
+         call_or_subscript_node, component_access_node, assignment_node
++    use ast_nodes_bounds, only: array_slice_node, range_expression_node, array_bounds_node
+     use ast_nodes_data, only: declaration_node, parameter_declaration_node, &
+         derived_type_node
+     use ast_nodes_misc, only: complex_literal_node, use_statement_node
+@@ -11,8 +12,9 @@
+     use frontend_compiler_resolution, only: declaration_binding_t, &
+         resolve_name_at_node, resolve_identifier_binding, BINDING_DERIVED_TYPE
+     use string_utils_mod, only: to_lower
+-    use type_system_unified, only: mono_type_t, TINT, TREAL, TCHAR, &
++    use type_system_unified, only: mono_type_t, create_mono_type, TINT, TREAL, TCHAR, &
+         TLOGICAL, TARRAY, TCOMPLEX, TDOUBLE, TDERIVED
++    use semantic_elemental_validation, only: is_elemental_prefix
+     use semantic_input_mode, only: INPUT_MODE_LAZY
+     use standardizer_parameter, only: get_standardizer_input_mode
+     implicit none
+@@ -133,6 +135,15 @@
+             call resolve_binary_operation(arena, node, visiting)
+             type is (call_or_subscript_node)
+             call resolve_call_or_subscript(arena, node_index, node, visiting)
++            type is (assignment_node)
++            if (node%is_keyword_argument) then
++                call resolve_node_metadata(arena, node%value_index, visiting)
++                call copy_metadata_from_index(arena, node%value_index, node)
++            else
++                call resolve_from_inferred_type(node)
++            end if
++            type is (array_slice_node)
++            call resolve_array_slice(arena, node, visiting)
+             type is (component_access_node)
+             call resolve_component_access(arena, node_index, node, visiting)
+             type is (function_def_node)
+@@ -356,6 +367,30 @@
+         end if
+     end subroutine resolve_binary_operation
+ 
++    subroutine resolve_array_slice(arena, node, visiting)
++        type(ast_arena_t), intent(inout) :: arena
++        type(array_slice_node), intent(inout) :: node
++        logical, intent(inout) :: visiting(:)
++        integer :: i, bound, rank
++
++        call resolve_node_metadata(arena, node%array_index, visiting)
++        call copy_metadata_from_index(arena, node%array_index, node)
++        if (.not. node%resolved_type_found) return
++        if (node%is_character_substring) return
++        rank = 0
++        do i = 1, node%num_dimensions
++            bound = node%bounds_indices(i)
++            if (.not. arena%has_node_at(bound)) cycle
++            select type (triplet => arena%entries(bound)%node)
++            type is (range_expression_node)
++                rank = rank + 1
++            type is (array_bounds_node)
++                rank = rank + 1
++            end select
++        end do
++        node%resolved_rank = rank
++    end subroutine resolve_array_slice
++
+     subroutine resolve_call_or_subscript(arena, node_index, node, visiting)
+         type(ast_arena_t), intent(inout) :: arena
+         integer, intent(in) :: node_index
+@@ -363,6 +398,8 @@
+         logical, intent(inout) :: visiting(:)
+         type(declaration_binding_t) :: binding
+         character(len=:), allocatable :: error_msg
++        integer :: i, arg_index, call_rank, inferred_rank, inferred_kind
++        type(mono_type_t) :: call_type
+ 
+         if (.not. allocated(node%name)) then
+             call resolve_from_inferred_type(node)
+@@ -373,7 +410,37 @@
+         if (binding%found) then
+             call resolve_node_metadata(arena, binding%declaration_node_index, visiting)
+             call copy_metadata_from_index(arena, binding%declaration_node_index, node)
+-            if (node%resolved_type_found) return
++            if (node%resolved_type_found) then
++                select type (proc => arena%entries(binding%declaration_node_index)%node)
++                type is (function_def_node)
++                    if (is_elemental_prefix(proc%prefix_keywords)) then
++                        ! Module procedure bodies may not have been visited by
++                        ! generic inference. Derive each call's rank from its
++                        ! scoped actual expressions, never from another call.
++                        call_rank = 0
++                        if (allocated(node%arg_indices)) then
++                            do i = 1, size(node%arg_indices)
++                                arg_index = node%arg_indices(i)
++                                if (.not. arena%has_node_at(arg_index)) cycle
++                                call resolve_node_metadata(arena, arg_index, visiting)
++                                call_rank = max(call_rank, &
++                                    arena%entries(arg_index)%node%resolved_rank)
++                            end do
++                        end if
++                        node%resolved_rank = call_rank
++                        inferred_kind = inferred_base_kind(node%inferred_type, inferred_rank)
++                        if (inferred_rank /= call_rank .or. &
++                            normalize_type_kind(inferred_kind) /= node%resolved_type_kind) then
++                            call_type = create_mono_type(node%resolved_type_kind)
++                            do i = 1, call_rank
++                                call_type = create_mono_type(TARRAY, args=[call_type])
++                            end do
++                            node%inferred_type = call_type
++                        end if
++                    end if
++                end select
++                return
++            end if
+         end if
+ 
+         if (node%is_intrinsic) then
+@@ -388,11 +455,28 @@
+         type(call_or_subscript_node), intent(inout) :: node
+         logical, intent(inout) :: visiting(:)
+         character(len=:), allocatable :: name
+-        integer :: kind_value, result_type, result_rank
++        integer :: kind_value, result_type, result_rank, i, argument_index
+ 
+         name = to_lower(trim(node%name))
+         result_type = inferred_base_kind(node%inferred_type, result_rank)
+         result_type = normalize_type_kind(result_type)
++
++        ! These elemental intrinsics preserve the conforming actual shape.
++        ! Reductions, transformations and inquiries keep their separate rules.
++        select case (name)
++        case ("real", "int", "logical", "cmplx", "aimag", "abs", &
++              "exp", "log", "sqrt", "erfc", "min", "max")
++            result_rank = 0
++            if (allocated(node%arg_indices)) then
++                do i = 1, size(node%arg_indices)
++                    argument_index = node%arg_indices(i)
++                    if (.not. arena%has_node_at(argument_index)) cycle
++                    call resolve_node_metadata(arena, argument_index, visiting)
++                    result_rank = max(result_rank, &
++                        arena%entries(argument_index)%node%resolved_rank)
++                end do
++            end if
++        end select
+ 
+         select case (name)
+         case ("real", "int", "logical", "cmplx")
+@@ -413,6 +497,13 @@
+                 result_type = TCOMPLEX
+             end select
+             call set_intrinsic_metadata(node, result_type, kind_value, result_rank)
++        case ("exp", "log", "sqrt", "erfc", "min", "max")
++            call first_intrinsic_argument_metadata(arena, node, visiting, &
++                result_type, kind_value)
++            if (result_type > 0 .and. kind_value > 0) &
++                call set_intrinsic_metadata(node, result_type, kind_value, result_rank)
++        case ("sum", "product", "minval", "maxval")
++            call resolve_reduction_metadata(arena, node, visiting)
+         case ("kind", "selected_int_kind", "selected_real_kind")
+             call set_intrinsic_metadata(node, TINT, 4, 0)
+         case ("aimag", "abs")
+@@ -432,6 +523,59 @@
+         end select
+     end subroutine resolve_intrinsic_call
+ 
++    subroutine resolve_reduction_metadata(arena, node, visiting)
++        type(ast_arena_t), intent(inout) :: arena
++        type(call_or_subscript_node), intent(inout) :: node
++        logical, intent(inout) :: visiting(:)
++        integer :: i, idx, value_index, array_index, positional, rank
++        logical :: has_dim, keyword
++        character(:), allocatable :: argument_name
++
++        if (.not. allocated(node%arg_indices)) return
++        array_index = 0
++        positional = 0
++        has_dim = .false.
++        do i = 1, size(node%arg_indices)
++            idx = node%arg_indices(i)
++            if (.not. arena%has_node_at(idx)) cycle
++            value_index = idx
++            keyword = .false.
++            argument_name = ''
++            select type (arg => arena%entries(idx)%node)
++            type is (assignment_node)
++                if (arg%is_keyword_argument) then
++                    keyword = .true.
++                    value_index = arg%value_index
++                    if (arena%has_node_at(arg%target_index)) then
++                        select type (target => arena%entries(arg%target_index)%node)
++                        type is (identifier_node)
++                            argument_name = to_lower(target%name)
++                        end select
++                    end if
++                end if
++            end select
++            call resolve_node_metadata(arena, value_index, visiting)
++            if (.not. arena%has_node_at(value_index)) cycle
++            if (keyword) then
++                if (argument_name == 'array') array_index = value_index
++                if (argument_name == 'dim') has_dim = .true.
++            else
++                positional = positional + 1
++                if (positional == 1) array_index = value_index
++                if (positional == 2) then
++                    has_dim = arena%entries(value_index)%node%resolved_type_kind == TINT
++                end if
++            end if
++        end do
++        if (.not. arena%has_node_at(array_index)) return
++        if (.not. arena%entries(array_index)%node%resolved_type_found) return
++        rank = 0
++        if (has_dim) rank = max(0, arena%entries(array_index)%node%resolved_rank - 1)
++        call set_intrinsic_metadata(node, &
++            arena%entries(array_index)%node%resolved_type_kind, &
++            arena%entries(array_index)%node%resolved_kind_value, rank)
++    end subroutine resolve_reduction_metadata
++
+     subroutine resolve_unary_same_kind_intrinsic(arena, node, visiting, name, &
+             result_rank)
+         type(ast_arena_t), intent(inout) :: arena
+@@ -439,23 +583,30 @@
+         logical, intent(inout) :: visiting(:)
+         character(len=*), intent(in) :: name
+         integer, intent(in) :: result_rank
+-        integer :: argument_type, argument_kind, result_type
++        integer :: argument_type, argument_kind, result_type, argument_rank
+ 
+         call first_intrinsic_argument_metadata(arena, node, visiting, &
+             argument_type, argument_kind)
+         if (argument_kind <= 0) return
++        argument_rank = result_rank
++        if (allocated(node%arg_indices)) then
++            if (size(node%arg_indices) > 0) then
++                if (arena%has_node_at(node%arg_indices(1))) &
++                    argument_rank = arena%entries(node%arg_indices(1))%node%resolved_rank
++            end if
++        end if
+ 
+         select case (name)
+         case ("aimag")
+             if (argument_type /= TCOMPLEX) return
+-            call set_intrinsic_metadata(node, TREAL, argument_kind, result_rank)
++            call set_intrinsic_metadata(node, TREAL, argument_kind, argument_rank)
+         case ("abs")
+             result_type = argument_type
+             if (argument_type == TCOMPLEX) result_type = TREAL
+             select case (result_type)
+             case (TINT, TREAL)
+                 call set_intrinsic_metadata(node, result_type, argument_kind, &
+-                    result_rank)
++                    argument_rank)
+             end select
+         end select
+     end subroutine resolve_unary_same_kind_intrinsic
+--- a/src/semantic/analyzers/semantic_analyzer_infer_type_locals_part2.inc
++++ b/src/semantic/analyzers/semantic_analyzer_infer_type_locals_part2.inc
+@@ -615,7 +615,7 @@
+             type(mono_type_t) :: node_type
+ 
+             node_type = infer_function_call_type(arena, expr, this%scopes, &
+-                                                 module_get_node_type_wrapper)
++                                                 module_get_node_type_wrapper, node_index)
+             call collect_call_signature(this%signatures, arena, expr, node_type, &
+                                         node_index)
+             call validate_unsigned_integer_intrinsic_argument_mixing(expr)
+--- a/src/semantic/analyzers/semantic_call_signature_collector.f90
++++ b/src/semantic/analyzers/semantic_call_signature_collector.f90
+@@ -10,6 +10,7 @@
+     use type_string_utils, only: mono_type_to_string
+     use string_utils_mod, only: to_lower
+     use semantic_validation_utils, only: int_to_str
++    use semantic_function_helpers, only: is_elemental_call
+     implicit none
+     private
+ 
+@@ -68,6 +69,9 @@
+                 conversion_result = .true.
+             end select
+         end if
++        ! An ELEMENTAL user procedure also has a declared result type/kind.
++        conversion_result = conversion_result .or. &
++            is_elemental_call(arena, call_node%name, node_index)
+         if (param_kind > 0 .and. .not. conversion_result) then
+             if (deduced_kind <= 0) then
+                 deduced_kind = param_kind
+--- a/src/semantic/analyzers/semantic_function_call.f90
++++ b/src/semantic/analyzers/semantic_function_call.f90
+@@ -13,7 +13,7 @@
+         gather_call_argument_types, &
+         refine_type_from_arguments, &
+         refine_character_intrinsic_result, &
+-        find_return_type
++        find_return_type, is_elemental_call
+     implicit none
+     private
+ 
+@@ -21,17 +21,18 @@
+ 
+ contains
+ 
+-    function infer_function_call_type(arena, call_node, scopes, get_type_fn) &
++    function infer_function_call_type(arena, call_node, scopes, get_type_fn, call_index) &
+             result(typ)
+         type(ast_arena_t), intent(inout) :: arena
+         type(call_or_subscript_node), intent(inout) :: call_node
+         type(scope_stack_t), intent(inout) :: scopes
+         procedure(get_type_lookup) :: get_type_fn
++        integer, intent(in), optional :: call_index
+         type(mono_type_t) :: typ
+         character(len=:), allocatable :: lowered_name
+         logical :: is_intrinsic_func
+         logical :: has_function_scheme
+-        logical :: return_type_locked
++        logical :: return_type_locked, elemental
+         type(mono_type_t), allocatable :: arg_types(:)
+         integer :: i
+ 
+@@ -63,7 +64,19 @@
+ 
+         ! Array subscripts select elements; their INTEGER types must not
+         ! refine the declared element type as if they were function arguments.
+-        if (.not. call_node%is_array_access) then
++        elemental = .false.
++        if (present(call_index) .and. allocated(call_node%name)) then
++            elemental = is_elemental_call(arena, call_node%name, call_index, typ)
++        end if
++        if (elemental) then
++            ! Lift only the call result: the declared scalar result and its
++            ! element kind stay unchanged, including for scalar expansion.
++            do i = 1, size(arg_types)
++                if (arg_types(i)%kind /= TARRAY) cycle
++                typ = conversion_array_type(arg_types(i), typ)
++                exit
++            end do
++        else if (.not. call_node%is_array_access) then
+             call refine_type_from_arguments(arg_types, typ, return_type_locked, &
+                 is_intrinsic_func)
+         end if
+--- a/src/semantic/analyzers/semantic_function_helpers.f90
++++ b/src/semantic/analyzers/semantic_function_helpers.f90
+@@ -6,6 +6,11 @@
+     use ast_arena_modern, only: ast_arena_t
+     use ast_nodes_core, only: call_or_subscript_node
+     use ast_nodes_procedure, only: function_def_node
++    use ast_nodes_data, only: declaration_node
++    use semantic_procedure_utils, only: declaration_type_to_mono
++    use string_utils_mod, only: to_lower
++    use semantic_strict_argument_type_checker_resolution, only: find_function_interface_index
++    use semantic_elemental_validation, only: is_elemental_prefix
+     implicit none
+     private
+ 
+@@ -22,9 +27,73 @@
+     public :: gather_call_argument_types
+     public :: refine_type_from_arguments
+     public :: refine_character_intrinsic_result
+-    public :: find_return_type
++    public :: find_return_type, is_elemental_call
+ 
+ contains
++
++    logical function is_elemental_call(arena, name, call_index, result_type) result(elemental)
++        type(ast_arena_t), intent(in) :: arena
++        character(*), intent(in) :: name
++        integer, intent(in) :: call_index
++        type(mono_type_t), intent(inout), optional :: result_type
++        integer :: iface_index
++
++        elemental = .false.
++        call find_function_interface_index(arena, name, call_index, iface_index)
++        if (iface_index <= 0) return
++        select type (iface => arena%entries(iface_index)%node)
++        type is (function_def_node)
++            elemental = is_elemental_prefix(iface%prefix_keywords)
++            if (elemental .and. present(result_type)) then
++                call declared_elemental_result(arena, iface, result_type)
++            end if
++        end select
++    end function is_elemental_call
++
++    subroutine declared_elemental_result(arena, iface, result_type)
++        type(ast_arena_t), intent(in) :: arena
++        type(function_def_node), intent(in) :: iface
++        type(mono_type_t), intent(inout) :: result_type
++        type(mono_type_t) :: declared
++        character(:), allocatable :: result_name
++        integer :: i, j, idx
++        logical :: matches
++
++        ! Never use another same-named procedure's signature as the declared
++        ! result of this scoped ELEMENTAL interface.
++        if (allocated(iface%return_type)) then
++            declared = declaration_type_to_mono(iface%return_type)
++            if (declared%kind > 0) then
++                result_type = declared
++                return
++            end if
++        end if
++        result_name = to_lower(iface%name)
++        if (allocated(iface%result_variable)) then
++            if (len_trim(iface%result_variable) > 0) &
++                result_name = to_lower(iface%result_variable)
++        end if
++        if (.not. allocated(iface%body_indices)) return
++        do i = 1, size(iface%body_indices)
++            idx = iface%body_indices(i)
++            if (.not. arena%has_node_at(idx)) cycle
++            select type (decl => arena%entries(idx)%node)
++            type is (declaration_node)
++                matches = .false.
++                if (allocated(decl%var_name)) &
++                    matches = to_lower(decl%var_name) == result_name
++                if (allocated(decl%var_names)) then
++                    do j = 1, size(decl%var_names)
++                        matches = matches .or. to_lower(decl%var_names(j)) == result_name
++                    end do
++                end if
++                if (.not. matches) cycle
++                declared = declaration_type_to_mono(decl%type_name)
++                if (declared%kind > 0) result_type = declared
++                return
++            end select
++        end do
++    end subroutine declared_elemental_result
+ 
+     subroutine gather_call_argument_types(arena, call_node, get_type_fn, &
+             arg_types)
+--- a/src/semantic/analyzers/semantic_strict_argument_type_checker.f90
++++ b/src/semantic/analyzers/semantic_strict_argument_type_checker.f90
+@@ -8,6 +8,7 @@
+         find_function_interface_index, find_subroutine_interface_index
+     use semantic_strict_argument_type_checker_validation, only: &
+         validate_call_against_interface
++    use semantic_elemental_validation, only: is_elemental_prefix
+     implicit none
+     private
+ 
+@@ -38,7 +39,7 @@
+             call validate_call_against_interface(arena, errors, call_node%name, &
+                 call_node%arg_indices, &
+                 iface%param_indices, &
+-                iface%body_indices)
++                iface%body_indices, is_elemental_prefix(iface%prefix_keywords))
+         class default
+             return
+         end select
+@@ -65,7 +66,7 @@
+             call validate_call_against_interface(arena, errors, call_node%name, &
+                 call_node%arg_indices, &
+                 iface%param_indices, &
+-                iface%body_indices)
++                iface%body_indices, is_elemental_prefix(iface%prefix_keywords))
+         class default
+             return
+         end select
+--- a/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
++++ b/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
+@@ -10,6 +10,7 @@
+     use frontend_compiler_resolution, only: declaration_binding_t, &
+         resolve_identifier_binding, resolve_name_at_node
+     use frontend_compiler_type_queries, only: resolve_kind_selector
++    use semantic_elemental_validation, only: is_elemental_prefix
+     use semantic_procedure_utils, only: declaration_type_to_mono
+     use string_utils_mod, only: to_lower
+     use type_system_unified, only: mono_type_t, create_mono_type, TARRAY, TDOUBLE, &
+@@ -79,7 +80,7 @@
+     recursive function strict_actual_argument_type(arena, expr_index) result(typ)
+         type(ast_arena_t), intent(in) :: arena
+         integer, intent(in) :: expr_index
+-        type(mono_type_t) :: typ, declared_type
++        type(mono_type_t) :: typ, declared_type, actual_type
+         integer :: rank, i, bound
+         type(declaration_binding_t) :: binding
+         character(len=:), allocatable :: error_msg
+@@ -133,7 +134,19 @@
+                             call apply_declared_real_kind(arena, &
+                                 binding%declaration_node_index, func%return_type, &
+                                 .false., 0, declared_type)
+-                            if (strict_type_is_known(declared_type)) typ = declared_type
++                            if (strict_type_is_known(declared_type)) then
++                                typ = declared_type
++                                if (is_elemental_prefix(func%prefix_keywords) .and. &
++                                    allocated(node%arg_indices)) then
++                                    do i = 1, size(node%arg_indices)
++                                        actual_type = strict_actual_argument_type(arena, &
++                                            node%arg_indices(i))
++                                        if (actual_type%kind /= TARRAY) cycle
++                                        typ = with_element_type(actual_type, declared_type)
++                                        exit
++                                    end do
++                                end if
++                            end if
+                         end if
+                     end select
+                 end if
+--- a/src/semantic/analyzers/semantic_strict_argument_type_checker_validation.f90
++++ b/src/semantic/analyzers/semantic_strict_argument_type_checker_validation.f90
+@@ -13,7 +13,7 @@
+         strict_dummy_type, strict_type_is_known, strict_type_name, &
+         strict_types_match
+     use string_utils_mod, only: to_lower
+-    use type_system_unified, only: mono_type_t
++    use type_system_unified, only: mono_type_t, TARRAY
+     implicit none
+     private
+ 
+@@ -213,13 +213,14 @@
+     end function declaration_is_in_procedure_body
+ 
+     subroutine validate_call_against_interface(arena, errors, proc_name, &
+-            arg_indices, param_indices, body_indices)
++            arg_indices, param_indices, body_indices, elemental)
+         type(ast_arena_t), intent(inout) :: arena
+         type(error_collection_t), intent(inout) :: errors
+         character(len=*), intent(in) :: proc_name
+         integer, allocatable, intent(in) :: arg_indices(:)
+         integer, allocatable, intent(in) :: param_indices(:)
+         integer, allocatable, intent(in) :: body_indices(:)
++        logical, intent(in), optional :: elemental
+ 
+         integer :: i
+         integer :: next_positional
+@@ -271,7 +272,7 @@
+             call validate_mapped_argument(arena, errors, proc_name, &
+                 trim(param_names(i)), arg_for_param(i), &
+                 merge(decl_for_param(i), param_indices(i), &
+-                decl_for_param(i) > 0))
++                decl_for_param(i) > 0), elemental)
+         end do
+     end subroutine validate_call_against_interface
+ 
+@@ -390,13 +391,14 @@
+     end subroutine map_positional_argument
+ 
+     subroutine validate_mapped_argument(arena, errors, proc_name, dummy_name, &
+-            arg_expr_index, dummy_index)
++            arg_expr_index, dummy_index, elemental)
+         type(ast_arena_t), intent(inout) :: arena
+         type(error_collection_t), intent(inout) :: errors
+         character(len=*), intent(in) :: proc_name
+         character(len=*), intent(in) :: dummy_name
+         integer, intent(in) :: arg_expr_index
+         integer, intent(in) :: dummy_index
++        logical, intent(in), optional :: elemental
+ 
+         type(mono_type_t) :: actual_type
+         type(mono_type_t) :: dummy_type
+@@ -416,6 +418,17 @@
+         call actual_type%sync_from_arena()
+         call dummy_type%sync_from_arena()
+ 
++        ! ELEMENTAL array actuals associate each element with a scalar dummy.
++        ! Keep type checking active on the element, not on the array wrapper.
++        if (present(elemental)) then
++            if (elemental .and. dummy_type%kind /= TARRAY) then
++                do while (actual_type%kind == TARRAY)
++                    if (.not. actual_type%has_args()) exit
++                    actual_type = actual_type%get_arg(1)
++                    call actual_type%sync_from_arena()
++                end do
++            end if
++        end if
+         if (.not. strict_type_is_known(actual_type)) return
+         if (.not. strict_type_is_known(dummy_type)) return
+ 
+--- a/src/semantic/analyzers/semantic_validation_utils.f90
++++ b/src/semantic/analyzers/semantic_validation_utils.f90
+@@ -11,6 +11,7 @@
+     use semantic_constant_values, only: get_constant_integer_value
+     use string_utils_mod, only: int_to_string
+     use semantic_input_mode, only: INPUT_MODE_LAZY, INPUT_MODE_STANDARD
++    use semantic_function_helpers, only: is_elemental_call
+     implicit none
+     private
+ 
+@@ -137,6 +138,9 @@
+                     end if
+                     type is (call_or_subscript_node)
+                     if (node%name == name) then
++                        ! Procedure-result propagation must not overwrite an
++                        ! ELEMENTAL reference's independently lifted call type.
++                        if (is_elemental_call(arena, node%name, i)) cycle
+                         merged_type = new_type
+                         call merge_allocatable_flags(node%inferred_type, &
+                             merged_type)

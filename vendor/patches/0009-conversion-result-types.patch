@@ -1,0 +1,82 @@
+--- a/src/semantic/analyzers/semantic_call_signature_collector.f90
++++ b/src/semantic/analyzers/semantic_call_signature_collector.f90
+@@ -31,6 +31,7 @@
+         integer :: n_args
+         integer :: deduced_kind
+         integer :: param_kind
++        logical :: conversion_result
+         type(mono_type_t) :: return_type_copy
+ 
+         ! Resolved array references are not procedure calls and must not
+@@ -58,7 +59,16 @@
+         else
+             param_kind = 0
+         end if
+-        if (param_kind > 0) then
++        ! Conversion intrinsics have a specified result type, not the dominant
++        ! argument type. Signature collection must not undo their inference.
++        conversion_result = .false.
++        if (call_node%is_intrinsic) then
++            select case (to_lower(trim(call_node%name)))
++            case ("int", "real", "dble", "cmplx", "logical", "uint")
++                conversion_result = .true.
++            end select
++        end if
++        if (param_kind > 0 .and. .not. conversion_result) then
+             if (deduced_kind <= 0) then
+                 deduced_kind = param_kind
+             else if (deduced_kind == TREAL .and. param_kind /= TREAL) then
+@@ -70,7 +80,7 @@
+         if (deduced_kind <= 0) deduced_kind = type_string_to_kind(return_type_tmp)
+         ! Only update return_type if it's NOT already an array type (Issue #2153)
+         ! Array return types should be preserved from earlier inference
+-        if (return_type%kind /= TARRAY) then
++        if (return_type%kind /= TARRAY .and. .not. conversion_result) then
+             select case (deduced_kind)
+             case (TINT, TREAL, TLOGICAL, TCHAR, TCOMPLEX, TDOUBLE)
+                 return_type = create_mono_type(deduced_kind)
+--- a/src/semantic/analyzers/semantic_function_call.f90
++++ b/src/semantic/analyzers/semantic_function_call.f90
+@@ -33,6 +33,7 @@
+         logical :: has_function_scheme
+         logical :: return_type_locked
+         type(mono_type_t), allocatable :: arg_types(:)
++        integer :: i
+ 
+         typ = create_mono_type(TREAL)
+         is_intrinsic_func = .false.
+@@ -69,6 +70,14 @@
+ 
+         if (is_intrinsic_func) then
+             select case (lowered_name)
++            case ("int", "real", "dble", "cmplx", "logical", "uint")
++                ! Conversion intrinsics are elemental, unlike reductions. Keep
++                ! their result element type while retaining an array's shape.
++                do i = 1, size(arg_types)
++                    if (arg_types(i)%kind /= TARRAY) cycle
++                    typ = conversion_array_type(arg_types(i), typ)
++                    exit
++                end do
+             case ("count")
+                 typ = create_mono_type(TINT)
+             case ("any", "all")
+@@ -77,6 +86,19 @@
+         end if
+     end function infer_function_call_type
+ 
++    recursive function conversion_array_type(shape, element) result(typ)
++        type(mono_type_t), intent(in) :: shape, element
++        type(mono_type_t) :: typ, shape_copy, child
++
++        shape_copy = shape
++        call shape_copy%sync_from_arena()
++        typ = element
++        if (shape_copy%kind /= TARRAY) return
++        if (.not. shape_copy%has_args()) return
++        child = conversion_array_type(shape_copy%get_arg(1), element)
++        typ = create_mono_type(TARRAY, args=[child], array_size=shape_copy%size)
++    end function conversion_array_type
++
+     subroutine resolve_function_call_type(arena, call_node, scopes, &
+             get_type_fn, typ, &
+             is_intrinsic_func, &

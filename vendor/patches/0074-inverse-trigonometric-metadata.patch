@@ -1,0 +1,42 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -889,7 +889,7 @@
+         ! These elemental intrinsics preserve the conforming actual shape.
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+-        case ("acos", "dprod", "tand", "aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
++        case ("asin", "atan", "atan2", "acos", "dprod", "tand", "aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+               "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "isnan", "erfc_scaled", "erf", "bessel_j0", "bessel_j1", "bessel_jn", "bessel_y0", "bessel_y1", "bessel_yn", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+@@ -925,7 +925,7 @@
+             call resolve_real_round_metadata(arena,node,visiting)
+         case ("dprod")
+             call set_intrinsic_metadata(node,TREAL,8,result_rank)
+-        case ("acos", "tand", "asinh", "acosh")
++        case ("asin", "atan", "atan2", "acos", "tand", "asinh", "acosh")
+             call first_intrinsic_argument_metadata(arena,node,visiting,result_type,kind_value)
+             if(kind_value>0)call set_intrinsic_metadata(node,TREAL,kind_value,result_rank)
+         case ("erf", "bessel_j0", "bessel_j1", "bessel_jn", "bessel_y0", "bessel_y1", "bessel_yn")
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 106
++        integer, parameter :: NUM_INTRINSICS = 107
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -190,6 +190,10 @@
+             description="Elemental tangent in degrees")
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="atan2", return_type="real", arg_types="real,real", &
++            description="Elemental quadrant-aware arctangent")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="dble", return_type="real", arg_types="numeric", &
+             description="Convert to double precision real")
+         i = i + 1

@@ -1,0 +1,551 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -889,7 +889,7 @@
+         ! These elemental intrinsics preserve the conforming actual shape.
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+-        case ("aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
++        case ("dprod", "tand", "aint", "anint", "asinh", "acosh", "fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+               "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "isnan", "erfc_scaled", "erf", "bessel_j0", "bessel_j1", "bessel_jn", "bessel_y0", "bessel_y1", "bessel_yn", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+@@ -923,7 +923,9 @@
+             if(kind_value>0)call set_intrinsic_metadata(node,TREAL,kind_value,result_rank)
+         case ("aint", "anint")
+             call resolve_real_round_metadata(arena,node,visiting)
+-        case ("asinh", "acosh")
++        case ("dprod")
++            call set_intrinsic_metadata(node,TREAL,8,result_rank)
++        case ("tand", "asinh", "acosh")
+             call first_intrinsic_argument_metadata(arena,node,visiting,result_type,kind_value)
+             if(kind_value>0)call set_intrinsic_metadata(node,TREAL,kind_value,result_rank)
+         case ("erf", "bessel_j0", "bessel_j1", "bessel_jn", "bessel_y0", "bessel_y1", "bessel_yn")
+--- a/src/frontend/frontend_program_unit_scanner_part1.inc
++++ b/src/frontend/frontend_program_unit_scanner_part1.inc
+@@ -200,7 +200,7 @@
+         character(len=*), intent(in) :: word
+ 
+         select case (trim(word))
+-        case ("integer", "real", "double", "precision", "logical", "character", &
++        case ("integer", "real", "double", "doubleprecision", "precision", "logical", "character", &
+               "complex")
+             is_type_kw = .true.
+         case default
+--- a/src/frontend/frontend_program_unit_scanner_part2.inc
++++ b/src/frontend/frontend_program_unit_scanner_part2.inc
+@@ -148,7 +148,7 @@
+ 
+         select case (trim(word))
+         case ("integer", "real", "logical", "character", "complex", &
+-              "double", "type", "class", "procedure")
++              "double", "doubleprecision", "type", "class", "procedure")
+             is_type = .true.
+         case default
+             is_type = .false.
+--- a/src/frontend/frontend_statement_contains_section_helpers.f90
++++ b/src/frontend/frontend_statement_contains_section_helpers.f90
+@@ -37,7 +37,7 @@
+ 
+         do while (pos <= size(tokens))
+             select case (tokens(pos)%kind)
+-            case (TK_WHITESPACE)
++            case (TK_WHITESPACE, TK_COMMENT)
+                 pos = pos + 1
+             case (TK_KEYWORD, TK_IDENTIFIER)
+                 lowered = to_lower(trim(tokens(pos)%text))
+@@ -72,7 +72,7 @@
+                 else
+                     pos = pos + 1
+                 end if
+-            case (TK_NEWLINE, TK_COMMENT, TK_EOF)
++            case (TK_NEWLINE, TK_EOF)
+                 return
+             case default
+                 pos = pos + 1
+--- a/src/frontend/frontend_statement_contains_section_helpers_impl.f90
++++ b/src/frontend/frontend_statement_contains_section_helpers_impl.f90
+@@ -189,7 +189,7 @@
+         character(len=*), intent(in) :: lowered
+         is_type_prefix = (lowered == "integer" .or. lowered == "real" .or. &
+             lowered == "logical" .or. lowered == "character" .or. &
+-            lowered == "complex" .or. lowered == "double" .or. &
++            lowered == "complex" .or. lowered == "double" .or. lowered == "doubleprecision" .or. &
+             lowered == "type" .or. lowered == "class")
+     end function is_contains_type_prefix_keyword
+ 
+--- a/src/parser/core/mixed_construct_detector.f90
++++ b/src/parser/core/mixed_construct_detector.f90
+@@ -145,7 +145,7 @@
+             case ("type")
+                 ! Could be "type :: name" or "type(name)" - both are declarations
+                 is_declaration = .not. function_follows_type_spec(tokens, start_pos)
+-            case ("integer", "real", "character", "logical", "complex", "procedure")
++            case ("integer", "real", "character", "logical", "complex", "double", "doubleprecision", "procedure")
+                 ! Basic type declarations
+                 is_declaration = .not. function_follows_type_spec(tokens, start_pos)
+             case ("parameter")
+@@ -170,7 +170,7 @@
+             is_type_keyword = .false.
+             select case (to_lower(trim(tokens(start_pos)%text)))
+             case ("integer", "real", "character", "logical", "complex", &
+-                    "procedure", "type", "class", "double")
++                    "procedure", "type", "class", "double", "doubleprecision")
+                 is_type_keyword = .true.
+             end select
+             if (.not. is_type_keyword) return
+@@ -275,7 +275,7 @@
+                             is_program_unit = .true.
+                             return
+                         case ("integer", "real", "character", "logical", "complex", &
+-                                "procedure", "type", "class", "double")
++                                "procedure", "type", "class", "double", "doubleprecision")
+                             if (function_follows_type_spec(tokens, start_pos)) then
+                                 is_program_unit = .true.
+                             end if
+@@ -457,7 +457,7 @@
+                 ! A return-type prefix (e.g. "integer(8) function") delimits a function.
+                 select case (start_keyword)
+                 case ("integer", "real", "character", "logical", "complex", &
+-                        "procedure", "type", "class", "double")
++                        "procedure", "type", "class", "double", "doubleprecision")
+                     if (function_follows_type_spec(tokens, start_pos)) then
+                         start_keyword = "function"
+                     end if
+--- a/src/parser/core/parser_dispatcher_part1.inc
++++ b/src/parser/core/parser_dispatcher_part1.inc
+@@ -43,7 +43,7 @@
+         if (stmt_index > 0 .and. .not. parser%has_errors()) then
+             select case (to_lower(trim(first_token%text)))
+             case ("integer", "real", "logical", "character", "complex", &
+-                    "double", "class", "procedure", "type", "data")
++                    "double", "doubleprecision", "class", "procedure", "type", "data")
+                 call reject_unconsumed_tokens(parser)
+             end select
+         end if
+@@ -228,7 +228,7 @@
+         select case (keyword)
+         case ("type")
+             stmt_index = parse_type_or_declaration(parser, arena, prefix_buffer)
+-        case ("real", "integer", "logical", "character", "complex", "double", &
++        case ("real", "integer", "logical", "character", "complex", "double", "doubleprecision", &
+               "class", "procedure")
+             next_token = parser%get_token_at_index(parser%current_token + 1)
+             if (next_token%kind == TK_OPERATOR .and. &
+--- a/src/parser/declarations/parser_declarations_core_module.f90
++++ b/src/parser/declarations/parser_declarations_core_module.f90
+@@ -518,7 +518,7 @@
+             next_token = parser%get_token_at_index(parser%current_token + 1)
+             next_lower = to_lower(trim(next_token%text))
+             if (trim(next_lower) == "precision") return
+-        case ("in", "out", "inout", "data", "procedure")
++        case ("in", "out", "inout", "data", "procedure", "precision", "doubleprecision")
+             ! The type/attribute grammar has already been consumed here, so
+             ! PROCEDURE is an entity name, not a procedure declaration prefix.
+             ! Contextual keywords can act as identifiers within declarations
+--- a/src/parser/declarations/parser_declarations_derived_module.f90
++++ b/src/parser/declarations/parser_declarations_derived_module.f90
+@@ -411,7 +411,7 @@
+ 
+         select case (to_lower(trim(adjustl(token%text))))
+         case ("integer", "real", "complex", "logical", "character", &
+-                "type", "class", "double", "procedure")
++                "type", "class", "double", "doubleprecision", "procedure")
+             is_declaration = .true.
+         end select
+     end function component_declaration_ahead
+@@ -1307,7 +1307,7 @@
+         if (token%kind == TK_IDENTIFIER .or. token%kind == TK_KEYWORD) then
+             select case (to_lower(trim(adjustl(token%text))))
+             case ("integer", "real", "complex", "logical", "character", &
+-                    "type", "class", "double", "procedure")
++                    "type", "class", "double", "doubleprecision", "procedure")
+                 comp_index = parse_declaration(parser, arena)
+             case default
+                 ! Not a component declaration, return 0
+--- a/src/parser/declarations/parser_declarations_type_spec_module.f90
++++ b/src/parser/declarations/parser_declarations_type_spec_module.f90
+@@ -32,9 +32,23 @@
+         type(token_t) :: next_token
+         character(len=:), allocatable :: next_lower
+ 
++        if (base_lower == "doubleprecision") then
++            type_spec%type_name = "double precision"
++            type_spec%base_keyword = "double precision"
++            base_lower = "double precision"
++            return
++        end if
+         if (base_lower /= "double") return
+         if (parser%is_at_end()) return
+ 
++        ! Continued physical newlines are already normalized. Comments may
++        ! remain between the two words; never cross a logical newline.
++        do while (.not. parser%is_at_end())
++            next_token = parser%peek()
++            if (next_token%kind /= TK_COMMENT .and. &
++                next_token%kind /= TK_WHITESPACE) exit
++            next_token = parser%consume()
++        end do
+         next_token = parser%peek()
+         next_lower = to_lower(trim(next_token%text))
+ 
+--- a/src/parser/declarations/parser_interface_prefix_module.f90
++++ b/src/parser/declarations/parser_interface_prefix_module.f90
+@@ -2,7 +2,7 @@
+     use string_utils_mod, only: to_lower
+     use parser_state_module, only: parser_state_t
+     use parser_prefix_buffer_module, only: parser_prefix_buffer_t
+-    use parser_procedure_shared_module, only: consume_optional_kind_spec
++    use parser_procedure_shared_module, only: consume_optional_kind_spec, next_type_word_index
+     use lexer_core, only: token_t
+     implicit none
+     private
+@@ -34,7 +34,8 @@
+             trim(lowered_text) == "logical" .or. &
+             trim(lowered_text) == "character" .or. &
+             trim(lowered_text) == "complex" .or. &
+-            trim(lowered_text) == "double"
++            trim(lowered_text) == "double" .or. &
++            trim(lowered_text) == "doubleprecision"
+     end function is_interface_return_type_keyword
+ 
+     ! type(...) and class(...) are function return-type prefixes inside an
+@@ -64,11 +65,12 @@
+         character(len=:), allocatable :: lookahead_lower
+ 
+         if (trim(lowered_text) == "double") then
+-            lookahead_token = parser%get_token_at_index(parser%current_token + 1)
++            lookahead_token = parser%get_token_at_index(next_type_word_index(parser))
+             lookahead_lower = to_lower(trim(lookahead_token%text))
+             if (trim(lookahead_lower) == "precision" .or. &
+                 trim(lookahead_lower) == "complex") then
+-                type_token = parser%consume()
++                type_token = parser%peek()
++                parser%current_token = next_type_word_index(parser)
+                 lookahead_token = parser%consume()
+                 type_with_kind = trim(type_token%text) // " " // &
+                     trim(lookahead_token%text)
+@@ -80,6 +82,7 @@
+ 
+         type_token = parser%consume()
+         type_with_kind = trim(type_token%text)
++        if (trim(lowered_text) == "doubleprecision") type_with_kind = "double precision"
+         call consume_optional_kind_spec(parser, type_with_kind)
+         call prefix_buffer%set_return_type(type_with_kind)
+     end subroutine collect_interface_return_type
+--- a/src/parser/declarations/parser_module_structures.f90
++++ b/src/parser/declarations/parser_module_structures.f90
+@@ -17,7 +17,7 @@
+         parse_subroutine_definition, &
+         parse_interface_block
+     use parser_prefix_buffer_module, only: parser_prefix_buffer_t, append_prefix_token
+-    use parser_procedure_shared_module, only: consume_optional_kind_spec
++    use parser_procedure_shared_module, only: consume_optional_kind_spec, next_type_word_index
+     use parser_import_resolution_module, only: parse_use_statement, &
+         parse_include_statement
+     use ast_types, only: LITERAL_STRING
+@@ -142,7 +142,7 @@
+             stmt_index = parse_include_statement(parser, arena)
+         case ("namelist")
+             stmt_index = parse_namelist_statement(parser, arena)
+-        case ("integer", "real", "logical", "character", "complex", "procedure")
++        case ("integer", "real", "logical", "character", "complex", "double", "doubleprecision", "procedure")
+             stmt_index = parse_declaration(parser, arena)
+         case ("parameter")
+             if (parse_parameter_statement(parser, arena)) then
+@@ -258,15 +258,15 @@
+                 token = parser%consume()
+                 stmt_index = -1
+             case ("integer", "real", "logical", "character", "complex", &
+-                    "double", "procedure")
++                    "double", "doubleprecision", "procedure")
+                 call prefix_buffer%get_all(stored)
+                 if (trim(lowered) == "double") then
+-                    lookahead = parser%get_token_at_index(parser%current_token + 1)
++                    lookahead = parser%get_token_at_index(next_type_word_index(parser))
+                     lookahead_lower = to_lower(trim(lookahead%text))
+                     select case (trim(lookahead_lower))
+                     case ("precision", "complex")
+                         type_with_kind = trim(token%text)//" "//trim(lookahead%text)
+-                        token = parser%consume()
++                        parser%current_token = next_type_word_index(parser)
+                         token = parser%consume()
+                         call consume_optional_kind_spec(parser, type_with_kind)
+                         call append_prefix_token(stored, type_with_kind)
+@@ -285,7 +285,7 @@
+                 stmt_index = -1
+             case ("type", "class")
+                 ! Handle type(xxx) or class(xxx) as function return type prefix
+-                lookahead = parser%get_token_at_index(parser%current_token + 1)
++                lookahead = parser%get_token_at_index(next_type_word_index(parser))
+                 if (lookahead%kind == TK_OPERATOR .and. lookahead%text == "(") then
+                     call prefix_buffer%get_all(stored)
+                     type_with_kind = trim(token%text)
+@@ -328,8 +328,8 @@
+                     return
+                 end if
+             case ("end")
+-                if (parser%current_token + 1 <= size(parser%tokens)) then
+-                    lookahead = parser%tokens(parser%current_token + 1)
++                if (next_type_word_index(parser) <= size(parser%tokens)) then
++                    lookahead = parser%tokens(next_type_word_index(parser))
+                     lookahead_lower = to_lower(trim(lookahead%text))
+                     if (lookahead%kind == TK_KEYWORD .and. &
+                         lookahead_lower == to_lower(trim(paired_end_keyword))) then
+@@ -398,7 +398,7 @@
+                 ! initializer, leaving later PARAMETERs as stray assignments.
+                 if (token%kind == TK_KEYWORD) then
+                     select case (trim(lowered))
+-                    case ("integer", "real", "logical", "character", "complex")
++                    case ("integer", "real", "logical", "character", "complex", "double", "doubleprecision")
+                         block
+                             integer, allocatable :: entity_indices(:)
+                             entity_indices = parse_multi_declaration(parser, arena)
+@@ -477,7 +477,7 @@
+ 
+         select case (trim(lowered))
+         case ("public", "private", "use", "include", "namelist", "integer", &
+-                "real", "logical", "character", "complex", "procedure", &
++                "real", "logical", "character", "complex", "double", "doubleprecision", "procedure", &
+                 "type", "class", "module", "implicit", "interface", &
+                 "abstract", "instantiate", "enum", "enumerator", "parameter", &
+                 "external", "intrinsic", "dimension", "allocatable")
+--- a/src/parser/declarations/parser_parameter_handling.f90
++++ b/src/parser/declarations/parser_parameter_handling.f90
+@@ -195,7 +195,9 @@
+         lower_text = to_lower(token%text)
+         can_be_id = lower_text == "stop" .or. lower_text == "pause" .or. &
+             lower_text == "cycle" .or. lower_text == "exit" .or. &
+-            lower_text == "return" .or. lower_text == "continue"
++            lower_text == "return" .or. lower_text == "continue" .or. &
++            lower_text == "double" .or. lower_text == "precision" .or. &
++            lower_text == "doubleprecision"
+     end function can_keyword_be_identifier
+ 
+     subroutine parse_parameter_group(parser, arena, param_indices)
+--- a/src/parser/procedures/parser_procedure_definition_bodies.f90
++++ b/src/parser/procedures/parser_procedure_definition_bodies.f90
+@@ -24,7 +24,7 @@
+         clear_stmt_util_additional_indices
+     use parser_prefix_buffer_module, only: parser_prefix_buffer_t, &
+         append_prefix_token
+-    use parser_procedure_shared_module, only: consume_optional_kind_spec
++    use parser_procedure_shared_module, only: consume_optional_kind_spec, next_type_word_index
+     use parser_interface_blocks_module, only: parse_interface_block
+     use ast_nodes_misc, only: contains_node
+     use ast_arena_modern, only: ast_arena_t
+@@ -890,7 +890,7 @@
+         lowered = to_lower(trim(stmt_tokens(first_token)%text))
+         select case (lowered)
+         case ("integer", "real", "logical", "character", "complex", &
+-                "double", "class", "procedure", "type", "data")
++                "double", "doubleprecision", "class", "procedure", "type", "data")
+             needs_check = .true.
+         end select
+     end function statement_needs_trailing_check
+@@ -1100,16 +1100,16 @@
+             if (allocated(stored)) deallocate (stored)
+             consumed_token = parser%consume()
+             handled = .true.
+-        case ("integer", "real", "logical", "character", "complex", "double", &
++        case ("integer", "real", "logical", "character", "complex", "double", "doubleprecision", &
+                 "procedure")
+             call prefix_buffer%get_all(stored)
+             if (trim(lowered) == "double") then
+-                lookahead = parser%get_token_at_index(parser%current_token + 1)
++                lookahead = parser%get_token_at_index(next_type_word_index(parser))
+                 lookahead_lower = to_lower(trim(lookahead%text))
+                 select case (trim(lookahead_lower))
+                 case ("precision", "complex")
+                     type_with_kind = trim(token%text) // " " // trim(lookahead%text)
+-                    consumed_token = parser%consume()
++                    parser%current_token = next_type_word_index(parser)
+                     consumed_token = parser%consume()
+                     call consume_optional_kind_spec(parser, type_with_kind)
+                     call append_prefix_token(stored, type_with_kind)
+@@ -1349,7 +1349,7 @@
+         is_decl = .false.
+         select case (trim(keyword))
+         case ("integer", "real", "logical", "character", "complex", &
+-                "double", "type", "class", "dimension", "intent", &
++                "double", "doubleprecision", "type", "class", "dimension", "intent", &
+                 "optional", "pointer", "target", "allocatable", &
+                 "parameter", "save", "external", "intrinsic", &
+                 "common", "equivalence", "data", "implicit", &
+--- a/src/parser/procedures/parser_procedure_shared.f90
++++ b/src/parser/procedures/parser_procedure_shared.f90
+@@ -1,15 +1,30 @@
+ module parser_procedure_shared_module
+     use string_utils_mod, only: to_lower
+-    use lexer_core, only: token_t, TK_KEYWORD
++    use lexer_core, only: token_t, TK_KEYWORD, TK_COMMENT, TK_WHITESPACE
+     use parser_state_module, only: parser_state_t
+     implicit none
+     private
+ 
++    public :: next_type_word_index
+     public :: consume_optional_return_type
+     public :: consume_optional_kind_spec
+     public :: keyword_can_be_function_name
+ 
+ contains
++
++    integer function next_type_word_index(parser) result(index)
++        type(parser_state_t), intent(in) :: parser
++        type(token_t) :: token
++
++        ! Physical continuation newlines are normalized before parsing. Skip
++        ! retained comments/spacing, but never cross a logical newline.
++        index = parser%current_token + 1
++        do
++            token = parser%get_token_at_index(index)
++            if (token%kind /= TK_COMMENT .and. token%kind /= TK_WHITESPACE) exit
++            index = index + 1
++        end do
++    end function next_type_word_index
+ 
+     subroutine consume_optional_return_type(parser, return_type_str)
+         type(parser_state_t), intent(inout) :: parser
+@@ -28,23 +43,23 @@
+                 return_type_str = token%text
+                 token = parser%consume()
+                 call consume_optional_kind_spec(parser, return_type_str)
+-            case ("double precision")
++            case ("double precision", "doubleprecision")
+                 return_type_str = "real(8)"
+                 token = parser%consume()
+             case ("double complex")
+                 return_type_str = "complex(8)"
+                 token = parser%consume()
+             case ("double")
+-                next_index = parser%current_token + 1
++                next_index = next_type_word_index(parser)
+                 lookahead = parser%get_token_at_index(next_index)
+                 next_lower = to_lower(trim(lookahead%text))
+                 if (trim(next_lower) == "precision") then
+                     return_type_str = "real(8)"
+-                    token = parser%consume()
++                    parser%current_token = next_index
+                     token = parser%consume()
+                 else if (trim(next_lower) == "complex") then
+                     return_type_str = "complex(8)"
+-                    token = parser%consume()
++                    parser%current_token = next_index
+                     token = parser%consume()
+                 end if
+             case ("type", "class")
+@@ -111,7 +126,7 @@
+ 
+         select case (trim(token_lower))
+         case ("double")
+-            next_index = parser%current_token + 1
++            next_index = next_type_word_index(parser)
+             lookahead = parser%get_token_at_index(next_index)
+             next_lower = to_lower(trim(lookahead%text))
+             if (next_lower /= "precision") then
+--- a/src/parser/procedures/parser_procedure_signatures.f90
++++ b/src/parser/procedures/parser_procedure_signatures.f90
+@@ -111,7 +111,7 @@
+             select case (trim(lowered))
+             case ("integer", "real", "logical", "character", "complex", "procedure")
+                 call set_return_type_from_token(pending_prefixes(i)); i = i + 1; cycle
+-            case ("double precision", "double complex")
++            case ("double precision", "doubleprecision", "double complex")
+                 call set_return_type_from_token(pending_prefixes(i)); i = i + 1; cycle
+             case ("double")
+                 if (i < n) then
+@@ -148,6 +148,8 @@
+             character(len=*), intent(in) :: token_value
+             if (return_type_set) return
+             return_type_from_prefix = trim(token_value)
++            if (to_lower(trim(token_value)) == "doubleprecision") &
++                return_type_from_prefix = "double precision"
+             return_type_set = .true.
+         end subroutine set_return_type_from_token
+ 
+--- a/src/parser/statements/parser_execution_statements.f90
++++ b/src/parser/statements/parser_execution_statements.f90
+@@ -13,7 +13,7 @@
+         parse_subroutine_definition, &
+         parse_interface_block
+     use parser_prefix_buffer_module, only: parser_prefix_buffer_t, append_prefix_token
+-    use parser_procedure_shared_module, only: consume_optional_kind_spec
++    use parser_procedure_shared_module, only: consume_optional_kind_spec, next_type_word_index
+     use parser_assignment_module, only: parse_assignment_statement
+     use parser_utils, only: analyze_declaration_structure
+     use parser_io_statements_module, only: parse_print_statement, &
+--- a/src/parser/statements/parser_execution_statements_module.inc
++++ b/src/parser/statements/parser_execution_statements_module.inc
+@@ -486,14 +486,14 @@
+             type(token_t) :: lookahead
+ 
+             select case (lowered)
+-            case ("real", "integer", "logical", "character", "complex", "double", &
++            case ("real", "integer", "logical", "character", "complex", "double", "doubleprecision", &
+                   "class", "procedure", "type")
+                 ! Check if function or subroutine follows this type keyword
+                 if (is_function_or_subroutine_ahead(parser_ref)) then
+                     ! This is a return type prefix, not a variable declaration
+                     if (trim(lowered) == "double") then
+                         lookahead = parser_ref%get_token_at_index( &
+-                                    parser_ref%current_token + 1)
++                                    next_type_word_index(parser_ref))
+                         lookahead_lower = to_lower(trim(lookahead%text))
+                         if (trim(lookahead_lower) == "precision" .or. &
+                             trim(lookahead_lower) == "complex") then
+@@ -501,7 +501,7 @@
+                                 trim(lookahead%text)
+                             block
+                                 type(token_t) :: consumed_token
+-                                consumed_token = parser_ref%consume()
++                                parser_ref%current_token = next_type_word_index(parser_ref)
+                                 consumed_token = parser_ref%consume()
+                             end block
+                         else
+--- a/src/parser/statements/parser_statement_core.f90
++++ b/src/parser/statements/parser_statement_core.f90
+@@ -202,7 +202,7 @@
+ 
+         matches = (text == "real" .or. text == "integer" .or. text == "logical" .or. &
+             text == "character" .or. text == "type" .or. text == "class" .or. &
+-            text == "complex" .or. text == "double" .or. text == "procedure")
++            text == "complex" .or. text == "double" .or. text == "doubleprecision" .or. text == "procedure")
+     end function is_declaration_keyword
+ 
+     recursive integer function parse_keyword_statement(first_token, parser, arena, &
+--- a/src/parser/statements/parser_statement_utilities.f90
++++ b/src/parser/statements/parser_statement_utilities.f90
+@@ -122,7 +122,7 @@
+             case ("include")
+                 stmt_index = parse_include_statement(parser, arena)
+             case ("integer", "real", "logical", "character", "complex", &
+-                    "double", "type", "class", "procedure")
++                    "double", "doubleprecision", "type", "class", "procedure")
+                 ! Check if this is actually an assignment like "double = 5"
+                 if (trim(to_lower(token%text)) == "type" .and. &
+                     parser_is_at_type_definition(parser)) then
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 104
++        integer, parameter :: NUM_INTRINSICS = 106
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -182,6 +182,14 @@
+         call register_c_interop_intrinsics(i)
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="dprod", return_type="real", arg_types="real,real", &
++            description="Elemental double precision product of default REAL operands")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="tand", return_type="real", arg_types="real", &
++            description="Elemental tangent in degrees")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="dble", return_type="real", arg_types="numeric", &
+             description="Convert to double precision real")
+         i = i + 1

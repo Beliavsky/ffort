@@ -1,0 +1,130 @@
+{
+  "description": "Independent synthetic 0.32 cross-feature oracles. No original utility bodies or full-module execution claimed.",
+  "cases": [
+    {
+      "name": "explicit_prefix_live_alias",
+      "source": "cases/explicit_prefix_live_alias.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 2 13 4 5 6 6 3 6 11 2 13 4 5 60"
+    },
+    {
+      "name": "rank_two_prefix_reshape_alias",
+      "source": "cases/rank_two_prefix_reshape_alias.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "40 5 6 20 5 10 20 30 41 5 7 3 2 3 1 2"
+    },
+    {
+      "name": "reversed_section_prefix_copyback",
+      "source": "cases/reversed_section_prefix_copyback.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 3 4 5 60 7 80 80 60 4 2 2 4"
+    },
+    {
+      "name": "shared_flags_explicit_out_prefix",
+      "source": "cases/shared_flags_explicit_out_prefix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "30 90 40 50 60 30 20 90 40 50 60 3"
+    },
+    {
+      "name": "synthetic_get_data_optional",
+      "source": "cases/synthetic_get_data_optional.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "8.0 10.0 12.0 1.0 2.0 3.0 3 2 T",
+      "scope_note": "Synthetic declaration/association pattern only. Original get_data external WRITE and implied DO are not executed or claimed supported."
+    },
+    {
+      "name": "nested_pointer_escape_frame_reuse",
+      "source": "cases/nested_pointer_escape_frame_reuse.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 7 11 12 13 1 2 7 3 T"
+    },
+    {
+      "name": "optional_disassociated_empty_views",
+      "source": "cases/optional_disassociated_empty_views.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T F F F F T 0 0 0"
+    },
+    {
+      "name": "recursive_explicit_prefix_function",
+      "source": "cases/recursive_explicit_prefix_function.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "26 60 50 8 7 6 5 6"
+    },
+    {
+      "name": "numeric_kinds_prefix_views",
+      "source": "cases/numeric_kinds_prefix_views.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "101 2 3 0 0 2.0 4.0 3.0 4.0 3 4"
+    },
+    {
+      "name": "empty_explicit_out_preserves_alias",
+      "source": "cases/empty_explicit_out_preserves_alias.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "10 20 30 40 4 3"
+    },
+    {
+      "name": "out_prefix_alias_undefined_guard",
+      "source": "cases/out_prefix_alias_undefined_guard.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized",
+      "scope_note": "GNU compilation only: reading the undefined OUT-prefix element has no valid semantic execution oracle."
+    },
+    {
+      "name": "nested_local_target_lifetime_guard",
+      "source": "cases/nested_local_target_lifetime_guard.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "lifetime has expired",
+      "scope_note": "GNU compilation only: candidate checks escaping owner lifetime before any expired pointer dereference."
+    },
+    {
+      "name": "explicit_target_pointer_escape_boundary",
+      "source": "cases/explicit_target_pointer_escape_boundary.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Pointer association requires nonallocatable rank-one/two TARGET",
+      "scope_note": "Legal GNU syntax, but view escape from this runtime-bound explicit-shape TARGET dummy is source-rejected. Ordinary explicit-shape copyback is supported. The assumed-shape TARGET escape cases execute independently."
+    },
+    {
+      "name": "explicit_companion_absent_pointer_guard",
+      "source": "cases/explicit_companion_absent_pointer_guard.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "absent OPTIONAL",
+      "scope_note": "GNU compilation only: applying NULLIFY to an absent OPTIONAL pointer is not a defined execution oracle."
+    },
+    {
+      "name": "pointer_actual_explicit_dummy_boundary",
+      "source": "cases/pointer_actual_explicit_dummy_boundary.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Direct POINTER actual requires POINTER dummy",
+      "scope_note": "Legal GNU syntax excluded by bounded pointer-actual procedure contract; compile-only reference."
+    },
+    {
+      "name": "pointer_dummy_value_boundary",
+      "source": "cases/pointer_dummy_value_boundary.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Procedure POINTER pointee",
+      "scope_note": "Uncalled procedure still cannot read pointer data. Legal GNU syntax excluded by the descriptor-only procedure contract."
+    }
+  ]
+}

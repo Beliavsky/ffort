@@ -1,0 +1,12 @@
+program keyword_oracle
+implicit none
+
+print *,combine( &
+argument_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=7)
+contains
+integer function combine(argument_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx) result(result_value)
+integer,intent(in) :: argument_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+result_value=argument_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx+1
+end function combine
+
+end program

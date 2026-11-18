@@ -1,0 +1,1 @@
+Retained GNU14.2 constant-NOT range diagnostics at O0/O2 are not execution agreement. The slash-format probe is a separately labeled diagnostic, not an altered original. Full originals remain in cases/ and are hash-checked. Binary artifacts stay in the preserved owner workspace, not the source ZIP.

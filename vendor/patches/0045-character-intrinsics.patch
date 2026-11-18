@@ -1,0 +1,48 @@
+diff --git a/src/frontend/frontend_compiler_type_queries.f90 b/src/frontend/frontend_compiler_type_queries.f90
+index d892880..7ab7b73 100644
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -869,7 +869,7 @@ contains
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+         case ("real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+-              "exp", "log", "log10", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar")
++              "exp", "log", "log10", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+                 do i = 1, size(node%arg_indices)
+@@ -883,6 +883,12 @@ contains
+         end select
+ 
+         select case (name)
++        case ("index", "len_trim")
++            kind_value = intrinsic_kind_argument(arena, node, name)
++            if (kind_value <= 0) kind_value = 4
++            call set_intrinsic_metadata(node, TINT, kind_value, result_rank)
++        case ("adjustl", "adjustr")
++            call set_intrinsic_metadata(node, TCHAR, 1, result_rank)
+         case ("char", "achar")
+             kind_value = intrinsic_kind_argument(arena, node, name)
+             if (kind_value <= 0) kind_value = 1
+@@ -1938,7 +1944,7 @@ contains
+         position = 0
+         if (.not. allocated(node%arg_indices)) return
+         select case (intrinsic_name)
+-        case ("char", "achar", "nint", "floor", "ceiling")
++        case ("char", "achar", "nint", "floor", "ceiling", "index", "len_trim")
+             do i = 1, size(node%arg_indices)
+                 argument_index = node%arg_indices(i)
+                 if (.not. arena%has_node_at(argument_index)) cycle
+@@ -1954,7 +1960,11 @@ contains
+                         end if
+                     end select
+                 class default
+-                    if (i == 2) position = i
++                    if (intrinsic_name == "index") then
++                        if (i == 4) position = i
++                    else
++                        if (i == 2) position = i
++                    end if
+                 end select
+             end do
+         case ("cmplx")

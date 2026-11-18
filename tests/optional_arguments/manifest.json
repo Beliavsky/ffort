@@ -1,0 +1,169 @@
+[
+  {
+    "name": "exact_utility_bodies",
+    "kind": "valid"
+  },
+  {
+    "name": "keyword_and_forwarding",
+    "kind": "valid"
+  },
+  {
+    "name": "elemental_forwarding",
+    "kind": "valid"
+  },
+  {
+    "name": "generic_optional",
+    "kind": "valid"
+  },
+  {
+    "name": "undefined_but_present",
+    "kind": "valid"
+  },
+  {
+    "name": "missing_required",
+    "kind": "reject",
+    "diagnostic_contains": "Missing required actual",
+    "gnu_compile_expected": 1
+  },
+  {
+    "name": "duplicate_keyword",
+    "kind": "reject",
+    "diagnostic_contains": "Repeated actual",
+    "gnu_compile_expected": 1
+  },
+  {
+    "name": "unknown_keyword",
+    "kind": "reject",
+    "diagnostic_contains": "Unknown keyword",
+    "gnu_compile_expected": 1
+  },
+  {
+    "name": "positional_after_keyword",
+    "kind": "reject",
+    "diagnostic_contains": "Positional argument",
+    "gnu_compile_expected": 1
+  },
+  {
+    "name": "wrong_type",
+    "kind": "reject",
+    "diagnostic_contains": "type or rank",
+    "gnu_compile_expected": 1
+  },
+  {
+    "name": "present_required",
+    "kind": "reject",
+    "diagnostic_contains": "PRESENT argument must",
+    "gnu_compile_expected": 1
+  },
+  {
+    "name": "present_expression",
+    "kind": "reject",
+    "diagnostic_contains": "PRESENT argument must",
+    "gnu_compile_expected": 1
+  },
+  {
+    "name": "present_parenthesized",
+    "kind": "reject",
+    "diagnostic_contains": "PRESENT argument must",
+    "gnu_compile_expected": 1
+  },
+  {
+    "name": "present_literal",
+    "kind": "reject",
+    "diagnostic_contains": "PRESENT argument must",
+    "gnu_compile_expected": 1
+  },
+  {
+    "name": "optional_local",
+    "kind": "reject",
+    "diagnostic_contains": "OPTIONAL",
+    "gnu_compile_expected": 0
+  },
+  {
+    "name": "optional_array",
+    "kind": "valid"
+  },
+  {
+    "name": "optional_character",
+    "kind": "valid"
+  },
+  {
+    "name": "duplicate_optional",
+    "kind": "reject",
+    "diagnostic_contains": "OPTIONAL",
+    "gnu_compile_expected": 1
+  },
+  {
+    "name": "absent_read",
+    "kind": "runtime",
+    "diagnostic_contains": "absent OPTIONAL dummy"
+  },
+  {
+    "name": "absent_write",
+    "kind": "runtime",
+    "diagnostic_contains": "absent OPTIONAL dummy"
+  },
+  {
+    "name": "absent_expression_forward",
+    "kind": "runtime",
+    "diagnostic_contains": "absent OPTIONAL dummy"
+  },
+  {
+    "name": "absent_required_forward",
+    "kind": "runtime",
+    "diagnostic_contains": "absent actual associated with required dummy"
+  },
+  {
+    "name": "undefined_present_read",
+    "kind": "runtime",
+    "diagnostic_contains": "uninitialized"
+  },
+  {
+    "name": "wide_kinds_and_empty_arrays",
+    "kind": "valid"
+  },
+  {
+    "name": "optional_bound_method",
+    "kind": "valid"
+  },
+  {
+    "name": "ambiguous_optional_generic",
+    "kind": "reject",
+    "diagnostic_contains": "Ambiguous generic",
+    "gnu_compile_expected": 1
+  },
+  {
+    "name": "present_missing",
+    "kind": "reject",
+    "diagnostic_contains": "PRESENT requires",
+    "gnu_compile_expected": 1
+  },
+  {
+    "name": "kind_inquiries",
+    "kind": "valid"
+  },
+  {
+    "name": "intrinsic_size_dim_absent",
+    "kind": "runtime",
+    "policy_boundary": true,
+    "gnu_compile_expected": 0,
+    "gnu_valid_expected_stdout": "4",
+    "diagnostic_contains": "absent OPTIONAL dummy referenced: dim_arg"
+  },
+  {
+    "name": "intrinsic_sum_mask_absent",
+    "kind": "runtime",
+    "policy_boundary": true,
+    "gnu_compile_expected": 0,
+    "gnu_valid_expected_stdout": "10",
+    "diagnostic_contains": "absent OPTIONAL dummy referenced: mask_arg"
+  },
+  {
+    "name": "intrinsic_selected_real_kind_p_absent",
+    "kind": "runtime",
+    "policy_boundary": true,
+    "gnu_compile_expected": 0,
+    "gnu_valid_expected_stdout": "4",
+    "diagnostic_contains": "absent OPTIONAL dummy referenced: precision_arg"
+  }
+]

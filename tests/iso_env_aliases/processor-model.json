@@ -1,0 +1,79 @@
+{
+  "description": "Separate processor-capability observations, not successful differential comparisons. GNU supports REAL128=16; bounded interpreter reports REAL128=-1 and rejects that REAL kind.",
+  "gnu_version": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "candidate_sha256": "323628c8d6bdd479d9b0bbdfb0d662c0781fe777863b5c3fb43883da9b347f77",
+  "observations": [
+    {
+      "source": "cases/real128_sentinel.f90",
+      "sha256": "0671f613e0339935d39a0e9879e6403f1a1bbbcdab6be303a777d7712b5a6aec",
+      "compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/iso-env-alias-work/fortfront-interpreter/tests/iso_env_aliases/cases/real128_sentinel.f90",
+          "-o",
+          "/tmp/tmpcu04w3ya/ref"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "GNU": {
+        "argv": [
+          "/tmp/tmpcu04w3ya/ref"
+        ],
+        "exit": 0,
+        "stdout": "          16           4 F\n",
+        "stderr": ""
+      },
+      "candidate": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/iso-env-alias-work/fortfront-interpreter/build/gfortran_C48A8F1D6CFAA2C2/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/iso-env-alias-work/fortfront-interpreter/tests/iso_env_aliases/cases/real128_sentinel.f90"
+        ],
+        "exit": 0,
+        "stdout": " -1 4 T\n",
+        "stderr": ""
+      }
+    },
+    {
+      "source": "cases/real128_alias_sentinel.f90",
+      "sha256": "219a21101e7c9a5fac96fe29fb4a28fa7131f99608bc1cd86006b943c9747436",
+      "compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/iso-env-alias-work/fortfront-interpreter/tests/iso_env_aliases/cases/real128_alias_sentinel.f90",
+          "-o",
+          "/tmp/tmprofyrfqw/ref"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "GNU": {
+        "argv": [
+          "/tmp/tmprofyrfqw/ref"
+        ],
+        "exit": 0,
+        "stdout": "          16 F           8   2.0000000000000000     \n",
+        "stderr": ""
+      },
+      "candidate": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/iso-env-alias-work/fortfront-interpreter/build/gfortran_C48A8F1D6CFAA2C2/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/iso-env-alias-work/fortfront-interpreter/tests/iso_env_aliases/cases/real128_alias_sentinel.f90"
+        ],
+        "exit": 0,
+        "stdout": " -1 T 8 2.0000000000000000\n",
+        "stderr": ""
+      }
+    }
+  ]
+}

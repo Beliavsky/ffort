@@ -1,0 +1,3848 @@
+{
+  "utc": "2026-11-16T14:47:09.406493+00:00",
+  "summary": {
+    "total": 75,
+    "failed": 0,
+    "candidate_checked": 75,
+    "gnu_checked": 72,
+    "gnu_skipped": 3,
+    "gnu_executed": 48,
+    "gnu_compile_only": 13,
+    "gnu_rejections": 11,
+    "specification_only": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "int4_rank1",
+        "source": "cases/int4_rank1.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank1.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/int4_rank1-hnzxdwb4/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/int4_rank1-hnzxdwb4/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank1.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank1.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "int4_rank2",
+        "source": "cases/int4_rank2.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank2.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/int4_rank2-_u0h6ssf/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/int4_rank2-_u0h6ssf/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank2.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank2.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "int4_rank3",
+        "source": "cases/int4_rank3.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "diagnostic": "rank-one or rank-two",
+        "expected_stdout": "",
+        "reason": "Unchanged generated probe retains the pre-existing ALL(rank3) boundary; transfer itself is checked separately using scalar iteration."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank3.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/int4_rank3-8_0ibisp/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank3.f90:9:18: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank3.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank3.f90:9:18: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank3.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "int4_unallocated_clears",
+        "source": "cases/int4_unallocated_clears.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_unallocated_clears.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/int4_unallocated_clears-qkrowaxz/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/int4_unallocated_clears-qkrowaxz/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_unallocated_clears.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_unallocated_clears.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "int8_rank1",
+        "source": "cases/int8_rank1.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank1.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/int8_rank1-jpsvkx7p/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/int8_rank1-jpsvkx7p/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank1.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank1.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "int8_rank2",
+        "source": "cases/int8_rank2.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank2.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/int8_rank2-llnjphab/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/int8_rank2-llnjphab/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank2.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank2.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "int8_rank3",
+        "source": "cases/int8_rank3.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "diagnostic": "rank-one or rank-two",
+        "expected_stdout": "",
+        "reason": "Unchanged generated probe retains the pre-existing ALL(rank3) boundary; transfer itself is checked separately using scalar iteration."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank3.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/int8_rank3-zljvuj30/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank3.f90:9:20: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank3.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank3.f90:9:20: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank3.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "int8_unallocated_clears",
+        "source": "cases/int8_unallocated_clears.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_unallocated_clears.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/int8_unallocated_clears-kjrj8v1d/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/int8_unallocated_clears-kjrj8v1d/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_unallocated_clears.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_unallocated_clears.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "real4_rank1",
+        "source": "cases/real4_rank1.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank1.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/real4_rank1-ombrl8cl/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/real4_rank1-ombrl8cl/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank1.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank1.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "real4_rank2",
+        "source": "cases/real4_rank2.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank2.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/real4_rank2-rps1ajkq/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/real4_rank2-rps1ajkq/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank2.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank2.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "real4_rank3",
+        "source": "cases/real4_rank3.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "diagnostic": "rank-one or rank-two",
+        "expected_stdout": "",
+        "reason": "Unchanged generated probe retains the pre-existing ALL(rank3) boundary; transfer itself is checked separately using scalar iteration."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank3.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/real4_rank3-dtq36j31/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank3.f90:9:20: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank3.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank3.f90:9:20: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank3.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "real4_unallocated_clears",
+        "source": "cases/real4_unallocated_clears.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_unallocated_clears.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/real4_unallocated_clears-8mbj_27j/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/real4_unallocated_clears-8mbj_27j/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_unallocated_clears.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_unallocated_clears.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "real8_rank1",
+        "source": "cases/real8_rank1.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank1.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/real8_rank1-nee9mz54/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/real8_rank1-nee9mz54/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank1.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank1.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "real8_rank2",
+        "source": "cases/real8_rank2.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank2.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/real8_rank2-4osn397p/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/real8_rank2-4osn397p/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank2.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank2.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "real8_rank3",
+        "source": "cases/real8_rank3.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "diagnostic": "rank-one or rank-two",
+        "expected_stdout": "",
+        "reason": "Unchanged generated probe retains the pre-existing ALL(rank3) boundary; transfer itself is checked separately using scalar iteration."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank3.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/real8_rank3-f4fen0jv/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank3.f90:9:22: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank3.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank3.f90:9:22: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank3.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "real8_unallocated_clears",
+        "source": "cases/real8_unallocated_clears.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_unallocated_clears.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/real8_unallocated_clears-gppwh4sd/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/real8_unallocated_clears-gppwh4sd/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_unallocated_clears.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_unallocated_clears.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "logical_rank1",
+        "source": "cases/logical_rank1.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank1.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/logical_rank1-a60k19ep/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/logical_rank1-a60k19ep/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank1.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank1.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "logical_rank2",
+        "source": "cases/logical_rank2.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank2.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/logical_rank2-t3rt4kbf/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/logical_rank2-t3rt4kbf/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank2.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank2.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "logical_rank3",
+        "source": "cases/logical_rank3.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "diagnostic": "rank-one or rank-two",
+        "expected_stdout": "",
+        "reason": "Unchanged generated probe retains the pre-existing ALL(rank3) boundary; transfer itself is checked separately using scalar iteration."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank3.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/logical_rank3-lzavg268/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank3.f90:9:26: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank3.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank3.f90:9:26: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank3.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "logical_unallocated_clears",
+        "source": "cases/logical_unallocated_clears.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_unallocated_clears.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/logical_unallocated_clears-w4uhecij/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/logical_unallocated_clears-w4uhecij/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_unallocated_clears.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_unallocated_clears.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "fixed_char_rank1",
+        "source": "cases/fixed_char_rank1.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank1.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/fixed_char_rank1-rjd12u08/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/fixed_char_rank1-rjd12u08/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank1.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank1.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "fixed_char_rank2",
+        "source": "cases/fixed_char_rank2.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank2.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/fixed_char_rank2-rzrme_gu/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/fixed_char_rank2-rzrme_gu/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank2.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank2.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "fixed_char_rank3",
+        "source": "cases/fixed_char_rank3.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "diagnostic": "rank-one or rank-two",
+        "expected_stdout": "",
+        "reason": "Unchanged generated probe retains the pre-existing ALL(rank3) boundary; transfer itself is checked separately using scalar iteration."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank3.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/fixed_char_rank3-9mwy6r1a/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank3.f90:9:22: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank3.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank3.f90:9:22: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank3.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "fixed_char_unallocated_clears",
+        "source": "cases/fixed_char_unallocated_clears.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_unallocated_clears.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/fixed_char_unallocated_clears-rtliy2di/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/fixed_char_unallocated_clears-rtliy2di/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_unallocated_clears.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_unallocated_clears.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "deferred_char_rank1",
+        "source": "cases/deferred_char_rank1.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank1.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/deferred_char_rank1-sngpfjkd/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/deferred_char_rank1-sngpfjkd/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank1.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank1.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "deferred_char_rank2",
+        "source": "cases/deferred_char_rank2.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank2.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/deferred_char_rank2-ovge0p5x/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/deferred_char_rank2-ovge0p5x/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank2.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank2.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "deferred_char_rank3",
+        "source": "cases/deferred_char_rank3.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "diagnostic": "rank-one or rank-two",
+        "expected_stdout": "",
+        "reason": "Unchanged generated probe retains the pre-existing ALL(rank3) boundary; transfer itself is checked separately using scalar iteration."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank3.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/deferred_char_rank3-z9l3fes7/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank3.f90:9:22: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank3.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank3.f90:9:22: Array intrinsic requires a rank-one or rank-two array\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank3.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "deferred_char_unallocated_clears",
+        "source": "cases/deferred_char_unallocated_clears.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_unallocated_clears.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/deferred_char_unallocated_clears-v43aqmlw/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/deferred_char_unallocated_clears-v43aqmlw/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_unallocated_clears.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_unallocated_clears.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "empty_rank1",
+        "source": "cases/empty_rank1.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/empty_rank1.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/empty_rank1-dzh9127t/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/empty_rank1-dzh9127t/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/empty_rank1.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/empty_rank1.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "empty_rank2",
+        "source": "cases/empty_rank2.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/empty_rank2.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/empty_rank2-97ms7hf7/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/empty_rank2-97ms7hf7/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/empty_rank2.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/empty_rank2.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "empty_rank3",
+        "source": "cases/empty_rank3.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/empty_rank3.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/empty_rank3-lwg_8sm0/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/empty_rank3-lwg_8sm0/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/empty_rank3.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/empty_rank3.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_char_3_to_3",
+        "source": "cases/scalar_char_3_to_3.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_3_to_3.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/scalar_char_3_to_3-2a4i0hjr/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/scalar_char_3_to_3-2a4i0hjr/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_3_to_3.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_3_to_3.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_char_3_to_deferred",
+        "source": "cases/scalar_char_3_to_deferred.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_3_to_deferred.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/scalar_char_3_to_deferred-lxxbakl5/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/scalar_char_3_to_deferred-lxxbakl5/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_3_to_deferred.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_3_to_deferred.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_char_deferred_to_3",
+        "source": "cases/scalar_char_deferred_to_3.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_deferred_to_3.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/scalar_char_deferred_to_3-2aosq_d6/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/scalar_char_deferred_to_3-2aosq_d6/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_deferred_to_3.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_deferred_to_3.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_char_deferred_to_deferred",
+        "source": "cases/scalar_char_deferred_to_deferred.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_deferred_to_deferred.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/scalar_char_deferred_to_deferred-zh0ew7tm/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/scalar_char_deferred_to_deferred-zh0ew7tm/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_deferred_to_deferred.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_deferred_to_deferred.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_char_0_to_deferred",
+        "source": "cases/scalar_char_0_to_deferred.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_0_to_deferred.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/scalar_char_0_to_deferred-mxvmlexk/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/scalar_char_0_to_deferred-mxvmlexk/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_0_to_deferred.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_char_0_to_deferred.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "replace_owned_destination",
+        "source": "cases/replace_owned_destination.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/replace_owned_destination.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/replace_owned_destination-i3x5xtuc/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/replace_owned_destination-i3x5xtuc/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/replace_owned_destination.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/replace_owned_destination.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_payload_metadata",
+        "source": "cases/undefined_payload_metadata.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/undefined_payload_metadata.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/undefined_payload_metadata-p6_2grri/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/undefined_payload_metadata-p6_2grri/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/undefined_payload_metadata.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/undefined_payload_metadata.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_payload_read",
+        "source": "cases/undefined_payload_read.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "diagnostic": "uninitialized",
+        "expected_stdout": "",
+        "reason": "Undefined element read is a safety-policy probe, not GNU execution."
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/undefined_payload_read.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/undefined_payload_read.f90:7:9: read of uninitialized array element b\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/undefined_payload_read.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_scalar_character_metadata",
+        "source": "cases/undefined_scalar_character_metadata.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/undefined_scalar_character_metadata.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/undefined_scalar_character_metadata-9mb6koa7/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/undefined_scalar_character_metadata-9mb6koa7/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/undefined_scalar_character_metadata.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/undefined_scalar_character_metadata.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_scalar_character_read",
+        "source": "cases/undefined_scalar_character_read.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "diagnostic": "uninitialized",
+        "expected_stdout": "",
+        "reason": "Undefined scalar read is a safety-policy probe, not GNU execution."
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/undefined_scalar_character_read.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/undefined_scalar_character_read.f90:6:9: read of uninitialized variable b\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/undefined_scalar_character_read.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "nested_allocatable_dummies",
+        "source": "cases/nested_allocatable_dummies.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/nested_allocatable_dummies.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/nested_allocatable_dummies-f0opzpw8/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/nested_allocatable_dummies-f0opzpw8/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/nested_allocatable_dummies.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/nested_allocatable_dummies.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "pure_local_transfer",
+        "source": "cases/pure_local_transfer.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/pure_local_transfer.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/pure_local_transfer-1rpdvww5/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/pure_local_transfer-1rpdvww5/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/pure_local_transfer.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/pure_local_transfer.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "self",
+        "source": "cases/self.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "MOVE_ALLOC",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/self.f90:4:18:\n\n    4 | call move_alloc(a,a)\n      |                  1\nError: The FROM and TO arguments at (1) violate aliasing restrictions (F2003 12.4.1.7)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/self.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/self-ku5c9v9q/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/self.f90:4:21: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/self.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/self.f90:4:21: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/self.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "nonallocatable",
+        "source": "cases/nonallocatable.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "MOVE_ALLOC",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/nonallocatable.f90:4:16:\n\n    4 | call move_alloc(a,b)\n      |                1\nError: \u2018from\u2019 argument of \u2018move_alloc\u2019 intrinsic at (1) must be ALLOCATABLE\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/nonallocatable.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/nonallocatable-6yl_5quq/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/nonallocatable.f90:4:21: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/nonallocatable.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/nonallocatable.f90:4:21: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/nonallocatable.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "section",
+        "source": "cases/section.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "MOVE_ALLOC",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/section.f90:4:16:\n\n    4 | call move_alloc(a(:),b)\n      |                1\nError: \u2018from\u2019 argument of \u2018move_alloc\u2019 intrinsic at (1) must be ALLOCATABLE\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/section.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/section-6t3oh9n5/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/section.f90:4:24: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/section.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/section.f90:4:24: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/section.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "parenthesized",
+        "source": "cases/parenthesized.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "MOVE_ALLOC",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/parenthesized.f90:4:16:\n\n    4 | call move_alloc((a),b)\n      |                1\nError: \u2018from\u2019 argument of \u2018move_alloc\u2019 intrinsic at (1) must be a variable\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/parenthesized.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/parenthesized-cwxoas4s/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/parenthesized.f90:4:23: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/parenthesized.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/parenthesized.f90:4:23: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/parenthesized.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "kind_mismatch",
+        "source": "cases/kind_mismatch.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "MOVE_ALLOC",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/kind_mismatch.f90:5:16:\n\n    5 | call move_alloc(a,b)\n      |                1\nError: \u2018from\u2019 argument of \u2018move_alloc\u2019 intrinsic at (1) must be the same type and kind as \u2018to\u2019\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/kind_mismatch.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/kind_mismatch-fk1h7azt/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/kind_mismatch.f90:5:21: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/kind_mismatch.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/kind_mismatch.f90:5:21: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/kind_mismatch.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "rank_mismatch",
+        "source": "cases/rank_mismatch.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "MOVE_ALLOC",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/rank_mismatch.f90:4:18:\n\n    4 | call move_alloc(a,b)\n      |                  1\nError: The FROM and TO arguments of the MOVE_ALLOC intrinsic at (1) must have the same rank 1/2\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/rank_mismatch.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/rank_mismatch-try_1tju/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/rank_mismatch.f90:4:21: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/rank_mismatch.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/rank_mismatch.f90:4:21: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/rank_mismatch.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "type_mismatch",
+        "source": "cases/type_mismatch.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "MOVE_ALLOC",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/type_mismatch.f90:5:16:\n\n    5 | call move_alloc(a,b)\n      |                1\nError: \u2018from\u2019 argument of \u2018move_alloc\u2019 intrinsic at (1) must be the same type and kind as \u2018to\u2019\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/type_mismatch.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/type_mismatch-yr3b43rl/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/type_mismatch.f90:5:21: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/type_mismatch.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/type_mismatch.f90:5:21: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/type_mismatch.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "fixed_length_mismatch",
+        "source": "cases/fixed_length_mismatch.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "diagnostic": "MOVE_ALLOC",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_length_mismatch.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/fixed_length_mismatch-v85jdi5h/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_length_mismatch.f90:5:21: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_length_mismatch.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_length_mismatch.f90:5:21: MOVE_ALLOC requires distinct whole writable allocatables of matching type, kind and rank\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_length_mismatch.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "optional_stat",
+        "source": "cases/optional_stat.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/optional_stat.f90:5:30:\n\n    5 | call move_alloc(a,b,stat=stat)\n      |                              1\nError: Too many arguments in call to \u2018move_alloc\u2019 at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/optional_stat.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/optional_stat-lb8ro22u/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/optional_stat.f90:5:31: Unknown keyword or excess actual argument: stat\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/optional_stat.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/optional_stat.f90:5:31: Unknown keyword or excess actual argument: stat\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/optional_stat.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "missing_to",
+        "source": "cases/missing_to.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/missing_to.f90:4:23:\n\n    4 | call move_alloc(from=a)\n      |                       1\nError: Missing actual argument \u2018to\u2019 in call to \u2018move_alloc\u2019 at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/missing_to.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/missing_to-ntuuua34/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/missing_to.f90:4:24: Missing required actual argument\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/missing_to.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/missing_to.f90:4:24: Missing required actual argument\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/missing_to.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_from",
+        "source": "cases/duplicate_from.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/duplicate_from.f90:4:30:\n\n    4 | call move_alloc(from=a,from=b)\n      |                              1\nError: Keyword \u2018from\u2019 at (1) has already appeared in the current argument list\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/duplicate_from.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/duplicate_from-__r0nzcd/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/duplicate_from.f90:4:31: Repeated actual argument for from\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/duplicate_from.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/duplicate_from.f90:4:31: Repeated actual argument for from\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/duplicate_from.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "unknown_keyword",
+        "source": "cases/unknown_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/unknown_keyword.f90:4:30:\n\n    4 | call move_alloc(source=a,to=b)\n      |                              1\nError: Cannot find keyword named \u2018source\u2019 in call to \u2018move_alloc\u2019 at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/unknown_keyword.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/unknown_keyword-3k3u9mzq/reference"
+        ]
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/unknown_keyword.f90:4:31: Unknown keyword or excess actual argument: source\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/unknown_keyword.f90"
+        ]
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/unknown_keyword.f90:4:31: Unknown keyword or excess actual argument: source\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/unknown_keyword.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "deferred_fixed_length_mismatch",
+        "source": "cases/deferred_fixed_length_mismatch.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "diagnostic": "length",
+        "expected_stdout": "",
+        "reason": "Nondeferred TO length compatibility; unallocated deferred FROM is a bounded unsupported edge."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_fixed_length_mismatch.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/deferred_fixed_length_mismatch-2hnr6dg2/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_fixed_length_mismatch.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_fixed_length_mismatch.f90:7:1: MOVE_ALLOC CHARACTER lengths must agree for nondeferred TO\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_fixed_length_mismatch.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_deferred_to_fixed",
+        "source": "cases/unallocated_deferred_to_fixed.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "diagnostic": "length",
+        "expected_stdout": "",
+        "reason": "Nondeferred TO length compatibility; unallocated deferred FROM is a bounded unsupported edge."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/unallocated_deferred_to_fixed.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/unallocated_deferred_to_fixed-b5tmfgx0/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/unallocated_deferred_to_fixed.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/unallocated_deferred_to_fixed.f90:7:1: unallocated deferred-length FROM requires deferred-length TO\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/unallocated_deferred_to_fixed.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "original_demo_move_alloc",
+        "source": "cases/original_demo_move_alloc.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": " T F\n   1.000   1.500   2.000   2.500   3.000   3.500\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/original_demo_move_alloc.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/original_demo_move_alloc-7r94n2j_/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F\n   1.000   1.500   2.000   2.500   3.000   3.500\n",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/original_demo_move_alloc-7r94n2j_/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/original_demo_move_alloc.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": " T F\n   1.000   1.500   2.000   2.500   3.000   3.500\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/original_demo_move_alloc.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "module_descriptor_transfer",
+        "source": "cases/module_descriptor_transfer.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/module_descriptor_transfer.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/module_descriptor_transfer-whr90fbi/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/module_descriptor_transfer-whr90fbi/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/module_descriptor_transfer.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/module_descriptor_transfer.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_character_dummy_lifetime",
+        "source": "cases/scalar_character_dummy_lifetime.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_character_dummy_lifetime.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/scalar_character_dummy_lifetime-qk2xn8z4/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/scalar_character_dummy_lifetime-qk2xn8z4/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_character_dummy_lifetime.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/scalar_character_dummy_lifetime.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "fixed_character_dummy_unallocated",
+        "source": "cases/fixed_character_dummy_unallocated.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_character_dummy_unallocated.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/fixed_character_dummy_unallocated-ypqunk_m/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/fixed_character_dummy_unallocated-ypqunk_m/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_character_dummy_unallocated.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_character_dummy_unallocated.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "optional_present_allocatable",
+        "source": "cases/optional_present_allocatable.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/optional_present_allocatable.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/optional_present_allocatable-lp1elp64/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/optional_present_allocatable-lp1elp64/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/optional_present_allocatable.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/optional_present_allocatable.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "optional_absent_allocatable",
+        "source": "cases/optional_absent_allocatable.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "diagnostic": "absent OPTIONAL",
+        "expected_stdout": "",
+        "reason": "Absent mandatory intrinsic argument is a safety probe, not GNU execution."
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/optional_absent_allocatable.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/optional_absent_allocatable.f90:7:47: absent OPTIONAL dummy referenced: x\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/optional_absent_allocatable.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "user_procedure_shadow",
+        "source": "cases/user_procedure_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/user_procedure_shadow.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/user_procedure_shadow-caf14m15/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/user_procedure_shadow-caf14m15/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/user_procedure_shadow.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/user_procedure_shadow.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "same_region_does_not_double_count",
+        "source": "cases/same_region_does_not_double_count.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/same_region_does_not_double_count.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/same_region_does_not_double_count-7wze2yj_/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/same_region_does_not_double_count-7wze2yj_/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/same_region_does_not_double_count.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/same_region_does_not_double_count.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "cross_region_character_cap",
+        "source": "cases/cross_region_character_cap.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "diagnostic": "storage limit",
+        "expected_stdout": "",
+        "reason": "Destination would contain 257*65536 bytes, exceeding the independently bounded 16 MiB CHARACTER live region."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/cross_region_character_cap.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/cross_region_character_cap-hrv_sjz2/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/cross_region_character_cap.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/cross_region_character_cap.f90:8:1: MOVE_ALLOC destination storage limit exceeded\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/cross_region_character_cap.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "int4_rank3_transfer",
+        "source": "cases/int4_rank3_transfer.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank3_transfer.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/int4_rank3_transfer-p7_yxnhy/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/int4_rank3_transfer-p7_yxnhy/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank3_transfer.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int4_rank3_transfer.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "int8_rank3_transfer",
+        "source": "cases/int8_rank3_transfer.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank3_transfer.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/int8_rank3_transfer-i84mjbxn/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/int8_rank3_transfer-i84mjbxn/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank3_transfer.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/int8_rank3_transfer.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "real4_rank3_transfer",
+        "source": "cases/real4_rank3_transfer.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank3_transfer.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/real4_rank3_transfer-dbbsh4x3/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/real4_rank3_transfer-dbbsh4x3/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank3_transfer.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real4_rank3_transfer.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "real8_rank3_transfer",
+        "source": "cases/real8_rank3_transfer.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank3_transfer.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/real8_rank3_transfer-zanhr0c6/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/real8_rank3_transfer-zanhr0c6/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank3_transfer.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/real8_rank3_transfer.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "logical_rank3_transfer",
+        "source": "cases/logical_rank3_transfer.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank3_transfer.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/logical_rank3_transfer-dxhj2lmf/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/logical_rank3_transfer-dxhj2lmf/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank3_transfer.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/logical_rank3_transfer.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "fixed_char_rank3_transfer",
+        "source": "cases/fixed_char_rank3_transfer.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank3_transfer.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/fixed_char_rank3_transfer-4q2i915n/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/fixed_char_rank3_transfer-4q2i915n/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank3_transfer.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/fixed_char_rank3_transfer.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "deferred_char_rank3_transfer",
+        "source": "cases/deferred_char_rank3_transfer.f90",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": "",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank3_transfer.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/deferred_char_rank3_transfer-ux74lsp6/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/allocation-oracles-t0dmcjs1/deferred_char_rank3_transfer-ux74lsp6/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank3_transfer.f90"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/deferred_char_rank3_transfer.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "aliased_allocated_actuals",
+        "source": "cases/aliased_allocated_actuals.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "diagnostic": "overlap",
+        "expected_stdout": "",
+        "reason": "This bounded implementation rejects aliased writable actuals before descriptor transfer, including the standard-allowed unallocated self-transfer edge."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/aliased_allocated_actuals.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/aliased_allocated_actuals-s1b9rm5k/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/aliased_allocated_actuals.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/aliased_allocated_actuals.f90:5:1: overlapping allocatable descriptors with a writable dummy are unsupported\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/aliased_allocated_actuals.f90"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "aliased_unallocated_actuals",
+        "source": "cases/aliased_unallocated_actuals.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "diagnostic": "overlap",
+        "expected_stdout": "",
+        "reason": "This bounded implementation rejects aliased writable actuals before descriptor transfer, including the standard-allowed unallocated self-transfer edge."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/aliased_unallocated_actuals.f90",
+          "-o",
+          "/tmp/allocation-oracles-t0dmcjs1/aliased_unallocated_actuals-efdqsw5x/reference"
+        ]
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/aliased_unallocated_actuals.f90"
+        ]
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/aliased_unallocated_actuals.f90:5:1: overlapping allocatable descriptors with a writable dummy are unsupported\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/move_alloc/cases/aliased_unallocated_actuals.f90"
+        ]
+      }
+    }
+  ],
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python_version": "3.12.14",
+  "manifest_sha256": "8c7236eb10deb8888f3e73934a56a77cc17c27f1e15839d80cb1d5cc796bb7f8",
+  "source_sha256": {
+    "cases/int4_rank1.f90": "872baf87774bc4cc6bbedae7ce55ba72d7e409a2967ec148698fe39d5e1ce006",
+    "cases/int4_rank2.f90": "ca710402a3b6272876c2145c9dd39589ef5a14f8aa850fd4b6fb0a147f1d4bc7",
+    "cases/int4_rank3.f90": "8b3c455fab17b7bafc01d7c2f8676563427c37ff9206d5f08df3dcc1f16d29f6",
+    "cases/int4_unallocated_clears.f90": "224e9903face625568955468fa43ea25d351ea3d8987bf27e3cbc3b537630f64",
+    "cases/int8_rank1.f90": "1d541450d1f1a3d8ddd9c2413d04a0740753c37a1e3041a0ff7313d997358ec4",
+    "cases/int8_rank2.f90": "085bb512f370f80a0e785cd97789ec2444a9afea15ea2263001b7ae53c30c1c8",
+    "cases/int8_rank3.f90": "1fcf99b2fd37310f12a370a4b06104519d0639b12ce5a3e3d053f8d186b00be8",
+    "cases/int8_unallocated_clears.f90": "d76e4491837514207160d172c5d5085b3c4466c5512ea3cfc0242b52294c52ab",
+    "cases/real4_rank1.f90": "069ec0141792421e0d89d1567feaf6240c2beee95f87c0437f931c9b6bcda67b",
+    "cases/real4_rank2.f90": "353e78d1af61a0a211979ec244d5cfba07576df27e82a4276706c0dadb3cdb5f",
+    "cases/real4_rank3.f90": "5d592a60aeb8403321bbb3eff0f0822f575ae555ad8da7b6de51c91616a1bf8e",
+    "cases/real4_unallocated_clears.f90": "a5291a12270a2904a0e35683920b387a0024c23a6fe8d4f17c430b28458d1dbe",
+    "cases/real8_rank1.f90": "2c88918aefada75847b20df26cb2eef299cb4eb59e5f23bda6bfbe66716b4716",
+    "cases/real8_rank2.f90": "ecb0e596c8a7d570c35eed95e3bb33c5a4bda81dd009dfefa286a4a915631e5d",
+    "cases/real8_rank3.f90": "8547c46c5511611faf9d127f1fd97f5a887cb5a8b8247f9ba804b93a858035ff",
+    "cases/real8_unallocated_clears.f90": "724fde58b0a7f814ffb25b5cf2175b919d68ea1aea9a5797818dcb8ea92b4a91",
+    "cases/logical_rank1.f90": "48f119db4eb8a48778bd0d8e25d276e1e3ea0f125958aacafc96d890e22e1f9c",
+    "cases/logical_rank2.f90": "6356bb4e65ac0a11be00bff3a772742b589ed61b4ee1a7c4c36d6923f7127cdd",
+    "cases/logical_rank3.f90": "d585687623d814945014b603e0e79706b48787640f06cba3eeb63c24826b85fc",
+    "cases/logical_unallocated_clears.f90": "9a1d113e61a173b75ac3a011e77acf5401a1125f725bd8b72116ea8d5aeeb646",
+    "cases/fixed_char_rank1.f90": "8e018082468aed178d97bd600263d4f468ac7908a5090f2e0405c74f09e32323",
+    "cases/fixed_char_rank2.f90": "0b0ab85f1ef460afdcdd5b7f26936ad2a53a4d815c375f562b28256b35e7b1a4",
+    "cases/fixed_char_rank3.f90": "a7a0bfe8d096b649144767e014ff421b54979e0e4f7c5da584a3cb2e0e233f13",
+    "cases/fixed_char_unallocated_clears.f90": "e0106bf61dca32f33bf9ef0a2075cf1a6d452c91a4de5324082e76988dd88bdb",
+    "cases/deferred_char_rank1.f90": "0cd9b4211eec83a2d033858ce7b2def97858041a73fd24ca6a79a56cdd149876",
+    "cases/deferred_char_rank2.f90": "5fe4c0679e4f0bc82efa4e78b87c2843be13ca2d4cd19ee338aafcb8c8a96e12",
+    "cases/deferred_char_rank3.f90": "a006de866750b662255cfaca6ac5ca4ba93e90ff2be6d46de03e11500913b2d7",
+    "cases/deferred_char_unallocated_clears.f90": "0f0850d2cfc63a8426d4485d98716f672518bb30ce1b51fa6a6a4a96c37778dd",
+    "cases/empty_rank1.f90": "999119f4dc4927f36237db4ea744f0fcbb6ddde9138eea213b0d9a496540bc73",
+    "cases/empty_rank2.f90": "995bf9b943c5de6e9cc35a8a90ce42e471089a43141e3831afdcb8b12dd30e52",
+    "cases/empty_rank3.f90": "f2822b045516bbde81d1975bdf543c6b87ae35b91d88ceddd3f30a949d54444e",
+    "cases/scalar_char_3_to_3.f90": "29b6b53d91b4f5a1021e903171287ee5dda24a29f54ecef142e83f2792151267",
+    "cases/scalar_char_3_to_deferred.f90": "254642afd68ad4d081433a45ff20cf6fd692c9aee781fa39f8ad1c7fb12a5db5",
+    "cases/scalar_char_deferred_to_3.f90": "be3ececc16b6cc7414ee3f0911aa7d3ed6a26b59189019f744f2536fbe76c6d4",
+    "cases/scalar_char_deferred_to_deferred.f90": "81ca81710307044d8d8d3fa67bfa27415a7bd1c4ff78249b1ea23305e674d360",
+    "cases/scalar_char_0_to_deferred.f90": "fef8e35d382df51095247c8561246250adee65806b4dc6967b1cdba1c01d8da2",
+    "cases/replace_owned_destination.f90": "1b2f60b20552186a166ad588335387995b0784bcd3205401493866ed48c568c1",
+    "cases/undefined_payload_metadata.f90": "921ce77f4b65153a31d2773dc0a0e3eb3d73e70bbcbe41050d486630ad9a37bd",
+    "cases/undefined_payload_read.f90": "5ff18ffcf3430a0b9010d52ef8a88a56c47399f7929aa88518116662c94ad395",
+    "cases/undefined_scalar_character_metadata.f90": "5e2aef56b8ffd4420bcf214fab8fc4cb4cd4944a884d8ab48f235094af57f331",
+    "cases/undefined_scalar_character_read.f90": "8d7c8d6fc881eaf1f7f874de209a6edf392f55676a32f54504248968a03ca932",
+    "cases/nested_allocatable_dummies.f90": "8cc8d8d6a368c97a2fef2248f611efa000486460cd2bd0cd0c8a69cdf9d74ac9",
+    "cases/pure_local_transfer.f90": "c3d5dac84bf6103f0386c47c5b56d2f013f2a64c0b3c7c970381465ab690b95a",
+    "cases/self.f90": "3a581c2cf6999e8e3199f660dcdccbe1f270bda148649140276e94b7da8a8e95",
+    "cases/nonallocatable.f90": "090219cb630a162b94abaffae8b41c0f76a5f0a1e994387245075a164941e023",
+    "cases/section.f90": "b932d12096f79ee98a0a9cefe1484980e13be5828ac63971d5c40d6f06356e40",
+    "cases/parenthesized.f90": "2609ba9add9d1bf30c4e50d796228befae44ffb89f16ce77d3b5434319dd44f0",
+    "cases/kind_mismatch.f90": "81d5c9ae9a86ca45bf33686b35e7a427009dbc7e5b098dca394b2e6c96f202d5",
+    "cases/rank_mismatch.f90": "186a9bae4f4865603fbdf9a6994089d464528ebfc553e547224837e0d52d89bd",
+    "cases/type_mismatch.f90": "01dec41d72c078eb5c6f59b80721608bd9a975c3e554328c9b9475ff0a3b869e",
+    "cases/fixed_length_mismatch.f90": "392c45f36eab12260840d1044189ba7e0a1ef6b9afd7aa0fa0b8c3583ecf137f",
+    "cases/optional_stat.f90": "dd8099bd86566b054a509145df3d2fa3ab1f520b0806bc9716efb3abf465feef",
+    "cases/missing_to.f90": "0a9146c12ed5c2df86771504d0520d6f32f21b7b250354fb484fd1bee4d93a30",
+    "cases/duplicate_from.f90": "4589511a4d63b8eab46e48aa58b3facfa7d7cc2ea0672b4ccb165a5ac8f8abce",
+    "cases/unknown_keyword.f90": "46e21af476c87234f93542765bec75fd30226c11c575078822d657d3131c3321",
+    "cases/deferred_fixed_length_mismatch.f90": "361efb592bb589a28e0401b7cfc53c4ca211361847c79cbae6d12e00c511a358",
+    "cases/unallocated_deferred_to_fixed.f90": "e62826820f19de3069b7e5c65d5b656d4575448f329f9f5b6ee25d624cb57b55",
+    "cases/original_demo_move_alloc.f90": "1f4612e6067ab8c19b5ae1a484e36a3e2714121e6cdc6fe893cba5d9f7b7c692",
+    "cases/module_descriptor_transfer.f90": "0fb8f91a335c2007af87b14a1a0d8d050eafa76ef337fd5cbdad0e032e388920",
+    "cases/scalar_character_dummy_lifetime.f90": "c2f794ec99ffe96ca61a9d6e26be50e52fce0f842f43653980f6e6b9a8170d64",
+    "cases/fixed_character_dummy_unallocated.f90": "f8a1bb76475ea59e5eb0cf6f8bf072bf46e56ae7a8795dc1ad46f2d417c1f113",
+    "cases/optional_present_allocatable.f90": "2037bd530afc0b3c1f64f3253773ed885fc532eb079b94b9d645e3d1aa3e520c",
+    "cases/optional_absent_allocatable.f90": "540343d073dea7113eda2088c3dfceede41c387030e1d89285aeba52382e3c5c",
+    "cases/user_procedure_shadow.f90": "76ec65d66ddd18f4cf97f040eaa13b4dd49110ee6c34ce9769fe0c23f17d2807",
+    "cases/same_region_does_not_double_count.f90": "55910802fe57e231562709aaf7256e464929a3864ca4581816e104e99e579d51",
+    "cases/cross_region_character_cap.f90": "9da75f1f5d2dd4a42142eb8163407ac29be666bca314bf7a3bf0ec24212d46dd",
+    "cases/int4_rank3_transfer.f90": "53c7683ac5f8dfa94f34ed93917d243af4bf3cb8037c875237a64e007074bf13",
+    "cases/int8_rank3_transfer.f90": "16cc6bf177aa8f5fbc53c1ff8260010a793ea72f2f14701f6f3e74479f49452a",
+    "cases/real4_rank3_transfer.f90": "e3b46d36a8835556dc234ba11847bbcdda31a2546df0d2cda3a8fc24ec1a82cb",
+    "cases/real8_rank3_transfer.f90": "502a68ea92f2b7f1b59fee1ac4abf433cd0ff03ae558904654289e47a1860bb1",
+    "cases/logical_rank3_transfer.f90": "5e70b8d867d10d95e41e08cbc681744550ebd1297e86ca005d73b5bcf1d51717",
+    "cases/fixed_char_rank3_transfer.f90": "b31124431e0c70bf4ba78e15441a5136ac8ff9360fcdac3ff46fdf459c3a6d3b",
+    "cases/deferred_char_rank3_transfer.f90": "8b85543264f34ebf80727e234473f2f2d296385fdfa15e52f38df3cb7a8dcc87",
+    "cases/aliased_allocated_actuals.f90": "0a9e8cde1d8c164f4eaa2724ec74bddfea5f3a1cac48b0d9d491f6f746e8394b",
+    "cases/aliased_unallocated_actuals.f90": "a7ac09fd882d9bc0c6e3f3c81d17894d0934ec5d10017276fcce364a266aec49"
+  },
+  "gfortran_version": {
+    "code": 0,
+    "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "err": "",
+    "argv": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "--version"
+    ]
+  },
+  "candidate_version": {
+    "code": 0,
+    "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+    "err": "",
+    "argv": [
+      "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "--version"
+    ]
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "candidate_final_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

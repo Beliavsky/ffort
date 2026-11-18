@@ -1,0 +1,12 @@
+{
+  "document": "J3/18-007r1, F2018 interpretation working draft",
+  "url": "https://j3-fortran.org/doc/year/18/18-007r1.pdf",
+  "references": [
+    {"section": "15.5.2.12", "paragraph": 4, "printed_page": 311, "pdf_page_1_based": 327, "lines": "28-29", "rule": "An absent OPTIONAL dummy can be forwarded to another OPTIONAL dummy, which is then absent, subject to the preceding restrictions."},
+    {"section": "16.2.1", "paragraph": 2, "printed_page": 327, "pdf_page_1_based": 343, "lines": "31-34", "rule": "The optional-argument association rules also apply to intrinsic procedures."},
+    {"section": "16.9.16", "paragraphs": "3-5", "printed_page": 344, "pdf_page_1_based": 360, "lines": "9-35", "rule": "POINTER association status must be defined. Absent TARGET selects the one-argument result. A present array TARGET requires a nonzero matching shape and identical storage in array element order."},
+    {"section": "15.5.2.12", "paragraph": "3(4),(5),(7)", "printed_page": 311, "pdf_page_1_based": 327, "rule": "Absence cannot be forwarded to a required dummy or through a subobject selector. Pointer actuals have additional restrictions."}
+  ],
+  "implemented_scope": "Only whole absent nonpointer OPTIONAL TARGET forwarding is accepted. Absent first POINTER, absent TARGET sections and absent OPTIONAL POINTER TARGET remain rejected. No broader optional-pointer claim is made.",
+  "oracle_policy": "The main GNU suite compiles the three omission cases but does not count their execution as differential agreement. A separate receipt records GNU output and candidate specification expectations without running undefined-pointer or expired-lifetime programs under GNU."
+}

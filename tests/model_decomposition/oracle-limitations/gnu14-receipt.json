@@ -1,0 +1,195 @@
+{
+  "compiler": {
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "--version"
+    ],
+    "code": 0,
+    "stdout": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "stderr": ""
+  },
+  "records": [
+    {
+      "source": "normal_max_constant.f90",
+      "compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/normal_max_constant.f90",
+          "-o",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/oracle_normal_max_constant-O0"
+        ],
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/oracle_normal_max_constant-O0"
+        ],
+        "code": 0,
+        "stdout": "   1.70141173E+38   8.9884656743115785E+307\n         128        1024  0.999999940      0.99999999999999989     \n",
+        "stderr": ""
+      }
+    },
+    {
+      "source": "normal_max_constant.f90",
+      "compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O2",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/normal_max_constant.f90",
+          "-o",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/oracle_normal_max_constant-O2"
+        ],
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/oracle_normal_max_constant-O2"
+        ],
+        "code": 0,
+        "stdout": "   1.70141173E+38   8.9884656743115785E+307\n         128        1024  0.999999940      0.99999999999999989     \n",
+        "stderr": ""
+      }
+    },
+    {
+      "source": "subnormal4_constant.f90",
+      "compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal4_constant.f90",
+          "-o",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/oracle_subnormal4_constant-O0"
+        ],
+        "code": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal4_constant.f90:5:39:\n\n    5 | a=set_exponent(.5,-148);b=set_exponent(.75,-149)\n      |                                       1\nError: Result of SET_EXPONENT underflows its kind at (1)\n/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal4_constant.f90:7:45:\n\n    7 | print *,fraction(a),exponent(a),set_exponent(.5,-149),set_exponent(.75,-150)\n      |                                             1\nError: Result of SET_EXPONENT underflows its kind at (1)\n/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal4_constant.f90:7:67:\n\n    7 | print *,fraction(a),exponent(a),set_exponent(.5,-149),set_exponent(.75,-150)\n      |                                                                   1\nError: Result of SET_EXPONENT underflows its kind at (1)\n/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal4_constant.f90:8:29:\n\n    8 | print *,sign(1.,set_exponent(-.75,-150))\n      |                             1\nError: Result of SET_EXPONENT underflows its kind at (1)\n"
+      }
+    },
+    {
+      "source": "subnormal4_constant.f90",
+      "compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O2",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal4_constant.f90",
+          "-o",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/oracle_subnormal4_constant-O2"
+        ],
+        "code": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal4_constant.f90:5:39:\n\n    5 | a=set_exponent(.5,-148);b=set_exponent(.75,-149)\n      |                                       1\nError: Result of SET_EXPONENT underflows its kind at (1)\n/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal4_constant.f90:7:45:\n\n    7 | print *,fraction(a),exponent(a),set_exponent(.5,-149),set_exponent(.75,-150)\n      |                                             1\nError: Result of SET_EXPONENT underflows its kind at (1)\n/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal4_constant.f90:7:67:\n\n    7 | print *,fraction(a),exponent(a),set_exponent(.5,-149),set_exponent(.75,-150)\n      |                                                                   1\nError: Result of SET_EXPONENT underflows its kind at (1)\n/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal4_constant.f90:8:29:\n\n    8 | print *,sign(1.,set_exponent(-.75,-150))\n      |                             1\nError: Result of SET_EXPONENT underflows its kind at (1)\n"
+      }
+    },
+    {
+      "source": "subnormal8_constant.f90",
+      "compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal8_constant.f90",
+          "-o",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/oracle_subnormal8_constant-O0"
+        ],
+        "code": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal8_constant.f90:5:44:\n\n    5 | a=set_exponent(.5d0,-1073_8);b=set_exponent(.75d0,-1074_8)\n      |                                            1\nError: Result of SET_EXPONENT underflows its kind at (1)\n/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal8_constant.f90:7:45:\n\n    7 | print *,fraction(a),exponent(a),set_exponent(.5d0,-1074_8),set_exponent(.75d0,-1075_8)\n      |                                             1\nError: Result of SET_EXPONENT underflows its kind at (1)\n/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal8_constant.f90:7:72:\n\n    7 | print *,fraction(a),exponent(a),set_exponent(.5d0,-1074_8),set_exponent(.75d0,-1075_8)\n      |                                                                        1\nError: Result of SET_EXPONENT underflows its kind at (1)\n"
+      }
+    },
+    {
+      "source": "subnormal8_constant.f90",
+      "compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O2",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal8_constant.f90",
+          "-o",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/oracle_subnormal8_constant-O2"
+        ],
+        "code": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal8_constant.f90:5:44:\n\n    5 | a=set_exponent(.5d0,-1073_8);b=set_exponent(.75d0,-1074_8)\n      |                                            1\nError: Result of SET_EXPONENT underflows its kind at (1)\n/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal8_constant.f90:7:45:\n\n    7 | print *,fraction(a),exponent(a),set_exponent(.5d0,-1074_8),set_exponent(.75d0,-1075_8)\n      |                                             1\nError: Result of SET_EXPONENT underflows its kind at (1)\n/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/subnormal8_constant.f90:7:72:\n\n    7 | print *,fraction(a),exponent(a),set_exponent(.5d0,-1074_8),set_exponent(.75d0,-1075_8)\n      |                                                                        1\nError: Result of SET_EXPONENT underflows its kind at (1)\n"
+      }
+    },
+    {
+      "source": "huge_integer_exponent.f90",
+      "compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/huge_integer_exponent.f90",
+          "-o",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/oracle_huge_integer_exponent-O0"
+        ],
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/oracle_huge_integer_exponent-O0"
+        ],
+        "code": 0,
+        "stdout": " runtime negative huge   1.0000000000000000       -1.0000000000000000     \n runtime zero count           0\n folded negative huge   0.0000000000000000       -0.0000000000000000     \n runtime minimum  0.50000000000000000      -0.50000000000000000     \n",
+        "stderr": ""
+      }
+    },
+    {
+      "source": "huge_integer_exponent.f90",
+      "compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O2",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/fortfront-interpreter/tests/model_decomposition/oracle-limitations/huge_integer_exponent.f90",
+          "-o",
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/oracle_huge_integer_exponent-O2"
+        ],
+        "code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/model-decomposition-work/oracle_huge_integer_exponent-O2"
+        ],
+        "code": 0,
+        "stdout": " runtime negative huge   1.0000000000000000       -1.0000000000000000     \n runtime zero count           0\n folded negative huge   0.0000000000000000       -0.0000000000000000     \n runtime minimum  0.50000000000000000      -0.50000000000000000     \n",
+        "stderr": ""
+      }
+    }
+  ],
+  "source_sha256": {
+    "huge_integer_exponent.f90": "7fcbfef2d7edcd1a004707e0ff271d92a23970f440e47c02fc0af6521eb50f9b",
+    "normal_max_constant.f90": "9d55f0381ca985dedfc8d23770062ae7aa1fda7c69a44d1a6c1a0838c89974d7",
+    "subnormal4_constant.f90": "b4d04794abfde7f0c76c6c494c453ca9cf92d3aaa27e792f1663fd5ee5aa85e5",
+    "subnormal8_constant.f90": "890ec2b93096676c9692ef6b6dc7deeb9d0d60be60fcde296965e497a6166e04"
+  }
+}

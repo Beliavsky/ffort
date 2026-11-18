@@ -1,0 +1,69 @@
+{
+  "status": "Independent expected result receipt; no new candidate claim",
+  "references": [
+    {
+      "url": "https://j3-fortran.org/doc/year/18/18-007r1.pdf",
+      "sections": [
+        "16.9.125 paragraphs 4-6 (MAX), printed page 390 / PDF page 406",
+        "16.9.131 paragraphs 4-6 (MIN), printed pages 393-394 / PDF pages 409-410"
+      ],
+      "support": "Elemental CHARACTER result has longest argument length, follows intrinsic character ordering, and pads on the right. The draft examples explicitly cover the same two array calls in these demos."
+    },
+    {
+      "url": "https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2025-0/max.html",
+      "support": "Official vendor reference independently confirms longest result length and right blank padding."
+    }
+  ],
+  "raw_evidence": [
+    "gnu-probes/demo-max-flag-probes.json",
+    "gnu-probes/oracle-profile-probes.json",
+    "gnu-probes/demo-min-compile.log"
+  ],
+  "originals": [
+    {
+      "name": "demo_max",
+      "source": "character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/demo_max.f90",
+      "source_sha256": "eae964c3ed492da241400e724d8699e10f3c56f75dde413a973e15b8ffe1fa68",
+      "result_values": [
+        "BB",
+        "Z "
+      ],
+      "result_element_length": 2,
+      "changed_record_indices_zero_based": [
+        5,
+        6
+      ],
+      "exact_character_records": {
+        "2": " characters:words\n",
+        "3": " characters:c \n",
+        "4": " characters:b \n",
+        "5": "\"BB\" \"Z \"\n",
+        "6": " previous line passed\n"
+      },
+      "expected_stdout": " scalars:   30.0000000    \n scalars:  -9.99999975E-05\n characters:words\n characters:c \n characters:b \n\"BB\" \"Z \"\n previous line passed\nbox=    -6  -5  -4  -3  -2  -1   1   2   3   4   5   6\nbox**2=-36 -25 -16  -9  -4  -1   1   4   9  16  25  36\nmax     -6  -5  -4  -3  -2  -1   1   4   9  16  25  36\n   20.0000000       21.0000000       32.0000000      -100.000000    \n           0           0           0           0           0           0           1           2           3           4           5           6\n",
+      "ordinary_records_source": "Unchanged GNU 14.2 permissive-mode output; defective array-result and embedded assertion records replaced only as listed",
+      "gnu_primary_classification": "Strict F2018 compilation rejects; GNU/default permissive mode executes with wrong result length. Not GNU execution agreement."
+    },
+    {
+      "name": "demo_min",
+      "source": "character-minmax-work/fortfront-interpreter-0.45.0/tests/character_minmax/cases/demo_min.f90",
+      "source_sha256": "a3c4c4a0facd38e7e19512130519d62bd7e5124c4f0d6732ab055804d09e6143",
+      "result_values": [
+        "YY",
+        "A "
+      ],
+      "result_element_length": 2,
+      "changed_record_indices_zero_based": [
+        19,
+        20
+      ],
+      "exact_character_records": {
+        "19": " MIN(['Z', 'A'], ['YY', 'B ']):  YY A \n",
+        "20": " test3 PASSED\n"
+      },
+      "expected_stdout": " basics\n  -100.000000    \n  -200.000000    \n elemental\n           1           1           1\n           2           3           4\n box:\n -6  -3   0   3\n -5  -2   1   4\n -4  -1   2   5\n make all values 0 or less:\n -6  -3   0   0\n -5  -2   0   0\n -4  -1   0   0\n test1 PASSED\n test2A PASSED\n test2B PASSED\n test2C PASSED\n test2D PASSED\n MIN(['Z', 'A'], ['YY', 'B ']):  YY A \n test3 PASSED\n",
+      "ordinary_records_source": "Unchanged GNU 14.2 permissive-mode output; defective array-result and embedded assertion records replaced only as listed",
+      "gnu_primary_classification": "Strict F2018 compilation rejects; GNU/default permissive mode executes with wrong result length. Not GNU execution agreement."
+    }
+  ]
+}

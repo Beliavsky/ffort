@@ -1,0 +1,98 @@
+{
+  "summary": {
+    "total": 3,
+    "failed": 3,
+    "gnu_executed": 0,
+    "gnu_compile_only": 0,
+    "gnu_compile_rejections": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "fixed_unallocated_scalar_len",
+        "source": "cases/fixed_unallocated_scalar_len.f90",
+        "sha256": "461ec562662de40ddd514e10e0112d49d48456dfa6087d91d56a0cbf8a3a3217",
+        "stage": "success",
+        "gnu": "run",
+        "expected_stdout": "7\n",
+        "tier": "core",
+        "reason": "",
+        "diagnostic": null
+      },
+      "errors": [
+        "run exit differs",
+        "run successful stderr not empty",
+        "execution stdout differs"
+      ],
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dynamic-character-constructor-tests-work/cases/fixed_unallocated_scalar_len.f90:4:21: reference to unallocated array x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "fixed_unallocated_scalar_empty",
+        "source": "cases/fixed_unallocated_scalar_empty.f90",
+        "sha256": "7295160f5701123051d17b728d3b845d34ec494f58870d1b8b4a6ab4df738732",
+        "stage": "success",
+        "gnu": "run",
+        "expected_stdout": "7 0\n",
+        "tier": "core",
+        "reason": "",
+        "diagnostic": null
+      },
+      "errors": [
+        "run exit differs",
+        "run successful stderr not empty",
+        "execution stdout differs"
+      ],
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dynamic-character-constructor-tests-work/cases/fixed_unallocated_scalar_empty.f90:5:28: reference to unallocated array x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "fixed_unallocated_array_len_empty",
+        "source": "cases/fixed_unallocated_array_len_empty.f90",
+        "sha256": "5ce3d56ef3b9314e78ce1eeabb590a7b18d535f163054a4c9fd4de24467d95bd",
+        "stage": "success",
+        "gnu": "run",
+        "expected_stdout": "7 7 0\n",
+        "tier": "core",
+        "reason": "",
+        "diagnostic": null
+      },
+      "errors": [
+        "run exit differs",
+        "run successful stderr not empty",
+        "execution stdout differs"
+      ],
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dynamic-character-constructor-tests-work/cases/fixed_unallocated_array_len_empty.f90:5:33: reference to unallocated array x\n"
+      }
+    }
+  ],
+  "manifest_sha256": "34129fea8cd25c62e9ea1e7b8a45e881716715b6459137e73c5aa559cbdf1056",
+  "candidate_sha256": "f35ebf98752420f3d171b6bdc98aca106111572721ba7b43fc875ec0e2aeb454",
+  "candidate_final_sha256": "f35ebf98752420f3d171b6bdc98aca106111572721ba7b43fc875ec0e2aeb454"
+}

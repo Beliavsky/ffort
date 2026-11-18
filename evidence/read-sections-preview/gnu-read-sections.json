@@ -1,0 +1,317 @@
+{
+  "status": "passed",
+  "tests": 23,
+  "mode": "gnu-only",
+  "results": [
+    {
+      "name": "a(2:4)",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "1",
+        "2",
+        "3",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"1 2 3 4 5\"\nread(text,*,iostat=ios) a(2:4)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "a(:3)",
+      "passed": true,
+      "expected": [
+        "T",
+        "1",
+        "2",
+        "3",
+        "-9",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"1 2 3 4 5\"\nread(text,*,iostat=ios) a(:3)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "a(3:)",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "-9",
+        "1",
+        "2",
+        "3"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"1 2 3 4 5\"\nread(text,*,iostat=ios) a(3:)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "a(::2)",
+      "passed": true,
+      "expected": [
+        "T",
+        "1",
+        "-9",
+        "2",
+        "-9",
+        "3"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"1 2 3 4 5\"\nread(text,*,iostat=ios) a(::2)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "a(5:1:-2)",
+      "passed": true,
+      "expected": [
+        "T",
+        "3",
+        "-9",
+        "2",
+        "-9",
+        "1"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"1 2 3 4 5\"\nread(text,*,iostat=ios) a(5:1:-2)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "a(::-1)",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "-9",
+        "-9",
+        "-9",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"1 2 3 4 5\"\nread(text,*,iostat=ios) a(::-1)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "dynamic bounds",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "7",
+        "8",
+        "9",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios,i,j,k\na=-9\ni=2\nj=4\nk=1\ntext=\"7 8 9\"\nread(text,*,iostat=ios) a(i:j:k)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "negative lower",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "4",
+        "5",
+        "6",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(-3:1),ios\na=-9\ntext=\"4 5 6\"\nread(text,*,iostat=ios) a(-2:0)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "integer8",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "2147483648",
+        "2147483649",
+        "-9",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger(8) :: a(5)\ninteger :: ios\na=-9_8\ntext=\"2147483648 2147483649\"\nread(text,*,iostat=ios) a(2:3)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "real4",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9.00000000",
+        "1.50000000",
+        "2.50000000",
+        "3.50000000",
+        "-9.00000000"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\nreal :: a(5)\ninteger :: ios\na=-9.0\ntext=\"1.5 2.5 3.5\"\nread(text,*,iostat=ios) a(2:4)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "real8",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9.0000000000000000",
+        "1.5000000000000000",
+        "2.5000000000000000",
+        "3.5000000000000000",
+        "-9.0000000000000000"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\nreal(8) :: a(5)\ninteger :: ios\na=-9.0_8\ntext=\"1.5d0 2.5d0 3.5d0\"\nread(text,*,iostat=ios) a(2:4)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "nulls",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "-9",
+        "2",
+        "-9",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\",2,,\"\nread(text,*,iostat=ios) a(2:4)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "repeats",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "7",
+        "7",
+        "7",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"3*7\"\nread(text,*,iostat=ios) a(2:4)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "repeat null",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "-9",
+        "-9",
+        "8",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"2*,8\"\nread(text,*,iostat=ios) a(2:4)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "slash",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "1",
+        "-9",
+        "-9",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"1 /\"\nread(text,*,iostat=ios) a(2:4)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "empty target",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "-9",
+        "-9",
+        "-9",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"\"\nread(text,*,iostat=ios) a(4:3)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "empty negative stride",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "-9",
+        "-9",
+        "-9",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"\"\nread(text,*,iostat=ios) a(2:4:-1)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "empty outbounds",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "-9",
+        "-9",
+        "-9",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"\"\nread(text,*,iostat=ios) a(10:9)\nprint *, ios==0\nprint *, a\nend program\n"
+    },
+    {
+      "name": "empty base",
+      "passed": true,
+      "expected": [
+        "T",
+        "0"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(4:3),ios\n\ntext=\"\"\nread(text,*,iostat=ios) a(:)\nprint *, ios==0\nprint *, size(a)\nend program\n"
+    },
+    {
+      "name": "short input untouched",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"1\"\nread(text,*,iostat=ios) a(2:4)\nprint *, ios<0\nprint *, a(1),a(5)\nend program\n"
+    },
+    {
+      "name": "bad conversion untouched",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"1 bad 3\"\nread(text,*,iostat=ios) a(2:4)\nprint *, ios>0\nprint *, a(1),a(5)\nend program\n"
+    },
+    {
+      "name": "reverse bad untouched",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "-9"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios\na=-9\ntext=\"1 bad 3\"\nread(text,*,iostat=ios) a(4:2:-1)\nprint *, ios>0\nprint *, a(1),a(5)\nend program\n"
+    },
+    {
+      "name": "following scalar",
+      "passed": true,
+      "expected": [
+        "T",
+        "-9",
+        "1",
+        "2",
+        "3",
+        "-9",
+        "4"
+      ],
+      "stderr": "",
+      "source": "program p\nimplicit none\ncharacter(80) :: text\ninteger :: a(5),ios,b\na=-9\nb=-8\ntext=\"1 2 3 4\"\nread(text,*,iostat=ios) a(2:4),b\nprint *, ios==0\nprint *, a,b\nend program\n"
+    }
+  ]
+}

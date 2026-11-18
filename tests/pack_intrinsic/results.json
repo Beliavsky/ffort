@@ -1,0 +1,1454 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:36:37.018713+00:00",
+  "summary": {
+    "total": 49,
+    "failed": 0,
+    "candidate_checked": 49,
+    "gnu_checked": 46,
+    "gnu_skipped": 3,
+    "gnu_executed": 26,
+    "gnu_compile_only": 7,
+    "gnu_compile_rejections": 13
+  },
+  "records": [
+    {
+      "case": {
+        "name": "integer_mask",
+        "source": "cases/integer_mask.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 8 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           8           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 8 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_masks",
+        "source": "cases/scalar_masks.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 4 6 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           4           6\n           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 4 6\n 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "vector_tail",
+        "source": "cases/vector_tail.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "20 40 7 8 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          20          40           7           8           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 20 40 7 8 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "vector_false",
+        "source": "cases/vector_false.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 12 13"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          12          13\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 12 13\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "vector_prefix_undefined",
+        "source": "cases/vector_prefix_undefined.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7 8 9 10"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7           8           9          10\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7 8 9 10\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keywords",
+        "source": "cases/keywords.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 7 6 1 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           7           6\n           1           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 7 6\n 1 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_order",
+        "source": "cases/rank_two_order.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 4 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           4           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 4 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_sections",
+        "source": "cases/rank_two_sections.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 5 4 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           5           4           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6 5 4 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kinds",
+        "source": "cases/kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4000000000 5000000000 8 1.25 3.5 8 1.5 4.0 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4000000000           5000000000           8\n   1.2500000000000000        3.5000000000000000                8\n   1.50000000       4.00000000               4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4000000000 5000000000 8\n 1.2500000000000000 3.5000000000000000 8\n 1.50000000 4.00000000 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "logical_array",
+        "source": "cases/logical_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T F T"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T F T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_array",
+        "source": "cases/character_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "abefyz"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " abefyz\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " abefyz\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_zero_length",
+        "source": "cases/character_zero_length.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "3 0",
+        "oracle_note": "GNU 14.2 libgfortran PACK of zero-length CHARACTER crashed (SIGFPE); compile-only, not a runtime match."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_arrays",
+        "source": "cases/empty_arrays.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0 0 5 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           0\n           5           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 0\n 5 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "all_false_undefined_source",
+        "source": "cases/all_false_undefined_source.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "alias_vector",
+        "source": "cases/alias_vector.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 4 3 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           4           3           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 4 3 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_transforms",
+        "source": "cases/nested_transforms.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12 2 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12           2           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 12 2 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "constructor_elements",
+        "source": "cases/constructor_elements.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 2 3 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           2           3           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 2 3 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_pack",
+        "source": "cases/parameter_pack.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_unevaluated",
+        "source": "cases/kind_unevaluated.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_mask",
+        "source": "cases/dynamic_mask.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 4 7 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           4           7           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 4 7 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_mask_once",
+        "source": "cases/impure_mask_once.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 -1 3 2 3 7"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n          -1\n           3\n           2           3           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2\n -1\n 3\n 2 3 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_shape_mismatch",
+        "source": "cases/dynamic_shape_mismatch.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "PACK MASK shape does not conform"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/dynamic_shape_mismatch.f90:7:14: PACK MASK shape does not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "short_vector",
+        "source": "cases/short_vector.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "PACK VECTOR has fewer"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/short_vector.f90:6:9: PACK VECTOR has fewer elements than selected ARRAY\n"
+      }
+    },
+    {
+      "case": {
+        "name": "zero_vector_with_selected",
+        "source": "cases/zero_vector_with_selected.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "PACK VECTOR has fewer"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/zero_vector_with_selected.f90:4:14: PACK VECTOR has fewer elements than selected ARRAY\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_mask",
+        "source": "cases/undefined_mask.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/undefined_mask.f90:5:21: read of uninitialized array element m\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_selected",
+        "source": "cases/undefined_selected.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/undefined_selected.f90:4:14: read of uninitialized array element a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_vector_tail",
+        "source": "cases/undefined_vector_tail.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/undefined_vector_tail.f90:4:23: read of uninitialized array element v\n"
+      }
+    },
+    {
+      "case": {
+        "name": "budget_mask_scan",
+        "source": "cases/budget_mask_scan.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "step limit",
+        "args": [
+          "--max-steps",
+          "25"
+        ]
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/budget_mask_scan.f90:5:9: execution step limit exceeded (current limit: 25); use --max-steps N to set the execution budget (positive 64-bit integer)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "aggregate_temporary_limit",
+        "source": "cases/aggregate_temporary_limit.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "PACK temporary element limit",
+        "args": [
+          "--max-steps",
+          "20000000"
+        ],
+        "reason": "Two 500,001-element PACK results exceed the 1,000,000-element expression-cache cap; the explicit work budget isolates storage policy."
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/aggregate_temporary_limit.f90:5:29: PACK temporary element limit exceeded\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_mask",
+        "source": "cases/missing_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/missing_mask.f90:3:8:\n\n    3 | print *,pack([1,2])\n      |        1\nError: Missing actual argument \u2018mask\u2019 in call to \u2018pack\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/missing_mask.f90:3:20: PACK requires ARRAY, MASK and optional VECTOR\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/missing_mask.f90:3:20: PACK requires ARRAY, MASK and optional VECTOR\n"
+      }
+    },
+    {
+      "case": {
+        "name": "extra_argument",
+        "source": "cases/extra_argument.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/extra_argument.f90:3:8:\n\n    3 | print *,pack([1,2],.true.,[3,4],1)\n      |        1\nError: Too many arguments in call to \u2018pack\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/extra_argument.f90:3:35: PACK requires ARRAY, MASK and optional VECTOR\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/extra_argument.f90:3:35: PACK requires ARRAY, MASK and optional VECTOR\n"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_array",
+        "source": "cases/scalar_array.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/scalar_array.f90:3:13:\n\n    3 | print *,pack(1,.true.)\n      |             1\nError: \u2018array\u2019 argument of \u2018pack\u2019 intrinsic at (1) must be an array\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/scalar_array.f90:3:23: PACK ARRAY must be a rank-one/rank-two intrinsic array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/scalar_array.f90:3:23: PACK ARRAY must be a rank-one/rank-two intrinsic array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nonlogical_mask",
+        "source": "cases/nonlogical_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/nonlogical_mask.f90:3:19:\n\n    3 | print *,pack([1,2],[1,2])\n      |                   1\nError: \u2018mask\u2019 argument of \u2018pack\u2019 intrinsic at (1) must be LOGICAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/nonlogical_mask.f90:3:26: PACK MASK must be LOGICAL\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/nonlogical_mask.f90:3:26: PACK MASK must be LOGICAL\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_mask_extent",
+        "source": "cases/wrong_mask_extent.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_mask_extent.f90:3:13:\n\n    3 | print *,pack([1,2],[.true.])\n      |             1\nError: Different shape for arguments 'array' and 'mask' for intrinsic 'pack' at (1) on dimension 1 (2 and 1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_mask_extent.f90:3:29: Array expression shapes do not conform\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_mask_extent.f90:3:29: Array expression shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_mask_rank",
+        "source": "cases/wrong_mask_rank.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_mask_rank.f90:4:13:\n\n    4 | print *,pack(a,[.true.,.false.,.true.,.false.])\n      |             1\nError: Incompatible ranks in arguments 'array' and 'mask' for intrinsic 'pack' (2 and 1) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_mask_rank.f90:4:48: Array expression ranks do not conform\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_mask_rank.f90:4:48: Array expression ranks do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_vector_rank",
+        "source": "cases/wrong_vector_rank.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_vector_rank.f90:4:26:\n\n    4 | print *,pack([1,2],.true.,v)\n      |                          1\nError: \u2018vector\u2019 argument of \u2018pack\u2019 intrinsic at (1) must be of rank 1\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_vector_rank.f90:4:29: PACK VECTOR must be rank one with ARRAY type and kind\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_vector_rank.f90:4:29: PACK VECTOR must be rank one with ARRAY type and kind\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_vector_type",
+        "source": "cases/wrong_vector_type.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_vector_type.f90:3:26:\n\n    3 | print *,pack([1,2],.true.,[1.0,2.0])\n      |                          1\nError: \u2018vector\u2019 argument of \u2018pack\u2019 intrinsic at (1) must be the same type and kind as \u2018array\u2019\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_vector_type.f90:3:37: PACK VECTOR must be rank one with ARRAY type and kind\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_vector_type.f90:3:37: PACK VECTOR must be rank one with ARRAY type and kind\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_vector_kind",
+        "source": "cases/wrong_vector_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_vector_kind.f90:3:26:\n\n    3 | print *,pack([1,2],.true.,[1_8,2_8])\n      |                          1\nError: \u2018vector\u2019 argument of \u2018pack\u2019 intrinsic at (1) must be the same type and kind as \u2018array\u2019\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_vector_kind.f90:3:37: PACK VECTOR must be rank one with ARRAY type and kind\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_vector_kind.f90:3:37: PACK VECTOR must be rank one with ARRAY type and kind\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_vector_length",
+        "source": "cases/wrong_vector_length.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "oracle_note": "GNU 14.2 accepts unequal CHARACTER lengths without diagnosis; interpreter rejects the nonconforming type parameters."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_vector_length.f90:3:43: PACK VECTOR and ARRAY CHARACTER lengths must match\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/wrong_vector_length.f90:3:43: PACK VECTOR and ARRAY CHARACTER lengths must match\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unknown_keyword",
+        "source": "cases/unknown_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/unknown_keyword.f90:3:8:\n\n    3 | print *,pack([1,2],mask=.true.,padding=[3,4])\n      |        1\nError: Cannot find keyword named \u2018padding\u2019 in call to \u2018pack\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/unknown_keyword.f90:3:46: Unknown keyword or excess actual argument: padding\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/unknown_keyword.f90:3:46: Unknown keyword or excess actual argument: padding\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_keyword",
+        "source": "cases/duplicate_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/duplicate_keyword.f90:3:8:\n\n    3 | print *,pack([1,2],array=[3,4],mask=.true.)\n      |        1\nError: Argument \u2018array\u2019 appears twice in call to \u2018pack\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/duplicate_keyword.f90:3:44: Repeated actual argument for array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/duplicate_keyword.f90:3:44: Repeated actual argument for array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "keyword_missing_mask",
+        "source": "cases/keyword_missing_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/keyword_missing_mask.f90:3:8:\n\n    3 | print *,pack(array=[1,2],vector=[3,4])\n      |        1\nError: Missing actual argument \u2018mask\u2019 in call to \u2018pack\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/keyword_missing_mask.f90:3:39: Missing required actual argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/keyword_missing_mask.f90:3:39: Missing required actual argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "keyword_positional_after",
+        "source": "cases/keyword_positional_after.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/keyword_positional_after.f90:3:26:\n\n    3 | print *,pack(array=[1,2],.true.)\n      |                          1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/keyword_positional_after.f90:3:26: Positional argument cannot follow a keyword argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/pack_intrinsic/cases/keyword_positional_after.f90:3:26: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_false_short_vector",
+        "source": "cases/scalar_false_short_vector.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "result_bounds",
+        "source": "cases/result_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 1 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2\n           1           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2\n 1 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "loop_refresh",
+        "source": "cases/loop_refresh.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3\n           3\n\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3\n 3\n\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_and_actual",
+        "source": "cases/function_and_actual.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5 6 -1 11"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5           6          -1          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5 6 -1 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadowed_name",
+        "source": "cases/shadowed_name.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_rank_two",
+        "source": "cases/character_rank_two.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "efgh"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " efgh\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " efgh\n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "0de966997b6a23a1830d897433f1076ba8d3a3837548d26345649f621c7ed655",
+  "source_sha256": {
+    "cases/integer_mask.f90": "3ff401c46b386a93f5044d57b5b730b71bf067fde384904cfd2eb2d5eae8837f",
+    "cases/scalar_masks.f90": "939040abd3206a7630775c7197b4742168e80ce6ca74c705bef84d1c1ef76808",
+    "cases/vector_tail.f90": "ca5a610cbd487b5271fe6091c0859836af56d2e91b1c7f2ea310153ebf884a2b",
+    "cases/vector_false.f90": "2db4d1a7c7a87d5b2ebdfd164cd94dc396791f7d706bbe8396f1dcf07991cc55",
+    "cases/vector_prefix_undefined.f90": "c5b78121991448562e5384a446943197ccc68e15443d47236e0920d589322308",
+    "cases/keywords.f90": "9ad05fadab4721014c5b14a963b4e0ad1cfb31a4854eddbd22a7d983f587f86a",
+    "cases/rank_two_order.f90": "f65bc8b509f271c9e6075b6b576af18e4aeba43515e72cc68ad5792ac7ae12fe",
+    "cases/rank_two_sections.f90": "251f2fc12b6fb8d29e68a02eada32c19c30beea9366a2843c65e314418aadffb",
+    "cases/kinds.f90": "8448ad12019d7750af643a0165adf2496d63541bc4b471abf318ad7472d8c7ab",
+    "cases/logical_array.f90": "15153f45da66b1f108a4f11aadad01b53c76dfb7b358bedfd58a316935503879",
+    "cases/character_array.f90": "ab65d7bc8f7e44d4af05077f55d72afc4f53c8e7fa66867411048085ce6fd917",
+    "cases/character_zero_length.f90": "67d67717ec6d750b63842ab99460cfc31c0d95483aee867f4d2a6b6e4a43943f",
+    "cases/empty_arrays.f90": "fc3bce11e675044018e07892b966acfd84a4edf67529089aedfc35b6212d3da9",
+    "cases/all_false_undefined_source.f90": "9e22cbb2c64da6f3374e11aa33db5dceab4ac92a23de05146cc37f59e81e3cfb",
+    "cases/alias_vector.f90": "3e08b6e6d05697b2e514a9f32ce73cbe6cc679d2aedcef6fc7875aee106c731d",
+    "cases/nested_transforms.f90": "16e748579b3b8884b0301f6bd75fd1f4c4030e0bd51571c296348550243c5c81",
+    "cases/constructor_elements.f90": "689896386cf89b51e4eef872ac0d7957bfd4954818027d87d1263d24951b92d7",
+    "cases/parameter_pack.f90": "5e37344664e826b11abada7ab5edd12810e382cf7048aeaf0b4cacb22bba8915",
+    "cases/kind_unevaluated.f90": "73c133d41c30ae5f18ef70ad42fc4a311d38a660d112270c5b5875762180f242",
+    "cases/dynamic_mask.f90": "a72c807724e91a5fa67b7954a1412e0fb0825b1a9cba01461a68ebe3d1ca0053",
+    "cases/impure_mask_once.f90": "c2a63be213e3c2510ee15aedf3134a0f009483f48ef5be1ff28f11a5f6ab6ce6",
+    "cases/dynamic_shape_mismatch.f90": "057bf4a41830c185b664c68d028fb121ba48db4e2943799bfb8956af6cc7b4e0",
+    "cases/short_vector.f90": "f1337991f6453058a5cfccd260afe8c09cfa89ddde14b0c8d3a1dac611560346",
+    "cases/zero_vector_with_selected.f90": "6da04a79d868fc09ecb0c6c25dbaa4042a508ddfa794a5b28d1fea6333f1af07",
+    "cases/undefined_mask.f90": "5cd818f87e3042c6eb8278c73c9d831197acbc649fb659dcd5581fc805a5a349",
+    "cases/undefined_selected.f90": "3301b89482d142c1519a2cfe3cccc9d0f9f24648d3c6f1c70b6936ab808ebd66",
+    "cases/undefined_vector_tail.f90": "8fc1e6fda8df09c86599cf710f57ccb8b5065229391458a923ce3971199400b6",
+    "cases/budget_mask_scan.f90": "e0c30d7902b569f115738be7bc3c0355b0d3de66f4797e6ca8488371f7919584",
+    "cases/aggregate_temporary_limit.f90": "1a83b771738e1ee69b794b5f2ce8b1a26ebbaaaf0582410027518def8ac178c9",
+    "cases/missing_mask.f90": "a4684f4cdc2c50fb778e3a292b11be4f05d9cdae0fd74724a25886b5ce8f93be",
+    "cases/extra_argument.f90": "99261b304135dfb9d4be368fd3cd55226e7496fd10d39c62ead7e7af71d54803",
+    "cases/scalar_array.f90": "ab4baefaf80cab5b2ee765f07b31bb5d3ed8f17c41fee8bcd4cea811e276709b",
+    "cases/nonlogical_mask.f90": "c183f596b1d47d382b61be6cc4cf95e853c0bcde70bdb9bbe5fe1b5e7ade3931",
+    "cases/wrong_mask_extent.f90": "f2224a8910fe109e1ca7e15c80205ef1655233d00b13324beb38a9ce2cf60cd1",
+    "cases/wrong_mask_rank.f90": "648b5dd4f01e04d165174fbe4896551da03b24289c139d106182ad1ff8d61e14",
+    "cases/wrong_vector_rank.f90": "d23bf7c6b3e2f7bf1410c950378068d1e62107118eb059555a84a267ff6014ab",
+    "cases/wrong_vector_type.f90": "35019d1fad1be6fa3cab2e8b3827277f1146161b7e2623ff1d582918524ec25b",
+    "cases/wrong_vector_kind.f90": "081d8e8a4a7c32d8a2102328e33a3e18bba4867baaf4bb0b15a8e5d6f380d000",
+    "cases/wrong_vector_length.f90": "20cf15205bd34d7729b047e1d14f387556f5954a4ac7d1da1a2624e7b0ec0db4",
+    "cases/unknown_keyword.f90": "15656a076fffe39dcc36105ebd8516d553a86abf369ae9dd806127e9d5010ac3",
+    "cases/duplicate_keyword.f90": "e490e4f6a35a4ac8e852f95983cb5dd93fdbff24802554e6f1c164fa20e688e1",
+    "cases/keyword_missing_mask.f90": "480dee837d39af9b7f03740f1bc2ef5b231121390bffe9f11fb3ecf16f20e021",
+    "cases/keyword_positional_after.f90": "ece43236ddd9a50e3c8ec6e495bdb89a7b21b47148e5fe03ac622395254051aa",
+    "cases/scalar_false_short_vector.f90": "fd24d20b7cc126eeb596e5128ba84b7e255b821e908487a29160d6f2768f8043",
+    "cases/result_bounds.f90": "64913234ada03091fca2032f561793ada7ea736e18c0fd1d5ad3c62d102381cb",
+    "cases/loop_refresh.f90": "11b2ee7505c0dcdca976043eea828af5f4ce7df4df06ee68c28babbe8fe7caaa",
+    "cases/function_and_actual.f90": "897fc7c1207ba28074408f1e5054d895930692a0427b684c72797ca8df53fee2",
+    "cases/shadowed_name.f90": "a4499c2053e144bddbd85e7c5ad06d3d3c7c2c601ca93e765f86ce948cda1b68",
+    "cases/character_rank_two.f90": "28952359964fac9266f186d089250e682e34c4c20909ccee46cc382608b778b5"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

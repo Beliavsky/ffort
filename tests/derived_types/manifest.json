@@ -1,0 +1,310 @@
+{
+  "cases": [
+    {
+      "name": "constructor",
+      "source": "constructor.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 2.5"
+    },
+    {
+      "name": "numeric_conversion",
+      "source": "numeric_conversion.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 2"
+    },
+    {
+      "name": "component_order",
+      "source": "component_order.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7 2.5"
+    },
+    {
+      "name": "value_copy",
+      "source": "value_copy.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 8 2"
+    },
+    {
+      "name": "partial_component_read",
+      "source": "partial_component_read.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "5"
+    },
+    {
+      "name": "partial_record_read",
+      "source": "partial_record_read.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "undefined_component",
+      "source": "undefined_component.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "cross_component_expression",
+      "source": "cross_component_expression.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7"
+    },
+    {
+      "name": "out_record",
+      "source": "out_record.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "9 4"
+    },
+    {
+      "name": "inout_record",
+      "source": "inout_record.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "9 4"
+    },
+    {
+      "name": "function_result",
+      "source": "function_result.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 6"
+    },
+    {
+      "name": "partial_function_result",
+      "source": "partial_function_result.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "private_type",
+      "source": "private_type.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "public_type",
+      "source": "public_type.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4"
+    },
+    {
+      "name": "unknown_component",
+      "source": "unknown_component.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "duplicate_component",
+      "source": "duplicate_component.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "missing_constructor_argument",
+      "source": "missing_constructor_argument.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "extra_constructor_argument",
+      "source": "extra_constructor_argument.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "wrong_constructor_argument",
+      "source": "wrong_constructor_argument.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "wrong_component_assignment",
+      "source": "wrong_component_assignment.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "component_on_integer",
+      "source": "component_on_integer.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "component_array_unsupported",
+      "source": "component_array_unsupported.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "derived_array_unsupported",
+      "source": "derived_array_unsupported.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "nested_record_unsupported",
+      "source": "nested_record_unsupported.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "constructor_keywords_unsupported",
+      "source": "constructor_keywords_unsupported.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "default_component_init_unsupported",
+      "source": "default_component_init_unsupported.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7\n"
+    },
+    {
+      "name": "readonly_component",
+      "source": "readonly_component.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "out_component_invalidates",
+      "source": "out_component_invalidates.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "distinct_type_identity",
+      "source": "distinct_type_identity.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "format_min_digits",
+      "source": "format_min_digits.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0000-01"
+    },
+    {
+      "name": "format_literal_case_space",
+      "source": "format_literal_case_space.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "01 Upper, 02"
+    },
+    {
+      "name": "internal_write_overflow",
+      "source": "internal_write_overflow.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "exceeds"
+    },
+    {
+      "name": "public_operator_private_specific",
+      "source": "public_operator_private_specific.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 7"
+    },
+    {
+      "name": "operator_only_import",
+      "source": "operator_only_import.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 7"
+    },
+    {
+      "name": "private_operator",
+      "source": "private_operator.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "operator_omitted_from_only",
+      "source": "operator_omitted_from_only.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "operator_wrong_operand_type",
+      "source": "operator_wrong_operand_type.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "operator_wrong_operand_kind",
+      "source": "operator_wrong_operand_kind.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "operator_duplicate_specific",
+      "source": "operator_duplicate_specific.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "operator_distinct_identity",
+      "source": "operator_distinct_identity.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "wide_do_variable",
+      "source": "wide_do_variable.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2"
+    },
+    {
+      "name": "wide_do_bound",
+      "source": "wide_do_bound.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2"
+    },
+    {
+      "name": "wide_do_step",
+      "source": "wide_do_step.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2"
+    }
+  ]
+}

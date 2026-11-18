@@ -1,0 +1,52 @@
+{
+  "utc": "2026-11-15T06:27:36.236140+00:00",
+  "runner_self_tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 tests/release033_integration/test_runner.py",
+    "passed": 21,
+    "failed": 0
+  },
+  "native": {
+    "source": "test/test_release033_composition.f90",
+    "source_sha256": "0e8b9edc82cc58ff0100c51aac646ea86ed06c081ed238e4d589c4f08525d4d1",
+    "compile_command": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran -std=f2018 -g -fcheck=all -fbacktrace -Ibuild/gfortran_C95531B253A90636 test/test_release033_composition.f90 build/gfortran_BF401197FF969414/fortfront-interpreter/libfortfront-interpreter.a -o /tmp/test_release033_composition",
+    "executable_sha256": "aa2dd554a4ff458bc2d638774ce8fb088bc234bfdd863e3c9e76311632e1459a",
+    "exit_code": 0,
+    "stdout": "PASS: release 0.33 composition: 29 metadata/reset/budget checks\n",
+    "stderr": "",
+    "checks": 29,
+    "scope": "Earlier focused direct compilation; final clean fpm test reran this unchanged source as part of the complete native suite."
+  },
+  "corpus": {
+    "result": "results.json",
+    "result_sha256": "7fb27048804f1733911d5c548eb8981806f98f1ba82b35866fd184d1d8a6da00",
+    "candidate_sha256": "ce7989f945de5838435d151d2999de54bffe22d0a40b891249d763a54acacd0d",
+    "summary": {
+      "total": 14,
+      "failed": 0,
+      "integrity_failed": 0,
+      "candidate_checked": 14,
+      "gnu_checked": 14,
+      "gnu_compiler_discrepancies": 0,
+      "gnu_executed": 7,
+      "gnu_compile_only": 4,
+      "gnu_compile_rejections": 3,
+      "gnu_skipped": 0
+    }
+  },
+  "existing_fortran_fixtures": {
+    "count": 5841,
+    "changed": [],
+    "input_inventory_sha256": "a0e86e0b8d262701bfbebb1b1bf46970af6693550b6708e3f1d049402e8d56d7",
+    "scope": "Only .f90 files beneath tests/ in the 0.33 integration working tree, inventoried before this worker created release033_integration. Excludes test/ native programs, examples/, app/, src/, vendor/ and any other directories. This is a working-tree before/after preservation check, not a comparison against the exact 0.32 release ZIP.",
+    "inventory_command": "find tests -type f -name '*.f90' -print0 | sort -z | xargs -0 sha256sum",
+    "baseline": "Integration working-tree snapshot taken at the start of the composition assignment; inventory held in /tmp/release033_existing_fixture_hashes.txt during verification."
+  },
+  "scope": "Corpus result refreshed from final clean aggregate verification. Earlier focused receipt and matching old results retained under docs/verification/0.33.0/focused-composition-initial.",
+  "evidence_status": "Final source-case evidence refreshed from the clean release executable. The unchanged native source also passed the complete 136-program clean fpm suite; the earlier focused direct-native binary receipt is retained separately. Full exact-0.32-ZIP preservation is recorded by the release-level check.",
+  "final_aggregate": {
+    "status": "passed",
+    "candidate_sha256": "ce7989f945de5838435d151d2999de54bffe22d0a40b891249d763a54acacd0d",
+    "native_programs": 136,
+    "full_verifier": "docs/verification/0.33.0/clean-room-full-verification.log"
+  }
+}

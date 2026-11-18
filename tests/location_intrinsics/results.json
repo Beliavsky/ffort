@@ -1,0 +1,1685 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:36:09.185013+00:00",
+  "summary": {
+    "total": 58,
+    "failed": 0,
+    "candidate_checked": 58,
+    "gnu_checked": 55,
+    "gnu_skipped": 3,
+    "gnu_executed": 27,
+    "gnu_compile_only": 6,
+    "gnu_compile_rejections": 22
+  },
+  "records": [
+    {
+      "case": {
+        "name": "vector_ties",
+        "source": "cases/vector_ties.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 4 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           4           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 4 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "vector_dim",
+        "source": "cases/vector_dim.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "wide_integer",
+        "source": "cases/wide_integer.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real_kinds",
+        "source": "cases/real_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_8",
+        "source": "cases/kind_8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 8 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    2           8                    1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 8 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "constant_kind",
+        "source": "cases/constant_kind.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8                    2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "positional_mask",
+        "source": "cases/positional_mask.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3                    3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "full_positional",
+        "source": "cases/full_positional.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keyword_order",
+        "source": "cases/keyword_order.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    3           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_coordinates",
+        "source": "cases/matrix_coordinates.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2 2 1 1 3 1 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           2           1           1           3           1           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2 2 1 1 3 1 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_dim",
+        "source": "cases/matrix_dim.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 1 2 1 2 3 2 2 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           1           2           1           2           3           2           2           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 1 2 1 2 3 2 2 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_mask",
+        "source": "cases/matrix_mask.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 3 1 0 2 3 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           3           1           0           2           3           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 3 1 0 2 3 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_vector",
+        "source": "cases/empty_vector.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0                    0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_matrix",
+        "source": "cases/empty_matrix.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0 0 0 0 0 0 0 0 0 0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           0           0           0           0           0           0           0           0           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 0 0 0 0 0 0 0 0 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "false_mask",
+        "source": "cases/false_mask.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0 0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "sections",
+        "source": "cases/sections.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 1 2 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           1           2           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 1 2 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "composition",
+        "source": "cases/composition.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_initializer",
+        "source": "cases/parameter_initializer.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "unevaluated_kind",
+        "source": "cases/unevaluated_kind.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_dim",
+        "source": "cases/runtime_dim.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2 1 3 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           1\n           3           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2 1\n 3 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_iminloc",
+        "source": "cases/original_iminloc.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reject_missing_array",
+        "source": "cases/reject_missing_array.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_missing_array.f90:5:8:\n\n    5 | print *,minloc()\n      |        1\nError: Missing actual argument \u2018array\u2019 in call to \u2018minloc\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_missing_array.f90:5:17: Missing required actual argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_missing_array.f90:5:17: Missing required actual argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_scalar",
+        "source": "cases/reject_scalar.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_scalar.f90:5:15:\n\n    5 | print *,minloc(2)\n      |               1\nError: \u2018array\u2019 argument of \u2018minloc\u2019 intrinsic at (1) must be an array\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_scalar.f90:5:18: Location intrinsic ARRAY must be a supported rank-one/rank-two array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_scalar.f90:5:18: Location intrinsic ARRAY must be a supported rank-one/rank-two array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_logical_array",
+        "source": "cases/reject_logical_array.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_logical_array.f90:5:15:\n\n    5 | print *,maxloc([.true.,.false.])\n      |               1\nError: \u2018array\u2019 argument of \u2018maxloc\u2019 intrinsic at (1) must be INTEGER or REAL or CHARACTER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_logical_array.f90:5:33: Location intrinsic ARRAY must be a supported rank-one/rank-two array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_logical_array.f90:5:33: Location intrinsic ARRAY must be a supported rank-one/rank-two array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_character_boundary",
+        "source": "cases/reject_character_boundary.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_character_boundary.f90:5:28: Location intrinsic ARRAY must be a supported rank-one/rank-two array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_character_boundary.f90:5:28: Location intrinsic ARRAY must be a supported rank-one/rank-two array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_real_dim",
+        "source": "cases/reject_real_dim.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_real_dim.f90:5:25:\n\n    5 | print *,minloc([1,2],dim=1.0)\n      |                         1\nError: \u2018dim\u2019 argument of \u2018minloc\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_real_dim.f90:5:30: Location intrinsic DIM/KIND must be scalar INTEGER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_real_dim.f90:5:30: Location intrinsic DIM/KIND must be scalar INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_logical_dim",
+        "source": "cases/reject_logical_dim.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_logical_dim.f90:5:25:\n\n    5 | print *,maxloc([1,2],dim=.true.)\n      |                         1\nError: \u2018dim\u2019 argument of \u2018maxloc\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_logical_dim.f90:5:33: Location intrinsic DIM/KIND must be scalar INTEGER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_logical_dim.f90:5:33: Location intrinsic DIM/KIND must be scalar INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_array_dim",
+        "source": "cases/reject_array_dim.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_array_dim.f90:5:25:\n\n    5 | print *,minloc([1,2],dim=[1])\n      |                         1\nError: \u2018dim\u2019 argument of \u2018minloc\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_array_dim.f90:5:30: Location intrinsic DIM/KIND must be scalar INTEGER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_array_dim.f90:5:30: Location intrinsic DIM/KIND must be scalar INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_real_mask",
+        "source": "cases/reject_real_mask.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_real_mask.f90:5:26:\n\n    5 | print *,maxloc([1,2],mask=[1.0,2.0])\n      |                          1\nError: \u2018mask\u2019 argument of \u2018maxloc\u2019 intrinsic at (1) must be LOGICAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_real_mask.f90:5:37: Location intrinsic MASK must be LOGICAL\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_real_mask.f90:5:37: Location intrinsic MASK must be LOGICAL\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_bad_mask_size",
+        "source": "cases/reject_bad_mask_size.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_bad_mask_size.f90:5:15:\n\n    5 | print *,minloc([1,2],mask=[.true.])\n      |               1\nError: Different shape for arguments 'array' and 'mask' for intrinsic minloc at (1) on dimension 1 (2 and 1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_bad_mask_size.f90:5:36: Array expression shapes do not conform\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_bad_mask_size.f90:5:36: Array expression shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_bad_mask_rank",
+        "source": "cases/reject_bad_mask_rank.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_bad_mask_rank.f90:5:15:\n\n    5 | print *,maxloc(reshape([1,2],[1,2]),mask=[.true.,.false.])\n      |               1\nError: Incompatible ranks in arguments 'array' and 'mask' for intrinsic maxloc (2 and 1) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_bad_mask_rank.f90:5:59: Array expression ranks do not conform\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_bad_mask_rank.f90:5:59: Array expression ranks do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_bad_kind",
+        "source": "cases/reject_bad_kind.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_bad_kind.f90:5:30: Location intrinsic support INTEGER result kinds 4 and 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_bad_kind.f90:5:30: Location intrinsic support INTEGER result kinds 4 and 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_real_kind",
+        "source": "cases/reject_real_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_real_kind.f90:5:26:\n\n    5 | print *,maxloc([1,2],kind=8.0)\n      |                          1\nError: \u2018dim\u2019 argument of \u2018maxloc\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_real_kind.f90:5:31: Location intrinsic DIM/KIND must be scalar INTEGER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_real_kind.f90:5:31: Location intrinsic DIM/KIND must be scalar INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_array_kind",
+        "source": "cases/reject_array_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_array_kind.f90:5:26:\n\n    5 | print *,minloc([1,2],kind=[8])\n      |                          1\nError: \u2018dim\u2019 argument of \u2018minloc\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_array_kind.f90:5:31: Location intrinsic DIM/KIND must be scalar INTEGER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_array_kind.f90:5:31: Location intrinsic DIM/KIND must be scalar INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_bad_back",
+        "source": "cases/reject_bad_back.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_bad_back.f90:5:26:\n\n    5 | print *,maxloc([1,2],back=1)\n      |                          1\nError: \u2018back\u2019 argument of \u2018maxloc\u2019 intrinsic at (1) must be LOGICAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_bad_back.f90:5:29: Location intrinsic BACK must be scalar LOGICAL\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_bad_back.f90:5:29: Location intrinsic BACK must be scalar LOGICAL\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_array_back",
+        "source": "cases/reject_array_back.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_array_back.f90:5:26:\n\n    5 | print *,minloc([1,2],back=[.true.])\n      |                          1\nError: \u2018back\u2019 argument of \u2018minloc\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_array_back.f90:5:36: Location intrinsic BACK must be scalar LOGICAL\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_array_back.f90:5:36: Location intrinsic BACK must be scalar LOGICAL\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_duplicate",
+        "source": "cases/reject_duplicate.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_duplicate.f90:5:8:\n\n    5 | print *,maxloc([1,2],array=[2,1])\n      |        1\nError: Argument \u2018array\u2019 appears twice in call to \u2018maxloc\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_duplicate.f90:5:34: Repeated actual argument for array\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_duplicate.f90:5:34: Repeated actual argument for array\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_unknown",
+        "source": "cases/reject_unknown.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_unknown.f90:5:8:\n\n    5 | print *,minloc([1,2],x=1)\n      |        1\nError: Cannot find keyword named \u2018x\u2019 in call to \u2018minloc\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_unknown.f90:5:26: Unknown keyword or excess actual argument: x\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_unknown.f90:5:26: Unknown keyword or excess actual argument: x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_positional_after_keyword",
+        "source": "cases/reject_positional_after_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_positional_after_keyword.f90:5:28:\n\n    5 | print *,minloc(array=[1,2],1)\n      |                            1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_positional_after_keyword.f90:5:28: Positional argument cannot follow a keyword argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_positional_after_keyword.f90:5:28: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_excess",
+        "source": "cases/reject_excess.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_excess.f90:5:8:\n\n    5 | print *,maxloc([1,2],1,.true.,4,.false.,9)\n      |        1\nError: Too many arguments in call to \u2018maxloc\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_excess.f90:5:43: Unknown keyword or excess actual argument: \n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_excess.f90:5:43: Unknown keyword or excess actual argument: \n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_nonconstant_kind",
+        "source": "cases/reject_nonconstant_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_nonconstant_kind.f90:6:26:\n\n    6 | print *,minloc([1,2],kind=k)\n      |                          1\nError: Parameter \u2018k\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_nonconstant_kind.f90:6:26:\n\n    6 | print *,minloc([1,2],kind=k)\n      |                          1\nError: \u2018dim\u2019 argument of \u2018minloc\u2019 intrinsic at (1) must be a constant\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_nonconstant_kind.f90:6:29: Location intrinsic KIND must be constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_nonconstant_kind.f90:6:29: Location intrinsic KIND must be constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_dim_invalid",
+        "source": "cases/runtime_dim_invalid.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "DIM outside array rank"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/runtime_dim_invalid.f90:5:9: location intrinsic DIM outside array rank\n"
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_mask_mismatch",
+        "source": "cases/runtime_mask_mismatch.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "MASK shape does not conform"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/runtime_mask_mismatch.f90:7:9: location intrinsic MASK shape does not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "budget",
+        "source": "cases/budget.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "step limit",
+        "args": [
+          "--max-steps",
+          "5"
+        ]
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/budget.f90:4:9: execution step limit exceeded (current limit: 5); use --max-steps N to set the execution budget (positive 64-bit integer)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dimension_attribute",
+        "source": "cases/dimension_attribute.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 1 2 2 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           1           2           2           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 1 2 2 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dimension_automatic",
+        "source": "cases/dimension_automatic.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dimension_parameter",
+        "source": "cases/dimension_parameter.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dimension_duplicate",
+        "source": "cases/reject_dimension_duplicate.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_duplicate.f90:3:30:\n\n    3 | integer,dimension(2),dimension(2)::a\n      |                              1\nError: Duplicate DIMENSION attribute at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_duplicate.f90:4:9:\n\n    4 | print *,a\n      |         1\nError: Symbol \u2018a\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_duplicate.f90:3:31: Repeated DIMENSION attribute\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_duplicate.f90:3:31: Repeated DIMENSION attribute\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dimension_rank3",
+        "source": "cases/reject_dimension_rank3.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized",
+        "note": "Rank-three DIMENSION declaration is now supported; original undefined-data read remains an interpreter safety error."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_rank3.f90:4:9: read of uninitialized array element a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dimension_assumed_main",
+        "source": "cases/reject_dimension_assumed_main.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_assumed_main.f90:3:23:\n\n    3 | integer,dimension(:)::a\n      |                       1\nError: Array \u2018a\u2019 at (1) cannot have a deferred shape\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_assumed_main.f90:3:19: Expected expression operand, found :\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_assumed_main.f90:3:19: Expected expression operand, found :\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dimension_bad_syntax",
+        "source": "cases/reject_dimension_bad_syntax.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_bad_syntax.f90:3:24:\n\n    3 | integer,dimension((3)::a\n      |                        1\nError: Missing \u2018)\u2019 in statement at or before (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_bad_syntax.f90:4:9:\n\n    4 | print *,a\n      |         1\nError: Symbol \u2018a\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_bad_syntax.f90:3:25: Unterminated DIMENSION attribute\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_bad_syntax.f90:3:25: Unterminated DIMENSION attribute\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_nodim_positional_kind",
+        "source": "cases/reject_nodim_positional_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_nodim_positional_kind.f90:4:21:\n\n    4 | print *,minloc([3,1],.true.,8)\n      |                     1\nError: \u2018dim\u2019 argument of \u2018minloc\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_nodim_positional_kind.f90:4:31: Location intrinsics without DIM require keyword KIND/BACK\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_nodim_positional_kind.f90:4:31: Location intrinsics without DIM require keyword KIND/BACK\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_optional_back",
+        "source": "cases/reject_optional_back.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_optional_back.f90:7:26: Location intrinsic direct OPTIONAL arguments are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_optional_back.f90:7:26: Location intrinsic direct OPTIONAL arguments are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dimension_override",
+        "source": "cases/reject_dimension_override.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_override.f90:3:24: Combined DIMENSION attribute and declarator shape are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/location_intrinsics/cases/reject_dimension_override.f90:3:24: Combined DIMENSION attribute and declarator shape are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "impure_source_once",
+        "source": "cases/impure_source_once.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 1 1 2 1 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n           1\n           1\n           2\n           1           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4\n 1\n 1\n 2\n 1 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_mask_once",
+        "source": "cases/impure_mask_once.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "4 -1 2 2 2 2",
+        "note": "GNU 14.2 returns a masked-out location with rank-two MASK and BACK=.true.; fixed expected output is checked against documented semantics and masked_back_reference. See oracle-discrepancy.json."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4\n -1\n 2\n 2\n 2 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_kind_inquiry",
+        "source": "cases/nested_kind_inquiry.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "masked_back_reference",
+        "source": "cases/masked_back_reference.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2",
+        "note": "Independent explicit masked scan chooses the last tied minimum; no MINLOC intrinsic in this reference."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2\n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "de8730753c3f936a5d3c7f979443c0b72329796bbe0857cc0c3411ad1616521f",
+  "source_sha256": {
+    "cases/vector_ties.f90": "d1bc122a1486c2512cc4246ad5d5d1544fc38c427fccf6f760efc789f30a9540",
+    "cases/vector_dim.f90": "fba5ed0fef3a46972561e13ddefd0f2581327021864a0570f5a3d3b792753b94",
+    "cases/wide_integer.f90": "6d0dd4930023973eec938e43d19da17de59e952f803b3838c706c089da420d99",
+    "cases/real_kinds.f90": "a7bdc588010b0339b42d3ba7d61abb04565d89b5aa298cc31e4fe81b35f71424",
+    "cases/kind_8.f90": "4ced567c98c2fc488fbb75a4c97d06efbff663d846ae014b76186256622f8775",
+    "cases/constant_kind.f90": "a986bc939d5a88b51a835f5efeb9d5368e565bcd731b9462fe78d5a905379ff9",
+    "cases/positional_mask.f90": "f3d7eae04562e7d790bd62260dece68c763eabb20ec50fc9c74c7c40e5ba44a7",
+    "cases/full_positional.f90": "50bf4b40bfab9eac5620ed7b5de95388d8e2b4e99c18915018d28f7e8b81a8e4",
+    "cases/keyword_order.f90": "536015fcfce2d0d466fa990a0d29d6f4a8c29ccf4a70945cbe687720dee838a8",
+    "cases/matrix_coordinates.f90": "6b1f0626e6d3f2a22a8005fb86b766867cb4ee27c2c77eecf1071f7d4a6c1b94",
+    "cases/matrix_dim.f90": "94f8c506b97c2065203b1a100f49dfe3696cb86bbc9515b4c4624735e3f4584e",
+    "cases/matrix_mask.f90": "ccf5a932bf3fae45a59e690a8973011eefb7ff242092c4d1e4f751bcc2378bad",
+    "cases/empty_vector.f90": "ea081940d8adce7c62fcc38784cfe6816e614cdae0e89fecbf778e44bfbee1e9",
+    "cases/empty_matrix.f90": "5aeefacc531a4efac5cbbbda801ff6af715e868dcf11cfd4bd4ee6ca8158cedf",
+    "cases/false_mask.f90": "f17b3762b0f5cdfd96101b5044a6df1c872f93cee49b331e0022e0162f64536e",
+    "cases/sections.f90": "3200848b19b1dbb24f6d81ee46c06ca82327bf45a970af161fadda83e6cfa672",
+    "cases/composition.f90": "51f25b495c616e113d8781b7ffa820bdf9b8e357e9b8ad319cd509eb3fc36573",
+    "cases/parameter_initializer.f90": "f5bc476f559e420ec2eec9aac615a2e4fb43a1afbcb2d9cbb0873e4560263bc8",
+    "cases/unevaluated_kind.f90": "7270b46d0e3d9891e324603b2943f136be84bec0dac7699c91581345954270c2",
+    "cases/runtime_dim.f90": "3c8d59994d28cc7fbcba898e934780dcb5d221609b5ca66fe52b936a55b30e60",
+    "cases/original_iminloc.f90": "461fca1ba9ce0bc9790f3b1fffbbfc4fa8e557039251d8c0bd8c399b70fc2e99",
+    "cases/reject_missing_array.f90": "cfc2a3afb91f11790111bde16bd6531bc2c6e65da8f729d873bb7c91a402b43c",
+    "cases/reject_scalar.f90": "a3fef00a340eeccb264c13b68f113a7b194a5bc16e3370ae81a35074ba0e1bb6",
+    "cases/reject_logical_array.f90": "5e142225ec49d9db4aa45de74a69b9871783372e9e0097e409328605c8b26c5f",
+    "cases/reject_character_boundary.f90": "c2ada8f6beff65a965aa938bd598240ebed9dc035d7e1f002cd4963cb54f6f98",
+    "cases/reject_real_dim.f90": "785404d55d5585f457f90e146f92cab38901028b0d5acb2ef8c0d58d095d2e78",
+    "cases/reject_logical_dim.f90": "cab4c16e3c466e95ac95f88c1d128a489784e3c247664d88e579a044f0730c3f",
+    "cases/reject_array_dim.f90": "78d58e5b7ce28618d2b49fa5d2860969baa550e793195fc2c5400a017c1a0ede",
+    "cases/reject_real_mask.f90": "ce6efdcb05f13824fda3660723a879c670edcaf7fe98e3b889693cb05442ca03",
+    "cases/reject_bad_mask_size.f90": "f984a7c75bd253314d3e489edc2ffbb5784e6f7006cb910f80e8573f260a50e6",
+    "cases/reject_bad_mask_rank.f90": "77068a6a9f39b7c451df72c5832f8b77fdd36162df10b92fc2b29c604641b824",
+    "cases/reject_bad_kind.f90": "a660645db62cdb6a070e732db5aa7b37757260e2a204ce75a169e9bdfd40a28a",
+    "cases/reject_real_kind.f90": "6e04c5d5cf6fe77d7cf7ee707bb2485322d1140340508b818d7d7a98e146a3a8",
+    "cases/reject_array_kind.f90": "5c555b99088fc8eaa7e929a2ed20926a1df9c60961c1ce9c3adf657d827d4109",
+    "cases/reject_bad_back.f90": "bbc19f47b2c21a8d2ed1fc947203c5a855228594b95f5fd373c7cc86f529d19c",
+    "cases/reject_array_back.f90": "65e782eee5cf509f46288d76e7b7d86baacb79b2030b386fa77022777e99c324",
+    "cases/reject_duplicate.f90": "44672b2f8e6c6b4f6ceaa0acf1878b1aacba9062c20d8f70399f3d8b0736b1a7",
+    "cases/reject_unknown.f90": "72009809f6b30a6a0ad0c953dfc2feb4aeaa0f65b8ed3003f1e0bbad1418a2d2",
+    "cases/reject_positional_after_keyword.f90": "cd0d7f06d4934f97abf0e3ecba46c179c68e7a0d04ca1405bbded11aa87d83d9",
+    "cases/reject_excess.f90": "34dfc400a4e1808f7812942cbd75e168bd7637755bd7f37932a61923a19e510e",
+    "cases/reject_nonconstant_kind.f90": "016fd4930e3a5afd588795aee05828bd3737970583b6aa4c55d62525704aa703",
+    "cases/runtime_dim_invalid.f90": "6f88e65a52386f7a2685efaa602f4710d9ef92b1c9cde5c43404ba85ae606d1d",
+    "cases/runtime_mask_mismatch.f90": "e028b5ba0edec96367973aa433c27161afd972ff8f7fb8fa44799db045748ca8",
+    "cases/budget.f90": "20bed278f02fd694318af9325c066c70a79aeea89b02804e2f7f705d81955007",
+    "cases/dimension_attribute.f90": "44947c0d9d93ffaebf9360b77a55cce77f8867d43c149eeaaaf16677334b9000",
+    "cases/dimension_automatic.f90": "3ff96f22c3e7019e54bd7ea7a45ad27d1b2a807c4a6287df725384f8ca0d9d4c",
+    "cases/dimension_parameter.f90": "38a6663cc431f61768e0c9a015fdebc1c12d56f0e52f0f38ca8bd8aca472c073",
+    "cases/reject_dimension_duplicate.f90": "4e66da0901b92984d0bbea2b708f1d0cf06b91b8cd35a81cc6a2e44d697bee56",
+    "cases/reject_dimension_rank3.f90": "d844973a3ac8cd04ce6a4dd892f887e0e69c0ff80565040311f5298d7cfdc283",
+    "cases/reject_dimension_assumed_main.f90": "0297619de20fd98aefd5f48fd64f729fc94c044636dcfd14079e25265a180cf3",
+    "cases/reject_dimension_bad_syntax.f90": "c2b4f5c2d5200a8e7fb6546ef9331ee1bfd3b98fdc22f319fb57ab2721a32b37",
+    "cases/reject_nodim_positional_kind.f90": "98e62baabd75e880931d11ec468874047b6ce8c3f4c850a7ec20f532e980d25a",
+    "cases/reject_optional_back.f90": "093b80f27b003729aace3e66d36b60020a36083927b620a7205d96967bf23d96",
+    "cases/reject_dimension_override.f90": "c3d3d4b58a9849ef94b3ee7d71d4976092e030cde7e7563eff6ecb206979f93b",
+    "cases/impure_source_once.f90": "1d5df7e467db00815938046b4440381bfd04426210edefbaa57595d476720157",
+    "cases/impure_mask_once.f90": "4dda4df1ecff638f5acd9c66ed6a8290a168fd172028c37bae96d3a6a104ba35",
+    "cases/nested_kind_inquiry.f90": "a1a3e882e6164a5f861e06d91ab9289f54170bde5f7389530f322d642b735df5",
+    "cases/masked_back_reference.f90": "7595ed938768392c87f099158d20b5e5d1b5d1093ace61eb6d443de08bfae76c"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

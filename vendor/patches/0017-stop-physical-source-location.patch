@@ -1,0 +1,39 @@
+--- a/src/lexer/lexer_token_types.f90
++++ b/src/lexer/lexer_token_types.f90
+@@ -31,6 +31,7 @@
+         integer :: kind = TK_UNKNOWN
+         character(len=:), allocatable :: text
+         integer :: line = 1
++        integer :: physical_line = 0 ! Original line before continuation normalization
+         integer :: column = 1
+         ! CST trivia storage (optional) - using separate type to avoid recursion
+         type(trivia_token_t), allocatable :: leading_trivia(:)
+@@ -91,6 +92,7 @@
+ 
+         this%kind = other%kind
+         this%line = other%line
++        this%physical_line = other%physical_line
+         this%column = other%column
+ 
+         if (allocated(other%text)) then
+--- a/src/frontend_core.f90
++++ b/src/frontend_core.f90
+@@ -470,6 +470,8 @@
+                 cycle
+             end if
+             token_to_append = tokens(i)
++            if (token_to_append%physical_line == 0) &
++                token_to_append%physical_line = token_to_append%line
+             if (continuation_active .and. token_to_append%kind /= TK_NEWLINE .and. &
+                 token_to_append%kind /= TK_COMMENT) then
+                 token_to_append%line = continuation_line
+--- a/src/parser/control_flow/parser_control_statements.f90
++++ b/src/parser/control_flow/parser_control_statements.f90
+@@ -33,6 +33,7 @@
+         ! Consume 'stop' keyword
+         token = parser%peek()
+         line = token%line
++        if (token%physical_line > 0) line = token%physical_line
+         column = token%column
+         token = parser%consume()
+ 

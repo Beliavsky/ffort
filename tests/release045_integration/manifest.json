@@ -1,0 +1,486 @@
+{
+  "schema": 1,
+  "cases": [
+    {
+      "name": "missing_argument_cursor",
+      "source": "cases/missing_argument_cursor.f90",
+      "sha256": "5f6e26a4493bc99f0c7de840d6eef87be06626a28f465a5514e6b603687c88f5",
+      "category": "success",
+      "expected_stdout": "AxC!E\n",
+      "gnu": "run",
+      "features": [
+        "process missing argument",
+        "nonadvancing suffix",
+        "TR"
+      ]
+    },
+    {
+      "name": "argument_allocated_name",
+      "source": "cases/argument_allocated_name.f90",
+      "sha256": "e1ea6133abf814e2971d2b8e6675088ac25d0419e95ef6e9f12b2419c2a82bff",
+      "category": "success",
+      "expected_stdout": "name=T\n",
+      "gnu": "run",
+      "features": [
+        "process argument length",
+        "allocatable CHARACTER",
+        "LGT"
+      ]
+    },
+    {
+      "name": "cwd_lexical_position",
+      "source": "cases/cwd_lexical_position.f90",
+      "sha256": "242d2488dee1f747be434c44cc6e49e4266f38f646e56e70c3ff825d77bafdc3",
+      "category": "success",
+      "expected_stdout": "cwd=     T\n",
+      "gnu": "run",
+      "features": [
+        "GETCWD extension",
+        "LLE blank padding",
+        "T"
+      ],
+      "gnu_flags": [
+        "-std=gnu"
+      ]
+    },
+    {
+      "name": "nested_process_pending_record",
+      "source": "cases/nested_process_pending_record.f90",
+      "sha256": "0410cc98ecedc8902d3c8c0d02b91d12c84014a971570915ae41947f3638f2c3",
+      "category": "success",
+      "expected_stdout": "AxZ!\n",
+      "gnu": "run",
+      "features": [
+        "nested process context",
+        "nonadvancing shared suffix",
+        "TL"
+      ]
+    },
+    {
+      "name": "external_mixed_norm_lexical",
+      "source": "cases/external_mixed_norm_lexical.f90",
+      "sha256": "06e40af944dec1bf7e5af9a43f2dff441818ae9ae632ca56ef9f431a1e34c802",
+      "category": "success",
+      "expected_stdout": "  5.0 a,b  T\n",
+      "gnu": "run",
+      "features": [
+        "external input",
+        "mixed internal CHARACTER READ",
+        "NORM2",
+        "LGT"
+      ],
+      "inputs": [
+        {
+          "unit": 27,
+          "file": "inputs/external_mixed_norm_lexical.27.txt",
+          "sha256": "7a876da0147b3a6694ff79266d78577a95fd7f70696e8f9defb78ab49ecd6215",
+          "bytes": 14
+        }
+      ]
+    },
+    {
+      "name": "external_transpose_implied_positions",
+      "source": "cases/external_transpose_implied_positions.f90",
+      "sha256": "e8c69a8bca15e5edaf66e4b006a67f07bfb06b9e8dafa656afc134af340030ae",
+      "category": "success",
+      "expected_stdout": "  3X  4X\n  5.0 13.0\n",
+      "gnu": "run",
+      "features": [
+        "external and internal READ",
+        "TRANSPOSE",
+        "NORM2 DIM",
+        "output implied-DO",
+        "TL overwrite"
+      ],
+      "inputs": [
+        {
+          "unit": 27,
+          "file": "inputs/external_transpose_implied_positions.27.txt",
+          "sha256": "c227a92fb7edf14bfbe14e8db26a6f7df4676bb73ed0814488293e55c56e3ff8",
+          "bytes": 9
+        }
+      ]
+    },
+    {
+      "name": "allocatable_external_internal_fields",
+      "source": "cases/allocatable_external_internal_fields.f90",
+      "sha256": "cd00317171fef6cf6fb5ab249bfa3bbe074cb874d053cbb0094b572d02a3a399",
+      "category": "success",
+      "expected_stdout": "hello a,b    5.0 T\n",
+      "gnu": "run",
+      "features": [
+        "allocatable CHARACTER lengths",
+        "external/mixed READ",
+        "NORM2",
+        "LLT"
+      ],
+      "inputs": [
+        {
+          "unit": 27,
+          "file": "inputs/allocatable_external_internal_fields.27.txt",
+          "sha256": "7ca9013f997a8d5056e6dc7adf537a316442df89bd15b28e1138edc7fd90f0b0",
+          "bytes": 18
+        }
+      ]
+    },
+    {
+      "name": "two_inputs_shared_procedure_cursor",
+      "source": "cases/two_inputs_shared_procedure_cursor.f90",
+      "sha256": "49df991aa8ec1976a562064eb9d178ce0e383abeea190986232344d256d89ec5",
+      "category": "success",
+      "expected_stdout": "one two tail\n",
+      "gnu": "run",
+      "features": [
+        "two explicit input units",
+        "shared nested input cursor",
+        "nonadvancing TR"
+      ],
+      "inputs": [
+        {
+          "unit": 27,
+          "file": "inputs/two_inputs_shared_procedure_cursor.27.txt",
+          "sha256": "c3f9c8c283a2b1f2f1896f27a01cbe3cddc0c9d93f752e4639035a0f5b36f6e8",
+          "bytes": 8
+        },
+        {
+          "unit": 28,
+          "file": "inputs/two_inputs_shared_procedure_cursor.28.txt",
+          "sha256": "bc2d901b7d0a8558810c4f24b4cf8ae94efb29e3e4d10f4349a3b1e63ef96e7d",
+          "bytes": 5
+        }
+      ]
+    },
+    {
+      "name": "crlf_and_final_record",
+      "source": "cases/crlf_and_final_record.f90",
+      "sha256": "ef1c24eb8e6ae8df576b4ff33a5e39d7d0268c899ed206d8d68b76ee8a16eceb",
+      "category": "success",
+      "expected_stdout": "alpha beta T\n",
+      "gnu": "run",
+      "features": [
+        "CRLF and unterminated final record",
+        "LGE"
+      ],
+      "inputs": [
+        {
+          "unit": 27,
+          "file": "inputs/crlf_and_final_record.27.txt",
+          "sha256": "4854aaef74503959fd26363306e2ef967a9d50bdda90d033a3a4acacbbd57547",
+          "bytes": 11
+        }
+      ]
+    },
+    {
+      "name": "quoted_repeat_null_slash",
+      "source": "cases/quoted_repeat_null_slash.f90",
+      "sha256": "58cd76c145f8c39ac24545a5987c407d50f5f592ee9dcb63d081308859bfc2a5",
+      "category": "success",
+      "expected_stdout": "a,b   a,b   keep   5.0\n",
+      "gnu": "run",
+      "features": [
+        "mixed repeated CHARACTER input",
+        "null/slash definedness",
+        "NORM2"
+      ]
+    },
+    {
+      "name": "character_cube_lexical_count",
+      "source": "cases/character_cube_lexical_count.f90",
+      "sha256": "af0bdbc23c888444570fd5f8fe54540ced3b3fa6dd72a92a7202aad293dedefc",
+      "category": "reject",
+      "expected_stdout": "",
+      "gnu": "compile",
+      "features": [
+        "rank-three CHARACTER READ",
+        "elemental lexical comparison",
+        "COUNT"
+      ],
+      "diagnostic": "Array intrinsic requires a rank-one or rank-two array",
+      "diagnostic_line": 11,
+      "diagnostic_column": 32
+    },
+    {
+      "name": "transpose_alias_norm_reduction",
+      "source": "cases/transpose_alias_norm_reduction.f90",
+      "sha256": "53b09e09fb11648e9a94b19ba2e269f0096a2952dbc1abadb7e55f2e77a438ea",
+      "category": "success",
+      "expected_stdout": " 3 2   5.0  12.0\n",
+      "gnu": "run",
+      "features": [
+        "allocatable array reallocation",
+        "TRANSPOSE alias",
+        "NORM2 DIM",
+        "SHAPE"
+      ]
+    },
+    {
+      "name": "signed_zero_empty_norm",
+      "source": "cases/signed_zero_empty_norm.f90",
+      "sha256": "b51bb42d7e8b43b7122d51053365869c4546919419507101546de4098bcc3557",
+      "category": "success",
+      "expected_stdout": "0.0 0.0 -0.0\n",
+      "gnu": "run",
+      "features": [
+        "NORM2 empty positive zero",
+        "negative zero retained",
+        "exact Decimal comparator"
+      ],
+      "numeric_lines": [
+        0
+      ]
+    },
+    {
+      "name": "read_numbers_transposed_norm_dim",
+      "source": "cases/read_numbers_transposed_norm_dim.f90",
+      "sha256": "866d47747e3924a8110dbbe44bf81760663707abdf76f1355f10ee4c5fdc3d8d",
+      "category": "success",
+      "expected_stdout": "5.0 13.0\n",
+      "gnu": "run",
+      "features": [
+        "internal numeric READ",
+        "TRANSPOSE",
+        "NORM2 DIM exact values"
+      ],
+      "numeric_lines": [
+        0
+      ]
+    },
+    {
+      "name": "empty_lexical_does_not_read",
+      "source": "cases/empty_lexical_does_not_read.f90",
+      "sha256": "4ece6d0681cf69ae4d3a48b31b937a54d07135d0adde5194ec93ddf24fdf805f",
+      "category": "success",
+      "expected_stdout": "0 T 0.0\n",
+      "gnu": "run",
+      "features": [
+        "typed empty CHARACTER",
+        "lexical empty array",
+        "NORM2 empty"
+      ]
+    },
+    {
+      "name": "allocated_query_format_and_read",
+      "source": "cases/allocated_query_format_and_read.f90",
+      "sha256": "143b288408ec4394373b165933964190c3e57ea4c1b6cccf7a92eae6d30f3d80",
+      "category": "success",
+      "expected_stdout": "norm    5.0\n",
+      "gnu": "run",
+      "features": [
+        "process output to allocated CHARACTER",
+        "runtime format",
+        "mixed storage",
+        "NORM2",
+        "T"
+      ]
+    },
+    {
+      "name": "external_eof_then_process",
+      "source": "cases/external_eof_then_process.f90",
+      "sha256": "cdea9d8a34aedcba225f35a03d458f7af6b1049227359f0a39c7e3bbac79f8a2",
+      "category": "success",
+      "expected_stdout": "done\nT T\n",
+      "gnu": "run",
+      "features": [
+        "EOF IOSTAT",
+        "process query after READ",
+        "no undefined target evaluation"
+      ],
+      "inputs": [
+        {
+          "unit": 27,
+          "file": "inputs/external_eof_then_process.27.txt",
+          "sha256": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+          "bytes": 5
+        }
+      ]
+    },
+    {
+      "name": "external_zero_length_advances",
+      "source": "cases/external_zero_length_advances.f90",
+      "sha256": "6c1fb468b92a73c7ef366c1c5458217380d7f3baf79b778bb2703072b111bedf",
+      "category": "success",
+      "expected_stdout": "second T\n",
+      "gnu": "run",
+      "features": [
+        "zero-length READ target",
+        "external cursor advance",
+        "LLE blank padding"
+      ],
+      "inputs": [
+        {
+          "unit": 27,
+          "file": "inputs/external_zero_length_advances.27.txt",
+          "sha256": "7c47946b62478ed5f858dc26ed98ddc818305c7f70d3e9b022b7a055b0e283aa",
+          "bytes": 20
+        }
+      ]
+    },
+    {
+      "name": "format_read_quoted_text",
+      "source": "cases/format_read_quoted_text.f90",
+      "sha256": "815f6d852f8a975e28497fd7f8801802f101e14561f2dbc3ccc58b396d3109cf",
+      "category": "success",
+      "expected_stdout": "norm    5.0\n",
+      "gnu": "run",
+      "features": [
+        "quoted CHARACTER internal READ",
+        "runtime format",
+        "T",
+        "NORM2"
+      ]
+    },
+    {
+      "name": "partial_internal_failure_no_new_output",
+      "source": "cases/partial_internal_failure_no_new_output.f90",
+      "sha256": "7f8257702fde6ea63eb37531977c594743d457fb295f02dc06d2f0fde15d2a71",
+      "category": "runtime",
+      "expected_stdout": "AxCD",
+      "gnu": "compile",
+      "features": [
+        "mixed READ failure invalidates prior target",
+        "pending suffix atomicity"
+      ],
+      "diagnostic": "read of uninitialized variable word",
+      "diagnostic_line": 11,
+      "diagnostic_column": 13
+    },
+    {
+      "name": "unbound_input_after_query",
+      "source": "cases/unbound_input_after_query.f90",
+      "sha256": "a872a6302cda9af3f1a59117b9be269e84a1a90e9c1c734e73e7ed997a5af6c3",
+      "category": "runtime",
+      "expected_stdout": "SAFE\n",
+      "gnu": "compile",
+      "features": [
+        "process query",
+        "explicit input authority",
+        "atomic failure"
+      ],
+      "diagnostic": "external READ unit is not explicitly bound",
+      "diagnostic_line": 9,
+      "diagnostic_column": 1
+    },
+    {
+      "name": "bad_dynamic_dim_after_read",
+      "source": "cases/bad_dynamic_dim_after_read.f90",
+      "sha256": "575ab9e3c51f33290e74793e59d67acccdb43b2b3ba4aa3167ddeef3c085ad0b",
+      "category": "runtime",
+      "expected_stdout": "SAFE\n",
+      "gnu": "compile",
+      "features": [
+        "external/internal READ",
+        "dynamic NORM2 DIM rejection",
+        "output atomicity"
+      ],
+      "diagnostic": "NORM2 DIM is outside ARRAY rank",
+      "inputs": [
+        {
+          "unit": 27,
+          "file": "inputs/bad_dynamic_dim_after_read.27.txt",
+          "sha256": "49a1b248ff391a966769f1ee7e9b6beadcf2b87be02b9240d925e8256a8c0438",
+          "bytes": 9
+        }
+      ],
+      "diagnostic_line": 11,
+      "diagnostic_column": 17
+    },
+    {
+      "name": "norm_overflow_after_pending_record",
+      "source": "cases/norm_overflow_after_pending_record.f90",
+      "sha256": "05b5d7763e6bdbcb96873ff06a8cac4ad21c433a4b686fe3d05fe7edd3e89356",
+      "category": "runtime",
+      "expected_stdout": "SAFE",
+      "gnu": "compile",
+      "features": [
+        "finite NORM2 policy",
+        "pending record failure"
+      ],
+      "diagnostic": "NORM2 result exceeds REAL range",
+      "diagnostic_line": 6,
+      "diagnostic_column": 14
+    },
+    {
+      "name": "nonascii_lexical_output_atomic",
+      "source": "cases/nonascii_lexical_output_atomic.f90",
+      "sha256": "fb6e1e11b2951e3413590872b23295bc7107a19180a403fd084a8f14ac9ea00a",
+      "category": "runtime",
+      "expected_stdout": "SAFE\n",
+      "gnu": "compile",
+      "features": [
+        "whole-string lexical repertoire check",
+        "atomic formatted output"
+      ],
+      "diagnostic": "lexical comparison supports ASCII characters (0:127)",
+      "inputs": [
+        {
+          "unit": 27,
+          "file": "inputs/nonascii_lexical_output_atomic.27.txt",
+          "sha256": "88fe6b27c5029ae28bdf8a750f596adb86012107525cdfa23b71fe9f5186368d",
+          "bytes": 3
+        }
+      ],
+      "diagnostic_line": 8,
+      "diagnostic_column": 14
+    },
+    {
+      "name": "position_cap_after_explicit_read",
+      "source": "cases/position_cap_after_explicit_read.f90",
+      "sha256": "a22f1cd0f49a20c60e4e06a65cc1a5002289608fa1e39c67434d97be7d392f16",
+      "category": "runtime",
+      "expected_stdout": "P",
+      "gnu": "compile",
+      "features": [
+        "explicit READ",
+        "unchanged pending record cap",
+        "T atomicity"
+      ],
+      "diagnostic": "combined output record exceeds character limit",
+      "inputs": [
+        {
+          "unit": 27,
+          "file": "inputs/position_cap_after_explicit_read.27.txt",
+          "sha256": "852a478ece1b66d04d107ae488dd476a5a43b317f62729e25152e4bfba096cac",
+          "bytes": 2
+        }
+      ],
+      "diagnostic_line": 8,
+      "diagnostic_column": 1
+    },
+    {
+      "name": "argument_zero_identity_from_input",
+      "source": "cases/argument_zero_identity_from_input.f90",
+      "sha256": "bf708fa1412a300901139ddcdee8b63b2c777f80f799bb11b2a3451e87f4a7cd",
+      "category": "success",
+      "expected_stdout": "argv0=T\n",
+      "gnu": "run",
+      "features": [
+        "explicit input",
+        "logical argv0 identity",
+        "allocatable CHARACTER",
+        "LLE/LGE padding"
+      ],
+      "inputs": [
+        {
+          "unit": 27,
+          "file": "inputs/argument_zero_identity_from_input.27.txt",
+          "sha256": "740e8ebf5cffdb8f9d144c1cf84196e6818a8a24eec55188267485dca62eec52",
+          "bytes": 38
+        }
+      ]
+    },
+    {
+      "name": "character_cube_lexical_position_output",
+      "source": "cases/character_cube_lexical_position_output.f90",
+      "sha256": "8e6d742f9a2c42e03a5ea0ff792be7e634a8df9d2f7a80f341760538dfedef92",
+      "category": "success",
+      "expected_stdout": "mask FTTT\n",
+      "gnu": "run",
+      "features": [
+        "rank-three CHARACTER READ",
+        "rank-three LGE",
+        "T placement",
+        "rank-three output"
+      ]
+    }
+  ]
+}

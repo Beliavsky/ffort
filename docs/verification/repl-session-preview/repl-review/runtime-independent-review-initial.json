@@ -1,0 +1,34 @@
+{
+  "status": "review_findings_pending_runtime_successor_and_new_build",
+  "runtime_sha256": "51bd6341010854afad3e044aee25bc24e3cf3321977eeeedfc369ef35c635911",
+  "repl_successor_sha256": "22aa5bb3de3de2c310194c0bd799b506416aca0ebc1abe5fd649cb23b6025427",
+  "docs_sha256": "b4f564e3092b60961be1388606c1eb87f256aad85a769233feec39c32202bc40",
+  "findings": [
+    {
+      "severity": "medium",
+      "issue": "Query validator accepted multiple PRINT items and formatting, not exact ephemeral expression; concrete source splice prints extraitems and flushes pending effects",
+      "owner": "runtime reviewer + REPL lexical guard",
+      "state": "REPL lexical successor ready; runtime guard requested"
+    },
+    {
+      "severity": "low",
+      "issue": "Dynamic instruction format equality omitted LEN equality, permitting padded-trailing-blank prefix changes",
+      "owner": "runtime reviewer",
+      "state": "fix requested"
+    },
+    {
+      "severity": "medium",
+      "issue": "Direct API allocatable array lowerbounds unconstrained before1-based indexing may cause bounds abort on forged metadata",
+      "owner": "runtime reviewer",
+      "state": "canonical bounds guards/native tests requested"
+    }
+  ],
+  "positive_review": [
+    "Opaque session owns deep scalar values/definedness and RNG, no retained borrowed descriptors",
+    "Runtime owns frontier, binds symbol/expression/instruction prefix memberwise",
+    "Expressions require backward DAG edges, reject calls/array metadata",
+    "Only success commits snapshot/frontier; execution failures taint; admission failures do not retry or mutate",
+    "Legacy execute_program signature unchanged; frame injection/capture conditional on private session arguments"
+  ],
+  "scope": "Read-only runtime review; docs and owned REPL lexical guard changed only. No runtime edits or new build."
+}

@@ -1,0 +1,343 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -31,6 +31,8 @@
+ 
+     public :: annotate_resolved_expression_types
+     public :: query_resolved_type
++    ! Shared by strict argument checking before expression annotation runs.
++    public :: resolve_kind_selector
+ 
+ contains
+ 
+@@ -856,7 +858,7 @@
+             if (kind_value > 0) return
+         end if
+ 
+-        if (resolve_iso_c_binding_kind(arena, reference_index, lowered, &
++        if (resolve_intrinsic_module_kind(arena, reference_index, lowered, &
+             kind_value)) return
+ 
+         kind_value = conventional_kind_selector(lowered)
+@@ -883,7 +885,7 @@
+         end select
+     end function conventional_kind_selector
+ 
+-    logical function resolve_iso_c_binding_kind(arena, reference_index, selector, &
++    logical function resolve_intrinsic_module_kind(arena, reference_index, selector, &
+             kind_value) result(found)
+         type(ast_arena_t), intent(in) :: arena
+         integer, intent(in) :: reference_index
+@@ -892,11 +894,10 @@
+         integer :: current, child, i
+         logical :: imported
+         character(len=:), allocatable :: canonical_selector, remote_selector
++        character(len=:), allocatable :: module_name
+ 
+         found = .false.
+         kind_value = 0
+-        imported = .false.
+-        canonical_selector = compact_lower(selector)
+         current = reference_index
+         do while (current > 0)
+             if (.not. arena%has_node_at(current)) return
+@@ -905,31 +906,64 @@
+                     child = arena%entries(current)%child_indices(i)
+                     if (.not. arena%has_node_at(child)) cycle
+                     select type (use_node => arena%entries(child)%node)
+-                        type is (use_statement_node)
++                    type is (use_statement_node)
+                         if (.not. allocated(use_node%module_name)) cycle
+-                        if (compact_lower(use_node%module_name) /= &
+-                            'iso_c_binding') cycle
+-                        if (.not. use_node%has_only) then
+-                            imported = .true.
+-                        else if (allocated(use_node%only_list)) then
+-                            imported = use_list_contains(use_node%only_list, selector)
+-                        end if
+-                        if (.not. imported .and. allocated(use_node%rename_list)) then
+-                            remote_selector = ''
++                        module_name = compact_lower(use_node%module_name)
++                        if (module_name /= 'iso_c_binding' .and. &
++                            module_name /= 'iso_fortran_env') cycle
++                        canonical_selector = compact_lower(selector)
++                        imported = .false.
++                        ! Resolve a local rename before its ONLY-list entry,
++                        ! which may contain the local rather than remote name.
++                        if (allocated(use_node%rename_list)) then
+                             imported = use_rename_contains(use_node%rename_list, &
+                                 selector, remote_selector)
+-                            if (imported) canonical_selector = remote_selector
++                            if (imported) canonical_selector = &
++                                compact_lower(remote_selector)
+                         end if
+-                        if (imported) exit
++                        if (.not. imported) then
++                            if (.not. use_node%has_only) then
++                                imported = .true.
++                            else if (allocated(use_node%only_list)) then
++                                imported = use_list_contains(use_node%only_list, &
++                                    selector)
++                            end if
++                        end if
++                        if (.not. imported) cycle
++                        kind_value = intrinsic_module_kind_value(module_name, &
++                            canonical_selector)
++                        if (kind_value > 0) then
++                            found = .true.
++                            return
++                        end if
+                     end select
+                 end do
+             end if
+-            if (imported) exit
+             current = arena%entries(current)%parent_index
+         end do
+-        if (.not. imported) return
+-
+-        select case (compact_lower(canonical_selector))
++    end function resolve_intrinsic_module_kind
++
++    integer pure function intrinsic_module_kind_value(module_name, selector) &
++            result(kind_value)
++        character(len=*), intent(in) :: module_name, selector
++
++        kind_value = 0
++        if (module_name == 'iso_fortran_env') then
++            select case (selector)
++            case ('int8')
++                kind_value = 1
++            case ('int16')
++                kind_value = 2
++            case ('int32', 'real32')
++                kind_value = 4
++            case ('int64', 'real64')
++                kind_value = 8
++            case ('real128')
++                kind_value = 16
++            end select
++            return
++        end if
++        select case (selector)
+         case ('c_signed_char', 'c_int8_t', 'c_int_least8_t', &
+                 'c_int_fast8_t', 'c_bool', 'c_char')
+             kind_value = 1
+@@ -944,11 +978,8 @@
+             kind_value = 8
+         case ('c_long_double', 'c_float128')
+             kind_value = 16
+-        case default
+-            return
+-        end select
+-        found = .true.
+-    end function resolve_iso_c_binding_kind
++        end select
++    end function intrinsic_module_kind_value
+ 
+     logical function use_list_contains(list, selector) result(found)
+         type(string_t), allocatable, intent(in) :: list(:)
+@@ -999,7 +1030,13 @@
+ 
+         value = 0
+         call resolve_name_at_node(arena, reference_index, name, binding, error_msg)
+-        if (.not. binding%found) return
++        if (.not. binding%found) then
++            ! Intrinsic module constants have no source declaration in the
++            ! arena, but their values still participate in named parameters.
++            if (resolve_intrinsic_module_kind(arena, reference_index, name, &
++                value)) return
++            return
++        end if
+         declaration_index = binding%declaration_node_index
+         if (.not. arena%has_node_at(declaration_index)) return
+         if (visiting(declaration_index)) return
+--- a/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
++++ b/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
+@@ -2,8 +2,13 @@
+     use ast_base, only: LITERAL_INTEGER, LITERAL_LOGICAL, LITERAL_REAL, &
+         LITERAL_STRING
+     use ast_arena_modern, only: ast_arena_t
+-    use ast_nodes_core, only: assignment_node, literal_node
++    use ast_nodes_core, only: assignment_node, identifier_node, literal_node, &
++        call_or_subscript_node
+     use ast_nodes_data, only: declaration_node, parameter_declaration_node
++    use ast_nodes_procedure, only: function_def_node
++    use frontend_compiler_resolution, only: declaration_binding_t, &
++        resolve_identifier_binding, resolve_name_at_node
++    use frontend_compiler_type_queries, only: resolve_kind_selector
+     use semantic_procedure_utils, only: declaration_type_to_mono
+     use string_utils_mod, only: to_lower
+     use type_system_unified, only: mono_type_t, create_mono_type, TARRAY, TDOUBLE, &
+@@ -23,22 +28,15 @@
+         type(ast_arena_t), intent(in) :: arena
+         integer, intent(in) :: decl_index
+         type(mono_type_t) :: typ
+-        character(len=:), allocatable :: lowered
+-
+         typ%kind = 0
+         if (.not. arena%has_node_at(decl_index)) return
+ 
+         select type (node => arena%entries(decl_index)%node)
+             type is (parameter_declaration_node)
+             if (.not. allocated(node%type_name)) return
+-            lowered = to_lower(trim(node%type_name))
+-            if (lowered == "real" .and. node%has_kind) then
+-                if (node%kind_value == 8) then
+-                    typ = create_mono_type(TDOUBLE)
+-                    return
+-                end if
+-            end if
+             typ = declaration_type_to_mono(node%type_name)
++            call apply_declared_real_kind(arena, decl_index, node%type_name, &
++                node%has_kind, node%kind_value, typ)
+             if (node%is_unsigned) then
+                 if (typ%kind == TINT) then
+                     typ%is_unsigned = .true.
+@@ -47,6 +45,8 @@
+             type is (declaration_node)
+             if (allocated(node%type_name)) then
+                 typ = declaration_type_to_mono(node%type_name)
++                call apply_declared_real_kind(arena, decl_index, node%type_name, &
++                    node%has_kind, node%kind_value, typ)
+             else
+                 typ = node%inferred_type
+             end if
+@@ -63,14 +63,54 @@
+     recursive function strict_actual_argument_type(arena, expr_index) result(typ)
+         type(ast_arena_t), intent(in) :: arena
+         integer, intent(in) :: expr_index
+-        type(mono_type_t) :: typ
++        type(mono_type_t) :: typ, declared_type
++        type(declaration_binding_t) :: binding
++        character(len=:), allocatable :: error_msg
+ 
+         typ%kind = 0
+         if (.not. arena%has_node_at(expr_index)) return
+ 
+         select type (node => arena%entries(expr_index)%node)
+             type is (literal_node)
+-            typ = strict_literal_type(node)
++            typ = strict_literal_type(arena, expr_index, node)
++            type is (identifier_node)
++            ! Inference may not yet have visited this scope. A declared scalar
++            ! actual has its declaration's type and kind, including aliases.
++            typ = node%inferred_type
++            call resolve_identifier_binding(arena, expr_index, binding, error_msg)
++            if (binding%found) then
++                if (arena%has_node_at(binding%declaration_node_index)) then
++                    select type (decl => &
++                            arena%entries(binding%declaration_node_index)%node)
++                    type is (declaration_node)
++                        if (.not. decl%is_array) then
++                            declared_type = strict_dummy_type(arena, &
++                                binding%declaration_node_index)
++                            if (strict_type_is_known(declared_type)) typ = declared_type
++                        end if
++                    end select
++                end if
++            end if
++            type is (call_or_subscript_node)
++            typ = node%inferred_type
++            if (.not. allocated(node%name)) return
++            if (node%is_array_access) return
++            call resolve_name_at_node(arena, expr_index, node%name, binding, error_msg)
++            if (binding%found) then
++                if (arena%has_node_at(binding%declaration_node_index)) then
++                    select type (func => &
++                            arena%entries(binding%declaration_node_index)%node)
++                    type is (function_def_node)
++                        if (allocated(func%return_type)) then
++                            declared_type = declaration_type_to_mono(func%return_type)
++                            call apply_declared_real_kind(arena, &
++                                binding%declaration_node_index, func%return_type, &
++                                .false., 0, declared_type)
++                            if (strict_type_is_known(declared_type)) typ = declared_type
++                        end if
++                    end select
++                end if
++            end if
+             type is (assignment_node)
+             if (node%is_keyword_argument) then
+                 typ = strict_actual_argument_type(arena, node%value_index)
+@@ -82,11 +122,13 @@
+         end select
+     end function strict_actual_argument_type
+ 
+-    function strict_literal_type(node) result(typ)
++    function strict_literal_type(arena, expr_index, node) result(typ)
++        type(ast_arena_t), intent(in) :: arena
++        integer, intent(in) :: expr_index
+         type(literal_node), intent(in) :: node
+         type(mono_type_t) :: typ
+         character(len=:), allocatable :: lowered
+-        integer :: kind_value
++        integer :: kind_value, underscore_pos
+ 
+         typ%kind = 0
+         if (.not. allocated(node%value)) return
+@@ -100,8 +142,15 @@
+             typ = create_mono_type(TCHAR)
+         case (LITERAL_REAL)
+             lowered = to_lower(trim(node%value))
+-            kind_value = parse_literal_kind_suffix(lowered)
+-            if (index(lowered, 'd') > 0 .or. kind_value == 8) then
++            underscore_pos = index(lowered, '_')
++            kind_value = 4
++            if (underscore_pos > 0 .and. underscore_pos < len_trim(lowered)) then
++                kind_value = resolve_kind_selector(arena, expr_index, &
++                    lowered(underscore_pos + 1:))
++            else if (index(lowered, 'd') > 0) then
++                kind_value = 8
++            end if
++            if (kind_value == 8) then
+                 typ = create_mono_type(TDOUBLE)
+             else
+                 typ = create_mono_type(TREAL)
+@@ -111,22 +160,32 @@
+         end select
+     end function strict_literal_type
+ 
+-    pure integer function parse_literal_kind_suffix(text) result(kind_value)
+-        character(len=*), intent(in) :: text
+-        integer :: underscore_pos
+-        integer :: ios
+-        character(len=:), allocatable :: suffix
+-
+-        kind_value = 0
+-        underscore_pos = index(text, '_')
+-        if (underscore_pos <= 0) return
+-        if (underscore_pos >= len_trim(text)) return
+-
+-        suffix = trim(adjustl(text(underscore_pos + 1:)))
+-        if (len_trim(suffix) == 0) return
+-        read (suffix, *, iostat=ios) kind_value
+-        if (ios /= 0) kind_value = 0
+-    end function parse_literal_kind_suffix
++    subroutine apply_declared_real_kind(arena, decl_index, type_name, &
++            has_kind, explicit_kind, typ)
++        type(ast_arena_t), intent(in) :: arena
++        integer, intent(in) :: decl_index, explicit_kind
++        character(len=*), intent(in) :: type_name
++        logical, intent(in) :: has_kind
++        type(mono_type_t), intent(inout) :: typ
++        character(len=:), allocatable :: selector
++        integer :: open_pos, close_pos, equal_pos, kind_value
++
++        if (typ%kind /= TREAL) return
++        kind_value = 4
++        if (has_kind .and. explicit_kind > 0) then
++            kind_value = explicit_kind
++        else
++            open_pos = index(type_name, '(')
++            close_pos = index(type_name, ')', back=.true.)
++            if (open_pos > 0 .and. close_pos > open_pos) then
++                selector = trim(adjustl(type_name(open_pos + 1:close_pos - 1)))
++                equal_pos = index(selector, '=')
++                if (equal_pos > 0) selector = trim(adjustl(selector(equal_pos + 1:)))
++                kind_value = resolve_kind_selector(arena, decl_index, selector)
++            end if
++        end if
++        if (kind_value == 8) typ = create_mono_type(TDOUBLE)
++    end subroutine apply_declared_real_kind
+ 
+     recursive logical function strict_types_match(expected, actual) result(matches)
+         type(mono_type_t), intent(in) :: expected

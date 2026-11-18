@@ -1,0 +1,3804 @@
+{
+  "cases": 52,
+  "failed": 0,
+  "identity": {
+    "path": "/tmp/fortfront-049-combined-kind-fixed-cli",
+    "sha256_before": "b973c397ab029cc60bc6cc855152b2f7efc7a211e5e4ae97e203890b884d398c",
+    "version": {
+      "command": [
+        "/tmp/fortfront-049-combined-kind-fixed-cli",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "fortfront-interpreter 0.49.0; FortFront 9a5896a + documented local patches\n",
+      "stderr": "",
+      "timeout": false
+    },
+    "sha256_after": "b973c397ab029cc60bc6cc855152b2f7efc7a211e5e4ae97e203890b884d398c"
+  },
+  "gnu_checked": true,
+  "manifest_sha256": "9a16c8f0a826652be46bee974b100a0e3f119ace7d1703f5f1abc6659fdd7bbb",
+  "contracts_sha256": "0898e62873e95f4b479b87ff2369047dca4f9b444947602920ef3b0e570564a5",
+  "runner_sha256": "5e4dc00dd0989a7deafdd60962d1929eb8fc1606258144a8263f0ab93b32b141",
+  "results": [
+    {
+      "case": {
+        "name": "width_32",
+        "source": "cases/width_32.f90",
+        "sha256": "afc285c3b3d9fb44b6b01c799ffe760b9489fdf051b0901976809dd10601cbc8",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "32",
+          "31",
+          "30",
+          "30",
+          "29",
+          "25",
+          "24",
+          "2",
+          "1",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "4",
+          "4"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "32",
+            "31",
+            "30",
+            "30",
+            "29",
+            "25",
+            "24",
+            "2",
+            "1",
+            "1",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "4",
+            "4"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/width_32.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-atc1l9om/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/width_32.f90:4:98:\n\n    4 | a=[0_4,1_4,2_4,3_4,7_4,127_4,128_4,1073741823_4,1073741824_4,2147483647_4,(-1_4),(-2_4),(-127_4),(-huge(0_4)-1_4)]\n      |                                                                                                  1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-atc1l9om/test"
+        ],
+        "returncode": 0,
+        "stdout": "          32          31          30          30          29          25          24           2           1           1           0           0           0           0\n           4           4\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/width_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/width_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 32 31 30 30 29 25 24 2 1 1 0 0 0 0\n 4 4\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "keywords_32",
+        "source": "cases/keywords_32.f90",
+        "sha256": "86c8487e21246d110316d9874d8c199f38a8e6b78ee10d785de298ada1841229",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "32",
+          "31",
+          "0"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "32",
+            "31",
+            "0"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/keywords_32.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-5_mcew3u/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-5_mcew3u/test"
+        ],
+        "returncode": 0,
+        "stdout": "          32          31           0\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/keywords_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/keywords_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 32 31 0\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_32",
+        "source": "cases/parameter_32.f90",
+        "sha256": "443541c11ee1c0fde544634fad92212c4660aea3abba696ff79bddbcdf843e35",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "31",
+          "32",
+          "31",
+          "0",
+          "4",
+          "31"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "31",
+            "32",
+            "31",
+            "0",
+            "4",
+            "31"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/parameter_32.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-oy64iy9c/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-oy64iy9c/test"
+        ],
+        "returncode": 0,
+        "stdout": "          31          32          31           0           4          31\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/parameter_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/parameter_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 31 32 31 0 4 31\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_32",
+        "source": "cases/rank_two_32.f90",
+        "sha256": "c881f8e3bad8b99ed5758b95a053fccaf988c322b1af02b4ad5b02a3a6a2af38",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "32",
+          "31",
+          "0",
+          "29",
+          "2",
+          "2",
+          "4"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "32",
+            "31",
+            "0",
+            "29"
+          ],
+          [
+            "2",
+            "2",
+            "4"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/rank_two_32.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-viixbt6p/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-viixbt6p/test"
+        ],
+        "returncode": 0,
+        "stdout": "          32          31           0          29\n           2           2           4\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/rank_two_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/rank_two_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 32 31 0 29\n 2 2 4\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "rank_three_32",
+        "source": "cases/rank_three_32.f90",
+        "sha256": "5585eb9e806dea039c4f6ba2c51bebedaf653ac7d104bf8d546935bd32c9b30c",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "32",
+          "31",
+          "0",
+          "29",
+          "2",
+          "1",
+          "2",
+          "4"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "32",
+            "31",
+            "0",
+            "29",
+            "2",
+            "1",
+            "2",
+            "4"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/rank_three_32.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-bt05u72r/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-bt05u72r/test"
+        ],
+        "returncode": 0,
+        "stdout": "          32          31           0          29           2           1           2           4\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/rank_three_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/rank_three_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 32 31 0 29 2 1 2 4\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "sections_32",
+        "source": "cases/sections_32.f90",
+        "sha256": "47ad30f6549e2bb071166aa6899476137c694600d03f7b68cbc9016979eccab1",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "29",
+          "30",
+          "31",
+          "32"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "29",
+            "30",
+            "31",
+            "32"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/sections_32.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-4dmucwi2/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-4dmucwi2/test"
+        ],
+        "returncode": 0,
+        "stdout": "          29          30          31          32\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/sections_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/sections_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 29 30 31 32\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "empty_32",
+        "source": "cases/empty_32.f90",
+        "sha256": "a1747d9b1f2846abb5e2451c4060501f1d19c324e4b52bc0168c8fedc84cb3ed",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "0",
+          "4",
+          "0"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "0",
+            "4"
+          ],
+          [
+            "0"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/empty_32.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-2kdni58b/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-2kdni58b/test"
+        ],
+        "returncode": 0,
+        "stdout": "           0           4\n           0\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/empty_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/empty_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 0 4\n 0\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "kind_undefined_32",
+        "source": "cases/kind_undefined_32.f90",
+        "sha256": "eabf8a2ad409fb0415476692f908fe315a02a6ccf585a8d82ff1eb1399b4e1e4",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "4",
+          "4",
+          "4"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "4",
+            "4",
+            "4"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/kind_undefined_32.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-jioq5omz/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-jioq5omz/test"
+        ],
+        "returncode": 0,
+        "stdout": "           4           4           4\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/kind_undefined_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/kind_undefined_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 4 4 4\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "assumed_shape_32",
+        "source": "cases/assumed_shape_32.f90",
+        "sha256": "c9af93e733c09e7fb7d37e0bea240f320c9d2b211f79a9b9040a74e5c77ce87d",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "32",
+          "31",
+          "0"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "32",
+            "31",
+            "0"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/assumed_shape_32.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-1tkulfpj/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-1tkulfpj/test"
+        ],
+        "returncode": 0,
+        "stdout": "          32          31           0\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/assumed_shape_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/assumed_shape_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 32 31 0\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "default_result_dummy_32",
+        "source": "cases/default_result_dummy_32.f90",
+        "sha256": "94c41cbbb64786acec16cbd966a1770a59b01eecd8e28cd67285c315df3ff466",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "31",
+          "32",
+          "31"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "31"
+          ],
+          [
+            "32",
+            "31"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/default_result_dummy_32.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-es6ah0ib/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-es6ah0ib/test"
+        ],
+        "returncode": 0,
+        "stdout": "          31\n          32          31\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/default_result_dummy_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/default_result_dummy_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 31\n 32 31\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_32",
+        "source": "cases/undefined_32.f90",
+        "sha256": "488c41a6a6cd6d78dcb8db97e82dbb488bedf633b965d1074362ace614bc1088",
+        "stage": "runtime",
+        "gnu": "compile",
+        "expected_tokens": [],
+        "diagnostic": "uninitialized",
+        "diagnostics": {
+          "run": {
+            "line": 4,
+            "column": 15,
+            "message": "read of uninitialized variable a",
+            "phase": "runtime"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/undefined_32.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-_eddarx2/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/undefined_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/undefined_32.f90"
+        ],
+        "returncode": 2,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/undefined_32.f90:4:15: read of uninitialized variable a\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_32",
+        "source": "cases/unallocated_32.f90",
+        "sha256": "e8dd67003ca8742b215ae5798b9c103653b81bc5979e624b287245996e32b62b",
+        "stage": "runtime",
+        "gnu": "compile",
+        "expected_tokens": [],
+        "diagnostics": {
+          "run": {
+            "line": 4,
+            "column": 15,
+            "message": "reference to unallocated array a",
+            "phase": "runtime"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/unallocated_32.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-72wwnynp/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/unallocated_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/unallocated_32.f90"
+        ],
+        "returncode": 2,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/unallocated_32.f90:4:15: reference to unallocated array a\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "keywords_64",
+        "source": "cases/keywords_64.f90",
+        "sha256": "19e9ccf046a57b33eda64cc2d51157358fc0cd0a98d00d00f58b3270cf54f543",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "64",
+          "63",
+          "0"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "64",
+            "63",
+            "0"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/keywords_64.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-8ft858z2/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-8ft858z2/test"
+        ],
+        "returncode": 0,
+        "stdout": "          64          63           0\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/keywords_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/keywords_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 64 63 0\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_64",
+        "source": "cases/parameter_64.f90",
+        "sha256": "431e2ff62ba4463ff5caf2fab3dc160b999a4c4327dce51e9db69fa7c11bd057",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "63",
+          "64",
+          "63",
+          "0",
+          "4",
+          "63"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "63",
+            "64",
+            "63",
+            "0",
+            "4",
+            "63"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/parameter_64.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-qwxf4zn4/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-qwxf4zn4/test"
+        ],
+        "returncode": 0,
+        "stdout": "          63          64          63           0           4          63\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/parameter_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/parameter_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 63 64 63 0 4 63\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two_64",
+        "source": "cases/rank_two_64.f90",
+        "sha256": "5de5631429875a07d546603d7ca204a8a14e841284e12f45fc8923b395917351",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "64",
+          "63",
+          "0",
+          "61",
+          "2",
+          "2",
+          "4"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "64",
+            "63",
+            "0",
+            "61"
+          ],
+          [
+            "2",
+            "2",
+            "4"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/rank_two_64.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-fvhamc18/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-fvhamc18/test"
+        ],
+        "returncode": 0,
+        "stdout": "          64          63           0          61\n           2           2           4\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/rank_two_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/rank_two_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 64 63 0 61\n 2 2 4\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "rank_three_64",
+        "source": "cases/rank_three_64.f90",
+        "sha256": "d74c9f8df10b41761b8fce6ccd4f2fc98a1391ee1a29808813a7cfab619e568a",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "64",
+          "63",
+          "0",
+          "61",
+          "2",
+          "1",
+          "2",
+          "4"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "64",
+            "63",
+            "0",
+            "61",
+            "2",
+            "1",
+            "2",
+            "4"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/rank_three_64.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-kxb3xn20/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-kxb3xn20/test"
+        ],
+        "returncode": 0,
+        "stdout": "          64          63           0          61           2           1           2           4\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/rank_three_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/rank_three_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 64 63 0 61 2 1 2 4\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "sections_64",
+        "source": "cases/sections_64.f90",
+        "sha256": "7b88ed8f9bc2eda0fd8c0eeb4dd4c72bba10bdaea99ba821511f0dc4399366f0",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "61",
+          "62",
+          "63",
+          "64"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "61",
+            "62",
+            "63",
+            "64"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/sections_64.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-kdclwosn/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-kdclwosn/test"
+        ],
+        "returncode": 0,
+        "stdout": "          61          62          63          64\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/sections_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/sections_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 61 62 63 64\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "empty_64",
+        "source": "cases/empty_64.f90",
+        "sha256": "bd1c314029b95a2301bf5daa5328491bac5443023c4610b5e90921d2f6a1cc84",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "0",
+          "4",
+          "0"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "0",
+            "4"
+          ],
+          [
+            "0"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/empty_64.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-t_in0i65/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-t_in0i65/test"
+        ],
+        "returncode": 0,
+        "stdout": "           0           4\n           0\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/empty_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/empty_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 0 4\n 0\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "kind_undefined_64",
+        "source": "cases/kind_undefined_64.f90",
+        "sha256": "4003afd2fb05597f66c1f2066da5e1e5500f0918c43b4d4abf708b41418ad83b",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "4",
+          "4",
+          "4"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "4",
+            "4",
+            "4"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/kind_undefined_64.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-mlsdduha/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-mlsdduha/test"
+        ],
+        "returncode": 0,
+        "stdout": "           4           4           4\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/kind_undefined_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/kind_undefined_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 4 4 4\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "assumed_shape_64",
+        "source": "cases/assumed_shape_64.f90",
+        "sha256": "a27f8fab0100f48d2fa8f48ffee87c3836531a498d1ec00a6757d2cb87fa05db",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "64",
+          "63",
+          "0"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "64",
+            "63",
+            "0"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/assumed_shape_64.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-fus425k0/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-fus425k0/test"
+        ],
+        "returncode": 0,
+        "stdout": "          64          63           0\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/assumed_shape_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/assumed_shape_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 64 63 0\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "default_result_dummy_64",
+        "source": "cases/default_result_dummy_64.f90",
+        "sha256": "13b8cfd7e94563265d2b988287db0b9de4d6afc3602bf3ed47f451c41d64aa6b",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "63",
+          "64",
+          "63"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "63"
+          ],
+          [
+            "64",
+            "63"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/default_result_dummy_64.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-4kd6fu94/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-4kd6fu94/test"
+        ],
+        "returncode": 0,
+        "stdout": "          63\n          64          63\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/default_result_dummy_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/default_result_dummy_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 63\n 64 63\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_64",
+        "source": "cases/undefined_64.f90",
+        "sha256": "7a698ec714abec1a8710e5d2b8db1f270a9ccb0b3348ef6a910a66b19e653552",
+        "stage": "runtime",
+        "gnu": "compile",
+        "expected_tokens": [],
+        "diagnostic": "uninitialized",
+        "diagnostics": {
+          "run": {
+            "line": 4,
+            "column": 15,
+            "message": "read of uninitialized variable a",
+            "phase": "runtime"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/undefined_64.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-dm3j7ws0/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/undefined_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/undefined_64.f90"
+        ],
+        "returncode": 2,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/undefined_64.f90:4:15: read of uninitialized variable a\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_64",
+        "source": "cases/unallocated_64.f90",
+        "sha256": "c27623cd76ca88c719ff39b812c58d9dbea49ae10efe1824fdd18c53ea61581b",
+        "stage": "runtime",
+        "gnu": "compile",
+        "expected_tokens": [],
+        "diagnostics": {
+          "run": {
+            "line": 4,
+            "column": 15,
+            "message": "reference to unallocated array a",
+            "phase": "runtime"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/unallocated_64.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-p1avvqti/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/unallocated_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/unallocated_64.f90"
+        ],
+        "returncode": 2,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/unallocated_64.f90:4:15: reference to unallocated array a\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_scalar",
+        "source": "cases/shadow_scalar.f90",
+        "sha256": "d5806fdc14b5d5945d161d3dafd40cd156737722ba009a535061ef41c23faf8d",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "17"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "17"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_scalar.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-6enp80o1/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-6enp80o1/test"
+        ],
+        "returncode": 0,
+        "stdout": "          17\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_scalar.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_scalar.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 17\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_array",
+        "source": "cases/shadow_array.f90",
+        "sha256": "d66a8be1763d9af02f59af8575dc4396c4e709b255d70fd148b962997ddec951",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "7",
+          "9"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "7",
+            "9"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_array.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-k8181tm6/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-k8181tm6/test"
+        ],
+        "returncode": 0,
+        "stdout": "           7           9\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_array.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_array.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 7 9\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_function",
+        "source": "cases/shadow_function.f90",
+        "sha256": "42f9d87bfa37673ac5838003180ca569642d74a8b5ff74e7801815be8fa0b642",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "101"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "101"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_function.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-bzle2jq7/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-bzle2jq7/test"
+        ],
+        "returncode": 0,
+        "stdout": "                  101\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_function.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_function.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 101\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_result",
+        "source": "cases/shadow_result.f90",
+        "sha256": "cf1dba412fb16816274622610c805404e6e332ec73aee341a578a98df1a4312d",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "17"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "17"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_result.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-bmm6opu9/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-bmm6opu9/test"
+        ],
+        "returncode": 0,
+        "stdout": "          17\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_result.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_result.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 17\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_generic",
+        "source": "cases/shadow_generic.f90",
+        "sha256": "b0d83604e7d3370941710ca4ff2945d7c39a259ac1dce6cb97ae706b46a40409",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "101"
+        ],
+        "diagnostics": {},
+        "expected_records": [
+          [
+            "101"
+          ]
+        ]
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_generic.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-yhojp5g0/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-yhojp5g0/test"
+        ],
+        "returncode": 0,
+        "stdout": "                  101\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_generic.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/shadow_generic.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 101\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "reject_real",
+        "source": "cases/reject_real.f90",
+        "sha256": "7d96aa3e36f86dbc5f384b70d4fa540e6de9f7faf27ecc687e8f14a51258e86b",
+        "stage": "check",
+        "gnu": "reject",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 19,
+            "message": "Bit intrinsics require INTEGER kind 4 or 8",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 19,
+            "message": "Bit intrinsics require INTEGER kind 4 or 8",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_real.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-9kxmavyg/test"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_real.f90:3:14:\n\n    3 | print *,leadz(1.0)\n      |              1\nError: 'i' argument of 'leadz' intrinsic at (1) must be INTEGER\n",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_real.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_real.f90:3:19: Bit intrinsics require INTEGER kind 4 or 8\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_real.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_real.f90:3:19: Bit intrinsics require INTEGER kind 4 or 8\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "reject_logical",
+        "source": "cases/reject_logical.f90",
+        "sha256": "7cbf9a7870fb75416ea29ac90bc80d10b50828d4e238d1deb3d8b127138d1609",
+        "stage": "check",
+        "gnu": "reject",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 22,
+            "message": "Bit intrinsics require INTEGER kind 4 or 8",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 22,
+            "message": "Bit intrinsics require INTEGER kind 4 or 8",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_logical.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-upciktj1/test"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_logical.f90:3:14:\n\n    3 | print *,leadz(.true.)\n      |              1\nError: 'i' argument of 'leadz' intrinsic at (1) must be INTEGER\n",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_logical.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_logical.f90:3:22: Bit intrinsics require INTEGER kind 4 or 8\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_logical.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_logical.f90:3:22: Bit intrinsics require INTEGER kind 4 or 8\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "reject_character",
+        "source": "cases/reject_character.f90",
+        "sha256": "1c7743b86b30e66b97f031816a340e4a09993b01f4dc0a8c32d607fbaeb4df6b",
+        "stage": "check",
+        "gnu": "reject",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 19,
+            "message": "Bit intrinsics require INTEGER kind 4 or 8",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 19,
+            "message": "Bit intrinsics require INTEGER kind 4 or 8",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_character.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-k8l3ifew/test"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_character.f90:3:14:\n\n    3 | print *,leadz('1')\n      |              1\nError: 'i' argument of 'leadz' intrinsic at (1) must be INTEGER\n",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_character.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_character.f90:3:19: Bit intrinsics require INTEGER kind 4 or 8\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_character.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_character.f90:3:19: Bit intrinsics require INTEGER kind 4 or 8\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "reject_missing",
+        "source": "cases/reject_missing.f90",
+        "sha256": "6da6001b7feed3b57a241b5ad8c1e995d50e99d5b03fad08babfa10a59cc8bf2",
+        "stage": "check",
+        "gnu": "reject",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 16,
+            "message": "Bit intrinsic argument count differs",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 16,
+            "message": "Bit intrinsic argument count differs",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_missing.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-y3r8mc2q/test"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_missing.f90:3:8:\n\n    3 | print *,leadz()\n      |        1\nError: Missing actual argument 'i' in call to 'leadz' at (1)\n",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_missing.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_missing.f90:3:16: Bit intrinsic argument count differs\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_missing.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_missing.f90:3:16: Bit intrinsic argument count differs\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "reject_extra",
+        "source": "cases/reject_extra.f90",
+        "sha256": "987ed7fa6d4956d5e0c8b8f2f31fda1aa49f19f7be62fb2153ad8f6b3bc510f6",
+        "stage": "check",
+        "gnu": "reject",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 19,
+            "message": "Bit intrinsic argument count differs",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 19,
+            "message": "Bit intrinsic argument count differs",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_extra.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-1yvyrj9z/test"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_extra.f90:3:8:\n\n    3 | print *,leadz(1,2)\n      |        1\nError: Too many arguments in call to 'leadz' at (1)\n",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_extra.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_extra.f90:3:19: Bit intrinsic argument count differs\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_extra.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_extra.f90:3:19: Bit intrinsic argument count differs\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "reject_unknown_keyword",
+        "source": "cases/reject_unknown_keyword.f90",
+        "sha256": "c5452fe8a414e83cbd7930b05c6467efbf677bf34f1e1910f4ded9a5de203c4f",
+        "stage": "check",
+        "gnu": "reject",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 19,
+            "message": "Unknown keyword or excess actual argument: j",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 19,
+            "message": "Unknown keyword or excess actual argument: j",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_unknown_keyword.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-cezl153t/test"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_unknown_keyword.f90:3:8:\n\n    3 | print *,leadz(j=1)\n      |        1\nError: Cannot find keyword named 'j' in call to 'leadz' at (1)\n",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_unknown_keyword.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_unknown_keyword.f90:3:19: Unknown keyword or excess actual argument: j\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_unknown_keyword.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_unknown_keyword.f90:3:19: Unknown keyword or excess actual argument: j\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "reject_duplicate",
+        "source": "cases/reject_duplicate.f90",
+        "sha256": "3bf9bec104aa4be10c16f8e893cb6f8d754f7253ff178f8480138122723036cd",
+        "stage": "check",
+        "gnu": "reject",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 23,
+            "message": "Repeated actual argument for i",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 23,
+            "message": "Repeated actual argument for i",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_duplicate.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-lnnpoxlb/test"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_duplicate.f90:3:22:\n\n    3 | print *,leadz(i=1,i=2)\n      |                      1\nError: Keyword 'i' at (1) has already appeared in the current argument list\n",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_duplicate.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_duplicate.f90:3:23: Repeated actual argument for i\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_duplicate.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_duplicate.f90:3:23: Repeated actual argument for i\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "reject_positional_after_keyword",
+        "source": "cases/reject_positional_after_keyword.f90",
+        "sha256": "36ddcdf83c51589128f4a5e482a8e8c9edfdeb6ad88a850603d536e5c20986dd",
+        "stage": "check",
+        "gnu": "reject",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 19,
+            "message": "Positional argument cannot follow a keyword argument",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 19,
+            "message": "Positional argument cannot follow a keyword argument",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_positional_after_keyword.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-acmv4pp9/test"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_positional_after_keyword.f90:3:19:\n\n    3 | print *,leadz(i=1,2)\n      |                   1\nError: Missing keyword name in actual argument list at (1)\n",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_positional_after_keyword.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_positional_after_keyword.f90:3:19: Positional argument cannot follow a keyword argument\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_positional_after_keyword.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_positional_after_keyword.f90:3:19: Positional argument cannot follow a keyword argument\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "reject_kind_keyword",
+        "source": "cases/reject_kind_keyword.f90",
+        "sha256": "4f62db6deb1e486be09b9419a48397c3e2d55aee70964bd5fd2aaf77d88a41dd",
+        "stage": "check",
+        "gnu": "reject",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 24,
+            "message": "Unknown keyword or excess actual argument: kind",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 24,
+            "message": "Unknown keyword or excess actual argument: kind",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_kind_keyword.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-urbpult2/test"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_kind_keyword.f90:3:8:\n\n    3 | print *,leadz(1,kind=8)\n      |        1\nError: Too many arguments in call to 'leadz' at (1)\n",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_kind_keyword.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_kind_keyword.f90:3:24: Unknown keyword or excess actual argument: kind\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_kind_keyword.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/reject_kind_keyword.f90:3:24: Unknown keyword or excess actual argument: kind\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "bounded_kind_1",
+        "source": "cases/bounded_kind_1.f90",
+        "sha256": "3686216585c8b9196250fcd6edd453b2864a6409691f16a12c056525ac51a20b",
+        "stage": "check",
+        "gnu": "compile",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 11,
+            "message": "Only REAL kinds 4 and 8 are supported",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 11,
+            "message": "Only REAL kinds 4 and 8 are supported",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_1.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-t26yn5a1/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_1.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_1.f90:3:11: Only REAL kinds 4 and 8 are supported\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_1.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_1.f90:3:11: Only REAL kinds 4 and 8 are supported\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "bounded_kind_2",
+        "source": "cases/bounded_kind_2.f90",
+        "sha256": "8a30da28366c9ad0ffeb8a1181e68a512b117c34e2cbfee484758debc5255c64",
+        "stage": "check",
+        "gnu": "compile",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 11,
+            "message": "Only REAL kinds 4 and 8 are supported",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 11,
+            "message": "Only REAL kinds 4 and 8 are supported",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_2.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-nqylxsea/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_2.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_2.f90:3:11: Only REAL kinds 4 and 8 are supported\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_2.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_2.f90:3:11: Only REAL kinds 4 and 8 are supported\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "bounded_kind_16",
+        "source": "cases/bounded_kind_16.f90",
+        "sha256": "ef569c4b1db877f30d6fe0bdc50eb8dcc870eec16a0395e8fe593d5aff378450",
+        "stage": "check",
+        "gnu": "compile",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 12,
+            "message": "Only REAL kinds 4 and 8 are supported",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 12,
+            "message": "Only REAL kinds 4 and 8 are supported",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_16.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-o4d3wu5y/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_16.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_16.f90:3:12: Only REAL kinds 4 and 8 are supported\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_16.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_kind_16.f90:3:12: Only REAL kinds 4 and 8 are supported\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "bounded_component",
+        "source": "cases/bounded_component.f90",
+        "sha256": "373befa860e9806bbc83226f8b6e3f815663f0bd8dc77c4a65d51dd0bee08dc3",
+        "stage": "check",
+        "gnu": "compile",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 6,
+            "message": "Expected (, found t",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 6,
+            "message": "Expected (, found t",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_component.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-kul6d1kw/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_component.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_component.f90:3:6: Expected (, found t\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_component.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_component.f90:3:6: Expected (, found t\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "bounded_rank_four",
+        "source": "cases/bounded_rank_four.f90",
+        "sha256": "332ae6fce3686885b5f0b7744c1dfcc6bdca1c82461758d6c34a4f053e96d35b",
+        "stage": "check",
+        "gnu": "compile",
+        "expected_tokens": [],
+        "diagnostics": {
+          "check": {
+            "line": 3,
+            "column": 18,
+            "message": "Only rank-one, rank-two and rank-three arrays are supported",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 3,
+            "column": 18,
+            "message": "Only rank-one, rank-two and rank-three arrays are supported",
+            "phase": "checking"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_rank_four.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-50kq3d59/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_rank_four.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_rank_four.f90:3:18: Only rank-one, rank-two and rank-three arrays are supported\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_rank_four.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_rank_four.f90:3:18: Only rank-one, rank-two and rank-three arrays are supported\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_array_element",
+        "source": "cases/undefined_array_element.f90",
+        "sha256": "a7213757fa74410bd02ae498c606f15acfa0627c80d5d6be3046dc2a965bd64e",
+        "stage": "runtime",
+        "gnu": "compile",
+        "expected_tokens": [],
+        "diagnostic": "uninitialized",
+        "diagnostics": {
+          "run": {
+            "line": 5,
+            "column": 15,
+            "message": "read of uninitialized array element a",
+            "phase": "runtime"
+          }
+        },
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/undefined_array_element.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-mgyfkywf/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/undefined_array_element.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/undefined_array_element.f90"
+        ],
+        "returncode": 2,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/undefined_array_element.f90:5:15: read of uninitialized array element a\n",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "original_demo_leadz",
+        "source": "cases/demo_leadz.f90",
+        "sha256": "ba89b569c0c0e283f6ca606a99902371d3de19cfdd0901cd459292e4dcd65519",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_stdout": "LEADING ZERO BITS=  0 OF VALUE 11111111111111111111111101101010 AKA -150\nLEADING ZERO BITS=  0 OF VALUE 11111111111111111111111110011100 AKA -100\nLEADING ZERO BITS=  0 OF VALUE 11111111111111111111111111001110 AKA -50\nLEADING ZERO BITS= 32 OF VALUE 00000000000000000000000000000000 AKA 0\nLEADING ZERO BITS= 26 OF VALUE 00000000000000000000000000110010 AKA 50\nLEADING ZERO BITS= 25 OF VALUE 00000000000000000000000001100100 AKA 100\nLEADING ZERO BITS= 24 OF VALUE 00000000000000000000000010010110 AKA 150\n",
+        "byte_exact": true,
+        "source_url": "https://github.com/urbanjost/M_intrinsics/blob/fc14233036d910e3678d350efc24609e11475067/example/demo_leadz.f90",
+        "diagnostics": {},
+        "expected_records": []
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/demo_leadz.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-ro3q5qbl/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-ro3q5qbl/test"
+        ],
+        "returncode": 0,
+        "stdout": "LEADING ZERO BITS=  0 OF VALUE 11111111111111111111111101101010 AKA -150\nLEADING ZERO BITS=  0 OF VALUE 11111111111111111111111110011100 AKA -100\nLEADING ZERO BITS=  0 OF VALUE 11111111111111111111111111001110 AKA -50\nLEADING ZERO BITS= 32 OF VALUE 00000000000000000000000000000000 AKA 0\nLEADING ZERO BITS= 26 OF VALUE 00000000000000000000000000110010 AKA 50\nLEADING ZERO BITS= 25 OF VALUE 00000000000000000000000001100100 AKA 100\nLEADING ZERO BITS= 24 OF VALUE 00000000000000000000000010010110 AKA 150\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/demo_leadz.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/demo_leadz.f90"
+        ],
+        "returncode": 0,
+        "stdout": "LEADING ZERO BITS=  0 OF VALUE 11111111111111111111111101101010 AKA -150\nLEADING ZERO BITS=  0 OF VALUE 11111111111111111111111110011100 AKA -100\nLEADING ZERO BITS=  0 OF VALUE 11111111111111111111111111001110 AKA -50\nLEADING ZERO BITS= 32 OF VALUE 00000000000000000000000000000000 AKA 0\nLEADING ZERO BITS= 26 OF VALUE 00000000000000000000000000110010 AKA 50\nLEADING ZERO BITS= 25 OF VALUE 00000000000000000000000001100100 AKA 100\nLEADING ZERO BITS= 24 OF VALUE 00000000000000000000000010010110 AKA 150\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "all_positive_bits_32_continued",
+        "source": "cases/all_positive_bits_32_continued.f90",
+        "sha256": "0dd430a826aa97a28d535bab08bde3f722772ec11eda28756a2d652851513c04",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "31",
+          "30",
+          "29",
+          "28",
+          "27",
+          "26",
+          "25",
+          "24",
+          "23",
+          "22",
+          "21",
+          "20",
+          "19",
+          "18",
+          "17",
+          "16",
+          "15",
+          "14",
+          "13",
+          "12",
+          "11",
+          "10",
+          "9",
+          "8",
+          "7",
+          "6",
+          "5",
+          "4",
+          "3",
+          "2",
+          "1"
+        ],
+        "expected_records": [
+          [
+            "31",
+            "30",
+            "29",
+            "28",
+            "27",
+            "26",
+            "25",
+            "24",
+            "23",
+            "22",
+            "21",
+            "20",
+            "19",
+            "18",
+            "17",
+            "16",
+            "15",
+            "14",
+            "13",
+            "12",
+            "11",
+            "10",
+            "9",
+            "8",
+            "7",
+            "6",
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+          ]
+        ],
+        "diagnostics": {}
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/all_positive_bits_32_continued.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-ww9wimdd/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-ww9wimdd/test"
+        ],
+        "returncode": 0,
+        "stdout": "          31          30          29          28          27          26          25          24          23          22          21          20          19          18          17          16          15          14          13          12          11          10           9           8           7           6           5           4           3           2           1\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/all_positive_bits_32_continued.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/all_positive_bits_32_continued.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "all_positive_bits_64_continued",
+        "source": "cases/all_positive_bits_64_continued.f90",
+        "sha256": "20176f7e8e2154b63015210e36a755b7add0ef448d1f2639a8f4fee459fadda5",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "63",
+          "62",
+          "61",
+          "60",
+          "59",
+          "58",
+          "57",
+          "56",
+          "55",
+          "54",
+          "53",
+          "52",
+          "51",
+          "50",
+          "49",
+          "48",
+          "47",
+          "46",
+          "45",
+          "44",
+          "43",
+          "42",
+          "41",
+          "40",
+          "39",
+          "38",
+          "37",
+          "36",
+          "35",
+          "34",
+          "33",
+          "32",
+          "31",
+          "30",
+          "29",
+          "28",
+          "27",
+          "26",
+          "25",
+          "24",
+          "23",
+          "22",
+          "21",
+          "20",
+          "19",
+          "18",
+          "17",
+          "16",
+          "15",
+          "14",
+          "13",
+          "12",
+          "11",
+          "10",
+          "9",
+          "8",
+          "7",
+          "6",
+          "5",
+          "4",
+          "3",
+          "2",
+          "1"
+        ],
+        "expected_records": [
+          [
+            "63",
+            "62",
+            "61",
+            "60",
+            "59",
+            "58",
+            "57",
+            "56",
+            "55",
+            "54",
+            "53",
+            "52",
+            "51",
+            "50",
+            "49",
+            "48",
+            "47",
+            "46",
+            "45",
+            "44",
+            "43",
+            "42",
+            "41",
+            "40",
+            "39",
+            "38",
+            "37",
+            "36",
+            "35",
+            "34",
+            "33",
+            "32",
+            "31",
+            "30",
+            "29",
+            "28",
+            "27",
+            "26",
+            "25",
+            "24",
+            "23",
+            "22",
+            "21",
+            "20",
+            "19",
+            "18",
+            "17",
+            "16",
+            "15",
+            "14",
+            "13",
+            "12",
+            "11",
+            "10",
+            "9",
+            "8",
+            "7",
+            "6",
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+          ]
+        ],
+        "diagnostics": {}
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/all_positive_bits_64_continued.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-iaadz8s_/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-iaadz8s_/test"
+        ],
+        "returncode": 0,
+        "stdout": "          63          62          61          60          59          58          57          56          55          54          53          52          51          50          49          48          47          46          45          44          43          42          41          40          39          38          37          36          35          34          33          32          31          30          29          28          27          26          25          24          23          22          21          20          19          18          17          16          15          14          13          12          11          10           9           8           7           6           5           4           3           2           1\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/all_positive_bits_64_continued.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/all_positive_bits_64_continued.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 63 62 61 60 59 58 57 56 55 54 53 52 51 50 49 48 47 46 45 44 43 42 41 40 39 38 37 36 35 34 33 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "width_64_continued",
+        "source": "cases/width_64_continued.f90",
+        "sha256": "e1bc49ccb0237e1cdabd134613cda04cc13c5324c231cc6ab7c005b2435969fc",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "64",
+          "63",
+          "62",
+          "62",
+          "61",
+          "57",
+          "56",
+          "2",
+          "1",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "4",
+          "4"
+        ],
+        "expected_records": [
+          [
+            "64",
+            "63",
+            "62",
+            "62",
+            "61",
+            "57",
+            "56",
+            "2",
+            "1",
+            "1",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "4",
+            "4"
+          ]
+        ],
+        "diagnostics": {}
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/width_64_continued.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-axnjnx96/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/width_64_continued.f90:5:19:\n\n    5 | & (-2_8),(-127_8),(-huge(0_8)-1_8)]\n      |                   1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-axnjnx96/test"
+        ],
+        "returncode": 0,
+        "stdout": "          64          63          62          62          61          57          56           2           1           1           0           0           0           0\n           4           4\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/width_64_continued.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/width_64_continued.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 64 63 62 62 61 57 56 2 1 1 0 0 0 0\n 4 4\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "allocated_rank_three_32",
+        "source": "cases/allocated_rank_three_32.f90",
+        "sha256": "6b7a4d0677969e1089dea431725c032a45ffa28d557581535ffb47d9ba589ce9",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "31",
+          "31",
+          "31",
+          "31",
+          "2",
+          "1",
+          "2"
+        ],
+        "expected_records": [
+          [
+            "31",
+            "31",
+            "31",
+            "31"
+          ],
+          [
+            "2",
+            "1",
+            "2"
+          ]
+        ],
+        "diagnostics": {}
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/allocated_rank_three_32.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-1_76obsg/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-1_76obsg/test"
+        ],
+        "returncode": 0,
+        "stdout": "          31          31          31          31\n           2           1           2\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/allocated_rank_three_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/allocated_rank_three_32.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 31 31 31 31\n 2 1 2\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "allocated_rank_three_64",
+        "source": "cases/allocated_rank_three_64.f90",
+        "sha256": "eff03274d38711ae88e5e8374db8a837d01ae602c0f2d5e1b1f9f732e7770ca9",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "63",
+          "63",
+          "63",
+          "63",
+          "2",
+          "1",
+          "2"
+        ],
+        "expected_records": [
+          [
+            "63",
+            "63",
+            "63",
+            "63"
+          ],
+          [
+            "2",
+            "1",
+            "2"
+          ]
+        ],
+        "diagnostics": {}
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/allocated_rank_three_64.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-ezkg_1u9/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-ezkg_1u9/test"
+        ],
+        "returncode": 0,
+        "stdout": "          63          63          63          63\n           2           1           2\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/allocated_rank_three_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/allocated_rank_three_64.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 63 63 63 63\n 2 1 2\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "array_function_values",
+        "source": "cases/array_function_values.f90",
+        "sha256": "e862509d84f40cb777f797e0d5d02789df57e8fdec7654f35cc4260572068196",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "64",
+          "63",
+          "0"
+        ],
+        "expected_records": [
+          [
+            "64",
+            "63",
+            "0"
+          ]
+        ],
+        "diagnostics": {}
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/array_function_values.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-zpnbc6do/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-zpnbc6do/test"
+        ],
+        "returncode": 0,
+        "stdout": "          64          63           0\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/array_function_values.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/array_function_values.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 64 63 0\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "kind_suppresses_array_function",
+        "source": "cases/kind_suppresses_array_function.f90",
+        "sha256": "1da9395b983502cea87d3d7cb838c58954d7b3d02974340f98c74643eb66072e",
+        "stage": "success",
+        "gnu": "execute",
+        "expected_tokens": [
+          "4"
+        ],
+        "expected_records": [
+          [
+            "4"
+          ]
+        ],
+        "diagnostics": {}
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/kind_suppresses_array_function.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-zl6f4tfg/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "native_run": {
+        "command": [
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-zl6f4tfg/test"
+        ],
+        "returncode": 0,
+        "stdout": "           4\n",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/kind_suppresses_array_function.f90"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/kind_suppresses_array_function.f90"
+        ],
+        "returncode": 0,
+        "stdout": " 4\n",
+        "stderr": "",
+        "timeout": false
+      }
+    },
+    {
+      "case": {
+        "name": "bounded_supported_component",
+        "source": "cases/bounded_supported_component.f90",
+        "sha256": "7920753974fab9b35f344c46bcc512a13b1cecf84dcfd025bb01822bd7489b58",
+        "stage": "check",
+        "gnu": "compile",
+        "expected_tokens": [],
+        "expected_records": [],
+        "diagnostics": {
+          "check": {
+            "line": 12,
+            "column": 19,
+            "message": "Bit intrinsic component operands are unsupported",
+            "phase": "checking"
+          },
+          "run": {
+            "line": 12,
+            "column": 19,
+            "message": "Bit intrinsic component operands are unsupported",
+            "phase": "checking"
+          }
+        }
+      },
+      "errors": [],
+      "native_compile": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-ffree-line-length-none",
+          "-O0",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_supported_component.f90",
+          "-o",
+          "/tmp/leadz-work-048/changed/tests/leadz/leadz-strict-gnu-_057hipj/test"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false
+      },
+      "check": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "--check",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_supported_component.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_supported_component.f90:12:19: Bit intrinsic component operands are unsupported\n",
+        "timeout": false
+      },
+      "run": {
+        "command": [
+          "/tmp/fortfront-049-combined-kind-fixed-cli",
+          "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_supported_component.f90"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "/tmp/leadz-work-048/changed/tests/leadz/cases/bounded_supported_component.f90:12:19: Bit intrinsic component operands are unsupported\n",
+        "timeout": false
+      }
+    }
+  ]
+}

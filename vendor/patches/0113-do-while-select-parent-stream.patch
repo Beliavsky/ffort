@@ -1,0 +1,43 @@
+--- a/src/parser/control_flow/parser_do_constructs_part2.inc
++++ b/src/parser/control_flow/parser_do_constructs_part2.inc
+@@ -57,7 +57,7 @@
+             integer, allocatable :: temp_body_indices(:)
+             type(token_t) :: token
+             integer :: stmt_start, stmt_end, j, token_count, next_index
+-            integer :: block_end, do_pos
++            integer :: block_end, do_pos, nested_index
+             logical :: handled_block
+             type(token_t), allocatable, target :: stmt_tokens(:)
+ 
+@@ -87,6 +87,31 @@
+ 
+                 stmt_start = parser%current_token
+                 stmt_end = stmt_start
++
++                ! As in counted DO, SELECT must consume the parent stream.
++                ! A header-only slice loses CASE bodies and their nested DOs.
++                nested_index = 0
++                if (token%kind == TK_KEYWORD) then
++                    if (to_lower(trim(token%text)) == 'select') then
++                        next_index = skip_trivia_tokens(parser%tokens, stmt_start + 1)
++                        if (next_index <= size(parser%tokens)) then
++                            if (parser%tokens(next_index)%kind == TK_KEYWORD) then
++                                select case (to_lower(trim(parser%tokens(next_index)%text)))
++                                case ('case')
++                                    nested_index = parse_select_case(parser, arena)
++                                case ('type')
++                                    nested_index = parse_select_type(parser, arena)
++                                case ('rank')
++                                    nested_index = parse_select_rank(parser, arena)
++                                end select
++                            end if
++                        end if
++                    end if
++                end if
++                if (nested_index > 0) then
++                    temp_body_indices = [temp_body_indices, nested_index]
++                    cycle
++                end if
+ 
+                 ! A construct in a DO WHILE body must be handed to the
+                 ! construct parser as one token range.  Parsing only the

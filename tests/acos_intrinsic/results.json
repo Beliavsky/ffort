@@ -1,0 +1,861 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 28,
+    "failed": 0,
+    "candidate_checked": 28,
+    "gnu_checked": 28,
+    "gnu_executed": 17,
+    "gnu_compile_only": 4,
+    "gnu_compile_rejections": 7
+  },
+  "records": [
+    {
+      "case": {
+        "name": "pi_parameter",
+        "source": "cases/pi_parameter.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   3.1415926535897931                8\n",
+        "rel_tol": 2e-14,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   3.1415926535897931                8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3.1415926535897931 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_kinds",
+        "source": "cases/scalar_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   3.14159274       1.57079637       0.00000000    \n   3.1415926535897931        1.5707963267948966        0.0000000000000000     \n           4           8\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   3.14159274       1.57079637       0.00000000    \n   3.1415926535897931        1.5707963267948966        0.0000000000000000     \n           4           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3.14159274 1.57079637 0.00000000\n 3.1415926535897931 1.5707963267948966 0.0000000000000000\n 4 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keyword",
+        "source": "cases/keyword.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   1.0471975511965979        2.09439516    \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.0471975511965979        2.09439516    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1.0471975511965979 2.09439516\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank1",
+        "source": "cases/rank1.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   3.14159274       2.09439516       1.57079637       1.04719758       0.00000000    \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   3.14159274       2.09439516       1.57079637       1.04719758       0.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3.14159274 2.09439516 1.57079637 1.04719758 0.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank2",
+        "source": "cases/rank2.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   1.0471975511965979        1.0471975511965979        1.0471975511965979        1.0471975511965979                2           2\n",
+        "rel_tol": 2e-14,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.0471975511965979        1.0471975511965979        1.0471975511965979        1.0471975511965979                2           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1.0471975511965979 1.0471975511965979 1.0471975511965979 1.0471975511965979 2 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank3",
+        "source": "cases/rank3.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   1.04719758       1.04719758       1.04719758       1.04719758               2           1           2\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.04719758       1.04719758       1.04719758       1.04719758               2           1           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1.04719758 1.04719758 1.04719758 1.04719758 2 1 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty",
+        "source": "cases/empty.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           0           8\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic",
+        "source": "cases/dynamic.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   1.5707963267948966        1.0471975511965979        0.0000000000000000     \n",
+        "rel_tol": 2e-14,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.5707963267948966        1.0471975511965979        0.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1.5707963267948966 1.0471975511965979 0.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "inquiry",
+        "source": "cases/inquiry.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           8           8\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "optional_inquiry",
+        "source": "cases/optional_inquiry.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           8\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "near_endpoints",
+        "source": "cases/near_endpoints.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   1.4901161193847656E-008   3.1415926386886319     \n",
+        "rel_tol": 2e-14,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.4901161193847656E-008   3.1415926386886319     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0.14901161193847656E-7 3.1415926386886319\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tiny",
+        "source": "cases/tiny.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   1.57079637       1.5707963267948966        1.57079637       1.5707963267948966     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.57079637       1.5707963267948966        1.57079637       1.5707963267948966     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1.57079637 1.5707963267948966 1.57079637 1.5707963267948966\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_shadow",
+        "source": "cases/scalar_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           4\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_shadow",
+        "source": "cases/array_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           4\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_shadow",
+        "source": "cases/function_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           4\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "result_shadow",
+        "source": "cases/result_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           5\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reject_noarg",
+        "source": "cases/reject_noarg.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_noarg.f90:4:8:\n\n    4 | print *,acos()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018acos\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_noarg.f90:4:15: Unary real intrinsic requires one REAL X argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_noarg.f90:4:15: Unary real intrinsic requires one REAL X argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_extra",
+        "source": "cases/reject_extra.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_extra.f90:4:8:\n\n    4 | print *,acos(1.0,2.0)\n      |        1\nError: Too many arguments in call to \u2018acos\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_extra.f90:4:22: Unary real intrinsic requires one REAL X argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_extra.f90:4:22: Unary real intrinsic requires one REAL X argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_int",
+        "source": "cases/reject_int.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_int.f90:4:13:\n\n    4 | print *,acos(1)\n      |             1\nError: \u2018x\u2019 argument of \u2018acos\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_int.f90:4:16: Unary real intrinsic requires REAL kind 4 or 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_int.f90:4:16: Unary real intrinsic requires REAL kind 4 or 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_character",
+        "source": "cases/reject_character.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_character.f90:4:13:\n\n    4 | print *,acos('x')\n      |             1\nError: \u2018x\u2019 argument of \u2018acos\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_character.f90:4:18: Unary real intrinsic requires REAL kind 4 or 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_character.f90:4:18: Unary real intrinsic requires REAL kind 4 or 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_logical",
+        "source": "cases/reject_logical.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_logical.f90:4:13:\n\n    4 | print *,acos(.true.)\n      |             1\nError: \u2018x\u2019 argument of \u2018acos\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_logical.f90:4:21: Unary real intrinsic requires REAL kind 4 or 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_logical.f90:4:21: Unary real intrinsic requires REAL kind 4 or 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_keyword",
+        "source": "cases/reject_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_keyword.f90:4:8:\n\n    4 | print *,acos(a=1.0)\n      |        1\nError: Cannot find keyword named \u2018a\u2019 in call to \u2018acos\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_keyword.f90:4:20: Unknown keyword or excess actual argument: a\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_keyword.f90:4:20: Unknown keyword or excess actual argument: a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_duplicate",
+        "source": "cases/reject_duplicate.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_duplicate.f90:4:25:\n\n    4 | print *,acos(x=1.0,x=1.0)\n      |                         1\nError: Keyword \u2018x\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_duplicate.f90:4:26: Repeated actual argument for x\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_duplicate.f90:4:26: Repeated actual argument for x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_kind16",
+        "source": "cases/reject_kind16.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_kind16.f90:4:14: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_kind16.f90:4:14: Only REAL literal kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_complex",
+        "source": "cases/reject_complex.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_complex.f90:4:18: Expected ), found ,\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/reject_complex.f90:4:18: Expected ), found ,\n"
+      }
+    },
+    {
+      "case": {
+        "name": "domain_high",
+        "source": "cases/domain_high.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "ACOS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/domain_high.f90:4:9: ACOS requires -1 <= X <= 1\n"
+      }
+    },
+    {
+      "case": {
+        "name": "domain_low",
+        "source": "cases/domain_low.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "ACOS"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/acos_intrinsic/cases/domain_low.f90:4:9: ACOS requires -1 <= X <= 1\n"
+      }
+    },
+    {
+      "case": {
+        "name": "generic_shadow",
+        "source": "cases/generic_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6\n",
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6\n",
+        "err": ""
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:46:52.858986+00:00",
+  "manifest_sha256": "5488b51bc50b824716bf915d48855bb8fb1feb65140dde6c5a0bcbaa29f21edb",
+  "source_sha256": {
+    "cases/pi_parameter.f90": "241c97225797e79ca4225bb31b9d281f3ed94f32e25eed497b6c168c6e409940",
+    "cases/scalar_kinds.f90": "a7b66b0fd06dfa9e0bc20e27f5e15d6b15bc0e6affad189f8030506149ddc648",
+    "cases/keyword.f90": "58cc7a854286c30d5f7f4429fcc8b7aba95d25c0bde500fd8817637599b6464d",
+    "cases/rank1.f90": "6cac56b088f34632a2ff458779bac18fe171c36399d1cffbd937ff81f5099d7f",
+    "cases/rank2.f90": "42fc7e296f5fc65f8b36e764b639bf5663dc81342b236aaac84ab2e6545698ba",
+    "cases/rank3.f90": "ad43a626ff863a254134550de9898fb3b137bd71b9a9d3714cc38d62c36f0c86",
+    "cases/empty.f90": "344ebc972af9e6fb67d0fa8bcc6eecd3184478384131be7844365a1669c4c224",
+    "cases/dynamic.f90": "d6dcdbbce5977bc235d48ab04a6cfa6954eb65067fc4dac7653b134bce789551",
+    "cases/inquiry.f90": "6f2f148cb1e44ec7c05dbfc8b50823fa8daec7de4b83642e43d73dc3d2d5ae93",
+    "cases/optional_inquiry.f90": "c3428ce708c75d7342bfd2e8d71fd73e501cacf173fb00ddeb3c9c989c9ffc32",
+    "cases/near_endpoints.f90": "3105fc9810e075e1959f157139af10030fb3b9101830278991f922ff9d697765",
+    "cases/tiny.f90": "d803b7443540c443211029e60d2c05adb2be13fe4690a2280867b65b40bc3019",
+    "cases/scalar_shadow.f90": "411d461e2f4f366eec931a1dde90bbe54bc7bc459de211fcbb3f65780c839ed6",
+    "cases/array_shadow.f90": "70c05d79d20e47c291bee1f1417eb28c93414636470b005c15d36cabca31bc81",
+    "cases/function_shadow.f90": "484b6f1ddd9c6d46874db39a23851871b46bb3c62cf585e6e46ccf099a15bb61",
+    "cases/result_shadow.f90": "d6ffa3d5b9e0fb04aceea83e0bd36fec0c8441199ce8c7d3fa5a04d6333978c4",
+    "cases/reject_noarg.f90": "95b09b4f97b5442c237cb1d314245ae098d8949fd01689c9ba12c6f0d242be15",
+    "cases/reject_extra.f90": "db5778426d5f5a191680a7d7c3e40a530f045864e1462e2e4fa168a7feaf4bae",
+    "cases/reject_int.f90": "8019ae5bb441b6803b051a8236a55cf9ebe199060f304068b51080dfb433ed49",
+    "cases/reject_character.f90": "1d05b59b4d231e0c95e0ef0cb35c37686cdc2a9f252ad639474ab2d01d204498",
+    "cases/reject_logical.f90": "88f1067518c0c0546ec5d7b90db5c6f0235ae8fb3d6dc125fd1daa636cfaf0f3",
+    "cases/reject_keyword.f90": "50bd491157a30d329985b7155838c7a8676f4d858ea4c3b332ac2aa28a036cbd",
+    "cases/reject_duplicate.f90": "780b8fe32206de5ab8bf036070751f354595284059c40db752344519f94f7064",
+    "cases/reject_kind16.f90": "a88c5c1f7536be2eb2f8768b8030d1d4356f986ea4965fde1d62e9689bbc3199",
+    "cases/reject_complex.f90": "83aa82b6abec96928ac19bab6b9f6057dc351aa5fb9ce8be5169012740a9d2cc",
+    "cases/domain_high.f90": "4ed7f89c855251cc9a2ffad5c5ddb1ea5bbbb128bcf8a3b270d6e72729f6127f",
+    "cases/domain_low.f90": "b5e948a7a0358812b9839faa9ae8c87ce9ed3c89cafa05109fe66105e282dba8",
+    "cases/generic_shadow.f90": "acb004e01f719e806aa8df01977063fbeb7cbe9f608953145024aee0e0e23874"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

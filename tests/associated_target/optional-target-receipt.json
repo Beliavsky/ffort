@@ -1,0 +1,172 @@
+{
+  "scope": "Three specification-only whole nonpointer OPTIONAL TARGET omission cases; not GNU differential coverage.",
+  "standard_reference": {
+    "document": "J3/18-007r1, F2018 interpretation working draft",
+    "url": "https://j3-fortran.org/doc/year/18/18-007r1.pdf",
+    "references": [
+      {
+        "section": "15.5.2.12",
+        "paragraph": 4,
+        "printed_page": 311,
+        "pdf_page_1_based": 327,
+        "lines": "28-29",
+        "rule": "An absent OPTIONAL dummy can be forwarded to another OPTIONAL dummy, which is then absent, subject to the preceding restrictions."
+      },
+      {
+        "section": "16.2.1",
+        "paragraph": 2,
+        "printed_page": 327,
+        "pdf_page_1_based": 343,
+        "lines": "31-34",
+        "rule": "The optional-argument association rules also apply to intrinsic procedures."
+      },
+      {
+        "section": "16.9.16",
+        "paragraphs": "3-5",
+        "printed_page": 344,
+        "pdf_page_1_based": 360,
+        "lines": "9-35",
+        "rule": "POINTER association status must be defined. Absent TARGET selects the one-argument result. A present array TARGET requires a nonzero matching shape and identical storage in array element order."
+      },
+      {
+        "section": "15.5.2.12",
+        "paragraph": "3(4),(5),(7)",
+        "printed_page": 311,
+        "pdf_page_1_based": 327,
+        "rule": "Absence cannot be forwarded to a required dummy or through a subobject selector. Pointer actuals have additional restrictions."
+      }
+    ],
+    "implemented_scope": "Only whole absent nonpointer OPTIONAL TARGET forwarding is accepted. Absent first POINTER, absent TARGET sections and absent OPTIONAL POINTER TARGET remain rejected. No broader optional-pointer claim is made.",
+    "oracle_policy": "The main GNU suite compiles the three omission cases but does not count their execution as differential agreement. A separate receipt records GNU output and candidate specification expectations without running undefined-pointer or expired-lifetime programs under GNU."
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "gfortran_version": {
+    "code": 0,
+    "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "err": "",
+    "argv": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "--version"
+    ]
+  },
+  "cases": [
+    {
+      "name": "optional_target_absent",
+      "source_sha256": "705c03b384f7ad25fa1b0a15143dd997127f89ad40c4ab56ed1bdc7ed69d677f",
+      "candidate_expected": "T",
+      "errors": [],
+      "candidate": {
+        "code": 0,
+        "out": " T\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/associated_target/optional_target_absent.f90"
+        ]
+      },
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/associated_target/optional_target_absent.f90",
+          "-o",
+          "/tmp/associated-optional-vrgza3nd/oracle-observation"
+        ]
+      },
+      "gnu_observation": {
+        "code": 0,
+        "out": " F\n",
+        "err": "",
+        "argv": [
+          "/tmp/associated-optional-vrgza3nd/oracle-observation"
+        ]
+      },
+      "gnu_agrees_with_specification_expectation": false
+    },
+    {
+      "name": "optional_target_absent_null",
+      "source_sha256": "27132c14e237708a4c8acad8893111486800d07267125ecd32dca536925b8560",
+      "candidate_expected": "F",
+      "errors": [],
+      "candidate": {
+        "code": 0,
+        "out": " F\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/associated_target/optional_target_absent_null.f90"
+        ]
+      },
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/associated_target/optional_target_absent_null.f90",
+          "-o",
+          "/tmp/associated-optional-90yhugvu/oracle-observation"
+        ]
+      },
+      "gnu_observation": {
+        "code": 0,
+        "out": " F\n",
+        "err": "",
+        "argv": [
+          "/tmp/associated-optional-90yhugvu/oracle-observation"
+        ]
+      },
+      "gnu_agrees_with_specification_expectation": true
+    },
+    {
+      "name": "optional_target_absent_empty",
+      "source_sha256": "575c95d150c47f061972333452f8ec654dd51062a53171fb4282ac7ae063540b",
+      "candidate_expected": "T",
+      "errors": [],
+      "candidate": {
+        "code": 0,
+        "out": " T\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/associated_target/optional_target_absent_empty.f90"
+        ]
+      },
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/associated_target/optional_target_absent_empty.f90",
+          "-o",
+          "/tmp/associated-optional-95r149e_/oracle-observation"
+        ]
+      },
+      "gnu_observation": {
+        "code": 0,
+        "out": " F\n",
+        "err": "",
+        "argv": [
+          "/tmp/associated-optional-95r149e_/oracle-observation"
+        ]
+      },
+      "gnu_agrees_with_specification_expectation": false
+    }
+  ],
+  "failed": 0
+}

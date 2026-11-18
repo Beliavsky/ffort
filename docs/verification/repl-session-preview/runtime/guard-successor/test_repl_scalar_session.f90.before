@@ -1,0 +1,95 @@
+! SPDX-License-Identifier: MIT
+program test_repl_scalar_session
+    use, intrinsic :: iso_fortran_env, only:int64
+    use fi_ir
+    use fi_parser, only:parse_subset
+    use fi_runtime, only:scalar_session_t,reset_scalar_session,execute_scalar_session, &
+        inspect_scalar_session,scalar_session_frontier,scalar_session_tainted, &
+        validate_scalar_session_program,validate_scalar_session_query
+    implicit none
+    character(*),parameter::nl=new_line('a')
+    character(*),parameter::head='program p'//nl//'implicit none'//nl//'integer::i,z'//nl//'real::x'//nl
+    type(scalar_session_t)::session,other
+    type(program_t)::p,q,bad
+    type(diagnostic_t)::d
+    type(value_t)::v,w
+    logical::defined
+    integer::checks,j,oldpc,oldne,lit
+    checks=0
+    call parse(head//'i=1'//nl,p)
+    call execute_scalar_session(session,p,d);call expect(d%code==0,'first execution')
+    call inspect_scalar_session(session,1,v,defined,d)
+    call expect(defined.and.v%i==1_int64,'retained initial scalar')
+    call inspect_scalar_session(session,2,v,defined,d);call expect(.not.defined,'undefined retained')
+    oldpc=scalar_session_frontier(session);oldne=p%ne
+    call parse(head//'i=1'//nl//'i=i+2'//nl,q)
+    call execute_scalar_session(session,q,d);call expect(d%code==0,'suffix execution')
+    call inspect_scalar_session(session,1,v,defined,d);call expect(defined.and.v%i==3,'suffix not replay')
+    call execute_scalar_session(session,q,d);call expect(d%code==0,'empty suffix')
+    call inspect_scalar_session(session,1,v,defined,d);call expect(v%i==3,'empty suffix unchanged')
+    oldpc=scalar_session_frontier(session)
+    call parse(head//'i=1'//nl//'i=i+2'//nl//'print *, i'//nl,p)
+    call validate_scalar_session_query(p,q%nc,d);call expect(d%code==0,'query admission')
+    call execute_scalar_session(session,p,d,commit=.false.);call expect(d%code==0,'query execution')
+    call expect(scalar_session_frontier(session)==oldpc,'query uncommitted')
+    call execute_scalar_session(session,p,d,commit=.false.);call expect(d%code==0,'repeat query')
+    call expect(scalar_session_frontier(session)==oldpc,'repeat query frontier')
+    ! Exact prefix/declaration changes reject without taint or mutation.
+    bad=p;bad%symbols(1)%real_kind=8;call reject(bad,'changed declaration')
+    bad=p;bad%code(1)%op=op_random_seed;call reject(bad,'changed old opcode')
+    bad=p;bad%expressions(1)%value%i=17;call reject(bad,'changed old literal')
+    bad=p;bad%expressions(bad%ne)%kind=ex_call;call reject(bad,'hidden call')
+    bad=p;bad%expressions(bad%ne)%rank=1;call reject(bad,'rank metadata')
+    bad=p;bad%code(bad%nc)%advance_mode=1;call reject(bad,'nonadvancing output')
+    bad=p;allocate(bad%expressions(bad%ne)%args(0));call reject(bad,'inactive args')
+    bad=p;bad%expressions(bad%ne)%kind=ex_binary;bad%expressions(bad%ne)%left=bad%ne
+    bad%expressions(bad%ne)%right=bad%ne;bad%expressions(bad%ne)%op='+'
+    call reject(bad,'cyclic expression')
+    call expect(.not.scalar_session_tainted(session),'admission rejection does not taint')
+    d=diagnostic_t();call inspect_scalar_session(session,1,v,defined,d)
+    call expect(defined.and.v%i==3,'rejected requests preserve values')
+    ! Runtime failure taints, and cannot be resumed even using unchanged old code.
+    call parse(head//'i=1'//nl//'i=i+2'//nl//'z=0'//nl//'i=1/z'//nl,p)
+    call execute_scalar_session(session,p,d);call expect(d%code/=0,'division failure')
+    call expect(scalar_session_tainted(session),'runtime failure taints')
+    d=diagnostic_t();call execute_scalar_session(session,q,d);call expect(d%code/=0,'taint refuses retry')
+    call reset_scalar_session(session);call expect(.not.scalar_session_tainted(session),'reset clears taint')
+    ! RNG continues across suffixes and readonly queries.
+    call parse(head//'call random_seed()'//nl//'call random_number(x)'//nl,p)
+    d=diagnostic_t();call execute_scalar_session(session,p,d);call expect(d%code==0,'RNG initial')
+    call parse(head//'call random_seed()'//nl//'call random_number(x)'//nl//'print *, x'//nl,q)
+    call execute_scalar_session(session,q,d,commit=.false.);call expect(d%code==0,'RNG readonly query')
+    call parse(head//'call random_seed()'//nl//'call random_number(x)'//nl//'call random_number(x)'//nl,q)
+    call execute_scalar_session(session,q,d);call expect(d%code==0,'RNG suffix')
+    call inspect_scalar_session(session,3,v,defined,d)
+    call execute_scalar_session(other,q,d);call expect(d%code==0,'RNG one-pass baseline')
+    call inspect_scalar_session(other,3,w,defined,d)
+    call expect(transfer(v%r,0_int64)==transfer(w%r,0_int64),'RNG matches no-replay baseline')
+    call reset_scalar_session(session)
+    call parse('program p'//nl//'implicit none'//nl,p)
+    call execute_scalar_session(session,p,d);call expect(d%code==0,'empty declaration universe')
+    print *, 'scalar session checks: ',checks
+contains
+    subroutine parse(source,prog)
+        character(*),intent(in)::source
+        type(program_t),intent(out)::prog
+        d=diagnostic_t();call parse_subset(source//'end program'//nl,prog,d)
+        call expect(d%code==0,'fixture parse')
+    end subroutine
+    subroutine expect(ok,label)
+        logical,intent(in)::ok
+        character(*),intent(in)::label
+        if(.not.ok)then
+            print *, 'FAIL ',label
+            if(allocated(d%message))print *,d%message
+            stop 1
+        end if
+        checks=checks+1
+    end subroutine
+    subroutine reject(prog,label)
+        type(program_t),intent(in)::prog
+        character(*),intent(in)::label
+        d=diagnostic_t();call execute_scalar_session(session,prog,d,commit=.false.)
+        call expect(d%code/=0,label)
+    end subroutine
+end program

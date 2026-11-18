@@ -1,0 +1,985 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 33,
+    "failed": 0,
+    "candidate_checked": 33,
+    "gnu_checked": 33,
+    "gnu_skipped": 0,
+    "gnu_executed": 16,
+    "gnu_compile_only": 12,
+    "gnu_compile_rejections": 5,
+    "gnu_known_defects": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "original_cosh",
+        "source": "cases/demo_cosh.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": " X=   1.0000000000000000      COSH(X=)   1.5430806348152437     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " X=   1.0000000000000000      COSH(X=)   1.5430806348152437     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " X= 1.0000000000000000 COSH(X=) 1.5430806348152437\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_tan",
+        "source": "cases/demo_tan.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  0.16500000000000001       0.16651386310913616     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  0.16500000000000001       0.16651386310913616     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0.16500000000000001 0.16651386310913616\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_tanh",
+        "source": "cases/demo_tanh.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   2.1000000000000001       0.97045193661345386     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   2.1000000000000001       0.97045193661345386     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2.1000000000000001 0.97045193661345386\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_epsilon",
+        "source": "cases/demo_epsilon.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   1.19209290E-07\n   1.19209290E-07\n   1.19209290E-07\n   2.2204460492503131E-016\n F\n F\n T\n T\n   2.2204460492503131E-016\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.19209290E-07\n   1.19209290E-07\n   1.19209290E-07\n   2.2204460492503131E-016\n F\n F\n T\n T\n   2.2204460492503131E-016\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0.119209290E-6\n 0.119209290E-6\n 0.119209290E-6\n 0.22204460492503131E-15\n F\n F\n T\n T\n 0.22204460492503131E-15\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "all_supported_aliases",
+        "source": "cases/all_supported_aliases.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           4           8           4           8           4           8           4           8   1.25000000       2.5000000000000000               42          12345678901\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           8           4           8           4           8           4           8   1.25000000       2.5000000000000000               42          12345678901\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 8 4 8 4 8 4 8 1.25000000 2.5000000000000000 42 12345678901\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_and_case",
+        "source": "cases/mixed_and_case.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           4           8           4           8   3.0000000000000000     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           8           4           8   3.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 8 4 8 3.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "two_local_aliases",
+        "source": "cases/two_local_aliases.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           8           8   2.0000000000000000                8\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8   2.0000000000000000                8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 8 2.0000000000000000 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "source_name_reused_locally",
+        "source": "cases/source_name_reused_locally.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           8           4           8           4\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           4           8           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 4 8 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "separate_use",
+        "source": "cases/separate_use.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           4           8\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "continuation",
+        "source": "cases/continuation.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           4           8\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_kind",
+        "source": "cases/parameter_kind.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           8           8   2.2500000000000000     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8   2.2500000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 8 2.2500000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "intrinsic_name_alias",
+        "source": "cases/intrinsic_name_alias.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           8           8   2.0000000000000000     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8   2.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 8 2.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "host_association",
+        "source": "cases/host_association.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   5.0000000000000000     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   5.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "procedure_use",
+        "source": "cases/procedure_use.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           8           8           8           8   2.5000000000000000                        42\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8           8           8   2.5000000000000000                        42\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 8 8 8 2.5000000000000000 42\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "module_alias",
+        "source": "cases/module_alias.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           8   3.0000000000000000     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8   3.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 3.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real128_sentinel",
+        "source": "cases/real128_sentinel.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "-1 4 T\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -1 4 T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real128_alias_sentinel",
+        "source": "cases/real128_alias_sentinel.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "-1 T 8 2.0\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -1 T 8 2.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real128_used_kind",
+        "source": "cases/real128_used_kind.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/real128_used_kind.f90:4:9: Only REAL kinds 4 and 8 are supported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/real128_used_kind.f90:4:9: Only REAL kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real128_used_literal",
+        "source": "cases/real128_used_literal.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/real128_used_literal.f90:4:9: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/real128_used_literal.f90:4:9: Only REAL literal kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real128_used_real_conversion",
+        "source": "cases/real128_used_real_conversion.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/real128_used_real_conversion.f90:4:24: REAL supports kinds 4 and 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/real128_used_real_conversion.f90:4:24: REAL supports kinds 4 and 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real128_used_constructor",
+        "source": "cases/real128_used_constructor.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/real128_used_constructor.f90:4:18: Only REAL kinds 4 and 8 are supported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/real128_used_constructor.f90:4:18: Only REAL kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_remote",
+        "source": "cases/invalid_remote.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/invalid_remote.f90:2:36:\n\n    2 | use,intrinsic::iso_fortran_env,only:dp=>not_a_kind\n      |                                    1\nError: Symbol \u2018not_a_kind\u2019 referenced at (1) not found in intrinsic module ISO_FORTRAN_ENV\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/invalid_remote.f90:2:51: Supported ISO_FORTRAN_ENV imports are REAL32, REAL64, REAL128, INT8, INT16, INT32, INT64, INTEGER_KINDS and OUTPUT_UNIT\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/invalid_remote.f90:2:51: Supported ISO_FORTRAN_ENV imports are REAL32, REAL64, REAL128, INT8, INT16, INT32, INT64, INTEGER_KINDS and OUTPUT_UNIT\n"
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_local_duplicate",
+        "source": "cases/invalid_local_duplicate.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/invalid_local_duplicate.f90:2:58: Duplicate intrinsic import\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/invalid_local_duplicate.f90:2:58: Duplicate intrinsic import\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_same_import",
+        "source": "cases/duplicate_same_import.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/duplicate_same_import.f90:2:58: Duplicate intrinsic import\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/duplicate_same_import.f90:2:58: Duplicate intrinsic import\n"
+      }
+    },
+    {
+      "case": {
+        "name": "alias_name_conflict",
+        "source": "cases/alias_name_conflict.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/alias_name_conflict.f90:4:11:\n\n    2 | use,intrinsic::iso_fortran_env,only:dp=>real64\n      |               2\n    3 | implicit none\n    4 | integer::dp\n      |           1\nError: Symbol \u2018dp\u2019 at (1) conflicts with symbol from module \u2018iso_fortran_env\u2019, use-associated at (2)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/alias_name_conflict.f90:4:10: Duplicate declaration: dp\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/alias_name_conflict.f90:4:10: Duplicate declaration: dp\n"
+      }
+    },
+    {
+      "case": {
+        "name": "alias_immutable",
+        "source": "cases/alias_immutable.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/alias_immutable.f90:4:0:\n\n    4 | dp=4\nError: Named constant \u2018dp\u2019 in variable definition context (assignment) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/alias_immutable.f90:4:1: Cannot assign to a PARAMETER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/alias_immutable.f90:4:1: Cannot assign to a PARAMETER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "renamed_remote_unavailable",
+        "source": "cases/renamed_remote_unavailable.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/renamed_remote_unavailable.f90:4:14:\n\n    4 | print *,real64\n      |              1\nError: Symbol \u2018real64\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/renamed_remote_unavailable.f90:4:15: Undeclared variable: real64\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/renamed_remote_unavailable.f90:4:15: Undeclared variable: real64\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unsupported_int16",
+        "source": "cases/unsupported_int16.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": " -1\n",
+        "exact_stdout": true,
+        "oracle_note": "INT16=-1 is this bounded processor unavailable-kind sentinel, not INTEGER(kind=2) support. Primary GNU baseline remains compile-only; no GNU-equal output claim."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "no_only",
+        "source": "cases/no_only.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/no_only.f90:2:32: Expected only, found dp\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/no_only.f90:2:32: Expected only, found dp\n"
+      }
+    },
+    {
+      "case": {
+        "name": "implicit_module_nature",
+        "source": "cases/implicit_module_nature.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nonintrinsic_rename",
+        "source": "cases/nonintrinsic_rename.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/nonintrinsic_rename.f90:6:13: ONLY name is absent or PRIVATE: k\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/nonintrinsic_rename.f90:6:13: ONLY name is absent or PRIVATE: k\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_remote",
+        "source": "cases/missing_remote.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/missing_remote.f90:2:40:\n\n    2 | use,intrinsic::iso_fortran_env,only:dp=>\n      |                                        1\nError: Syntax error in USE statement at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/missing_remote.f90:2:41: Expected a nonreserved name\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/missing_remote.f90:2:41: Expected a nonreserved name\n"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_only",
+        "source": "cases/empty_only.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/empty_only.f90:2:37: Expected a nonreserved name\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/iso_env_aliases/cases/empty_only.f90:2:37: Expected a nonreserved name\n"
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:38:47.326252+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "limits": "ISO_FORTRAN_ENV ONLY aliases include REAL32/64, INT32/64 and INTEGER_KINDS=[4,8]. REAL128, INT8 and INT16 are -1 unavailable-kind sentinels; unsupported declarations/literals remain rejected. Host GNU values differ, so processor-model cases are not GNU-equal successes.",
+  "manifest_sha256": "c8e751643664325b5d34e80d47f22c2466d1648fd5b2b3ef3d50626894931d98",
+  "source_sha256": {
+    "cases/demo_cosh.f90": "a3167e7b2a9869aa056eb47b06e21d26ee18365ae4d444e6b2971a1eee7fad2b",
+    "cases/demo_tan.f90": "ac00c8b2439e4369ea1505ab4c0e6b9842e71cf336ab785fca888a1d3f81d09e",
+    "cases/demo_tanh.f90": "1b4ae2da9d8b64ccef65a08d26bb2336b6aed840daf695a926503297c76c1c12",
+    "cases/demo_epsilon.f90": "89c9a984dc04658168e00cea4399edf32c6a4f99e68802e606bbccc9b2029791",
+    "cases/all_supported_aliases.f90": "71a09fb4a4e26988d4987a73999e1a8e8ce332321df07e75e2b579c3868fa536",
+    "cases/mixed_and_case.f90": "5a88eac1bfaf6263dfbcbc6f4ff14cb9abf81a4a8efd4787dcf295a7cfcee0a7",
+    "cases/two_local_aliases.f90": "af01456b945cfbdc816bcfc68b5378cfc215781fa3aa47bba352a8211b5ffac5",
+    "cases/source_name_reused_locally.f90": "b1579000e98f6a0c51a429ea6c2ae7b5bdf21e85f7350e370003c068d3a0bfa6",
+    "cases/separate_use.f90": "31d3fb32696ab062a830d23f241bbdd1ad92b125c0a510584e68effdb66b215c",
+    "cases/continuation.f90": "dabaf67890a6c4f6f032da91c0c3ae6cb0d9ffd4a65687bd00e6f0e1bb5f5ac3",
+    "cases/parameter_kind.f90": "d8c698f0661e752d6379b65409347c6dfcc27b32427c9c3479b06cf799cc4f61",
+    "cases/intrinsic_name_alias.f90": "5cf2dd3cb46925b1128f45e7cef6c346014a4c65da26a41486c310789621e4e9",
+    "cases/host_association.f90": "f787053d9a9fab533480143da5e3845342773d2ce4359acc684c1fc8bc32220c",
+    "cases/procedure_use.f90": "194fbb9d5f199c89be6dce7b2e5b21fa017c2e600ded022c5ecb64ba8d9a2562",
+    "cases/module_alias.f90": "10c5a282d2b178d28c1ab740911eaf522447886e8dda44758a77756892ed8ba2",
+    "cases/real128_sentinel.f90": "0671f613e0339935d39a0e9879e6403f1a1bbbcdab6be303a777d7712b5a6aec",
+    "cases/real128_alias_sentinel.f90": "219a21101e7c9a5fac96fe29fb4a28fa7131f99608bc1cd86006b943c9747436",
+    "cases/real128_used_kind.f90": "793e0ed254fadaf5215aa41d7c0af8e4c9df3d29979e1625ce4f98131094f9f0",
+    "cases/real128_used_literal.f90": "c6eb5bb994823d397ee9bad30df288ffafdcc71d820d94fdfa4514773b4e82bb",
+    "cases/real128_used_real_conversion.f90": "1a22d2c98173912b2bba514a9b6d5a5a0277944e1a10a0ba19e6ba47d30a1725",
+    "cases/real128_used_constructor.f90": "cea17c27fdc52c217ce5795774f825111e449b5218f213f0b602095f5aac7e87",
+    "cases/invalid_remote.f90": "334524e507daaac697bbaa00126cdd23cfada5ae2f0854dc9ca2634d60cc11cc",
+    "cases/invalid_local_duplicate.f90": "294fdd2490b88e5a013e491b0c6d2cf4c06b91689268e98968abc1019acb254d",
+    "cases/duplicate_same_import.f90": "c7fe023f7cb85cb58148c2f12abafb7bebaca9775c378172e3fd8422beb742ac",
+    "cases/alias_name_conflict.f90": "4b26b11d77d66bf115d1a24476f7977f24b21b611dec941c01faa9082426b6e6",
+    "cases/alias_immutable.f90": "2b0375a84af18a6f47dbbfeb2f2a5681f87dd01bb4901d1c020114826f7bd199",
+    "cases/renamed_remote_unavailable.f90": "0cb4f2ed0ff79349708c627c46df593cbbbd10ddfc162a1f00c76d2ed9e0fe6c",
+    "cases/unsupported_int16.f90": "d5fce8aa3cffd0845161eb36b389ea0e99f494bc77353d79657917f65c6f094f",
+    "cases/no_only.f90": "018dffeb0edc2769608fc7a1aa19606b8ab41eefc51060a62bb6dcd9a567994a",
+    "cases/implicit_module_nature.f90": "c4804f2c379c85f6a0b6d45909bd3f7ca3dfeb37ff90f49291ea136c200632e8",
+    "cases/nonintrinsic_rename.f90": "acbdad69bc021e021df9824c25db91d864de4ba77229f461d68e04ad27f484ba",
+    "cases/missing_remote.f90": "09397537cc192d8ffafd9748a05f3ac5a3c3533e863526aee542fbe44d60747f",
+    "cases/empty_only.f90": "5e4abddd6a42c320a9d727ad9e708a4a9f13875f15dd639da90a6c1d45e99286"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

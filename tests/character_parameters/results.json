@@ -1,0 +1,1712 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 58,
+    "failed": 0,
+    "candidate_checked": 58,
+    "gnu_checked": 57,
+    "gnu_skipped": 0,
+    "gnu_executed": 29,
+    "gnu_compile_only": 8,
+    "gnu_compile_rejections": 20,
+    "gnu_known_defects": 1
+  },
+  "records": [
+    {
+      "case": {
+        "name": "independent_lengths",
+        "source": "cases/independent_lengths.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "a:\nthree:\n:\n  :\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "a:\nthree:\n:\n  :\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "a:\nthree:\n:\n  :\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "folded_trim_concat",
+        "source": "cases/folded_trim_concat.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": " a!:\n:\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " a!:\n:\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " a!:\n:\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "prior_parameters",
+        "source": "cases/prior_parameters.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ab\nabab\nabab!\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ab\nabab\nabab!\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ab\nabab\nabab!\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "merge_parameters",
+        "source": "cases/merge_parameters.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ab\ngh\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ab\ngh\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ab\ngh\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_one",
+        "source": "cases/rank_one.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "a  :\nbc :\na  !:\nbc !:\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "a  :\nbc :\na  !:\nbc !:\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "a  :\nbc :\na  !:\nbc !:\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_expansion",
+        "source": "cases/scalar_expansion.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "xy:\nxy:\nxy:\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "xy:\nxy:\nxy:\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "xy:\nxy:\nxy:\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_two",
+        "source": "cases/rank_two.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ab:\ncd:\nef:\ngh:\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ab:\ncd:\nef:\ngh:\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ab:\ncd:\nef:\ngh:\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_section",
+        "source": "cases/parameter_section.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ef:\nab:\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ef:\nab:\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ef:\nab:\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_typed",
+        "source": "cases/empty_typed.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zero_length_elements",
+        "source": "cases/zero_length_elements.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "!\n!\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "!\n!\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "!\n!\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "fixed_length_regression",
+        "source": "cases/fixed_length_regression.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "abc:\nx  :\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "abc:\nx  :\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "abc:\nx  :\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "xutilities_exact",
+        "source": "cases/xutilities_exact.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T in util_mod::: util_mod ??? abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ T T T"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T\nin util_mod:::\nutil_mod\n???\nabcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXYZ\n T T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T\nin util_mod:::\nutil_mod\n???\nabcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXYZ\n T T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_constants",
+        "source": "cases/ascii_constants.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "A Z a 1 T"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "A\nZ\na\n           1 T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "A\nZ\na\n 1 T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_runtime_scalar",
+        "source": "cases/ascii_runtime_scalar.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "A Z A Z"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "A\nZ\nA\nZ\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "A\nZ\nA\nZ\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_array",
+        "source": "cases/ascii_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "A B C A B C"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "A\nB\nC\nA\nB\nC\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "A\nB\nC\nA\nB\nC\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_rank_two",
+        "source": "cases/ascii_rank_two.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "A B C D A B C D"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "A\nB\nC\nD\nA\nB\nC\nD\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "A\nB\nC\nD\nA\nB\nC\nD\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_parameter_array",
+        "source": "cases/ascii_parameter_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "A B C A B C D"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "A\nB\nC\nA\nB\nC\nD\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "A\nB\nC\nA\nB\nC\nD\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_boundary",
+        "source": "cases/ascii_boundary.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_empty",
+        "source": "cases/ascii_empty.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "missing_initializer",
+        "source": "cases/missing_initializer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/missing_initializer.f90:2:25:\n\n    2 | character(*),parameter::a\n      |                         1\nError: PARAMETER at (1) is missing an initializer\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/missing_initializer.f90:2:26: PARAMETER requires a constant initializer\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/missing_initializer.f90:2:26: PARAMETER requires a constant initializer\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nonconstant_initializer",
+        "source": "cases/nonconstant_initializer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/nonconstant_initializer.f90:3:26:\n\n    3 | character(*),parameter::a=x\n      |                          1\nError: Parameter \u2018x\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/nonconstant_initializer.f90:3:28: Declaration initializers must be constant expressions\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/nonconstant_initializer.f90:3:28: Declaration initializers must be constant expressions\n"
+      }
+    },
+    {
+      "case": {
+        "name": "noncharacter_initializer",
+        "source": "cases/noncharacter_initializer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/noncharacter_initializer.f90:2:26:\n\n    2 | character(*),parameter::a=12\n      |                          1\nError: Cannot convert INTEGER(4) to CHARACTER(0) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/noncharacter_initializer.f90:2:29: Incompatible assignment types\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/noncharacter_initializer.f90:2:29: Incompatible assignment types\n"
+      }
+    },
+    {
+      "case": {
+        "name": "assumed_nonparameter",
+        "source": "cases/assumed_nonparameter.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/assumed_nonparameter.f90:2:15:\n\n    2 | character(*)::a\n      |               1\nError: Entity with assumed character length at (1) must be a dummy argument or a PARAMETER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/assumed_nonparameter.f90:2:13: Assumed-length CHARACTER requires a dummy argument or PARAMETER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/assumed_nonparameter.f90:2:13: Assumed-length CHARACTER requires a dummy argument or PARAMETER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "deferred_parameter",
+        "source": "cases/deferred_parameter.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/deferred_parameter.f90:2:25:\n\n    2 | character(:),parameter::a=\"abc\"\n      |                         1\nError: Entity \u2018a\u2019 at (1) has a deferred type parameter and requires either the POINTER or ALLOCATABLE attribute\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/deferred_parameter.f90:2:23: Deferred CHARACTER length requires ALLOCATABLE\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/deferred_parameter.f90:2:23: Deferred CHARACTER length requires ALLOCATABLE\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mismatched_constructor",
+        "source": "cases/mismatched_constructor.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/mismatched_constructor.f90:2:34:\n\n    2 | character(*),parameter::a(2)=[\"a\",\"bb\"]\n      |                                  1\nError: Different CHARACTER lengths (1/2) in array constructor at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/mismatched_constructor.f90:2:39: Untyped CHARACTER constructor requires matching fixed item lengths\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/mismatched_constructor.f90:2:39: Untyped CHARACTER constructor requires matching fixed item lengths\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_real",
+        "source": "cases/ascii_real.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_real.f90:2:13:\n\n    2 | print *,char(65.0)\n      |             1\nError: \u2018i\u2019 argument of \u2018char\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_real.f90:2:19: CHAR/ACHAR I must be INTEGER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_real.f90:2:19: CHAR/ACHAR I must be INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_character",
+        "source": "cases/ascii_character.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_character.f90:2:14:\n\n    2 | print *,achar(\"65\")\n      |              1\nError: \u2018i\u2019 argument of \u2018achar\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_character.f90:2:20: CHAR/ACHAR I must be INTEGER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_character.f90:2:20: CHAR/ACHAR I must be INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_missing",
+        "source": "cases/ascii_missing.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_missing.f90:2:8:\n\n    2 | print *,char()\n      |        1\nError: Missing actual argument \u2018i\u2019 in call to \u2018char\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_missing.f90:2:15: CHAR/ACHAR require I and optional KIND\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_missing.f90:2:15: CHAR/ACHAR require I and optional KIND\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_extra",
+        "source": "cases/ascii_extra.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_extra.f90:2:8:\n\n    2 | print *,achar(65,1,1)\n      |        1\nError: Too many arguments in call to \u2018achar\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_extra.f90:2:22: CHAR/ACHAR require I and optional KIND\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_extra.f90:2:22: CHAR/ACHAR require I and optional KIND\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_kind_real",
+        "source": "cases/ascii_kind_real.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_kind_real.f90:2:16:\n\n    2 | print *,char(65,1.0)\n      |                1\nError: \u2018kind\u2019 argument of \u2018char\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_kind_real.f90:2:21: CHAR/ACHAR KIND must be a scalar INTEGER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_kind_real.f90:2:21: CHAR/ACHAR KIND must be a scalar INTEGER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_kind_dynamic",
+        "source": "cases/ascii_kind_dynamic.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_kind_dynamic.f90:3:17:\n\n    3 | print *,achar(65,k)\n      |                 1\nError: Parameter \u2018k\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_kind_dynamic.f90:3:17:\n\n    3 | print *,achar(65,k)\n      |                 1\nError: \u2018kind\u2019 argument of \u2018achar\u2019 intrinsic at (1) must be a constant\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_kind_dynamic.f90:3:20: CHAR/ACHAR KIND must be constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_kind_dynamic.f90:3:20: CHAR/ACHAR KIND must be constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_kind_array",
+        "source": "cases/ascii_kind_array.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_kind_array.f90:2:16:\n\n    2 | print *,char(65,[1])\n      |                1\nError: \u2018kind\u2019 argument of \u2018char\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_kind_array.f90:2:21: CHAR/ACHAR KIND must be a scalar INTEGER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_kind_array.f90:2:21: CHAR/ACHAR KIND must be a scalar INTEGER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_kind_unsupported",
+        "source": "cases/ascii_kind_unsupported.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_kind_unsupported.f90:2:20: CHAR/ACHAR support default CHARACTER kind 1 only\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_kind_unsupported.f90:2:20: CHAR/ACHAR support default CHARACTER kind 1 only\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_negative_constant",
+        "source": "cases/ascii_negative_constant.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_negative_constant.f90:2:31:\n\n    2 | character(*),parameter::a=char(-1)\n      |                               1\nError: Argument of CHAR function at (1) is negative\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_negative_constant.f90:2:27: Invalid PARAMETER initializer: CHAR/ACHAR code outside supported ASCII range (0:127)\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_negative_constant.f90:2:27: Invalid PARAMETER initializer: CHAR/ACHAR code outside supported ASCII range (0:127)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_large_constant",
+        "source": "cases/ascii_large_constant.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_large_constant.f90:2:27: Invalid PARAMETER initializer: CHAR/ACHAR code outside supported ASCII range (0:127)\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_large_constant.f90:2:27: Invalid PARAMETER initializer: CHAR/ACHAR code outside supported ASCII range (0:127)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_large_int64_constant",
+        "source": "cases/ascii_large_int64_constant.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_large_int64_constant.f90:2:31:\n\n    2 | character(*),parameter::a=char(4294967361_8)\n      |                               1\nError: Argument of CHAR function at (1) is too large for the collating sequence of kind 1\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_large_int64_constant.f90:2:27: Invalid PARAMETER initializer: CHAR/ACHAR code outside supported ASCII range (0:127)\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_large_int64_constant.f90:2:27: Invalid PARAMETER initializer: CHAR/ACHAR code outside supported ASCII range (0:127)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_bad_array_constant",
+        "source": "cases/ascii_bad_array_constant.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_bad_array_constant.f90:2:30: Invalid PARAMETER initializer: CHAR/ACHAR code outside supported ASCII range (0:127)\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_bad_array_constant.f90:2:30: Invalid PARAMETER initializer: CHAR/ACHAR code outside supported ASCII range (0:127)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_negative_runtime",
+        "source": "cases/ascii_negative_runtime.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_negative_runtime.f90:3:9: CHAR/ACHAR code outside supported ASCII range (0:127)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_large_runtime",
+        "source": "cases/ascii_large_runtime.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_large_runtime.f90:3:9: CHAR/ACHAR code outside supported ASCII range (0:127)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_large_int64_runtime",
+        "source": "cases/ascii_large_int64_runtime.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_large_int64_runtime.f90:3:9: CHAR/ACHAR code outside supported ASCII range (0:127)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ascii_bad_array_runtime",
+        "source": "cases/ascii_bad_array_runtime.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/ascii_bad_array_runtime.f90:3:9: CHAR/ACHAR code outside supported ASCII range (0:127)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "self_reference",
+        "source": "cases/self_reference.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/self_reference.f90:2:26:\n\n    2 | character(*),parameter::a=a//\"x\"\n      |                          1\nError: PARAMETER \u2018a\u2019 is used at (1) before its definition is complete\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/self_reference.f90:2:33: Declaration initializers must be constant expressions\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/self_reference.f90:2:33: Declaration initializers must be constant expressions\n"
+      }
+    },
+    {
+      "case": {
+        "name": "forward_reference",
+        "source": "cases/forward_reference.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/forward_reference.f90:2:27:\n\n    2 | character(*),parameter::a=b//\"x\",b=\"b\"\n      |                           1\nError: Symbol \u2018b\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/forward_reference.f90:2:28: Undeclared variable: b\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/forward_reference.f90:2:28: Undeclared variable: b\n"
+      }
+    },
+    {
+      "case": {
+        "name": "user_function_initializer",
+        "source": "cases/user_function_initializer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/user_function_initializer.f90:3:26:\n\n    3 | character(*),parameter::a=text()\n      |                          1\nError: Function \u2018text\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/user_function_initializer.f90:4:9:\n\n    4 | print *,a\n      |         1\nError: Symbol \u2018a\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/user_function_initializer.f90:3:33: Unsupported procedure or array reference: text\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/user_function_initializer.f90:3:33: Unsupported procedure or array reference: text\n"
+      }
+    },
+    {
+      "case": {
+        "name": "module_and_local",
+        "source": "cases/module_and_local.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "hello! local!"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "hello!\nlocal!\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "hello!\nlocal!\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_achar_unevaluated",
+        "source": "cases/kind_achar_unevaluated.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 A"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\nA\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\nA\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "length_cap_exact",
+        "source": "cases/length_cap_exact.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "length_cap_exceeded",
+        "source": "cases/length_cap_exceeded.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/length_cap_exceeded.f90:19:42: CHARACTER concatenation length limit exceeded (65536)\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/length_cap_exceeded.f90:19:42: CHARACTER concatenation length limit exceeded (65536)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "trim_untyped_constructor",
+        "source": "cases/trim_untyped_constructor.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ab cd"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ab\ncd\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ab\ncd\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "trim_array_concat",
+        "source": "cases/trim_array_concat.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ab! cd! ?ab ?cd"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ab!\ncd!\n?ab\n?cd\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ab!\ncd!\n?ab\n?cd\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "trim_merge",
+        "source": "cases/trim_merge.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ab xy gh"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ab\nxy\ngh\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ab\nxy\ngh\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "trim_pack",
+        "source": "cases/trim_pack.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "cd 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "cd\n           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "cd\n 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "trim_reshape",
+        "source": "cases/trim_reshape.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ab cd ef gh 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ab\ncd\nef\ngh\n           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ab\ncd\nef\ngh\n 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "trim_empty_concat",
+        "source": "cases/trim_empty_concat.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "trim_zero_length_constructor",
+        "source": "cases/trim_zero_length_constructor.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "! !"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "!\n!\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "!\n!\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "trim_nonconstant_parameter",
+        "source": "cases/trim_nonconstant_parameter.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/trim_nonconstant_parameter.f90:3:31:\n\n    3 | character(*),parameter::a=trim(x)\n      |                               1\nError: Parameter \u2018x\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/trim_nonconstant_parameter.f90:3:34: Declaration initializers must be constant expressions\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/trim_nonconstant_parameter.f90:3:34: Declaration initializers must be constant expressions\n"
+      }
+    },
+    {
+      "case": {
+        "name": "trim_mismatched_constructor",
+        "source": "cases/trim_mismatched_constructor.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/trim_mismatched_constructor.f90:2:41:\n\n    2 | character(*),parameter::a(2)=[trim(\"a \"),trim(\"bc \")]\n      |                                         1\nError: Different CHARACTER lengths (1/2) in array constructor at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/trim_mismatched_constructor.f90:2:53: Untyped CHARACTER constructor requires matching fixed item lengths\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/trim_mismatched_constructor.f90:2:53: Untyped CHARACTER constructor requires matching fixed item lengths\n"
+      }
+    },
+    {
+      "case": {
+        "name": "empty_concat_element_length",
+        "source": "cases/empty_concat_element_length.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "abcd:\n",
+        "exact_stdout": true,
+        "oracle_note": "Known GNU14.2 compile defect: empty concatenation inferred length3 instead of standard length4. If compiler accepts the source, its output must meet the independent expectation. See GNU-EMPTY-CONCAT.md.",
+        "gnu_known_compile_rejection": "The CHARACTER elements of the array constructor"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_parameters/cases/empty_concat_element_length.f90:3:48:\n\n    3 | character(*),parameter::b(1)=reshape(a,[1],pad=[\"abcd\"])\n      |                                                1\nError: The CHARACTER elements of the array constructor at (1) must have the same length (4/3)\n"
+      },
+      "gnu_known_defect": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "abcd:\n",
+        "err": ""
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:35:42.067374+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "limits": "Selected CHARACTER semantics only. Runtime safety cases are compiled but not executed by GNU; resource limits are interpreter policy.",
+  "manifest_sha256": "fc70b4b62d10bfcce52c9d06ce28bbcf234620799ff47cb1e5139a8926842050",
+  "source_sha256": {
+    "cases/independent_lengths.f90": "e6c1cc2703ecfaab3f68c7491f0adbc24b63f39b507182f207069c27efc965dc",
+    "cases/folded_trim_concat.f90": "39b547b544898164ac6a91327c4b0579cbb27fb2a44d3c8592a528c91a6723e0",
+    "cases/prior_parameters.f90": "4b95330f7aad838cdcb81e1b4823e41e2bd6faca669921e8a82c1e2fcbf7e20d",
+    "cases/merge_parameters.f90": "dda6ea2d3ddc14e004d704e2e06f7f206da6e64a82e309877abf0f874723a9b0",
+    "cases/rank_one.f90": "4fba8d4b7a1583e67fd526d23a7ae09ad67b6b4d0a64b0335929462c3d158fff",
+    "cases/scalar_expansion.f90": "8dbde3210c646d6461148692a70012798e452cb41a9ea86f3b75e751947262f5",
+    "cases/rank_two.f90": "17069e2d2e3df8d54f4a6ba61f46c7b3e514c8032fde4bacaf228168d1bd945d",
+    "cases/parameter_section.f90": "1d791970f6c3235a56657be5f938e52efc6d978955209db2fbdd23774eded4b2",
+    "cases/empty_typed.f90": "31799d55d800276651db977a0b675290cbce58331ab8be4315bb10670cf9dac6",
+    "cases/zero_length_elements.f90": "4a0bb1fe736227574cb4a1f258272088e9bdb161e499bc569e11205b1b33765f",
+    "cases/fixed_length_regression.f90": "398b07762a1b82212bfe94cae25cb07b8d2f82c630a239c6d257f90eeea23c4e",
+    "cases/xutilities_exact.f90": "2f07e59c010cae68d0749e07550261487105a8d057727d09779dd776c6a5e235",
+    "cases/ascii_constants.f90": "bf2a6fc165ca2c6bd5d13db5c8719dd7d949e4ab626bf9b0bef0f44e91ad4d9f",
+    "cases/ascii_runtime_scalar.f90": "061bf802c189a1717b7d102acd25bb070ef7d2d1a7fb11eef987f30182976d8b",
+    "cases/ascii_array.f90": "d80b229e2b0a6d69f2ff4d51cea1551965b83bfe7ea1bdccfeb6f46124f2576d",
+    "cases/ascii_rank_two.f90": "cd66711d290aa89c73bf72d582a0db98d99d4c911661ab5863080d88cba2c7d2",
+    "cases/ascii_parameter_array.f90": "622f234efc9cb021965b121540963756fe4c54c687205ae210062e17881fda9e",
+    "cases/ascii_boundary.f90": "7a6533edb4e607b695e49e27b1e74274e751ef775485de61e63e7fec0f2000b9",
+    "cases/ascii_empty.f90": "6a22b78af9ee8175e9b3ffa0f24faa459e60de6bc5c07872ab93c76daea51550",
+    "cases/missing_initializer.f90": "f6163f431127962f6bdcb2aaa6c6e7e56e5002b40baa7d1d26afd77b9ccbfc1b",
+    "cases/nonconstant_initializer.f90": "76dc0cdf4df7b2ca2dbb55d9b554bbcd0dd042b57da16817be81c30ff5705f06",
+    "cases/noncharacter_initializer.f90": "a15e74ec591c892f648546d0278db6a414a26704d9d813ec79ecd5c30cc7674a",
+    "cases/assumed_nonparameter.f90": "2fdbdee8dd898fe84510bc3c516be7c9e20f437a7f3a87fee5fb93924e71902b",
+    "cases/deferred_parameter.f90": "78f5781eeeaf7b97e21a67fdc52ef7726592dd4d736cc28b867984692d003bce",
+    "cases/mismatched_constructor.f90": "ee658d48f4e6c0af030736935913292f1369d545f25c80f5ea788400a391ba7d",
+    "cases/ascii_real.f90": "ec69c6b519fe458c465f0ef0b72c77b879b3ac6ff3cbf498dc11c57d362cc740",
+    "cases/ascii_character.f90": "51120d065650b43d4f76c814e566a1c9e509485f60cfa8c76fa68d70ecea4b27",
+    "cases/ascii_missing.f90": "e4a2da3290bce38d70dc5d94a38928a4b2fe875d672d690ab4d7282d12f0602f",
+    "cases/ascii_extra.f90": "9703d00de189a6aefea3c3ccfdf9878a7712972401b5df715c0f9aff9e7b7340",
+    "cases/ascii_kind_real.f90": "a9e5e1a10ddac34fe40a0aac5953c385fc462885087a8a4a003acf18a66e8009",
+    "cases/ascii_kind_dynamic.f90": "6ee1474983fe73fc7be32b4aff71581bffbb72c4d2d0487949de4b9bbb12fbee",
+    "cases/ascii_kind_array.f90": "3e10d7b5d59e330fcaa810656c5e04b41267aaae1e8072e8ac4ec6b20b6995c8",
+    "cases/ascii_kind_unsupported.f90": "531fb98121c7fdc3d3117b92c0562915d309f655fa57bcab60aca322f8578665",
+    "cases/ascii_negative_constant.f90": "59566ff3c63bad493e987a63a1f08f38a52cc7664edd8e4d3c76049dcde9bde1",
+    "cases/ascii_large_constant.f90": "94d83fefb18b0f315c6b111a3a029da79e814645f76c01b48ec83f830c00adae",
+    "cases/ascii_large_int64_constant.f90": "2d7406a6ccff743d3b9c68648c7b16f8e430d0ba8e0f4953b2150d01c098124b",
+    "cases/ascii_bad_array_constant.f90": "4daf2bd54bb892d24f07b60167b934f5ee694d478b2ef30fd0d448ca978a45d0",
+    "cases/ascii_negative_runtime.f90": "91b85d26030768c6912d56ec6b2ee5e80dfa16985693b93995ddfad9cb5b5bee",
+    "cases/ascii_large_runtime.f90": "0c9fd7f23affc6bad5853ee455c6e16e3d5e0bbad55482e06f7ea5af79207398",
+    "cases/ascii_large_int64_runtime.f90": "39936865ebf0348159a62a0d25733b357b3324c6182bab91b21337c257d86abd",
+    "cases/ascii_bad_array_runtime.f90": "6e0c06d40a639fed76a3707528f68c5d6bd1bb112f82183b23f2fc3f07d31e8c",
+    "cases/self_reference.f90": "0cc1f6f0c1546455fbf6d315cd6a392bb8004bae54f4c5261c07045697640b55",
+    "cases/forward_reference.f90": "af1f2e5779eeb75f9c2c968f93a7a88e9b0b262b162691854a57cc5ab909e1b6",
+    "cases/user_function_initializer.f90": "b5caf4e379f646a0c5ad323d1b1fa577605258db38e45ee6998daeba7968c984",
+    "cases/module_and_local.f90": "949b75f54310927e281b5b94fc74c1f84a2f060e57e20bee1087fda9502be415",
+    "cases/kind_achar_unevaluated.f90": "90da87a89eb6983c446bd196d2a97d7b2954ab17e6f36e2d346a00bc58ab0096",
+    "cases/length_cap_exact.f90": "8c13bc6ce66f9087ac1773f963530ce4ce99b2f245f1b5bf4f9c0b58ccd20c3d",
+    "cases/length_cap_exceeded.f90": "ac5aaff1b638761994da12cb6cbb20557498632f257055b0e05e9da0355d69ce",
+    "cases/trim_untyped_constructor.f90": "b8e2e1dceb2c0ca8bfc84983bdb68c307c826c3877fd9607d5bff82464d3eace",
+    "cases/trim_array_concat.f90": "c9aee531ac6793a587cdbf90a2a7da4b0d62bbb526f4338c808601bb23605a79",
+    "cases/trim_merge.f90": "79b91cfab2ae8b6ff7f515c52a0d7d475e361552b178332902bfbbff4d7ac48c",
+    "cases/trim_pack.f90": "6261bf26a00671b24f8859132108fc657df0e381e8fc4afd10c6f20ecfaf9ef5",
+    "cases/trim_reshape.f90": "f08366646ae4a6ef2d408bc61ae6037365bf128d159da88db7c3741d8d443de4",
+    "cases/trim_empty_concat.f90": "ec0fbf7cc988372cea6da55face2d629e430f9a12df2543f6a32b406af6e15bf",
+    "cases/trim_zero_length_constructor.f90": "8bcee2e0a6605f25df4064d47f75e34c5d5311c34adff8f5394642111acaf45f",
+    "cases/trim_nonconstant_parameter.f90": "1ad12b655c084c5be22b083fad47fd41c94b0be37b0b516efb5744a84164bce4",
+    "cases/trim_mismatched_constructor.f90": "b2cb7a97125b86b7346ed316bfe4425c26af54d0f647dfba4f2d4f4e62865d86",
+    "cases/empty_concat_element_length.f90": "0f16fe0dd7952ce00b5f9522c301e383e0cd830b6d664ee5eb2296e131f2d604"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

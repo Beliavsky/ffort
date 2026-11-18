@@ -1,0 +1,147 @@
+module parser_procedure_shared_module
+    use string_utils_mod, only: to_lower
+    use lexer_core, only: token_t, TK_KEYWORD, TK_COMMENT, TK_WHITESPACE
+    use parser_state_module, only: parser_state_t
+    implicit none
+    private
+
+    public :: next_type_word_index
+    public :: consume_optional_return_type
+    public :: consume_optional_kind_spec
+    public :: keyword_can_be_function_name
+
+contains
+
+    integer function next_type_word_index(parser) result(index)
+        type(parser_state_t), intent(in) :: parser
+        type(token_t) :: token
+
+        ! Physical continuation newlines are normalized before parsing. Skip
+        ! retained comments/spacing, but never cross a logical newline.
+        index = parser%current_token + 1
+        do
+            token = parser%get_token_at_index(index)
+            if (token%kind /= TK_COMMENT .and. token%kind /= TK_WHITESPACE) exit
+            index = index + 1
+        end do
+    end function next_type_word_index
+
+    subroutine consume_optional_return_type(parser, return_type_str)
+        type(parser_state_t), intent(inout) :: parser
+        character(len=:), allocatable, intent(out) :: return_type_str
+        type(token_t) :: token, lookahead
+        character(len=:), allocatable :: lowered, next_lower
+        integer :: next_index
+
+        return_type_str = ""
+
+        token = parser%peek()
+        if (token%kind == TK_KEYWORD) then
+            lowered = to_lower(trim(token%text))
+            select case (trim(lowered))
+            case ("real", "integer", "logical", "character", "complex")
+                return_type_str = token%text
+                token = parser%consume()
+                call consume_optional_kind_spec(parser, return_type_str)
+            case ("double precision", "doubleprecision")
+                return_type_str = "real(8)"
+                token = parser%consume()
+            case ("double complex")
+                return_type_str = "complex(8)"
+                token = parser%consume()
+            case ("double")
+                next_index = next_type_word_index(parser)
+                lookahead = parser%get_token_at_index(next_index)
+                next_lower = to_lower(trim(lookahead%text))
+                if (trim(next_lower) == "precision") then
+                    return_type_str = "real(8)"
+                    parser%current_token = next_index
+                    token = parser%consume()
+                else if (trim(next_lower) == "complex") then
+                    return_type_str = "complex(8)"
+                    parser%current_token = next_index
+                    token = parser%consume()
+                end if
+            case ("type", "class")
+                ! Handle type(xxx) or class(xxx) as function return type
+                next_index = parser%current_token + 1
+                lookahead = parser%get_token_at_index(next_index)
+                if (lookahead%text == "(") then
+                    return_type_str = token%text
+                    token = parser%consume()
+                    call consume_optional_kind_spec(parser, return_type_str)
+                end if
+            end select
+        end if
+    end subroutine consume_optional_return_type
+
+    subroutine consume_optional_kind_spec(parser, type_str)
+        type(parser_state_t), intent(inout) :: parser
+        character(len=:), allocatable, intent(inout) :: type_str
+        type(token_t) :: token
+        character(len=:), allocatable :: kind_spec
+        integer :: depth
+
+        if (parser%is_at_end()) return
+
+        token = parser%peek()
+        if (token%text /= "(") return
+
+        kind_spec = ""
+        depth = 0
+
+        do while (.not. parser%is_at_end())
+            token = parser%peek()
+            select case (token%text)
+            case (")")
+                depth = depth - 1
+                kind_spec = kind_spec // trim(token%text)
+                token = parser%consume()
+                if (depth == 0) exit
+            case ("(")
+                depth = depth + 1
+                kind_spec = kind_spec // trim(token%text)
+                token = parser%consume()
+            case default
+                kind_spec = kind_spec // trim(token%text)
+                token = parser%consume()
+            end select
+        end do
+
+        if (len_trim(kind_spec) > 0) then
+            type_str = trim(type_str) // trim(kind_spec)
+        end if
+    end subroutine consume_optional_kind_spec
+
+    logical function keyword_can_be_function_name(parser, token) result(can_use)
+        type(parser_state_t), intent(in) :: parser
+        type(token_t), intent(in) :: token
+        type(token_t) :: lookahead
+        character(len=:), allocatable :: token_lower
+        character(len=:), allocatable :: next_lower
+        integer :: next_index
+
+        token_lower = to_lower(token%text)
+        can_use = .false.
+
+        select case (trim(token_lower))
+        case ("double")
+            next_index = next_type_word_index(parser)
+            lookahead = parser%get_token_at_index(next_index)
+            next_lower = to_lower(trim(lookahead%text))
+            if (next_lower /= "precision") then
+                can_use = .true.
+            end if
+        case default
+            ! Fortran reserves no words, so a procedure may be named with one:
+            ! `function function(space) result(f)` is legal and fortfem has
+            ! it. In this position a keyword followed by an argument list can
+            ! only be the name - the alternative would be two procedure
+            ! headers in a row, which is not a thing.
+            next_index = parser%current_token + 1
+            lookahead = parser%get_token_at_index(next_index)
+            can_use = trim(lookahead%text) == "("
+        end select
+    end function keyword_can_be_function_name
+
+end module parser_procedure_shared_module

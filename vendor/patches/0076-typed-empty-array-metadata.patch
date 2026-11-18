@@ -1,0 +1,59 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -140,7 +140,7 @@
+             type is (literal_node)
+             call resolve_literal(arena, node_index, node)
+             type is (array_literal_node)
+-            call resolve_array_literal(arena, node, visiting)
++            call resolve_array_literal(arena, node_index, node, visiting)
+             type is (complex_literal_node)
+             call resolve_complex_literal(arena, node, visiting)
+             type is (declaration_node)
+@@ -172,14 +172,44 @@
+         visiting(node_index) = .false.
+     end subroutine resolve_node_metadata
+ 
+-    subroutine resolve_array_literal(arena, node, visiting)
++    subroutine resolve_array_literal(arena, node_index, node, visiting)
+         type(ast_arena_t), intent(inout) :: arena
++        integer, intent(in) :: node_index
+         type(array_literal_node), intent(inout) :: node
+         logical, intent(inout) :: visiting(:)
+-        integer :: i, child, element_type, element_kind
++        integer :: i, child, element_type, element_kind, opening
++        character(len=:), allocatable :: spec, base, selector
+         call resolve_from_inferred_type(node)
+         if (allocated(node%type_spec)) then
+-            if (len_trim(node%type_spec) > 0) return
++            if (len_trim(node%type_spec) > 0) then
++                ! Empty intrinsic constructors have no element from which to
++                ! infer kind. Bind their explicit selector at this occurrence.
++                ! Leave CHARACTER and nonempty constructors unchanged.
++                if (.not. allocated(node%element_indices)) return
++                if (size(node%element_indices) /= 0) return
++                spec = compact_lower(node%type_spec)
++                base = spec
++                opening = index(spec, "(")
++                if (opening > 0) base = spec(:opening - 1)
++                select case (base)
++                case ("integer"); element_type = TINT
++                case ("real"); element_type = TREAL
++                case ("logical"); element_type = TLOGICAL
++                case default; return
++                end select
++                element_kind = 4
++                if (opening > 0) then
++                    if (spec(len(spec):) /= ")") then
++                        call clear_resolved_metadata(node)
++                        return
++                    end if
++                    selector = spec(opening + 1:len(spec) - 1)
++                    if (index(selector, "kind=") == 1) selector = selector(6:)
++                    element_kind = resolve_kind_selector(arena, node_index, selector)
++                end if
++                call set_intrinsic_metadata(node, element_type, element_kind, 1)
++                return
++            end if
+         end if
+         if (.not. allocated(node%element_indices)) return
+         if (size(node%element_indices) == 0) return

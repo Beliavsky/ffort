@@ -1,0 +1,6 @@
+program p
+implicit none
+real(8)::x(-2:2)
+x=[-2.5d0,-1d0,0d0,1d0,2.5d0]
+print *,aint(x),anint(x),asinh(x),acosh(abs(x)+1d0)
+end program

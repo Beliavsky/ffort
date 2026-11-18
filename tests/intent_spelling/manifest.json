@@ -1,0 +1,253 @@
+{
+  "cases": [
+    {
+      "name": "joined",
+      "source": "cases/joined.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7",
+      "diagnostic": ""
+    },
+    {
+      "name": "two_words",
+      "source": "cases/two_words.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7",
+      "diagnostic": ""
+    },
+    {
+      "name": "mixed_case",
+      "source": "cases/mixed_case.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7",
+      "diagnostic": ""
+    },
+    {
+      "name": "many_spaces",
+      "source": "cases/many_spaces.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7",
+      "diagnostic": ""
+    },
+    {
+      "name": "tab_space",
+      "source": "cases/tab_space.f90",
+      "category": "success",
+      "baseline": "skip",
+      "expected_stdout": "7",
+      "diagnostic": "",
+      "scope_note": "Interpreter accepts tab whitespace; GNU strict pedantic flags reject nonstandard tab characters, so no GNU oracle is claimed."
+    },
+    {
+      "name": "continuation",
+      "source": "cases/continuation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7",
+      "diagnostic": ""
+    },
+    {
+      "name": "comment_continuation",
+      "source": "cases/comment_continuation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7",
+      "diagnostic": ""
+    },
+    {
+      "name": "grouped_optional",
+      "source": "cases/grouped_optional.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "13",
+      "diagnostic": ""
+    },
+    {
+      "name": "array_section",
+      "source": "cases/array_section.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 12 3 14",
+      "diagnostic": ""
+    },
+    {
+      "name": "character_dummy",
+      "source": "cases/character_dummy.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "aXYd",
+      "diagnostic": ""
+    },
+    {
+      "name": "allocatable_dummy",
+      "source": "cases/allocatable_dummy.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 3",
+      "diagnostic": ""
+    },
+    {
+      "name": "recursive_dummy",
+      "source": "cases/recursive_dummy.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7",
+      "diagnostic": ""
+    },
+    {
+      "name": "comma_separator",
+      "source": "cases/comma_separator.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "reversed",
+      "source": "cases/reversed.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "extra_out",
+      "source": "cases/extra_out.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "extra_in",
+      "source": "cases/extra_in.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "split_in",
+      "source": "cases/split_in.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "split_out",
+      "source": "cases/split_out.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "split_joined",
+      "source": "cases/split_joined.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "empty",
+      "source": "cases/empty.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "unknown",
+      "source": "cases/unknown.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "missing_close",
+      "source": "cases/missing_close.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "duplicate_same",
+      "source": "cases/duplicate_same.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Repeated or conflicting INTENT"
+    },
+    {
+      "name": "duplicate_conflicting",
+      "source": "cases/duplicate_conflicting.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Repeated or conflicting INTENT"
+    },
+    {
+      "name": "function_writable_boundary",
+      "source": "cases/function_writable_boundary.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Function dummy arguments must have INTENT(IN)"
+    },
+    {
+      "name": "writable_alias",
+      "source": "cases/writable_alias.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "overlapping actual arguments"
+    },
+    {
+      "name": "original_set_offdiagonal",
+      "source": "cases/original_set_offdiagonal.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 -2 -2 -2 5 -2 -2 -2 9 42 0 1 -2 10 -2 5 -2 10 -2 9",
+      "diagnostic": ""
+    },
+    {
+      "name": "leading_comment_continuation",
+      "source": "cases/leading_comment_continuation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7",
+      "diagnostic": ""
+    },
+    {
+      "name": "trailing_comment_continuation",
+      "source": "cases/trailing_comment_continuation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7",
+      "diagnostic": ""
+    },
+    {
+      "name": "blank_comment_continuation",
+      "source": "cases/blank_comment_continuation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "7",
+      "diagnostic": ""
+    },
+    {
+      "name": "uncontinued_newline",
+      "source": "cases/uncontinued_newline.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    }
+  ]
+}

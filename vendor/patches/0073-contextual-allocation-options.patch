@@ -1,0 +1,62 @@
+--- a/src/parser/statements/parser_memory_statements.f90
++++ b/src/parser/statements/parser_memory_statements.f90
+@@ -14,6 +14,19 @@
+     public :: parse_allocate_statement, parse_deallocate_statement
+ 
+ contains
++
++    ! Allocation option names are contextual. An object named STAT/ERRMSG/
++    ! SOURCE/MOLD remains an object unless the following token is '='.
++    logical function allocation_option_follows(parser) result(is_option)
++        type(parser_state_t), intent(inout) :: parser
++        type(token_t) :: token
++        integer :: saved_pos
++        saved_pos = parser%current_token
++        token = parser%consume()
++        token = parser%peek()
++        is_option = token%kind == TK_OPERATOR .and. token%text == "="
++        parser%current_token = saved_pos
++    end function allocation_option_follows
+ 
+     ! Helper subroutine to parse allocate variable with optional dimensions
+     subroutine parse_allocate_variable(parser, arena, var_indices, &
+@@ -232,6 +245,11 @@
+                     if (token%kind == TK_OPERATOR .and. token%text == ")") exit
+ 
+                     ! Process allocate item inline
++                    if (in_variable_list .and. .not. &
++                        allocation_option_follows(parser)) then
++                        call parse_allocate_variable(parser, arena, &
++                            var_indices, shape_indices)
++                    else
+                     select case (token%kind)
+                     case (TK_IDENTIFIER)
+                         select case (token%text)
+@@ -261,6 +279,7 @@
+                             token = parser%consume()
+                         end if
+                     end select
++                    end if
+ 
+                     token = parser%peek()
+                     if (token%kind == TK_OPERATOR .and. token%text == ",") then
+@@ -333,6 +352,11 @@
+                     if (token%kind == TK_OPERATOR .and. token%text == ")") exit
+ 
+                     ! Process deallocate item inline
++                    if (in_variable_list .and. .not. &
++                        allocation_option_follows(parser)) then
++                        var_indices = [var_indices, &
++                            parse_comparison(parser, arena)]
++                    else
+                     select case (token%kind)
+                     case (TK_IDENTIFIER)
+                         select case (token%text)
+@@ -371,6 +395,7 @@
+                             token = parser%consume()
+                         end if
+                     end select
++                    end if
+ 
+                     token = parser%peek()
+                     if (token%kind == TK_OPERATOR .and. token%text == ",") then

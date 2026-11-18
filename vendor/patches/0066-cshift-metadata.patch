@@ -1,0 +1,125 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -910,6 +910,8 @@
+             kind_value = intrinsic_kind_argument(arena, node, name)
+             if (kind_value <= 0) kind_value = 4
+             call set_intrinsic_metadata(node, TINT, kind_value, result_rank)
++        case ("cshift")
++            call resolve_cshift_metadata(arena, node, visiting)
+         case ("shape")
+             kind_value = intrinsic_kind_argument(arena, node, name)
+             if (kind_value <= 0) kind_value = 4
+@@ -988,6 +990,33 @@
+             end if
+         end select
+     end subroutine resolve_intrinsic_call
++
++    recursive subroutine resolve_cshift_metadata(arena, node, visiting)
++        type(ast_arena_t), intent(inout) :: arena
++        type(call_or_subscript_node), intent(inout) :: node
++        logical, intent(inout) :: visiting(:)
++        integer :: i, arg, source
++        source = 0
++        if (.not. allocated(node%arg_indices)) return
++        do i = 1, size(node%arg_indices)
++            arg = node%arg_indices(i)
++            if (.not. arena%has_node_at(arg)) return
++            select type (actual => arena%entries(arg)%node)
++            type is (assignment_node)
++                if (.not. actual%is_keyword_argument) return
++                if (.not. arena%has_node_at(actual%target_index)) return
++                select type (key => arena%entries(actual%target_index)%node)
++                type is (identifier_node)
++                    if (to_lower(key%name) == 'array') source = actual%value_index
++                end select
++            class default
++                if (i == 1) source = arg
++            end select
++        end do
++        if (.not. arena%has_node_at(source)) return
++        call resolve_node_metadata(arena, source, visiting)
++        call copy_metadata_from_index(arena, source, node)
++    end subroutine resolve_cshift_metadata
+ 
+     subroutine resolve_reduction_metadata(arena, node, visiting)
+         type(ast_arena_t), intent(inout) :: arena
+--- a/src/semantic/analyzers/semantic_array_intrinsics.f90
++++ b/src/semantic/analyzers/semantic_array_intrinsics.f90
+@@ -3,7 +3,7 @@
+         TLOGICAL, TARRAY
+     use type_array_safe, only: safe_extract_array_rank, safe_peel_array_to_base
+     use ast_arena_modern, only: ast_arena_t
+-    use ast_nodes_core, only: call_or_subscript_node, array_literal_node
++    use ast_nodes_core, only: call_or_subscript_node, array_literal_node, assignment_node, identifier_node
+     use string_utils_mod, only: to_lower
+     use semantic_array_type_builders, only: build_deferred_shape_array, &
+         build_fixed_shape_array
+@@ -48,6 +48,8 @@
+         case ("matmul")
+             typ = handle_matmul_intrinsic(arena, call_node, get_type_fn, &
+                 num_args)
++        case ("cshift")
++            typ = handle_cshift_intrinsic(arena, call_node, get_type_fn)
+         case ("reshape")
+             typ = handle_reshape_intrinsic(arena, call_node, get_type_fn)
+         case ("transpose")
+@@ -63,6 +65,35 @@
+         end select
+     end function infer_array_intrinsic_type
+ 
++    recursive function handle_cshift_intrinsic(arena, call_node, get_type_fn) result(typ)
++        type(ast_arena_t), intent(inout) :: arena
++        type(call_or_subscript_node), intent(in) :: call_node
++        procedure(get_type_lookup) :: get_type_fn
++        type(mono_type_t) :: typ
++        integer :: i, arg, source
++        typ = create_mono_type(TREAL)
++        source = 0
++        if (.not. allocated(call_node%arg_indices)) return
++        do i = 1, size(call_node%arg_indices)
++            arg = call_node%arg_indices(i)
++            if (.not. arena%has_node_at(arg)) return
++            select type (actual => arena%entries(arg)%node)
++            type is (assignment_node)
++                if (.not. actual%is_keyword_argument) return
++                if (.not. arena%has_node_at(actual%target_index)) return
++                select type (key => arena%entries(actual%target_index)%node)
++                type is (identifier_node)
++                    if (to_lower(key%name) == 'array') source = actual%value_index
++                end select
++            class default
++                if (i == 1) source = arg
++            end select
++        end do
++        if (.not. arena%has_node_at(source)) return
++        typ = get_type_fn(arena, source)
++        call typ%sync_from_arena()
++    end function handle_cshift_intrinsic
++
+     function handle_matmul_intrinsic(arena, call_node, get_type_fn, num_args) &
+             result(typ)
+         type(ast_arena_t), intent(inout) :: arena
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 90
++        integer, parameter :: NUM_INTRINSICS = 91
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -428,6 +428,12 @@
+ 
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="cshift", return_type="array", &
++            arg_types="array,integer,integer", &
++            description="Circular shift preserving ARRAY type and rank")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="reshape", return_type="array", &
+             arg_types="array,integer_array", &
+             description="Reshape array to new dimensions")

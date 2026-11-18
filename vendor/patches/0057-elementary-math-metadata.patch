@@ -1,0 +1,46 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -884,7 +884,7 @@
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+         case ("real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+-              "exp", "log", "log10", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
++              "exp", "log", "log10", "log_gamma", "dim", "sign", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+                 do i = 1, size(node%arg_indices)
+@@ -932,7 +932,7 @@
+                 result_type = TCOMPLEX
+             end select
+             call set_intrinsic_metadata(node, result_type, kind_value, result_rank)
+-        case ("exp", "log", "log10", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max")
++        case ("exp", "log", "log10", "log_gamma", "dim", "sign", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max")
+             call first_intrinsic_argument_metadata(arena, node, visiting, &
+                 result_type, kind_value)
+             if (result_type > 0 .and. kind_value > 0) &
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 77
++        integer, parameter :: NUM_INTRINSICS = 79
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -273,6 +273,14 @@
+             description="Sign transfer function")
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="dim", return_type="real", arg_types="real,real", &
++            description="Elemental positive difference")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="log_gamma", return_type="real", arg_types="real", &
++            description="Elemental logarithm of absolute gamma")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="sinh", return_type="real", arg_types="real", &
+             description="Elemental real hyperbolic function")
+ 

@@ -1,0 +1,22 @@
+{
+  "status": "source_review_no_confirmed_blocker_runtime_probes_pending",
+  "files": {
+    "fi_repl.f90": "1a9ff9f02c8a0768db9b96fac58778a1ade813b2cff87e2eb058e337304b269e",
+    "fi_driver.f90": "6a1182df4a8cae5b24ff7ddd2fce7ac8411903ef51fd430a5f15f411c4966649",
+    "fi_console.c": "b88119cf484c95d9dca03aa6fce253d5b172131dd5bfd5bb2f9ab577289dbd24"
+  },
+  "checks": [
+    "4097-byte line probe and drain prevent overlong tail becoming command",
+    "1MiB combined wrapper/body and10000-line limits checked before growth",
+    "Only explicit run commands execute; EOF and rejected input do not",
+    "Conflicting REPL filename/check/input rejected before host file access",
+    "Batch stdin cap checked before compile; runtime stdin remains unbound",
+    "Current C feature-macro successor passes strict C11 syntax with warnings-as-errors"
+  ],
+  "pending": [
+    "Executable line-boundary/EOF/CRLF/dispatch and no-effect regression tests",
+    "Probe wrapper escape via terminal END followed by new program/module units against body-only claim",
+    "Windows _isatty/_fileno branches not executed; text-mode CRLF/Ctrl-Z differences should be documented if relevant"
+  ],
+  "scope": "No source edits; only C syntax-only compile performed. No runtime-state persistence or query replay introduced."
+}

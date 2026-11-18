@@ -1,0 +1,1327 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:39:40.862078+00:00",
+  "summary": {
+    "total": 44,
+    "failed": 0,
+    "candidate_checked": 44,
+    "gnu_checked": 44,
+    "gnu_skipped": 0,
+    "gnu_executed": 24,
+    "gnu_compile_only": 0,
+    "gnu_compile_rejections": 20
+  },
+  "records": [
+    {
+      "case": {
+        "name": "all_direct_keyword",
+        "source": "all_direct_keyword.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/all_direct_keyword.f90:7:33:\n\n    7 | print *,all([.true.,.false.],dim=d)\n      |                                 1\nError: \u2018dim\u2019 argument of \u2018all\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/all_direct_keyword.f90:7:36: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/all_direct_keyword.f90:7:36: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "all_direct_positional",
+        "source": "all_direct_positional.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/all_direct_positional.f90:7:29:\n\n    7 | print *,all([.true.,.false.],d)\n      |                             1\nError: \u2018dim\u2019 argument of \u2018all\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/all_direct_positional.f90:7:32: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/all_direct_positional.f90:7:32: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "all_parenthesized_keyword",
+        "source": "all_parenthesized_keyword.f90",
+        "expected_stdout": "F",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "all_expression_keyword",
+        "source": "all_expression_keyword.f90",
+        "expected_stdout": "F",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "any_direct_keyword",
+        "source": "any_direct_keyword.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/any_direct_keyword.f90:7:33:\n\n    7 | print *,any([.true.,.false.],dim=d)\n      |                                 1\nError: \u2018dim\u2019 argument of \u2018any\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/any_direct_keyword.f90:7:36: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/any_direct_keyword.f90:7:36: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "any_direct_positional",
+        "source": "any_direct_positional.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/any_direct_positional.f90:7:29:\n\n    7 | print *,any([.true.,.false.],d)\n      |                             1\nError: \u2018dim\u2019 argument of \u2018any\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/any_direct_positional.f90:7:32: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/any_direct_positional.f90:7:32: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "any_parenthesized_keyword",
+        "source": "any_parenthesized_keyword.f90",
+        "expected_stdout": "T",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "any_expression_keyword",
+        "source": "any_expression_keyword.f90",
+        "expected_stdout": "T",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "count_direct_keyword",
+        "source": "count_direct_keyword.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/count_direct_keyword.f90:7:35:\n\n    7 | print *,count([.true.,.false.],dim=d)\n      |                                   1\nError: \u2018dim\u2019 argument of \u2018count\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/count_direct_keyword.f90:7:38: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/count_direct_keyword.f90:7:38: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "count_direct_positional",
+        "source": "count_direct_positional.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/count_direct_positional.f90:7:31:\n\n    7 | print *,count([.true.,.false.],d)\n      |                               1\nError: \u2018dim\u2019 argument of \u2018count\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/count_direct_positional.f90:7:34: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/count_direct_positional.f90:7:34: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "count_parenthesized_keyword",
+        "source": "count_parenthesized_keyword.f90",
+        "expected_stdout": "1",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "count_expression_keyword",
+        "source": "count_expression_keyword.f90",
+        "expected_stdout": "1",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "sum_direct_keyword",
+        "source": "sum_direct_keyword.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/sum_direct_keyword.f90:7:22:\n\n    7 | print *,sum([1,2],dim=d)\n      |                      1\nError: \u2018dim\u2019 argument of \u2018sum\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/sum_direct_keyword.f90:7:25: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/sum_direct_keyword.f90:7:25: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "sum_direct_positional",
+        "source": "sum_direct_positional.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/sum_direct_positional.f90:7:18:\n\n    7 | print *,sum([1,2],d)\n      |                  1\nError: \u2018dim\u2019 argument of \u2018sum\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/sum_direct_positional.f90:7:21: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/sum_direct_positional.f90:7:21: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "sum_parenthesized_keyword",
+        "source": "sum_parenthesized_keyword.f90",
+        "expected_stdout": "3",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "sum_expression_keyword",
+        "source": "sum_expression_keyword.f90",
+        "expected_stdout": "3",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "product_direct_keyword",
+        "source": "product_direct_keyword.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/product_direct_keyword.f90:7:26:\n\n    7 | print *,product([1,2],dim=d)\n      |                          1\nError: \u2018dim\u2019 argument of \u2018product\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/product_direct_keyword.f90:7:29: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/product_direct_keyword.f90:7:29: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "product_direct_positional",
+        "source": "product_direct_positional.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/product_direct_positional.f90:7:22:\n\n    7 | print *,product([1,2],d)\n      |                      1\nError: \u2018dim\u2019 argument of \u2018product\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/product_direct_positional.f90:7:25: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/product_direct_positional.f90:7:25: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "product_parenthesized_keyword",
+        "source": "product_parenthesized_keyword.f90",
+        "expected_stdout": "2",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "product_expression_keyword",
+        "source": "product_expression_keyword.f90",
+        "expected_stdout": "2",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "minval_direct_keyword",
+        "source": "minval_direct_keyword.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/minval_direct_keyword.f90:7:25:\n\n    7 | print *,minval([1,2],dim=d)\n      |                         1\nError: \u2018dim\u2019 argument of \u2018minval\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/minval_direct_keyword.f90:7:28: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/minval_direct_keyword.f90:7:28: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "minval_direct_positional",
+        "source": "minval_direct_positional.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/minval_direct_positional.f90:7:21:\n\n    7 | print *,minval([1,2],d)\n      |                     1\nError: \u2018dim\u2019 argument of \u2018minval\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/minval_direct_positional.f90:7:24: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/minval_direct_positional.f90:7:24: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "minval_parenthesized_keyword",
+        "source": "minval_parenthesized_keyword.f90",
+        "expected_stdout": "1",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "minval_expression_keyword",
+        "source": "minval_expression_keyword.f90",
+        "expected_stdout": "1",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "maxval_direct_keyword",
+        "source": "maxval_direct_keyword.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/maxval_direct_keyword.f90:7:25:\n\n    7 | print *,maxval([1,2],dim=d)\n      |                         1\nError: \u2018dim\u2019 argument of \u2018maxval\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/maxval_direct_keyword.f90:7:28: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/maxval_direct_keyword.f90:7:28: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "maxval_direct_positional",
+        "source": "maxval_direct_positional.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/maxval_direct_positional.f90:7:21:\n\n    7 | print *,maxval([1,2],d)\n      |                     1\nError: \u2018dim\u2019 argument of \u2018maxval\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/maxval_direct_positional.f90:7:24: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/maxval_direct_positional.f90:7:24: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "maxval_parenthesized_keyword",
+        "source": "maxval_parenthesized_keyword.f90",
+        "expected_stdout": "2",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "maxval_expression_keyword",
+        "source": "maxval_expression_keyword.f90",
+        "expected_stdout": "2",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "lbound_direct_keyword",
+        "source": "lbound_direct_keyword.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/lbound_direct_keyword.f90:7:25:\n\n    7 | print *,lbound([1,2],dim=d)\n      |                         1\nError: \u2018dim\u2019 argument of \u2018lbound\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/lbound_direct_keyword.f90:7:28: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/lbound_direct_keyword.f90:7:28: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "lbound_direct_positional",
+        "source": "lbound_direct_positional.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/lbound_direct_positional.f90:7:21:\n\n    7 | print *,lbound([1,2],d)\n      |                     1\nError: \u2018dim\u2019 argument of \u2018lbound\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/lbound_direct_positional.f90:7:24: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/lbound_direct_positional.f90:7:24: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "lbound_parenthesized_keyword",
+        "source": "lbound_parenthesized_keyword.f90",
+        "expected_stdout": "1",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "lbound_expression_keyword",
+        "source": "lbound_expression_keyword.f90",
+        "expected_stdout": "1",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ubound_direct_keyword",
+        "source": "ubound_direct_keyword.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/ubound_direct_keyword.f90:7:25:\n\n    7 | print *,ubound([1,2],dim=d)\n      |                         1\nError: \u2018dim\u2019 argument of \u2018ubound\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/ubound_direct_keyword.f90:7:28: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/ubound_direct_keyword.f90:7:28: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ubound_direct_positional",
+        "source": "ubound_direct_positional.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/ubound_direct_positional.f90:7:21:\n\n    7 | print *,ubound([1,2],d)\n      |                     1\nError: \u2018dim\u2019 argument of \u2018ubound\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/ubound_direct_positional.f90:7:24: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/ubound_direct_positional.f90:7:24: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ubound_parenthesized_keyword",
+        "source": "ubound_parenthesized_keyword.f90",
+        "expected_stdout": "2",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "ubound_expression_keyword",
+        "source": "ubound_expression_keyword.f90",
+        "expected_stdout": "2",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "size_direct_keyword",
+        "source": "size_direct_keyword.f90",
+        "expected_stdout": "2",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "size_parenthesized_keyword",
+        "source": "size_parenthesized_keyword.f90",
+        "expected_stdout": "2",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "size_expression_keyword",
+        "source": "size_expression_keyword.f90",
+        "expected_stdout": "2",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "count_reordered_keywords",
+        "source": "count_reordered_keywords.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/count_reordered_keywords.f90:7:47:\n\n    7 | print *,count(kind=8,mask=[.true.,.false.],dim=d)\n      |                                               1\nError: \u2018dim\u2019 argument of \u2018count\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/count_reordered_keywords.f90:7:50: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/count_reordered_keywords.f90:7:50: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "kind_not_an_escape",
+        "source": "kind_not_an_escape.f90",
+        "expected_stdout": "",
+        "category": "reject",
+        "baseline": "reject",
+        "diagnostic": "DIM must not be a direct OPTIONAL dummy"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/kind_not_an_escape.f90:7:32:\n\n    7 | print *,kind(count([.true.],dim=d))\n      |                                1\nError: \u2018dim\u2019 argument of \u2018count\u2019 intrinsic at (1) must not be OPTIONAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/kind_not_an_escape.f90:7:35: DIM must not be a direct OPTIONAL dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/optional_dim/kind_not_an_escape.f90:7:35: DIM must not be a direct OPTIONAL dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "inquiries",
+        "source": "inquiries.f90",
+        "expected_stdout": "8 4 8 0 F F 8 4 8 2 2 2 T",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           4\n           8           0\n F F\n           8           4\n           8           2\n   2.0000000000000000                2 T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 4\n 8 0\n F F\n 8 4\n 8 2\n 2.0000000000000000 2 T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "elemental_forwarding",
+        "source": "elemental_forwarding.f90",
+        "expected_stdout": "1 T 1 2 3 3 T 4 5 6",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1 T\n   1.0000000000000000        2.0000000000000000        3.0000000000000000     \n           3 T\n   4.0000000000000000        5.0000000000000000        6.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 T\n 1.0000000000000000 2.0000000000000000 3.0000000000000000\n 3 T\n 4.0000000000000000 5.0000000000000000 6.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadowed_count",
+        "source": "shadowed_count.f90",
+        "expected_stdout": "7 3 4 7",
+        "category": "success",
+        "baseline": "run"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7           3           4   7.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7 3 4 7.0000000000000000\n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "a04402c94c8245335886deb7452cb7c657d6dff58e3b9859353df58bcabba5aa",
+  "source_sha256": {
+    "all_direct_keyword.f90": "670f431b34c22fc9e8e6c4e125222ba96feb22db8c75d1b1f6472aec53f63afd",
+    "all_direct_positional.f90": "425843daf667d9e90bb301abb11a596275803c89e3a36effd16fd8c84738b292",
+    "all_parenthesized_keyword.f90": "a11acc0a14a65e1dcab203b65dc6a8bb08e043fff65b1fa3f76e58506bf64dfe",
+    "all_expression_keyword.f90": "a56e87600d0e96d64231441abd8bdf807907e74edee8897b767f2235a0d48af7",
+    "any_direct_keyword.f90": "c2edffd491e2e5a8b0eccb79a23493bd5a3154769674fbf722230b71c6a8c4da",
+    "any_direct_positional.f90": "3336aa48dc93822ed0f8e2a27692a2b799d5257f48753db63ac3cc595280b1cf",
+    "any_parenthesized_keyword.f90": "74fc7278e895b33af9ed342357bcf1da315432def6a7bbd74a26d6118e573735",
+    "any_expression_keyword.f90": "86412969dedae1f49bddc8ffcfaa5da767ab960ba6813e6c986f1f87bdeb8c06",
+    "count_direct_keyword.f90": "6f9a9bcf7afbc41a85db9608b26f5289e14f2537f27778809024f9993e6e1c62",
+    "count_direct_positional.f90": "a484fd9f212a2d1b4ddc14655811e7b732594a9c719da939774663a588359166",
+    "count_parenthesized_keyword.f90": "9c7c87618324d7616325707e30767838c60dae8c95f0f4fede9f2ee58f85aae8",
+    "count_expression_keyword.f90": "7f0551227bf291e9a4055795e713b55285f4793cb7b7968abe8f4140b6e59884",
+    "sum_direct_keyword.f90": "55aeba1bd7524cc7bf1c1a8e7f248172055e63296fd598d0985abc02201b958d",
+    "sum_direct_positional.f90": "038284dd90fec65e46ea8ebd29819394625037655d51b99df8f3c989081090d1",
+    "sum_parenthesized_keyword.f90": "b3058ba705c4b03a7f5f5ff7e59d72faf6a81c3a1025dafd1f05e4f5ae4a4dd5",
+    "sum_expression_keyword.f90": "06b592c26663358984e3757ce97e9892246ae030015aa9ba1731cc6977d03c65",
+    "product_direct_keyword.f90": "28a04f6fcb199a91d0174985eedefc0310053b64e2bed36dcd89398aa005d5d4",
+    "product_direct_positional.f90": "d2e443dd6ae87b01cedffd155d10b05b2eae463859be535c09f0f6e25cdc5a1c",
+    "product_parenthesized_keyword.f90": "10a2078b65a982cbdc7147c5373d2d54aa092937324c4b1986136bb90b93234f",
+    "product_expression_keyword.f90": "51077623b06be4b2a820229d22dc86fd1033862afa5b88a067fc55c6abde3b88",
+    "minval_direct_keyword.f90": "4ef760602fe934874970c342173f8c4136cdeac8573521815b4ea8628bf02bfa",
+    "minval_direct_positional.f90": "554ace576baa48a56f81611ca834d43ec1c6d8ae238661cce236f1997de1a4e4",
+    "minval_parenthesized_keyword.f90": "18a0e66a0060e51bcef4e650791bbb161c718eb195e36957a7b0f8803e4c0703",
+    "minval_expression_keyword.f90": "fc31d1d0c8a0bf634b6c9d6c59fa4006e746c84dee725503089af0186a0ac4e3",
+    "maxval_direct_keyword.f90": "84cc5f34329f2dd2df0682cce2e9f8780961a7fbc288f17a3534cd41064898c6",
+    "maxval_direct_positional.f90": "383afecb1ba8beeb1756388c96657e5031bf6e6008ba592ffab61f3087137cbb",
+    "maxval_parenthesized_keyword.f90": "2fc8cabb9b0d8e306b06c9c48999fca3ed597bdc53cc855b1243ea85a924df23",
+    "maxval_expression_keyword.f90": "53ca863ba3960e2ee702e4644c242c12f8888bc3ab4c02e321ca02cfee54a0bf",
+    "lbound_direct_keyword.f90": "5932c269d59d7950e3fadf7716fbcbb684abf56947dd3bb2a1af9fbdd93eca56",
+    "lbound_direct_positional.f90": "d42d7b1ec67d5495369241f2ba00c053f9240859c82625085e1a26bb2953f341",
+    "lbound_parenthesized_keyword.f90": "58806a56fb6c41d1a8707a7a0258dfccbac371b87bb996d2a89ee5c8d23ef599",
+    "lbound_expression_keyword.f90": "9bfb4a8ff43f4e420463abb25bdfae9da2c560d2b9a72cff26f33fe82e9fca89",
+    "ubound_direct_keyword.f90": "5ff0a5b773bbb6379f430bc3e402a3cdac426e46f1519663dc3759569891eaea",
+    "ubound_direct_positional.f90": "e0fa1b263df262b4731ba4115a3f27e536cedc9ef09d276f13a9bb80382d3f86",
+    "ubound_parenthesized_keyword.f90": "8f6fe5f62ed1a269fd4bc39c52853494e8b8170f5a1bc27ebed0f2af89b2ec82",
+    "ubound_expression_keyword.f90": "9369164fa1edb7a13e6c3d3d495ad1e50056c9baf83d16fe9b551c698ae6c455",
+    "size_direct_keyword.f90": "7204e6e7fe3c3ba218932b357de86a43669c910e5fa2cfd280f2aba2ac7fc8c6",
+    "size_parenthesized_keyword.f90": "b1cffd54e1627ec3e79711d13a6842e83ae82235aae4e9815fd496a56b553904",
+    "size_expression_keyword.f90": "c2f28785eb18f613ae1e7ba03b09c754fa6d7b85a94ce0b46b308235f62ce9fa",
+    "count_reordered_keywords.f90": "c2e9e78e96154ddb4fc8928930debdda37fa63d66be7383f683d033bac850b2e",
+    "kind_not_an_escape.f90": "f57b124c785a3cb0868820e76b3431358160c73259cd7d26d20f93accee87561",
+    "inquiries.f90": "6346925d8b0957a38a1d39eebf42b965c90a2d1b6e9e380fcdddf6682dffbaa8",
+    "elemental_forwarding.f90": "997608b6f9063a0f7284b8ea35cea9d8e293da5ff5607475e7cf03d198b7f0b9",
+    "shadowed_count.f90": "f0664b7ab97cb33bd81ecc6228383bfc44a16604c0f37e05b2f70a18671280c4"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

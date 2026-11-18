@@ -1,0 +1,349 @@
+{
+  "cases": [
+    {
+      "name": "original_fraction",
+      "source": "cases/demo_fraction.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0.5700438618659973 0.5700438618659973 .625 10"
+    },
+    {
+      "name": "original_set_exponent",
+      "source": "cases/demo_set_exponent.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "74716.7890625 74716.7890625"
+    },
+    {
+      "name": "original_iachar",
+      "source": "cases/demo_iachar.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "65 65 90 97 122 abcdefg abcdefg"
+    },
+    {
+      "name": "original_exponent_boundary",
+      "source": "cases/demo_exponent.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "baseline_reason": "Whole original also requires unsupported IEEE facilities,binary formatting andMINEXPONENT/MAXEXPONENT; its nonfinite demonstrations are not executed by GNU in this suite."
+    },
+    {
+      "name": "keywords",
+      "source": "cases/keywords.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "-.625 4 1.25 2.5 5 65 90"
+    },
+    {
+      "name": "parameters",
+      "source": "cases/parameters.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "-.625 5 4 90 8 4 8"
+    },
+    {
+      "name": "zero_sign",
+      "source": "cases/zero_sign.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0 0 -1 -1 0"
+    },
+    {
+      "name": "huge_integer_exponents",
+      "source": "cases/huge_integer_exponents.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "0 0 -1",
+      "baseline_reason": "Extreme INTEGER8 exponent is prechecked by candidate; avoid host narrowing/overflow paths."
+    },
+    {
+      "name": "subnormal4",
+      "source": "cases/subnormal4.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": ".5 -126 1.401298464324817e-45 1.401298464324817e-45 .5 -148 0 0 -1",
+      "abs_tol": 0,
+      "rel_tol": 2e-06
+    },
+    {
+      "name": "subnormal8",
+      "source": "cases/subnormal8.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": ".5 -1022 5e-324 5e-324 .5 -1073 0 0",
+      "abs_tol": 0,
+      "rel_tol": 2e-06
+    },
+    {
+      "name": "normal_max",
+      "source": "cases/normal_max.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3.4028234663852886e+38 1.7976931348623157e+308 128 1024 0.9999999403953552 0.9999999999999999",
+      "abs_tol": 0,
+      "rel_tol": 2e-06
+    },
+    {
+      "name": "arrays",
+      "source": "cases/arrays.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": ".5 -.5 .75 -.5 1 2 2 3 4 -4 6 -4"
+    },
+    {
+      "name": "dynamic_arrays",
+      "source": "cases/dynamic_arrays.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 6 .5 .5 .75 1 2 2"
+    },
+    {
+      "name": "empty",
+      "source": "cases/empty.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0 0 0"
+    },
+    {
+      "name": "kind_undefined",
+      "source": "cases/kind_undefined.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "8 4 8 8"
+    },
+    {
+      "name": "iachar_ascii",
+      "source": "cases/iachar_ascii.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 32 126 127 90"
+    },
+    {
+      "name": "iachar_dummy",
+      "source": "cases/iachar_dummy.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "65 122"
+    },
+    {
+      "name": "shadow_names",
+      "source": "cases/shadow_names.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 3 4 6"
+    },
+    {
+      "name": "shadow_functions",
+      "source": "cases/shadow_functions.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 3 4 5"
+    },
+    {
+      "name": "fraction_integer",
+      "source": "cases/fraction_integer.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "REAL"
+    },
+    {
+      "name": "exponent_character",
+      "source": "cases/exponent_character.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "REAL"
+    },
+    {
+      "name": "set_exponent_real_i",
+      "source": "cases/set_exponent_real_i.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "INTEGER"
+    },
+    {
+      "name": "set_exponent_missing",
+      "source": "cases/set_exponent_missing.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "count"
+    },
+    {
+      "name": "fraction_extra",
+      "source": "cases/fraction_extra.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "count"
+    },
+    {
+      "name": "iachar_integer",
+      "source": "cases/iachar_integer.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "CHARACTER"
+    },
+    {
+      "name": "iachar_long",
+      "source": "cases/iachar_long.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "length one"
+    },
+    {
+      "name": "iachar_empty",
+      "source": "cases/iachar_empty.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "length one"
+    },
+    {
+      "name": "iachar_kind_array",
+      "source": "cases/iachar_kind_array.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "scalar"
+    },
+    {
+      "name": "iachar_kind16",
+      "source": "cases/iachar_kind16.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "kinds 4 and 8"
+    },
+    {
+      "name": "iachar_kind_dynamic",
+      "source": "cases/iachar_kind_dynamic.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "constant"
+    },
+    {
+      "name": "wrong_keyword",
+      "source": "cases/wrong_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "keyword"
+    },
+    {
+      "name": "duplicate_keyword",
+      "source": "cases/duplicate_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Repeated"
+    },
+    {
+      "name": "set_nonconform",
+      "source": "cases/set_nonconform.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "conform"
+    },
+    {
+      "name": "fraction_kind16",
+      "source": "cases/fraction_kind16.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "kind"
+    },
+    {
+      "name": "overflow4",
+      "source": "cases/overflow4.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "overflows"
+    },
+    {
+      "name": "overflow8",
+      "source": "cases/overflow8.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "overflows"
+    },
+    {
+      "name": "undefined",
+      "source": "cases/undefined.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "dynamic_nonconform",
+      "source": "cases/dynamic_nonconform.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "conform"
+    },
+    {
+      "name": "iachar_dynamic_length",
+      "source": "cases/iachar_dynamic_length.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "length one"
+    },
+    {
+      "name": "shadow_arrays",
+      "source": "cases/shadow_arrays.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 2 2 2"
+    },
+    {
+      "name": "shadow_scalars",
+      "source": "cases/shadow_scalars.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 2 2 2"
+    },
+    {
+      "name": "shadow_generics",
+      "source": "cases/shadow_generics.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 3 4"
+    },
+    {
+      "name": "shadow_results",
+      "source": "cases/shadow_results.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 3 4"
+    },
+    {
+      "name": "binary_matrix",
+      "source": "cases/binary_matrix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0.0 0 0.0 0.0 0.0 0.0 -0.0 0 -0.0 -0.0 -0.0 -0.0 0.5 -2 0.00048828125 0.5 4.0 512.0 -0.5 -2 -0.00048828125 -0.5 -4.0 -512.0 0.75 0 0.000732421875 0.75 6.0 768.0 -0.75 0 -0.000732421875 -0.75 -6.0 -768.0 0.5 1 0.00048828125 0.5 4.0 512.0 -0.5 1 -0.00048828125 -0.5 -4.0 -512.0 0.5 2 0.00048828125 0.5 4.0 512.0 -0.5 2 -0.00048828125 -0.5 -4.0 -512.0 0.625 4 0.0006103515625 0.625 5.0 640.0 -0.625 4 -0.0006103515625 -0.625 -5.0 -640.0 0.5 11 0.00048828125 0.5 4.0 512.0 -0.5 11 -0.00048828125 -0.5 -4.0 -512.0",
+      "abs_tol": 0,
+      "rel_tol": 2e-12
+    },
+    {
+      "name": "ascii_matrix",
+      "source": "cases/ascii_matrix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+--- a/src/frontend_core.f90
++++ b/src/frontend_core.f90
+@@ -461,8 +461,11 @@
+             if (tokens(i)%kind == TK_OPERATOR .and. &
+                 allocated(tokens(i)%text)) then
+                 if (is_line_continuation_token(tokens(i)%text)) then
++                    ! The leading ampersand after retained comment trivia must
++                    ! not replace the original logical statement line.
++                    if (.not. continuation_active .and. count > 0) &
++                        continuation_line = normalized(count)%line
+                     continuation_active = .true.
+-                    if (count > 0) continuation_line = normalized(count)%line
+                 end if
+             end if
+             if (should_skip_token(tokens, i, tokens(i), suppress_newline, &
+--- a/src/parser/procedures/parser_block_statement_utils.f90
++++ b/src/parser/procedures/parser_block_statement_utils.f90
+@@ -323,6 +323,18 @@
+                     return
+                 end if
+             end if
++            ! Only normalized continuations remove physical newlines. A
++            ! remaining newline ends this logical statement, before a later
++            ! full-line comment can be mistaken for declaration trivia.
++            if (all_tokens(pos)%kind == TK_NEWLINE) then
++                stmt_end = pos - 1
++                return
++            end if
++            ! Continued logical statements retain intervening comments at
++            ! their physical positions. Trivia does not end the statement;
++            ! significant tokens still use the normalized logical line.
++            if (all_tokens(pos)%kind == TK_COMMENT .or. &
++                all_tokens(pos)%kind == TK_WHITESPACE) cycle
+             if (all_tokens(pos)%line /= stmt_line) then
+                 stmt_end = pos - 1
+                 return
+--- a/src/parser/declarations/parser_declaration_attributes_module.f90
++++ b/src/parser/declarations/parser_declaration_attributes_module.f90
+@@ -1,5 +1,5 @@
+ module parser_declaration_attributes_module
+-    use lexer_core, only: token_t, to_lower
++    use lexer_core, only: token_t, to_lower, TK_COMMENT, TK_WHITESPACE
+     use parser_state_module, only: parser_state_t
+     use ast_arena_modern, only: ast_arena_t
+     use parser_expressions_module, only: parse_range
+@@ -210,52 +210,55 @@
+         character(len=:), allocatable :: lowered
+ 
+         handled = .true.
+-
+-        if (parser%is_at_end()) then
+-            return
+-        end if
+-
++        call skip_intent_trivia(parser)
+         token = parser%peek()
+         if (token%text /= "(") then
+-            return
+-        end if
+-
+-        token = parser%consume()
+-        if (parser%is_at_end()) then
+-            return
+-        end if
+-
++            call parser%error_at_token("Expected '(' after INTENT", token)
++            return
++        end if
++        token = parser%consume()
++        call skip_intent_trivia(parser)
+         token = parser%peek()
+         lowered = to_lower(trim(token%text))
+         select case (lowered)
+         case ("in")
+             token = parser%consume()
+-            if (.not. parser%is_at_end()) then
+-                token = parser%peek()
+-                if (to_lower(trim(token%text)) == "out") then
+-                    token = parser%consume()
+-                    lowered = "inout"
+-                end if
+-            end if
+-            call check_attribute_addition(parser, attr_info, &
+-                "intent(" // lowered // ")", attribute_token)
+-            call set_declaration_intent(attr_info, lowered)
++            call skip_intent_trivia(parser)
++            token = parser%peek()
++            if (to_lower(trim(token%text)) == "out") then
++                token = parser%consume()
++                lowered = "inout"
++            end if
+         case ("out", "inout")
+-            call check_attribute_addition(parser, attr_info, &
+-                "intent(" // lowered // ")", attribute_token)
+-            call set_declaration_intent(attr_info, lowered)
+             token = parser%consume()
+         case default
++            call parser%error_at_token("Expected IN, OUT or INOUT intent", token)
+             return
+         end select
+-
+-        if (.not. parser%is_at_end()) then
+-            token = parser%peek()
+-            if (token%text == ")") then
+-                token = parser%consume()
+-            end if
+-        end if
++        call skip_intent_trivia(parser)
++        token = parser%peek()
++        if (token%text /= ")") then
++            call parser%error_at_token("Expected ')' after INTENT direction", token)
++            return
++        end if
++        token = parser%consume()
++        call check_attribute_addition(parser, attr_info, &
++            "intent(" // lowered // ")", attribute_token)
++        call set_declaration_intent(attr_info, lowered)
+     end subroutine handle_intent_attribute
++
++    subroutine skip_intent_trivia(parser)
++        type(parser_state_t), intent(inout) :: parser
++        type(token_t) :: token
++
++        ! Continuation normalization removes continued physical newlines but
++        ! retains comment tokens. Do not skip an uncontinued logical newline.
++        do while (.not. parser%is_at_end())
++            token = parser%peek()
++            if (token%kind /= TK_COMMENT .and. token%kind /= TK_WHITESPACE) exit
++            token = parser%consume()
++        end do
++    end subroutine skip_intent_trivia
+ 
+     subroutine handle_bind_attribute(parser, attr_info, handled)
+         type(parser_state_t), intent(inout) :: parser

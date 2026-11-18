@@ -1,0 +1,234 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 6,
+    "failed": 0,
+    "candidate_checked": 6,
+    "gnu_checked": 6,
+    "gnu_skipped": 0,
+    "gnu_executed": 5,
+    "gnu_compile_only": 1,
+    "gnu_compile_rejections": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "original_body_composition",
+        "source": "original_body_composition.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5 7 4\n  b:2    a:2    b:1    a:1  \n-100 10 -1000 100\n",
+        "formatted_lines": {
+          "1": "b:2    a:2    b:1    a:1    "
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release026_integration/original_body_composition.f90:11:95:\n\n   11 | forall (ix=1:size(xx),iy=1:size(yy)) xy(ix + (iy-1)*nx) = trim(xx(ix)) // delim // trim(yy(iy))\n      |                                                                                               1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release026_integration/original_body_composition.f90:45:55:\n\n   45 | forall(i=1:size(words)) words(i)=words(size(words)+1-i)\n      |                                                       1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5           7           4\nb:2    a:2    b:1    a:1    \n  -100.00000000000000        10.000000000000000       -1000.0000000000000        100.00000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5 7 4\nb:2    a:2    b:1    a:1    \n -100.00000000000000 10.000000000000000 -1000.0000000000000 100.00000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rounding_forall_character",
+        "source": "rounding_forall_character.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 -1 2 1 3 1 2 3\nC2!B2!A2!C1!B1!A1!\n",
+        "formatted_lines": {
+          "1": "C2!B2!A2!C1!B1!A1!"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release026_integration/rounding_forall_character.f90:8:42:\n\n    8 | forall(i=1:3) indices(i)=nint(log10(x(i)))\n      |                                          1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release026_integration/rounding_forall_character.f90:9:20:\n\n    9 | forall(i=-1:1,j=2:3)\n      |                    1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3          -1           2           1           3           1           2           3\nC2!B2!A2!C1!B1!A1!\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 -1 2 1 3 1 2 3\nC2!B2!A2!C1!B1!A1!\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "deferred_dummy_forall",
+        "source": "deferred_dummy_forall.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 4\nsix!two!one!more\n",
+        "formatted_lines": {
+          "1": "six!two!one!more"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release026_integration/deferred_dummy_forall.f90:12:45:\n\n   12 | forall(i=1:floor(3.9)) x(i)=x(ceiling(3.1)-i)\n      |                                             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release026_integration/deferred_dummy_forall.f90:14:45:\n\n   14 | forall(i=1:size(x),i/=4) x(i)=trim(x(i))//'!'\n      |                                             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           4\nsix!two!one!more\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 4\nsix!two!one!more\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_descriptor_forall",
+        "source": "empty_descriptor_forall.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T 5 5 0 0\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release026_integration/empty_descriptor_forall.f90:7:41:\n\n    7 | forall(i=1:size(a)) a(i)=achar(undefined)\n      |                                         1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T           5           5           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T 5 5 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simultaneous_rounding",
+        "source": "simultaneous_rounding.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 5 2 1\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release026_integration/simultaneous_rounding.f90:4:13:\n\n    4 | forall(i=1:4)\n      |             1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           5           2           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 5 2 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_character_target",
+        "source": "duplicate_character_target.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release026_integration/duplicate_character_target.f90:6:40:\n\n    6 | forall(i=1:2) a(idx(i))=achar(64+i)//'!'\n      |                                        1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release026_integration/duplicate_character_target.f90:6:15: FORALL assignment defines an element more than once\n"
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:35:37.881267+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "limits": "Bounded integration checks, not full original utilities execution. Runtime duplicate-target case is compiled but not executed by GNU.",
+  "manifest_sha256": "77dfd773118c46a96e355b314aacbcc0e6fc718428370e7d1cf883b30da48906",
+  "source_sha256": {
+    "original_body_composition.f90": "aac6245ab5accf184e2c838417a5120392f003812ab2773279bc303268f8fa5e",
+    "rounding_forall_character.f90": "b2bacbd2e63047561f3c57cc2b785d538e69e7b2f26571f9c1a9f3230760601e",
+    "deferred_dummy_forall.f90": "1cbba23767bee240ad4bb3876c45f3cd1e332581b86eedc0abfe7b4af17861d1",
+    "empty_descriptor_forall.f90": "d6aae6c80074f84c10790138fc37b4ac402815ae5875f5b16b2db8927b8c4687",
+    "simultaneous_rounding.f90": "42a612ec07215ad6a8a0c4e6cd24d877bb9e6178be84eadb538c3852e27e4292",
+    "duplicate_character_target.f90": "59bcc9e228e222953cd35e4d7031e3a805da7995f8413bb6c89b22681af1229d"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

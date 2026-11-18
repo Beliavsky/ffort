@@ -1,0 +1,1021 @@
+fpm: Entering directory '/workspace/scratch/c5319e9549df/recovery/057-repl-session-work'
+ + feature collection: debug
+ +   platform: gfortran on Linux
+ +   flags:  -Wall -Wextra -Wimplicit-interface -Wno-external-argument-mismatch -fPIC -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single
+ +   c-flags:  -Wall -Wextra -fPIC -fmax-errors=1 -g
+ +   cxx-flags:  -Wall -Wextra -fPIC -fmax-errors=1 -g
+ +   cpp-macros: no
+ +   variants:            9
+ + profile: debug
+ <INFO> BUILD_NAME: build/gfortran
+ <INFO> COMPILER:  gfortran
+ <INFO> C COMPILER:  gcc
+ <INFO> CXX COMPILER: g++
+ <INFO> COMPILER OPTIONS:    -gsplit-dwarf  -Wall -Wextra -Wimplicit-interface -Wno-external-argument-mismatch -fPIC -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single
+ <INFO> C COMPILER OPTIONS:     -Wall -Wextra -fPIC -fmax-errors=1 -g
+ <INFO> CXX COMPILER OPTIONS:    -Wall -Wextra -fPIC -fmax-errors=1 -g
+ <INFO> LINKER OPTIONS:   
+ <INFO> INCLUDE DIRECTORIES:  []
+[  0%]   test_repl_scalar_session.f90
+ + gfortran -c test/test_repl_scalar_session.f90    -gsplit-dwarf  -Wall -Wextra -Wimplicit-interface -Wno-external-argument-mismatch -fPIC -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single -fimplicit-none -Werror=implicit-interface -ffree-form -J build/gfortran_48E3D019815BEB25 -Ibuild/gfortran_48E3D019815BEB25 -o build/gfortran_48E3D019815BEB25/fortfront-interpreter/test_test_repl_scalar_session.f90.o
+test/test_repl_scalar_session.f90:17:37:
+
+   17 |     integer::checks,j,oldpc,oldne,lit
+      |                                     1
+Warning: Unused variable ‘lit’ declared at (1) [-Wunused-variable]
+f951: note: unrecognized command-line option ‘-Wno-external-argument-mismatch’ may have been intended to silence earlier diagnostics
+[ 50%]   test_repl_scalar_session.f90  done.
+[ 50%]       test_repl_scalar_session
+ + gfortran     -gsplit-dwarf  -Wall -Wextra -Wimplicit-interface -Wno-external-argument-mismatch -fPIC -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single -fimplicit-none -Werror=implicit-interface   build/gfortran_48E3D019815BEB25/fortfront-interpreter/test_test_repl_scalar_session.f90.o  build/gfortran_6282B10B386AB9DF/fortfront-interpreter/libfortfront-interpreter.a -o build/gfortran_C2992C13A93EF9F1/test/test_repl_scalar_session
+[100%]       test_repl_scalar_session  done.
+[100%] Project compiled successfully.
+ + build/gfortran_C2992C13A93EF9F1/test/test_norm_scalar_expansion
+ PASS: NORM2 scalar expansion native assertions:         139
+ + build/gfortran_C2992C13A93EF9F1/test/test_source_limits
+PASS: 9 direct source/token boundary and recovery checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_rank_three_vectors
+rank-three vector assertions: 503
+ + build/gfortran_C2992C13A93EF9F1/test/test_exponent_model_inquiries
+ -125
+
+ -125
+
+ -125
+
+ -125
+
+ -1021
+
+ -1021
+
+ -1021
+
+ -1021
+
+ 128
+
+ 128
+
+ 128
+
+ 128
+
+ 1024
+
+ 1024
+
+ 1024
+
+ 1024
+
+ PASS: exponent-model adapter/runtime/KIND assertions:        3754
+ + build/gfortran_C2992C13A93EF9F1/test/test_numeric_model_inquiries
+ PASS: numeric-model adapter/runtime checks:         224
+ + build/gfortran_C2992C13A93EF9F1/test/test_kind_inquiry_producer
+PASS: KIND type-inquiry producer resolves direct and named REAL selectors
+ + build/gfortran_C2992C13A93EF9F1/test/test_dynamic_character_constructor_guards
+dynamic CHARACTER constructor guards: 36
+ + build/gfortran_C2992C13A93EF9F1/test/test_cli_step_hint_api
+PASS: reusable step-budget API diagnostic unchanged
+ + build/gfortran_C2992C13A93EF9F1/test/test_scalar_allocatable_character
+scalar allocatable CHARACTER: 146 checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_metadata_limits
+PASS: 23 metadata boundary, graph, storage and recovery checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_real_round_inverse
+ -2.00000000
+ 4
+
+ -2.0000000000000000
+ -2.0000000000000000
+ 8
+
+ -2.00000000
+ -3.00000000
+ 4
+
+ -3.0000000000000000
+ -3.0000000000000000
+ 8
+
+ -3.00000000
+ 1.64723110
+ 4
+
+ 1.6472311463710958
+ 8
+
+ 1.56679928
+ 4
+
+ 1.5667992369724111
+ 8
+
+ PASS: real rounding/inverse independent assertions:        3012
+ + build/gfortran_C2992C13A93EF9F1/test/test_frontend
+PASS: 7 mixed-mode + 1 explicit-kind compilations; 4 adapter contracts
+ + build/gfortran_C2992C13A93EF9F1/test/test_elemental_producers
+PASS: ELEMENTAL producer scalar/rank-one/rank-two results and real kind
+ + build/gfortran_C2992C13A93EF9F1/test/test_mean_features_frontend
+PASS: mean-feature baseline and 23 adapter disagreements
+ + build/gfortran_C2992C13A93EF9F1/test/test_logical_allocatables
+PASS: LOGICAL allocation reset, OPTIONAL descriptors and 32 adapter/runtime mutation rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_minmax_producer
+ PASS: independent CHARACTER MIN/MAX intrinsic producer cases:          18
+ + build/gfortran_C2992C13A93EF9F1/test/test_numeric_model_producer
+ PASS: independent numeric model intrinsic producer cases:          13
+ + build/gfortran_C2992C13A93EF9F1/test/test_inverse_trigonometric_producer
+ PASS: independent inverse trigonometric producer cases:          35
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_producer
+PASS: CHARACTER producer expressions, function results and length tokens
+ + build/gfortran_C2992C13A93EF9F1/test/test_real_round_inverse_producer
+ PASS: independent real rounding/inverse producer cases:          22
+ + build/gfortran_C2992C13A93EF9F1/test/test_eoshift_producer
+ PASS: independent EOSHIFT producer cases:          10
+ + build/gfortran_C2992C13A93EF9F1/test/test_automatic_arrays
+ PASS: automatic array allocation and malformed IR checks:          35
+ + build/gfortran_C2992C13A93EF9F1/test/test_location_producer
+ PASS: MINLOC/MAXLOC independent producer metadata:           7
+ + build/gfortran_C2992C13A93EF9F1/test/test_elemental_runtime
+PASS: ELEMENTAL runtime overlap, empty calls and five invalid IR checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_control_flow
+PASS: control-flow adapter/runtime baselines and 26 malformed-IR rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_release033_composition
+PASS: release 0.33 composition: 29 metadata/reset/budget checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_elemental_mutable_producers
+PASS: ELEMENTAL CALL producer rank lifting, prefix retention and element type rejection
+ + build/gfortran_C2992C13A93EF9F1/test/test_output_unit_producer
+ PASS: OUTPUT_UNIT producer assertions:          44
+ + build/gfortran_C2992C13A93EF9F1/test/test_output_implied_do
+output implied-DO native: 239 checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_allocation_errmsg
+PASS: 244 allocation ERRMSG checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_derived_frontend
+PASS: 34 derived frontend identity, structure and USE ONLY checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_internal_read_element_frontend
+ internal READ element producer/adapter draft checks:          37
+ + build/gfortran_C2992C13A93EF9F1/test/test_reshape
+ PASS: RESHAPE metadata checks:          46
+ + build/gfortran_C2992C13A93EF9F1/test/test_release044_composition
+release044 composition native: 34 checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_index_optional_runtime
+ PASS: INDEX absent BACK baseline and nine malformed-descriptor rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_pure_internal_write
+ PASS: PURE internal WRITE producer checks:          16
+ + build/gfortran_C2992C13A93EF9F1/test/test_optional_operator_rejection
+PASS: 18 required operator operand baseline/recognizer/adapter checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_degree_trig_intrinsics
+ 120.000000
+ 4
+
+ 120.00000000000001
+ 8
+
+ -30.0000000
+ 4
+
+ -30.000000000000004
+ 8
+
+ -0.872653536E-2
+ 4
+
+ -0.87265354983739347E-2
+ 8
+
+ 0.999961913
+ 4
+
+ 0.99996192306417131
+ 8
+
+ PASS: degree trig independent assertions:        2501
+ + build/gfortran_C2992C13A93EF9F1/test/test_lexical_producer
+ PASS: independent lexical intrinsic producer cases:          20
+ + build/gfortran_C2992C13A93EF9F1/test/test_elemental_mutable_runtime
+PASS: mutable ELEMENTAL values, empty calls, shared budget, aliases and OUT flags
+ + build/gfortran_C2992C13A93EF9F1/test/test_row_gather
+ PASS: row gather and producer safety checks:          66
+ + build/gfortran_C2992C13A93EF9F1/test/test_runtime
+PASS: 53 independent IR runtime contracts
+ + build/gfortran_C2992C13A93EF9F1/test/test_elementary_math_producer
+ PASS: independent elementary math producer cases:          15
+ + build/gfortran_C2992C13A93EF9F1/test/test_derived_runtime
+PASS: 10 derived runtime, definition-state and normal STOP contracts
+ + build/gfortran_C2992C13A93EF9F1/test/test_internal_write_element_hardening
+ PASS: internal WRITE index metadata assertions:          32
+ + build/gfortran_C2992C13A93EF9F1/test/test_main_save
+PASS: 38 main SAVE source/IR/storage/reset checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_len_producer
+CHARACTER %LEN: 10 independent producer checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_argument_frontend
+PASS: argument frontend baseline and 15 independent AST/IR mutation rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_select_case_frontend
+PASS: SELECT baseline and 22 adapter disagreements
+ + build/gfortran_C2992C13A93EF9F1/test/test_typed_empty_arrays
+ PASS: typed empty constructor checks:         291
+ + build/gfortran_C2992C13A93EF9F1/test/test_compact_value_storage
+PASS: compact value ownership; value_t occupies 72 bytes
+ + build/gfortran_C2992C13A93EF9F1/test/test_parity_intrinsic
+ PASS: PARITY independent adapter/runtime mutation checks:          57
+ + build/gfortran_C2992C13A93EF9F1/test/test_cshift
+PASS: 160 CSHIFT adapter/runtime, KIND, effects and reset checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_real_conversion_producer
+ PASS: independent REAL conversion producer cases:          10
+ + build/gfortran_C2992C13A93EF9F1/test/test_section_frontend
+PASS: section adapter baseline and 28 deliberate AST/IR disagreements
+ + build/gfortran_C2992C13A93EF9F1/test/test_colon_formats
+ PASS: colon format native assertions:          36
+ + build/gfortran_C2992C13A93EF9F1/test/test_integer_kinds_runtime
+PASS: direct INTEGER kind runtime exactness and checked arithmetic
+ + build/gfortran_C2992C13A93EF9F1/test/test_optional_dim
+ PASS: OPTIONAL DIM validation checks:          89
+ + build/gfortran_C2992C13A93EF9F1/test/test_specification_functions
+PASS: 60 specification function adapter/runtime and budget checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_isnan_intrinsic
+ PASS: ISNAN metadata, empty/inquiry, finite-policy and producer checks:          45
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_minmax
+ ab 
+ ab 
+ 1
+ 1
+
+
+ abc
+ abc
+ 1
+ 1
+
+
+ PASS: independent CHARACTER MIN/MAX assertions:      273562
+ + build/gfortran_C2992C13A93EF9F1/test/test_runtime_output_unit
+runtime output-unit checks: 297
+ + build/gfortran_C2992C13A93EF9F1/test/test_pure_local_element_producer
+ PURE local element producer checks:           24
+ + build/gfortran_C2992C13A93EF9F1/test/test_erf_bessel_producer
+ PASS: independent ERF/Bessel producer cases:          44
+ + build/gfortran_C2992C13A93EF9F1/test/test_release037_composition
+PASS: release 0.37 independent composition: 1328 checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_rank_two_section_frontend
+PASS: rank-two section baseline and 21 adapter mutations
+ + build/gfortran_C2992C13A93EF9F1/test/test_pointer_runtime_metadata
+PASS: 177 direct-runtime POINTER metadata/lifetime rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_defined_operators
+PASS: defined operators producer queries and 15 adapter checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_char_identifiers
+ PASS: CHAR identifiers, intrinsic preservation, producer and adapter mutations:          29
+ + build/gfortran_C2992C13A93EF9F1/test/test_release_metadata
+PASS: combined generic/bound metadata and nine safe corruption rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_inquire_name_producer
+PASS: 140 INQUIRE producer assertions
+ + build/gfortran_C2992C13A93EF9F1/test/test_release042_storage
+ok
+ + build/gfortran_C2992C13A93EF9F1/test/test_release034_composition
+PASS: release 0.34 composition: 76 checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_move_alloc
+PASS: 346 MOVE_ALLOC checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_explicit_dummy_producer
+ PASS: explicit CHARACTER dummy independent producer lengths:           8
+ + build/gfortran_C2992C13A93EF9F1/test/test_allocatable_character_lengths
+PASS: 181 explicit-length allocatable CHARACTER checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_mutable_modules
+PASS: mutable module lifetime/reset and 10 adapter/runtime mutation rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_degree_trig_producer
+ PASS: independent degree trig intrinsic producer cases:          20
+ + build/gfortran_C2992C13A93EF9F1/test/test_trigonometric_intrinsics
+
+
+
+
+ 0.0000000000000000
+
+
+
+ 0.0000000000000000
+
+
+
+ 0.0000000000000000
+
+
+ PASS: trigonometric adapter, runtime, KIND and empty-result assertions:         610
+ + build/gfortran_C2992C13A93EF9F1/test/test_bare_character_gather_actual
+ PASS: bare CHARACTER gather argument assertions:          71
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_parameters_runtime
+PASS: CHAR/ACHAR values and 18 runtime corruption rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_array_actual_frontend
+PASS: array actual baseline and nine AST/IR mutation rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_external_list_read_metadata
+external list READ metadata: 101 checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_parameters_frontend
+PASS: inferred lengths/caches and 21 adapter mutation rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_allocatable_parameter_descriptors
+PASS: nested module parameter descriptors and preserved shape validation
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_arrays_runtime
+PASS: CHARACTER padding/overlap, 10 runtime corruptions and constructor constant evaluation
+ + build/gfortran_C2992C13A93EF9F1/test/test_optional_arguments
+ PASS: OPTIONAL/PRESENT mutation checks:          25
+ + build/gfortran_C2992C13A93EF9F1/test/test_matrix_norm_intrinsics
+ PASS: matrix/norm independent assertions:        3267
+ + build/gfortran_C2992C13A93EF9F1/test/test_optional_numeric_arrays
+ PASS: OPTIONAL numeric/logical array descriptor mutations:         250
+ + build/gfortran_C2992C13A93EF9F1/test/test_real_conversion
+ -2.50000000
+ 4
+
+ -2.5000000000000000
+ -2.50000000
+ 4
+
+ -2.50000000
+ PASS: REAL conversion independent assertions:         910
+ + build/gfortran_C2992C13A93EF9F1/test/test_nested_procedures
+PASS: 116 internal host adapter/runtime/visibility/reset checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_pure_simple_frontend
+PASS: PURE/SIMPLE baseline, 13 adapter disagreements, 4 parser rejections and 2 redundant-prefix cases
+ + build/gfortran_C2992C13A93EF9F1/test/test_model_character_producer
+ PASS: independent model/character intrinsic producer cases:          14
+ + build/gfortran_C2992C13A93EF9F1/test/test_selected_real_kind_empty_selector
+PASS: three empty SELECTED_REAL_KIND selectors and three invalid empty calls
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_components
+ PASS CHARACTER component checks:         154
+ + build/gfortran_C2992C13A93EF9F1/test/test_numeric_vector_gather
+numeric vector assertions: 480
+ + build/gfortran_C2992C13A93EF9F1/test/test_release043_composition
+release043 composition native: 11 checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_exponent_model_producer
+ PASS: independent exponent-model inquiry producer cases:           8
+ + build/gfortran_C2992C13A93EF9F1/test/test_array_result_producer
+PASS: array-result producer written prefixes and STANDARD/LAZY mode isolation
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_scalar_binding
+PASS: scalar CHARACTER prefix association and strict array length matching
+ + build/gfortran_C2992C13A93EF9F1/test/test_release031_composition
+PASS: release 0.31 composition and 34 adapter/runtime metadata rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_allocatable_dummies
+PASS: allocatable dummy repeated runs and 10 adapter/runtime mutation rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_named_real_kind_frontend
+ PASS: scope-aware real kinds, exponent literals, ERFC, and mismatch rejection
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_parameters_producer
+ PASS: CHARACTER independent producer metadata and multi-entity declarations:          20
+ + build/gfortran_C2992C13A93EF9F1/test/test_elementary_math
+ 2
+ 4
+
+ 2
+ 8
+
+ 2.00000000
+ 4
+
+ 2.0000000000000000
+ 8
+
+ 5
+ 4
+
+ 5
+ 8
+
+ 5.00000000
+ 4
+
+ 5.0000000000000000
+ 8
+
+ 0.693147182
+ 4
+
+ 0.69314718055994529
+ 8
+
+ PASS: elementary math independent assertions:        2960
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_procedures
+PASS: CHARACTER procedures, 15 adapter mutations and 9 direct-runtime corruptions
+ + build/gfortran_C2992C13A93EF9F1/test/test_stdout_write_producer
+ PASS: stdout WRITE independent producer metadata:           4
+ + build/gfortran_C2992C13A93EF9F1/test/test_boz_formats
+PASS BOZ assertions: 149
+ + build/gfortran_C2992C13A93EF9F1/test/test_imported_parameter_array_producer
+ + build/gfortran_C2992C13A93EF9F1/test/test_count_bounds
+ PASS: COUNT bounds and malformed IR checks:          41
+ + build/gfortran_C2992C13A93EF9F1/test/test_output_unit
+ PASS: OUTPUT_UNIT independent assertions:         311
+ + build/gfortran_C2992C13A93EF9F1/test/test_digits_intrinsic
+ 24
+
+ 24
+
+ 24
+
+ 24
+
+ 53
+
+ 53
+
+ 53
+
+ 53
+
+ PASS: DIGITS adapter/runtime/KIND assertions:        1877
+ + build/gfortran_C2992C13A93EF9F1/test/test_associated_target_producer
+ PASS: independent ASSOCIATED target producer cases:           6
+ + build/gfortran_C2992C13A93EF9F1/test/test_iso_env_aliases
+ PASS: ISO_FORTRAN_ENV alias independent assertions:        1152
+ + build/gfortran_C2992C13A93EF9F1/test/test_array_frontend
+PASS: 2 array adapter baselines and 11 deliberate AST/IR disagreements
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_arrays_producer
+PASS: four empty CHARACTER constructor producer shapes and type specifications
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_intrinsics
+
+
+ 0
+
+
+
+ 0
+
+
+
+
+ 3
+
+
+
+ 3
+ PASS: character intrinsic assertions:         580
+ + build/gfortran_C2992C13A93EF9F1/test/test_external_list_read_runtime
+external list READ runtime: 95 checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_associated_target_metadata
+ T
+ F
+ T
+
+
+
+ T
+ F
+ T
+
+
+
+ T
+ F
+ T
+
+
+
+ T
+ F
+ T
+
+
+
+ PASS: ASSOCIATED target metadata assertions:        5184
+ + build/gfortran_C2992C13A93EF9F1/test/test_module_frontend
+PASS: 2 module frontend baselines and 25 independent IR mutation rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_cshift_producer
+ PASS: independent CSHIFT producer cases:           8
+ + build/gfortran_C2992C13A93EF9F1/test/test_array_results
+ PASS: array-result mutation checks:          22
+ + build/gfortran_C2992C13A93EF9F1/test/test_module_use_frontend
+ module USE frontend: producer + baseline + 9 mutations passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_keyword_producers
+ + build/gfortran_C2992C13A93EF9F1/test/test_release036_composition
+PASS: release 0.36 independent composition: 797 checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_shape_intrinsic_producer
+ PASS: independent SHAPE intrinsic producer cases:           7
+ + build/gfortran_C2992C13A93EF9F1/test/test_unlimited_formats
+ PASS: unlimited/G0 native assertions:          38
+ + build/gfortran_C2992C13A93EF9F1/test/test_trailz
+ 0 0
+ 4
+
+PASS: 2053 TRAILZ public-IR and independent-value checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_inverse_trig_assignments
+PASS: inverse trigonometric assignment assertions: 160
+ + build/gfortran_C2992C13A93EF9F1/test/test_isnan_producer
+ PASS: independent ISNAN producer cases:           7
+ + build/gfortran_C2992C13A93EF9F1/test/test_constructor_implied_do_adapter
+constructor implied-DO adapter: 49 checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_len_runtime
+PASS: LEN descriptors and eight direct-runtime corruptions
+ + build/gfortran_C2992C13A93EF9F1/test/test_rank_two_frontend
+PASS: rank-two explicit/assumed-shape baselines and 21 independent AST/IR disagreements
+ + build/gfortran_C2992C13A93EF9F1/test/test_inverse_trigonometric
+ -0.523598790
+ 4
+
+ -0.52359877559829893
+ 8
+
+ -0.463647604
+ 4
+
+ -0.46364760900080609
+ 8
+
+ -0.463647604
+ 4
+
+ -0.46364760900080609
+ 8
+
+ -0.463647604
+ 4
+
+ -0.46364760900080609
+ 8
+
+ PASS: inverse trigonometric independent assertions:        3173
+ + build/gfortran_C2992C13A93EF9F1/test/test_erf_bessel
+ PASS: ERF/Bessel native checks:         294
+ + build/gfortran_C2992C13A93EF9F1/test/test_iso_integer_array_producer
+ PASS: ISO integer array producer assertions:          79
+ + build/gfortran_C2992C13A93EF9F1/test/test_forall
+PASS: FORALL semantic baselines and 137 adapter/runtime checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_allocatable_spec_inquiries
+PASS: 356 allocatable specification-inquiry checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_repeat_intrinsic
+ a a a 
+ 1
+ 6
+ 0
+ <>
+ 1
+ PASS: REPEAT independent mutation assertions:         882
+ + build/gfortran_C2992C13A93EF9F1/test/test_optional_colons
+PASS: 34 optional-separator producer and adapter checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_pointer_frontend
+PASS: pointer SOURCE/AST/IR, aliases, 12 metadata and 26 procedure-context mutations
+ + build/gfortran_C2992C13A93EF9F1/test/test_do_while
+PASS DO WHILE guards: 60
+ + build/gfortran_C2992C13A93EF9F1/test/test_pack_intrinsic
+ PASS: PACK adapter/runtime checks:         225
+ + build/gfortran_C2992C13A93EF9F1/test/test_array_expression_frontend
+PASS: array expression baseline and 20 independent shape disagreements
+ + build/gfortran_C2992C13A93EF9F1/test/test_target_attributes
+PASS: TARGET reset, 8 adapter mutations and PARAMETER runtime rejection
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_callback_runtime
+ 7
+7
+PASS: defined WRITE CHARACTER descriptors and callback local lengths
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_arrays_frontend
+PASS: CHARACTER arrays and 17 adapter mutation rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_erfc_scaled_producer
+ PASS: independent ERFC_SCALED producer cases:           7
+ + build/gfortran_C2992C13A93EF9F1/test/test_bare_do
+PASS: 41 bare DO adapter/runtime and budget checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_model_decomposition
+ 0.625000000
+ 4
+
+ 0.62500000000000000
+ 8
+
+ 3
+ 4
+
+ 3
+ 4
+
+ 5.00000000
+ 4
+
+ 5.0000000000000000
+ 8
+
+ 65
+ 4
+
+ 65
+ 8
+
+ PASS: model decomposition independent assertions:        3032
+ + build/gfortran_C2992C13A93EF9F1/test/test_derived_mixed_defaults
+ PASS grouped derived defaults assertions:          39
+ + build/gfortran_C2992C13A93EF9F1/test/test_hyperbolic_intrinsics
+
+
+
+ PASS: hyperbolic adapter, runtime, KIND and empty-result assertions:         466
+ + build/gfortran_C2992C13A93EF9F1/test/test_repeat_intrinsic_producer
+ PASS: independent REPEAT intrinsic producer cases:           8
+ + build/gfortran_C2992C13A93EF9F1/test/test_generic_result_producer
+ generic result producer: three exact occurrence queries and adapter passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_array_intrinsics_frontend
+PASS: array-intrinsic baseline and 25 adapter mutations
+ + build/gfortran_C2992C13A93EF9F1/test/test_spacing_nearest
+ 0.476837158E-6
+ 4
+
+ 0.88817841970012523E-15
+ 8
+
+ 5.00000048
+ 4
+
+ 5.0000000000000009
+ 8
+
+ PASS: SPACING/NEAREST independent assertions:        1354
+ + build/gfortran_C2992C13A93EF9F1/test/test_timing_queries
+timing metadata checks: 365
+ + build/gfortran_C2992C13A93EF9F1/test/test_acos_intrinsic
+ 2.09439516
+ 4
+
+ 2.0943951023931957
+ 8
+
+ PASS: ACOS independent assertions:         623
+ + build/gfortran_C2992C13A93EF9F1/test/test_release035_composition
+PASS: release 0.35 composition: 180 checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_rrspacing_intrinsic
+ 8388608.00
+ 4
+
+ 4503599627370496.0
+ 8
+
+ PASS: RRSPACING independent assertions:         623
+ + build/gfortran_C2992C13A93EF9F1/test/test_runtime_formats
+ PASS: runtime formats native assertions:         103
+ + build/gfortran_C2992C13A93EF9F1/test/test_where_third_purity
+PASS: seven WHERE third-axis scalar/triplet purity baseline/mutation pairs
+ + build/gfortran_C2992C13A93EF9F1/test/test_program_forms_frontend
+PASS: 2 program-form adapter baselines, 11 disagreements, 1 constant-evaluator rejection
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_len_elements
+ PASS: CHARACTER LEN element specification mutations:          24
+ + build/gfortran_C2992C13A93EF9F1/test/test_internal_write_loop_parents
+ PASS: internal WRITE loop parent assertions:          24
+ + build/gfortran_C2992C13A93EF9F1/test/test_punctuation_literals
+PASS: 23 punctuation literal/data and malformed grammar checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_matrix_norm_producer
+ PASS: independent matrix/norm producer cases:          26
+ + build/gfortran_C2992C13A93EF9F1/test/test_newline_intrinsic
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ PASS: NEW_LINE adapter/runtime/KIND assertions:        1143
+ + build/gfortran_C2992C13A93EF9F1/test/test_feature_integration
+PASS: wide INTEGER SELECT/PARAMETER baseline and four adapter cache mutations
+ + build/gfortran_C2992C13A93EF9F1/test/test_allocatables
+PASS: allocatable run reset and 18 adapter/runtime mutation rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_acos_producer
+ PASS: independent ACOS producer cases:           8
+ + build/gfortran_C2992C13A93EF9F1/test/test_optional_character
+ PASS: OPTIONAL CHARACTER descriptor mutations:          60
+ + build/gfortran_C2992C13A93EF9F1/test/test_optional_character_producer
+ PASS: OPTIONAL CHARACTER producer declarations:          12
+ + build/gfortran_C2992C13A93EF9F1/test/test_internal_read
+internal READ native: 224 checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_slash_formats
+slash format assertions: 55
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_substrings
+PASS: scalar substrings, 16 adapter mutations and 16 direct-runtime corruptions
+ + build/gfortran_C2992C13A93EF9F1/test/test_selected_real_kind
+ PASS: SELECTED_REAL_KIND adapter/runtime checks:          43
+ + build/gfortran_C2992C13A93EF9F1/test/test_numerical_runtime
+CHARACTER subroutine runtime passed.
+PASS: kind-aware arithmetic, four intrinsics, CALL/RETURN, budget and 19 format checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_iso_integer_array_ir
+PASS: ISO indexed array public-IR assertions: 115
+ + build/gfortran_C2992C13A93EF9F1/test/test_fixed_character_derived_guards
+derived CHARACTER actual guards: 33
+ + build/gfortran_C2992C13A93EF9F1/test/test_named_formats
+12
+34
+ PASS: named parameter format native assertions:          33
+ + build/gfortran_C2992C13A93EF9F1/test/test_iso_integer_availability
+ PASS: ISO integer availability independent assertions:         708
+ + build/gfortran_C2992C13A93EF9F1/test/test_constructor_implied_do_guards
+constructor implied-DO source-free guards: 744 checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_module_data_producer
+PASS: module declaration PUBLIC/PRIVATE producer binding identities
+ + build/gfortran_C2992C13A93EF9F1/test/test_lexical_comparisons
+ F
+ F
+ 4
+ 4
+
+
+ F
+ F
+ 4
+ 4
+
+
+ T
+ T
+ 4
+ 4
+
+
+ T
+ T
+ 4
+ 4
+
+
+ PASS: independent lexical assertions:      134127
+ + build/gfortran_C2992C13A93EF9F1/test/test_process_queries
+process queries native: 328 checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_internal_write_element
+ PASS: internal WRITE element draft native assertions:         119
+ + build/gfortran_C2992C13A93EF9F1/test/test_stdout_write
+42
+ PASS: stdout WRITE independent IR checks:          32
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_len_inquiry
+CHARACTER %LEN: 640 native checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_search_producer
+ PASS: independent character search intrinsic producer cases:          18
+ + build/gfortran_C2992C13A93EF9F1/test/test_random_functions
+PASS: 137 ordinary function RNG stream, effect, adapter and runtime checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_module_producers
+ module producer regressions: 7 passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_integer_masks
+ -9223372036854775808 -9223372036854775808
+ 8
+
+ 1 1
+ 8
+
+ 0 0
+ 8
+
+ -9223372036854775808 -9223372036854775808
+ 8
+
+ 1 1
+ 8
+
+PASS: 5747 MASKL/MASKR/SHIFTR public-IR and independent-value checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_constructor_producer
+PASS: nested constructor producer retains complete binary AST nodes
+ + build/gfortran_C2992C13A93EF9F1/test/test_quoted_operators
+PASS: 5 quoted literal IRs, one rejection and promoted bracket literal
+ + build/gfortran_C2992C13A93EF9F1/test/test_internal_read_element_ir
+internal READ element IR checks: 106
+ + build/gfortran_C2992C13A93EF9F1/test/test_generic_frontend
+ generic frontend: 20 cases passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_whole_array_runtime
+
+PASS: 34 independent whole-array IR runtime contracts
+ + build/gfortran_C2992C13A93EF9F1/test/test_rounding_intrinsics
+
+
+ 0.0000000000000000
+
+
+
+ 0.0000000000000000
+
+
+
+ 0.0000000000000000
+
+
+
+ 0.0000000000000000
+
+ PASS: rounding and LOG10 assertions:         850
+ + build/gfortran_C2992C13A93EF9F1/test/test_recursion
+PASS: 18 recursion metadata, frame and safety checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_external_read_runtime
+external READ runtime: 295 checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_internal_write_element_derived_guard
+ PASS: internal WRITE derived output guards:          10
+ + build/gfortran_C2992C13A93EF9F1/test/test_release038_composition
+PASS: release038 independent native assertions: 429
+ + build/gfortran_C2992C13A93EF9F1/test/test_numerical_frontend
+PASS: numerical frontend baseline and 29 independent AST/IR mutation rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_dynamic_character_constructor_adapter
+dynamic CHARACTER constructor adapter checks: 75
+ + build/gfortran_C2992C13A93EF9F1/test/test_spacing_nearest_producer
+ PASS: independent SPACING/NEAREST producer cases:          13
+ + build/gfortran_C2992C13A93EF9F1/test/test_location_intrinsics
+ PASS: MINLOC/MAXLOC adapter/runtime checks:         331
+ + build/gfortran_C2992C13A93EF9F1/test/test_substring_producer
+PASS: substring producer rank and grouped CHARACTER length metadata
+ + build/gfortran_C2992C13A93EF9F1/test/test_output_implied_do_producer
+ output implied-DO producer checks passed:          32
+ + build/gfortran_C2992C13A93EF9F1/test/test_multi_allocation
+PASS: 593 multi-object allocation checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_gather
+ PASS CHARACTER gather checks:         113
+ + build/gfortran_C2992C13A93EF9F1/test/test_integer_bits
+ 1 1
+ 8
+
+ 3 3
+ 8
+
+ 2 2
+ 8
+
+ -2 -2
+ 8
+
+ T T
+ 4
+
+ 64
+ 8
+ 64
+ 0
+ 0
+PASS 9709 integer-bit checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_array_bounds_producer
+ PASS: independent bounds inquiry producer cases:          28
+ + build/gfortran_C2992C13A93EF9F1/test/test_position_formats
+PASS position format assertions: 47
+ + build/gfortran_C2992C13A93EF9F1/test/test_erfc_scaled
+ PASS: ERFC_SCALED metadata, empty/inquiry, finite-policy and producer checks:          51
+ + build/gfortran_C2992C13A93EF9F1/test/test_class_frontend
+PASS: CLASS/type-bound/defined-I/O frontend baseline and 21 mutations
+ + build/gfortran_C2992C13A93EF9F1/test/test_iso_env_alias_producer
+ PASS: ISO_FORTRAN_ENV independent producer assertions:          54
+ + build/gfortran_C2992C13A93EF9F1/test/test_element_substring
+element substring assertions: 339
+ + build/gfortran_C2992C13A93EF9F1/test/test_grouped_formats
+PASS: grouped formats, adapter and runtime mutations, node/byte/operation boundaries
+ + build/gfortran_C2992C13A93EF9F1/test/test_findloc
+PASS: FINDLOC values, KIND inquiry and 345 adapter/runtime checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_release030_composition
+PASS: release 0.30 composition and 24 adapter/runtime metadata rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_inquire_name
+PASS: 325 INQUIRE metadata/registration assertions
+ + build/gfortran_C2992C13A93EF9F1/test/test_generic_producers
+ generic producer: 7 cases passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_literal_substring_producer
+PASS: six literal substring producer structures and scalar type inquiries
+ + build/gfortran_C2992C13A93EF9F1/test/test_release032_composition
+PASS: release 0.32 composition and 32 adapter/runtime metadata rejections; undefined-tail guard
+ + build/gfortran_C2992C13A93EF9F1/test/test_reshape_initializers
+ PASS: RESHAPE initializer checks:          18
+ + build/gfortran_C2992C13A93EF9F1/test/test_leadz
+ 63 63
+ 4
+
+PASS: 1013 LEADZ public-IR and independent-value checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_integer_bits_producer
+ PASS: independent INTEGER bits producer cases:          56
+ + build/gfortran_C2992C13A93EF9F1/test/test_where
+PASS: WHERE semantic baselines and 137 adapter/runtime checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_model_decomposition_producer
+ PASS: independent model decomposition producer cases:          21
+ + build/gfortran_C2992C13A93EF9F1/test/test_allocatable_character
+PASS: allocatable CHARACTER descriptors and 16 adapter/runtime mutation rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_shape_intrinsic
+ 0
+ PASS: SHAPE intrinsic assertions:         337
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_plus_producer
+PASS: 20 optional-generic and CHARACTER plus producer guards
+ + build/gfortran_C2992C13A93EF9F1/test/test_intent_spelling
+PASS: 151 INTENT spelling producer/adapter/runtime checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_elemental_frontend
+PASS: ELEMENTAL baseline, nine adapter disagreements and three declaration rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_eoshift
+ cd! 
+ 1
+
+ 4
+ PASS: EOSHIFT native assertions:        5415
+ + build/gfortran_C2992C13A93EF9F1/test/test_external_read_metadata
+external READ metadata: 185 checks passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_trailz_producer
+ PASS: independent TRAILZ producer cases:          16
+ + build/gfortran_C2992C13A93EF9F1/test/test_random_seed_empty
+PASS: 210 RANDOM_SEED empty-argument, shared-stream, metadata, effect and shadow checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_optional_character_forwarding
+ PASS: absent/unallocated forwarding descriptor mutations:          12
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_plus
+PASS: 39 CHARACTER plus producer/helper/adapter/runtime checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_formatted_arrays
+  1  2  3
+  4
+PASS: formatted array execution, seven adapter mutations, three runtime rejections and six boundary checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_release039_composition
+release039 composition: 1117 assertions passed
+ + build/gfortran_C2992C13A93EF9F1/test/test_gather_actual_source_marker
+ PASS: gathered actual source marker assertions:          60
+ + build/gfortran_C2992C13A93EF9F1/test/test_rank_three_runtime
+PASS: 12 rank-three runtime mutations, atomic errors, seeded RNG range/count/determinism
+ + build/gfortran_C2992C13A93EF9F1/test/test_literal_substrings
+PASS: literal substrings, 176 adapter/runtime checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_allocatable_reallocation_option
+ PASS: allocatable reallocation opt-in preserves strict defaults
+ + build/gfortran_C2992C13A93EF9F1/test/test_random_stream_runtime
+PASS: nested RNG stream, reversed rank-two section, REAL32 range and unevaluated KIND call
+ + build/gfortran_C2992C13A93EF9F1/test/test_fixed_character_derived_scope
+derived CHARACTER actual scope guards: 48
+ + build/gfortran_C2992C13A93EF9F1/test/test_pure_simple_producers
+PASS: producer preserves SIMPLE prefixes and rejects SIMPLE output
+ + build/gfortran_C2992C13A93EF9F1/test/test_clock_samples
+clock sample checks: 794
+ + build/gfortran_C2992C13A93EF9F1/test/test_rrspacing_bit_oracle
+ PASS: RRSPACING independent bit-pattern assertions:        1364
+ + build/gfortran_C2992C13A93EF9F1/test/test_derived_defaults
+ PASS derived component defaults assertions:         105
+ + build/gfortran_C2992C13A93EF9F1/test/test_array_actual_producer
+PASS: array expression actual producer types, ranks and strict mismatches
+ + build/gfortran_C2992C13A93EF9F1/test/test_module_runtime
+PASS: module runtime baseline, 12 invariant rejections and shared budget
+ + build/gfortran_C2992C13A93EF9F1/test/test_process_queries_producer
+ process query producer checks passed:          12
+ + build/gfortran_C2992C13A93EF9F1/test/test_repl_scalar_session
+ 3
+ 3
+ 0.819647849
+x
+ scalar session checks:           64
+ + build/gfortran_C2992C13A93EF9F1/test/test_derived_defaults_producer
+ PASS derived defaults producer assertions:          30
+ + build/gfortran_C2992C13A93EF9F1/test/test_constructor_random_runtime
+PASS: constructor, KIND and RANDOM_NUMBER runtime validation, values, budget and reset
+ + build/gfortran_C2992C13A93EF9F1/test/test_logical_intrinsics
+ PASS: logical intrinsics adapter/runtime checks:         185
+ + build/gfortran_C2992C13A93EF9F1/test/test_dprod_tand_producer
+ PASS: independent DPROD/TAND producer cases:          14
+ + build/gfortran_C2992C13A93EF9F1/test/test_parity_producer
+ PASS: PARITY producer scalar and DIM result metadata:           3
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_search
+
+
+ 0
+
+
+
+ 0
+
+ PASS: character search intrinsic assertions:         330
+ + build/gfortran_C2992C13A93EF9F1/test/test_dprod_tand
+ 7.5000000000000000
+ 7.5000000000000000
+ 8
+ 8
+
+
+ 0.436609425E-1
+ 4
+
+ 0.43660942908512058E-1
+ 8
+
+ PASS: DPROD/TAND independent assertions:        1244
+ + build/gfortran_C2992C13A93EF9F1/test/test_section_runtime
+PASS: 25 independent section IR runtime contracts
+ + build/gfortran_C2992C13A93EF9F1/test/test_array_intrinsics_runtime
+PASS: array-intrinsic runtime baseline, 19 malformed-IR checks and shared budget
+ + build/gfortran_C2992C13A93EF9F1/test/test_array_bounds_constructor_owner
+ PASS: bounds constructor-owner assertions:         200
+ + build/gfortran_C2992C13A93EF9F1/test/test_generic_intrinsic_repeat
+ PASS: generic/intrinsic REPEAT producer and adapter assertions:          23
+ + build/gfortran_C2992C13A93EF9F1/test/test_formatted_read_element
+formatted READ element assertions: 447
+ + build/gfortran_C2992C13A93EF9F1/test/test_keyword_frontend
+PASS: keyword baseline and 28 adapter disagreements
+ + build/gfortran_C2992C13A93EF9F1/test/test_fzero_native
+PASS F0 native assertions: 43
+ + build/gfortran_C2992C13A93EF9F1/test/test_procedure_identifiers
+PASS: contextual PROCEDURE dummy identity, adapter mutation and genuine declaration
+ + build/gfortran_C2992C13A93EF9F1/test/test_array_bounds_inquiry
+ PASS: array bounds inquiry assertions:        8548
+ + build/gfortran_C2992C13A93EF9F1/test/test_rank_three_frontend
+PASS: rank-three adapter baselines and 31 independent metadata disagreements
+ + build/gfortran_C2992C13A93EF9F1/test/test_saved_locals
+PASS: 63 SAVE adapter/runtime/cache/reset checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_constructor_implied_do_producer
+PASS: constructor implied-DO producer checks: 990
+ + build/gfortran_C2992C13A93EF9F1/test/test_select_case_runtime
+PASS: SELECT runtime baseline, 14 corruptions and constant array evaluation
+ + build/gfortran_C2992C13A93EF9F1/test/test_rank_three_allocatables
+PASS: rank-three allocation reset, CHARACTER and 38 adapter/runtime mutation rejections
+ + build/gfortran_C2992C13A93EF9F1/test/test_pointer_runtime_views
+PASS: five backed-view runtime scenarios including escaped caller view and expired local rejection
+ + build/gfortran_C2992C13A93EF9F1/test/test_elemental_mutable_frontend
+PASS: ELEMENTAL subroutines and IMPURE designation adapter checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_logical_initializer_frontend
+PASS: three logical producer roots, baseline and five adapter mutations
+ + build/gfortran_C2992C13A93EF9F1/test/test_keyword_conversion_producers
+ + build/gfortran_C2992C13A93EF9F1/test/test_double_precision
+PASS: 83 DOUBLE PRECISION producer/adapter/runtime checks
+ + build/gfortran_C2992C13A93EF9F1/test/test_internal_read_producer
+ internal READ producer checks passed:          11
+ + build/gfortran_C2992C13A93EF9F1/test/test_explicit_dummy_bounds
+ PASS: explicit-shape dummy independent mutations:          46
+ + build/gfortran_C2992C13A93EF9F1/test/test_character_intrinsics_producer
+ PASS: independent character intrinsic producer cases:          22
+fpm: Leaving directory '/workspace/scratch/c5319e9549df/recovery/057-repl-session-work'

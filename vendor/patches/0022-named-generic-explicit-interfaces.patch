@@ -1,0 +1,41 @@
+--- a/src/semantic/analyzers/semantic_explicit_interface_checker.f90
++++ b/src/semantic/analyzers/semantic_explicit_interface_checker.f90
+@@ -15,7 +15,8 @@
+         identifier_table_init, &
+         identifier_table_reset, identifier_id_kind
+     use intrinsic_registry, only: is_intrinsic_function, is_intrinsic_subroutine
+-    use frontend_compiler_resolution, only: declaration_binding_t, resolve_name_at_node, BINDING_DERIVED_TYPE
++    use frontend_compiler_resolution, only: declaration_binding_t, resolve_name_at_node, &
++        BINDING_DERIVED_TYPE, BINDING_GENERIC_INTERFACE
+     use scope_manager, only: scope_stack_t
+     use string_utils_mod, only: to_lower
+     use type_system_unified, only: TARRAY, mono_type_t, poly_type_t
+@@ -556,6 +557,10 @@
+         ! external function requiring a procedure interface.
+         call resolve_name_at_node(arena, expr_index, proc_name, binding, binding_error)
+         if (binding%found .and. binding%binding_kind == BINDING_DERIVED_TYPE) return
++        ! A visible named generic supplies an explicit interface through its
++        ! specific procedures. Resolve the scoped interface, not a global name
++        ! cache, so PRIVATE and USE ONLY exclusions cannot leak a generic.
++        if (binding%found .and. binding%binding_kind == BINDING_GENERIC_INTERFACE) return
+         ! The semantic scope table can omit USE-associated PARAMETER arrays.
+         ! Resolve the actual declaration rather than treating a(name) as an
+         ! external function, or accepting a same-named inaccessible array.
+@@ -584,13 +589,16 @@
+         type(subroutine_call_node), intent(in) :: expr
+         integer, intent(in) :: expr_index
+ 
+-        character(len=:), allocatable :: proc_name
++        character(len=:), allocatable :: proc_name, binding_error
++        type(declaration_binding_t) :: binding
+ 
+         if (.not. allocated(expr%name)) return
+         if (len_trim(expr%name) == 0) return
+ 
+         proc_name = to_lower(trim(expr%name))
+         if (is_intrinsic_subroutine(proc_name)) return
++        call resolve_name_at_node(arena, expr_index, proc_name, binding, binding_error)
++        if (binding%found .and. binding%binding_kind == BINDING_GENERIC_INTERFACE) return
+         if (has_explicit_interface_in_cache(cache, proc_name)) return
+ 
+         call emit_missing_explicit_interface(errors, expr%name, expr%line, &

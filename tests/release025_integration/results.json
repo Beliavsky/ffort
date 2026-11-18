@@ -1,0 +1,134 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 3,
+    "failed": 0,
+    "candidate_checked": 3,
+    "gnu_checked": 3,
+    "gnu_skipped": 0,
+    "gnu_executed": 2,
+    "gnu_compile_only": 1,
+    "gnu_compile_rejections": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "constants_results_trig",
+        "source": "constants_results_trig.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "sin!cos!\nA!B!\n1\n11\nA!B!\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "sin!cos!\nA!B!\n1\n11\nA!B!\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "sin!cos!\nA!B!\n1\n11\nA!B!\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_lengths_forwarding",
+        "source": "empty_lengths_forwarding.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "04\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "04\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "04\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_parameter_reject",
+        "source": "dynamic_parameter_reject.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release025_integration/dynamic_parameter_reject.f90:7:23: Runtime CHARACTER length is supported only for local variables and results or mandatory ALLOCATABLE arrays\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release025_integration/dynamic_parameter_reject.f90:7:23: Runtime CHARACTER length is supported only for local variables and results or mandatory ALLOCATABLE arrays\n"
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:35:37.097384+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "limits": "Selected CHARACTER semantics only. Runtime safety cases are compiled but not executed by GNU; resource limits are interpreter policy.",
+  "manifest_sha256": "bfd560057b394fb7b3ddfbde6b8efd728c5bdb1ca326ff1b20d524a2ecdb07b2",
+  "source_sha256": {
+    "constants_results_trig.f90": "ec6ab08873326f0e1d8e57d16d63131555b3a3d80bc8cb6eea2c322e91e22fbe",
+    "empty_lengths_forwarding.f90": "3114ad64ca3aa7d32e99b8faecad59f9025f6c6dc8dede2ad19d38745e33167f",
+    "dynamic_parameter_reject.f90": "2c5b0ae4cebef1537bcfefb08ac0077e1febbee7d0ddb0687d2255e8eb5d4755"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

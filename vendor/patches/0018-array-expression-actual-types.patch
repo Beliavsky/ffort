@@ -1,0 +1,217 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -32,7 +32,7 @@
+     end type resolved_type_query_t
+ 
+     public :: annotate_resolved_expression_types
+-    public :: query_resolved_type
++    public :: query_resolved_type, resolve_expression_type
+     ! Shared by strict argument checking before expression annotation runs.
+     public :: resolve_kind_selector, resolve_kind_expression
+ 
+@@ -56,6 +56,19 @@
+             call resolve_node_metadata(arena, i, visiting)
+         end do
+     end subroutine annotate_resolved_expression_types
++
++    ! Strict argument validation runs before final whole-arena annotation. Use
++    ! the same scope-aware resolver on demand, including complete expressions,
++    ! so arithmetic/intrinsic actuals retain their declared element kind/rank.
++    function resolve_expression_type(arena, node_index) result(query)
++        type(ast_arena_t), intent(inout) :: arena
++        integer, intent(in) :: node_index
++        type(resolved_type_query_t) :: query
++        logical, allocatable :: visiting(:)
++        allocate (visiting(arena%size), source=.false.)
++        call resolve_node_metadata(arena, node_index, visiting)
++        query = query_resolved_type(arena, node_index)
++    end function resolve_expression_type
+ 
+     function query_resolved_type(arena, node_index) result(query)
+         type(ast_arena_t), intent(in) :: arena
+@@ -381,7 +394,7 @@
+             return
+         end if
+ 
+-        if (operator == "**") then
++        if (operator == "**" .and. right_type == TINT) then
+             if (left_type == TREAL .or. left_type == TCOMPLEX) then
+                 call set_intrinsic_metadata(node, left_type, left_kind, result_rank)
+                 return
+@@ -443,6 +456,28 @@
+             call copy_metadata_from_index(arena, binding%declaration_node_index, node)
+             if (node%resolved_type_found) then
+                 select type (proc => arena%entries(binding%declaration_node_index)%node)
++                type is (declaration_node)
++                    ! A subscripted array reference has the scalar element type
++                    ! unless triplets or vector subscripts preserve dimensions.
++                    ! Copying the declaration rank would accept x(1) for x(:).
++                    if (proc%is_array .and. allocated(node%arg_indices)) then
++                        call_rank = 0
++                        do i = 1, size(node%arg_indices)
++                            arg_index = node%arg_indices(i)
++                            if (.not. arena%has_node_at(arg_index)) cycle
++                            select type (subscript => arena%entries(arg_index)%node)
++                            type is (range_expression_node)
++                                call_rank = call_rank + 1
++                            type is (array_bounds_node)
++                                call_rank = call_rank + 1
++                            class default
++                                call resolve_node_metadata(arena, arg_index, visiting)
++                                if (arena%entries(arg_index)%node%resolved_rank > 0) &
++                                    call_rank = call_rank + 1
++                            end select
++                        end do
++                        node%resolved_rank = call_rank
++                    end if
+                 type is (function_def_node)
+                     if (is_elemental_prefix(proc%prefix_keywords)) then
+                         ! Module procedure bodies may not have been visited by
+--- a/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
++++ b/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
+@@ -9,9 +9,11 @@
+     use ast_nodes_procedure, only: function_def_node
+     use frontend_compiler_resolution, only: declaration_binding_t, &
+         resolve_identifier_binding, resolve_name_at_node
+-    use frontend_compiler_type_queries, only: resolve_kind_selector, resolve_kind_expression
++    use frontend_compiler_type_queries, only: resolve_kind_selector, resolve_kind_expression, &
++        resolve_expression_type, resolved_type_query_t
+     use semantic_elemental_validation, only: is_elemental_prefix
+     use semantic_procedure_utils, only: declaration_type_to_mono
++    use semantic_unsigned_integer_mix_diagnostics, only: extract_integer_signedness
+     use string_utils_mod, only: to_lower
+     use type_system_unified, only: mono_type_t, create_mono_type, TARRAY, TDOUBLE, &
+         TCHAR, TCOMPLEX, TINT, TLOGICAL, TREAL, TVAR
+@@ -78,15 +80,34 @@
+     end function strict_dummy_type
+ 
+     recursive function strict_actual_argument_type(arena, expr_index) result(typ)
+-        type(ast_arena_t), intent(in) :: arena
++        type(ast_arena_t), intent(inout) :: arena
+         integer, intent(in) :: expr_index
+         type(mono_type_t) :: typ, declared_type, actual_type
++        type(resolved_type_query_t) :: resolved
+         integer :: rank, i, bound
++        logical :: inferred_integer, inferred_unsigned
+         type(declaration_binding_t) :: binding
+         character(len=:), allocatable :: error_msg
+ 
+         typ%kind = 0
+         if (.not. arena%has_node_at(expr_index)) return
++
++        ! Resolve the complete expression from scope-aware declaration metadata,
++        ! not the provisional inference type. Named-kind array expressions can
++        ! otherwise still carry default REAL here, before final annotation.
++        resolved = resolve_expression_type(arena, expr_index)
++        if (resolved%found .and. resolved%rank >= 0) then
++            select case (resolved%type_kind)
++            case (TREAL, TLOGICAL)
++                typ = create_mono_type(resolved%type_kind)
++                if (resolved%type_kind == TREAL .and. resolved%kind_value == 8) &
++                    typ = create_mono_type(TDOUBLE)
++                do i = 1, resolved%rank
++                    typ = create_mono_type(TARRAY, args=[typ])
++                end do
++                return
++            end select
++        end if
+ 
+         select type (node => arena%entries(expr_index)%node)
+             type is (literal_node)
+@@ -188,6 +209,18 @@
+         class default
+             typ = arena%entries(expr_index)%node%inferred_type
+         end select
++
++        ! Parameter-array expressions may also retain provisional REAL in the
++        ! inference tree. Rebuild INTEGER kind/rank from the canonical resolver,
++        ! retaining signedness from the existing strict/inferred element path.
++        if (resolved%found .and. resolved%type_kind == TINT .and. resolved%rank >= 0) then
++            call extract_integer_signedness(typ, inferred_integer, inferred_unsigned)
++            typ = create_mono_type(TINT)
++            typ%is_unsigned = inferred_integer .and. inferred_unsigned
++            do i = 1, resolved%rank
++                typ = create_mono_type(TARRAY, args=[typ])
++            end do
++        end if
+     end function strict_actual_argument_type
+ 
+     recursive function with_element_type(shape, element) result(typ)
+@@ -316,11 +349,13 @@
+         is_known = .true.
+     end function strict_type_is_known
+ 
+-    subroutine strict_type_name(typ, name)
++    recursive subroutine strict_type_name(typ, name)
+         type(mono_type_t), intent(in) :: typ
+         character(len=:), allocatable, intent(out) :: name
+         type(mono_type_t) :: copy
+         character(len=64) :: buffer
++        character(len=:), allocatable :: element_name
++        integer :: rank
+ 
+         copy = typ
+         call copy%sync_from_arena()
+@@ -344,7 +379,17 @@
+         case (TCOMPLEX)
+             name = "complex"
+         case (TARRAY)
+-            name = "array"
++            rank = 0
++            do while (copy%kind == TARRAY)
++                rank = rank + 1
++                if (.not. copy%has_args()) exit
++                copy = copy%get_arg(1)
++                call copy%sync_from_arena()
++            end do
++            element_name = 'unknown'
++            if (copy%kind /= TARRAY) call strict_type_name(copy, element_name)
++            write (buffer, '(I0)') rank
++            name = 'rank-'//trim(buffer)//' array of '//element_name
+         case default
+             name = "unknown"
+         end select
+--- a/src/semantic/analyzers/semantic_strict_argument_type_checker_validation.f90
++++ b/src/semantic/analyzers/semantic_strict_argument_type_checker_validation.f90
+@@ -12,6 +12,7 @@
+         strict_actual_argument_type, &
+         strict_dummy_type, strict_type_is_known, strict_type_name, &
+         strict_types_match
++    use frontend_compiler_type_queries, only: resolve_expression_type, resolved_type_query_t
+     use string_utils_mod, only: to_lower
+     use type_system_unified, only: mono_type_t, TARRAY
+     implicit none
+@@ -409,6 +410,8 @@
+         logical :: actual_is_unsigned
+         logical :: dummy_is_unsigned
+         logical :: actual_is_int_literal
++        type(resolved_type_query_t) :: actual_resolved, dummy_resolved
++        character(len=16) :: actual_kind, dummy_kind
+ 
+         if (.not. arena%has_node_at(arg_expr_index)) return
+         if (.not. arena%has_node_at(dummy_index)) return
+@@ -444,6 +447,24 @@
+                     call emit_unsigned_integer_mix_error(errors, &
+                         arena%entries(arg_expr_index)%node%line, &
+                         arena%entries(arg_expr_index)%node%column)
++                    return
++                end if
++            end if
++            ! The mono-type INTEGER tag does not encode kind width. Compare
++            ! canonical kinds explicitly rather than accepting 4/8 mismatches.
++            actual_resolved = resolve_expression_type(arena, arg_expr_index)
++            dummy_resolved = resolve_expression_type(arena, dummy_index)
++            if (actual_resolved%found .and. dummy_resolved%found .and. &
++                actual_resolved%kind_value > 0 .and. dummy_resolved%kind_value > 0) then
++                if (actual_resolved%kind_value /= dummy_resolved%kind_value) then
++                    write (actual_kind, '(I0)') actual_resolved%kind_value
++                    write (dummy_kind, '(I0)') dummy_resolved%kind_value
++                    call emit_argument_error(errors, &
++                        "Type mismatch in call to '"//trim(proc_name)// &
++                        "': actual argument '"//trim(dummy_name)// &
++                        "' has INTEGER kind "//trim(actual_kind)// &
++                        ", but dummy expects INTEGER kind "//trim(dummy_kind), &
++                        arena, arg_expr_index)
+                     return
+                 end if
+             end if

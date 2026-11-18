@@ -1,0 +1,110 @@
+{
+  "source_sha256": "38e28acdcca7b141783488a1c90d97026ea0e66888324bfaf1da44383e04fe43",
+  "compile_database_entry": {
+    "arguments": [
+      "gfortran",
+      "-c",
+      "././src/fi_runtime.f90",
+      "-gsplit-dwarf",
+      "-Wall",
+      "-Wextra",
+      "-Wimplicit-interface",
+      "-Wno-external-argument-mismatch",
+      "-fPIC",
+      "-fmax-errors=1",
+      "-g",
+      "-fcheck=bounds",
+      "-fcheck=array-temps",
+      "-fbacktrace",
+      "-fcoarray=single",
+      "-fimplicit-none",
+      "-Werror=implicit-interface",
+      "-ffree-form",
+      "-J",
+      "build/gfortran_48E3D019815BEB25",
+      "-Ibuild/gfortran_48E3D019815BEB25",
+      "-o",
+      "build/gfortran_48E3D019815BEB25/fortfront-interpreter/src_fi_runtime.f90.o"
+    ],
+    "directory": "/workspace/scratch/c5319e9549df/recovery/052-shared-work",
+    "file": "././src/fi_runtime.f90"
+  },
+  "cli_sha256_before": "ed6a473ee26da30eab19869dda97609c40a4952add410e62d0d29bd2a1877bd4",
+  "archive_sha256_before": "4931755e703451e359f067f80c7c1d136bbe87cb0141034bd2e4d84a21a5bcfe",
+  "stages": [
+    {
+      "label": "compile",
+      "argv": [
+        "gfortran",
+        "-c",
+        "/workspace/scratch/c5319e9549df/recovery/052-integration/native-actual-second/test_character_gather.f90",
+        "-gsplit-dwarf",
+        "-Wall",
+        "-Wextra",
+        "-Wimplicit-interface",
+        "-Wno-external-argument-mismatch",
+        "-fPIC",
+        "-fmax-errors=1",
+        "-g",
+        "-fcheck=bounds",
+        "-fcheck=array-temps",
+        "-fbacktrace",
+        "-fcoarray=single",
+        "-fimplicit-none",
+        "-Werror=implicit-interface",
+        "-ffree-form",
+        "-J",
+        "build/gfortran_48E3D019815BEB25",
+        "-Ibuild/gfortran_48E3D019815BEB25",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/052-integration/native-actual-second/test_character_gather.o"
+      ],
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "link",
+      "argv": [
+        "gfortran",
+        "-gsplit-dwarf",
+        "-Wall",
+        "-Wextra",
+        "-Wimplicit-interface",
+        "-Wno-external-argument-mismatch",
+        "-fPIC",
+        "-fmax-errors=1",
+        "-g",
+        "-fcheck=bounds",
+        "-fcheck=array-temps",
+        "-fbacktrace",
+        "-fcoarray=single",
+        "-fimplicit-none",
+        "-Werror=implicit-interface",
+        "-ffree-form",
+        "-J",
+        "build/gfortran_48E3D019815BEB25",
+        "-Ibuild/gfortran_48E3D019815BEB25",
+        "/workspace/scratch/c5319e9549df/recovery/052-integration/native-actual-second/test_character_gather.o",
+        "/workspace/scratch/c5319e9549df/recovery/052-shared-work/build/gfortran_6282B10B386AB9DF/fortfront-interpreter/libfortfront-interpreter.a",
+        "-o",
+        "/workspace/scratch/c5319e9549df/recovery/052-integration/native-actual-second/test_character_gather"
+      ],
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "run",
+      "argv": [
+        "/workspace/scratch/c5319e9549df/recovery/052-integration/native-actual-second/test_character_gather"
+      ],
+      "status": 1,
+      "stdout": " FAIL: snapshot adapter marker\n",
+      "stderr": "ERROR STOP 1\n\nError termination. Backtrace:\n#0  0x7f1345fde2ba in ???\n#1  0x7f1345fdedb9 in ???\n#2  0x7f1345fe01a2 in ???\n#3  0x55beb2ad48ad in ???\n\tat /workspace/scratch/c5319e9549df/recovery/052-integration/native-actual-second/test_character_gather.f90:126\n#4  0x55beb2ad640f in ???\n\tat /workspace/scratch/c5319e9549df/recovery/052-integration/native-actual-second/test_character_gather.f90:68\n#5  0x55beb2ad7156 in ???\n\tat /workspace/scratch/c5319e9549df/recovery/052-integration/native-actual-second/test_character_gather.f90:2\n#6  0x7f1345cd3ca7 in ???\n#7  0x7f1345cd3d64 in ???\n#8  0x55beb2ad4710 in ???\n#9  0xffffffffffffffff in ???\n"
+    }
+  ],
+  "status": "failed-preserved",
+  "cli_sha256_after": "ed6a473ee26da30eab19869dda97609c40a4952add410e62d0d29bd2a1877bd4",
+  "archive_sha256_after": "4931755e703451e359f067f80c7c1d136bbe87cb0141034bd2e4d84a21a5bcfe"
+}

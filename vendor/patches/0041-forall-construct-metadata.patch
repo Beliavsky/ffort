@@ -1,0 +1,218 @@
+diff --git a/src/ast/factory/ast_factory_control.f90 b/src/ast/factory/ast_factory_control.f90
+index 2c68704..1478c61 100644
+--- a/src/ast/factory/ast_factory_control.f90
++++ b/src/ast/factory/ast_factory_control.f90
+@@ -1,3 +1,4 @@
++! FORALL headers and bodies retain their parent links.
+ module ast_factory_control
+     use, intrinsic :: iso_fortran_env, only: error_unit
+     use ast_arena_modern, only: ast_arena_t, link_children_to_parent
+diff --git a/src/ast/factory/ast_factory_control_part1.inc b/src/ast/factory/ast_factory_control_part1.inc
+index 2cf805c..7931efd 100644
+--- a/src/ast/factory/ast_factory_control_part1.inc
++++ b/src/ast/factory/ast_factory_control_part1.inc
+@@ -502,6 +502,18 @@ function push_do_loop(arena, var_name, start_index, end_index, step_index, &
+         end if
+         forall_index = arena%size
+ 
++        ! Header expressions belong to the construct just as its body does.
++        ! Unlinked calls cannot resolve their surrounding declarations.
++        call link_children_to_parent(arena, forall_index, lower_vals)
++        call link_children_to_parent(arena, forall_index, upper_vals)
++        do i = 1, num_indices
++            if (stride_vals(i) > 0) &
++                call link_children_to_parent(arena, forall_index, [stride_vals(i)])
++        end do
++        if (present(mask_index)) then
++            if (mask_index > 0) call link_children_to_parent(arena, forall_index, [mask_index])
++        end if
++
+         ! Link children to this parent for AST traversal
+         if (present(body_indices)) then
+             if (size(body_indices) > 0) then
+diff --git a/src/parser/control_flow/parser_do_constructs.f90 b/src/parser/control_flow/parser_do_constructs.f90
+index 7df80db..19c2878 100644
+--- a/src/parser/control_flow/parser_do_constructs.f90
++++ b/src/parser/control_flow/parser_do_constructs.f90
+@@ -11,7 +11,7 @@ module parser_do_constructs_module
+     use parser_if_constructs_module, only: parse_if, register_parse_do_loop
+     use parser_statement_callbacks_module, only: register_fallback_do_parser, &
+         register_fallback_if_parser, register_fallback_block_parser, &
+-        register_fallback_select_parsers
++        register_fallback_select_parsers, register_fallback_forall_parser
+     use parser_select_constructs_module, only: parse_select_case, parse_select_type, &
+         parse_select_rank
+     use parser_array_constructs_module, only: parse_where_construct, parse_associate, &
+diff --git a/src/parser/control_flow/parser_do_constructs_part1.inc b/src/parser/control_flow/parser_do_constructs_part1.inc
+index 8d97b63..52d00cf 100644
+--- a/src/parser/control_flow/parser_do_constructs_part1.inc
++++ b/src/parser/control_flow/parser_do_constructs_part1.inc
+@@ -9,6 +9,7 @@
+             ! this module already uses, so registering it costs no new
+             ! dependency and closes no cycle.
+             call register_fallback_if_parser(parse_if)
++            call register_fallback_forall_parser(parse_forall)
+             ! And the BLOCK construct, reached the same way: a `block` with
+             ! its own declarations sitting inside a loop or a case arm.
+             call register_fallback_block_parser(parse_block_construct)
+diff --git a/src/parser/control_flow/parser_forall.f90 b/src/parser/control_flow/parser_forall.f90
+index c7de570..3a771bd 100644
+--- a/src/parser/control_flow/parser_forall.f90
++++ b/src/parser/control_flow/parser_forall.f90
+@@ -425,6 +425,11 @@ contains
+ 
+         allocate (stmt_tokens(token_count + 1))
+         stmt_tokens(1:token_count) = parser%tokens(start_idx:end_idx)
++        ! Continuation normalization retains the original physical line. An
++        ! inline assignment after a continued header starts on that line.
++        do k = 1, token_count
++            if (stmt_tokens(k)%physical_line > 0) stmt_tokens(k)%line = stmt_tokens(k)%physical_line
++        end do
+         stmt_tokens(token_count + 1)%kind = TK_EOF
+         stmt_tokens(token_count + 1)%text = ""
+         stmt_tokens(token_count + 1)%line = parser%tokens(end_idx)%line
+diff --git a/src/parser/procedures/parser_procedure_definition_bodies.f90 b/src/parser/procedures/parser_procedure_definition_bodies.f90
+index f911913..a837a3b 100644
+--- a/src/parser/procedures/parser_procedure_definition_bodies.f90
++++ b/src/parser/procedures/parser_procedure_definition_bodies.f90
+@@ -9,6 +9,8 @@ module parser_procedure_definition_bodies_module
+         reject_unconsumed_tokens
+     use parser_if_constructs_module, only: parse_if
+     use parser_do_constructs_module, only: parse_do_loop
++    use parser_forall_module, only: parse_forall
++    use parser_statement_detection_module, only: find_statement_end
+     use parser_select_constructs_module, only: parse_select_case, parse_select_type, &
+         parse_select_rank
+     use parser_array_constructs_module, only: parse_associate, parse_block_construct
+@@ -552,7 +554,9 @@ contains
+         ! keyword; the span still has to be located from the terminator of the
+         ! construct, not from the end of the first line (issue #2967).
+         construct_pos = block_construct_start(parser%tokens, stmt_start)
+-        if (construct_pos > 0) then
++        if (to_lower(first_token%text) == "forall") then
++            stmt_end = find_statement_end(parser%tokens, stmt_start)
++        else if (construct_pos > 0) then
+             stmt_end = locate_block_statement_end(parser%tokens, construct_pos, &
+                 parser%tokens(construct_pos)%text, unaccounted)
+             ! The span scanner could not account for the tokens of this unit.
+@@ -801,6 +805,13 @@ contains
+                         block_parser%diagnostic_sink => parent_parser%diagnostic_sink
+                     end if
+                     stmt_index = parse_if(block_parser, arena)
++                else if (trim(token_lower) == "forall") then
++                    block_parser = create_parser_state(construct_tokens)
++                    if (associated(parent_parser%diagnostic_sink)) then
++                        block_parser%diagnostic_sink => parent_parser%diagnostic_sink
++                    end if
++                    stmt_index = parse_forall(block_parser, arena)
++                    call parent_parser%absorb_errors(block_parser)
+                 else if (trim(token_lower) == "do") then
+                     stmt_index = parse_do_statement_tokens(construct_tokens, arena, &
+                         parent_parser)
+diff --git a/src/parser/statements/parser_statement_callbacks.f90 b/src/parser/statements/parser_statement_callbacks.f90
+index 5425ad5..099716b 100644
+--- a/src/parser/statements/parser_statement_callbacks.f90
++++ b/src/parser/statements/parser_statement_callbacks.f90
+@@ -46,6 +46,7 @@ module parser_statement_callbacks_module
+     public :: null_statement_callbacks
+     public :: register_fallback_do_parser, fallback_do_parser_is_set, &
+               call_fallback_do_parser
++    public :: register_fallback_forall_parser, call_fallback_forall_parser
+     public :: register_fallback_if_parser, call_fallback_if_parser
+     public :: register_fallback_block_parser, call_fallback_block_parser
+     public :: register_fallback_select_parsers
+@@ -60,6 +61,7 @@ module parser_statement_callbacks_module
+     !! cycle, which is why `if` reaches its own through a forwarder. This is
+     !! the same indirection, done once here where the callback type already
+     !! lives.
++    procedure(parse_without_parent_interface), pointer :: forall_parser => null()
+     procedure(parse_without_parent_interface), pointer :: do_parser => null()
+     !! The full IF parser, for the same reason. The definition-level fallback
+     !! reached otherwise handles a single if, not one containing another, and
+@@ -81,6 +83,18 @@ module parser_statement_callbacks_module
+ 
+ contains
+ 
++    subroutine register_fallback_forall_parser(proc)
++        procedure(parse_without_parent_interface) :: proc
++        forall_parser => proc
++    end subroutine register_fallback_forall_parser
++
++    integer function call_fallback_forall_parser(parser, arena) result(node_index)
++        type(parser_state_t), intent(inout) :: parser
++        type(ast_arena_t), intent(inout) :: arena
++        node_index = 0
++        if (associated(forall_parser)) node_index = forall_parser(parser, arena)
++    end function call_fallback_forall_parser
++
+     subroutine register_fallback_do_parser(proc)
+         !! Called once by the do parser's own initialisation.
+         procedure(parse_without_parent_interface) :: proc
+diff --git a/src/parser/statements/parser_statement_core.f90 b/src/parser/statements/parser_statement_core.f90
+index 2109972..1b9d426 100644
+--- a/src/parser/statements/parser_statement_core.f90
++++ b/src/parser/statements/parser_statement_core.f90
+@@ -29,7 +29,7 @@ module parser_statement_core_module
+     use parser_statement_callbacks_module, only: statement_callbacks_t, &
+         null_statement_callbacks, &
+         call_fallback_do_parser, call_fallback_if_parser, &
+-        call_fallback_block_parser, &
++        call_fallback_block_parser, call_fallback_forall_parser, &
+         call_fallback_select_case_parser, call_fallback_select_type_parser, &
+         call_fallback_select_rank_parser
+     use parser_statement_data_module, only: parse_data_statement, &
+@@ -381,6 +381,8 @@ contains
+         case ("forall")
+             if (associated(callbacks%parse_forall)) then
+                 stmt_index = callbacks%parse_forall(parser, arena)
++            else
++                stmt_index = call_fallback_forall_parser(parser, arena)
+             end if
+         case ("associate")
+             if (associated(callbacks%parse_associate)) then
+diff --git a/src/parser/statements/parser_statement_detection.f90 b/src/parser/statements/parser_statement_detection.f90
+index af3f976..5b2e842 100644
+--- a/src/parser/statements/parser_statement_detection.f90
++++ b/src/parser/statements/parser_statement_detection.f90
+@@ -399,7 +399,8 @@ contains
+         case ("where")
+             call handle_where_keyword(tokens, idx, tracker)
+         case ("forall")
+-            call push_construct(tracker, "forall", tracker%forall_depth)
++            call set_first_keyword(tracker, "forall")
++            if (.not. is_inline_where(tokens, idx)) tracker%forall_depth = tracker%forall_depth + 1
+         case ("associate")
+             call push_construct(tracker, "associate", tracker%assoc_depth)
+         case ("else")
+diff --git a/src/semantic/analyzers/semantic_analyzer.f90 b/src/semantic/analyzers/semantic_analyzer.f90
+index 83bad65..18b2a65 100644
+--- a/src/semantic/analyzers/semantic_analyzer.f90
++++ b/src/semantic/analyzers/semantic_analyzer.f90
+@@ -1,3 +1,4 @@
++! FORALL inference visits header operands as well as the body.
+ module semantic_analyzer
+     use type_system_unified, only: type_var_t, mono_type_t, poly_type_t, &
+         substitution_t, allocation_info_t
+diff --git a/src/semantic/analyzers/semantic_analyzer_infer_type_locals_part2.inc b/src/semantic/analyzers/semantic_analyzer_infer_type_locals_part2.inc
+index e68bb2e..56234c5 100644
+--- a/src/semantic/analyzers/semantic_analyzer_infer_type_locals_part2.inc
++++ b/src/semantic/analyzers/semantic_analyzer_infer_type_locals_part2.inc
+@@ -133,6 +133,18 @@
+                     call push_child(expr%body_indices(i))
+                 end do
+             end if
++            ! Resolve calls and subscripts in the mask and all triplet operands,
++            ! not only the assignments in the body.
++            if (expr%has_mask) call push_child(expr%mask_expr_index)
++            if (allocated(expr%lower_bound_indices)) then
++                do i = size(expr%lower_bound_indices), 1, -1
++                    if (allocated(expr%stride_indices)) then
++                        if (expr%stride_indices(i) > 0) call push_child(expr%stride_indices(i))
++                    end if
++                    call push_child(expr%upper_bound_indices(i))
++                    call push_child(expr%lower_bound_indices(i))
++                end do
++            end if
+         end subroutine prepare_forall_node
+ 
+         subroutine schedule_select_case_node(current, expr)

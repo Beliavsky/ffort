@@ -1,0 +1,480 @@
+{
+  "cases": [
+    {
+      "name": "original_aint",
+      "source": "cases/demo_aint.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": " basics:\n  just chops off the fractional part\n  -2.00000000      -2.00000000    \n  if |x| < 1 a positive zero is returned\n  -0.00000000       0.00000000    \n  input may be of any real kind\n  -4.0000000000000000        4.0000000000000000     \n elemental:\n  -2.00000000      -2.00000000      -2.00000000      -2.00000000      -1.00000000      -1.00000000      -0.00000000       0.00000000       0.00000000       1.00000000       1.00000000       2.00000000       2.00000000       2.00000000       2.00000000    \n"
+    },
+    {
+      "name": "original_anint",
+      "source": "cases/demo_anint.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": " ANINT (2.783) has the value 3.0 =>   3.00000000    \n ANINT (-2.783) has the value -3.0 =>  -3.00000000    \n by default the kind of the output is the kind of the input\n   1.23456794E+09\n   1234567890.0000000     \n sometimes specifying the result kind is useful when passing\n results as an argument, for example.\n do you know why the results are different?\n   1234567936.0000000     \n   1234567890.0000000     \n numbers on a cusp are always the most troublesome\n  -3.00000000      -3.00000000      -2.00000000      -2.00000000      -2.00000000      -1.00000000      -1.00000000       0.00000000    \n negative zero is processor dependent\n   0.00000000       0.00000000       1.00000000       1.00000000       2.00000000       2.00000000       2.00000000       3.00000000       3.00000000    \n  -0.00000000      -0.00000000      -1.00000000      -1.00000000      -2.00000000      -2.00000000      -2.00000000      -3.00000000      -3.00000000    \n"
+    },
+    {
+      "name": "original_asinh",
+      "source": "cases/demo_asinh.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": " -0.88137358701954305        0.0000000000000000       0.88137358701954305     \n"
+    },
+    {
+      "name": "original_acosh",
+      "source": "cases/demo_acosh.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "   0.0000000000000000        1.3169578969248166        1.7627471740390861     \n"
+    },
+    {
+      "name": "keywords",
+      "source": "cases/keywords.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "  -2.0000000000000000       -3.00000000    \n   1.4436354751788103        1.31695795    \n           8           4           8           8           4\n"
+    },
+    {
+      "name": "kind_expressions",
+      "source": "cases/kind_expressions.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "  -3.0000000000000000        3.00000000    \n   2.0000000000000000        3.0000000000000000     \n"
+    },
+    {
+      "name": "round_before_narrowing",
+      "source": "cases/round_before_narrowing.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "0.0 -0.0 1.0 -1.0 0.0 -0.0 2.0 -2.0\n"
+    },
+    {
+      "name": "narrow_constant_fold",
+      "source": "cases/narrow_constant_fold.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1.0 0.0\n"
+    },
+    {
+      "name": "arrays_rank1",
+      "source": "cases/arrays_rank1.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "  -2.0000000000000000       -1.0000000000000000        0.0000000000000000        1.0000000000000000        2.0000000000000000       -3.0000000000000000       -1.0000000000000000        0.0000000000000000        1.0000000000000000        3.0000000000000000       -1.6472311463710958      -0.88137358701954305        0.0000000000000000       0.88137358701954305        1.6472311463710958        1.9248473002384139        1.3169578969248166        0.0000000000000000        1.3169578969248166        1.9248473002384139     \n"
+    },
+    {
+      "name": "arrays_rank2",
+      "source": "cases/arrays_rank2.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "   2.00000000       3.00000000       0.00000000       1.00000000      -2.00000000      -1.00000000      -3.0000000000000000       -1.0000000000000000        0.0000000000000000        1.0000000000000000        3.0000000000000000        3.0000000000000000       -1.6472311463710958      -0.88137358701954305        0.0000000000000000       0.88137358701954305        1.6472311463710958        1.8184464592320668        1.9248473002384139        1.3169578969248166        0.0000000000000000        1.3169578969248166        1.9248473002384139        2.0634370688955608     \n"
+    },
+    {
+      "name": "arrays_rank3",
+      "source": "cases/arrays_rank3.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "  -2.0000000000000000       -2.0000000000000000       -2.0000000000000000       -2.0000000000000000        1.0000000000000000        1.0000000000000000        1.0000000000000000        1.0000000000000000       -3.0000000000000000       -3.0000000000000000       -3.0000000000000000       -3.0000000000000000        2.0000000000000000        2.0000000000000000        2.0000000000000000        2.0000000000000000       -1.6472311463710958       -1.6472311463710958       -1.6472311463710958       -1.6472311463710958        1.3258977669011374        1.3258977669011374        1.3258977669011374        1.3258977669011374        1.9248473002384139        1.9248473002384139        1.9248473002384139        1.9248473002384139        1.6699190305877700        1.6699190305877700        1.6699190305877700        1.6699190305877700     \n"
+    },
+    {
+      "name": "empty",
+      "source": "cases/empty.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           0           0           0           0\n           4           8           8           8\n"
+    },
+    {
+      "name": "kind_no_value",
+      "source": "cases/kind_no_value.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "8 4 8 8 8 4\n"
+    },
+    {
+      "name": "parameters",
+      "source": "cases/parameters.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "  -2.0000000000000000        3.0000000000000000       0.88137358701954305        1.3169578969248168     \n"
+    },
+    {
+      "name": "huge_values",
+      "source": "cases/huge_values.f90",
+      "category": "success",
+      "baseline": "run",
+      "abs_tol": 0,
+      "expected_stdout": "   3.40282347E+38   3.40282347E+38   1.7976931348623157E+308   1.7976931348623157E+308\n   89.4159851      -89.4159851       89.4159851       710.47586007394386       -710.47586007394386        710.47586007394386     \n"
+    },
+    {
+      "name": "tiny_and_subnormal",
+      "source": "cases/tiny_and_subnormal.f90",
+      "category": "success",
+      "baseline": "run",
+      "abs_tol": 0,
+      "expected_stdout": "   1.40129846E-45  -1.40129846E-45   4.9406564584124654E-324  -4.9406564584124654E-324\n   0.00000000       0.00000000       0.0000000000000000        0.0000000000000000     \n"
+    },
+    {
+      "name": "zero_sign",
+      "source": "cases/zero_sign.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "  -1.0000000000000000       -1.0000000000000000       -1.0000000000000000     \n  -1.00000000      -1.00000000       0.0000000000000000     \n"
+    },
+    {
+      "name": "dynamic_arrays",
+      "source": "cases/dynamic_arrays.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "  -1.0000000000000000        0.0000000000000000        2.0000000000000000       -2.00000000       1.00000000       3.00000000      -1.1947632172871094       0.48121182505960347        1.6472311463710958        1.5667992369724111       0.96242365011920694        1.9248473002384139     \n"
+    },
+    {
+      "name": "optional_metadata",
+      "source": "cases/optional_metadata.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           4           8           8           8\n"
+    },
+    {
+      "name": "aint_integer",
+      "source": "cases/aint_integer.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "aint_logical",
+      "source": "cases/aint_logical.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "aint_extra",
+      "source": "cases/aint_extra.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "aint_empty",
+      "source": "cases/aint_empty.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "aint_kind16",
+      "source": "cases/aint_kind16.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "anint_integer",
+      "source": "cases/anint_integer.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "anint_logical",
+      "source": "cases/anint_logical.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "anint_extra",
+      "source": "cases/anint_extra.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "anint_empty",
+      "source": "cases/anint_empty.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "anint_kind16",
+      "source": "cases/anint_kind16.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "asinh_integer",
+      "source": "cases/asinh_integer.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "asinh_logical",
+      "source": "cases/asinh_logical.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "asinh_extra",
+      "source": "cases/asinh_extra.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "asinh_empty",
+      "source": "cases/asinh_empty.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "asinh_kind16",
+      "source": "cases/asinh_kind16.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "acosh_integer",
+      "source": "cases/acosh_integer.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "acosh_logical",
+      "source": "cases/acosh_logical.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "acosh_extra",
+      "source": "cases/acosh_extra.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "acosh_empty",
+      "source": "cases/acosh_empty.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "acosh_kind16",
+      "source": "cases/acosh_kind16.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "aint_bad_kind",
+      "source": "cases/aint_bad_kind.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "aint_dynamic_kind",
+      "source": "cases/aint_dynamic_kind.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "aint_array_kind",
+      "source": "cases/aint_array_kind.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "aint_real_kind",
+      "source": "cases/aint_real_kind.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "aint_duplicate",
+      "source": "cases/aint_duplicate.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "aint_wrong_keyword",
+      "source": "cases/aint_wrong_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "aint_narrow_overflow",
+      "source": "cases/aint_narrow_overflow.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "diagnostic": "overflows",
+      "expected_stdout": ""
+    },
+    {
+      "name": "anint_bad_kind",
+      "source": "cases/anint_bad_kind.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "anint_dynamic_kind",
+      "source": "cases/anint_dynamic_kind.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "anint_array_kind",
+      "source": "cases/anint_array_kind.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "anint_real_kind",
+      "source": "cases/anint_real_kind.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "anint_duplicate",
+      "source": "cases/anint_duplicate.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "anint_wrong_keyword",
+      "source": "cases/anint_wrong_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "anint_narrow_overflow",
+      "source": "cases/anint_narrow_overflow.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "diagnostic": "overflows",
+      "expected_stdout": ""
+    },
+    {
+      "name": "acosh_domain",
+      "source": "cases/acosh_domain.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "diagnostic": "ACOSH",
+      "expected_stdout": ""
+    },
+    {
+      "name": "acosh_negative",
+      "source": "cases/acosh_negative.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "diagnostic": "ACOSH",
+      "expected_stdout": ""
+    },
+    {
+      "name": "undefined",
+      "source": "cases/undefined.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "diagnostic": "uninitialized",
+      "expected_stdout": ""
+    },
+    {
+      "name": "asinh_complex",
+      "source": "cases/asinh_complex.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": ""
+    },
+    {
+      "name": "acosh_twoarg",
+      "source": "cases/acosh_twoarg.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "asinh_wrong_keyword",
+      "source": "cases/asinh_wrong_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "legacy_aliases",
+      "source": "cases/legacy_aliases.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "gnu_flags": [
+        "-std=gnu",
+        "-fcheck=all",
+        "-O0"
+      ]
+    },
+    {
+      "name": "shadow_scalars",
+      "source": "cases/shadow_scalars.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           1           2           3           4\n"
+    },
+    {
+      "name": "shadow_arrays",
+      "source": "cases/shadow_arrays.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           2           3           6           7\n"
+    },
+    {
+      "name": "shadow_functions",
+      "source": "cases/shadow_functions.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           2           4           6           8\n"
+    },
+    {
+      "name": "shadow_results",
+      "source": "cases/shadow_results.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "           2           4           6           8\n"
+    },
+    {
+      "name": "shadow_generics",
+      "source": "cases/shadow_generics.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "          11          12          13          14\n"
+    },
+    {
+      "name": "rounding_matrix",
+      "source": "cases/rounding_matrix.f90",
+      "category": "success",
+      "baseline": "run",
+      "rel_tol": 0,
+      "abs_tol": 0,
+      "expected_stdout": "-16777216.0 -16777216.0 -16777215.0 -16777215.0 -2.0 -3.0 -2.0 -3.0 -2.0 -2.0 -2.0 -2.0 -1.0 -2.0 -1.0 -1.0 -0.0 -1.0 -0.0 -1.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 1.0 1.0 1.0 1.0 2.0 2.0 2.0 2.0 2.0 2.0 3.0 2.0 3.0 16777215.0 16777215.0 16777216.0 16777216.0 -16777216.0 -16777216.0 -16777215.0 -16777215.0 -2.0 -3.0 -2.0 -3.0 -2.0 -2.0 -2.0 -2.0 -1.0 -2.0 -1.0 -1.0 -0.0 -1.0 -0.0 -1.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 1.0 1.0 1.0 1.0 2.0 2.0 2.0 2.0 2.0 2.0 3.0 2.0 3.0 16777215.0 16777215.0 16777216.0 16777216.0 -16777216.0 -16777216.0 -16777215.0 -16777215.0 -2.0 -3.0 -2.0 -3.0 -2.0 -2.0 -2.0 -2.0 -1.0 -2.0 -1.0 -1.0 -0.0 -1.0 -0.0 -1.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 1.0 1.0 1.0 1.0 2.0 2.0 2.0 2.0 2.0 2.0 3.0 2.0 3.0 16777215.0 16777215.0 16777216.0 16777216.0 -16777216.0 -16777216.0 -16777215.0 -16777215.0 -2.0 -3.0 -2.0 -3.0 -2.0 -2.0 -2.0 -2.0 -1.0 -2.0 -1.0 -1.0 -0.0 -1.0 -0.0 -1.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 1.0 1.0 1.0 1.0 2.0 2.0 2.0 2.0 2.0 2.0 3.0 2.0 3.0 16777215.0 16777215.0 16777216.0 16777216.0\n"
+    }
+  ]
+}

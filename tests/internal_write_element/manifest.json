@@ -1,0 +1,537 @@
+{
+  "status": "Maintained exact diagnostic and source-identity contract; observed candidate outcomes recorded separately.",
+  "cases": [
+    {
+      "name": "rank1_uninitialized",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "07  \n",
+      "source_sha256": "613873d99fbf1c30fb63acc73916165b411bd9230de72c752c1e70eb5166421d",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "neighbor_preservation",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "old!\n07  \nold!\n",
+      "source_sha256": "0d658cb6b5d758377a16540e8ec026d194d4696931eb49bea96ca32dddad257b",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "lower_bound",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "old\n17 \nold\n",
+      "source_sha256": "8741b0c64abd3bdd91ec679bda17fb1e67d365d5b86b697e38cf998203ab81b0",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "rank2",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "xx\n07\nxx\nxx\n",
+      "source_sha256": "b36028ddd5fda749ed7ea9beaf84e324710264e1b1a8cbfab794c89789d4eae3",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "rank3",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "xx\nxx\nxx\n07\n",
+      "source_sha256": "f3de6e6717e96a7543e6f3eb81b39676a3b1a4b7784680ddcc98f4ec038b01f5",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "runtime_index_format",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "old!\n017 \nold!\n",
+      "source_sha256": "804777bb2ccfde99ba36e55481121385ec54c758d815b8e55169ff215b29a7ea",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "kind8_index",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "07\n",
+      "source_sha256": "a8278ea146c169dd4c27feebb422c21f6830d9f40f4eb4e4e1e88b5f49b4a09b",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "multiple_items",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "n=07 T    \n",
+      "source_sha256": "92f3c31eefaf647d82536660de1bbf160c7ad64ce0c33880171cb70eb516ac9a",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "empty_record",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "    \n",
+      "source_sha256": "6c63cde83daec0484293b0913e82a61875f1f277ab77e0f99e3b3817fdd8f492",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "zero_length",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "\n",
+      "source_sha256": "dba595102a68b3bf3fc32278007d2eec61422eb88e8e386309f3677e16cfa0f1",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "fixed_allocatable",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "old\n7  \nold\n",
+      "source_sha256": "acb9844d1050b1923b027a478d4b5ad8729765b20f3bb3b5ae2dec04c401abdf",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "deferred_allocatable",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "old\n7  \n",
+      "source_sha256": "580943f68c20db81af5507f3ed08a703feb9408a6c8df9f9c1aec2c7aa248054",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "loop_target",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "05\n06\n07\n",
+      "source_sha256": "6712506d5de83b16d6a80073e40b168b242055705cb8ca214a5fa677f71903c8",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "dummy_array",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "old\n7  \nold\n",
+      "source_sha256": "f9b0d2ac60334efed7805980b41f336f24fca4a8cb26a7dc6395539073a2022f",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "automatic_result",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "07\n08\n09\n",
+      "source_sha256": "89b0f194c4a0d94f15b55d777447a376705f377e0025da70dd5e5365341c0369",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "out_of_bounds",
+      "category": "runtime",
+      "oracle": "compile",
+      "expected_stdout": "",
+      "source_sha256": "17b63a2eae0e72ac4c40d60c2fe5d63d9726f62508250f790651e50cb968f318",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 6,
+        "column": 1,
+        "message": "array subscript 3 out of bounds for a (1:2)"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "zero_size",
+      "category": "runtime",
+      "oracle": "compile",
+      "expected_stdout": "",
+      "source_sha256": "69bcdbb99867895c9f48493bc84daaa8f5571636c47a2351587b9b049e56bf25",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 4,
+        "column": 1,
+        "message": "array subscript 1 out of bounds for a (1:0)"
+      },
+      "gnu_compile_stderr": "{source}:4:8:\n\n    4 | write(a(1),'(i2)')7\n      |        1\nWarning: Array reference at (1) is out of bounds (1 > 0) in dimension 1\n"
+    },
+    {
+      "name": "short_record",
+      "category": "runtime",
+      "oracle": "compile",
+      "expected_stdout": "",
+      "source_sha256": "4403dabf4a72eb237f3d9222746f948ee6c3a3aa102ca785f8b96bdb14776e88",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 4,
+        "column": 1,
+        "message": "internal WRITE record exceeds CHARACTER length"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "undefined_index",
+      "category": "runtime",
+      "oracle": "compile",
+      "expected_stdout": "",
+      "source_sha256": "8731e951455f0551b2fd3f14e442ce954d37bc14a052b1b83d1a196d431589f1",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 5,
+        "column": 9,
+        "message": "read of uninitialized variable i"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "unallocated_array",
+      "category": "runtime",
+      "oracle": "compile",
+      "expected_stdout": "",
+      "source_sha256": "0229ad275c1cf7c7c637ea41a54870471be8dfa656159c7cfe9191e47ecfef3d",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 4,
+        "column": 1,
+        "message": "reference to unallocated array a"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "invalid_runtime_format",
+      "category": "runtime",
+      "oracle": "compile",
+      "expected_stdout": "",
+      "source_sha256": "cdab55f94b11281aa131ecf6819563dd37a0a38b56f421fe633b3a26a2d9c016",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 6,
+        "column": 1,
+        "message": "invalid PRINT format descriptor syntax"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "undefined_item",
+      "category": "runtime",
+      "oracle": "compile",
+      "expected_stdout": "",
+      "source_sha256": "b7829c0f0462ba8352e636a8c77c713f54d8854293c9cd2cb3ba2dc5a3061bda",
+      "diagnostic": {
+        "phase": "runtime",
+        "status": 2,
+        "line": 5,
+        "column": 19,
+        "message": "read of uninitialized variable n"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "whole_array",
+      "category": "reject",
+      "oracle": "compile",
+      "expected_stdout": null,
+      "source_sha256": "d11776a6bdb9051aa337d189b50df61534c14491aadb314ca39549dbc8c4e5cc",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 4,
+        "column": 8,
+        "message": "Internal WRITE array unit requires one whole writable CHARACTER element"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "array_section",
+      "category": "reject",
+      "oracle": "compile",
+      "expected_stdout": null,
+      "source_sha256": "38836442b15574b3d9069c5609f21453a2f21d93568dc75addd5bf858af6a1f6",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 4,
+        "column": 13,
+        "message": "Internal WRITE array unit requires one whole writable CHARACTER element"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "element_substring",
+      "category": "reject",
+      "oracle": "compile",
+      "expected_stdout": null,
+      "source_sha256": "5e098bb7ae7313886f05fa318f915e00fd049a5d79295898ac1923d1b5163bed",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 4,
+        "column": 16,
+        "message": "Internal WRITE array unit requires one whole writable CHARACTER element"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "vector_subscript",
+      "category": "reject",
+      "oracle": "reject",
+      "expected_stdout": null,
+      "note": "GNU rejects vector-subscripted internal units.",
+      "source_sha256": "29d047dc58dfdf5e0b2d16e1274a411a86fd137cbae5e2639688b0fc97274c19",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 4,
+        "column": 15,
+        "message": "Internal WRITE array unit requires one whole writable CHARACTER element"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "real_subscript",
+      "category": "reject",
+      "oracle": "reject",
+      "expected_stdout": null,
+      "source_sha256": "44da1aec31c69a4039c5f88259aea3ae28bea8fba02dd55eab05788155b79015",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 4,
+        "column": 12,
+        "message": "Array subscript and triplet operands must be scalar INTEGER"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "constant_target",
+      "category": "reject",
+      "oracle": "reject",
+      "expected_stdout": null,
+      "source_sha256": "5d2f463922b7d0131ec3abad9484fbed72b33b8c7496a6a2f0fe5bc97e9cc446",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 4,
+        "column": 7,
+        "message": "Internal WRITE requires a writable scalar CHARACTER variable"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "extra_subscript",
+      "category": "reject",
+      "oracle": "reject",
+      "expected_stdout": null,
+      "source_sha256": "10030d96e8d4266d88d19f990de8a8add63ca317db93c1d6b9121854fde1c025",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 4,
+        "column": 10,
+        "message": "Array subscript count must match its rank"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "missing_subscript",
+      "category": "reject",
+      "oracle": "reject",
+      "expected_stdout": null,
+      "source_sha256": "5c7d12c11185b28f728cedca1d695560cea0707cb1bbd5e547637733d44ae9ba",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 4,
+        "column": 10,
+        "message": "Expected ,, found )"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "intent_in",
+      "category": "reject",
+      "oracle": "reject",
+      "expected_stdout": null,
+      "source_sha256": "3d6a15251b2ae01cb3387decf465e85ba2085c8f92fda3e23db1652e4865eb6a",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 1,
+        "column": 1,
+        "message": "Undeclared variable or unsupported statement: subroutine"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "original_integer_labels",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "07                  \n08                  \n09                  \n-1                  \n0                   \n1                   \n",
+      "source_sha256": "511b2df11a420a3872f7e2bbae0d5f1f1e03d1f53793a2cf87d6dd907403be34",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "ordinary_function_item",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "07\n",
+      "note": "",
+      "source_sha256": "0d64a9378384dbea48faf3b74394ba3bf23050e01d7f2f542166e42f683f29e4",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "impure_function_item",
+      "category": "reject",
+      "oracle": "compile",
+      "expected_stdout": null,
+      "note": "Bounded element internal WRITE rejects IMPURE function references; GNU accepts.",
+      "source_sha256": "6902a7b948614c17e0d90b8f1816a45b91bd26b44bd9f1ec3cc5ed5a9319d03f",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 7,
+        "column": 16,
+        "message": "IMPURE non-ELEMENTAL prefixes are unsupported"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "impure_function_index",
+      "category": "reject",
+      "oracle": "compile",
+      "expected_stdout": null,
+      "note": "Bounded element internal WRITE rejects IMPURE function references; GNU accepts.",
+      "source_sha256": "baace85de79b7ddcc36ca385c49c903b971bcfce9b1696c41bb2254c319466d8",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 7,
+        "column": 16,
+        "message": "IMPURE non-ELEMENTAL prefixes are unsupported"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "bare_loop_target",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "05\n06\n07\n",
+      "source_sha256": "6345efc4ce5fdf202159a96b810d2c7059bfab51971553e0385ce7527976d3f2",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "nested_loop_target",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "11\n21\n12\n22\n",
+      "source_sha256": "a46db826a6dd858fd48ef6393ea0dd5c7253af7ae92effabb4f3efeaeb97389b",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "loop_if_target",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "05\n06\n",
+      "source_sha256": "61e6147a335d51345052be2fcd682eada46be73bf61d654e102eb8e994cec698",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "component_subscript",
+      "category": "reject",
+      "oracle": "compile",
+      "expected_stdout": null,
+      "note": "Preserved initial main-program TYPE declaration grammar boundary; see separately named module-scoped supported variant.",
+      "source_sha256": "ba0f4d231bc455899c590440d5d0fc1d725b4117d646d9110dc6b8b2d38960f0",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 3,
+        "column": 5,
+        "message": "Expected (, found ::"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "function_record_actual",
+      "category": "reject",
+      "oracle": "compile",
+      "expected_stdout": null,
+      "note": "Preserved initial main-program TYPE declaration grammar boundary; see separately named module-scoped supported variant.",
+      "source_sha256": "6b589835a11406e8fc8fa59e91eaa8f07912eaf42b4ea73e4db6cbab39f5141a",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 3,
+        "column": 5,
+        "message": "Expected (, found ::"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "pure_array_boundary",
+      "category": "reject",
+      "oracle": "compile",
+      "expected_stdout": null,
+      "source_sha256": "4832925d4038dcbe92aa735ca94957d728f744fb69c09982ca5fc09ed493cfcc",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 0,
+        "column": 0,
+        "message": "FortFront rejected the source: Found 1 semantic error(s):\n  - WRITE statement is not allowed in a PURE procedure\n    Suggestion: remove the I/O or control statement, or drop the PURE/ELEMENTAL prefix"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "derived_output_boundary",
+      "category": "reject",
+      "oracle": "compile",
+      "expected_stdout": null,
+      "source_sha256": "52426da4406fc25fef5a1950fd1a328e6228bcb44b0e2c4e1c4ce56fb63fe999",
+      "diagnostic": {
+        "phase": "source",
+        "status": 1,
+        "line": 26,
+        "column": 26,
+        "message": "Derived values are supported only in parent PRINT data transfer"
+      },
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "component_subscript_module",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "07\n",
+      "note": "Same operation and data as preserved main-TYPE boundary, using supported module-scoped TYPE declaration.",
+      "source_sha256": "814c4b108ec2fc73edb044453e2a143ddc0ca41e6871f9884f6c5582f5899e9e",
+      "gnu_compile_stderr": ""
+    },
+    {
+      "name": "function_record_actual_module",
+      "category": "success",
+      "oracle": "execute",
+      "expected_stdout": "07\n",
+      "note": "Same operation and data as preserved main-TYPE boundary, using supported module-scoped TYPE declaration.",
+      "source_sha256": "a60c75c4da04a2b23f1e5aea7417c837a1b4aca5f5356da4c5d7ca2e70a07c81",
+      "gnu_compile_stderr": ""
+    }
+  ],
+  "original_source_sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+  "raw_body_line_ranges": [
+    [
+      1388,
+      1398
+    ],
+    [
+      2366,
+      2378
+    ]
+  ],
+  "raw_body_sha256": [
+    "cbb150428f8eeb8c98443c290395e227f5972d21acd9b18d35c35235254233ef",
+    "a4c8aa6c2a67a51c65d270b8bd784f0660ca6f7125a1db40bdc7819f71736e31"
+  ],
+  "old_fixture_count": 35,
+  "supplemental_fixture_count": 9,
+  "negative_contract": "Exact path, line, column, complete diagnostic, terminal newline, status and source/runtime phase; no substring matches."
+}

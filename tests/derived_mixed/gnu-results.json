@@ -1,0 +1,196 @@
+[
+  {
+    "name": "exact_user",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "   1000.00000    \n",
+    "stderr": ""
+  },
+  {
+    "name": "first_default",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "7\n",
+    "stderr": ""
+  },
+  {
+    "name": "last_default",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "8\n",
+    "stderr": ""
+  },
+  {
+    "name": "both_default",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "7 8\n",
+    "stderr": ""
+  },
+  {
+    "name": "alternating",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "1 8 3 10\n",
+    "stderr": ""
+  },
+  {
+    "name": "overwrite",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "9 8\n",
+    "stderr": ""
+  },
+  {
+    "name": "constructor_override",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "2 3\n",
+    "stderr": ""
+  },
+  {
+    "name": "constructor_omission",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "2 8\n",
+    "stderr": ""
+  },
+  {
+    "name": "constructor_empty",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "7 8\n",
+    "stderr": ""
+  },
+  {
+    "name": "logical_group",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": " T T F\n",
+    "stderr": ""
+  },
+  {
+    "name": "real_kind",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "  1.25  3.75  2.50\n",
+    "stderr": ""
+  },
+  {
+    "name": "integer_kind",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "2147483648 2147483649\n",
+    "stderr": ""
+  },
+  {
+    "name": "parameter_expression",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "7 8\n",
+    "stderr": ""
+  },
+  {
+    "name": "continued",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "7 8 9\n",
+    "stderr": ""
+  },
+  {
+    "name": "intent_out",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "7\n",
+    "stderr": ""
+  },
+  {
+    "name": "fresh_locals",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "7 8\n7 8\n",
+    "stderr": ""
+  },
+  {
+    "name": "undefined_last",
+    "compile_code": 0,
+    "compile_stderr": ""
+  },
+  {
+    "name": "undefined_first",
+    "compile_code": 0,
+    "compile_stderr": ""
+  },
+  {
+    "name": "undefined_middle",
+    "compile_code": 0,
+    "compile_stderr": ""
+  },
+  {
+    "name": "no_double_colon",
+    "compile_code": 1,
+    "compile_stderr": "/workspace/scratch/c5319e9549df/derived-mixed-work/tests/cases/no_double_colon.f90:4:10:\n\n    4 | integer a=7,b=8\n      |          1\nError: Syntax error in data declaration at (1)\n/workspace/scratch/c5319e9549df/derived-mixed-work/tests/cases/no_double_colon.f90:8:5:\n\n    8 | use statistics_mod\n      |     1\nFatal Error: Cannot open module file \u2018statistics_mod.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+  },
+  {
+    "name": "duplicate",
+    "compile_code": 1,
+    "compile_stderr": "/workspace/scratch/c5319e9549df/derived-mixed-work/tests/cases/duplicate.f90:4:14-18:\n\n    4 | integer :: a=7,a=8\n      |              2   1\nError: Component \u2018a\u2019 at (1) already declared at (2)\n/workspace/scratch/c5319e9549df/derived-mixed-work/tests/cases/duplicate.f90:8:5:\n\n    8 | use statistics_mod\n      |     1\nFatal Error: Cannot open module file \u2018statistics_mod.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+  },
+  {
+    "name": "wrong_type",
+    "compile_code": 1,
+    "compile_stderr": "/workspace/scratch/c5319e9549df/derived-mixed-work/tests/cases/wrong_type.f90:4:17:\n\n    4 | integer :: a=7,b=.true.\n      |                 1\nError: Cannot convert LOGICAL(4) to INTEGER(4) at (1)\n/workspace/scratch/c5319e9549df/derived-mixed-work/tests/cases/wrong_type.f90:8:5:\n\n    8 | use statistics_mod\n      |     1\nFatal Error: Cannot open module file \u2018statistics_mod.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+  },
+  {
+    "name": "nonconstant",
+    "compile_code": 1,
+    "compile_stderr": "/workspace/scratch/c5319e9549df/derived-mixed-work/tests/cases/nonconstant.f90:5:17:\n\n    5 | integer :: a=7,b=k\n      |                 1\nError: Parameter \u2018k\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n/workspace/scratch/c5319e9549df/derived-mixed-work/tests/cases/nonconstant.f90:9:5:\n\n    9 | use statistics_mod\n      |     1\nFatal Error: Cannot open module file \u2018statistics_mod.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+  },
+  {
+    "name": "trailing_comma",
+    "compile_code": 1,
+    "compile_stderr": "/workspace/scratch/c5319e9549df/derived-mixed-work/tests/cases/trailing_comma.f90:4:19:\n\n    4 | integer :: a=7,b=8,\n      |                   1\nError: Invalid character in name at (1)\n/workspace/scratch/c5319e9549df/derived-mixed-work/tests/cases/trailing_comma.f90:8:5:\n\n    8 | use statistics_mod\n      |     1\nFatal Error: Cannot open module file \u2018statistics_mod.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+  },
+  {
+    "name": "multiple_declarations",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "7 8   1.5  2.5 T F\n",
+    "stderr": ""
+  },
+  {
+    "name": "intent_out_undefined",
+    "compile_code": 0,
+    "compile_stderr": ""
+  },
+  {
+    "name": "missing_required_first",
+    "compile_code": 1,
+    "compile_stderr": "/workspace/scratch/c5319e9549df/derived-mixed-work/tests/cases/missing_required_first.f90:11:3:\n\n   11 | x=dt()\n      |   1\nError: No initializer for component \u2018a\u2019 given in the structure constructor at (1)\n"
+  },
+  {
+    "name": "grouped_copy",
+    "compile_code": 0,
+    "compile_stderr": "",
+    "run_code": 0,
+    "stdout": "10 8\n7 8\n",
+    "stderr": ""
+  }
+]

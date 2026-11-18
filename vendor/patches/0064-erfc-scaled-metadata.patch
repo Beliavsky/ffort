@@ -1,0 +1,45 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -890,7 +890,7 @@
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+         case ("fraction", "exponent", "set_exponent", "iachar", "real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+-              "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "isnan", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
++              "exp", "log", "log10", "log_gamma", "dim", "sign", "spacing", "nearest", "isnan", "erfc_scaled", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+                 do i = 1, size(node%arg_indices)
+@@ -917,6 +917,11 @@
+         case ("fraction", "set_exponent")
+             call decomposition_x_metadata(arena,node,visiting,kind_value)
+             if(kind_value>0)call set_intrinsic_metadata(node,TREAL,kind_value,result_rank)
++        case ("erfc_scaled")
++            call first_intrinsic_argument_metadata(arena, node, visiting, &
++                result_type, kind_value)
++            if (result_type > 0 .and. kind_value > 0) &
++                call set_intrinsic_metadata(node, result_type, kind_value, result_rank)
+         case ("isnan")
+             call set_intrinsic_metadata(node, TLOGICAL, 4, result_rank)
+         case ("repeat")
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 89
++        integer, parameter :: NUM_INTRINSICS = 90
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -305,6 +305,10 @@
+             description="GNU extension: elemental IEEE NaN predicate")
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
++            name="erfc_scaled", return_type="real", arg_types="real", &
++            description="Elemental exponentially scaled complementary error function")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
+             name="sinh", return_type="real", arg_types="real", &
+             description="Elemental real hyperbolic function")
+ 

@@ -1,0 +1,52 @@
+--- a/src/frontend/frontend_compiler_queries.f90
++++ b/src/frontend/frontend_compiler_queries.f90
+@@ -40,7 +40,7 @@
+     use semantic_procedure_signature, only: type_category
+     use generic_spec_names, only: normalize_generic_operator
+     use string_utils_mod, only: to_lower
+-    use type_system_unified, only: TDERIVED
++    use type_system_unified, only: TDERIVED, TCHAR
+     implicit none
+     private
+ 
+@@ -6639,7 +6639,7 @@
+         type(component_access_query_t) :: component
+         type(storage_query_t) :: base_storage
+         type(declaration_query_t) :: component_declaration
+-        type(resolved_type_query_t) :: resolved
++        type(resolved_type_query_t) :: resolved, base_resolved
+         character(len=:), allocatable :: name, error_message
+         character(len=:), allocatable :: base_type, derived_name
+         integer :: base_rank, retained_dimensions, i, scope_index, fallback_index
+@@ -6710,6 +6710,15 @@
+             rank = max(0, base_rank - node%num_dimensions + &
+                 retained_dimensions)
+             type is (component_access_node)
++            if (allocated(node%component_name)) then
++                if (to_lower(node%component_name) == 'len') then
++                    base_resolved = query_resolved_type(arena, node%base_expr_index)
++                    if (base_resolved%found .and. base_resolved%type_kind == TCHAR) then
++                        rank = 0
++                        return
++                    end if
++                end if
++            end if
+             base_rank = designator_rank(arena, node%base_expr_index)
+             if (base_rank < 0) return
+             component = query_component_access(arena, node_index)
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -1265,6 +1265,13 @@
+         if (.not. allocated(node%component_name)) return
+         call resolve_node_metadata(arena, node%base_expr_index, visiting)
+         if (.not. arena%has_node_at(node%base_expr_index)) return
++        ! Intrinsic CHARACTER type-parameter inquiry, not a component value.
++        if (to_lower(node%component_name) == 'len') then
++            if (arena%entries(node%base_expr_index)%node%resolved_type_kind == TCHAR) then
++                call set_intrinsic_metadata(node, TINT, 4, 0)
++                return
++            end if
++        end if
+         derived_name = trim(arena%entries(node%base_expr_index)%node% &
+             resolved_derived_type_name)
+         if (len_trim(derived_name) == 0) return

@@ -1,0 +1,2378 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:35:24.674213+00:00",
+  "summary": {
+    "total": 81,
+    "failed": 0,
+    "candidate_checked": 81,
+    "gnu_checked": 81,
+    "gnu_skipped": 0,
+    "gnu_executed": 37,
+    "gnu_runtime_rejections": 0,
+    "gnu_successful_executions": 37,
+    "gnu_compile_only": 37,
+    "gnu_compile_rejections": 7
+  },
+  "records": [
+    {
+      "case": {
+        "name": "integer_and_real",
+        "source": "cases/integer_and_real.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "integer_kinds",
+        "source": "cases/integer_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/integer_kinds.f90:9:30:\n\n    9 | if(any(a/=[9007199254740993_8,-9223372036854775807_8-1_8,9223372036854775807_8])) stop 2\n      |                              1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real_kinds",
+        "source": "cases/real_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real_exponent_forms",
+        "source": "cases/real_exponent_forms.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "signed_zero",
+        "source": "cases/signed_zero.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tiny_real",
+        "source": "cases/tiny_real.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "repeats_cross_items",
+        "source": "cases/repeats_cross_items.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nulls_and_slash",
+        "source": "cases/nulls_and_slash.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "whitespace_and_commas",
+        "source": "cases/whitespace_and_commas.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_targets",
+        "source": "cases/empty_targets.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "unused_tail",
+        "source": "cases/unused_tail.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "repeat_huge_bounded",
+        "source": "cases/repeat_huge_bounded.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rank_three_order",
+        "source": "cases/rank_three_order.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keyword_controls",
+        "source": "cases/keyword_controls.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "unit_read_identifiers",
+        "source": "cases/unit_read_identifiers.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "repeat_reset_each_statement",
+        "source": "cases/repeat_reset_each_statement.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "bad_integer",
+        "source": "cases/bad_integer.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "bad_token",
+        "source": "cases/bad_token.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "integer4_overflow",
+        "source": "cases/integer4_overflow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "integer8_overflow",
+        "source": "cases/integer8_overflow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real4_overflow",
+        "source": "cases/real4_overflow.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "1",
+        "reason": "GNU accepts nonfinite overflow results; FortFront deliberately reports a finite-value policy input error."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real8_overflow",
+        "source": "cases/real8_overflow.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "1",
+        "reason": "GNU accepts nonfinite overflow results; FortFront deliberately reports a finite-value policy input error."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "invalid_repeat",
+        "source": "cases/invalid_repeat.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "repeat_overflow",
+        "source": "cases/repeat_overflow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "eof_empty",
+        "source": "cases/eof_empty.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "eof_short",
+        "source": "cases/eof_short.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nonfinite_nan",
+        "source": "cases/nonfinite_nan.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nonfinite_inf",
+        "source": "cases/nonfinite_inf.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "null_undefined",
+        "source": "cases/null_undefined.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/null_undefined.f90:7:9: read of uninitialized variable n\n"
+      }
+    },
+    {
+      "case": {
+        "name": "slash_undefined",
+        "source": "cases/slash_undefined.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/slash_undefined.f90:7:9: read of uninitialized variable n\n"
+      }
+    },
+    {
+      "case": {
+        "name": "error_invalidates_prefix",
+        "source": "cases/error_invalidates_prefix.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/error_invalidates_prefix.f90:8:9: read of uninitialized array element a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "eof_invalidates_prefix",
+        "source": "cases/eof_invalidates_prefix.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/eof_invalidates_prefix.f90:8:9: read of uninitialized array element a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_source",
+        "source": "cases/undefined_source.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/undefined_source.f90:5:6: read of uninitialized variable text\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_target",
+        "source": "cases/unallocated_target.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "unallocated"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/unallocated_target.f90:7:1: reference to unallocated array a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "active_do_target",
+        "source": "cases/active_do_target.f90",
+        "category": "runtime",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "active DO"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/active_do_target.f90:7:26:\n\n    6 | do n=1,2\n      |        2                  \n    7 | read(text,*,iostat=stat) n\n      |                          1\nError: Variable \u2018n\u2019 at (1) cannot be redefined inside loop beginning at (2)\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/active_do_target.f90:7:1: internal READ cannot modify an active DO variable\n"
+      }
+    },
+    {
+      "case": {
+        "name": "no_iostat_eof",
+        "source": "cases/no_iostat_eof.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "end of internal READ"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/no_iostat_eof.f90:6:1: end of internal READ record\n"
+      }
+    },
+    {
+      "case": {
+        "name": "no_iostat_error",
+        "source": "cases/no_iostat_error.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "invalid value"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/no_iostat_error.f90:6:1: invalid value in internal READ record\n"
+      }
+    },
+    {
+      "case": {
+        "name": "embedded_newline",
+        "source": "cases/embedded_newline.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "single text record"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/embedded_newline.f90:6:1: internal READ requires a single text record\n"
+      }
+    },
+    {
+      "case": {
+        "name": "budget_limited",
+        "source": "cases/budget_limited.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "execution step",
+        "args": [
+          "--max-steps",
+          "30"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/budget_limited.f90:6:1: execution step limit exceeded (current limit: 30); use --max-steps N to set the execution budget (positive 64-bit integer)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "external_unit",
+        "source": "cases/external_unit.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/external_unit.f90:4:12: External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/external_unit.f90:4:12: External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures\n"
+      }
+    },
+    {
+      "case": {
+        "name": "external_stdin",
+        "source": "cases/external_stdin.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/external_stdin.f90:4:6: Expected expression operand, found *\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/external_stdin.f90:4:6: Expected expression operand, found *\n"
+      }
+    },
+    {
+      "case": {
+        "name": "literal_file",
+        "source": "cases/literal_file.f90",
+        "category": "unsupported",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/literal_file.f90:4:5:\n\n    4 | read('1',*) n\n      |     1\nError: UNIT specification at (1) must be an INTEGER expression or a CHARACTER variable\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/literal_file.f90:4:14: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/literal_file.f90:4:14: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_file",
+        "source": "cases/parameter_file.f90",
+        "category": "unsupported",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/parameter_file.f90:5:5:\n\n    5 | read(t,*) n\n      |     1\nError: UNIT specification at (1) must not be a character PARAMETER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/parameter_file.f90:5:12: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/parameter_file.f90:5:12: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      }
+    },
+    {
+      "case": {
+        "name": "formatted",
+        "source": "cases/formatted.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/formatted.f90:5:20: External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/formatted.f90:5:20: External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures\n"
+      }
+    },
+    {
+      "case": {
+        "name": "section_target",
+        "source": "cases/section_target.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/section_target.f90:5:18: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/section_target.f90:5:18: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      }
+    },
+    {
+      "case": {
+        "name": "element_target",
+        "source": "cases/element_target.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/element_target.f90:5:18: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/element_target.f90:5:18: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      }
+    },
+    {
+      "case": {
+        "name": "character_target",
+        "source": "cases/character_target.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized",
+        "note": "CHARACTER targets are supported; the source record in this retained fixture is undefined."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/character_target.f90:4:6: read of uninitialized variable text\n"
+      }
+    },
+    {
+      "case": {
+        "name": "logical_target",
+        "source": "cases/logical_target.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/logical_target.f90:5:15: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/logical_target.f90:5:15: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_target",
+        "source": "cases/duplicate_target.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/duplicate_target.f90:5:17: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/duplicate_target.f90:5:17: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      }
+    },
+    {
+      "case": {
+        "name": "status_alias",
+        "source": "cases/status_alias.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/status_alias.f90:5:24: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/status_alias.f90:5:24: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      }
+    },
+    {
+      "case": {
+        "name": "status_real",
+        "source": "cases/status_real.f90",
+        "category": "unsupported",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/status_real.f90:6:19:\n\n    6 | read(text,*,iostat=stat) n\n      |                   1\nError: IOSTAT tag at (1) must be of type INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/status_real.f90:6:27: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/status_real.f90:6:27: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      }
+    },
+    {
+      "case": {
+        "name": "status_array",
+        "source": "cases/status_array.f90",
+        "category": "unsupported",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/status_array.f90:5:19:\n\n    5 | read(text,*,iostat=stat) n\n      |                   1\nError: IOSTAT tag at (1) must be scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/status_array.f90:5:27: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/status_array.f90:5:27: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      }
+    },
+    {
+      "case": {
+        "name": "iomsg",
+        "source": "cases/iomsg.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/iomsg.f90:5:24: Expected ), found ,\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/iomsg.f90:5:24: Expected ), found ,\n"
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_target",
+        "source": "cases/parameter_target.f90",
+        "category": "unsupported",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/parameter_target.f90:5:12:\n\n    5 | read(text,*) n\n      |            1\nError: Named constant \u2018n\u2019 in variable definition context (item in READ) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/parameter_target.f90:5:15: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/parameter_target.f90:5:15: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_file",
+        "source": "cases/array_file.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/array_file.f90:5:15: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/array_file.f90:5:15: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reordered_controls",
+        "source": "cases/reordered_controls.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/reordered_controls.f90:5:9: Undeclared variable: fmt\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/reordered_controls.f90:5:9: Undeclared variable: fmt\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_function",
+        "source": "cases/pure_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_subroutine",
+        "source": "cases/pure_subroutine.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "saved_procedure_target",
+        "source": "cases/saved_procedure_target.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/saved_procedure_target.f90:6:16: SAVE requires a constant initializer in this subset\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/saved_procedure_target.f90:6:16: SAVE requires a constant initializer in this subset\n"
+      }
+    },
+    {
+      "case": {
+        "name": "intent_in_target",
+        "source": "cases/intent_in_target.f90",
+        "category": "unsupported",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/intent_in_target.f90:7:12:\n\n    7 | read(text,*) n\n      |            1\nError: Dummy argument \u2018n\u2019 with INTENT(IN) in variable definition context (item in READ) at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/intent_in_target.f90:11:5:\n\n   11 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/intent_in_target.f90:7:15: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/intent_in_target.f90:7:15: Internal READ requires a scalar CHARACTER variable, distinct whole local numeric or CHARACTER targets and optional INTEGER IOSTAT\n"
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_reader",
+        "source": "cases/recursive_reader.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_numeric",
+        "source": "cases/original_numeric.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1",
+        "original_bodies": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_zero",
+        "source": "cases/original_zero.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1",
+        "original_bodies": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_negative_size",
+        "source": "cases/original_negative_size.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1",
+        "original_bodies": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_repeats",
+        "source": "cases/original_repeats.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1",
+        "original_bodies": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_int_initial_error",
+        "source": "cases/original_int_initial_error.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "in util_mod::read_int_vec_alloc, could not read an integer from 'bad'",
+        "original_bodies": true,
+        "expected_stderr": "STOP\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " in util_mod::read_int_vec_alloc, could not read an integer from 'bad'\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " in util_mod::read_int_vec_alloc, could not read an integer from 'bad'\n",
+        "err": "STOP\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_real_initial_error",
+        "source": "cases/original_real_initial_error.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "in util_mod::read_real_vec_alloc, could not read an integer from 'bad'",
+        "original_bodies": true,
+        "expected_stderr": "STOP\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " in util_mod::read_real_vec_alloc, could not read an integer from 'bad'\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " in util_mod::read_real_vec_alloc, could not read an integer from 'bad'\n",
+        "err": "STOP\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_int_short",
+        "source": "cases/original_int_short.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized",
+        "original_bodies": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/original_int_short.f90:20:41: read of uninitialized variable n\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_real_short",
+        "source": "cases/original_real_short.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized",
+        "original_bodies": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/original_real_short.f90:41:53: read of uninitialized variable n\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_null_count",
+        "source": "cases/original_null_count.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized",
+        "original_bodies": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/original_null_count.f90:16:16: read of uninitialized variable n\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_slash_array",
+        "source": "cases/original_slash_array.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized",
+        "original_bodies": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/original_slash_array.f90:53:9: read of uninitialized array element b\n"
+      }
+    },
+    {
+      "case": {
+        "name": "maximum_record",
+        "source": "cases/maximum_record.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "overlength_record",
+        "source": "cases/overlength_record.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/overlength_record.f90:3:16: CHARACTER length limit: outside supported range (0:65536)\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/overlength_record.f90:3:16: CHARACTER length limit: outside supported range (0:65536)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "repetition_budget",
+        "source": "cases/repetition_budget.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "execution step",
+        "args": [
+          "--max-steps",
+          "50"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/repetition_budget.f90:6:1: execution step limit exceeded (current limit: 50); use --max-steps N to set the execution budget (positive 64-bit integer)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "items64",
+        "source": "cases/items64.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "items65",
+        "source": "cases/items65.f90",
+        "category": "unsupported",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/items65.f90:78:4: READ item limit exceeded (64)\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/items65.f90:78:4: READ item limit exceeded (64)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "absent_optional_file",
+        "source": "cases/absent_optional_file.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "absent OPTIONAL"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/absent_optional_file.f90:5:35: absent OPTIONAL dummy referenced: text\n"
+      }
+    },
+    {
+      "case": {
+        "name": "absent_optional_target",
+        "source": "cases/absent_optional_target.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "absent OPTIONAL"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/internal_read/cases/absent_optional_target.f90:6:31: absent OPTIONAL dummy referenced: n\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_read_identifier",
+        "source": "cases/array_read_identifier.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "substring_read_identifier",
+        "source": "cases/substring_read_identifier.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "function_read_identifier",
+        "source": "cases/function_read_identifier.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "98194493bad8a5ccc14ddcc2b59f3dd0e9946b057da7278a25177cb544995e9a",
+  "source_sha256": {
+    "cases/integer_and_real.f90": "d560d93cc08914c7b92a15ff065fbbdaf3e118598bf679fe688c4237d4c84e9b",
+    "cases/integer_kinds.f90": "cbc919e9240a380a85e8c2f8ca8ebae0ace83b2d4024ed2bf16fd7c88bbc9b46",
+    "cases/real_kinds.f90": "ce0721090012fea49b4275c6b796c451201c45c639bfb6a3f4c4664430336d06",
+    "cases/real_exponent_forms.f90": "02ecd6ae1649ac04702d2e3a181a6b70bdb769cb5103524032e142a6bcda5864",
+    "cases/signed_zero.f90": "02d0f95ea3241ec3e4d4ca477b22c318cae5d6a1fe1dac5998c18234e9d8ea89",
+    "cases/tiny_real.f90": "7a385d87b0dd3bbf7aadd00315381ec9b3beff4e32618d21b4f73dc0b60e37ae",
+    "cases/repeats_cross_items.f90": "714a4b31962708d62c05506ab425f1ffad588a4ecbf4f0eb7be7d82e446e68e5",
+    "cases/nulls_and_slash.f90": "51e8d948d09ee402bf166b2ff5e5aa23f3a8a0f235c128b9b630d024105e9cae",
+    "cases/whitespace_and_commas.f90": "406114370d36a338bf411b59ab39beaa4494ddee8abfbb7d9abb19382e677df2",
+    "cases/empty_targets.f90": "568991df803711aaf763a095ac8cbff3da6e9b4d60dfec26ed6f3a5004483d9c",
+    "cases/unused_tail.f90": "79e6a686d12ad41c7fd977287640d820d5f4868f369d8ab09509132321bcab05",
+    "cases/repeat_huge_bounded.f90": "85e8dc1c8eb293e7ee365fca4a8c7c4e5d28a6c2a315dade3e6feb1ed7286b5c",
+    "cases/rank_three_order.f90": "c96e4ba783c6c0bf912b3e8451789f689799fd35c8f45d3dd824929606d78dfe",
+    "cases/keyword_controls.f90": "9f811aa1f7a22393dc4e45fd5eeb02b349f5102f35adb2c64edd4fc02db0ebe7",
+    "cases/unit_read_identifiers.f90": "066112cb20486d6b5c9543aa4008c2a82b8918ba034eb0f91a38a39df63c0c8a",
+    "cases/repeat_reset_each_statement.f90": "165a28413ef2854fcaa2d2c2da335d99644f85bd5f5a879ee988c08d3cc8e3be",
+    "cases/bad_integer.f90": "630337764b7140e3dfcedd7bcbafab57554977d4c561af9d75bef8334d1d6eab",
+    "cases/bad_token.f90": "c943386fb1b0e6b7617acbd1cc2e2cd63a855b4f0c9887cae9310aa2e1868704",
+    "cases/integer4_overflow.f90": "f98128bf6e9c5df5511c72a716f4caaa248da9a8bb0964d014e521b72e71cf8a",
+    "cases/integer8_overflow.f90": "31938e7e8738a386fb1d733b2fdb80b363751e5db9751bf68c0f0439e5a48101",
+    "cases/real4_overflow.f90": "1d67834f13775a60eb9e18393c04d2d721f6ab64ad744545d7229bae00dcee9d",
+    "cases/real8_overflow.f90": "fcf26c01eed6fbba62c4817d7d8681cdd5eee399e0c1cc3b6e0e4e9c0e4d4086",
+    "cases/invalid_repeat.f90": "938965c3c326e51638df8b8d90a94faef1d7fa25ccced638ed8ade55701c2a24",
+    "cases/repeat_overflow.f90": "2e6683816af23cffab5fe526f2adfa2e2b8132d6ec55149ce24f41ce077bc9e5",
+    "cases/eof_empty.f90": "78f920a1506936ca94cfb1fc0bcae1cafcc6ac5983395f198e19f0079ee9a2f4",
+    "cases/eof_short.f90": "7e04cd3b4b439c747775bdc8cf5b12dddb96213271a063e2a00241a249da473d",
+    "cases/nonfinite_nan.f90": "93321bbdf5877256590495b2dd22c6a854084d87013b7c913ecb3df0e8eaf848",
+    "cases/nonfinite_inf.f90": "8ef0edf8e8c470842fb5647e3108511fa18e0cea271f2ddc17465bcc9a93df80",
+    "cases/null_undefined.f90": "6c67c3eb349cdbc0cb1e747cd8bddaa94ef43297c30285470cd770ecdd743243",
+    "cases/slash_undefined.f90": "3770e186c693e84dd442c0b0b70a6305dcbfe67787c9a8bf4c4f8cfd935ebc83",
+    "cases/error_invalidates_prefix.f90": "e381101cef2fff7d03ce44326aff34dffa82d2c6d8880586bc37c8d2f6d77589",
+    "cases/eof_invalidates_prefix.f90": "827eddcd7e790fe00a4a754e4ae3284f65ae7271f7f62f74535b6094f99971d2",
+    "cases/undefined_source.f90": "2b01ce31b63f7ba7c3a770646a044bff48c51a78b76eb1e9928e57803c211940",
+    "cases/unallocated_target.f90": "df76b348f191861b5e8e17cd2858667fecf54464d76e48adaeeb66471bbb926a",
+    "cases/active_do_target.f90": "0d7588d5b439af9a71d359cc8a981de1c02cdf8340580447f4cca072f0016ec6",
+    "cases/no_iostat_eof.f90": "6086b9591a8120ec6e363163c61ef194855f947e824101a2541c653ac113bafb",
+    "cases/no_iostat_error.f90": "2efee0abc09a194381374ed203cce3f8784ff6f8d82865b2a7597d1dd341773c",
+    "cases/embedded_newline.f90": "50ae7ca0ab7180cf489f6653aa01a57772d3cea34f68fcc9c17c04a47f014fd0",
+    "cases/budget_limited.f90": "e2eac096b4f71894422dce5f279c79dda05e575ccd3dba5822610cbfec8dbb77",
+    "cases/external_unit.f90": "cda182abb8210c44241c1ba957f73a81e382556504b94cc1a4278d5b8662db45",
+    "cases/external_stdin.f90": "111ffd0cea1aa4877f01f125d0a08973059d1116a856e0a10c8a15c573763aa7",
+    "cases/literal_file.f90": "053cfabf307b32c0f0618784c9a20cfc695afc82d6df8dcb45ad80b3d01e5319",
+    "cases/parameter_file.f90": "e0d345a3181e06f4e8ca7dc12c580669ca77eeb36078ed3bbba740bc62bf9c89",
+    "cases/formatted.f90": "d70ec4999d4e7ba5d6426f321dc9c91a61ac9ed988e7167762816b805d8ce707",
+    "cases/section_target.f90": "5456c5b6026120a3338e352e7a557eff7da07b2b13bbca4521b4d8b6be764cc5",
+    "cases/element_target.f90": "9a9802fc2f8edcea9f9b7a14017fa8ada4900288c74bff2989bc0a96db13eafa",
+    "cases/character_target.f90": "c2f2ce677d57646d869b00b420a75573d9a94212bcfc4589fc98fe873e091895",
+    "cases/logical_target.f90": "d479390bebed6c7fd8182500f0551c66c698f7afb935b334a4b98b7f034a121a",
+    "cases/duplicate_target.f90": "69394689dccd7719786702b567f6b40874744b2df6db509f55396a35a6270fe4",
+    "cases/status_alias.f90": "1ce1dee0197db691c77ae56712309e41f1ac342999f8e4f58f09a57e8dbaddd7",
+    "cases/status_real.f90": "a309bd2d5ace7a6317d7b1dbd71e7e5f9b35a060481ca0860defb7e78a592225",
+    "cases/status_array.f90": "4e825eeba5ecfe011e4661ab9db0421df66e98de89cc3278ecfd7b356c1049f4",
+    "cases/iomsg.f90": "7e3214417d69c0480488595b4165ed9fcf1682f5152370f0d4e4245acb70993f",
+    "cases/parameter_target.f90": "b132e9974d0e612c487a02f8283ed3d074f5c6ef253ae28e96389360ea1eb1c4",
+    "cases/array_file.f90": "a12a4727fbe8fbe989a77f1648f7a5b99de4c5b721c5b1d0991bd516958d5db4",
+    "cases/reordered_controls.f90": "77018f709667339bc641e6c0c373ca011dd6163338cbc9d7a7f66861f78cdf3e",
+    "cases/pure_function.f90": "8966e67884906177c917f7485614fab2c3bb9c252d30deafad0716c0d9075c7b",
+    "cases/pure_subroutine.f90": "f83f53fb09ac3830ab9db823958e8c95c6d270e6002ca1effa8cae309098dc03",
+    "cases/saved_procedure_target.f90": "7ed7f16e04b2e0dfc67ae0b441ed483452a09878e4bc99d99b6604a50487ea76",
+    "cases/intent_in_target.f90": "935e628ce1e822bb66984daa8022a50b1a8cf109292e13f3a0c061ab552dd855",
+    "cases/recursive_reader.f90": "2c34536b5742b12b1a455d6b9a5fa63865ef36b71c47505c30f3a3c68dcc9d56",
+    "cases/original_numeric.f90": "48b2e6ff1b29236f2127b93e7d77c28b49c76db2057163d96df31a9f2b621ecb",
+    "cases/original_zero.f90": "31a9fc734da079be0aff9923d1c1f364d220e2ab605c9428c8cee14c31a61a0a",
+    "cases/original_negative_size.f90": "85ace54ca2700cc681d74a431225b72c69589c4344d1d8454b830f9f9b78ebfb",
+    "cases/original_repeats.f90": "126015981e7919b716e0eb065c7b2ab7521778712efb285c6958ee9f63c7d225",
+    "cases/original_int_initial_error.f90": "25397ab79621c5873d3dd1c04843d48ad4e60f9bbe92728c03372267a372b527",
+    "cases/original_real_initial_error.f90": "4257fa4a05742d692128ef61c9df5aed1cc40eb7a4f0b4916b1ce6430d44f0c4",
+    "cases/original_int_short.f90": "d0c5ef7200a529a976e82f7742750cd47b2cc78419016285c8b804bc979cbc85",
+    "cases/original_real_short.f90": "ada53d83a1e520987cc697dbb451d04bff4ad078338d115a2b2b3a49edf2c143",
+    "cases/original_null_count.f90": "d5248cca5166e44599c3e6b3e6543d54746d5690c795162a899f70366e3e056d",
+    "cases/original_slash_array.f90": "da38f61b883e796439ef8d48c3fe41f959bca0f66093a2ce99678bbf92329f2a",
+    "cases/maximum_record.f90": "d1926f5f1f843980e296864ca7481bd4c2d66fb54f6a5496d0a42e1821f3dae2",
+    "cases/overlength_record.f90": "4f96241f264048c2a9d5c5e0cd9c47198aec5685aedd5e505097b670f2b3d465",
+    "cases/repetition_budget.f90": "260ca11711db1e1e4252dd6fc9e13bf9c5b69498d6c88c4a55a72d9bdda145dc",
+    "cases/items64.f90": "9e14ada6d59f19569362c28aed3901ffc1b0fccbdfa411b9e76eb12c1055b897",
+    "cases/items65.f90": "7f1f4407b289d78866be8d2fa6d287f2e5051851a6df5b3fea4c208e42ad08c0",
+    "cases/absent_optional_file.f90": "4c9b92c13b26d812d1fdb67fe7ea4306d21e0ef66b83c7e99028a3f6bc37c2a3",
+    "cases/absent_optional_target.f90": "595cf8f0e22d59a5d9769da29644e2c8c4d1065454f2f52c72ecefe37cbbe887",
+    "cases/array_read_identifier.f90": "8e75b85d77836846634e90ae41f98a41eb5aebba4a7571273580c8442ff01a4c",
+    "cases/substring_read_identifier.f90": "e397e73b7b911b52d5b69bd549de8f2f5209a81844c49238713ed9688613c690",
+    "cases/function_read_identifier.f90": "b9b73bb2ed986fa5968b48bf21f9afcd4fa887f465accec31d9624980129e21d"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

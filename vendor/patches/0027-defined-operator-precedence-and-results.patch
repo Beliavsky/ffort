@@ -1,0 +1,220 @@
+--- a/vendor/fortfront/src/parser/expressions/parser_expression_operator_utils.f90
++++ b/vendor/fortfront/src/parser/expressions/parser_expression_operator_utils.f90
+@@ -96,7 +96,7 @@
+             entry%precedence = PREC_POWER
+             entry%right_associative = .true.
+         case default
+-            if (last_char >= 4) then
++            if (last_char >= 3) then
+                 if (lowered(1:1) == '.' .and. &
+                     lowered(last_char:last_char) == '.') then
+                     is_defined_op = .true.
+@@ -112,7 +112,7 @@
+             end if
+             if (.not. is_defined_op) return
+             entry%symbol = token%text
+-            entry%precedence = PREC_LOGICAL_AND
++            entry%precedence = PREC_LOGICAL_EQV - 1
+         end select
+ 
+         entry%token_line = token%line
+--- a/vendor/fortfront/src/frontend/frontend_compiler_type_queries.f90
++++ b/vendor/fortfront/src/frontend/frontend_compiler_type_queries.f90
+@@ -6,12 +6,14 @@
+         call_or_subscript_node, component_access_node, assignment_node, array_literal_node
+     use ast_nodes_bounds, only: array_slice_node, range_expression_node, array_bounds_node
+     use ast_nodes_data, only: declaration_node, parameter_declaration_node, &
+-        derived_type_node
+-    use ast_nodes_misc, only: complex_literal_node, use_statement_node, interface_block_node, module_procedure_node
++        derived_type_node, module_node
++    use ast_nodes_misc, only: complex_literal_node, use_statement_node, interface_block_node, module_procedure_node, &
++        visibility_statement_node
+     use ast_nodes_procedure, only: function_def_node
+     use frontend_compiler_resolution, only: declaration_binding_t, &
+         resolve_name_at_node, resolve_identifier_binding, BINDING_DERIVED_TYPE, &
+-        resolve_name_in_scope, find_enclosing_scope, find_host_scope, BINDING_FUNCTION, BINDING_GENERIC_INTERFACE
++        resolve_name_in_scope, find_enclosing_scope, find_host_scope, BINDING_FUNCTION, BINDING_GENERIC_INTERFACE, &
++        get_scope_statement_indices
+     use string_utils_mod, only: to_lower
+     use type_system_unified, only: mono_type_t, create_mono_type, TINT, TREAL, TCHAR, &
+         TLOGICAL, TARRAY, TCOMPLEX, TDOUBLE, TDERIVED
+@@ -148,7 +150,7 @@
+             type is (identifier_node)
+             call resolve_identifier(arena, node_index, node, visiting)
+             type is (binary_op_node)
+-            call resolve_binary_operation(arena, node, visiting)
++            call resolve_binary_operation(arena, node_index, node, visiting)
+             type is (call_or_subscript_node)
+             call resolve_call_or_subscript(arena, node_index, node, visiting)
+             type is (assignment_node)
+@@ -342,8 +344,9 @@
+         call resolve_from_inferred_type(node)
+     end subroutine resolve_identifier
+ 
+-    recursive subroutine resolve_binary_operation(arena, node, visiting)
++    recursive subroutine resolve_binary_operation(arena, node_index, node, visiting)
+         type(ast_arena_t), intent(inout) :: arena
++        integer, intent(in) :: node_index
+         type(binary_op_node), intent(inout) :: node
+         logical, intent(inout) :: visiting(:)
+         integer :: left_type, right_type, left_kind, right_kind
+@@ -368,6 +371,13 @@
+ 
+         operator = ""
+         if (allocated(node%operator)) operator = to_lower(trim(node%operator))
++        if (len(operator) >= 3) then
++            if (operator(1:1) == '.' .and. operator(len(operator):) == '.' .and. &
++                .not. is_relational_operator(operator) .and. .not. is_logical_operator(operator)) then
++                call resolve_defined_operator_result(arena, node_index, node, visiting)
++                return
++            end if
++        end if
+         if (is_relational_operator(operator)) then
+             call set_intrinsic_metadata(node, TLOGICAL, 4, result_rank)
+             return
+@@ -521,6 +531,145 @@
+         call resolve_from_inferred_type(node)
+     end subroutine resolve_call_or_subscript
+ 
++    recursive subroutine resolve_defined_operator_result(arena, node_index, node, visiting)
++        type(ast_arena_t), intent(inout) :: arena
++        integer, intent(in) :: node_index
++        type(binary_op_node), intent(inout) :: node
++        logical, intent(inout) :: visiting(:)
++        type(declaration_binding_t) :: binding
++        integer, allocatable :: actuals(:), specifics(:)
++        integer :: i, j, p, k, scope, winner, best, score, rank, actual_rank
++        logical :: ambiguous, elemental, winning_elemental
++        character(:), allocatable :: error_msg
++        type(mono_type_t) :: result_type
++
++        call clear_resolved_metadata(node)
++        actuals = [integer ::]
++        if (node%left_index > 0) actuals = [actuals, node%left_index]
++        if (node%right_index > 0) actuals = [actuals, node%right_index]
++        specifics = [integer ::]
++        do i = 1, arena%size
++            if (.not. arena%has_node_at(i)) cycle
++            select type (iface => arena%entries(i)%node)
++            type is (interface_block_node)
++                if (.not. allocated(iface%kind) .or. .not. allocated(iface%operator)) cycle
++                if (iface%kind /= 'operator') cycle
++                if (to_lower(trim(iface%operator)) /= to_lower(trim(node%operator))) cycle
++                if (.not. defined_interface_visible(arena, i, node_index, node%operator)) cycle
++                if (.not. allocated(iface%procedure_indices)) return
++                scope = find_enclosing_scope(arena, i)
++                if (scope == i) scope = find_host_scope(arena, scope)
++                do j = 1, size(iface%procedure_indices)
++                    p = iface%procedure_indices(j)
++                    if (.not. arena%has_node_at(p)) return
++                    select type (specific => arena%entries(p)%node)
++                    type is (module_procedure_node)
++                        if (.not. allocated(specific%procedure_names)) return
++                        do k = 1, size(specific%procedure_names)
++                            call resolve_name_in_scope(arena, scope, specific%procedure_names(k)%s, binding, error_msg)
++                            if (.not. binding%found .or. binding%binding_kind /= BINDING_FUNCTION) return
++                            specifics = [specifics, binding%declaration_node_index]
++                        end do
++                    type is (function_def_node)
++                        specifics = [specifics, p]
++                    class default
++                        return
++                    end select
++                end do
++            end select
++        end do
++        winner = 0; best = -1; rank = 0; ambiguous = .false.; winning_elemental = .false.
++        do i = 1, size(specifics)
++            call match_named_generic_candidate(arena, specifics(i), actuals, visiting, score, actual_rank, elemental)
++            if (score < 0 .or. score < best) cycle
++            if (score == best) then
++                ambiguous = .true.
++            else
++                winner = specifics(i); best = score; rank = actual_rank
++                winning_elemental = elemental; ambiguous = .false.
++            end if
++        end do
++        if (winner <= 0 .or. ambiguous) return
++        call resolve_node_metadata(arena, winner, visiting)
++        call copy_metadata_from_index(arena, winner, node)
++        if (.not. node%resolved_type_found) return
++        if (winning_elemental) node%resolved_rank = rank
++        result_type = create_mono_type(node%resolved_type_kind)
++        do i = 1, node%resolved_rank
++            result_type = create_mono_type(TARRAY, args=[result_type])
++        end do
++        node%inferred_type = result_type
++    end subroutine resolve_defined_operator_result
++
++    logical function defined_interface_visible(arena, iface_index, node_index, operator) result(visible)
++        type(ast_arena_t), intent(in) :: arena
++        integer, intent(in) :: iface_index, node_index
++        character(*), intent(in) :: operator
++        integer :: host, scope, i, j, module_index
++        integer, allocatable :: statements(:)
++        logical :: public_op, named, named_public
++        character(:), allocatable :: module_name, spec
++        visible = .false.
++        module_index = find_enclosing_scope(arena, iface_index)
++        if (module_index == iface_index) module_index = find_host_scope(arena, module_index)
++        host = find_enclosing_scope(arena, node_index)
++        scope = host
++        do while (scope > 0)
++            if (scope == module_index) then
++                visible = .true.; return
++            end if
++            scope = find_host_scope(arena, scope)
++        end do
++        if (.not. arena%has_node_at(module_index)) return
++        select type (module => arena%entries(module_index)%node)
++        type is (module_node)
++            if (.not. allocated(module%name)) return
++            module_name = to_lower(module%name)
++        class default
++            return
++        end select
++        spec = 'operator('//to_lower(trim(operator))//')'
++        public_op = .true.; named = .false.; named_public = .false.
++        call get_scope_statement_indices(arena, module_index, statements)
++        do i = 1, size(statements)
++            if (.not. arena%has_node_at(statements(i))) cycle
++            select type (access => arena%entries(statements(i))%node)
++            type is (visibility_statement_node)
++                if (.not. access%has_list) then
++                    public_op = .not. access%is_private
++                else if (allocated(access%names)) then
++                    do j = 1, size(access%names)
++                        if (to_lower(trim(access%names(j)%s)) /= spec) cycle
++                        named = .true.; named_public = .not. access%is_private
++                    end do
++                end if
++            end select
++        end do
++        if (named) public_op = named_public
++        if (.not. public_op) return
++        scope = host
++        do while (scope > 0)
++            call get_scope_statement_indices(arena, scope, statements)
++            do i = 1, size(statements)
++                if (.not. arena%has_node_at(statements(i))) cycle
++                select type (use => arena%entries(statements(i))%node)
++                type is (use_statement_node)
++                    if (use%is_intrinsic .or. .not. allocated(use%module_name)) cycle
++                    if (to_lower(use%module_name) /= module_name) cycle
++                    if (.not. use%has_only) then
++                        visible = .true.; return
++                    end if
++                    if (.not. allocated(use%only_list)) cycle
++                    do j = 1, size(use%only_list)
++                        if (to_lower(trim(use%only_list(j)%s)) /= spec) cycle
++                        visible = .true.; return
++                    end do
++                end select
++            end do
++            scope = find_host_scope(arena, scope)
++        end do
++    end function defined_interface_visible
++
+     recursive subroutine resolve_named_generic_result(arena, interface_index, node, visiting)
+         type(ast_arena_t), intent(inout) :: arena
+         integer, intent(in) :: interface_index

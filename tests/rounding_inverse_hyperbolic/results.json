@@ -1,0 +1,1886 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 66,
+    "failed": 0,
+    "candidate_checked": 66,
+    "gnu_checked": 66,
+    "gnu_executed": 24,
+    "gnu_compile_only": 14,
+    "gnu_compile_rejections": 28
+  },
+  "records": [
+    {
+      "case": {
+        "name": "original_aint",
+        "source": "cases/demo_aint.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": " basics:\n  just chops off the fractional part\n  -2.00000000      -2.00000000    \n  if |x| < 1 a positive zero is returned\n  -0.00000000       0.00000000    \n  input may be of any real kind\n  -4.0000000000000000        4.0000000000000000     \n elemental:\n  -2.00000000      -2.00000000      -2.00000000      -2.00000000      -1.00000000      -1.00000000      -0.00000000       0.00000000       0.00000000       1.00000000       1.00000000       2.00000000       2.00000000       2.00000000       2.00000000    \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " basics:\n  just chops off the fractional part\n  -2.00000000      -2.00000000    \n  if |x| < 1 a positive zero is returned\n  -0.00000000       0.00000000    \n  input may be of any real kind\n  -4.0000000000000000        4.0000000000000000     \n elemental:\n  -2.00000000      -2.00000000      -2.00000000      -2.00000000      -1.00000000      -1.00000000      -0.00000000       0.00000000       0.00000000       1.00000000       1.00000000       2.00000000       2.00000000       2.00000000       2.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " basics:\n  just chops off the fractional part\n -2.00000000 -2.00000000\n  if |x| < 1 a positive zero is returned\n -0.00000000 0.00000000\n  input may be of any real kind\n -4.0000000000000000 4.0000000000000000\n elemental:\n -2.00000000 -2.00000000 -2.00000000 -2.00000000 -1.00000000 -1.00000000 -0.00000000 0.00000000 0.00000000 1.00000000 1.00000000 2.00000000 2.00000000 2.00000000 2.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_anint",
+        "source": "cases/demo_anint.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": " ANINT (2.783) has the value 3.0 =>   3.00000000    \n ANINT (-2.783) has the value -3.0 =>  -3.00000000    \n by default the kind of the output is the kind of the input\n   1.23456794E+09\n   1234567890.0000000     \n sometimes specifying the result kind is useful when passing\n results as an argument, for example.\n do you know why the results are different?\n   1234567936.0000000     \n   1234567890.0000000     \n numbers on a cusp are always the most troublesome\n  -3.00000000      -3.00000000      -2.00000000      -2.00000000      -2.00000000      -1.00000000      -1.00000000       0.00000000    \n negative zero is processor dependent\n   0.00000000       0.00000000       1.00000000       1.00000000       2.00000000       2.00000000       2.00000000       3.00000000       3.00000000    \n  -0.00000000      -0.00000000      -1.00000000      -1.00000000      -2.00000000      -2.00000000      -2.00000000      -3.00000000      -3.00000000    \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " ANINT (2.783) has the value 3.0 =>   3.00000000    \n ANINT (-2.783) has the value -3.0 =>  -3.00000000    \n by default the kind of the output is the kind of the input\n   1.23456794E+09\n   1234567890.0000000     \n sometimes specifying the result kind is useful when passing\n results as an argument, for example.\n do you know why the results are different?\n   1234567936.0000000     \n   1234567890.0000000     \n numbers on a cusp are always the most troublesome\n  -3.00000000      -3.00000000      -2.00000000      -2.00000000      -2.00000000      -1.00000000      -1.00000000       0.00000000    \n negative zero is processor dependent\n   0.00000000       0.00000000       1.00000000       1.00000000       2.00000000       2.00000000       2.00000000       3.00000000       3.00000000    \n  -0.00000000      -0.00000000      -1.00000000      -1.00000000      -2.00000000      -2.00000000      -2.00000000      -3.00000000      -3.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " ANINT (2.783) has the value 3.0 => 3.00000000\n ANINT (-2.783) has the value -3.0 => -3.00000000\n by default the kind of the output is the kind of the input\n 0.123456794E+10\n 1234567890.0000000\n sometimes specifying the result kind is useful when passing\n results as an argument, for example.\n do you know why the results are different?\n 1234567936.0000000\n 1234567890.0000000\n numbers on a cusp are always the most troublesome\n -3.00000000 -3.00000000 -2.00000000 -2.00000000 -2.00000000 -1.00000000 -1.00000000 0.00000000\n negative zero is processor dependent\n 0.00000000 0.00000000 1.00000000 1.00000000 2.00000000 2.00000000 2.00000000 3.00000000 3.00000000\n -0.00000000 -0.00000000 -1.00000000 -1.00000000 -2.00000000 -2.00000000 -2.00000000 -3.00000000 -3.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_asinh",
+        "source": "cases/demo_asinh.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": " -0.88137358701954305        0.0000000000000000       0.88137358701954305     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " -0.88137358701954305        0.0000000000000000       0.88137358701954305     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -0.88137358701954305 0.0000000000000000 0.88137358701954305\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_acosh",
+        "source": "cases/demo_acosh.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   0.0000000000000000        1.3169578969248166        1.7627471740390861     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   0.0000000000000000        1.3169578969248166        1.7627471740390861     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0.0000000000000000 1.3169578969248166 1.7627471740390861\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keywords",
+        "source": "cases/keywords.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  -2.0000000000000000       -3.00000000    \n   1.4436354751788103        1.31695795    \n           8           4           8           8           4\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -2.0000000000000000       -3.00000000    \n   1.4436354751788103        1.31695795    \n           8           4           8           8           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -2.0000000000000000 -3.00000000\n 1.4436354751788103 1.31695795\n 8 4 8 8 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_expressions",
+        "source": "cases/kind_expressions.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  -3.0000000000000000        3.00000000    \n   2.0000000000000000        3.0000000000000000     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -3.0000000000000000        3.00000000    \n   2.0000000000000000        3.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -3.0000000000000000 3.00000000\n 2.0000000000000000 3.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "round_before_narrowing",
+        "source": "cases/round_before_narrowing.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "0.0 -0.0 1.0 -1.0 0.0 -0.0 2.0 -2.0\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0.00000000 -0.00000000 1.00000000 -1.00000000 0.00000000 -0.00000000 2.00000000 -2.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "narrow_constant_fold",
+        "source": "cases/narrow_constant_fold.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1.0 0.0\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.00000000       0.00000000    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1.00000000 0.00000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "arrays_rank1",
+        "source": "cases/arrays_rank1.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  -2.0000000000000000       -1.0000000000000000        0.0000000000000000        1.0000000000000000        2.0000000000000000       -3.0000000000000000       -1.0000000000000000        0.0000000000000000        1.0000000000000000        3.0000000000000000       -1.6472311463710958      -0.88137358701954305        0.0000000000000000       0.88137358701954305        1.6472311463710958        1.9248473002384139        1.3169578969248166        0.0000000000000000        1.3169578969248166        1.9248473002384139     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -2.0000000000000000       -1.0000000000000000        0.0000000000000000        1.0000000000000000        2.0000000000000000       -3.0000000000000000       -1.0000000000000000        0.0000000000000000        1.0000000000000000        3.0000000000000000       -1.6472311463710958      -0.88137358701954305        0.0000000000000000       0.88137358701954305        1.6472311463710958        1.9248473002384139        1.3169578969248166        0.0000000000000000        1.3169578969248166        1.9248473002384139     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -2.0000000000000000 -1.0000000000000000 0.0000000000000000 1.0000000000000000 2.0000000000000000 -3.0000000000000000 -1.0000000000000000 0.0000000000000000 1.0000000000000000 3.0000000000000000 -1.6472311463710958 -0.88137358701954305 0.0000000000000000 0.88137358701954305 1.6472311463710958 1.9248473002384139 1.3169578969248166 0.0000000000000000 1.3169578969248166 1.9248473002384139\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "arrays_rank2",
+        "source": "cases/arrays_rank2.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   2.00000000       3.00000000       0.00000000       1.00000000      -2.00000000      -1.00000000      -3.0000000000000000       -1.0000000000000000        0.0000000000000000        1.0000000000000000        3.0000000000000000        3.0000000000000000       -1.6472311463710958      -0.88137358701954305        0.0000000000000000       0.88137358701954305        1.6472311463710958        1.8184464592320668        1.9248473002384139        1.3169578969248166        0.0000000000000000        1.3169578969248166        1.9248473002384139        2.0634370688955608     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   2.00000000       3.00000000       0.00000000       1.00000000      -2.00000000      -1.00000000      -3.0000000000000000       -1.0000000000000000        0.0000000000000000        1.0000000000000000        3.0000000000000000        3.0000000000000000       -1.6472311463710958      -0.88137358701954305        0.0000000000000000       0.88137358701954305        1.6472311463710958        1.8184464592320668        1.9248473002384139        1.3169578969248166        0.0000000000000000        1.3169578969248166        1.9248473002384139        2.0634370688955608     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2.00000000 3.00000000 0.00000000 1.00000000 -2.00000000 -1.00000000 -3.0000000000000000 -1.0000000000000000 0.0000000000000000 1.0000000000000000 3.0000000000000000 3.0000000000000000 -1.6472311463710958 -0.88137358701954305 0.0000000000000000 0.88137358701954305 1.6472311463710958 1.8184464592320668 1.9248473002384139 1.3169578969248166 0.0000000000000000 1.3169578969248166 1.9248473002384139 2.0634370688955608\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "arrays_rank3",
+        "source": "cases/arrays_rank3.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  -2.0000000000000000       -2.0000000000000000       -2.0000000000000000       -2.0000000000000000        1.0000000000000000        1.0000000000000000        1.0000000000000000        1.0000000000000000       -3.0000000000000000       -3.0000000000000000       -3.0000000000000000       -3.0000000000000000        2.0000000000000000        2.0000000000000000        2.0000000000000000        2.0000000000000000       -1.6472311463710958       -1.6472311463710958       -1.6472311463710958       -1.6472311463710958        1.3258977669011374        1.3258977669011374        1.3258977669011374        1.3258977669011374        1.9248473002384139        1.9248473002384139        1.9248473002384139        1.9248473002384139        1.6699190305877700        1.6699190305877700        1.6699190305877700        1.6699190305877700     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -2.0000000000000000       -2.0000000000000000       -2.0000000000000000       -2.0000000000000000        1.0000000000000000        1.0000000000000000        1.0000000000000000        1.0000000000000000       -3.0000000000000000       -3.0000000000000000       -3.0000000000000000       -3.0000000000000000        2.0000000000000000        2.0000000000000000        2.0000000000000000        2.0000000000000000       -1.6472311463710958       -1.6472311463710958       -1.6472311463710958       -1.6472311463710958        1.3258977669011374        1.3258977669011374        1.3258977669011374        1.3258977669011374        1.9248473002384139        1.9248473002384139        1.9248473002384139        1.9248473002384139        1.6699190305877700        1.6699190305877700        1.6699190305877700        1.6699190305877700     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -2.0000000000000000 -2.0000000000000000 -2.0000000000000000 -2.0000000000000000 1.0000000000000000 1.0000000000000000 1.0000000000000000 1.0000000000000000 -3.0000000000000000 -3.0000000000000000 -3.0000000000000000 -3.0000000000000000 2.0000000000000000 2.0000000000000000 2.0000000000000000 2.0000000000000000 -1.6472311463710958 -1.6472311463710958 -1.6472311463710958 -1.6472311463710958 1.3258977669011374 1.3258977669011374 1.3258977669011374 1.3258977669011374 1.9248473002384139 1.9248473002384139 1.9248473002384139 1.9248473002384139 1.6699190305877700 1.6699190305877700 1.6699190305877700 1.6699190305877700\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty",
+        "source": "cases/empty.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           0           0           0           0\n           4           8           8           8\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           0           0\n           4           8           8           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 0 0\n 4 8 8 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_no_value",
+        "source": "cases/kind_no_value.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 4 8 8 8 4\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           4           8           8\n           8           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 4 8 8\n 8 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameters",
+        "source": "cases/parameters.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  -2.0000000000000000        3.0000000000000000       0.88137358701954305        1.3169578969248168     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -2.0000000000000000        3.0000000000000000       0.88137358701954305        1.3169578969248168     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -2.0000000000000000 3.0000000000000000 0.88137358701954305 1.3169578969248166\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "huge_values",
+        "source": "cases/huge_values.f90",
+        "category": "success",
+        "baseline": "run",
+        "abs_tol": 0,
+        "expected_stdout": "   3.40282347E+38   3.40282347E+38   1.7976931348623157E+308   1.7976931348623157E+308\n   89.4159851      -89.4159851       89.4159851       710.47586007394386       -710.47586007394386        710.47586007394386     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   3.40282347E+38   3.40282347E+38   1.7976931348623157E+308   1.7976931348623157E+308\n   89.4159851      -89.4159851       89.4159851       710.47586007394386       -710.47586007394386        710.47586007394386     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0.340282347E+39 0.340282347E+39 0.17976931348623157E+309 0.17976931348623157E+309\n 89.4159851 -89.4159851 89.4159851 710.47586007394386 -710.47586007394386 710.47586007394386\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tiny_and_subnormal",
+        "source": "cases/tiny_and_subnormal.f90",
+        "category": "success",
+        "baseline": "run",
+        "abs_tol": 0,
+        "expected_stdout": "   1.40129846E-45  -1.40129846E-45   4.9406564584124654E-324  -4.9406564584124654E-324\n   0.00000000       0.00000000       0.0000000000000000        0.0000000000000000     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.40129846E-45  -1.40129846E-45   4.9406564584124654E-324  -4.9406564584124654E-324\n   0.00000000       0.00000000       0.0000000000000000        0.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0.140129846E-44 -0.140129846E-44 0.49406564584124654E-323 -0.49406564584124654E-323\n 0.00000000 0.00000000 0.0000000000000000 0.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zero_sign",
+        "source": "cases/zero_sign.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  -1.0000000000000000       -1.0000000000000000       -1.0000000000000000     \n  -1.00000000      -1.00000000       0.0000000000000000     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -1.0000000000000000       -1.0000000000000000       -1.0000000000000000     \n  -1.00000000      -1.00000000       0.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -1.0000000000000000 -1.0000000000000000 -1.0000000000000000\n -1.00000000 -1.00000000 0.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_arrays",
+        "source": "cases/dynamic_arrays.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  -1.0000000000000000        0.0000000000000000        2.0000000000000000       -2.00000000       1.00000000       3.00000000      -1.1947632172871094       0.48121182505960347        1.6472311463710958        1.5667992369724111       0.96242365011920694        1.9248473002384139     \n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -1.0000000000000000        0.0000000000000000        2.0000000000000000       -2.00000000       1.00000000       3.00000000      -1.1947632172871094       0.48121182505960347        1.6472311463710958        1.5667992369724111       0.96242365011920694        1.9248473002384139     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -1.0000000000000000 0.0000000000000000 2.0000000000000000 -2.00000000 1.00000000 3.00000000 -1.1947632172871094 0.48121182505960347 1.6472311463710958 1.5667992369724111 0.96242365011920694 1.9248473002384139\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "optional_metadata",
+        "source": "cases/optional_metadata.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           4           8           8           8\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           8           8           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 8 8 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "aint_integer",
+        "source": "cases/aint_integer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_integer.f90:3:13:\n\n    3 | print *,aint(2)\n      |             1\nError: \u2018a\u2019 argument of \u2018aint\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_integer.f90:3:16: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_integer.f90:3:16: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "aint_logical",
+        "source": "cases/aint_logical.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_logical.f90:3:13:\n\n    3 | print *,aint(.true.)\n      |             1\nError: \u2018a\u2019 argument of \u2018aint\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_logical.f90:3:21: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_logical.f90:3:21: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "aint_extra",
+        "source": "cases/aint_extra.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_extra.f90:3:8:\n\n    3 | print *,aint(2.0,4,8)\n      |        1\nError: Too many arguments in call to \u2018aint\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_extra.f90:3:22: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_extra.f90:3:22: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      }
+    },
+    {
+      "case": {
+        "name": "aint_empty",
+        "source": "cases/aint_empty.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_empty.f90:3:8:\n\n    3 | print *,aint()\n      |        1\nError: Missing actual argument \u2018a\u2019 in call to \u2018aint\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_empty.f90:3:15: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_empty.f90:3:15: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      }
+    },
+    {
+      "case": {
+        "name": "aint_kind16",
+        "source": "cases/aint_kind16.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_kind16.f90:3:14: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_kind16.f90:3:14: Only REAL literal kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "anint_integer",
+        "source": "cases/anint_integer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_integer.f90:3:14:\n\n    3 | print *,anint(2)\n      |              1\nError: \u2018a\u2019 argument of \u2018anint\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_integer.f90:3:17: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_integer.f90:3:17: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "anint_logical",
+        "source": "cases/anint_logical.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_logical.f90:3:14:\n\n    3 | print *,anint(.true.)\n      |              1\nError: \u2018a\u2019 argument of \u2018anint\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_logical.f90:3:22: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_logical.f90:3:22: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "anint_extra",
+        "source": "cases/anint_extra.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_extra.f90:3:8:\n\n    3 | print *,anint(2.0,4,8)\n      |        1\nError: Too many arguments in call to \u2018anint\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_extra.f90:3:23: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_extra.f90:3:23: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      }
+    },
+    {
+      "case": {
+        "name": "anint_empty",
+        "source": "cases/anint_empty.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_empty.f90:3:8:\n\n    3 | print *,anint()\n      |        1\nError: Missing actual argument \u2018a\u2019 in call to \u2018anint\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_empty.f90:3:16: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_empty.f90:3:16: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      }
+    },
+    {
+      "case": {
+        "name": "anint_kind16",
+        "source": "cases/anint_kind16.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_kind16.f90:3:15: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_kind16.f90:3:15: Only REAL literal kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "asinh_integer",
+        "source": "cases/asinh_integer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_integer.f90:3:14:\n\n    3 | print *,asinh(2)\n      |              1\nError: \u2018x\u2019 argument of \u2018asinh\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_integer.f90:3:17: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_integer.f90:3:17: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "asinh_logical",
+        "source": "cases/asinh_logical.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_logical.f90:3:14:\n\n    3 | print *,asinh(.true.)\n      |              1\nError: \u2018x\u2019 argument of \u2018asinh\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_logical.f90:3:22: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_logical.f90:3:22: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "asinh_extra",
+        "source": "cases/asinh_extra.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_extra.f90:3:8:\n\n    3 | print *,asinh(2.0,4,8)\n      |        1\nError: Too many arguments in call to \u2018asinh\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_extra.f90:3:23: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_extra.f90:3:23: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      }
+    },
+    {
+      "case": {
+        "name": "asinh_empty",
+        "source": "cases/asinh_empty.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_empty.f90:3:8:\n\n    3 | print *,asinh()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018asinh\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_empty.f90:3:16: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_empty.f90:3:16: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      }
+    },
+    {
+      "case": {
+        "name": "asinh_kind16",
+        "source": "cases/asinh_kind16.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_kind16.f90:3:15: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_kind16.f90:3:15: Only REAL literal kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "acosh_integer",
+        "source": "cases/acosh_integer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_integer.f90:3:14:\n\n    3 | print *,acosh(2)\n      |              1\nError: \u2018x\u2019 argument of \u2018acosh\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_integer.f90:3:17: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_integer.f90:3:17: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "acosh_logical",
+        "source": "cases/acosh_logical.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_logical.f90:3:14:\n\n    3 | print *,acosh(.true.)\n      |              1\nError: \u2018x\u2019 argument of \u2018acosh\u2019 intrinsic at (1) must be REAL or COMPLEX\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_logical.f90:3:22: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_logical.f90:3:22: Real rounding/inverse hyperbolic requires REAL kind 4 or 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "acosh_extra",
+        "source": "cases/acosh_extra.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_extra.f90:3:8:\n\n    3 | print *,acosh(2.0,4,8)\n      |        1\nError: Too many arguments in call to \u2018acosh\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_extra.f90:3:23: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_extra.f90:3:23: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      }
+    },
+    {
+      "case": {
+        "name": "acosh_empty",
+        "source": "cases/acosh_empty.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_empty.f90:3:8:\n\n    3 | print *,acosh()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018acosh\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_empty.f90:3:16: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_empty.f90:3:16: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      }
+    },
+    {
+      "case": {
+        "name": "acosh_kind16",
+        "source": "cases/acosh_kind16.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_kind16.f90:3:15: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_kind16.f90:3:15: Only REAL literal kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "aint_bad_kind",
+        "source": "cases/aint_bad_kind.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_bad_kind.f90:3:21: AINT/ANINT support result kinds 4 and 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_bad_kind.f90:3:21: AINT/ANINT support result kinds 4 and 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "aint_dynamic_kind",
+        "source": "cases/aint_dynamic_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_dynamic_kind.f90:5:17:\n\n    5 | print *,aint(2.0,k)\n      |                 1\nError: Parameter \u2018k\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_dynamic_kind.f90:5:17:\n\n    5 | print *,aint(2.0,k)\n      |                 1\nError: \u2018kind\u2019 argument of \u2018aint\u2019 intrinsic at (1) must be a constant\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_dynamic_kind.f90:5:20: AINT/ANINT KIND must be constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_dynamic_kind.f90:5:20: AINT/ANINT KIND must be constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "aint_array_kind",
+        "source": "cases/aint_array_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_array_kind.f90:3:17:\n\n    3 | print *,aint(2.0,[4])\n      |                 1\nError: \u2018kind\u2019 argument of \u2018aint\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_array_kind.f90:3:22: AINT/ANINT KIND must be scalar INTEGER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_array_kind.f90:3:22: AINT/ANINT KIND must be scalar INTEGER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "aint_real_kind",
+        "source": "cases/aint_real_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_real_kind.f90:3:17:\n\n    3 | print *,aint(2.0,4.0)\n      |                 1\nError: \u2018kind\u2019 argument of \u2018aint\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_real_kind.f90:3:22: AINT/ANINT KIND must be scalar INTEGER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_real_kind.f90:3:22: AINT/ANINT KIND must be scalar INTEGER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "aint_duplicate",
+        "source": "cases/aint_duplicate.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_duplicate.f90:3:25:\n\n    3 | print *,aint(a=2.0,a=3.0)\n      |                         1\nError: Keyword \u2018a\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_duplicate.f90:3:26: Repeated actual argument for a\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_duplicate.f90:3:26: Repeated actual argument for a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "aint_wrong_keyword",
+        "source": "cases/aint_wrong_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_wrong_keyword.f90:3:8:\n\n    3 | print *,aint(x=2.0)\n      |        1\nError: Cannot find keyword named \u2018x\u2019 in call to \u2018aint\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_wrong_keyword.f90:3:20: Unknown keyword or excess actual argument: x\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_wrong_keyword.f90:3:20: Unknown keyword or excess actual argument: x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "aint_narrow_overflow",
+        "source": "cases/aint_narrow_overflow.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "diagnostic": "overflows",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/aint_narrow_overflow.f90:5:9: AINT/ANINT result overflows REAL kind 4\n"
+      }
+    },
+    {
+      "case": {
+        "name": "anint_bad_kind",
+        "source": "cases/anint_bad_kind.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_bad_kind.f90:3:22: AINT/ANINT support result kinds 4 and 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_bad_kind.f90:3:22: AINT/ANINT support result kinds 4 and 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "anint_dynamic_kind",
+        "source": "cases/anint_dynamic_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_dynamic_kind.f90:5:18:\n\n    5 | print *,anint(2.0,k)\n      |                  1\nError: Parameter \u2018k\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_dynamic_kind.f90:5:18:\n\n    5 | print *,anint(2.0,k)\n      |                  1\nError: \u2018kind\u2019 argument of \u2018anint\u2019 intrinsic at (1) must be a constant\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_dynamic_kind.f90:5:21: AINT/ANINT KIND must be constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_dynamic_kind.f90:5:21: AINT/ANINT KIND must be constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "anint_array_kind",
+        "source": "cases/anint_array_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_array_kind.f90:3:18:\n\n    3 | print *,anint(2.0,[4])\n      |                  1\nError: \u2018kind\u2019 argument of \u2018anint\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_array_kind.f90:3:23: AINT/ANINT KIND must be scalar INTEGER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_array_kind.f90:3:23: AINT/ANINT KIND must be scalar INTEGER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "anint_real_kind",
+        "source": "cases/anint_real_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_real_kind.f90:3:18:\n\n    3 | print *,anint(2.0,4.0)\n      |                  1\nError: \u2018kind\u2019 argument of \u2018anint\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_real_kind.f90:3:23: AINT/ANINT KIND must be scalar INTEGER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_real_kind.f90:3:23: AINT/ANINT KIND must be scalar INTEGER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "anint_duplicate",
+        "source": "cases/anint_duplicate.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_duplicate.f90:3:26:\n\n    3 | print *,anint(a=2.0,a=3.0)\n      |                          1\nError: Keyword \u2018a\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_duplicate.f90:3:27: Repeated actual argument for a\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_duplicate.f90:3:27: Repeated actual argument for a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "anint_wrong_keyword",
+        "source": "cases/anint_wrong_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_wrong_keyword.f90:3:8:\n\n    3 | print *,anint(x=2.0)\n      |        1\nError: Cannot find keyword named \u2018x\u2019 in call to \u2018anint\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_wrong_keyword.f90:3:21: Unknown keyword or excess actual argument: x\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_wrong_keyword.f90:3:21: Unknown keyword or excess actual argument: x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "anint_narrow_overflow",
+        "source": "cases/anint_narrow_overflow.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "diagnostic": "overflows",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/anint_narrow_overflow.f90:5:9: AINT/ANINT result overflows REAL kind 4\n"
+      }
+    },
+    {
+      "case": {
+        "name": "acosh_domain",
+        "source": "cases/acosh_domain.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "diagnostic": "ACOSH",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_domain.f90:5:9: ACOSH requires X >= 1\n"
+      }
+    },
+    {
+      "case": {
+        "name": "acosh_negative",
+        "source": "cases/acosh_negative.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "diagnostic": "ACOSH",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_negative.f90:5:9: ACOSH requires X >= 1\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined",
+        "source": "cases/undefined.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "diagnostic": "uninitialized",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/undefined.f90:4:15: read of uninitialized variable x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "asinh_complex",
+        "source": "cases/asinh_complex.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_complex.f90:3:19: Expected ), found ,\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_complex.f90:3:19: Expected ), found ,\n"
+      }
+    },
+    {
+      "case": {
+        "name": "acosh_twoarg",
+        "source": "cases/acosh_twoarg.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_twoarg.f90:3:8:\n\n    3 | print *,acosh(2.0,4)\n      |        1\nError: Too many arguments in call to \u2018acosh\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_twoarg.f90:3:21: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/acosh_twoarg.f90:3:21: AINT/ANINT require A and optional KIND; ASINH/ACOSH require X\n"
+      }
+    },
+    {
+      "case": {
+        "name": "asinh_wrong_keyword",
+        "source": "cases/asinh_wrong_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_wrong_keyword.f90:3:8:\n\n    3 | print *,asinh(a=1.0)\n      |        1\nError: Cannot find keyword named \u2018a\u2019 in call to \u2018asinh\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_wrong_keyword.f90:3:21: Unknown keyword or excess actual argument: a\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/asinh_wrong_keyword.f90:3:21: Unknown keyword or excess actual argument: a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "legacy_aliases",
+        "source": "cases/legacy_aliases.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=gnu",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/legacy_aliases.f90:3:18: Unsupported procedure or array reference: dint\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/rounding_inverse_hyperbolic/cases/legacy_aliases.f90:3:18: Unsupported procedure or array reference: dint\n"
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_scalars",
+        "source": "cases/shadow_scalars.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           1           2           3           4\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_arrays",
+        "source": "cases/shadow_arrays.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           2           3           6           7\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           6           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 6 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_functions",
+        "source": "cases/shadow_functions.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           2           4           6           8\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           4           6           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 4 6 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_results",
+        "source": "cases/shadow_results.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           2           4           6           8\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           4           6           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 4 6 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_generics",
+        "source": "cases/shadow_generics.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "          11          12          13          14\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          12          13          14\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 12 13 14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "rounding_matrix",
+        "source": "cases/rounding_matrix.f90",
+        "category": "success",
+        "baseline": "run",
+        "rel_tol": 0,
+        "abs_tol": 0,
+        "expected_stdout": "-16777216.0 -16777216.0 -16777215.0 -16777215.0 -2.0 -3.0 -2.0 -3.0 -2.0 -2.0 -2.0 -2.0 -1.0 -2.0 -1.0 -1.0 -0.0 -1.0 -0.0 -1.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 1.0 1.0 1.0 1.0 2.0 2.0 2.0 2.0 2.0 2.0 3.0 2.0 3.0 16777215.0 16777215.0 16777216.0 16777216.0 -16777216.0 -16777216.0 -16777215.0 -16777215.0 -2.0 -3.0 -2.0 -3.0 -2.0 -2.0 -2.0 -2.0 -1.0 -2.0 -1.0 -1.0 -0.0 -1.0 -0.0 -1.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 1.0 1.0 1.0 1.0 2.0 2.0 2.0 2.0 2.0 2.0 3.0 2.0 3.0 16777215.0 16777215.0 16777216.0 16777216.0 -16777216.0 -16777216.0 -16777215.0 -16777215.0 -2.0 -3.0 -2.0 -3.0 -2.0 -2.0 -2.0 -2.0 -1.0 -2.0 -1.0 -1.0 -0.0 -1.0 -0.0 -1.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 1.0 1.0 1.0 1.0 2.0 2.0 2.0 2.0 2.0 2.0 3.0 2.0 3.0 16777215.0 16777215.0 16777216.0 16777216.0 -16777216.0 -16777216.0 -16777215.0 -16777215.0 -2.0 -3.0 -2.0 -3.0 -2.0 -2.0 -2.0 -2.0 -1.0 -2.0 -1.0 -1.0 -0.0 -1.0 -0.0 -1.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 1.0 1.0 1.0 1.0 2.0 2.0 2.0 2.0 2.0 2.0 3.0 2.0 3.0 16777215.0 16777215.0 16777216.0 16777216.0\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -16777216.0      -16777216.0    \n  -16777215.0      -16777215.0    \n  -2.00000000      -3.00000000    \n  -2.00000000      -3.00000000    \n  -2.00000000      -2.00000000    \n  -2.00000000      -2.00000000    \n  -1.00000000      -2.00000000    \n  -1.00000000      -1.00000000    \n  -0.00000000      -1.00000000    \n  -0.00000000      -1.00000000    \n  -0.00000000      -0.00000000    \n  -0.00000000      -0.00000000    \n  -0.00000000      -0.00000000    \n   0.00000000       0.00000000    \n   0.00000000       0.00000000    \n   0.00000000       0.00000000    \n   0.00000000       1.00000000    \n   0.00000000       1.00000000    \n   1.00000000       1.00000000    \n   1.00000000       2.00000000    \n   2.00000000       2.00000000    \n   2.00000000       2.00000000    \n   2.00000000       3.00000000    \n   2.00000000       3.00000000    \n   16777215.0       16777215.0    \n   16777216.0       16777216.0    \n  -16777216.000000000       -16777216.000000000     \n  -16777215.000000000       -16777215.000000000     \n  -2.0000000000000000       -3.0000000000000000     \n  -2.0000000000000000       -3.0000000000000000     \n  -2.0000000000000000       -2.0000000000000000     \n  -2.0000000000000000       -2.0000000000000000     \n  -1.0000000000000000       -2.0000000000000000     \n  -1.0000000000000000       -1.0000000000000000     \n  -0.0000000000000000       -1.0000000000000000     \n  -0.0000000000000000       -1.0000000000000000     \n  -0.0000000000000000       -0.0000000000000000     \n  -0.0000000000000000       -0.0000000000000000     \n  -0.0000000000000000       -0.0000000000000000     \n   0.0000000000000000        0.0000000000000000     \n   0.0000000000000000        0.0000000000000000     \n   0.0000000000000000        0.0000000000000000     \n   0.0000000000000000        1.0000000000000000     \n   0.0000000000000000        1.0000000000000000     \n   1.0000000000000000        1.0000000000000000     \n   1.0000000000000000        2.0000000000000000     \n   2.0000000000000000        2.0000000000000000     \n   2.0000000000000000        2.0000000000000000     \n   2.0000000000000000        3.0000000000000000     \n   2.0000000000000000        3.0000000000000000     \n   16777215.000000000        16777215.000000000     \n   16777216.000000000        16777216.000000000     \n  -16777216.0      -16777216.0    \n  -16777215.0      -16777215.0    \n  -2.00000000      -3.00000000    \n  -2.00000000      -3.00000000    \n  -2.00000000      -2.00000000    \n  -2.00000000      -2.00000000    \n  -1.00000000      -2.00000000    \n  -1.00000000      -1.00000000    \n  -0.00000000      -1.00000000    \n  -0.00000000      -1.00000000    \n  -0.00000000      -0.00000000    \n  -0.00000000      -0.00000000    \n  -0.00000000      -0.00000000    \n   0.00000000       0.00000000    \n   0.00000000       0.00000000    \n   0.00000000       0.00000000    \n   0.00000000       1.00000000    \n   0.00000000       1.00000000    \n   1.00000000       1.00000000    \n   1.00000000       2.00000000    \n   2.00000000       2.00000000    \n   2.00000000       2.00000000    \n   2.00000000       3.00000000    \n   2.00000000       3.00000000    \n   16777215.0       16777215.0    \n   16777216.0       16777216.0    \n  -16777216.000000000       -16777216.000000000     \n  -16777215.000000000       -16777215.000000000     \n  -2.0000000000000000       -3.0000000000000000     \n  -2.0000000000000000       -3.0000000000000000     \n  -2.0000000000000000       -2.0000000000000000     \n  -2.0000000000000000       -2.0000000000000000     \n  -1.0000000000000000       -2.0000000000000000     \n  -1.0000000000000000       -1.0000000000000000     \n  -0.0000000000000000       -1.0000000000000000     \n  -0.0000000000000000       -1.0000000000000000     \n  -0.0000000000000000       -0.0000000000000000     \n  -0.0000000000000000       -0.0000000000000000     \n  -0.0000000000000000       -0.0000000000000000     \n   0.0000000000000000        0.0000000000000000     \n   0.0000000000000000        0.0000000000000000     \n   0.0000000000000000        0.0000000000000000     \n   0.0000000000000000        1.0000000000000000     \n   0.0000000000000000        1.0000000000000000     \n   1.0000000000000000        1.0000000000000000     \n   1.0000000000000000        2.0000000000000000     \n   2.0000000000000000        2.0000000000000000     \n   2.0000000000000000        2.0000000000000000     \n   2.0000000000000000        3.0000000000000000     \n   2.0000000000000000        3.0000000000000000     \n   16777215.000000000        16777215.000000000     \n   16777216.000000000        16777216.000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -16777216.0 -16777216.0\n -16777215.0 -16777215.0\n -2.00000000 -3.00000000\n -2.00000000 -3.00000000\n -2.00000000 -2.00000000\n -2.00000000 -2.00000000\n -1.00000000 -2.00000000\n -1.00000000 -1.00000000\n -0.00000000 -1.00000000\n -0.00000000 -1.00000000\n -0.00000000 -0.00000000\n -0.00000000 -0.00000000\n -0.00000000 -0.00000000\n 0.00000000 0.00000000\n 0.00000000 0.00000000\n 0.00000000 0.00000000\n 0.00000000 1.00000000\n 0.00000000 1.00000000\n 1.00000000 1.00000000\n 1.00000000 2.00000000\n 2.00000000 2.00000000\n 2.00000000 2.00000000\n 2.00000000 3.00000000\n 2.00000000 3.00000000\n 16777215.0 16777215.0\n 16777216.0 16777216.0\n -16777216.000000000 -16777216.000000000\n -16777215.000000000 -16777215.000000000\n -2.0000000000000000 -3.0000000000000000\n -2.0000000000000000 -3.0000000000000000\n -2.0000000000000000 -2.0000000000000000\n -2.0000000000000000 -2.0000000000000000\n -1.0000000000000000 -2.0000000000000000\n -1.0000000000000000 -1.0000000000000000\n -0.0000000000000000 -1.0000000000000000\n -0.0000000000000000 -1.0000000000000000\n -0.0000000000000000 -0.0000000000000000\n -0.0000000000000000 -0.0000000000000000\n -0.0000000000000000 -0.0000000000000000\n 0.0000000000000000 0.0000000000000000\n 0.0000000000000000 0.0000000000000000\n 0.0000000000000000 0.0000000000000000\n 0.0000000000000000 1.0000000000000000\n 0.0000000000000000 1.0000000000000000\n 1.0000000000000000 1.0000000000000000\n 1.0000000000000000 2.0000000000000000\n 2.0000000000000000 2.0000000000000000\n 2.0000000000000000 2.0000000000000000\n 2.0000000000000000 3.0000000000000000\n 2.0000000000000000 3.0000000000000000\n 16777215.000000000 16777215.000000000\n 16777216.000000000 16777216.000000000\n -16777216.0 -16777216.0\n -16777215.0 -16777215.0\n -2.00000000 -3.00000000\n -2.00000000 -3.00000000\n -2.00000000 -2.00000000\n -2.00000000 -2.00000000\n -1.00000000 -2.00000000\n -1.00000000 -1.00000000\n -0.00000000 -1.00000000\n -0.00000000 -1.00000000\n -0.00000000 -0.00000000\n -0.00000000 -0.00000000\n -0.00000000 -0.00000000\n 0.00000000 0.00000000\n 0.00000000 0.00000000\n 0.00000000 0.00000000\n 0.00000000 1.00000000\n 0.00000000 1.00000000\n 1.00000000 1.00000000\n 1.00000000 2.00000000\n 2.00000000 2.00000000\n 2.00000000 2.00000000\n 2.00000000 3.00000000\n 2.00000000 3.00000000\n 16777215.0 16777215.0\n 16777216.0 16777216.0\n -16777216.000000000 -16777216.000000000\n -16777215.000000000 -16777215.000000000\n -2.0000000000000000 -3.0000000000000000\n -2.0000000000000000 -3.0000000000000000\n -2.0000000000000000 -2.0000000000000000\n -2.0000000000000000 -2.0000000000000000\n -1.0000000000000000 -2.0000000000000000\n -1.0000000000000000 -1.0000000000000000\n -0.0000000000000000 -1.0000000000000000\n -0.0000000000000000 -1.0000000000000000\n -0.0000000000000000 -0.0000000000000000\n -0.0000000000000000 -0.0000000000000000\n -0.0000000000000000 -0.0000000000000000\n 0.0000000000000000 0.0000000000000000\n 0.0000000000000000 0.0000000000000000\n 0.0000000000000000 0.0000000000000000\n 0.0000000000000000 1.0000000000000000\n 0.0000000000000000 1.0000000000000000\n 1.0000000000000000 1.0000000000000000\n 1.0000000000000000 2.0000000000000000\n 2.0000000000000000 2.0000000000000000\n 2.0000000000000000 2.0000000000000000\n 2.0000000000000000 3.0000000000000000\n 2.0000000000000000 3.0000000000000000\n 16777215.000000000 16777215.000000000\n 16777216.000000000 16777216.000000000\n",
+        "err": ""
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:41:26.160270+00:00",
+  "manifest_sha256": "ba8014511816cd34e53b9c2896c9b82b07d13b0efd0ebe81a07fb0307e866d11",
+  "source_sha256": {
+    "cases/demo_aint.f90": "30cf8c1c318a68e22c12c1492c6d96b463fd1f0f54dec4022914974f0b85e8b6",
+    "cases/demo_anint.f90": "2027bde28edb3b5e7acd5dd6471f08404f54887112d877b27d1f757bbe5a3971",
+    "cases/demo_asinh.f90": "c1abcb57f177524c32a409711b9c59041ae2b70ce7f90e8561b64eed749e3da5",
+    "cases/demo_acosh.f90": "965c4dcd51180299e3b192f99e335146d6f4cce7a302bfb1b09ebd8d8560d295",
+    "cases/keywords.f90": "285c4e47de91568b925f48c88281288819c120176ed30cff650870590fa6a667",
+    "cases/kind_expressions.f90": "16fc1b45c483409f90c913be84191777bb53831b021bd4d6d1fa616b00d7bb02",
+    "cases/round_before_narrowing.f90": "a2497f0a7a18f497ddb969561da2bbaa4e61d128ef6f01908de636bf09f89aed",
+    "cases/narrow_constant_fold.f90": "b49310f7893b4cb8cc38c272ecf1e869d2f675cbce8c570bc11398b8c9add86b",
+    "cases/arrays_rank1.f90": "a72f58a1f60ad8ac6304f6992a0768e1973b70a0803da93acb9fd975f6187567",
+    "cases/arrays_rank2.f90": "7146891202622ab933607c3d040b75041198516ea9d9a53fcca72df2a1ce04f9",
+    "cases/arrays_rank3.f90": "d637a3c398130021cc1385959537054c249aa40842ca4c31215b6cbdda57a49c",
+    "cases/empty.f90": "f3ad4c690e6f470411f4a66f52a4ba7db9d3d79ddd4e5a40689b14a1519a7a81",
+    "cases/kind_no_value.f90": "f5c8dbc4bfc7aecf4c342a3d40c335b8bb5d5a479e8e259edf377155398909a9",
+    "cases/parameters.f90": "9bc4bf9f15ceaaca52d7e9d3a10cb65da94ffbaa05258b85bd1fa779e1cfa310",
+    "cases/huge_values.f90": "c965a4cadb785d6831bcd11efa1037cc8378f293e4deb928b37008cb7cf6a910",
+    "cases/tiny_and_subnormal.f90": "d69fe1592c5b3a01d3556824a1d951648fc72f479e07a8209e0ef4d1c536ac9f",
+    "cases/zero_sign.f90": "15efc7a9a20c9410eccdc1cca06304e113ec5293184e6d7990b05f46e665c724",
+    "cases/dynamic_arrays.f90": "19cd65b6460c8f7d515807e17c34da9763bce5cb011522dab038e996485fb696",
+    "cases/optional_metadata.f90": "8750a1a6bde87e0c1cb7713ea7618fbdba7be252ed54956c4912c9b169918318",
+    "cases/aint_integer.f90": "72f0000791c9d34699aa303a8f1986048ba5016fa4e11a94d4ce0c6d163f4f8f",
+    "cases/aint_logical.f90": "ac771068b70e88f08c15a483cc32c2b5128562990bda4accdc0fd221bed4053b",
+    "cases/aint_extra.f90": "4eaf7ebc236635f7be26040f0324b1b25c5d66b27c889f0691a1abe1b258c85d",
+    "cases/aint_empty.f90": "1e8ae9db3128c3851ccab567ffa4d3c393816ea08d4fe288b25897f1d4c2c7eb",
+    "cases/aint_kind16.f90": "554e62d16a4a64de524e1622d713c44eef37db33b355b9bc7f5a6e0aa188d903",
+    "cases/anint_integer.f90": "a7e916b0a62c17fa77c85e6be607e4c942793afc57d818bf06d0bd49a5a1f68d",
+    "cases/anint_logical.f90": "310c64c914e9631dae56aa80ae7e22f4a46b0f5ffe69fc5ebe224792be8fa715",
+    "cases/anint_extra.f90": "45ac584abb55bf1ff97436bcd310b4994adc4deb875e76f97802dc8e854bd956",
+    "cases/anint_empty.f90": "ada460ab53e5493acefddb6d3fa0adaedda3f0c87650774745af0a335b598328",
+    "cases/anint_kind16.f90": "f06add46e3ffa352b4ef91bd29376595d9f164e50cbbfdea9a44b9ca26a3d183",
+    "cases/asinh_integer.f90": "d8e946a46e829d0437eeafcba28135e9cb4403c7acc7b7ce79006dfbb03f202c",
+    "cases/asinh_logical.f90": "03bd49a5f21785a282d8454ae8b8a5ec27913b04181cacd6f9883dfeb41d787f",
+    "cases/asinh_extra.f90": "4426b6f17e7ac892ce119f26e0afaec8ed43b8f23fc443a25cf783414f5d43d3",
+    "cases/asinh_empty.f90": "e0e20b5cbcde0af9b606095d254d42e8d0a6881aafbb79e047ea0d6eef12f4c5",
+    "cases/asinh_kind16.f90": "ff6f41b1df682d74a49894d39802a70d5d9423a78b2756db1954c8e736f59871",
+    "cases/acosh_integer.f90": "82fcd5217a7dec282d37f19f14a1dd1f8e278b7636b19b94423daf59a7331344",
+    "cases/acosh_logical.f90": "634a78b93b846a0e1bd8960efa7316894c6f7d0378dc6e207c2aa2ede2ab4d6c",
+    "cases/acosh_extra.f90": "4df925fe59481792ccd21c5978cd91a4a341accc8db08a5253fb54deaabc5413",
+    "cases/acosh_empty.f90": "98fbdf39319a965832a4fdc44ece9058d333ae74f0c521ad135e2b0f678eafcd",
+    "cases/acosh_kind16.f90": "e1d37052e6ef5effb79fa9c4601278384a64246c512760ea7d45752fbee0a35f",
+    "cases/aint_bad_kind.f90": "f77da3fa4db2d9ab3e1f0c2cf3a71e5dc2c8753a7abf915ce7ca9f38dbcdee60",
+    "cases/aint_dynamic_kind.f90": "469ce70e1293d684164fde131574501008ada9011bf5fbe0b7d5e382081e1760",
+    "cases/aint_array_kind.f90": "f603ed0c1c9b08a1c1a49dc99260ec7cdf19b78e8a9068f70dcf76d1e2946b0c",
+    "cases/aint_real_kind.f90": "739a14aa9f6759d18666568040df26addc427ccc78c85689bee54128bb743cb7",
+    "cases/aint_duplicate.f90": "4b9603c9cec3c3427caf487ff49e15e8f856d7e5d53bea1c56c9e8d5603a5486",
+    "cases/aint_wrong_keyword.f90": "c4bdfa407712d3698a1aece0c21be1b230a8337f6ebe0db6f51803be6086e65b",
+    "cases/aint_narrow_overflow.f90": "0f0c24b350f957ac92ba9a08a397a5550579b04c7f1341b62f56d406038b0f4f",
+    "cases/anint_bad_kind.f90": "9a92663dcd91477cb50bb92abc62fe1fd361b5ab8ef6b4f0ee17025e26bec801",
+    "cases/anint_dynamic_kind.f90": "5f16a620d03d44dc95f9323e73fa92f9be7550723019fb7689a05b2dc7ad3f63",
+    "cases/anint_array_kind.f90": "168b1997ccac5b58fd127edfe66c7feac4394aecbeb590f40a4cfef37e8eea45",
+    "cases/anint_real_kind.f90": "5e57261bedbefd1b4879ac8a6b7f9bd84657edc698116c3ee336a8163aed6273",
+    "cases/anint_duplicate.f90": "c217769e00309a809963a68721274d792767e1ad89194736a96952e2f93c99d1",
+    "cases/anint_wrong_keyword.f90": "2ef572e79d747136292ca43622bf12afa9451bfa54065a398d113c615d995881",
+    "cases/anint_narrow_overflow.f90": "bd089e856a168937a38dc9dbc87b55a60130d3518c4f39482c57d6b0efe98c84",
+    "cases/acosh_domain.f90": "9af27e5c67178dd852a1434c3518719dd478aacbcf246ba70ec934ffc2651d83",
+    "cases/acosh_negative.f90": "e975fd6103aa6eb5f1bafbedfed3ab1d642b54e6fcf8221f78a5e37e9b5b76f8",
+    "cases/undefined.f90": "f10e0c0662d9870f50fc951a9369f9ce1b4429357325b0152b60071aba0ce4d5",
+    "cases/asinh_complex.f90": "eb0429d1f1dcba54f57cf47dae339c66fe925acdd2d41e7aba66f6338290c066",
+    "cases/acosh_twoarg.f90": "4509b05ed86cdae03d00a8919b1aa47230536ac634783df2bf16300b85dac736",
+    "cases/asinh_wrong_keyword.f90": "a69f816748241d3f3efd788b2fc9ff6f9191aa3d696c4d9324acf202122efac8",
+    "cases/legacy_aliases.f90": "0a1815a9bf525e635605b1fed482fe71bee63b3ba67b1e39cc5c109e6e630395",
+    "cases/shadow_scalars.f90": "491183d743ef324d3d78ca34acb125e895dcf8bade8f1b2237da9a61b2979ce4",
+    "cases/shadow_arrays.f90": "bf444fb0aecc66ceae367082e59ae7a776ddaa29143553a8703f760da021fe36",
+    "cases/shadow_functions.f90": "0ddc0c20216e3095096cf0caf95b6c18ed33dd727c2348784669e823e26ac439",
+    "cases/shadow_results.f90": "b2956e936ded3f4f1cf9edad77997cd42c0ca6b85b7c302c26e9f4f805a22c77",
+    "cases/shadow_generics.f90": "2a009bd4a3edfc9e479a6654e49a54f26903a8ce0572a65f15587ed89aa84200",
+    "cases/rounding_matrix.f90": "37f96c3ee4b7cec2254cf07a9328983db6ed76cb031950d94b62d793378b22ce"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

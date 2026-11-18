@@ -1,0 +1,79 @@
+{
+  "source": "near_pole.f90",
+  "source_sha256": "9f56e391657afcf216a1ca3866a124da4d0e293ecae45848c256700f657669ea",
+  "GNU_version": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "GNU": [
+    {
+      "compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/oracle-limitations/near_pole.f90",
+          "-o",
+          "/tmp/tmph5_t249d/gnu"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/tmp/tmph5_t249d/gnu"
+        ],
+        "exit": 0,
+        "stdout": "   8.99999999999999858E+01\n   3.53011432121715750E+15\n   3.53011432121715750E+15\n   4.03183205101593200E+15\n   9.00000000000000142E+01\n  -3.53011432121715750E+15\n  -3.53011432121715750E+15\n  -4.03183205101593200E+15\n   1.00000000      -1.00000000    \n",
+        "stderr": ""
+      }
+    },
+    {
+      "compile": {
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O2",
+          "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/oracle-limitations/near_pole.f90",
+          "-o",
+          "/tmp/tmpzbmchvgf/gnu"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "argv": [
+          "/tmp/tmpzbmchvgf/gnu"
+        ],
+        "exit": 0,
+        "stdout": "   8.99999999999999858E+01\n   3.53011432121715750E+15\n   3.53011432121715750E+15\n   4.03183205101593200E+15\n   9.00000000000000142E+01\n  -3.53011432121715750E+15\n  -3.53011432121715750E+15\n  -4.03183205101593200E+15\n   1.00000000      -1.00000000    \n",
+        "stderr": ""
+      }
+    }
+  ],
+  "candidate": {
+    "argv": [
+      "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/build/gfortran_C48A8F1D6CFAA2C2/app/fortfront-interpreter",
+      "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/oracle-limitations/near_pole.f90"
+    ],
+    "exit": 0,
+    "stdout": "   8.99999999999999858E+01\n   4.03183205101593200E+15\n   4.03183205101593200E+15\n   4.03183205101593200E+15\n   9.00000000000000142E+01\n  -4.03183205101593200E+15\n  -4.03183205101593200E+15\n  -4.03183205101593200E+15\n -1.00000000 -1.00000000\n",
+    "stderr": ""
+  },
+  "candidate_sha256": "8d459de0161e7ea5cea5c440bfce0cab34f8ec35b49045854f278545fe13631d",
+  "independent_reference": {
+    "method": "Decimal precision110; Machin atan series computes pi, sine/cosine series after exact represented-degree reduction, rounded to binary64",
+    "inputs": [
+      "0x1.67fffffffffffp+6",
+      "0x1.6800000000001p+6"
+    ],
+    "expected": [
+      4031832051015932.0,
+      -4031832051015932.0
+    ]
+  },
+  "classification": "Isolated GNU near-pole accuracy disagreement and REAL4 runtime negative-zero sign difference. Compile-only in focused GNU manifest; not execution agreement. Normal comparisons retain strict scoped tolerances."
+}

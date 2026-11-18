@@ -1,0 +1,1758 @@
+{
+  "tools": {
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 67,
+    "failed": 0,
+    "gnu_checked": 67,
+    "gnu_executed": 39,
+    "gnu_compile_only": 8,
+    "gnu_compile_rejections": 20
+  },
+  "records": [
+    {
+      "case": {
+        "name": "original_dprod",
+        "source": "cases/demo_dprod.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": " algebraically 5.2 x 2.3 is exactly 11.96\n as floating point values results may differ slightly:\n compare dprod(xy)=   11.959999313354501      to x*y=   11.9599991     to dble(x)*dble(y)=   11.959999313354501     \n test if an expected result is produced\n  -6.0000000000000000       -6.0000000000000000     \n PASSED\n elemental\n   22.999999523162842        34.000000953674316        45.000000000000000     \n   22.539999971389761        25.840000400543204        24.300000429153442     \n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " algebraically 5.2 x 2.3 is exactly 11.96\n as floating point values results may differ slightly:\n compare dprod(xy)=   11.959999313354501      to x*y=   11.9599991     to dble(x)*dble(y)=   11.959999313354501     \n test if an expected result is produced\n  -6.0000000000000000       -6.0000000000000000     \n PASSED\n elemental\n   22.999999523162842        34.000000953674316        45.000000000000000     \n   22.539999971389761        25.840000400543204        24.300000429153442     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_tand",
+        "source": "cases/demo_tand.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  0.50000000000000000        8.7268677907587893E-003\n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 2e-14,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  0.50000000000000000        8.7268677907587893E-003\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_precision",
+        "source": "cases/dprod_precision.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   1.0000002384185933        1.0000002384185933                8\n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.0000002384185933        1.0000002384185933                8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_boundaries",
+        "source": "cases/dprod_boundaries.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   1.1579207543382391E+077   1.3817869688151111E-076\n   1.9636373861190906E-090\n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.1579207543382391E+077   1.3817869688151111E-076\n   1.9636373861190906E-090\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_zero_sign",
+        "source": "cases/dprod_zero_sign.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  -1.0000000000000000        1.0000000000000000     \n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -1.0000000000000000        1.0000000000000000     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_keywords",
+        "source": "cases/dprod_keywords.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   2.5000000000000000        5.0000000000000000        6.0000000000000000     \n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   2.5000000000000000        5.0000000000000000        6.0000000000000000     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_rank2",
+        "source": "cases/dprod_rank2.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   2.0000000000000000        4.0000000000000000        6.0000000000000000        8.0000000000000000        1.0000000000000000        4.0000000000000000        9.0000000000000000        16.000000000000000     \n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   2.0000000000000000        4.0000000000000000        6.0000000000000000        8.0000000000000000        1.0000000000000000        4.0000000000000000        9.0000000000000000        16.000000000000000     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_rank3",
+        "source": "cases/dprod_rank3.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   4.0000000000000000        4.0000000000000000        4.0000000000000000        4.0000000000000000        4.0000000000000000        4.0000000000000000        4.0000000000000000        4.0000000000000000                2           2           2\n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   4.0000000000000000        4.0000000000000000        4.0000000000000000        4.0000000000000000        4.0000000000000000        4.0000000000000000        4.0000000000000000        4.0000000000000000                2           2           2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_empty",
+        "source": "cases/dprod_empty.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           0           8\n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_inquiry",
+        "source": "cases/dprod_inquiry.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           8           8\n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_optional",
+        "source": "cases/dprod_optional.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           8\n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_parameter",
+        "source": "cases/dprod_parameter.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   3.1250000000000000     \n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   3.1250000000000000     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_dynamic",
+        "source": "cases/dprod_dynamic.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   1.0000000000000000        4.0000000000000000        9.0000000000000000     \n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.0000000000000000        4.0000000000000000        9.0000000000000000     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_shape_runtime",
+        "source": "cases/dprod_shape_runtime.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "diagnostic": "shape"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_angles",
+        "source": "cases/tand_angles.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  -0.0000000000000000       -0.0000000000000000        1.0000000000000000       -1.0000000000000000       -0.0000000000000000        0.0000000000000000        1.0000000000000000       -1.0000000000000000        0.0000000000000000        0.0000000000000000     \n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -0.0000000000000000       -0.0000000000000000        1.0000000000000000       -1.0000000000000000       -0.0000000000000000        0.0000000000000000        1.0000000000000000       -1.0000000000000000        0.0000000000000000        0.0000000000000000     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_moderate4",
+        "source": "cases/tand_moderate4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  -572.966980      -1.73205090     -0.577350259      -8.72686785E-03   0.00000000       8.72686785E-03  0.577350259       1.73205090       572.966980    \n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -572.966980      -1.73205090     -0.577350259      -8.72686785E-03   0.00000000       8.72686785E-03  0.577350259       1.73205090       572.966980    \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_moderate8",
+        "source": "cases/tand_moderate8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  -572.95721335430324       -1.7320508075688767      -0.57735026918962573       -8.7268677907587893E-003   0.0000000000000000        8.7268677907587893E-003  0.57735026918962573        1.7320508075688767        572.95721335430324     \n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 1e-13,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -572.95721335430324       -1.7320508075688767      -0.57735026918962573       -8.7268677907587893E-003   0.0000000000000000        8.7268677907587893E-003  0.57735026918962573        1.7320508075688767        572.95721335430324     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_near_poles",
+        "source": "cases/tand_near_poles.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "4.03183205101593200E+15 -4.03183205101593200E+15 -4.03183205101593200E+15 4.03183205101593200E+15\n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 2e-14,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_boundaries",
+        "source": "cases/tand_boundaries.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   4.0107809335358455       -4.0107809335358455        3.9375094185418575     \n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 2e-14,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   4.0107809335358455       -4.0107809335358455        3.9375094185418575     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_tiny",
+        "source": "cases/tand_tiny.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   0.00000000      -0.00000000       2.05162707E-40  -2.05162707E-40\n   0.0000000000000000       -0.0000000000000000        3.8834864931005159E-310  -3.8834864931005159E-310\n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "abs_tol": 0,
+        "rel_tol": 2e-06
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   0.00000000      -0.00000000       2.05162707E-40  -2.05162707E-40\n   0.0000000000000000       -0.0000000000000000        3.8834864931005159E-310  -3.8834864931005159E-310\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_keywords",
+        "source": "cases/tand_keywords.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   8.7268677907587893E-003           4           8\n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   8.7268677907587893E-003           4           8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_rank2",
+        "source": "cases/tand_rank2.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   0.00000000      0.577350259       1.00000000       1.73205090    \n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   0.00000000      0.577350259       1.00000000       1.73205090    \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_rank3",
+        "source": "cases/tand_rank3.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "  0.57735026918962584       0.57735026918962584       0.57735026918962584       0.57735026918962584                2           1           2\n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 2e-14,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  0.57735026918962584       0.57735026918962584       0.57735026918962584       0.57735026918962584                2           1           2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_empty",
+        "source": "cases/tand_empty.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           0           8\n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_inquiry",
+        "source": "cases/tand_inquiry.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           8           8           8\n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8           8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_optional",
+        "source": "cases/tand_optional.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           8\n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_parameter",
+        "source": "cases/tand_parameter.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   1.0000000000000000     \n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.0000000000000000     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_dynamic",
+        "source": "cases/tand_dynamic.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "   0.0000000000000000       0.57735026918962584        1.0000000000000000     \n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 2e-14,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   0.0000000000000000       0.57735026918962584        1.0000000000000000     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_pole_pos",
+        "source": "cases/tand_pole_pos.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "diagnostic": "TAND"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_pole_neg",
+        "source": "cases/tand_pole_neg.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "diagnostic": "TAND"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_pole_period",
+        "source": "cases/tand_pole_period.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "diagnostic": "TAND"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_large",
+        "source": "cases/tand_large.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "diagnostic": "TAND"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_scalar_shadow",
+        "source": "cases/dprod_scalar_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           7\n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_array_shadow",
+        "source": "cases/dprod_array_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           3\n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_procedure_shadow",
+        "source": "cases/dprod_procedure_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           4\n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_result_shadow",
+        "source": "cases/dprod_result_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           5\n",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dprod_generic_shadow",
+        "source": "cases/dprod_generic_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6\n",
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_scalar_shadow",
+        "source": "cases/tand_scalar_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           7\n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_array_shadow",
+        "source": "cases/tand_array_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           3\n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_procedure_shadow",
+        "source": "cases/tand_procedure_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           4\n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_result_shadow",
+        "source": "cases/tand_result_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "           5\n",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ],
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_generic_shadow",
+        "source": "cases/tand_generic_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6\n",
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dprod_noarg",
+        "source": "cases/reject_dprod_noarg.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_dprod_noarg.f90:4:8:\n\n    4 | print *,dprod()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018dprod\u2019 at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dprod_onearg",
+        "source": "cases/reject_dprod_onearg.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_dprod_onearg.f90:4:8:\n\n    4 | print *,dprod(1.0)\n      |        1\nError: Missing actual argument \u2018y\u2019 in call to \u2018dprod\u2019 at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dprod_extra",
+        "source": "cases/reject_dprod_extra.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_dprod_extra.f90:4:8:\n\n    4 | print *,dprod(1.0,2.0,3.0)\n      |        1\nError: Too many arguments in call to \u2018dprod\u2019 at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dprod_int",
+        "source": "cases/reject_dprod_int.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_dprod_int.f90:4:14:\n\n    4 | print *,dprod(1,2)\n      |              1\nError: \u2018x\u2019 argument of \u2018dprod\u2019 intrinsic at (1) must be REAL\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dprod_double",
+        "source": "cases/reject_dprod_double.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_dprod_double.f90:4:14:\n\n    4 | print *,dprod(1d0,2d0)\n      |              1\nError: \u2018x\u2019 argument of \u2018dprod\u2019 intrinsic at (1) must be default real\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dprod_mixed",
+        "source": "cases/reject_dprod_mixed.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_dprod_mixed.f90:4:17:\n\n    4 | print *,dprod(1.,2d0)\n      |                 1\nError: \u2018y\u2019 argument of \u2018dprod\u2019 intrinsic at (1) must be default real\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dprod_complex",
+        "source": "cases/reject_dprod_complex.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_dprod_complex.f90:4:14:\n\n    4 | print *,dprod((1.,0.),2.0)\n      |              1\nError: \u2018x\u2019 argument of \u2018dprod\u2019 intrinsic at (1) must be REAL\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dprod_logical",
+        "source": "cases/reject_dprod_logical.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_dprod_logical.f90:4:14:\n\n    4 | print *,dprod(.true.,2.0)\n      |              1\nError: \u2018x\u2019 argument of \u2018dprod\u2019 intrinsic at (1) must be REAL\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dprod_keyword",
+        "source": "cases/reject_dprod_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_dprod_keyword.f90:4:8:\n\n    4 | print *,dprod(a=1.0,y=2.0)\n      |        1\nError: Cannot find keyword named \u2018a\u2019 in call to \u2018dprod\u2019 at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dprod_duplicate",
+        "source": "cases/reject_dprod_duplicate.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_dprod_duplicate.f90:4:26:\n\n    4 | print *,dprod(x=1.0,x=2.0)\n      |                          1\nError: Keyword \u2018x\u2019 at (1) has already appeared in the current argument list\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dprod_order",
+        "source": "cases/reject_dprod_order.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_dprod_order.f90:4:21:\n\n    4 | print *,dprod(x=1.0,2.0)\n      |                     1\nError: Missing keyword name in actual argument list at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dprod_shape",
+        "source": "cases/reject_dprod_shape.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_dprod_shape.f90:4:14:\n\n    4 | print *,dprod([1.,2.],[1.,2.,3.])\n      |              1\nError: Different shape for arguments 'x' and 'y' for intrinsic 'dprod' at (1) on dimension 1 (2 and 3)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_tand_noarg",
+        "source": "cases/reject_tand_noarg.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_tand_noarg.f90:4:8:\n\n    4 | print *,tand()\n      |        1\nError: Missing actual argument \u2018x\u2019 in call to \u2018tand\u2019 at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_tand_extra",
+        "source": "cases/reject_tand_extra.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_tand_extra.f90:4:8:\n\n    4 | print *,tand(1.0,2.0)\n      |        1\nError: Too many arguments in call to \u2018tand\u2019 at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_tand_int",
+        "source": "cases/reject_tand_int.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_tand_int.f90:4:13:\n\n    4 | print *,tand(1)\n      |             1\nError: \u2018x\u2019 argument of \u2018tand\u2019 intrinsic at (1) must be REAL\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_tand_complex",
+        "source": "cases/reject_tand_complex.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_tand_complex.f90:4:13:\n\n    4 | print *,tand((1.,0.))\n      |             1\nError: \u2018x\u2019 argument of \u2018tand\u2019 intrinsic at (1) must be REAL\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_tand_keyword",
+        "source": "cases/reject_tand_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_tand_keyword.f90:4:8:\n\n    4 | print *,tand(a=1.0)\n      |        1\nError: Cannot find keyword named \u2018a\u2019 in call to \u2018tand\u2019 at (1)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_tand_duplicate",
+        "source": "cases/reject_tand_duplicate.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_tand_duplicate.f90:4:25:\n\n    4 | print *,tand(x=1.0,x=2.0)\n      |                         1\nError: Keyword \u2018x\u2019 at (1) has already appeared in the current argument list\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_tand_character",
+        "source": "cases/reject_tand_character.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_tand_character.f90:4:13:\n\n    4 | print *,tand('x')\n      |             1\nError: \u2018x\u2019 argument of \u2018tand\u2019 intrinsic at (1) must be REAL\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dprod_kind16",
+        "source": "cases/reject_dprod_kind16.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/dprod-tand-work/fortfront-interpreter/tests/dprod_tand/cases/reject_dprod_kind16.f90:4:14:\n\n    4 | print *,dprod(1.0_16,2.0_16)\n      |              1\nError: \u2018x\u2019 argument of \u2018dprod\u2019 intrinsic at (1) must be default real\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reject_tand_kind16",
+        "source": "cases/reject_tand_kind16.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "exact_products",
+        "source": "cases/exact_products.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2.81474976710656000E+14\n2.07618048000000000E+09\n4.19430400000000000E+07\n1.67772180000000000E+07\n2.09715200000000000E+06\n0.00000000000000000E+00\n-0.00000000000000000E+00\n-2.09715200000000000E+06\n-1.67772180000000000E+07\n-4.19430400000000000E+07\n-2.07618048000000000E+09\n-2.81474976710656000E+14\n2.07618048000000000E+09\n1.53140625000000000E+04\n3.09375000000000000E+02\n1.23750014752149582E+02\n1.54687500000000000E+01\n0.00000000000000000E+00\n-0.00000000000000000E+00\n-1.54687500000000000E+01\n-1.23750014752149582E+02\n-3.09375000000000000E+02\n-1.53140625000000000E+04\n-2.07618048000000000E+09\n4.19430400000000000E+07\n3.09375000000000000E+02\n6.25000000000000000E+00\n2.50000029802322388E+00\n3.12500000000000000E-01\n0.00000000000000000E+00\n-0.00000000000000000E+00\n-3.12500000000000000E-01\n-2.50000029802322388E+00\n-6.25000000000000000E+00\n-3.09375000000000000E+02\n-4.19430400000000000E+07\n1.67772180000000000E+07\n1.23750014752149582E+02\n2.50000029802322388E+00\n1.00000023841859331E+00\n1.25000014901161194E-01\n0.00000000000000000E+00\n-0.00000000000000000E+00\n-1.25000014901161194E-01\n-1.00000023841859331E+00\n-2.50000029802322388E+00\n-1.23750014752149582E+02\n-1.67772180000000000E+07\n2.09715200000000000E+06\n1.54687500000000000E+01\n3.12500000000000000E-01\n1.25000014901161194E-01\n1.56250000000000000E-02\n0.00000000000000000E+00\n-0.00000000000000000E+00\n-1.56250000000000000E-02\n-1.25000014901161194E-01\n-3.12500000000000000E-01\n-1.54687500000000000E+01\n-2.09715200000000000E+06\n0.00000000000000000E+00\n0.00000000000000000E+00\n0.00000000000000000E+00\n0.00000000000000000E+00\n0.00000000000000000E+00\n0.00000000000000000E+00\n-0.00000000000000000E+00\n-0.00000000000000000E+00\n-0.00000000000000000E+00\n-0.00000000000000000E+00\n-0.00000000000000000E+00\n-0.00000000000000000E+00\n-0.00000000000000000E+00\n-0.00000000000000000E+00\n-0.00000000000000000E+00\n-0.00000000000000000E+00\n-0.00000000000000000E+00\n-0.00000000000000000E+00\n0.00000000000000000E+00\n0.00000000000000000E+00\n0.00000000000000000E+00\n0.00000000000000000E+00\n0.00000000000000000E+00\n0.00000000000000000E+00\n-2.09715200000000000E+06\n-1.54687500000000000E+01\n-3.12500000000000000E-01\n-1.25000014901161194E-01\n-1.56250000000000000E-02\n-0.00000000000000000E+00\n0.00000000000000000E+00\n1.56250000000000000E-02\n1.25000014901161194E-01\n3.12500000000000000E-01\n1.54687500000000000E+01\n2.09715200000000000E+06\n-1.67772180000000000E+07\n-1.23750014752149582E+02\n-2.50000029802322388E+00\n-1.00000023841859331E+00\n-1.25000014901161194E-01\n-0.00000000000000000E+00\n0.00000000000000000E+00\n1.25000014901161194E-01\n1.00000023841859331E+00\n2.50000029802322388E+00\n1.23750014752149582E+02\n1.67772180000000000E+07\n-4.19430400000000000E+07\n-3.09375000000000000E+02\n-6.25000000000000000E+00\n-2.50000029802322388E+00\n-3.12500000000000000E-01\n-0.00000000000000000E+00\n0.00000000000000000E+00\n3.12500000000000000E-01\n2.50000029802322388E+00\n6.25000000000000000E+00\n3.09375000000000000E+02\n4.19430400000000000E+07\n-2.07618048000000000E+09\n-1.53140625000000000E+04\n-3.09375000000000000E+02\n-1.23750014752149582E+02\n-1.54687500000000000E+01\n-0.00000000000000000E+00\n0.00000000000000000E+00\n1.54687500000000000E+01\n1.23750014752149582E+02\n3.09375000000000000E+02\n1.53140625000000000E+04\n2.07618048000000000E+09\n-2.81474976710656000E+14\n-2.07618048000000000E+09\n-4.19430400000000000E+07\n-1.67772180000000000E+07\n-2.09715200000000000E+06\n-0.00000000000000000E+00\n0.00000000000000000E+00\n2.09715200000000000E+06\n1.67772180000000000E+07\n4.19430400000000000E+07\n2.07618048000000000E+09\n2.81474976710656000E+14\n",
+        "rel_tol": 0,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   2.81474976710656000E+14\n   2.07618048000000000E+09\n   4.19430400000000000E+07\n   1.67772180000000000E+07\n   2.09715200000000000E+06\n   0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -2.09715200000000000E+06\n  -1.67772180000000000E+07\n  -4.19430400000000000E+07\n  -2.07618048000000000E+09\n  -2.81474976710656000E+14\n   2.07618048000000000E+09\n   1.53140625000000000E+04\n   3.09375000000000000E+02\n   1.23750014752149582E+02\n   1.54687500000000000E+01\n   0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -1.54687500000000000E+01\n  -1.23750014752149582E+02\n  -3.09375000000000000E+02\n  -1.53140625000000000E+04\n  -2.07618048000000000E+09\n   4.19430400000000000E+07\n   3.09375000000000000E+02\n   6.25000000000000000E+00\n   2.50000029802322388E+00\n   3.12500000000000000E-01\n   0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -3.12500000000000000E-01\n  -2.50000029802322388E+00\n  -6.25000000000000000E+00\n  -3.09375000000000000E+02\n  -4.19430400000000000E+07\n   1.67772180000000000E+07\n   1.23750014752149582E+02\n   2.50000029802322388E+00\n   1.00000023841859331E+00\n   1.25000014901161194E-01\n   0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -1.25000014901161194E-01\n  -1.00000023841859331E+00\n  -2.50000029802322388E+00\n  -1.23750014752149582E+02\n  -1.67772180000000000E+07\n   2.09715200000000000E+06\n   1.54687500000000000E+01\n   3.12500000000000000E-01\n   1.25000014901161194E-01\n   1.56250000000000000E-02\n   0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -1.56250000000000000E-02\n  -1.25000014901161194E-01\n  -3.12500000000000000E-01\n  -1.54687500000000000E+01\n  -2.09715200000000000E+06\n   0.00000000000000000E+00\n   0.00000000000000000E+00\n   0.00000000000000000E+00\n   0.00000000000000000E+00\n   0.00000000000000000E+00\n   0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -0.00000000000000000E+00\n  -0.00000000000000000E+00\n   0.00000000000000000E+00\n   0.00000000000000000E+00\n   0.00000000000000000E+00\n   0.00000000000000000E+00\n   0.00000000000000000E+00\n   0.00000000000000000E+00\n  -2.09715200000000000E+06\n  -1.54687500000000000E+01\n  -3.12500000000000000E-01\n  -1.25000014901161194E-01\n  -1.56250000000000000E-02\n  -0.00000000000000000E+00\n   0.00000000000000000E+00\n   1.56250000000000000E-02\n   1.25000014901161194E-01\n   3.12500000000000000E-01\n   1.54687500000000000E+01\n   2.09715200000000000E+06\n  -1.67772180000000000E+07\n  -1.23750014752149582E+02\n  -2.50000029802322388E+00\n  -1.00000023841859331E+00\n  -1.25000014901161194E-01\n  -0.00000000000000000E+00\n   0.00000000000000000E+00\n   1.25000014901161194E-01\n   1.00000023841859331E+00\n   2.50000029802322388E+00\n   1.23750014752149582E+02\n   1.67772180000000000E+07\n  -4.19430400000000000E+07\n  -3.09375000000000000E+02\n  -6.25000000000000000E+00\n  -2.50000029802322388E+00\n  -3.12500000000000000E-01\n  -0.00000000000000000E+00\n   0.00000000000000000E+00\n   3.12500000000000000E-01\n   2.50000029802322388E+00\n   6.25000000000000000E+00\n   3.09375000000000000E+02\n   4.19430400000000000E+07\n  -2.07618048000000000E+09\n  -1.53140625000000000E+04\n  -3.09375000000000000E+02\n  -1.23750014752149582E+02\n  -1.54687500000000000E+01\n  -0.00000000000000000E+00\n   0.00000000000000000E+00\n   1.54687500000000000E+01\n   1.23750014752149582E+02\n   3.09375000000000000E+02\n   1.53140625000000000E+04\n   2.07618048000000000E+09\n  -2.81474976710656000E+14\n  -2.07618048000000000E+09\n  -4.19430400000000000E+07\n  -1.67772180000000000E+07\n  -2.09715200000000000E+06\n  -0.00000000000000000E+00\n   0.00000000000000000E+00\n   2.09715200000000000E+06\n   1.67772180000000000E+07\n   4.19430400000000000E+07\n   2.07618048000000000E+09\n   2.81474976710656000E+14\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "degree_accuracy4",
+        "source": "cases/degree_accuracy4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-4.01078081130981445E+00\n-4.36335103586316109E-03\n-0.00000000000000000E+00\n-8.72686784714460373E-03\n1.00000000000000000E+00\n-5.72965942382812500E+02\n-5.67128181457519531E+00\n-1.73205077648162842E+00\n-1.00000000000000000E+00\n-5.77350258827209473E-01\n-8.72686784714460373E-03\n-1.74532914343217271E-07\n0.00000000000000000E+00\n1.74532914343217271E-07\n8.72686784714460373E-03\n5.77350258827209473E-01\n1.00000000000000000E+00\n1.73205077648162842E+00\n5.67128181457519531E+00\n5.72965942382812500E+02\n-1.00000000000000000E+00\n8.72686784714460373E-03\n0.00000000000000000E+00\n4.36335103586316109E-03\n4.01078081130981445E+00\n",
+        "rel_tol": 2e-06,
+        "abs_tol": 0,
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -4.01078081    \n  -4.36335057E-03\n  -0.00000000    \n  -8.72686785E-03\n   1.00000000    \n  -572.966980    \n  -5.67128038    \n  -1.73205090    \n  -1.00000000    \n -0.577350259    \n  -8.72686785E-03\n  -1.74532914E-07\n   0.00000000    \n   1.74532914E-07\n   8.72686785E-03\n  0.577350259    \n   1.00000000    \n   1.73205090    \n   5.67128038    \n   572.966980    \n  -1.00000000    \n   8.72686785E-03\n   0.00000000    \n   4.36335057E-03\n   4.01078081    \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "degree_accuracy8",
+        "source": "cases/degree_accuracy8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-4.01078093353584464E+00\n-4.36335082070156682E-03\n-0.00000000000000000E+00\n-8.72686779075878931E-03\n1.00000000000000000E+00\n-5.72957213354320288E+02\n-5.67128181961770927E+00\n-1.73205080756887719E+00\n-1.00000000000000000E+00\n-5.77350269189625731E-01\n-8.72686779075878931E-03\n-1.74532925199434739E-07\n-0.00000000000000000E+00\n0.00000000000000000E+00\n1.74532925199434739E-07\n8.72686779075878931E-03\n5.77350269189625731E-01\n1.00000000000000000E+00\n1.73205080756887719E+00\n5.67128181961770927E+00\n5.72957213354320288E+02\n-1.00000000000000000E+00\n8.72686779075878931E-03\n0.00000000000000000E+00\n4.36335082070156682E-03\n4.01078093353584464E+00\n",
+        "rel_tol": 1e-13,
+        "abs_tol": 0,
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -4.0107809335358455     \n  -4.3633508207015668E-003\n  -0.0000000000000000     \n  -8.7268677907587893E-003\n   1.0000000000000000     \n  -572.95721335430324     \n  -5.6712818196177066     \n  -1.7320508075688776     \n  -1.0000000000000000     \n -0.57735026918962584     \n  -8.7268677907587893E-003\n  -1.7453292519943474E-007\n  -0.0000000000000000     \n   0.0000000000000000     \n   1.7453292519943474E-007\n   8.7268677907587893E-003\n  0.57735026918962584     \n   1.0000000000000000     \n   1.7320508075688776     \n   5.6712818196177066     \n   572.95721335430324     \n  -1.0000000000000000     \n   8.7268677907587893E-003\n   0.0000000000000000     \n   4.3633508207015668E-003\n   4.0107809335358455     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "tand_runtime_zero4",
+        "source": "cases/tand_runtime_zero4.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "-1.0\n",
+        "rel_tol": 0,
+        "abs_tol": 0,
+        "gnu_flags": [
+          "-std=gnu",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    }
+  ],
+  "utc": "2026-11-15T11:18:32.288790+00:00",
+  "manifest_sha256": "ffe865f21d7bae2b6f0e3454f0c5a064f506e55ed725658d12e6720fec3ad62c",
+  "source_sha256": {
+    "cases/demo_dprod.f90": "2fab1dd79683042d73cb6742c685ca32f99c0739129c7807b61ce7fcc23230ca",
+    "cases/demo_tand.f90": "3db362640d5040e03dac0cf601789a7adbcb09b47568565d7a4b647c0e016d62",
+    "cases/dprod_precision.f90": "d947f3311adf780bbf4d0146d757d6087fdb935f7bfdc78df4f52182cbe306db",
+    "cases/dprod_boundaries.f90": "40f4aba4e4c7e16895ff5cc36e4af00e9cbf8eae66ca608d4d31a60e9f7afd2e",
+    "cases/dprod_zero_sign.f90": "6b345deb449aac10b72e16461eefc5940ad582539db237662cb30a043d16fda5",
+    "cases/dprod_keywords.f90": "84d1c68b421baa22637738cfe41e6f7d52de7112e792e1f11e4915cf9cfa52b6",
+    "cases/dprod_rank2.f90": "71c7652ff32b7af5bda6c18bf68f525340e0caa89328e241008203821f4a796a",
+    "cases/dprod_rank3.f90": "1648cce02b4e991e696adc257426fe97b77769cebb0d463c0e7a1eb6070568a0",
+    "cases/dprod_empty.f90": "abaf43c4a7d6b4966d8b3e05b82108071a3a7215a806cfa1efc6037ddb6d0ede",
+    "cases/dprod_inquiry.f90": "c35922096d4cea479af121137cfb586d7960b2fca80e4329bdcba311a4cd526e",
+    "cases/dprod_optional.f90": "d10d464342a0f6cc439add6ba5c7ab2aadc05f47227ed43a794d8b0caf8a2018",
+    "cases/dprod_parameter.f90": "e929fa638583b08dbe06894d4f6b775efe95ba35e7794c0306507f2af51d7656",
+    "cases/dprod_dynamic.f90": "9f96c38ff0ec725b91a09cbc4f4e0f99a8ffd52ba02e2ea8a505513938c10a4f",
+    "cases/dprod_shape_runtime.f90": "78087aeadd0429bb17a1ddca675eca4e6f2bcdb96984d3f786211cd835d38d97",
+    "cases/tand_angles.f90": "b0b807512f4892d545395ed0e8d4ac541811a17f7dbaf818576e6d2a1f41e126",
+    "cases/tand_moderate4.f90": "ef2d3c951f8ff50e6d0f2a279f91d948c04b01a5617ec535d78acca680609f80",
+    "cases/tand_moderate8.f90": "9be5b531c22bddc20355e1f0db6e0eefdfaa8d12711457c170db8e327f017c47",
+    "cases/tand_near_poles.f90": "ebb822f6ab07ea3667332a61ba927a5c4bc1478439a5f254fbaa2ffad4cad8f5",
+    "cases/tand_boundaries.f90": "f733ff3ed66a982b3272e54a85e6f13b684b68abf69257a50d082841174a2724",
+    "cases/tand_tiny.f90": "08f89a92e4426ce2733a9af301d32f49f2a0ad87cc1532837917a2eb426c7085",
+    "cases/tand_keywords.f90": "2201a4f851359ee211b65b1f631f0a8662a24cbf55fd1eae372033e0cc51f670",
+    "cases/tand_rank2.f90": "7d8440380d9bda72e5723a8cb40c0e3b1bdc525088a2a04319abd268a0b4d34f",
+    "cases/tand_rank3.f90": "e14440e4cdf4ca7a4c36ec3f1e4f713d37b19574d839860dac8b747582ff8a99",
+    "cases/tand_empty.f90": "c7063c097e8f51969cf7d1b2c24c7f19422eb9d7596bd7f997699b2c68073ee6",
+    "cases/tand_inquiry.f90": "83cafb31207d84162bea34f3ea28c00ea30dd4b0f7ae9da89f92accfdaf747a2",
+    "cases/tand_optional.f90": "a36037e68150da60ccd22236387edfa60e4183115617f9369e2e469d945d5297",
+    "cases/tand_parameter.f90": "d833b18d758f0d91b5b07b8eaf337af94343589156d68ec2dd4d5afe52dd5a44",
+    "cases/tand_dynamic.f90": "95a714bce4377f812f9a42d2d3877da5673d16d9e4eddcd0d26310f6dbe1f8a9",
+    "cases/tand_pole_pos.f90": "b53d425694ae480b9f01f6339b36d84de3886d3450ae4922445399a861d607cd",
+    "cases/tand_pole_neg.f90": "9217014b428baed726b0803f1ce0fe17f308f47acf7fe49007d32d8234c6278c",
+    "cases/tand_pole_period.f90": "10b499b04213563a825d32da655c0e866fabd617a09e9b64047c745685f368cd",
+    "cases/tand_large.f90": "7b51d01c9ed491c7d301f6e0fb77568eb98967238692205e5bee9ce5023bed75",
+    "cases/dprod_scalar_shadow.f90": "67c6594f90610f44ee8583487e94d0dea848b687b6ad90c07e612490c9b422e7",
+    "cases/dprod_array_shadow.f90": "09ef8ca0ebcb76c4f017621b53579db24108c4ca0d5d1d2d82464b189bc53a6e",
+    "cases/dprod_procedure_shadow.f90": "4dc7a672267e46fd84d2e070ea18d4f4a3f576766727f073ec397d5b1d1658f0",
+    "cases/dprod_result_shadow.f90": "976e6556607e1412820f79799defef4e6e427f5a12942bf7e86a9fcd2d9681f5",
+    "cases/dprod_generic_shadow.f90": "9d9db51f24d00fd9b945e1aab55d5bb74784b61d4cd50d20fc517db69ed881f3",
+    "cases/tand_scalar_shadow.f90": "8913c5d904178c59855ea982b0b7d888eadf2380d5e8a9d8a3e5e7620ea90f20",
+    "cases/tand_array_shadow.f90": "1204b48db96b29825fb29ca15407a1e19c58ba825e8e57560bf952f7f1279276",
+    "cases/tand_procedure_shadow.f90": "f47b94defb7a6e195f86fd975471947a56459872e081a7242d82fed832594447",
+    "cases/tand_result_shadow.f90": "e3c47969ff93924ee890527d64cd588c2d1f9917cd340985291952851aa7bdaf",
+    "cases/tand_generic_shadow.f90": "68b356146a84982c0d5a5b494c28420c5ec2a81434510d65b156e5ac64999e27",
+    "cases/reject_dprod_noarg.f90": "c1fdc1c054454fed9c41223057b8900ccf7e02fd1029847a5cfee6ae5e3754d3",
+    "cases/reject_dprod_onearg.f90": "6cca97c2a889333f16a8eeec99525e3e137b8544a124eefc2f23427320350580",
+    "cases/reject_dprod_extra.f90": "b9fa79cbb7f0bdb23e028542dd9183cda00e44c8f4adb84d0799dddf172fa1d3",
+    "cases/reject_dprod_int.f90": "6aa5a6b72510f96c74a473554459debe2a0a6129abcf2e2c9fcb5a23c29d0583",
+    "cases/reject_dprod_double.f90": "6363e55d7ba3016109cdab0f8e327d2d9814b553b61425cfe899d8ce564b5ae4",
+    "cases/reject_dprod_mixed.f90": "2d14eed298f0759725e38ff1bfb91b0e25150dc887bf2b7582ae8b7b22260535",
+    "cases/reject_dprod_complex.f90": "c1f94934458cb46ded76d1afb5be39d4bcbab3231d01bbdfdb75ccadc17d534a",
+    "cases/reject_dprod_logical.f90": "fc59e13f00c1caed61de910244ab4c98718b7ac1db8e5d16a0a938d5734dccd8",
+    "cases/reject_dprod_keyword.f90": "9d0a7ce1301f3739f9610fb0cf0cd3600273a93dedef8a5b56b711e0f47cac56",
+    "cases/reject_dprod_duplicate.f90": "077dd8612ce4783cdef38a0107467d9234c92758c19e09102343daf378e536eb",
+    "cases/reject_dprod_order.f90": "c6c286651d1cb362b4678ec4d6e583d14789dd802a61e060f829abfd633ed6d1",
+    "cases/reject_dprod_shape.f90": "a25edcf03890178441fdbdd542f2e584bfae252f779cd34fbf3c137b8713454b",
+    "cases/reject_tand_noarg.f90": "b7f4c7673314075edb4a4885f5f7a06b2ae1d14bc1efef23a8a18b73aa08f3df",
+    "cases/reject_tand_extra.f90": "d7166105afd6da0832d12578d9195c9a5eca344369ebd90abc4b37879b2f25af",
+    "cases/reject_tand_int.f90": "e31cb37fe5baadecc09921548b1c37e05553f991589ec181820ca35e820c7857",
+    "cases/reject_tand_complex.f90": "f7adb45f9afa9f308065a488f5e381964b941a2da0e7138d4a86375adfaf80d9",
+    "cases/reject_tand_keyword.f90": "af7a6c9dcd12f6f68633c02452129c47504f3502ca55d1c25759b83c977d515b",
+    "cases/reject_tand_duplicate.f90": "618f8b34575ceb495810ad910166b1ee020e369a0d75aa4824fdf724de807f9b",
+    "cases/reject_tand_character.f90": "a4bd4b65c79c22c4547c6765823d03720dac3bf1f228a241a79080fafb8017e3",
+    "cases/reject_dprod_kind16.f90": "f5ece38fd1cec945145dfff269b22ad8de7cefe79b4a15493aa9609032266505",
+    "cases/reject_tand_kind16.f90": "966c5cbb6b76e63fead206c5a429aa4a37c1365f78e733e7ff823e42a244f01b",
+    "cases/exact_products.f90": "5bd7f53eb2a9b4a09f9951a19afefe127dddff4b596ca3d36b7fdc5b5373f3e7",
+    "cases/degree_accuracy4.f90": "e4d74a65a742b46f0f2e1858b998d4620ec4f1477085410592b688e33f706ea1",
+    "cases/degree_accuracy8.f90": "cb1fcbdc79fcdd691c56b001fb4209d672a7b195f93ef3130231d8b80669f02a",
+    "cases/tand_runtime_zero4.f90": "9a4abb9f65ea060f3b0a691ddab7338e56d22b8bf0e8c9421703eb061cbed4cd"
+  }
+}

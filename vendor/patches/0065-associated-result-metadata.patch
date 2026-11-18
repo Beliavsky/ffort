@@ -1,0 +1,11 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -904,6 +904,8 @@
+         end select
+ 
+         select case (name)
++        case ("associated")
++            call set_intrinsic_metadata(node,TLOGICAL,4,0)
+         case ("index", "scan", "verify", "len_trim", "iachar")
+             kind_value = intrinsic_kind_argument(arena, node, name)
+             if (kind_value <= 0) kind_value = 4

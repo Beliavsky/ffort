@@ -1,0 +1,1529 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 47,
+    "failed": 0,
+    "candidate_checked": 47,
+    "gnu_checked": 47,
+    "gnu_skipped": 0,
+    "gnu_executed": 25,
+    "gnu_compile_only": 10,
+    "gnu_compile_rejections": 12,
+    "gnu_known_defects": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "demo_spacing",
+        "source": "demo_spacing.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1.19209290E-07 1.00000012 1.19209290E-07 2.2204460492503131E-016",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.19209290E-07\n   1.00000012       1.19209290E-07\n   2.2204460492503131E-016\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0.119209290E-6\n 1.00000012 0.119209290E-6\n 0.22204460492503131E-15\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "precision4",
+        "source": "precision4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T 4 4",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T\n           4           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T\n 4 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zeros_subnormals4",
+        "source": "zeros_subnormals4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T T T T T T T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T T T\n T T T\n T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T T T\n T T T\n T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "negative_edges4",
+        "source": "negative_edges4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T\n T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T\n T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameters4",
+        "source": "parameters4.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "overflow_plus4",
+        "source": "overflow_plus4.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "finite REAL range",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/overflow_plus4.f90:6:9: NEAREST result exceeds finite REAL range\n"
+      }
+    },
+    {
+      "case": {
+        "name": "overflow_minus4",
+        "source": "overflow_minus4.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "finite REAL range",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/overflow_minus4.f90:6:9: NEAREST result exceeds finite REAL range\n"
+      }
+    },
+    {
+      "case": {
+        "name": "zero_direction4",
+        "source": "zero_direction4.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "nonzero",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/zero_direction4.f90:6:9: NEAREST direction S must be nonzero\n"
+      }
+    },
+    {
+      "case": {
+        "name": "precision8",
+        "source": "precision8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T 8 8",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T\n           8           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T\n 8 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zeros_subnormals8",
+        "source": "zeros_subnormals8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T T T T T T T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T T T\n T T T\n T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T T T\n T T T\n T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "negative_edges8",
+        "source": "negative_edges8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T\n T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T\n T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameters8",
+        "source": "parameters8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "overflow_plus8",
+        "source": "overflow_plus8.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "finite REAL range",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/overflow_plus8.f90:6:9: NEAREST result exceeds finite REAL range\n"
+      }
+    },
+    {
+      "case": {
+        "name": "overflow_minus8",
+        "source": "overflow_minus8.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "finite REAL range",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/overflow_minus8.f90:6:9: NEAREST result exceeds finite REAL range\n"
+      }
+    },
+    {
+      "case": {
+        "name": "zero_direction8",
+        "source": "zero_direction8.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "nonzero",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/zero_direction8.f90:6:9: NEAREST direction S must be nonzero\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_direction",
+        "source": "mixed_direction.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T 8 4",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T\n           8           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T\n 8 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_rank1",
+        "source": "array_rank1.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T T F T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T\n T F\n T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T\n T F\n T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_rank2",
+        "source": "array_rank2.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2 2 2 T T T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           2           2\n T T T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2 2 2\n T T T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_rank3",
+        "source": "array_rank3.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 1 2 T T T T T T T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           1           2 T T T T\n T T T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 1 2 T T T T\n T T T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty",
+        "source": "empty.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0 2 0",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           2           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 2 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_shape",
+        "source": "runtime_shape.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T T T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T\n T T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T\n T T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "allocatable",
+        "source": "allocatable.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T T T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T T T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T T T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "sections",
+        "source": "sections.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested",
+        "source": "nested.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " F T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_kind",
+        "source": "undefined_kind.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 4",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadowing",
+        "source": "shadowing.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 5",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_result",
+        "source": "pure_result.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "undefined",
+        "source": "undefined.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/undefined.f90:5:17: read of uninitialized variable x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated",
+        "source": "unallocated.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "unallocated",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/unallocated.f90:5:17: reference to unallocated array x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "absent",
+        "source": "absent.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "absent",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/absent.f90:7:27: absent OPTIONAL dummy referenced: x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "spacing_integer",
+        "source": "spacing_integer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "REAL",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/spacing_integer.f90:4:16:\n\n    4 | print *,spacing(1)\n      |                1\nError: \u2018x\u2019 argument of \u2018spacing\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/spacing_integer.f90:4:19: SPACING/NEAREST requires REAL kind 4 or 8 arguments\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/spacing_integer.f90:4:19: SPACING/NEAREST requires REAL kind 4 or 8 arguments\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nearest_integer_x",
+        "source": "nearest_integer_x.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "REAL",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nearest_integer_x.f90:4:16:\n\n    4 | print *,nearest(1,1.)\n      |                1\nError: \u2018x\u2019 argument of \u2018nearest\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nearest_integer_x.f90:4:22: SPACING/NEAREST requires REAL kind 4 or 8 arguments\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nearest_integer_x.f90:4:22: SPACING/NEAREST requires REAL kind 4 or 8 arguments\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nearest_integer_s",
+        "source": "nearest_integer_s.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "REAL",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nearest_integer_s.f90:4:19:\n\n    4 | print *,nearest(1.,1)\n      |                   1\nError: \u2018s\u2019 argument of \u2018nearest\u2019 intrinsic at (1) must be REAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nearest_integer_s.f90:4:22: SPACING/NEAREST requires REAL kind 4 or 8 arguments\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nearest_integer_s.f90:4:22: SPACING/NEAREST requires REAL kind 4 or 8 arguments\n"
+      }
+    },
+    {
+      "case": {
+        "name": "spacing_extra",
+        "source": "spacing_extra.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "argument",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/spacing_extra.f90:4:8:\n\n    4 | print *,spacing(1.,2.)\n      |        1\nError: Too many arguments in call to \u2018spacing\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/spacing_extra.f90:4:23: SPACING/NEAREST argument count differs\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/spacing_extra.f90:4:23: SPACING/NEAREST argument count differs\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nearest_missing",
+        "source": "nearest_missing.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "argument",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nearest_missing.f90:4:8:\n\n    4 | print *,nearest(1.)\n      |        1\nError: Missing actual argument \u2018s\u2019 in call to \u2018nearest\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nearest_missing.f90:4:20: SPACING/NEAREST argument count differs\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nearest_missing.f90:4:20: SPACING/NEAREST argument count differs\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nearest_keyword",
+        "source": "nearest_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "keyword",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nearest_keyword.f90:4:8:\n\n    4 | print *,nearest(x=1.,y=1.)\n      |        1\nError: Cannot find keyword named \u2018y\u2019 in call to \u2018nearest\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nearest_keyword.f90:4:27: Unknown keyword or excess actual argument: y\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nearest_keyword.f90:4:27: Unknown keyword or excess actual argument: y\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate",
+        "source": "duplicate.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Repeated actual",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/duplicate.f90:4:26:\n\n    4 | print *,nearest(x=1.,x=2.)\n      |                          1\nError: Keyword \u2018x\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/duplicate.f90:4:27: Repeated actual argument for x\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/duplicate.f90:4:27: Repeated actual argument for x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "spacing_kind",
+        "source": "spacing_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "keyword",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/spacing_kind.f90:4:8:\n\n    4 | print *,spacing(1.,kind=8)\n      |        1\nError: Too many arguments in call to \u2018spacing\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/spacing_kind.f90:4:27: Unknown keyword or excess actual argument: kind\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/spacing_kind.f90:4:27: Unknown keyword or excess actual argument: kind\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nonconforming",
+        "source": "nonconforming.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "conform",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nonconforming.f90:4:16:\n\n    4 | print *,nearest([1.,2.],[1.,2.,3.])\n      |                1\nError: Different shape for arguments 'x' and 's' for intrinsic 'nearest' at (1) on dimension 1 (2 and 3)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nonconforming.f90:4:36: Array expression shapes do not conform\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/nonconforming.f90:4:36: Array expression shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "precision_boundaries",
+        "source": "precision_boundaries.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "spacing4 T T T T T T T spacing8 T T T T T T T nearest4 T T T T T nearest8 T T T T T zero4 T T T T T T T zero8 T T T T T T T boundaries4 T T T T T T boundaries8 T T T T T T mixed-s T T T array T T T matrix T T empty T T T T T T T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " spacing4 T T T T T T T\n spacing8 T T T T T T T\n nearest4 T T T T T\n nearest8 T T T T T\n zero4 T T T T T T T\n zero8 T T T T T T T\n boundaries4 T T T T T T\n boundaries8 T T T T T T\n mixed-s T T T\n array T T T\n matrix T T\n empty T T T T T T T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " spacing4 T T T T T T T\n spacing8 T T T T T T T\n nearest4 T T T T T\n nearest8 T T T T T\n zero4 T T T T T T T\n zero8 T T T T T T T\n boundaries4 T T T T T T\n boundaries8 T T T T T T\n mixed-s T T T\n array T T T\n matrix T T\n empty T T T T T T T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "impure_elemental_once",
+        "source": "impure_elemental_once.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T 3 T T T 6",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T\n           3\n T T T\n           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T\n 3\n T T T\n 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zero_direction_array",
+        "source": "zero_direction_array.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "retained",
+        "diagnostic": "nonzero",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": " retained\n",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/zero_direction_array.f90:7:12: NEAREST direction S must be nonzero\n"
+      }
+    },
+    {
+      "case": {
+        "name": "optional_present",
+        "source": "optional_present.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pointer_view",
+        "source": "pointer_view.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T T T T T",
+        "diagnostic": "",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T T T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T T T T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_mismatch",
+        "source": "empty_mismatch.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "conform",
+        "rel_tol": 2e-08,
+        "abs_tol": 0
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/empty_mismatch.f90:5:16:\n\n    5 | print *,nearest(a,b)\n      |                1\nError: Different shape for arguments 'x' and 's' for intrinsic 'nearest' at (1) on dimension 2 (2 and 3)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/empty_mismatch.f90:5:21: Array expression shapes do not conform\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/empty_mismatch.f90:5:21: Array expression shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "literal_zero",
+        "source": "literal_zero.f90",
+        "category": "runtime",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "nonzero"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/literal_zero.f90:3:20:\n\n    3 | print *,nearest(1.0,0.0)\n      |                    1\nError: Argument \u2018S\u2019 of NEAREST at (1) shall not be zero\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/literal_zero.f90:3:9: NEAREST direction S must be nonzero\n"
+      }
+    },
+    {
+      "case": {
+        "name": "negative_zero",
+        "source": "negative_zero.f90",
+        "category": "runtime",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "nonzero"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/negative_zero.f90:3:20:\n\n    3 | print *,nearest(1.0,-0.0_8)\n      |                    1\nError: Argument \u2018S\u2019 of NEAREST at (1) shall not be zero\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/spacing_nearest/negative_zero.f90:3:9: NEAREST direction S must be nonzero\n"
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:39:04.503478+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "limits": "SPACING/NEAREST REAL4/8 elemental rank0-3. Mixed direction kind supported. Finite inputs/results; S nonzero for evaluated NEAREST values. Unsafe domain cases GNU compile only.",
+  "manifest_sha256": "f6b8d67071f2963853fd9f3262135749cdcbe3befbd9c5a4a036cf439de549f1",
+  "source_sha256": {
+    "demo_spacing.f90": "4439ef7a072003f8998cfb34007d81688343c92c6b09f54248967bb231225010",
+    "precision4.f90": "395d3c4f0e93d6300cfff4e4e0cdc50ddfa1a20070e09624bc81e07f704db033",
+    "zeros_subnormals4.f90": "3beb625c09d5f44756ca600729d4bc689f8c175f6f70c812fc789b2b5fd27e54",
+    "negative_edges4.f90": "e76d4b52a607c904b0259278ec33dbce91167d38978d689f613e2c3638425c15",
+    "parameters4.f90": "4c09ac9788c2b43fa0a6e175f8cb18b224d5c8026d32d1c9d765ee1fdc2cb6a0",
+    "overflow_plus4.f90": "3aded66713a144cc9c3cadc98e5558d78fd0050e658c6477f19bd5c9ee30ea01",
+    "overflow_minus4.f90": "9bd89765370cec5a315793043bf3e3312c86fc4c5d7808927253a11146e1f0a1",
+    "zero_direction4.f90": "8fa03c3688e88dd7e5cfcf6b04c41c5008b09a8a0aa2140e7361693853cac85b",
+    "precision8.f90": "d239784acff9123f517491bb4f416c9847058e6f3121a183ee129b543c02fff1",
+    "zeros_subnormals8.f90": "ce7fff41aba1b21522ad1d3791f9c7e0a11045394049f1a7e0fd3667e469e339",
+    "negative_edges8.f90": "42fa5b9e9c5f7a374af1e7881d791bafaf1cfd567d6de75c7f530f2b9fae9dc1",
+    "parameters8.f90": "a7c3a1f3fafefb603154e917b97f429ed80132b3f96a508734df89770361ed13",
+    "overflow_plus8.f90": "dab24e1e1273cb98a401e6ef93e99202b061c08c0fd1c8003f0ee43350f0452e",
+    "overflow_minus8.f90": "cfe3a07852d50c6423a7aaf87e56e5a36fcc247e978c0616f8a4c48690247e9f",
+    "zero_direction8.f90": "8181d3cc38526771121e29892724eef408d249ab08343d0cba64e63fcf51ca9f",
+    "mixed_direction.f90": "15305a918794cd7d0e0dd50e66e661fb2c7e85c9d73f5d1e5a784b0fedb0ed8f",
+    "array_rank1.f90": "906aae960fa32657f48dd048ee8788795dd28932ee425bdf2c47ec5659ad9160",
+    "array_rank2.f90": "8e49791fe628178394ead69d916a02dd38f62858cb187a4b60b5a0b867fe2667",
+    "array_rank3.f90": "872d24ed440556958aa6a8f7a7afb71b12551c80f987c1c0bfc9294cfff1cbc8",
+    "empty.f90": "7f4cc9364876bff8f182292efaf16bac14cfbf8764cabbb12432f9be6ee2a209",
+    "runtime_shape.f90": "8d9f6fcc5800958659629ad25e8b7dd0e596be2fdebbaf3287e31e863eab0c9a",
+    "allocatable.f90": "e1658931f2755dde38dab526a92eb04a82c84b46e0d30bcec502e99bc6f9ec0b",
+    "sections.f90": "d7c58cfd8cf010688d6b7539ae4ca82f1d611235eb1ec8bb9c26deaac12f37fb",
+    "nested.f90": "4e4fff77e71e9e14b1a7f304173ac2c97bced3c57cee31dd13b120d65f53d4c7",
+    "undefined_kind.f90": "4a7133dede0a4690d338201c7d2ac61c83e2b4dc51075d9c3055498650e201d7",
+    "shadowing.f90": "e4cc0c0d68c7fc17fa948e5ad8f27c207fa28ac06889c7c8d39acc3ade0479ea",
+    "pure_result.f90": "12b429d3ba3cb745a376f1fd64ef8e1e0d74580df05f9c81c15bd32492267306",
+    "undefined.f90": "3af55fe184586b662fa0b7cd392f35e133298746a9449301e3f7954b8c16921c",
+    "unallocated.f90": "b8ef1b0d6c89567163c42e2cf09dd093fdd72c3d570057482010f5716ad35b3c",
+    "absent.f90": "916afd2ca904a46552ad85f4345557a5d6692a0fb66790ba6eb0c1584b0da28a",
+    "spacing_integer.f90": "6c0db67005de6f3ef011e50848293c761a0b4e37501dc6b14dcd3651910fe1b8",
+    "nearest_integer_x.f90": "abb85e6eec27507debed928737262a66e76996f437b68786e0f0f42dc839a671",
+    "nearest_integer_s.f90": "cc8afeb021aca04ed7ce3bd81ebf8cd1a9b1845a8f402337d9efe39e7175f791",
+    "spacing_extra.f90": "7beb9bbefc45b64cf3e8af5389638c97c10c057608910db22c0ed2cae707a485",
+    "nearest_missing.f90": "abe79df2b67af20003ec75235921a2ec702f335601dfab85d9a0c78112819c5e",
+    "nearest_keyword.f90": "a681095696ca8a833275791cfb3780b4cd43d8390b359ee1e013f21ffb864714",
+    "duplicate.f90": "d2dece3a2c47f99a1357ad32709eedebfa56b8fbdc9c576aee9ef2e350c9acd1",
+    "spacing_kind.f90": "7aa2347b42d15fa8284e0d5217f1d2ccb40a563c9e8ecf48fa1b8a8dc593f7d7",
+    "nonconforming.f90": "c586c6a1947a0a96405db3cd77fbfc5cee73622bd1daebf8f1e528c06e1688c5",
+    "precision_boundaries.f90": "8d1962f7a820999fbe2a8dd0dbc9ba66a5ee6bd33a81326bd9cdb5af5d00ff11",
+    "impure_elemental_once.f90": "f9a0286d77f8a2a580ef5dfd5c2343853b7c45fa5ac3ef200e3c8c4848d4e49c",
+    "zero_direction_array.f90": "5888042a38308689072fb5cad5afc94f15c60776c5a499427a05a99ce46e386a",
+    "optional_present.f90": "e70772a9d19699139d885c869fd167fdc4d41c0347d1511ea29db53a5be97c54",
+    "pointer_view.f90": "bcc0de70d8966f641bd24085645412247ea8439ad51f2c387b48f33289e58bcc",
+    "empty_mismatch.f90": "383aa92a0674756b362a5584b8741fb2eefe77f46fb07333447b864009186a5a",
+    "literal_zero.f90": "e91b0267f1fac3b21a2ecfcdb3cdbb0c503c4a32f5c15d80986dfa2b50172d3e",
+    "negative_zero.f90": "3ffcc5cc547a553d8c48cc0ad24b6250e66edc8028a0e6904cbbab39125c2f5e"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

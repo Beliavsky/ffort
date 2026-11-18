@@ -1,0 +1,56 @@
+--- recovery/057-repl-session-evidence/runtime/guard-successor/test_repl_scalar_session.f90.before
++++ recovery/057-repl-session-work/test/test_repl_scalar_session.f90
+@@ -45,6 +45,27 @@
+     bad=p;bad%expressions(bad%ne)%kind=ex_binary;bad%expressions(bad%ne)%left=bad%ne
+     bad%expressions(bad%ne)%right=bad%ne;bad%expressions(bad%ne)%op='+'
+     call reject(bad,'cyclic expression')
++    bad=p;bad%code(bad%nc)%items=[p%code(p%nc)%items(1),p%code(p%nc)%items(1)]
++    call reject(bad,'multiple query items')
++    bad=p;bad%code(bad%nc)%format='(I0)';call reject(bad,'formatted query')
++    bad=p;deallocate(bad%symbols);allocate(bad%symbols(0:size(p%symbols)-1))
++    bad%symbols=p%symbols;call reject(bad,'shifted symbol lower bound')
++    bad=p;deallocate(bad%expressions);allocate(bad%expressions(0:size(p%expressions)-1))
++    bad%expressions=p%expressions;call reject(bad,'shifted expression lower bound')
++    bad=p;deallocate(bad%code);allocate(bad%code(0:size(p%code)-1))
++    bad%code=p%code;call reject(bad,'shifted instruction lower bound')
++    bad=p;deallocate(bad%code(bad%nc)%items);allocate(bad%code(bad%nc)%items(0:0))
++    bad%code(bad%nc)%items(0)=p%code(p%nc)%items(1);call reject(bad,'shifted item lower bound')
++    bad=p;deallocate(bad%symbols);allocate(bad%symbols(max_symbols+1))
++    call reject(bad,'excess symbol capacity')
++    bad=p;deallocate(bad%expressions);allocate(bad%expressions(max_expressions+1))
++    call reject(bad,'excess expression capacity')
++    bad=p;deallocate(bad%code);allocate(bad%code(max_instructions+1))
++    call reject(bad,'excess instruction capacity')
++    d=diagnostic_t();call execute_scalar_session(session,p,d,max_steps=0_int64)
++    call expect(d%code/=0,'nonpositive budget rejected')
++    d=diagnostic_t();call execute_scalar_session(other,p,d,commit=.false.)
++    call expect(d%code/=0.and..not.scalar_session_tainted(other),'fresh query rejected without taint')
+     call expect(.not.scalar_session_tainted(session),'admission rejection does not taint')
+     d=diagnostic_t();call inspect_scalar_session(session,1,v,defined,d)
+     call expect(defined.and.v%i==3,'rejected requests preserve values')
+@@ -68,6 +89,25 @@
+     call reset_scalar_session(session)
+     call parse('program p'//nl//'implicit none'//nl,p)
+     call execute_scalar_session(session,p,d);call expect(d%code==0,'empty declaration universe')
++    ! Deferred-length strings compare exact lengths, not blank-padded equality.
++    call reset_scalar_session(session)
++    call parse('program p'//nl//'implicit none'//nl//'print "(A)", "x"'//nl,p)
++    call execute_scalar_session(session,p,d);call expect(d%code==0,'format prefix baseline')
++    bad=p;bad%code(1)%format=p%code(1)%format//' '
++    d=diagnostic_t();call execute_scalar_session(session,bad,d)
++    call expect(d%code/=0,'changed old format trailing length')
++    bad=p
++    do j=1,bad%ne
++        if(bad%expressions(j)%kind/=ex_literal)cycle
++        if(bad%expressions(j)%typ/=ty_character)cycle
++        bad%expressions(j)%value%s=bad%expressions(j)%value%s//' '
++        bad%expressions(j)%character_len=bad%expressions(j)%character_len+1
++        exit
++    end do
++    call expect(j<=bad%ne,'character literal mutation found')
++    d=diagnostic_t();call execute_scalar_session(session,bad,d)
++    call expect(d%code/=0,'changed old string trailing length')
++    call expect(.not.scalar_session_tainted(session),'string prefix rejection does not taint')
+     print *, 'scalar session checks: ',checks
+ contains
+     subroutine parse(source,prog)

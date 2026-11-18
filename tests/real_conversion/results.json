@@ -1,0 +1,1835 @@
+{
+  "total": 42,
+  "failed": 0,
+  "gnu_only": false,
+  "candidate": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "gnu_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-fbacktrace"
+  ],
+  "cases": [
+    {
+      "name": "scalars",
+      "mode": "pass",
+      "source_sha256": "aa5899eb0c6cedaeb6d44a5b4019e7804e4460ca3cd23f0136ff3e13d850106a",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/scalars.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "   42.0000000       42.000000000000000        42.0000000    \n T\n   1.25000000       1.2500000000000000        1.2345678901234500     \n           4           8           8           4\n T\n T\n  -0.00000000      -0.0000000000000000        1.1754943508222875E-038   2.2250738585072014E-308\n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/scalars.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/scalars.f90"
+        ],
+        "status": 0,
+        "stdout": " 42.0000000 42.000000000000000 42.0000000\n T\n 1.25000000 1.2500000000000000 1.2345678901234500\n 4 8 8 4\n T\n T\n -0.00000000 -0.0000000000000000 0.11754943508222875E-37 0.22250738585072014E-307\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "keyword_reordering",
+      "mode": "pass",
+      "source_sha256": "1e4ad09037fc375b0ea01b6e04caceb7d25ad8b7dad1f87a3f9458325cc70227",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/keyword_reordering.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "   17.0000000       17.000000000000000        17.000000000000000     \n           8           4\n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/keyword_reordering.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/keyword_reordering.f90"
+        ],
+        "status": 0,
+        "stdout": " 17.0000000 17.000000000000000 17.000000000000000\n 8 4\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "parameter_constants",
+      "mode": "pass",
+      "source_sha256": "b6aafedd9135ff9a6584b087fa2c4cdfa5c72f0409d55b4a5668d5fa5bd6c147",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/parameter_constants.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "   7.0000000000000000        8.0000000000000000        16777216.0               4           8\n T\n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/parameter_constants.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/parameter_constants.f90"
+        ],
+        "status": 0,
+        "stdout": " 7.0000000000000000 8.0000000000000000 16777216.0 4 8\n T\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "rank1",
+      "mode": "pass",
+      "source_sha256": "d49f9e805fea7d00c0a9ca29070a628f06340838ddc4de48d11e2055b2c039b6",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/rank1.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "           4           4  -2.00000000       0.00000000       1.00000000       16777216.0      -2.0000000000000000        0.0000000000000000        1.0000000000000000        16777217.000000000     \n           8   16777216.000000000     \n   1.0000000000000000        2.0000000000000000        3.0000000000000000     \n T T T T\n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/rank1.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/rank1.f90"
+        ],
+        "status": 0,
+        "stdout": " 4 4 -2.00000000 0.00000000 1.00000000 16777216.0 -2.0000000000000000 0.0000000000000000 1.0000000000000000 16777217.000000000\n 8 16777216.000000000\n 1.0000000000000000 2.0000000000000000 3.0000000000000000\n T T T T\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "rank2",
+      "mode": "pass",
+      "source_sha256": "bcd8f4e477fa1ba567b0a6894b83fced6749e9a241ae6099267af2bc0246e3bc",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/rank2.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "           2           2           8   16777223.000000000        16777222.0    \n   1.0000000000000000        2.0000000000000000        3.0000000000000000        16777217.000000000     \n T T T T\n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/rank2.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/rank2.f90"
+        ],
+        "status": 0,
+        "stdout": " 2 2 8 16777223.000000000 16777222.0\n 1.0000000000000000 2.0000000000000000 3.0000000000000000 16777217.000000000\n T T T T\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "rank3",
+      "mode": "pass",
+      "source_sha256": "a9bf0ebef2894135ac84243c02b871b9737557f130c94ea702b666f03303b666",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/rank3.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "           2           2           2           8   10.0000000       26.000000000000000     \n   1.0000000000000000        2.0000000000000000        3.0000000000000000        4.0000000000000000        5.0000000000000000        6.0000000000000000        7.0000000000000000        8.0000000000000000     \n T\n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/rank3.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/rank3.f90"
+        ],
+        "status": 0,
+        "stdout": " 2 2 2 8 10.0000000 26.000000000000000\n 1.0000000000000000 2.0000000000000000 3.0000000000000000 4.0000000000000000 5.0000000000000000 6.0000000000000000 7.0000000000000000 8.0000000000000000\n T\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "empty_arrays",
+      "mode": "pass",
+      "source_sha256": "b6a0ed0ec9d901412e64979bf06b21df0beeb158abfe2f8bba97508253cea9c0",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/empty_arrays.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "           0           0           0\n           0           2           2           0           2   0.0000000000000000        0.0000000000000000                0\n           4           8           8\n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/empty_arrays.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/empty_arrays.f90"
+        ],
+        "status": 0,
+        "stdout": " 0 0 0\n 0 2 2 0 2 0.0000000000000000 0.0000000000000000 0\n 4 8 8\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "array_kinds",
+      "mode": "pass",
+      "source_sha256": "f758683c4e49231ab5c89c23a82ee2e1dde031874bf8c8c54f490aee0fa1c384",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/array_kinds.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "   1.25000000      -2.50000000       4.00000000       1.2500000000000000       -2.5000000000000000        4.0000000000000000        1.25000000      -2.50000000       4.00000000       1.2500000000000000       -2.5000000000000000        4.0000000000000000     \n   1.2345678806304932        2.0000000000000000        3.0000000000000000     \n T\n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/array_kinds.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/array_kinds.f90"
+        ],
+        "status": 0,
+        "stdout": " 1.25000000 -2.50000000 4.00000000 1.2500000000000000 -2.5000000000000000 4.0000000000000000 1.25000000 -2.50000000 4.00000000 1.2500000000000000 -2.5000000000000000 4.0000000000000000\n 1.2345678806304932 2.0000000000000000 3.0000000000000000\n T\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "iso_kind_aliases",
+      "mode": "pass",
+      "source_sha256": "d86e87778f2ca19d3ccc68bd30dcaa70d7305fc1e3c847517cd6f65fef3745d2",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/iso_kind_aliases.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "           4           8   17.000000000000000     \n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/iso_kind_aliases.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/iso_kind_aliases.f90"
+        ],
+        "status": 0,
+        "stdout": " 4 8 17.000000000000000\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "module_kind_parameters",
+      "mode": "pass",
+      "source_sha256": "c45cafea503f5625ad7ce2759e29cc94b752e2a060aa114d2e22f2e098846097",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/module_kind_parameters.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "   17.000000000000000                8\n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/module_kind_parameters.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/module_kind_parameters.f90"
+        ],
+        "status": 0,
+        "stdout": " 17.000000000000000 8\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "non_evaluation",
+      "mode": "pass",
+      "source_sha256": "db4c2ac6665f4f123f80ca067b38658c4ae55ef85f67d4bd9258cf58771e243c",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/non_evaluation.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "           4           8           8\n           4           4\n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/non_evaluation.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/non_evaluation.f90"
+        ],
+        "status": 0,
+        "stdout": " 4 8 8\n 4 4\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "sliced_arrays",
+      "mode": "pass",
+      "source_sha256": "447b69355a087c54bf39d58722d36cb3be12103111a066c38b1899ebe1f5d3bb",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/sliced_arrays.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "   5.0000000000000000        3.0000000000000000        1.0000000000000000        2.0000000000000000        3.0000000000000000        4.0000000000000000     \n           8   9.0000000000000000     \n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/sliced_arrays.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/sliced_arrays.f90"
+        ],
+        "status": 0,
+        "stdout": " 5.0000000000000000 3.0000000000000000 1.0000000000000000 2.0000000000000000 3.0000000000000000 4.0000000000000000\n 8 9.0000000000000000\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "integer8_double_rounding",
+      "mode": "pass",
+      "source_sha256": "fd596bcb36bec41803e020a5fd70ff69ce73792456af53dbc77719a29f0c8e72",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/integer8_double_rounding.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "   4.61168657E+18  -4.61168657E+18   4.61168657E+18  -4.61168657E+18\n T\n T T\n T T\n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/integer8_double_rounding.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/integer8_double_rounding.f90"
+        ],
+        "status": 0,
+        "stdout": " 0.461168657E+19 -0.461168657E+19 0.461168657E+19 -0.461168657E+19\n T\n T T\n T T\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "assignment_aliasing",
+      "mode": "pass",
+      "source_sha256": "2a68993325f67624ca960468283e02cc18b258247240d80976ac2671c4723079",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/assignment_aliasing.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": {
+        "command": [
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "   3.1234567165374756        2.0000000000000000        1.2345678806304932     \n   4.00000000       3.00000000       2.00000000       1.00000000    \n   4.00000000       4.00000000       3.00000000       2.00000000    \n",
+        "stderr": ""
+      },
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/assignment_aliasing.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/assignment_aliasing.f90"
+        ],
+        "status": 0,
+        "stdout": " 3.1234567165374756 2.0000000000000000 1.2345678806304932\n 4.00000000 3.00000000 2.00000000 1.00000000\n 4.00000000 4.00000000 3.00000000 2.00000000\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "invalid_empty",
+      "mode": "reject",
+      "source_sha256": "f3fb9483fc9604bb33b0a673425fab79119ec4ffef80b4d43d531c54c34e3fe1",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_empty.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_empty.f90:4:12:\n\n    4 | print *,123, real()\n      |            1\nError: Missing actual argument \u2018a\u2019 in call to \u2018real\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_empty.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_empty.f90:4:20: REAL requires one or two arguments\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_empty.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_empty.f90:4:20: REAL requires one or two arguments\n"
+      }
+    },
+    {
+      "name": "invalid_excess",
+      "mode": "reject",
+      "source_sha256": "7287dba67634dedfc1519a0ded51988de4843102be10f0de2ba6847eea5e1d3a",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_excess.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_excess.f90:4:12:\n\n    4 | print *,123, real(1,4,8)\n      |            1\nError: Too many arguments in call to \u2018real\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_excess.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_excess.f90:4:25: REAL requires one or two arguments\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_excess.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_excess.f90:4:25: REAL requires one or two arguments\n"
+      }
+    },
+    {
+      "name": "invalid_unknown_keyword",
+      "mode": "reject",
+      "source_sha256": "6f03d03043044daf414b0f053b8b39d173082c144ee42459bc0d3cee3619acb1",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_unknown_keyword.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_unknown_keyword.f90:4:12:\n\n    4 | print *,123, real(x=1)\n      |            1\nError: Cannot find keyword named \u2018x\u2019 in call to \u2018real\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_unknown_keyword.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_unknown_keyword.f90:4:23: Unknown keyword or excess actual argument: x\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_unknown_keyword.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_unknown_keyword.f90:4:23: Unknown keyword or excess actual argument: x\n"
+      }
+    },
+    {
+      "name": "invalid_missing_a",
+      "mode": "reject",
+      "source_sha256": "f60c2e2b69e3c38b6508b84edf4cf5ae7879913d5df7ac1a149d785a979461f7",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_missing_a.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_missing_a.f90:4:12:\n\n    4 | print *,123, real(kind=8)\n      |            1\nError: Missing actual argument \u2018a\u2019 in call to \u2018real\u2019 at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_missing_a.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_missing_a.f90:4:26: Missing required actual argument\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_missing_a.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_missing_a.f90:4:26: Missing required actual argument\n"
+      }
+    },
+    {
+      "name": "invalid_duplicate_a",
+      "mode": "reject",
+      "source_sha256": "89205efdb82e2bb19ff647a3751b6e33f2aeec8b753dde1cbdbd399e651d02da",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_duplicate_a.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_duplicate_a.f90:4:26:\n\n    4 | print *,123, real(a=1,a=2)\n      |                          1\nError: Keyword \u2018a\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_duplicate_a.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_duplicate_a.f90:4:27: Repeated actual argument for a\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_duplicate_a.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_duplicate_a.f90:4:27: Repeated actual argument for a\n"
+      }
+    },
+    {
+      "name": "invalid_duplicate_kind",
+      "mode": "reject",
+      "source_sha256": "f313ec74c77b1ee1e6b0792c22ea27018e6bcc6779134a12bc0f178e8e8001e4",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_duplicate_kind.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_duplicate_kind.f90:4:34:\n\n    4 | print *,123, real(1,kind=4,kind=8)\n      |                                  1\nError: Keyword \u2018kind\u2019 at (1) has already appeared in the current argument list\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_duplicate_kind.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_duplicate_kind.f90:4:35: Repeated actual argument for kind\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_duplicate_kind.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_duplicate_kind.f90:4:35: Repeated actual argument for kind\n"
+      }
+    },
+    {
+      "name": "invalid_positional_after_keyword",
+      "mode": "reject",
+      "source_sha256": "82d5bd8480b35f82428e89d564399138850aa5f838bbbfe19015a8a1d38b60b8",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_positional_after_keyword.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_positional_after_keyword.f90:4:23:\n\n    4 | print *,123, real(a=1,8)\n      |                       1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_positional_after_keyword.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_positional_after_keyword.f90:4:23: Positional argument cannot follow a keyword argument\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_positional_after_keyword.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_positional_after_keyword.f90:4:23: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "name": "invalid_logical_a",
+      "mode": "reject",
+      "source_sha256": "8efa82349df72672888a4174a11b3190091863f2d416f24627dcc55bd3db7639",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_logical_a.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_logical_a.f90:4:18:\n\n    4 | print *,123, real(.true.)\n      |                  1\nError: \u2018a\u2019 argument of \u2018real\u2019 intrinsic at (1) must have a numeric type\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_logical_a.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_logical_a.f90:4:26: Intrinsic requires numeric arguments\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_logical_a.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_logical_a.f90:4:26: Intrinsic requires numeric arguments\n"
+      }
+    },
+    {
+      "name": "invalid_character_a",
+      "mode": "reject",
+      "source_sha256": "73422e8e38c198d2ee012eeccf690214a5d06a963057470b603e0446b324be79",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_character_a.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_character_a.f90:4:18:\n\n    4 | print *,123, real('1')\n      |                  1\nError: \u2018a\u2019 argument of \u2018real\u2019 intrinsic at (1) must have a numeric type\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_character_a.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_character_a.f90:4:23: Intrinsic requires numeric arguments\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_character_a.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_character_a.f90:4:23: Intrinsic requires numeric arguments\n"
+      }
+    },
+    {
+      "name": "invalid_real_kind",
+      "mode": "reject",
+      "source_sha256": "09dabb48ef0474131df405a63fed0aea32b4c76945e8945ecfe695bfe42d0ef7",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_real_kind.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_real_kind.f90:4:25:\n\n    4 | print *,123, real(1,kind=4.0)\n      |                         1\nError: \u2018kind\u2019 argument of \u2018real\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_real_kind.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_real_kind.f90:4:30: REAL kind must be scalar INTEGER constant\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_real_kind.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_real_kind.f90:4:30: REAL kind must be scalar INTEGER constant\n"
+      }
+    },
+    {
+      "name": "invalid_logical_kind",
+      "mode": "reject",
+      "source_sha256": "621fb01938169beae0794f35682a332978926b28458a0281395120a23bdbb998",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_logical_kind.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_logical_kind.f90:4:25:\n\n    4 | print *,123, real(1,kind=.true.)\n      |                         1\nError: \u2018kind\u2019 argument of \u2018real\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_logical_kind.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_logical_kind.f90:4:33: Intrinsic requires numeric arguments\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_logical_kind.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_logical_kind.f90:4:33: Intrinsic requires numeric arguments\n"
+      }
+    },
+    {
+      "name": "invalid_character_kind",
+      "mode": "reject",
+      "source_sha256": "f06b3016a7014c1e29657961c59cc933b01c8501237386fe569e1ac7ef16e456",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_character_kind.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_character_kind.f90:4:25:\n\n    4 | print *,123, real(1,kind='4')\n      |                         1\nError: \u2018kind\u2019 argument of \u2018real\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_character_kind.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_character_kind.f90:4:30: Intrinsic requires numeric arguments\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_character_kind.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_character_kind.f90:4:30: Intrinsic requires numeric arguments\n"
+      }
+    },
+    {
+      "name": "invalid_array_kind",
+      "mode": "reject",
+      "source_sha256": "9e41f878502f8a8bb3c0fb56d0fa2f6e534f1aedb567010aa901b521e25913f6",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_array_kind.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_array_kind.f90:4:25:\n\n    4 | print *,123, real(1,kind=[4])\n      |                         1\nError: \u2018kind\u2019 argument of \u2018real\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_array_kind.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_array_kind.f90:4:30: REAL kind must be scalar INTEGER constant\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_array_kind.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_array_kind.f90:4:30: REAL kind must be scalar INTEGER constant\n"
+      }
+    },
+    {
+      "name": "invalid_variable_kind",
+      "mode": "reject",
+      "source_sha256": "4dd894e6f8dced4b7ee3e8a5a178343fb05019097d9ed142ea18e2070a443b3a",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_variable_kind.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_variable_kind.f90:4:19:\n\n    4 | print *,123,real(1,k)\n      |                   1\nError: Parameter \u2018k\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_variable_kind.f90:4:19:\n\n    4 | print *,123,real(1,k)\n      |                   1\nError: \u2018kind\u2019 argument of \u2018real\u2019 intrinsic at (1) must be a constant\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_variable_kind.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_variable_kind.f90:4:22: REAL kind must be constant\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_variable_kind.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_variable_kind.f90:4:22: REAL kind must be constant\n"
+      }
+    },
+    {
+      "name": "invalid_kind_neg1",
+      "mode": "reject",
+      "source_sha256": "e4f5ce0cb6fd63e1f9b5438f9897bb9f2634ba47557e4974047d57b0ee66079a",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_neg1.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_neg1.f90:4:24:\n\n    4 | print *,123,real(1,kind=-1)\n      |                        1\nError: Invalid kind for REAL at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_neg1.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_neg1.f90:4:28: REAL supports kinds 4 and 8\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_neg1.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_neg1.f90:4:28: REAL supports kinds 4 and 8\n"
+      }
+    },
+    {
+      "name": "invalid_kind_0",
+      "mode": "reject",
+      "source_sha256": "3c83d55f1ba5e80ce383375eea87e580ed2ec8e210f60d276dfdcbe87f92a8c4",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_0.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_0.f90:4:24:\n\n    4 | print *,123,real(1,kind=0)\n      |                        1\nError: Invalid kind for REAL at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_0.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_0.f90:4:27: REAL supports kinds 4 and 8\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_0.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_0.f90:4:27: REAL supports kinds 4 and 8\n"
+      }
+    },
+    {
+      "name": "invalid_kind_1",
+      "mode": "reject",
+      "source_sha256": "ab5ac8bdcf2b40a244d88640d86b9326e230004702b1a5b05485e43023ef3076",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_1.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_1.f90:4:24:\n\n    4 | print *,123,real(1,kind=1)\n      |                        1\nError: Invalid kind for REAL at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_1.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_1.f90:4:27: REAL supports kinds 4 and 8\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_1.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_1.f90:4:27: REAL supports kinds 4 and 8\n"
+      }
+    },
+    {
+      "name": "invalid_kind_2",
+      "mode": "reject",
+      "source_sha256": "f0e6c6bc75c7b9e9d3bc86faf0550d1a89e1de532a35ca739d756fe6b0773d4a",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_2.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_2.f90:4:24:\n\n    4 | print *,123,real(1,kind=2)\n      |                        1\nError: Invalid kind for REAL at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_2.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_2.f90:4:27: REAL supports kinds 4 and 8\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_2.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_2.f90:4:27: REAL supports kinds 4 and 8\n"
+      }
+    },
+    {
+      "name": "invalid_kind_3",
+      "mode": "reject",
+      "source_sha256": "688b13eec6a2d2b4930b2ba1d1537ae4d505d41a4b417072352244d418d4ccc0",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_3.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_3.f90:4:24:\n\n    4 | print *,123,real(1,kind=3)\n      |                        1\nError: Invalid kind for REAL at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_3.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_3.f90:4:27: REAL supports kinds 4 and 8\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_3.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_3.f90:4:27: REAL supports kinds 4 and 8\n"
+      }
+    },
+    {
+      "name": "invalid_kind_7",
+      "mode": "reject",
+      "source_sha256": "3b34877a005a889a6750c8ebe47f0b45b704676d70896d354347701b0475a3b1",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_7.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_7.f90:4:24:\n\n    4 | print *,123,real(1,kind=7)\n      |                        1\nError: Invalid kind for REAL at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_7.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_7.f90:4:27: REAL supports kinds 4 and 8\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_7.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_7.f90:4:27: REAL supports kinds 4 and 8\n"
+      }
+    },
+    {
+      "name": "invalid_kind_99",
+      "mode": "reject",
+      "source_sha256": "85953e754b488be67b2d3bf179434152e040850b061d3e1460f0565abfeef9e9",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_99.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_99.f90:4:24:\n\n    4 | print *,123,real(1,kind=99)\n      |                        1\nError: Invalid kind for REAL at (1)\n"
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_99.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_99.f90:4:28: REAL supports kinds 4 and 8\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_99.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/invalid_kind_99.f90:4:28: REAL supports kinds 4 and 8\n"
+      }
+    },
+    {
+      "name": "unsupported_result_kind_10",
+      "mode": "unsupported",
+      "source_sha256": "a2646af4b583cf692d2e2f093939aab7ccb057691dabbdfdf8e8fd1943b2ab70",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_result_kind_10.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_result_kind_10.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_result_kind_10.f90:4:28: REAL supports kinds 4 and 8\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_result_kind_10.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_result_kind_10.f90:4:28: REAL supports kinds 4 and 8\n"
+      }
+    },
+    {
+      "name": "unsupported_result_kind_16",
+      "mode": "unsupported",
+      "source_sha256": "818cebaf94c0d6076f51ec81128e0388345ae111d0b3941f8b6aa7c2e1bec183",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_result_kind_16.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_result_kind_16.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_result_kind_16.f90:4:28: REAL supports kinds 4 and 8\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_result_kind_16.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_result_kind_16.f90:4:28: REAL supports kinds 4 and 8\n"
+      }
+    },
+    {
+      "name": "unsupported_real16_input",
+      "mode": "unsupported",
+      "source_sha256": "0ece8f33392a1f58217c0675d4154427d783d01208b0553966bef39262a1f8f7",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_real16_input.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_real16_input.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_real16_input.f90:3:9: Only REAL kinds 4 and 8 are supported\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_real16_input.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_real16_input.f90:3:9: Only REAL kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "name": "unsupported_integer2_input",
+      "mode": "unsupported",
+      "source_sha256": "9dbc9a1506f437be34206b4110e931528634705cd0310e362cbe7dd08c6ea43c",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_integer2_input.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_integer2_input.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_integer2_input.f90:3:11: Only REAL kinds 4 and 8 are supported\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_integer2_input.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_integer2_input.f90:3:11: Only REAL kinds 4 and 8 are supported\n"
+      }
+    },
+    {
+      "name": "unsupported_complex",
+      "mode": "unsupported",
+      "source_sha256": "f1eee9f826474f48af38a206336b79b565fb5df90aa8b83d6555df9e10cdd0ac",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_complex.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_complex.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_complex.f90:3:1: Undeclared variable or unsupported statement: complex\n"
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_complex.f90"
+        ],
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/unsupported_complex.f90:3:1: Undeclared variable or unsupported statement: complex\n"
+      }
+    },
+    {
+      "name": "runtime_uninitialized",
+      "mode": "runtime",
+      "source_sha256": "7299ef703105e5083c6574a152ac08cf16ca1c825dc7c5f73014e227e4190c11",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/runtime_uninitialized.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/runtime_uninitialized.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/runtime_uninitialized.f90"
+        ],
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/runtime_uninitialized.f90:4:18: read of uninitialized variable x\n"
+      }
+    },
+    {
+      "name": "runtime_narrow_overflow",
+      "mode": "runtime",
+      "source_sha256": "b0e4cc1e15eead2561bdd955408cf75fd9595cdf0a7b84c482a09686ae7f31bf",
+      "pass_": true,
+      "gfortran": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-fbacktrace",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/runtime_narrow_overflow.f90",
+          "-o",
+          "/tmp/real-conversion-a9o4i0qw/oracle"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle": null,
+      "check": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "--check",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/runtime_narrow_overflow.f90"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": {
+        "command": [
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+          "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/runtime_narrow_overflow.f90"
+        ],
+        "status": 2,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/real_conversion/sources/runtime_narrow_overflow.f90:4:13: non-finite real conversion\n"
+      }
+    }
+  ]
+}

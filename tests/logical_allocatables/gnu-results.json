@@ -1,0 +1,610 @@
+{
+  "utc": "2026-11-15T04:08:55.714730+00:00",
+  "summary": {
+    "total": 21,
+    "failed": 0,
+    "gnu_checked": 16,
+    "gnu_skipped": 5
+  },
+  "records": [
+    {
+      "case": {
+        "name": "lifecycle_all_ranks",
+        "source": "cases/lifecycle_all_ranks.f90",
+        "expected_stdout": "F F F 3 -2 4 -1 6 7 9 T T T F F F F T T T T T F T 6 7 F 0 F T",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/lifecycle_all_ranks.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-it8fh3wr/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F F F\n           3          -2           4          -1           6           7           9\n T T T F F F F T T T T T F\n T           6           7 F\n           0 F\n T\n",
+        "err": "",
+        "argv": [
+          "/tmp/logical-allocatable-oracle-it8fh3wr/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "capacity_atomic",
+        "source": "cases/capacity_atomic.f90",
+        "expected_stdout": "T F 131072 T 0 2 7 F F",
+        "category": "success",
+        "baseline": "skip",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "zero_extents",
+        "source": "cases/zero_extents.f90",
+        "expected_stdout": "T T T T 0 0 0 0 2 2 0 -1 4 1 0",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/zero_extents.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-pb67jg_t/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T T T\n           0           0           0           0           2           2           0\n          -1           4           1           0\n",
+        "err": "",
+        "argv": [
+          "/tmp/logical-allocatable-oracle-pb67jg_t/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "boolean_assignment",
+        "source": "cases/boolean_assignment.f90",
+        "expected_stdout": "T F T F F T F F F T T T T F T T T T T T T F F F F F",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/boolean_assignment.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-lr4ib6np/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F T F F T F F F T\n T T T F\n T T T T\n T T T F\n F F F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/logical-allocatable-oracle-lr4ib6np/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "reallocation_bounds_sections",
+        "source": "cases/reallocation_bounds_sections.f90",
+        "expected_stdout": "-1 4 7 T T T T T F T T 1 2 3 3 -1 9 F F F F F F",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/reallocation_bounds_sections.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-gwv8pyb5/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          -1           4           7 T T T T\n T F T T\n           1           2           3           3          -1           9 F F F F F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/logical-allocatable-oracle-gwv8pyb5/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "module_lifetime",
+        "source": "cases/module_lifetime.f90",
+        "expected_stdout": "F 7 T T T F F",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/module_lifetime.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-hgy2pzx0/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n           7 T T T F\n F\n",
+        "err": "",
+        "argv": [
+          "/tmp/logical-allocatable-oracle-hgy2pzx0/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "descriptor_dummies",
+        "source": "cases/descriptor_dummies.f90",
+        "expected_stdout": "T -1 7 T T T T F T 3 -2 T T",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/descriptor_dummies.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-af5c55hh/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T          -1           7 T T T T\n F\n T           3          -2 T T\n",
+        "err": "",
+        "argv": [
+          "/tmp/logical-allocatable-oracle-af5c55hh/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "optional_descriptors",
+        "source": "cases/optional_descriptors.f90",
+        "expected_stdout": "F T F T T T T",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/optional_descriptors.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-6yss8k8m/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n T\n F\n T\n T\n T T\n",
+        "err": "",
+        "argv": [
+          "/tmp/logical-allocatable-oracle-6yss8k8m/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "function_results",
+        "source": "cases/function_results.f90",
+        "expected_stdout": "T F F F T T T T 1 T 0 2 1 0",
+        "category": "success",
+        "baseline": "run",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/function_results.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-ky__u0sa/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F F F T T T T           1\n T           0           2           1           0\n",
+        "err": "",
+        "argv": [
+          "/tmp/logical-allocatable-oracle-ky__u0sa/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_element",
+        "source": "cases/undefined_element.f90",
+        "expected_stdout": "",
+        "category": "runtime",
+        "baseline": "skip",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "undefined_copyout",
+        "source": "cases/undefined_copyout.f90",
+        "expected_stdout": "",
+        "category": "runtime",
+        "baseline": "skip",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "unallocated_read",
+        "source": "cases/unallocated_read.f90",
+        "expected_stdout": "",
+        "category": "runtime",
+        "baseline": "skip",
+        "diagnostic": "unallocated"
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "reject_type_assignment",
+        "source": "cases/reject_type_assignment.f90",
+        "expected_stdout": "",
+        "category": "invalid",
+        "baseline": "reject",
+        "diagnostic": "Incompatible assignment types"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/reject_type_assignment.f90:3:21:\n\n    3 | allocate(a(1,1,1));a=3\n      |                     1\nError: Cannot convert INTEGER(4) to LOGICAL(4) at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/reject_type_assignment.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-vgbgco57/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "reject_rank_four",
+        "source": "cases/reject_rank_four.f90",
+        "expected_stdout": "",
+        "category": "invalid",
+        "baseline": "skip",
+        "diagnostic": "Only rank-one, rank-two and rank-three ALLOCATABLE arrays are supported"
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "reject_dummy_type",
+        "source": "cases/reject_dummy_type.f90",
+        "expected_stdout": "",
+        "category": "invalid",
+        "baseline": "reject",
+        "diagnostic": "Procedure argument type or rank does not match its dummy declaration"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/reject_dummy_type.f90:3:15:\n\n    3 | call inspect(a)\n      |               1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to LOGICAL(4)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/reject_dummy_type.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-0ctd8cs2/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "reject_dummy_rank",
+        "source": "cases/reject_dummy_rank.f90",
+        "expected_stdout": "",
+        "category": "invalid",
+        "baseline": "reject",
+        "diagnostic": "Procedure argument type or rank does not match its dummy declaration"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/reject_dummy_rank.f90:3:13:\n\n    3 | call inspect(a)\n      |             1\nError: Rank mismatch in argument \u2018x\u2019 at (1) (rank-3 and rank-2)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/reject_dummy_rank.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-5dju9tvk/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "reject_input_allocation",
+        "source": "cases/reject_input_allocation.f90",
+        "expected_stdout": "",
+        "category": "invalid",
+        "baseline": "reject",
+        "diagnostic": "Allocation requires a writable ALLOCATABLE array"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/reject_input_allocation.f90:7:9:\n\n    7 | allocate(x(1,1,1))\n      |         1\nError: Dummy argument \u2018x\u2019 with INTENT(IN) in variable definition context (ALLOCATE object) at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/reject_input_allocation.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-42q4k5bp/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "reject_fixed_actual",
+        "source": "cases/reject_fixed_actual.f90",
+        "expected_stdout": "",
+        "category": "invalid",
+        "baseline": "reject",
+        "diagnostic": "ALLOCATABLE dummy requires an ALLOCATABLE actual"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/reject_fixed_actual.f90:3:13:\n\n    3 | call inspect(a)\n      |             1\nError: Actual argument for \u2018x\u2019 must be ALLOCATABLE at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/reject_fixed_actual.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-raikbur3/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_third_bounds",
+        "source": "cases/runtime_third_bounds.f90",
+        "expected_stdout": "",
+        "category": "runtime",
+        "baseline": "runtime",
+        "diagnostic": "bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/runtime_third_bounds.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-vmuqsf0x/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 2,
+        "out": "",
+        "err": "At line 5 of file /workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/runtime_third_bounds.f90\nFortran runtime error: Index '9' of dimension 3 of array 'a' above upper bound of 8\n\nError termination. Backtrace:\n#0  0x7fe3a5fdb2ba in ???\n#1  0x7fe3a5fdbdb9 in ???\n#2  0x55ac6c200498 in MAIN__\n#3  0x55ac6c20060b in main\n",
+        "argv": [
+          "/tmp/logical-allocatable-oracle-vmuqsf0x/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "original_set_alloc_logical",
+        "source": "cases/original_set_alloc_logical.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T F T F T T F T T T F 3 2 2 2 1 2 T F T F T T F T T T F T 0 2 1 0",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/original_set_alloc_logical.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-4cn8s5t2/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T F T F T T F T T T F\n           3           2           2           2           1           2\n T F T F T T F T T T F\n T           0           2           1           0\n",
+        "err": "",
+        "argv": [
+          "/tmp/logical-allocatable-oracle-4cn8s5t2/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "optional_lower_ranks",
+        "source": "cases/optional_lower_ranks.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F F T T F F T T T -1 T T T 3 7 F F F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/logical_allocatables/cases/optional_lower_ranks.f90",
+          "-o",
+          "/tmp/logical-allocatable-oracle-68n7o9mf/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F F\n T T\n F\n F\n T T\n T\n          -1 T T\n T\n           3           7 F F F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/logical-allocatable-oracle-68n7o9mf/reference"
+        ]
+      }
+    }
+  ],
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python_version": "3.12.14",
+  "manifest_sha256": "2c34038e6b633ce5d834ca56268ec882f94caad5e6657c0cec4447d4c1503cf6",
+  "source_sha256": {
+    "cases/lifecycle_all_ranks.f90": "e2d09f7c6b20599968eb80097fbf50ff7fae6ad20aea4ec127846b10f3884e04",
+    "cases/capacity_atomic.f90": "2e98ba4318d32717955c68afd27313a894fcb6768275ad3a23afeebbe83f18e0",
+    "cases/zero_extents.f90": "a1ba6197b809ae1fa66053801711dd89e501c830ad9e0fdfe68dace6de8a179d",
+    "cases/boolean_assignment.f90": "fc2e1bc23b32288d1923a6a34a1d86c8857cfb31eaf2ce753e7b1df7efcf2852",
+    "cases/reallocation_bounds_sections.f90": "05f116244acd520cb74fa5839d5bc5cf023f6af06c27ecbdacc46bf97c55cb65",
+    "cases/module_lifetime.f90": "4d3fc9928de454a26084d0ddfcfab5604b555e12900b12c80ab70fed657a9a92",
+    "cases/descriptor_dummies.f90": "e30ea73ecd5d1e8cd0eb03af76d17bd7275156daf4fc21dc99ac93740e2c1495",
+    "cases/optional_descriptors.f90": "724a97093929c2f89f35454f74972fa713bb7ae3dcd47e21f2ae3fc0fa87d0ee",
+    "cases/function_results.f90": "75fed5a7a68d9786927805bdefbac98afce0d1f904fc376f89bd2c14b951496d",
+    "cases/undefined_element.f90": "cb10d2248c96614dd719d223d64b8a5e5a1e22beeb8b263f98dd23fbb8ac14d1",
+    "cases/undefined_copyout.f90": "5986c5dee024c16bec4fcbb302230cd1f8105784084b085db1190c68649ada99",
+    "cases/unallocated_read.f90": "9abcb2fe3d5beb3724af89815db7b5293c71ea274351600189abe097feca0a64",
+    "cases/reject_type_assignment.f90": "3c0a936aed75e1c1e6b1f5c3ff4d146b18ec651c4bb044b2d7aaef0128fc32c4",
+    "cases/reject_rank_four.f90": "a568dd18a9c2093bb689a40a12569ae2654e061f71f771cdec344e5eea9b3f15",
+    "cases/reject_dummy_type.f90": "a25f39f983b01c09b240b3c391bb24a6d7aa89158b73020284ba1a2083b037cd",
+    "cases/reject_dummy_rank.f90": "4639ca6e34ea816ba094f571dee99be120cc14894f6c267147177cabe02f7d11",
+    "cases/reject_input_allocation.f90": "805372bf202741082d4f4790a55631f5c4b823174738fa18c4ebac846fdeb3c1",
+    "cases/reject_fixed_actual.f90": "a16f615310f046c8d504d89994c9c733c35ec108231b6e236190ebb4d9bba059",
+    "cases/runtime_third_bounds.f90": "03af8074a4fdc3f712a590e2bd3f0c007b7485ef6aa05bb6615b6b018968f357",
+    "cases/original_set_alloc_logical.f90": "056a5e50fb7d7983c02e05d9e629fa14977dd2325ed7047a3f10827156b512d8",
+    "cases/optional_lower_ranks.f90": "c85e9a704f02f462d5f447d98ed0267371a3590820985d65233196c53fdad08e"
+  },
+  "gfortran_version": {
+    "code": 0,
+    "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "err": "",
+    "argv": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "--version"
+    ]
+  }
+}

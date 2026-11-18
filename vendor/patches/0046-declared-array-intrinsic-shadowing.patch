@@ -1,0 +1,14 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -483,6 +483,11 @@
+                     ! unless triplets or vector subscripts preserve dimensions.
+                     ! Copying the declaration rank would accept x(1) for x(:).
+                     if (proc%is_array .and. allocated(node%arg_indices)) then
++                        ! An explicit array declaration shadows a same-named
++                        ! intrinsic. Keep call classification consistent with
++                        ! the declaration identity already resolved above.
++                        node%is_intrinsic = .false.
++                        node%is_array_access = .true.
+                         call_rank = 0
+                         do i = 1, size(node%arg_indices)
+                             arg_index = node%arg_indices(i)

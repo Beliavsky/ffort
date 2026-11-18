@@ -1,0 +1,100 @@
+{
+  "status": "passed_initial_repl_preview_review_not_full_certification",
+  "candidate_sha256": "6e1d44cf6adc500c12066d1562d10bf22c465d86983e2314dd2000ce90e56cbb",
+  "source_files": {
+    "src/fi_repl.f90": "25d62b42d08ced7238e5c08bffa85c6cc557a75e7677a97b9e2b9dbebeb0f69c",
+    "src/fi_driver.f90": "6a1182df4a8cae5b24ff7ddd2fce7ac8411903ef51fd430a5f15f411c4966649",
+    "src/fi_console.c": "b88119cf484c95d9dca03aa6fce253d5b172131dd5bfd5bb2f9ab577289dbd24",
+    "docs/REPL.md": "fc2f315e6363a0f55b1b9e119ad60b45e4705a37108104cce9cc577e15e1986b",
+    "tests/test_cli_limits.py": "31a59d161869718adef62125c5229d421cd5ee94caa0a0ddb4243af07e4dc965"
+  },
+  "independent_final_cli_probes": [
+    {
+      "name": "cr_only",
+      "returncode": 0,
+      "stdout": " CR\n",
+      "stderr": ""
+    },
+    {
+      "name": "crlf",
+      "returncode": 0,
+      "stdout": " CRLF\n",
+      "stderr": ""
+    },
+    {
+      "name": "eof_buffer",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "eof_run",
+      "returncode": 0,
+      "stdout": " EOF\n",
+      "stderr": ""
+    },
+    {
+      "name": "line4096",
+      "returncode": 0,
+      "stdout": " BOUND\n",
+      "stderr": ""
+    },
+    {
+      "name": "line4097_run_tail",
+      "returncode": 0,
+      "stdout": " BOUND\n",
+      "stderr": "<repl>: line exceeds 4096 bytes; discarded\n"
+    },
+    {
+      "name": "module_escape",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:5:1: Only modules followed by one PROGRAM unit are supported\n"
+    },
+    {
+      "name": "plain_end",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:5:1: Only modules followed by one PROGRAM unit are supported\n"
+    },
+    {
+      "name": "program_nested",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:3:1: Undeclared variable or unsupported statement: program\n"
+    },
+    {
+      "name": "second_program",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:5:1: Only modules followed by one PROGRAM unit are supported\n"
+    }
+  ],
+  "reviewed_transcript_reports": [
+    {
+      "path": "recovery/057-repl-evidence/transcripts02.json",
+      "sha256": "043d19dadf4e0457e9be5e4681b4058a0bb9797db3ca92af47a77fcc433e641a",
+      "tests": 32
+    },
+    {
+      "path": "recovery/057-repl-evidence/transcripts02-optimized.json",
+      "sha256": "f9c54763332b6aaa975cfdc32e30b21ecfbcc7089079acac3b6b22352b97f7c5",
+      "tests": 32
+    }
+  ],
+  "cli_contract_change": "Exactly two-line test change: stdin explicitly DEVNULL for deterministic nonterminal dispatch; obsolete no-source argument error replaced by exact empty batch Expected END PROGRAM rejection. Prior failure preserved, no source validity oracle weakened.",
+  "legacy_cli_result": "PASS: 17 CLI/resource contracts",
+  "findings": [
+    "Fresh whole-buffer execution only, no persistent queries or hidden replay",
+    "Overlong records drain before dispatch; limits include wrapper; rejected records preserve buffer",
+    "EOF without explicit run does not execute; explicit final run without newline executes once",
+    "Wrapper escape/nested program attempts rejected before effects",
+    "Documentation accurately distinguishes terminal/pipe dispatch, fresh .run state, no autosave/query scope and Windows source-only portability"
+  ],
+  "limitations": [
+    "Linux focused development preview only; no full maintained-suite certification",
+    "Windows runtime behavior untested",
+    "Transcript suite32 normal and32 optimized are the same unique tests, not64 distinct contracts"
+  ],
+  "source_modified": false
+}

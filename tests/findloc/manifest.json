@@ -1,0 +1,242 @@
+{
+  "cases": [
+    {
+      "name": "integer_vector",
+      "expected": "run"
+    },
+    {
+      "name": "numeric_kind_comparison",
+      "expected": "run"
+    },
+    {
+      "name": "logical_vector",
+      "expected": "run"
+    },
+    {
+      "name": "character_padding",
+      "expected": "run"
+    },
+    {
+      "name": "empty_character",
+      "expected": "run"
+    },
+    {
+      "name": "matrix_dim",
+      "expected": "run"
+    },
+    {
+      "name": "matrix_mask",
+      "expected": "run"
+    },
+    {
+      "name": "keyword_order",
+      "expected": "run"
+    },
+    {
+      "name": "positional_full",
+      "expected": "run"
+    },
+    {
+      "name": "empty_shapes",
+      "expected": "run"
+    },
+    {
+      "name": "constant_parameter",
+      "expected": "run"
+    },
+    {
+      "name": "sections",
+      "expected": "run"
+    },
+    {
+      "name": "function_arguments",
+      "expected": "run"
+    },
+    {
+      "name": "automatic_result",
+      "expected": "run"
+    },
+    {
+      "name": "allocatable_source",
+      "expected": "run"
+    },
+    {
+      "name": "impure_value_once",
+      "expected": "run"
+    },
+    {
+      "name": "empty_value_once",
+      "expected": "policy",
+      "output": "0 1",
+      "reason": "Interpreter evaluates scalar VALUE once even for an empty source; processor evaluation choices need not agree."
+    },
+    {
+      "name": "kind_unevaluated",
+      "expected": "policy",
+      "output": "8"
+    },
+    {
+      "name": "masked_uninitialized",
+      "expected": "policy",
+      "output": "4"
+    },
+    {
+      "name": "false_mask_uninitialized",
+      "expected": "policy",
+      "output": "0"
+    },
+    {
+      "name": "source_name_shadow",
+      "expected": "run"
+    },
+    {
+      "name": "procedure_name_shadow",
+      "expected": "run"
+    },
+    {
+      "name": "reject_scalar_array",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_array_value",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_mixed_types",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_missing_value",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_rank_three",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_bad_dim",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_bad_mask",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_mask_shape",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_array_back",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_bad_kind",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_dynamic_kind",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_unknown_keyword",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_duplicate_keyword",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_positional_after_keyword",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_nodim_positional_kind",
+      "expected": "reject"
+    },
+    {
+      "name": "reject_optional_dim",
+      "expected": "reject"
+    },
+    {
+      "name": "runtime_dim_low",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_dim_high",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_dim_empty",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_mask_shape",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_undefined_value",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_undefined_array",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_undefined_mask",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_unallocated_array",
+      "expected": "runtime"
+    },
+    {
+      "name": "runtime_empty_undefined_value",
+      "expected": "runtime"
+    },
+    {
+      "name": "utility_compress_algorithm",
+      "expected": "run"
+    },
+    {
+      "name": "utility_compress_declaration_blocked",
+      "expected": "run",
+      "reason": "Historical filename retained; unchanged full original declaration now accepted. Empty original wrapper does not invoke compress."
+    },
+    {
+      "name": "character_sections_trim",
+      "expected": "run"
+    },
+    {
+      "name": "mask_all_false_value",
+      "expected": "runtime"
+    },
+    {
+      "name": "early_match_later_undefined",
+      "expected": "runtime"
+    },
+    {
+      "name": "kind_selector_inquiry",
+      "expected": "policy",
+      "output": "1 4"
+    },
+    {
+      "name": "optional_value",
+      "expected": "run"
+    },
+    {
+      "name": "absent_optional_value",
+      "expected": "runtime"
+    },
+    {
+      "name": "matrix_grid",
+      "expected": "run",
+      "reason": "Deterministic eight-matrix grid: 56 values and both DIM directions, masked first/last selection."
+    },
+    {
+      "name": "reject_implicit_result_location_actual",
+      "expected": "reject",
+      "diagnostic_contains": "function RESULT name differs",
+      "reason": "Pinned producer also rejects this scalar MINLOC composition; an explicit RESULT clause works. Boundary retained rather than bypassing adapter."
+    }
+  ]
+}

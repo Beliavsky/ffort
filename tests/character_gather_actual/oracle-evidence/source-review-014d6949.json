@@ -1,0 +1,39 @@
+{
+  "status": "passed_source_review",
+  "patch_sha256": "014d69499ba033db224a3e1ee18ed39d5876b17032496f1bca914725640ac7b1",
+  "baseline_snapshot_sha256": "a525dde7f09f23c1cfc6b0f6f2f3bd116a34e8699e12382045339b4d9f84c55c",
+  "files": {
+    "fi_ir.f90": {
+      "before_sha256": "1bbf2feae5997a2eb347f7e473577d3d9a256a0e1f6d7ad4621d59bc49c7355b",
+      "after_sha256": "2cc55064cfcb76a713952be08bb81d2d3eecf9a582ef0557380691574aae0155"
+    },
+    "fi_parser.f90": {
+      "before_sha256": "4e5c574892d09d5594de0f3c9258d832e2a96eeff4e057bb871119f3bcae3be6",
+      "after_sha256": "5764300e504fd6ee5c7e20c7338de14786c18ba2aea01c192022db1cd239323c"
+    },
+    "fi_frontend.f90": {
+      "before_sha256": "b943185126088d570805a867b47af95f1e68528d18b43b4618cf0ada95cfe745",
+      "after_sha256": "753073c14e26f8ee7bc97a507c1f58371241ad5c94913887da3219663f1b0c32"
+    },
+    "fi_runtime.f90": {
+      "before_sha256": "76a41bd12c4afbd62521e1e56959094bab6f5fbf273d75256be6821dbb4ea060",
+      "after_sha256": "d48b2eb9bd8807ec87178a1c66cba0a5a9ea12724bc36882d8a21d262febf657"
+    }
+  },
+  "scope": "Bare rank-one default CHARACTER gather to non-TARGET nonallocatable nonpointer assumed-shape INTENT(IN) formal only.",
+  "checks": [
+    "Shared eligibility predicate bounds-checks table indices before dereference, requires CHARACTER kind4/rank1 and read-only assumed-shape non-TARGET formal.",
+    "Parser and independent adapter/runtime call preflight use the same eligibility predicate; existing gathered writable/numeric boundaries remain. Full gather metadata is independently validated by existing prepare_expression/validate_row_gather before the input values are copied.",
+    "A bare gathered input retains its whole base identity after actual values are materialized. It does not recompute vector indices to build alias offsets. PARAMETER bases need no writable reservation.",
+    "Whole-base overlap guard executes before callee entry/OUT invalidation and before legacy pointer-descriptor skip; both argument orders are covered. Existing pointer and allocatable alias guards retain original ordering outside the new flag.",
+    "Empty/disjoint same-base writable actuals are deliberately rejected conservatively. Parenthesized gather remains a value snapshot and avoids this new base-association reservation.",
+    "Module/SAVE/host actual collection includes bare CHARACTER gather base and excludes parenthesized snapshots, preserving transitive conflict checking.",
+    "Readonly gathered bindings never participate in copy-out; guarded arguments are deep-copied through existing input value paths."
+  ],
+  "blockers": [],
+  "limits": [
+    "No compiler, candidate, native, or mutant execution performed for this review.",
+    "Source-only PASS is not runtime verification; author native62 and central GNU/source execution still required.",
+    "No claim of arbitrary procedure side-effect rollback or new pointer/TARGET alias semantics."
+  ]
+}

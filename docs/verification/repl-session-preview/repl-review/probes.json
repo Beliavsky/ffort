@@ -1,0 +1,54 @@
+{
+  "candidate_sha256": "ba3345d5361f72ea979fb14fd242ccd29b88f32a9d11d0d78abacffd62841fde",
+  "records": [
+    {
+      "name": "keyword_assignment",
+      "stdin": "integer::real\nreal=1\nreal+1\nreal=2\n.run\n.quit\n",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:3:10: Keyword/intrinsic names are reserved in this prototype\n"
+    },
+    {
+      "name": "keyword_after_freeze",
+      "stdin": "integer::real,i\nreal=1\ni=2\ni\nreal=3\n.run\n.quit\n",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:3:10: Keyword/intrinsic names are reserved in this prototype\n<repl>:3:10: Keyword/intrinsic names are reserved in this prototype\n"
+    },
+    {
+      "name": "injection_print",
+      "stdin": "integer::i\ni=1\nprint *, \"PREFIX\"\n1); print *, \"INJECT\"; print *, (2\n.quit\n",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:0:0: scalar query must add exactly one print instruction\n"
+    },
+    {
+      "name": "injection_rng",
+      "stdin": "real::x\ncall random_number(x)\n1); call random_seed(); print *, (2\n.quit\n",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:0:0: scalar query must add exactly one print instruction\n"
+    },
+    {
+      "name": "commentclose",
+      "stdin": "print *, \"PREFIX\"\n1) ! bypassclose\n.quit\n",
+      "returncode": 0,
+      "stdout": " PREFIX\n 1\n",
+      "stderr": ""
+    },
+    {
+      "name": "badquery_noeffects",
+      "stdin": "print *, \"PREFIX\"\nsin(1.0)\n.quit\n",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "<repl>:0:0: persistent session supports only plain local intrinsic scalars and straight-line assignment, print and random calls\n"
+    },
+    {
+      "name": "continue_comment",
+      "stdin": "integer::i\ni=1 &\n! blank\n+2\ni\n.quit\n",
+      "returncode": 0,
+      "stdout": " 3\n",
+      "stderr": ""
+    }
+  ]
+}

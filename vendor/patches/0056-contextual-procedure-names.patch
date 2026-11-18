@@ -1,0 +1,89 @@
+--- a/src/parser/declarations/parser_declarations_core_module.f90
++++ b/src/parser/declarations/parser_declarations_core_module.f90
+@@ -518,7 +518,9 @@
+             next_token = parser%get_token_at_index(parser%current_token + 1)
+             next_lower = to_lower(trim(next_token%text))
+             if (trim(next_lower) == "precision") return
+-        case ("in", "out", "inout", "data")
++        case ("in", "out", "inout", "data", "procedure")
++            ! The type/attribute grammar has already been consumed here, so
++            ! PROCEDURE is an entity name, not a procedure declaration prefix.
+             ! Contextual keywords can act as identifiers within declarations
+         case ("stop", "call", "cycle", "exit", "return", "error", "continue", "goto", &
+                 "go", "entry", "select", "contains", "else", "dimension", &
+--- a/src/parser/declarations/parser_parameter_handling.f90
++++ b/src/parser/declarations/parser_parameter_handling.f90
+@@ -121,7 +121,8 @@
+         type(parser_state_t), intent(inout) :: parser
+         type(ast_arena_t), intent(inout) :: arena
+         integer, allocatable, intent(out) :: param_indices(:)
+-        type(token_t) :: token
++        type(token_t) :: token, next_token
++        integer :: next_pos
+ 
+         allocate (param_indices(0))
+ 
+@@ -140,6 +141,24 @@
+             if (token%kind == TK_OPERATOR .and. token%text == "*") then
+                 call append_untyped_parameter(parser, arena, param_indices)
+                 cycle
++            end if
++
++            ! A standard dummy-name slot is distinct from a lazy typed
++            ! parameter. Preserve PROCEDURE(interface) parsing, but do not
++            ! discard a dummy literally named PROCEDURE before ',' or ')'.
++            if (token%kind == TK_KEYWORD .and. to_lower(token%text) == "procedure") then
++                next_pos = parser%current_token + 1
++                next_token = parser%get_token_at_index(next_pos)
++                do while (next_token%kind == TK_WHITESPACE .or. &
++                          next_token%kind == TK_NEWLINE .or. next_token%kind == TK_COMMENT)
++                    next_pos = next_pos + 1
++                    next_token = parser%get_token_at_index(next_pos)
++                end do
++                if (next_token%kind == TK_OPERATOR .and. &
++                    (next_token%text == "," .or. next_token%text == ")")) then
++                    call append_untyped_parameter(parser, arena, param_indices)
++                    cycle
++                end if
+             end if
+ 
+             if (token%kind == TK_KEYWORD .and. is_type_keyword_token(token)) then
+--- a/src/parser/core/parser_import_resolution.f90
++++ b/src/parser/core/parser_import_resolution.f90
+@@ -145,7 +145,8 @@
+ 
+             token = parser%peek()
+             if (parse_generic_spec_entry(parser)) return
+-            if (token%kind == TK_IDENTIFIER) then
++            if (token%kind == TK_IDENTIFIER .or. &
++                (token%kind == TK_KEYWORD .and. to_lower(token%text) == "procedure")) then
+                 token = parser%consume()
+                 local_name = trimmed_or_empty(token%text)
+ 
+@@ -153,7 +154,8 @@
+                 if (token%kind == TK_OPERATOR .and. token%text == "=>") then
+                     token = parser%consume() ! consume '=>'
+                     token = parser%peek()
+-                    if (token%kind == TK_IDENTIFIER) then
++                    if (token%kind == TK_IDENTIFIER .or. &
++                (token%kind == TK_KEYWORD .and. to_lower(token%text) == "procedure")) then
+                         token = parser%consume()
+                         remote_name = trimmed_or_empty(token%text)
+                         call append_rename_pair(local_name, remote_name)
+--- a/src/parser/declarations/parser_interface_module_procedures_module.f90
++++ b/src/parser/declarations/parser_interface_module_procedures_module.f90
+@@ -148,7 +148,13 @@
+                     token = parser%consume()
+                     exit
+                 end if
+-            case (TK_COMMENT, TK_NEWLINE, TK_KEYWORD)
++            case (TK_KEYWORD)
++                ! The MODULE PROCEDURE header was consumed above. This slot
++                ! names a specific procedure, which may itself be PROCEDURE.
++                if (to_lower(token%text) /= "procedure") exit
++                call append_procedure_name(procedure_names, token%text)
++                token = parser%consume()
++            case (TK_COMMENT, TK_NEWLINE)
+                 exit
+             case (TK_WHITESPACE)
+                 token = parser%consume()

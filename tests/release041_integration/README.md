@@ -1,0 +1,1 @@
+Synthetic composition of bounded inverse trigonometry, immutable named parameter formats and typed empty constructors with existing array/descriptor/defined-output paths. All expected records are independently specified and exact; no tolerance is accepted. Full original examples and utility closures remain separate feature evidence.

@@ -1,0 +1,1251 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:36:11.982595+00:00",
+  "summary": {
+    "total": 42,
+    "failed": 0,
+    "candidate_checked": 42,
+    "gnu_checked": 33,
+    "gnu_skipped": 9,
+    "gnu_executed": 23,
+    "gnu_compile_only": 3,
+    "gnu_compile_rejections": 7
+  },
+  "records": [
+    {
+      "case": {
+        "name": "scalar_lifetime",
+        "source": "cases/scalar_lifetime.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 11",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6\n          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6\n 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_then_assign",
+        "source": "cases/undefined_then_assign.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_bounds",
+        "source": "cases/array_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": " -2 0 1 1 29",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          -2           0           1           1          29\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -2 0 1 1 29\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "array_constructor_init",
+        "source": "cases/array_constructor_init.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2 3",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "characters",
+        "source": "cases/characters.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "one  next",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "one  next\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "one  next\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "numeric_kinds",
+        "source": "cases/numeric_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2147483649 1.0 T",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2147483649   1.0000000000000000      T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2147483649 1.0000000000000000 T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_module_array",
+        "source": "cases/empty_module_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameter_initializer",
+        "source": "cases/parameter_initializer.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "15",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          15\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 15\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_reads",
+        "source": "cases/pure_reads.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 9",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8\n 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "local_shadow",
+        "source": "cases/local_shadow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "private_procedure_access",
+        "source": "cases/private_procedure_access.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_sibling_calls",
+        "source": "cases/nested_sibling_calls.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "22",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          22\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 22\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "imported_module_write",
+        "source": "cases/imported_module_write.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "internal_import_write",
+        "source": "cases/internal_import_write.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "module_actual_copyout",
+        "source": "cases/module_actual_copyout.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "module_array_copyout",
+        "source": "cases/module_array_copyout.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 5 3 7",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           5           3           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 5 3 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "module_out_invalidation",
+        "source": "cases/module_out_invalidation.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/module_out_invalidation.f90:13:9: read of uninitialized variable counter\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_scalar",
+        "source": "cases/undefined_scalar.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/undefined_scalar.f90:12:9: read of uninitialized variable counter\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_element",
+        "source": "cases/undefined_element.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "uninitialized"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/undefined_element.f90:13:9: read of uninitialized array element counter\n"
+      }
+    },
+    {
+      "case": {
+        "name": "private_import",
+        "source": "cases/private_import.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Undeclared"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/private_import.f90:14:15:\n\n   14 | print *,counter\n      |               1\nError: Symbol \u2018counter\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/private_import.f90:14:16: Undeclared variable: counter\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/private_import.f90:14:16: Undeclared variable: counter\n"
+      }
+    },
+    {
+      "case": {
+        "name": "only_excludes_data",
+        "source": "cases/only_excludes_data.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Undeclared"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/only_excludes_data.f90:12:15:\n\n   12 | print *,counter\n      |               1\nError: Symbol \u2018counter\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/only_excludes_data.f90:12:16: Undeclared variable: counter\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/only_excludes_data.f90:12:16: Undeclared variable: counter\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_write",
+        "source": "cases/pure_write.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "cannot modify module"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/pure_write.f90:6:0:\n\n    6 | counter=3\nError: Variable \u2018counter\u2019 cannot appear in a variable definition context (assignment) at (1) in PURE procedure\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/pure_write.f90:10:5:\n\n   10 | use state\n      |     1\nFatal Error: Cannot open module file \u2018state.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/pure_write.f90:7:1: PURE/SIMPLE procedure cannot modify module data\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/pure_write.f90:7:1: PURE/SIMPLE procedure cannot modify module data\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_writable_actual",
+        "source": "cases/pure_writable_actual.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "cannot modify module"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/pure_writable_actual.f90:6:9:\n\n    6 | call put(counter)\n      |         1\nError: Variable \u2018counter\u2019 cannot appear in a variable definition context (actual argument to INTENT = OUT/INOUT) at (1) in PURE procedure\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/pure_writable_actual.f90:14:5:\n\n   14 | use state\n      |     1\nFatal Error: Cannot open module file \u2018state.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/pure_writable_actual.f90:6:18: PURE/SIMPLE procedure cannot modify module data\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/pure_writable_actual.f90:6:18: PURE/SIMPLE procedure cannot modify module data\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_read",
+        "source": "cases/simple_read.f90",
+        "category": "reject",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "SIMPLE"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/simple_read.f90:7:15: SIMPLE procedure cannot reference mutable module data\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/simple_read.f90:7:15: SIMPLE procedure cannot reference mutable module data\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_function_write",
+        "source": "cases/ordinary_function_write.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "ordinary functions"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/ordinary_function_write.f90:8:1: Mutable module writes inside ordinary functions are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/ordinary_function_write.f90:8:1: Mutable module writes inside ordinary functions are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nonconstant_initializer",
+        "source": "cases/nonconstant_initializer.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "constant"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/nonconstant_initializer.f90:4:17:\n\n    4 | integer::counter=first\n      |                 1\nError: Parameter \u2018first\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/nonconstant_initializer.f90:7:7:\n\n    7 | counter=3\n      |       1\nError: Symbol \u2018counter\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/nonconstant_initializer.f90:11:5:\n\n   11 | use state\n      |     1\nFatal Error: Cannot open module file \u2018state.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/nonconstant_initializer.f90:4:23: Declaration initializers must be constant expressions\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/nonconstant_initializer.f90:4:23: Declaration initializers must be constant expressions\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mutable_local_initializer",
+        "source": "cases/mutable_local_initializer.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "allocatable_boundary",
+        "source": "cases/allocatable_boundary.f90",
+        "category": "reject",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "unsupported statement: continue"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/allocatable_boundary.f90:6:1: Undeclared variable or unsupported statement: continue\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/allocatable_boundary.f90:6:1: Undeclared variable or unsupported statement: continue\n"
+      }
+    },
+    {
+      "case": {
+        "name": "direct_module_alias",
+        "source": "cases/direct_module_alias.f90",
+        "category": "reject",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "host/USE"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/direct_module_alias.f90:15:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/direct_module_alias.f90:15:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "transitive_module_alias",
+        "source": "cases/transitive_module_alias.f90",
+        "category": "reject",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "host/USE"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/transitive_module_alias.f90:19:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/transitive_module_alias.f90:19:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "readonly_module_alias",
+        "source": "cases/readonly_module_alias.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "host/USE"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/readonly_module_alias.f90:15:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/readonly_module_alias.f90:15:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "expression_actual_snapshot",
+        "source": "cases/expression_actual_snapshot.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 3",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "active_module_do",
+        "source": "cases/active_module_do.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "active DO"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/active_module_do.f90:6:1: assignment to active DO variable\n"
+      }
+    },
+    {
+      "case": {
+        "name": "two_module_isolation",
+        "source": "cases/two_module_isolation.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 10",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2          10\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 10\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "import_ambiguity",
+        "source": "cases/import_ambiguity.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Ambiguous"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/import_ambiguity.f90:10:15:\n\n   10 | print *,counter\n      |               1\nError: Name \u2018counter\u2019 at (1) is an ambiguous reference to \u2018counter\u2019 from module \u2018first\u2019\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/import_ambiguity.f90:10:16: Ambiguous USE-associated data: counter\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/import_ambiguity.f90:10:16: Ambiguous USE-associated data: counter\n"
+      }
+    },
+    {
+      "case": {
+        "name": "impure_elemental_state",
+        "source": "cases/impure_elemental_state.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 11 22 33"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3          11          22          33\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 11 22 33\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "transitive_function_write",
+        "source": "cases/transitive_function_write.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "External side effects"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/transitive_function_write.f90:17:1: External side effects inside ordinary functions are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/transitive_function_write.f90:17:1: External side effects inside ordinary functions are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "return_releases_module_do",
+        "source": "cases/return_releases_module_do.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "9 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           9\n           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 9\n 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "public_attribute",
+        "source": "cases/public_attribute.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "private_attribute",
+        "source": "cases/private_attribute.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/private_attribute.f90:7:15:\n\n    7 | print *,counter\n      |               1\nError: Symbol \u2018counter\u2019 at (1) has no IMPLICIT type\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/private_attribute.f90:7:16: Undeclared variable: counter\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/private_attribute.f90:7:16: Undeclared variable: counter\n"
+      }
+    },
+    {
+      "case": {
+        "name": "defined_output_state",
+        "source": "cases/defined_output_state.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 12 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "11\n12\n           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "11\n12\n 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "defined_output_module_alias",
+        "source": "cases/defined_output_module_alias.f90",
+        "category": "reject",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "host/USE"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/defined_output_module_alias.f90:35:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/mutable_modules/cases/defined_output_module_alias.f90:35:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      }
+    }
+  ],
+  "manifest_sha256": "f8ecf1b1f3a66a2cb9281d313eee30d60b83514ad679f164f083e1f7dab1031c",
+  "source_sha256": {
+    "cases/scalar_lifetime.f90": "4c022072b9620348b554e6a8bae04f4759042e98ea31dab70a658e5595ebe2b9",
+    "cases/undefined_then_assign.f90": "0e54d22b8b16e174269ab537c70fc7578dc1e64c6004df0bfb81132e0386171f",
+    "cases/array_bounds.f90": "92596557dd35a16d516ea5f067f27de889a42e218dda0ed7420effc9d266fdab",
+    "cases/array_constructor_init.f90": "3dd5bfd7bd68ea7fbd307f59da3e5edaa14b003cbe490f7dcf8e102fc4727478",
+    "cases/characters.f90": "67acc2bfb29ee2f429a6ed4a247ad7e7a96ca5eb6c625f9920c02c1227a8b7a4",
+    "cases/numeric_kinds.f90": "4adb217a3052c4ebf4c90a20eeba07d6bd733409e433fc0faadf8c569994d9ac",
+    "cases/empty_module_array.f90": "e03c8551f8723d3af144c1539bbae072552cefe4b3a5ce944f2d85e55e534bb8",
+    "cases/parameter_initializer.f90": "1da130529252082678b427dff773190399e16c6f20635027624cee3768175fc0",
+    "cases/pure_reads.f90": "8c39c1aa3d0f77076d13e95cb16d3d24dfc25d2e84ae3ab9197178213f0a47b6",
+    "cases/local_shadow.f90": "a996b52f87f0c5d6203710a80748402b7211c3c79d918cac5b37e2a106245e18",
+    "cases/private_procedure_access.f90": "d5d4bbc8acad24dfd26d1daa34decfb6ef1721e2b3cb95345874c8489331b456",
+    "cases/nested_sibling_calls.f90": "f34003455973436d4ec3c3ba4fb195d3cf5f80989945711a786696b0fb6f1b68",
+    "cases/imported_module_write.f90": "f1d0920b6f2e2d9e14147e1b60c0e557bbd400d3158b96566e0e9e59a269fbf3",
+    "cases/internal_import_write.f90": "a6adc5e25c690df66a890da40f02c8cb2b10c6e751dedef13239a57f6d32d80c",
+    "cases/module_actual_copyout.f90": "1d42043492a02580c2040f1e2ac99dcd0955881c1e1b7a69ae00b078b882460c",
+    "cases/module_array_copyout.f90": "e38d1be52c8148f24c65b58f0a93770d37a7ce3f641013be5bc0885aad13701a",
+    "cases/module_out_invalidation.f90": "b88b731397d5e336061c3c4ab6c0318323a84b240b6169654aa76b46e50b9968",
+    "cases/undefined_scalar.f90": "bf20a3a543447f36991aacad6de04e6858aa0f0e23ef5f44f990d256b6dd2885",
+    "cases/undefined_element.f90": "2904ad645f0ee4cb83415b863db9f09d0d10ac86479a96a2a34ae3a83cec7ad9",
+    "cases/private_import.f90": "9f6427b9f814bde18d90efa2a63da954666da1a92b51146ac248de2e6522bef4",
+    "cases/only_excludes_data.f90": "b425c62b4d98e68dcca3438dccd97c5996803c6b4454ba150e51922b813cd389",
+    "cases/pure_write.f90": "7ae9827766fc51a7f752ece5ea302af76e5e073f542d3b1966e158df99d89234",
+    "cases/pure_writable_actual.f90": "700e83804d00bc4f131b87cddb363d26efbf27cc8f057626852308c3d27bc83b",
+    "cases/simple_read.f90": "c69d2d55d9c1f8fd62e8951518df28114f63c94d33bf8a9cac1047c7d91bc0b8",
+    "cases/ordinary_function_write.f90": "fda627e0556d6f1aaf0fba3bc4b4f7d47ac0104f4d3a4fe71bb483dfd070baa2",
+    "cases/nonconstant_initializer.f90": "73829bfc97c005c53bc9eeeccafd70736e343a9bd525bb4356584150266f31ec",
+    "cases/mutable_local_initializer.f90": "1ca4857a77b1c7eca1e742894b2a6271d5535cf3dddc2a46b33c982728292ab0",
+    "cases/allocatable_boundary.f90": "8ea8cae6dd6e4b53e24059778a6e13db463271105879b3ff64b127fa70dd39a2",
+    "cases/direct_module_alias.f90": "97a18072291935c138e851607679c756f70995890b6886eb8466aa6ae1fdf597",
+    "cases/transitive_module_alias.f90": "6dae8c927fa3028ab76f2cc63571cc282b2833564879ccf480ee5400800fba0b",
+    "cases/readonly_module_alias.f90": "1401ac3ab927da25e9709bbd500f7c34f318f8a3a2716280728be8dd5fb5b4f3",
+    "cases/expression_actual_snapshot.f90": "942912799447cb65426b3a08e7c8abb634f93aa9da23e7723ed794493716f952",
+    "cases/active_module_do.f90": "53e6b108a8c985de17e79df18ffcfeac74dd2385c1b444a4d5c3c05599178810",
+    "cases/two_module_isolation.f90": "f82b555fc019a1b4af5c434bb025006264c8f6f1670c6ba10e16560b4c34abe0",
+    "cases/import_ambiguity.f90": "3f86ca876c4b3292af0bc6f73a231626628fdd4795cf6d720cf86f8019eca607",
+    "cases/impure_elemental_state.f90": "0fe1bf9e1d6843595f8392fb9ef864efb9064898ed9da03bd46d0da217509595",
+    "cases/transitive_function_write.f90": "376afbeced0ac550995db18fdaed215e3e8001e5f96b738a92c5f244e0eb0e16",
+    "cases/return_releases_module_do.f90": "10391c2158ca4bf9c501baed61245431ce77e613cf0a9da3226df30897ec0938",
+    "cases/public_attribute.f90": "8cce02c7826e2c67e985976f3c4edaa9ab89edabfd91d7267eca710aeda9ca20",
+    "cases/private_attribute.f90": "7a2d76a7416cd0c2877975a3d6d77d4f9bb7cfc2c24da1b20b13755f5cb537ab",
+    "cases/defined_output_state.f90": "8f97b675f3f7c78d3dafa3c33ce6d86d9cfd1121cf62319aa4742ed2070f46c4",
+    "cases/defined_output_module_alias.f90": "10fa4e595f386829991dd17e785e74f48fd71b6eee16a6251b6353b17f3008b3"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

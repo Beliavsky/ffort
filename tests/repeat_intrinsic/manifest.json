@@ -1,0 +1,235 @@
+{
+  "cases": [
+    {
+      "name": "blanks_keywords",
+      "source": "cases/blanks_keywords.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "<a a a >\n< b b>\n<>\n<>\n<q q q q !>\n",
+      "exact_stdout": true
+    },
+    {
+      "name": "parameters",
+      "source": "cases/parameters.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 8 8 1 0\n<a a a >\n<xyxyxyxy>"
+    },
+    {
+      "name": "dynamic_dummy",
+      "source": "cases/dynamic_dummy.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6\n<a a a >\n0\n<>"
+    },
+    {
+      "name": "length_undefined_string",
+      "source": "cases/length_undefined_string.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "21 0 1",
+      "baseline_reason": "Undefined STRING data: descriptor-only interpreter test; GNU is never executed."
+    },
+    {
+      "name": "kind_undefined_arguments",
+      "source": "cases/kind_undefined_arguments.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "1",
+      "baseline_reason": "KIND must not read either undefined value."
+    },
+    {
+      "name": "empty_huge_count",
+      "source": "cases/empty_huge_count.f90",
+      "category": "success",
+      "baseline": "compile",
+      "expected_stdout": "0\n<>",
+      "baseline_reason": "Enormous count: compile-only GNU, even with empty STRING."
+    },
+    {
+      "name": "length_limit",
+      "source": "cases/length_limit.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "65536"
+    },
+    {
+      "name": "shadow_scalar",
+      "source": "cases/shadow_scalar.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "17"
+    },
+    {
+      "name": "shadow_array",
+      "source": "cases/shadow_array.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "12"
+    },
+    {
+      "name": "shadow_function",
+      "source": "cases/shadow_function.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "12"
+    },
+    {
+      "name": "shadow_result",
+      "source": "cases/shadow_result.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "23"
+    },
+    {
+      "name": "shadow_generic",
+      "source": "cases/shadow_generic.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "34"
+    },
+    {
+      "name": "wrong_string",
+      "source": "cases/wrong_string.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "wrong_count",
+      "source": "cases/wrong_count.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "missing_count",
+      "source": "cases/missing_count.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "extra_argument",
+      "source": "cases/extra_argument.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "unknown_keyword",
+      "source": "cases/unknown_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "duplicate_keyword",
+      "source": "cases/duplicate_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "positional_after_keyword",
+      "source": "cases/positional_after_keyword.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "array_string",
+      "source": "cases/array_string.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "array_count",
+      "source": "cases/array_count.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "negative_constant",
+      "source": "cases/negative_constant.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": ""
+    },
+    {
+      "name": "nondefault_character",
+      "source": "cases/nondefault_character.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "baseline_reason": "Valid Fortran nondefault CHARACTER is outside the interpreter subset."
+    },
+    {
+      "name": "negative_dynamic",
+      "source": "cases/negative_dynamic.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "baseline_reason": "Unsafe/undefined execution is never attempted under GNU."
+    },
+    {
+      "name": "overlength_dynamic",
+      "source": "cases/overlength_dynamic.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "baseline_reason": "Unsafe/undefined execution is never attempted under GNU."
+    },
+    {
+      "name": "huge_dynamic",
+      "source": "cases/huge_dynamic.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "baseline_reason": "Unsafe/undefined execution is never attempted under GNU."
+    },
+    {
+      "name": "undefined_string",
+      "source": "cases/undefined_string.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "baseline_reason": "Unsafe/undefined execution is never attempted under GNU."
+    },
+    {
+      "name": "undefined_count",
+      "source": "cases/undefined_count.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "baseline_reason": "Unsafe/undefined execution is never attempted under GNU."
+    },
+    {
+      "name": "overlength_constant",
+      "source": "cases/overlength_constant.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "baseline_reason": "Valid Fortran result exceeds interpreter 65536-character bound."
+    },
+    {
+      "name": "huge_constant",
+      "source": "cases/huge_constant.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "baseline_reason": "Do not ask GNU to fold or allocate an enormous constant result."
+    },
+    {
+      "name": "matrix",
+      "source": "cases/matrix.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<x>\n<x>\n<x>\n<xx>\n<xx>\n<xx>\n<xxx>\n<xxx>\n<xxx>\n<xxxxxxx>\n<xxxxxxx>\n<xxxxxxx>\n<>\n<>\n<>\n< a >\n< a >\n< a >\n< a  a >\n< a  a >\n< a  a >\n< a  a  a >\n< a  a  a >\n< a  a  a >\n< a  a  a  a  a  a  a >\n< a  a  a  a  a  a  a >\n< a  a  a  a  a  a  a >\n<>\n<>\n<>\n<a'b>\n<a'b>\n<a'b>\n<a'ba'b>\n<a'ba'b>\n<a'ba'b>\n<a'ba'ba'b>\n<a'ba'ba'b>\n<a'ba'ba'b>\n<a'ba'ba'ba'ba'ba'ba'b>\n<a'ba'ba'ba'ba'ba'ba'b>\n<a'ba'ba'ba'ba'ba'ba'b>\n<>\n<>\n<>\n<  >\n<  >\n<  >\n<    >\n<    >\n<    >\n<      >\n<      >\n<      >\n<              >\n<              >\n<              >\n",
+      "exact_stdout": true,
+      "oracle_values": 75
+    }
+  ]
+}

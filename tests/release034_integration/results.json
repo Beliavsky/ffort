@@ -1,0 +1,1030 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--version"
+        ],
+        "cwd": "/tmp/release034-candidate-mmvoyo_w"
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "--version"
+        ],
+        "cwd": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/release034_integration"
+      }
+    }
+  },
+  "summary": {
+    "total": 16,
+    "failed": 0,
+    "integrity_failed": 0,
+    "candidate_checked": 16,
+    "gnu_checked": 15,
+    "gnu_compiler_discrepancies": 0,
+    "gnu_executed": 9,
+    "gnu_compile_only": 3,
+    "gnu_compile_rejections": 3,
+    "gnu_skipped": 1
+  },
+  "records": [
+    {
+      "case": {
+        "name": "original_positions_pipeline",
+        "source": "cases/original_positions_pipeline.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "call=1 record [x  ]\npositions: 2 4\ncall=2 record [ ]\npositions:\ncall=3 record [x ]\npositions: 4\n",
+        "compare_mode": "exact",
+        "support_sources": [
+          "original/positions_module.f90"
+        ],
+        "gnu_compile_warning": "forall_obsolescent"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/tmp/release034-gnu-a_o8wg9q/original_positions_pipeline.f90:17:52:\n\n   17 | forall (i=1:len(string)) tf(i) = string(i:i) == char\n      |                                                    1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-a_o8wg9q/original_positions_pipeline.f90",
+          "-o",
+          "/tmp/release034-gnu-a_o8wg9q/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-a_o8wg9q"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "call=1 record [x  ]\npositions: 2 4\ncall=2 record [ ]\npositions:\ncall=3 record [x ]\npositions: 4\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-gnu-a_o8wg9q/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-a_o8wg9q"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-73q6q576/original_positions_pipeline.f90"
+        ],
+        "cwd": "/tmp/release034-run-73q6q576"
+      },
+      "run": {
+        "code": 0,
+        "out": "call=1 record [x  ]\npositions: 2 4\ncall=2 record [ ]\npositions:\ncall=3 record [x ]\npositions: 4\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-73q6q576/original_positions_pipeline.f90"
+        ],
+        "cwd": "/tmp/release034-run-73q6q576"
+      }
+    },
+    {
+      "case": {
+        "name": "original_assert_stop",
+        "source": "cases/original_assert_stop.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "checked positions\nin pipeline, positions limit = 3 2 need positions <= limit, STOPPING\n",
+        "compare_mode": "exact",
+        "support_sources": [
+          "original/positions_module.f90"
+        ],
+        "stderr_exact": "STOP\n",
+        "gnu_compile_warning": "forall_obsolescent"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/tmp/release034-gnu-7tbi78oc/original_assert_stop.f90:17:52:\n\n   17 | forall (i=1:len(string)) tf(i) = string(i:i) == char\n      |                                                    1\nWarning: Fortran 2018 obsolescent feature: FORALL construct at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-7tbi78oc/original_assert_stop.f90",
+          "-o",
+          "/tmp/release034-gnu-7tbi78oc/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-7tbi78oc"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "checked positions\nin pipeline, positions limit = 3 2 need positions <= limit, STOPPING\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-gnu-7tbi78oc/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-7tbi78oc"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-1hhhq78b/original_assert_stop.f90"
+        ],
+        "cwd": "/tmp/release034-run-1hhhq78b"
+      },
+      "run": {
+        "code": 0,
+        "out": "checked positions\nin pipeline, positions limit = 3 2 need positions <= limit, STOPPING\n",
+        "err": "STOP\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-1hhhq78b/original_assert_stop.f90"
+        ],
+        "cwd": "/tmp/release034-run-1hhhq78b"
+      }
+    },
+    {
+      "case": {
+        "name": "original_filter_dependency_boundary",
+        "source": "cases/original_filter_dependency_boundary.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "[  2.0  3.0][ 20.0 30.0]\nshape: 0 2\n",
+        "compare_mode": "exact",
+        "support_sources": [
+          "original/filter_module.f90"
+        ],
+        "scope_note": "Complete unchanged historical driver now executes with typed empty constructors. All three exact original support routine bodies and historical driver bytes remain unchanged.",
+        "gnu_stdout": "[  2.0  3.0][ 20.0 30.0]\nshape: 0 2\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-ka4x0rve/original_filter_dependency_boundary.f90",
+          "-o",
+          "/tmp/release034-gnu-ka4x0rve/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-ka4x0rve"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "[  2.0  3.0][ 20.0 30.0]\nshape: 0 2\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-gnu-ka4x0rve/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-ka4x0rve"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-46bkdgc4/original_filter_dependency_boundary.f90"
+        ],
+        "cwd": "/tmp/release034-run-46bkdgc4"
+      },
+      "run": {
+        "code": 0,
+        "out": "[  2.0  3.0][ 20.0 30.0]\nshape: 0 2\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-46bkdgc4/original_filter_dependency_boundary.f90"
+        ],
+        "cwd": "/tmp/release034-run-46bkdgc4"
+      }
+    },
+    {
+      "case": {
+        "name": "char_generic_specification",
+        "source": "cases/char_generic_specification.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "generic specification calls are unsupported",
+        "scope_note": "Generic specification calls are outside the documented subset. GNU compiles only. This source originally found an unresolved-specific parser bounds crash, which must now be a clean rejection."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-td8oixrc/char_generic_specification.f90",
+          "-o",
+          "/tmp/release034-gnu-td8oixrc/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-td8oixrc"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release034-run-3dur83nt/char_generic_specification.f90:13:33: Unresolved generic specific binding: generic specification calls are unsupported\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-3dur83nt/char_generic_specification.f90"
+        ],
+        "cwd": "/tmp/release034-run-3dur83nt"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release034-run-3dur83nt/char_generic_specification.f90:13:33: Unresolved generic specific binding: generic specification calls are unsupported\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-3dur83nt/char_generic_specification.f90"
+        ],
+        "cwd": "/tmp/release034-run-3dur83nt"
+      }
+    },
+    {
+      "case": {
+        "name": "frozen_descriptor_saved_pointer",
+        "source": "cases/frozen_descriptor_saved_pointer.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "visit: 1 1 4 16 [a b ]\nview: 101 101\n 1 1\nvisit: 2 1 1 1 [a]\nview: 102\nvisit: 3 1 0 0 []\nview:\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-o2biprdi/frozen_descriptor_saved_pointer.f90",
+          "-o",
+          "/tmp/release034-gnu-o2biprdi/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-o2biprdi"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "visit: 1 1 4 16 [a b ]\nview: 101 101\n 1 1\nvisit: 2 1 1 1 [a]\nview: 102\nvisit: 3 1 0 0 []\nview:\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-gnu-o2biprdi/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-o2biprdi"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-m0oef74i/frozen_descriptor_saved_pointer.f90"
+        ],
+        "cwd": "/tmp/release034-run-m0oef74i"
+      },
+      "run": {
+        "code": 0,
+        "out": "visit: 1 1 4 16 [a b ]\nview: 101 101\n 1 1\nvisit: 2 1 1 1 [a]\nview: 102\nvisit: 3 1 0 0 []\nview:\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-m0oef74i/frozen_descriptor_saved_pointer.f90"
+        ],
+        "cwd": "/tmp/release034-run-m0oef74i"
+      }
+    },
+    {
+      "case": {
+        "name": "deferred_character_frozen",
+        "source": "cases/deferred_character_frozen.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "[ x  ] 4 4 2 1\nmask: T T\n T T\n[ ] 1 1 2 2\nmask: T\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-nwmrpa8m/deferred_character_frozen.f90",
+          "-o",
+          "/tmp/release034-gnu-nwmrpa8m/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-nwmrpa8m"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "[ x  ] 4 4 2 1\nmask: T T\n T T\n[ ] 1 1 2 2\nmask: T\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-gnu-nwmrpa8m/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-nwmrpa8m"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-ydt0ag1z/deferred_character_frozen.f90"
+        ],
+        "cwd": "/tmp/release034-run-ydt0ag1z"
+      },
+      "run": {
+        "code": 0,
+        "out": "[ x  ] 4 4 2 1\nmask: T T\n T T\n[ ] 1 1 2 2\nmask: T\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-ydt0ag1z/deferred_character_frozen.f90"
+        ],
+        "cwd": "/tmp/release034-run-ydt0ag1z"
+      }
+    },
+    {
+      "case": {
+        "name": "rank_three_inquiry_write",
+        "source": "cases/rank_three_inquiry_write.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "[Q ] 2 2 2 8\ndata:[ 9 9][ 9 9]\n[ 9 9][ 9 9]\n[Q ] 0 2 2 0\ndata:[\nintrinsic:[A][ ]\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-ge4udirh/rank_three_inquiry_write.f90",
+          "-o",
+          "/tmp/release034-gnu-ge4udirh/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-ge4udirh"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "[Q ] 2 2 2 8\ndata:[ 9 9][ 9 9]\n[ 9 9][ 9 9]\n[Q ] 0 2 2 0\ndata:[\nintrinsic:[A][ ]\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-gnu-ge4udirh/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-ge4udirh"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-gb9ns2kl/rank_three_inquiry_write.f90"
+        ],
+        "cwd": "/tmp/release034-run-gb9ns2kl"
+      },
+      "run": {
+        "code": 0,
+        "out": "[Q ] 2 2 2 8\ndata:[ 9 9][ 9 9]\n[ 9 9][ 9 9]\n[Q ] 0 2 2 0\ndata:[\nintrinsic:[A][ ]\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-gb9ns2kl/rank_three_inquiry_write.f90"
+        ],
+        "cwd": "/tmp/release034-run-gb9ns2kl"
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_group_atomic_failure",
+        "source": "cases/dynamic_group_atomic_failure.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "completed_stdout": "before grouped write\n",
+        "diagnostic": "PRINT format descriptor and item type differ",
+        "scope_note": "Runtime-only atomic format/type mismatch. GNU compiles but does not execute the invalid transfer."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-mrfu3q__/dynamic_group_atomic_failure.f90",
+          "-o",
+          "/tmp/release034-gnu-mrfu3q__/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-mrfu3q__"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-lx_59lb4/dynamic_group_atomic_failure.f90"
+        ],
+        "cwd": "/tmp/release034-run-lx_59lb4"
+      },
+      "run": {
+        "code": 2,
+        "out": "before grouped write\n",
+        "err": "/tmp/release034-run-lx_59lb4/dynamic_group_atomic_failure.f90:9:1: PRINT format descriptor and item type differ\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-lx_59lb4/dynamic_group_atomic_failure.f90"
+        ],
+        "cwd": "/tmp/release034-run-lx_59lb4"
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_before_saved_body",
+        "source": "cases/unallocated_before_saved_body.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "completed_stdout": "before entry\n",
+        "diagnostic": "reference to unallocated array char",
+        "scope_note": "Unallocated descriptor inquiry is a candidate safety probe, not a GNU execution oracle."
+      },
+      "errors": [],
+      "gnu_skipped": "Unallocated descriptor inquiry is a candidate safety probe, not a GNU execution oracle.",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-r0ncollx/unallocated_before_saved_body.f90"
+        ],
+        "cwd": "/tmp/release034-run-r0ncollx"
+      },
+      "run": {
+        "code": 2,
+        "out": "before entry\n",
+        "err": "/tmp/release034-run-r0ncollx/unallocated_before_saved_body.f90:6:20: reference to unallocated array char\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-r0ncollx/unallocated_before_saved_body.f90"
+        ],
+        "cwd": "/tmp/release034-run-r0ncollx"
+      }
+    },
+    {
+      "case": {
+        "name": "descriptor_frame_cap_before_write",
+        "source": "cases/descriptor_frame_cap_before_write.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "completed_stdout": "before entry\n",
+        "diagnostic": "total array element limit exceeded",
+        "scope_note": "Combined descriptor and automatic storage exceed the interpreter frame cap. GNU compile-only.",
+        "args": [
+          "--max-steps",
+          "20000000"
+        ]
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-2sf49w5l/descriptor_frame_cap_before_write.f90",
+          "-o",
+          "/tmp/release034-gnu-2sf49w5l/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-2sf49w5l"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-sqrua5au/descriptor_frame_cap_before_write.f90"
+        ],
+        "cwd": "/tmp/release034-run-sqrua5au"
+      },
+      "run": {
+        "code": 2,
+        "out": "before entry\n",
+        "err": "/tmp/release034-run-sqrua5au/descriptor_frame_cap_before_write.f90:6:10: total array element limit exceeded\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--max-steps",
+          "20000000",
+          "/tmp/release034-run-sqrua5au/descriptor_frame_cap_before_write.f90"
+        ],
+        "cwd": "/tmp/release034-run-sqrua5au"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_char_transitive_write",
+        "source": "cases/pure_char_transitive_write.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "PURE procedure cannot invoke an impure procedure"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release034-gnu-8g55q3i1/pure_char_transitive_write.f90:12:15:\n\n   12 | call emit(char)\n      |               1\nError: Subroutine call to \u2018emit\u2019 at (1) is not PURE\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-8g55q3i1/pure_char_transitive_write.f90",
+          "-o",
+          "/tmp/release034-gnu-8g55q3i1/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-8g55q3i1"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release034-run-3x_pqlsq/pure_char_transitive_write.f90:12:16: PURE procedure cannot invoke an impure procedure\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-3x_pqlsq/pure_char_transitive_write.f90"
+        ],
+        "cwd": "/tmp/release034-run-3x_pqlsq"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release034-run-3x_pqlsq/pure_char_transitive_write.f90:12:16: PURE procedure cannot invoke an impure procedure\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-3x_pqlsq/pure_char_transitive_write.f90"
+        ],
+        "cwd": "/tmp/release034-run-3x_pqlsq"
+      }
+    },
+    {
+      "case": {
+        "name": "optional_char_specification_boundary",
+        "source": "cases/optional_char_specification_boundary.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "Unsupported automatic array bound",
+        "scope_note": "OPTIONAL dummies cannot be used in this specification expression. Candidate and GNU both reject."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release034-gnu-uqq27ei1/optional_char_specification_boundary.f90:6:19:\n\n    6 | integer::work(size(char))\n      |                   1\nError: Dummy argument \u2018char\u2019 at (1) cannot be OPTIONAL\n/tmp/release034-gnu-uqq27ei1/optional_char_specification_boundary.f90:6:19:\n\n    6 | integer::work(size(char))\n      |                   1\nError: Dummy argument \u2018char\u2019 at (1) cannot be OPTIONAL\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-uqq27ei1/optional_char_specification_boundary.f90",
+          "-o",
+          "/tmp/release034-gnu-uqq27ei1/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-uqq27ei1"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release034-run-87lnba34/optional_char_specification_boundary.f90:6:25: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-87lnba34/optional_char_specification_boundary.f90"
+        ],
+        "cwd": "/tmp/release034-run-87lnba34"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release034-run-87lnba34/optional_char_specification_boundary.f90:6:25: Unsupported automatic array bound: require input dummies, parameters, inquiries, COUNT masks or bounded PURE specification calls\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-87lnba34/optional_char_specification_boundary.f90"
+        ],
+        "cwd": "/tmp/release034-run-87lnba34"
+      }
+    },
+    {
+      "case": {
+        "name": "shadowed_char_call_boundary",
+        "source": "cases/shadowed_char_call_boundary.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "compare_mode": "exact",
+        "diagnostic": "Cannot subscript a scalar variable"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release034-gnu-nq3z4707/shadowed_char_call_boundary.f90:5:31:\n\n    5 | write(*,'(2(a))')'value:',char(65)\n      |                               1\nError: Syntax error in WRITE statement at (1)\n",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-nq3z4707/shadowed_char_call_boundary.f90",
+          "-o",
+          "/tmp/release034-gnu-nq3z4707/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-nq3z4707"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release034-run-sxch_1y_/shadowed_char_call_boundary.f90:5:32: Cannot subscript a scalar variable\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-sxch_1y_/shadowed_char_call_boundary.f90"
+        ],
+        "cwd": "/tmp/release034-run-sxch_1y_"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release034-run-sxch_1y_/shadowed_char_call_boundary.f90:5:32: Cannot subscript a scalar variable\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-sxch_1y_/shadowed_char_call_boundary.f90"
+        ],
+        "cwd": "/tmp/release034-run-sxch_1y_"
+      }
+    },
+    {
+      "case": {
+        "name": "list_numeric_descriptor",
+        "source": "cases/list_numeric_descriptor.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "9007199254740993 -0.75 0.0 1.125",
+        "compare_mode": "numeric_tokens"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-c2yv429e/list_numeric_descriptor.f90",
+          "-o",
+          "/tmp/release034-gnu-c2yv429e/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-c2yv429e"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "     9007199254740993 -0.75000000000000000        0.0000000000000000        1.1250000000000000     \n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-gnu-c2yv429e/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-c2yv429e"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-3wyfyuw3/list_numeric_descriptor.f90"
+        ],
+        "cwd": "/tmp/release034-run-3wyfyuw3"
+      },
+      "run": {
+        "code": 0,
+        "out": " 9007199254740993 -0.75000000000000000 0.0000000000000000 1.1250000000000000\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-3wyfyuw3/list_numeric_descriptor.f90"
+        ],
+        "cwd": "/tmp/release034-run-3wyfyuw3"
+      }
+    },
+    {
+      "case": {
+        "name": "automatic_pointer_boundary",
+        "source": "cases/automatic_pointer_boundary.f90",
+        "category": "reject",
+        "baseline": "run",
+        "expected_stdout": "",
+        "gnu_stdout": "visit: 1 1 4 16 [a b ]\nview: 101 101\n 1 1\nvisit: 2 1 1 1 [a]\nview: 102\nvisit: 3 1 0 0 []\nview:\n",
+        "compare_mode": "exact",
+        "diagnostic": "Pointer association requires nonallocatable rank-one/two TARGET",
+        "scope_note": "Automatic local arrays are not supported pointer targets in this bounded interpreter. The full synthetic source is GNU-valid and executed independently."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-e4ju_ewb/automatic_pointer_boundary.f90",
+          "-o",
+          "/tmp/release034-gnu-e4ju_ewb/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-e4ju_ewb"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "visit: 1 1 4 16 [a b ]\nview: 101 101\n 1 1\nvisit: 2 1 1 1 [a]\nview: 102\nvisit: 3 1 0 0 []\nview:\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-gnu-e4ju_ewb/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-e4ju_ewb"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release034-run-d5nrvp9j/automatic_pointer_boundary.f90:25:11: Pointer association requires nonallocatable rank-one/two TARGET\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-d5nrvp9j/automatic_pointer_boundary.f90"
+        ],
+        "cwd": "/tmp/release034-run-d5nrvp9j"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/tmp/release034-run-d5nrvp9j/automatic_pointer_boundary.f90:25:11: Pointer association requires nonallocatable rank-one/two TARGET\n",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-d5nrvp9j/automatic_pointer_boundary.f90"
+        ],
+        "cwd": "/tmp/release034-run-d5nrvp9j"
+      }
+    },
+    {
+      "case": {
+        "name": "char_direct_specification",
+        "source": "cases/char_direct_specification.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "word=[a b ]\nvalues: 7 7\n 7 7\nword=[a]\nvalues: 7\n",
+        "compare_mode": "exact"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all,no-array-temps",
+          "-O0",
+          "/tmp/release034-gnu-zdgk_fz8/char_direct_specification.f90",
+          "-o",
+          "/tmp/release034-gnu-zdgk_fz8/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-zdgk_fz8"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "word=[a b ]\nvalues: 7 7\n 7 7\nword=[a]\nvalues: 7\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-gnu-zdgk_fz8/reference"
+        ],
+        "cwd": "/tmp/release034-gnu-zdgk_fz8"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "--check",
+          "/tmp/release034-run-od9rth_3/char_direct_specification.f90"
+        ],
+        "cwd": "/tmp/release034-run-od9rth_3"
+      },
+      "run": {
+        "code": 0,
+        "out": "word=[a b ]\nvalues: 7 7\n 7 7\nword=[a]\nvalues: 7\n",
+        "err": "",
+        "argv": [
+          "/tmp/release034-candidate-mmvoyo_w/fortfront-interpreter",
+          "/tmp/release034-run-od9rth_3/char_direct_specification.f90"
+        ],
+        "cwd": "/tmp/release034-run-od9rth_3"
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:36:31.948113+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all,no-array-temps",
+    "-O0"
+  ],
+  "scope": "Bounded stdout WRITE/group formatting, allocatable descriptor specification inquiries and contextual CHAR composition with prior SAVE, pure specification calls, pointer views and explicit dummy prefixes. Four original routine bodies execute in a positions/assert closure; the original filter closure is a GNU-only boundary, not full original utilities execution.",
+  "original_source_provenance": {
+    "original_source": "../utilities_slices/source/xutilities.f90",
+    "original_source_sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+    "wrappers": [
+      {
+        "path": "original/positions_module.f90",
+        "sha256": "89c9f5c4806932435d9d8259d93f63afb9cdacd0e583ba388808c21893e84d2f",
+        "routines": [
+          {
+            "name": "positions_char_string",
+            "start_line": 8812,
+            "end_line": 8821,
+            "source_byte_start": 304148,
+            "source_byte_end_exclusive": 304731,
+            "wrapper_byte_start": 182,
+            "sha256": "528ca8c0b4ce06381e88c40e19cb8d75f343a075bbc57b0c1a491e8d0231e673"
+          },
+          {
+            "name": "true_pos_func",
+            "start_line": 1552,
+            "end_line": 1564,
+            "source_byte_start": 55675,
+            "source_byte_end_exclusive": 56003,
+            "wrapper_byte_start": 766,
+            "sha256": "b3d307baf5b780746d191aedf2080a17d2ba353b2013b310ef07f82d63c2582b"
+          },
+          {
+            "name": "set_alloc_int_vec",
+            "start_line": 2538,
+            "end_line": 2558,
+            "source_byte_start": 87760,
+            "source_byte_end_exclusive": 88587,
+            "wrapper_byte_start": 1095,
+            "sha256": "0d223ce606d4d93671e09780412a5f8090fa0fe267acaee2602d75a1fde9419b"
+          },
+          {
+            "name": "assert_le",
+            "start_line": 8187,
+            "end_line": 8197,
+            "source_byte_start": 282240,
+            "source_byte_end_exclusive": 282781,
+            "wrapper_byte_start": 1923,
+            "sha256": "ba3a41bf620568c70f57ff6121af1eb090d97519328c196b4bc9c50e4854fe12"
+          }
+        ]
+      },
+      {
+        "path": "original/filter_module.f90",
+        "sha256": "43023286e15049ea38b25ccceeeef48aab91e223ab94c8526f05832b79269072",
+        "routines": [
+          {
+            "name": "filter_matrix_rows",
+            "start_line": 8657,
+            "end_line": 8679,
+            "source_byte_start": 298453,
+            "source_byte_end_exclusive": 299543,
+            "wrapper_byte_start": 217,
+            "sha256": "2988489e747a2cdc7f9045e0deae9af543a6121642d9a70632cc66a0a2969473"
+          },
+          {
+            "name": "true_pos_func",
+            "start_line": 1552,
+            "end_line": 1564,
+            "source_byte_start": 55675,
+            "source_byte_end_exclusive": 56003,
+            "wrapper_byte_start": 1308,
+            "sha256": "b3d307baf5b780746d191aedf2080a17d2ba353b2013b310ef07f82d63c2582b"
+          },
+          {
+            "name": "set_alloc_real_matrix",
+            "start_line": 2610,
+            "end_line": 2616,
+            "source_byte_start": 90287,
+            "source_byte_end_exclusive": 90590,
+            "wrapper_byte_start": 1637,
+            "sha256": "8f3d6e5bf4905c86ab26bfd09a8c2e3684823e524eaf2fccb6bad291f06f68b4"
+          }
+        ]
+      }
+    ]
+  },
+  "provenance_sha256": "f0157933a65d0b26e06b4f341d03770ba43bb19c07f757b33d94a1157dac3d69",
+  "manifest_sha256": "903cd7b80c16fc7071857704e869e4b96c148db90d58c8733c0e8ca3ab425f69",
+  "source_sha256": {
+    "original/positions_module.f90": "89c9f5c4806932435d9d8259d93f63afb9cdacd0e583ba388808c21893e84d2f",
+    "cases/original_positions_pipeline.f90": "c20e64d15d5327b7954dc3ff5fbef5eef9327792b3a42759ce9df53b8e9936ff",
+    "cases/original_assert_stop.f90": "4bd29235703c7dcf311b12e4123f5328984f0b0e1d0cc04c4e90f668648f76ea",
+    "original/filter_module.f90": "43023286e15049ea38b25ccceeeef48aab91e223ab94c8526f05832b79269072",
+    "cases/original_filter_dependency_boundary.f90": "598190a77c53245cba969356d67d36c7c3b541e515056cd535cb1f7b9f5cf733",
+    "cases/char_generic_specification.f90": "b47e4f907aa07365bba304f9933ccefa4c70e4c72cc1529b88f972f4cc3c7060",
+    "cases/frozen_descriptor_saved_pointer.f90": "141bc2ba98ac7ddfe930dfa055ee440fd21e691f2eba56ee96b32ccccc8075c1",
+    "cases/deferred_character_frozen.f90": "6fbf0791f963e7ceb7f7d62aa7bef7b81976baf0216aa7ab5a0aba8064960776",
+    "cases/rank_three_inquiry_write.f90": "1ebd1432194b961d0e6351d0abb8d652c16150b77cb45ff7cdc196183f2a80c2",
+    "cases/dynamic_group_atomic_failure.f90": "2d575a5619893053a686f063794ba74b4e14aab9cef4d98444ecec6c996436f6",
+    "cases/unallocated_before_saved_body.f90": "5fb8ff86469f8b1671c5c6fbc548cc58543d6c8173468e2a90ff41fb094727f0",
+    "cases/descriptor_frame_cap_before_write.f90": "6d446e7bbca70599fcc6ee35b77c5c5b695a11b3b71a0e5bb5018c0310a0e584",
+    "cases/pure_char_transitive_write.f90": "dec81ce40188d71aafc0c6729f2a9e19c3aae60cce5061e953a0e739017a15bf",
+    "cases/optional_char_specification_boundary.f90": "4df384dad98d10938d4a59c1d9649feeb8192c075c2a40e1abfb13c198362ec2",
+    "cases/shadowed_char_call_boundary.f90": "8a14f0102a61cf19520f93ac0193a3cff4f65848be1f61628c05e37886d64da9",
+    "cases/list_numeric_descriptor.f90": "4141fc5a11886465fb2523b51ab00a991964bc2b8e7799ae4859df377c152a8f",
+    "cases/automatic_pointer_boundary.f90": "0a53b2e6752950f7ad4f5350dfa22600a84d4944bbcf5816d688319cc50385f8",
+    "cases/char_direct_specification.f90": "d20a420daccc7341fb25afc4b2c767b40cc1dd20ab1f1784c7deaa94d9afbd83"
+  },
+  "integrity_errors": [],
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

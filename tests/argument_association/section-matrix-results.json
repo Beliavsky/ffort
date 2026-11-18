@@ -1,0 +1,3792 @@
+{
+  "utc": "2026-11-16T14:43:09.159248+00:00",
+  "summary": {
+    "total": 108,
+    "failed": 0,
+    "candidate_checked": 108,
+    "gnu_checked": 108
+  },
+  "records": [
+    {
+      "case": {
+        "name": "binding_matrix_000",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-4),i\ndo i=-3,-4\na(i)=i-(-3)+1\nend do\ncall change(a(-4:-3:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 0,
+          "stride": -3,
+          "dummy_lower": -3,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_001",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-4),i\ndo i=-3,-4\na(i)=i-(-3)+1\nend do\ncall change(a(-4:-3:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 0,
+          "stride": -2,
+          "dummy_lower": 0,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_002",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-4),i\ndo i=-3,-4\na(i)=i-(-3)+1\nend do\ncall change(a(-4:-3:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 0,
+          "stride": -1,
+          "dummy_lower": 1,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_003",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-4),i\ndo i=-3,-4\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-4:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 0,
+          "stride": 1,
+          "dummy_lower": 4,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_004",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-4),i\ndo i=-3,-4\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-4:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 0,
+          "stride": 2,
+          "dummy_lower": -3,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_005",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-4),i\ndo i=-3,-4\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-4:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 0,
+          "stride": 3,
+          "dummy_lower": 0,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_006",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-3),i\ndo i=-3,-3\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-3:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 1,
+          "stride": -3,
+          "dummy_lower": 1,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_007",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-3),i\ndo i=-3,-3\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-3:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 1,
+          "stride": -2,
+          "dummy_lower": 4,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_008",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-3),i\ndo i=-3,-3\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-3:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 1,
+          "stride": -1,
+          "dummy_lower": -3,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_009",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-3),i\ndo i=-3,-3\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-3:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 1,
+          "stride": 1,
+          "dummy_lower": 0,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_010",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-3),i\ndo i=-3,-3\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-3:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 1,
+          "stride": 2,
+          "dummy_lower": 1,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_011",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-3),i\ndo i=-3,-3\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-3:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 1,
+          "stride": 3,
+          "dummy_lower": 4,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_012",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-2),i\ndo i=-3,-2\na(i)=i-(-3)+1\nend do\ncall change(a(-2:-3:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(0)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 2,
+          "stride": -3,
+          "dummy_lower": -3,
+          "inner_stride": 3
+        },
+        "expected_stdout": "1 109 110 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1         109\n         110           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 109\n 110 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_013",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-2),i\ndo i=-3,-2\na(i)=i-(-3)+1\nend do\ncall change(a(-2:-3:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(0)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 2,
+          "stride": -2,
+          "dummy_lower": 0,
+          "inner_stride": 3
+        },
+        "expected_stdout": "1 109 110 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1         109\n         110           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 109\n 110 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_014",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-2),i\ndo i=-3,-2\na(i)=i-(-3)+1\nend do\ncall change(a(-2:-3:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(1)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 2,
+          "stride": -1,
+          "dummy_lower": 1,
+          "inner_stride": 3
+        },
+        "expected_stdout": "8 109 117 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8         109\n         117           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 109\n 117 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_015",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-2),i\ndo i=-3,-2\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-2:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(1)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 2,
+          "stride": 1,
+          "dummy_lower": 4,
+          "inner_stride": 3
+        },
+        "expected_stdout": "108 9 117 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           9\n         117           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 9\n 117 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_016",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-2),i\ndo i=-3,-2\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-2:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(0)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 2,
+          "stride": 2,
+          "dummy_lower": -3,
+          "inner_stride": 3
+        },
+        "expected_stdout": "108 2 110 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2\n         110           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2\n 110 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_017",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-2),i\ndo i=-3,-2\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-2:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(0)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 2,
+          "stride": 3,
+          "dummy_lower": 0,
+          "inner_stride": 3
+        },
+        "expected_stdout": "108 2 110 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2\n         110           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2\n 110 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_018",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-1),i\ndo i=-3,-1\na(i)=i-(-3)+1\nend do\ncall change(a(-1:-3:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 3,
+          "stride": -3,
+          "dummy_lower": 1,
+          "inner_stride": -1
+        },
+        "expected_stdout": "1 2 110 113 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2         110\n         113           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 110\n 113 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_019",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-1),i\ndo i=-3,-1\na(i)=i-(-3)+1\nend do\ncall change(a(-1:-3:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(1)\nhi=4+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 3,
+          "stride": -2,
+          "dummy_lower": 4,
+          "inner_stride": -1
+        },
+        "expected_stdout": "108 2 210 320 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2         210\n         320           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 210\n 320 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_020",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-1),i\ndo i=-3,-1\na(i)=i-(-3)+1\nend do\ncall change(a(-1:-3:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(2)\nhi=-3+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 3,
+          "stride": -1,
+          "dummy_lower": -3,
+          "inner_stride": -1
+        },
+        "expected_stdout": "108 209 310 627 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108         209         310\n         627           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 209 310\n 627 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_021",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-1),i\ndo i=-3,-1\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-1:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(2)\nhi=0+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 3,
+          "stride": 1,
+          "dummy_lower": 0,
+          "inner_stride": -1
+        },
+        "expected_stdout": "308 209 110 627 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         308         209         110\n         627           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 308 209 110\n 627 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_022",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-1),i\ndo i=-3,-1\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-1:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(1)\nhi=1+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 3,
+          "stride": 2,
+          "dummy_lower": 1,
+          "inner_stride": -1
+        },
+        "expected_stdout": "208 2 110 320 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         208           2         110\n         320           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 208 2 110\n 320 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_023",
+        "source": "program main\nimplicit none\ninteger :: a(-3:-1),i\ndo i=-3,-1\na(i)=i-(-3)+1\nend do\ncall change(a(-3:-1:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 3,
+          "stride": 3,
+          "dummy_lower": 4,
+          "inner_stride": -1
+        },
+        "expected_stdout": "108 2 3 113 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2           3\n         113           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 3\n 113 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_024",
+        "source": "program main\nimplicit none\ninteger :: a(-3:1),i\ndo i=-3,1\na(i)=i-(-3)+1\nend do\ncall change(a(1:-3:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(1)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 5,
+          "stride": -3,
+          "dummy_lower": -3,
+          "inner_stride": 2
+        },
+        "expected_stdout": "1 9 3 4 112 129 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           9           3           4         112\n         129           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 9 3 4 112\n 129 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_025",
+        "source": "program main\nimplicit none\ninteger :: a(-3:1),i\ndo i=-3,1\na(i)=i-(-3)+1\nend do\ncall change(a(1:-3:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(2)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 5,
+          "stride": -2,
+          "dummy_lower": 0,
+          "inner_stride": 2
+        },
+        "expected_stdout": "208 2 10 4 112 336 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         208           2          10           4         112\n         336           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 208 2 10 4 112\n 336 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_026",
+        "source": "program main\nimplicit none\ninteger :: a(-3:1),i\ndo i=-3,1\na(i)=i-(-3)+1\nend do\ncall change(a(1:-3:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(4)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 5,
+          "stride": -1,
+          "dummy_lower": 1,
+          "inner_stride": 2
+        },
+        "expected_stdout": "308 9 210 11 112 650 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         308           9         210          11         112\n         650           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 308 9 210 11 112\n 650 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_027",
+        "source": "program main\nimplicit none\ninteger :: a(-3:1),i\ndo i=-3,1\na(i)=i-(-3)+1\nend do\ncall change(a(-3:1:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(4)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 5,
+          "stride": 1,
+          "dummy_lower": 4,
+          "inner_stride": 2
+        },
+        "expected_stdout": "108 9 210 11 312 650 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           9         210          11         312\n         650           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 9 210 11 312\n 650 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_028",
+        "source": "program main\nimplicit none\ninteger :: a(-3:1),i\ndo i=-3,1\na(i)=i-(-3)+1\nend do\ncall change(a(-3:1:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(2)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 5,
+          "stride": 2,
+          "dummy_lower": -3,
+          "inner_stride": 2
+        },
+        "expected_stdout": "108 2 10 4 212 336 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2          10           4         212\n         336           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 10 4 212\n 336 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_029",
+        "source": "program main\nimplicit none\ninteger :: a(-3:1),i\ndo i=-3,1\na(i)=i-(-3)+1\nend do\ncall change(a(-3:1:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(1)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 5,
+          "stride": 3,
+          "dummy_lower": 0,
+          "inner_stride": 2
+        },
+        "expected_stdout": "108 2 3 11 5 129 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2           3          11           5\n         129           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 3 11 5\n 129 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_030",
+        "source": "program main\nimplicit none\ninteger :: a(-3:5),i\ndo i=-3,5\na(i)=i-(-3)+1\nend do\ncall change(a(5:-3:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(2)\nhi=1+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 9,
+          "stride": -3,
+          "dummy_lower": 1,
+          "inner_stride": -3
+        },
+        "expected_stdout": "1 2 110 4 5 13 7 8 16 166 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2         110           4           5          13           7           8          16\n         166           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 110 4 5 13 7 8 16\n 166 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_031",
+        "source": "program main\nimplicit none\ninteger :: a(-3:5),i\ndo i=-3,5\na(i)=i-(-3)+1\nend do\ncall change(a(5:-3:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(4)\nhi=4+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 9,
+          "stride": -2,
+          "dummy_lower": 4,
+          "inner_stride": -3
+        },
+        "expected_stdout": "108 2 10 4 12 6 214 8 16 380 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2          10           4          12           6         214           8          16\n         380           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 10 4 12 6 214 8 16\n 380 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_032",
+        "source": "program main\nimplicit none\ninteger :: a(-3:5),i\ndo i=-3,5\na(i)=i-(-3)+1\nend do\ncall change(a(5:-3:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(8)\nhi=-3+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 9,
+          "stride": -1,
+          "dummy_lower": -3,
+          "inner_stride": -3
+        },
+        "expected_stdout": "108 9 10 211 12 13 314 15 16 708 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           9          10         211          12          13         314          15          16\n         708           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 9 10 211 12 13 314 15 16\n 708 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_033",
+        "source": "program main\nimplicit none\ninteger :: a(-3:5),i\ndo i=-3,5\na(i)=i-(-3)+1\nend do\ncall change(a(-3:5:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(8)\nhi=0+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 9,
+          "stride": 1,
+          "dummy_lower": 0,
+          "inner_stride": -3
+        },
+        "expected_stdout": "8 9 310 11 12 213 14 15 116 708 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           9         310          11          12         213          14          15         116\n         708           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 9 310 11 12 213 14 15 116\n 708 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_034",
+        "source": "program main\nimplicit none\ninteger :: a(-3:5),i\ndo i=-3,5\na(i)=i-(-3)+1\nend do\ncall change(a(-3:5:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(4)\nhi=1+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 9,
+          "stride": 2,
+          "dummy_lower": 1,
+          "inner_stride": -3
+        },
+        "expected_stdout": "8 2 210 4 12 6 14 8 116 380 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           2         210           4          12           6          14           8         116\n         380           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 2 210 4 12 6 14 8 116\n 380 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_035",
+        "source": "program main\nimplicit none\ninteger :: a(-3:5),i\ndo i=-3,5\na(i)=i-(-3)+1\nend do\ncall change(a(-3:5:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(2)\nhi=4+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": -3,
+          "extent": 9,
+          "stride": 3,
+          "dummy_lower": 4,
+          "inner_stride": -3
+        },
+        "expected_stdout": "8 2 3 11 5 6 114 8 9 166 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           2           3          11           5           6         114           8           9\n         166           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 2 3 11 5 6 114 8 9\n 166 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_036",
+        "source": "program main\nimplicit none\ninteger :: a(1:0),i\ndo i=1,0\na(i)=i-(1)+1\nend do\ncall change(a(0:1:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 0,
+          "stride": -3,
+          "dummy_lower": -3,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_037",
+        "source": "program main\nimplicit none\ninteger :: a(1:0),i\ndo i=1,0\na(i)=i-(1)+1\nend do\ncall change(a(0:1:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 0,
+          "stride": -2,
+          "dummy_lower": 0,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_038",
+        "source": "program main\nimplicit none\ninteger :: a(1:0),i\ndo i=1,0\na(i)=i-(1)+1\nend do\ncall change(a(0:1:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 0,
+          "stride": -1,
+          "dummy_lower": 1,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_039",
+        "source": "program main\nimplicit none\ninteger :: a(1:0),i\ndo i=1,0\na(i)=i-(1)+1\nend do\ncall change(a(1:0:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 0,
+          "stride": 1,
+          "dummy_lower": 4,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_040",
+        "source": "program main\nimplicit none\ninteger :: a(1:0),i\ndo i=1,0\na(i)=i-(1)+1\nend do\ncall change(a(1:0:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 0,
+          "stride": 2,
+          "dummy_lower": -3,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_041",
+        "source": "program main\nimplicit none\ninteger :: a(1:0),i\ndo i=1,0\na(i)=i-(1)+1\nend do\ncall change(a(1:0:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 0,
+          "stride": 3,
+          "dummy_lower": 0,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_042",
+        "source": "program main\nimplicit none\ninteger :: a(1:1),i\ndo i=1,1\na(i)=i-(1)+1\nend do\ncall change(a(1:1:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 1,
+          "stride": -3,
+          "dummy_lower": 1,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_043",
+        "source": "program main\nimplicit none\ninteger :: a(1:1),i\ndo i=1,1\na(i)=i-(1)+1\nend do\ncall change(a(1:1:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 1,
+          "stride": -2,
+          "dummy_lower": 4,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_044",
+        "source": "program main\nimplicit none\ninteger :: a(1:1),i\ndo i=1,1\na(i)=i-(1)+1\nend do\ncall change(a(1:1:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 1,
+          "stride": -1,
+          "dummy_lower": -3,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_045",
+        "source": "program main\nimplicit none\ninteger :: a(1:1),i\ndo i=1,1\na(i)=i-(1)+1\nend do\ncall change(a(1:1:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 1,
+          "stride": 1,
+          "dummy_lower": 0,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_046",
+        "source": "program main\nimplicit none\ninteger :: a(1:1),i\ndo i=1,1\na(i)=i-(1)+1\nend do\ncall change(a(1:1:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 1,
+          "stride": 2,
+          "dummy_lower": 1,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_047",
+        "source": "program main\nimplicit none\ninteger :: a(1:1),i\ndo i=1,1\na(i)=i-(1)+1\nend do\ncall change(a(1:1:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 1,
+          "stride": 3,
+          "dummy_lower": 4,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_048",
+        "source": "program main\nimplicit none\ninteger :: a(1:2),i\ndo i=1,2\na(i)=i-(1)+1\nend do\ncall change(a(2:1:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(0)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 2,
+          "stride": -3,
+          "dummy_lower": -3,
+          "inner_stride": 3
+        },
+        "expected_stdout": "1 109 110 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1         109\n         110           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 109\n 110 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_049",
+        "source": "program main\nimplicit none\ninteger :: a(1:2),i\ndo i=1,2\na(i)=i-(1)+1\nend do\ncall change(a(2:1:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(0)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 2,
+          "stride": -2,
+          "dummy_lower": 0,
+          "inner_stride": 3
+        },
+        "expected_stdout": "1 109 110 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1         109\n         110           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 109\n 110 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_050",
+        "source": "program main\nimplicit none\ninteger :: a(1:2),i\ndo i=1,2\na(i)=i-(1)+1\nend do\ncall change(a(2:1:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(1)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 2,
+          "stride": -1,
+          "dummy_lower": 1,
+          "inner_stride": 3
+        },
+        "expected_stdout": "8 109 117 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8         109\n         117           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 109\n 117 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_051",
+        "source": "program main\nimplicit none\ninteger :: a(1:2),i\ndo i=1,2\na(i)=i-(1)+1\nend do\ncall change(a(1:2:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(1)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 2,
+          "stride": 1,
+          "dummy_lower": 4,
+          "inner_stride": 3
+        },
+        "expected_stdout": "108 9 117 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           9\n         117           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 9\n 117 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_052",
+        "source": "program main\nimplicit none\ninteger :: a(1:2),i\ndo i=1,2\na(i)=i-(1)+1\nend do\ncall change(a(1:2:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(0)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 2,
+          "stride": 2,
+          "dummy_lower": -3,
+          "inner_stride": 3
+        },
+        "expected_stdout": "108 2 110 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2\n         110           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2\n 110 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_053",
+        "source": "program main\nimplicit none\ninteger :: a(1:2),i\ndo i=1,2\na(i)=i-(1)+1\nend do\ncall change(a(1:2:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(0)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 2,
+          "stride": 3,
+          "dummy_lower": 0,
+          "inner_stride": 3
+        },
+        "expected_stdout": "108 2 110 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2\n         110           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2\n 110 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_054",
+        "source": "program main\nimplicit none\ninteger :: a(1:3),i\ndo i=1,3\na(i)=i-(1)+1\nend do\ncall change(a(3:1:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 3,
+          "stride": -3,
+          "dummy_lower": 1,
+          "inner_stride": -1
+        },
+        "expected_stdout": "1 2 110 113 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2         110\n         113           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 110\n 113 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_055",
+        "source": "program main\nimplicit none\ninteger :: a(1:3),i\ndo i=1,3\na(i)=i-(1)+1\nend do\ncall change(a(3:1:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(1)\nhi=4+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 3,
+          "stride": -2,
+          "dummy_lower": 4,
+          "inner_stride": -1
+        },
+        "expected_stdout": "108 2 210 320 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2         210\n         320           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 210\n 320 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_056",
+        "source": "program main\nimplicit none\ninteger :: a(1:3),i\ndo i=1,3\na(i)=i-(1)+1\nend do\ncall change(a(3:1:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(2)\nhi=-3+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 3,
+          "stride": -1,
+          "dummy_lower": -3,
+          "inner_stride": -1
+        },
+        "expected_stdout": "108 209 310 627 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108         209         310\n         627           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 209 310\n 627 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_057",
+        "source": "program main\nimplicit none\ninteger :: a(1:3),i\ndo i=1,3\na(i)=i-(1)+1\nend do\ncall change(a(1:3:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(2)\nhi=0+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 3,
+          "stride": 1,
+          "dummy_lower": 0,
+          "inner_stride": -1
+        },
+        "expected_stdout": "308 209 110 627 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         308         209         110\n         627           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 308 209 110\n 627 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_058",
+        "source": "program main\nimplicit none\ninteger :: a(1:3),i\ndo i=1,3\na(i)=i-(1)+1\nend do\ncall change(a(1:3:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(1)\nhi=1+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 3,
+          "stride": 2,
+          "dummy_lower": 1,
+          "inner_stride": -1
+        },
+        "expected_stdout": "208 2 110 320 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         208           2         110\n         320           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 208 2 110\n 320 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_059",
+        "source": "program main\nimplicit none\ninteger :: a(1:3),i\ndo i=1,3\na(i)=i-(1)+1\nend do\ncall change(a(1:3:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 3,
+          "stride": 3,
+          "dummy_lower": 4,
+          "inner_stride": -1
+        },
+        "expected_stdout": "108 2 3 113 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2           3\n         113           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 3\n 113 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_060",
+        "source": "program main\nimplicit none\ninteger :: a(1:5),i\ndo i=1,5\na(i)=i-(1)+1\nend do\ncall change(a(5:1:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(1)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 5,
+          "stride": -3,
+          "dummy_lower": -3,
+          "inner_stride": 2
+        },
+        "expected_stdout": "1 9 3 4 112 129 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           9           3           4         112\n         129           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 9 3 4 112\n 129 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_061",
+        "source": "program main\nimplicit none\ninteger :: a(1:5),i\ndo i=1,5\na(i)=i-(1)+1\nend do\ncall change(a(5:1:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(2)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 5,
+          "stride": -2,
+          "dummy_lower": 0,
+          "inner_stride": 2
+        },
+        "expected_stdout": "208 2 10 4 112 336 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         208           2          10           4         112\n         336           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 208 2 10 4 112\n 336 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_062",
+        "source": "program main\nimplicit none\ninteger :: a(1:5),i\ndo i=1,5\na(i)=i-(1)+1\nend do\ncall change(a(5:1:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(4)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 5,
+          "stride": -1,
+          "dummy_lower": 1,
+          "inner_stride": 2
+        },
+        "expected_stdout": "308 9 210 11 112 650 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         308           9         210          11         112\n         650           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 308 9 210 11 112\n 650 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_063",
+        "source": "program main\nimplicit none\ninteger :: a(1:5),i\ndo i=1,5\na(i)=i-(1)+1\nend do\ncall change(a(1:5:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(4)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 5,
+          "stride": 1,
+          "dummy_lower": 4,
+          "inner_stride": 2
+        },
+        "expected_stdout": "108 9 210 11 312 650 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           9         210          11         312\n         650           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 9 210 11 312\n 650 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_064",
+        "source": "program main\nimplicit none\ninteger :: a(1:5),i\ndo i=1,5\na(i)=i-(1)+1\nend do\ncall change(a(1:5:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(2)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 5,
+          "stride": 2,
+          "dummy_lower": -3,
+          "inner_stride": 2
+        },
+        "expected_stdout": "108 2 10 4 212 336 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2          10           4         212\n         336           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 10 4 212\n 336 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_065",
+        "source": "program main\nimplicit none\ninteger :: a(1:5),i\ndo i=1,5\na(i)=i-(1)+1\nend do\ncall change(a(1:5:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(1)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 5,
+          "stride": 3,
+          "dummy_lower": 0,
+          "inner_stride": 2
+        },
+        "expected_stdout": "108 2 3 11 5 129 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2           3          11           5\n         129           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 3 11 5\n 129 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_066",
+        "source": "program main\nimplicit none\ninteger :: a(1:9),i\ndo i=1,9\na(i)=i-(1)+1\nend do\ncall change(a(9:1:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(2)\nhi=1+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 9,
+          "stride": -3,
+          "dummy_lower": 1,
+          "inner_stride": -3
+        },
+        "expected_stdout": "1 2 110 4 5 13 7 8 16 166 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2         110           4           5          13           7           8          16\n         166           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 110 4 5 13 7 8 16\n 166 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_067",
+        "source": "program main\nimplicit none\ninteger :: a(1:9),i\ndo i=1,9\na(i)=i-(1)+1\nend do\ncall change(a(9:1:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(4)\nhi=4+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 9,
+          "stride": -2,
+          "dummy_lower": 4,
+          "inner_stride": -3
+        },
+        "expected_stdout": "108 2 10 4 12 6 214 8 16 380 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2          10           4          12           6         214           8          16\n         380           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 10 4 12 6 214 8 16\n 380 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_068",
+        "source": "program main\nimplicit none\ninteger :: a(1:9),i\ndo i=1,9\na(i)=i-(1)+1\nend do\ncall change(a(9:1:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(8)\nhi=-3+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 9,
+          "stride": -1,
+          "dummy_lower": -3,
+          "inner_stride": -3
+        },
+        "expected_stdout": "108 9 10 211 12 13 314 15 16 708 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           9          10         211          12          13         314          15          16\n         708           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 9 10 211 12 13 314 15 16\n 708 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_069",
+        "source": "program main\nimplicit none\ninteger :: a(1:9),i\ndo i=1,9\na(i)=i-(1)+1\nend do\ncall change(a(1:9:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(8)\nhi=0+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 9,
+          "stride": 1,
+          "dummy_lower": 0,
+          "inner_stride": -3
+        },
+        "expected_stdout": "8 9 310 11 12 213 14 15 116 708 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           9         310          11          12         213          14          15         116\n         708           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 9 310 11 12 213 14 15 116\n 708 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_070",
+        "source": "program main\nimplicit none\ninteger :: a(1:9),i\ndo i=1,9\na(i)=i-(1)+1\nend do\ncall change(a(1:9:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(4)\nhi=1+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 9,
+          "stride": 2,
+          "dummy_lower": 1,
+          "inner_stride": -3
+        },
+        "expected_stdout": "8 2 210 4 12 6 14 8 116 380 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           2         210           4          12           6          14           8         116\n         380           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 2 210 4 12 6 14 8 116\n 380 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_071",
+        "source": "program main\nimplicit none\ninteger :: a(1:9),i\ndo i=1,9\na(i)=i-(1)+1\nend do\ncall change(a(1:9:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(2)\nhi=4+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 1,
+          "extent": 9,
+          "stride": 3,
+          "dummy_lower": 4,
+          "inner_stride": -3
+        },
+        "expected_stdout": "8 2 3 11 5 6 114 8 9 166 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           2           3          11           5           6         114           8           9\n         166           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 2 3 11 5 6 114 8 9\n 166 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_072",
+        "source": "program main\nimplicit none\ninteger :: a(4:3),i\ndo i=4,3\na(i)=i-(4)+1\nend do\ncall change(a(3:4:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 0,
+          "stride": -3,
+          "dummy_lower": -3,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_073",
+        "source": "program main\nimplicit none\ninteger :: a(4:3),i\ndo i=4,3\na(i)=i-(4)+1\nend do\ncall change(a(3:4:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 0,
+          "stride": -2,
+          "dummy_lower": 0,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_074",
+        "source": "program main\nimplicit none\ninteger :: a(4:3),i\ndo i=4,3\na(i)=i-(4)+1\nend do\ncall change(a(3:4:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 0,
+          "stride": -1,
+          "dummy_lower": 1,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_075",
+        "source": "program main\nimplicit none\ninteger :: a(4:3),i\ndo i=4,3\na(i)=i-(4)+1\nend do\ncall change(a(4:3:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 0,
+          "stride": 1,
+          "dummy_lower": 4,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_076",
+        "source": "program main\nimplicit none\ninteger :: a(4:3),i\ndo i=4,3\na(i)=i-(4)+1\nend do\ncall change(a(4:3:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 0,
+          "stride": 2,
+          "dummy_lower": -3,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_077",
+        "source": "program main\nimplicit none\ninteger :: a(4:3),i\ndo i=4,3\na(i)=i-(4)+1\nend do\ncall change(a(4:3:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(-1)\ncall next(x(lo:hi:1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 0,
+          "stride": 3,
+          "dummy_lower": 0,
+          "inner_stride": 1
+        },
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_078",
+        "source": "program main\nimplicit none\ninteger :: a(4:4),i\ndo i=4,4\na(i)=i-(4)+1\nend do\ncall change(a(4:4:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 1,
+          "stride": -3,
+          "dummy_lower": 1,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_079",
+        "source": "program main\nimplicit none\ninteger :: a(4:4),i\ndo i=4,4\na(i)=i-(4)+1\nend do\ncall change(a(4:4:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 1,
+          "stride": -2,
+          "dummy_lower": 4,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_080",
+        "source": "program main\nimplicit none\ninteger :: a(4:4),i\ndo i=4,4\na(i)=i-(4)+1\nend do\ncall change(a(4:4:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 1,
+          "stride": -1,
+          "dummy_lower": -3,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_081",
+        "source": "program main\nimplicit none\ninteger :: a(4:4),i\ndo i=4,4\na(i)=i-(4)+1\nend do\ncall change(a(4:4:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 1,
+          "stride": 1,
+          "dummy_lower": 0,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_082",
+        "source": "program main\nimplicit none\ninteger :: a(4:4),i\ndo i=4,4\na(i)=i-(4)+1\nend do\ncall change(a(4:4:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 1,
+          "stride": 2,
+          "dummy_lower": 1,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_083",
+        "source": "program main\nimplicit none\ninteger :: a(4:4),i\ndo i=4,4\na(i)=i-(4)+1\nend do\ncall change(a(4:4:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(0)\ncall next(x(lo:hi:-2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 1,
+          "stride": 3,
+          "dummy_lower": 4,
+          "inner_stride": -2
+        },
+        "expected_stdout": "108 108 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108\n         108           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108\n 108 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_084",
+        "source": "program main\nimplicit none\ninteger :: a(4:5),i\ndo i=4,5\na(i)=i-(4)+1\nend do\ncall change(a(5:4:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(0)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 2,
+          "stride": -3,
+          "dummy_lower": -3,
+          "inner_stride": 3
+        },
+        "expected_stdout": "1 109 110 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1         109\n         110           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 109\n 110 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_085",
+        "source": "program main\nimplicit none\ninteger :: a(4:5),i\ndo i=4,5\na(i)=i-(4)+1\nend do\ncall change(a(5:4:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(0)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 2,
+          "stride": -2,
+          "dummy_lower": 0,
+          "inner_stride": 3
+        },
+        "expected_stdout": "1 109 110 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1         109\n         110           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 109\n 110 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_086",
+        "source": "program main\nimplicit none\ninteger :: a(4:5),i\ndo i=4,5\na(i)=i-(4)+1\nend do\ncall change(a(5:4:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(1)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 2,
+          "stride": -1,
+          "dummy_lower": 1,
+          "inner_stride": 3
+        },
+        "expected_stdout": "8 109 117 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8         109\n         117           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 109\n 117 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_087",
+        "source": "program main\nimplicit none\ninteger :: a(4:5),i\ndo i=4,5\na(i)=i-(4)+1\nend do\ncall change(a(4:5:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(1)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 2,
+          "stride": 1,
+          "dummy_lower": 4,
+          "inner_stride": 3
+        },
+        "expected_stdout": "108 9 117 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           9\n         117           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 9\n 117 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_088",
+        "source": "program main\nimplicit none\ninteger :: a(4:5),i\ndo i=4,5\na(i)=i-(4)+1\nend do\ncall change(a(4:5:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(0)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 2,
+          "stride": 2,
+          "dummy_lower": -3,
+          "inner_stride": 3
+        },
+        "expected_stdout": "108 2 110 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2\n         110           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2\n 110 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_089",
+        "source": "program main\nimplicit none\ninteger :: a(4:5),i\ndo i=4,5\na(i)=i-(4)+1\nend do\ncall change(a(4:5:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(0)\ncall next(x(lo:hi:3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 2,
+          "stride": 3,
+          "dummy_lower": 0,
+          "inner_stride": 3
+        },
+        "expected_stdout": "108 2 110 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2\n         110           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2\n 110 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_090",
+        "source": "program main\nimplicit none\ninteger :: a(4:6),i\ndo i=4,6\na(i)=i-(4)+1\nend do\ncall change(a(6:4:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 3,
+          "stride": -3,
+          "dummy_lower": 1,
+          "inner_stride": -1
+        },
+        "expected_stdout": "1 2 110 113 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2         110\n         113           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 110\n 113 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_091",
+        "source": "program main\nimplicit none\ninteger :: a(4:6),i\ndo i=4,6\na(i)=i-(4)+1\nend do\ncall change(a(6:4:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(1)\nhi=4+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 3,
+          "stride": -2,
+          "dummy_lower": 4,
+          "inner_stride": -1
+        },
+        "expected_stdout": "108 2 210 320 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2         210\n         320           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 210\n 320 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_092",
+        "source": "program main\nimplicit none\ninteger :: a(4:6),i\ndo i=4,6\na(i)=i-(4)+1\nend do\ncall change(a(6:4:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(2)\nhi=-3+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 3,
+          "stride": -1,
+          "dummy_lower": -3,
+          "inner_stride": -1
+        },
+        "expected_stdout": "108 209 310 627 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108         209         310\n         627           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 209 310\n 627 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_093",
+        "source": "program main\nimplicit none\ninteger :: a(4:6),i\ndo i=4,6\na(i)=i-(4)+1\nend do\ncall change(a(4:6:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(2)\nhi=0+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 3,
+          "stride": 1,
+          "dummy_lower": 0,
+          "inner_stride": -1
+        },
+        "expected_stdout": "308 209 110 627 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         308         209         110\n         627           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 308 209 110\n 627 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_094",
+        "source": "program main\nimplicit none\ninteger :: a(4:6),i\ndo i=4,6\na(i)=i-(4)+1\nend do\ncall change(a(4:6:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(1)\nhi=1+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 3,
+          "stride": 2,
+          "dummy_lower": 1,
+          "inner_stride": -1
+        },
+        "expected_stdout": "208 2 110 320 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         208           2         110\n         320           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 208 2 110\n 320 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_095",
+        "source": "program main\nimplicit none\ninteger :: a(4:6),i\ndo i=4,6\na(i)=i-(4)+1\nend do\ncall change(a(4:6:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(0)\ncall next(x(lo:hi:-1))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 3,
+          "stride": 3,
+          "dummy_lower": 4,
+          "inner_stride": -1
+        },
+        "expected_stdout": "108 2 3 113 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2           3\n         113           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 3\n 113 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_096",
+        "source": "program main\nimplicit none\ninteger :: a(4:8),i\ndo i=4,8\na(i)=i-(4)+1\nend do\ncall change(a(8:4:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(1)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 5,
+          "stride": -3,
+          "dummy_lower": -3,
+          "inner_stride": 2
+        },
+        "expected_stdout": "1 9 3 4 112 129 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           9           3           4         112\n         129           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 9 3 4 112\n 129 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_097",
+        "source": "program main\nimplicit none\ninteger :: a(4:8),i\ndo i=4,8\na(i)=i-(4)+1\nend do\ncall change(a(8:4:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(2)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 5,
+          "stride": -2,
+          "dummy_lower": 0,
+          "inner_stride": 2
+        },
+        "expected_stdout": "208 2 10 4 112 336 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         208           2          10           4         112\n         336           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 208 2 10 4 112\n 336 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_098",
+        "source": "program main\nimplicit none\ninteger :: a(4:8),i\ndo i=4,8\na(i)=i-(4)+1\nend do\ncall change(a(8:4:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(0)\nhi=1+(4)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 5,
+          "stride": -1,
+          "dummy_lower": 1,
+          "inner_stride": 2
+        },
+        "expected_stdout": "308 9 210 11 112 650 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         308           9         210          11         112\n         650           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 308 9 210 11 112\n 650 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_099",
+        "source": "program main\nimplicit none\ninteger :: a(4:8),i\ndo i=4,8\na(i)=i-(4)+1\nend do\ncall change(a(4:8:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(0)\nhi=4+(4)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 5,
+          "stride": 1,
+          "dummy_lower": 4,
+          "inner_stride": 2
+        },
+        "expected_stdout": "108 9 210 11 312 650 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           9         210          11         312\n         650           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 9 210 11 312\n 650 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_100",
+        "source": "program main\nimplicit none\ninteger :: a(4:8),i\ndo i=4,8\na(i)=i-(4)+1\nend do\ncall change(a(4:8:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(0)\nhi=-3+(2)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 5,
+          "stride": 2,
+          "dummy_lower": -3,
+          "inner_stride": 2
+        },
+        "expected_stdout": "108 2 10 4 212 336 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2          10           4         212\n         336           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 10 4 212\n 336 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_101",
+        "source": "program main\nimplicit none\ninteger :: a(4:8),i\ndo i=4,8\na(i)=i-(4)+1\nend do\ncall change(a(4:8:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(0)\nhi=0+(1)\ncall next(x(lo:hi:2))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 5,
+          "stride": 3,
+          "dummy_lower": 0,
+          "inner_stride": 2
+        },
+        "expected_stdout": "108 2 3 11 5 129 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2           3          11           5\n         129           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 3 11 5\n 129 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_102",
+        "source": "program main\nimplicit none\ninteger :: a(4:12),i\ndo i=4,12\na(i)=i-(4)+1\nend do\ncall change(a(12:4:-3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(2)\nhi=1+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 9,
+          "stride": -3,
+          "dummy_lower": 1,
+          "inner_stride": -3
+        },
+        "expected_stdout": "1 2 110 4 5 13 7 8 16 166 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2         110           4           5          13           7           8          16\n         166           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 110 4 5 13 7 8 16\n 166 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_103",
+        "source": "program main\nimplicit none\ninteger :: a(4:12),i\ndo i=4,12\na(i)=i-(4)+1\nend do\ncall change(a(12:4:-2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(4)\nhi=4+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 9,
+          "stride": -2,
+          "dummy_lower": 4,
+          "inner_stride": -3
+        },
+        "expected_stdout": "108 2 10 4 12 6 214 8 16 380 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           2          10           4          12           6         214           8          16\n         380           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 2 10 4 12 6 214 8 16\n 380 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_104",
+        "source": "program main\nimplicit none\ninteger :: a(4:12),i\ndo i=4,12\na(i)=i-(4)+1\nend do\ncall change(a(12:4:-1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(-3:)\ninteger :: lo,hi\nlo=-3+(8)\nhi=-3+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 9,
+          "stride": -1,
+          "dummy_lower": -3,
+          "inner_stride": -3
+        },
+        "expected_stdout": "108 9 10 211 12 13 314 15 16 708 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         108           9          10         211          12          13         314          15          16\n         708           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 108 9 10 211 12 13 314 15 16\n 708 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_105",
+        "source": "program main\nimplicit none\ninteger :: a(4:12),i\ndo i=4,12\na(i)=i-(4)+1\nend do\ncall change(a(4:12:1))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(0:)\ninteger :: lo,hi\nlo=0+(8)\nhi=0+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 9,
+          "stride": 1,
+          "dummy_lower": 0,
+          "inner_stride": -3
+        },
+        "expected_stdout": "8 9 310 11 12 213 14 15 116 708 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           9         310          11          12         213          14          15         116\n         708           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 9 310 11 12 213 14 15 116\n 708 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_106",
+        "source": "program main\nimplicit none\ninteger :: a(4:12),i\ndo i=4,12\na(i)=i-(4)+1\nend do\ncall change(a(4:12:2))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(1:)\ninteger :: lo,hi\nlo=1+(4)\nhi=1+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 9,
+          "stride": 2,
+          "dummy_lower": 1,
+          "inner_stride": -3
+        },
+        "expected_stdout": "8 2 210 4 12 6 14 8 116 380 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           2         210           4          12           6          14           8         116\n         380           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 2 210 4 12 6 14 8 116\n 380 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "binding_matrix_107",
+        "source": "program main\nimplicit none\ninteger :: a(4:12),i\ndo i=4,12\na(i)=i-(4)+1\nend do\ncall change(a(4:12:3))\nprint *,a\nprint *,checksum(a),size(a)\ncontains\nsubroutine change(x)\ninteger, intent(inout) :: x(4:)\ninteger :: lo,hi\nlo=4+(2)\nhi=4+(0)\ncall next(x(lo:hi:-3))\nx=x+7\nend subroutine change\nsubroutine next(y)\ninteger, intent(inout) :: y(7:)\ninteger :: j\ndo j=1,size(y)\ny(7+j-1)=y(7+j-1)+100*j\nend do\nend subroutine next\ninteger function checksum(x) result(r)\ninteger, intent(in) :: x(:)\ninteger :: j\nr=0\ndo j=1,size(x)\nr=r+x(j)\nend do\nend function checksum\nend program main\n",
+        "parameters": {
+          "lower": 4,
+          "extent": 9,
+          "stride": 3,
+          "dummy_lower": 4,
+          "inner_stride": -3
+        },
+        "expected_stdout": "8 2 3 11 5 6 114 8 9 166 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           2           3          11           5           6         114           8           9\n         166           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 2 3 11 5 6 114 8 9\n 166 9\n",
+        "err": ""
+      }
+    }
+  ],
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

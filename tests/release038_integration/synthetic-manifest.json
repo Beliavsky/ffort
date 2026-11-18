@@ -1,0 +1,340 @@
+{
+  "cases": [
+    {
+      "name": "aliased_erfc_shift",
+      "source": "cases/aliased_erfc_shift.f90",
+      "sha256": "6ef7b7486d301c74ea67a9b046a686f9c2ee5c1ce788cca852db0eaa6e15a5c2",
+      "category": "success",
+      "gnu": "run",
+      "expected": "",
+      "diagnostic": "",
+      "note": "",
+      "numeric": [
+        {
+          "input_hex": "0x1.0000000000000p+0",
+          "kind": 8,
+          "value": "0.4275835761558070044107503444905151808201595031642526637455397707405054218202432452070480927193865324812680114527772",
+          "ulp": "0.000000000000000055511151231257827021181583404541015625",
+          "max_ulp": 4
+        },
+        {
+          "input_hex": "0x1.0000000000000p+2",
+          "kind": 8,
+          "value": "0.1369994576250613898894451713998054823302492355480653627115098493582397005672407184366684166288876029798953656218696",
+          "ulp": "0.0000000000000000277555756156289135105907917022705078125",
+          "max_ulp": 4
+        },
+        {
+          "input_hex": "0x1.8000000000000p+1",
+          "kind": 8,
+          "value": "0.1790011511813899504192948153136209872279853641068542156627588395367196753422211027289828971519117453165630638927056",
+          "ulp": "0.0000000000000000277555756156289135105907917022705078125",
+          "max_ulp": 4
+        },
+        {
+          "input_hex": "0x1.0000000000000p-1",
+          "kind": 8,
+          "value": "0.615690344192925874870793422683741936782306391265631605690826589016709915650725745639345218386258125637623877920073",
+          "ulp": "0.00000000000000011102230246251565404236316680908203125",
+          "max_ulp": 4
+        },
+        {
+          "input_hex": "0x0.0p+0",
+          "kind": 8,
+          "value": "1.0",
+          "ulp": "0.0000000000000002220446049250313080847263336181640625",
+          "max_ulp": 4
+        },
+        {
+          "input_hex": "0x1.0000000000000p+1",
+          "kind": 8,
+          "value": "0.2553956763105057438650885809085427633025993052552420654479489936568564204695848026338895072379418882764740227219258",
+          "ulp": "0.000000000000000055511151231257827021181583404541015625",
+          "max_ulp": 4
+        }
+      ]
+    },
+    {
+      "name": "pointer_order_and_shift",
+      "source": "cases/pointer_order_and_shift.f90",
+      "sha256": "da7a4a9a22d0835cc02aca59139673d33d7a388311ab21974189ec42e5a47eb3",
+      "category": "success",
+      "gnu": "run",
+      "expected": "ok\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "shift_snapshot_alias",
+      "source": "cases/shift_snapshot_alias.f90",
+      "sha256": "21acd9150ef1d16d21c56cae231b54d3b6043797cef96d34f96106b802542e29",
+      "category": "success",
+      "gnu": "run",
+      "expected": "ok\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "shift_int64_extremes",
+      "source": "cases/shift_int64_extremes.f90",
+      "sha256": "c29423f2e82351b29ab25d6094e9d478744273e88e730f80d3e401613776a46b",
+      "category": "success",
+      "gnu": "run",
+      "expected": "ok\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "cshift_exact_tiny_values",
+      "source": "cases/cshift_exact_tiny_values.f90",
+      "sha256": "434184d7144d6b8bdc84245d14c37e7fe10675c17c0eb4c8b8bf18a2f97e3cc4",
+      "category": "success",
+      "gnu": "run",
+      "expected": "ok\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "character_logical_matrix",
+      "source": "cases/character_logical_matrix.f90",
+      "sha256": "30239da865ef03f0f3de76ea1c11079263d140c2e9d89022fb381d4420c1a64d",
+      "category": "success",
+      "gnu": "run",
+      "expected": "ccc|fff| e | bb|a  |dd |\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "empty_rank_two",
+      "source": "cases/empty_rank_two.f90",
+      "sha256": "401e2aefe6420b78dd986459f0737aa5149eadef8f31115397c15a0fcee3766c",
+      "category": "success",
+      "gnu": "compile",
+      "expected": "ok\n",
+      "diagnostic": "",
+      "note": "GNU14 runtime -fcheck rejects valid zero-axis CSHIFT with vector SHIFT. Exact shape/value candidate assertions retained; standalone GNU evidence saved."
+    },
+    {
+      "name": "metadata_inquiries",
+      "source": "cases/metadata_inquiries.f90",
+      "sha256": "7da930608c1eeee1153ffbbedca852c9f5a0c49321d9d8ad70782410ef192478",
+      "category": "success",
+      "gnu": "compile",
+      "expected": "ok\n",
+      "diagnostic": "",
+      "note": "KIND metadata inquiries do not evaluate undefined values or overflowing ERFC_SCALED argument."
+    },
+    {
+      "name": "empty_pointer_identity",
+      "source": "cases/empty_pointer_identity.f90",
+      "sha256": "b4837680689a936029c17e390af438472a0cc14515cb44611531424fd381ae0b",
+      "category": "success",
+      "gnu": "run",
+      "expected": "ok\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "source_shadowing",
+      "source": "cases/source_shadowing.f90",
+      "sha256": "13ec443e950c15fb742a5d5fb83dce38d354db0128fa7ace27b606e8f826d736",
+      "category": "success",
+      "gnu": "run",
+      "expected": "ok\n",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "absent_optional_target",
+      "source": "cases/absent_optional_target.f90",
+      "sha256": "e2fc5e31defd9509a053bd0ae0bc65e0e8f4f5cbdb7e63cfb0af28443ef0a750",
+      "category": "success",
+      "gnu": "compile",
+      "expected": "ok\n",
+      "diagnostic": "",
+      "note": "Spec-only: absent whole nonpointer OPTIONAL TARGET means omitted optional intrinsic argument (F2018 15.5.2.12p4,16.2.1p2,16.9.16p5). GNU14 false/crash discrepancy excludes execution."
+    },
+    {
+      "name": "real128_sentinel",
+      "source": "cases/real128_sentinel.f90",
+      "sha256": "46b5c1257c509f123afd03e42c25a0a690636ae65db8a5f557f78bfd0167cdac",
+      "category": "success",
+      "gnu": "run",
+      "expected": "-1 8\n",
+      "diagnostic": "",
+      "note": "Processor-specific supported kind sentinel; GNU14 REAL128=16, candidate=-1. Not differential output agreement.",
+      "gnu_expected": "16 8\n"
+    },
+    {
+      "name": "erfc_extreme_composition",
+      "source": "cases/erfc_extreme_composition.f90",
+      "sha256": "886a7df3168604418b392dd6ce382f5e7883b4dd55f57f3ef31a6db85e9736a7",
+      "category": "success",
+      "gnu": "compile",
+      "expected": "",
+      "diagnostic": "",
+      "note": "Independent 120-digit oracle; 2ULP REAL4 /4ULP REAL8, never relative relaxed comparison. GNU14 prematurely overflows/underflows these endpoints; compile only.",
+      "numeric": [
+        {
+          "input_hex": "-0x1.2c3cbc0000000p+3",
+          "kind": 4,
+          "value": "340281681869772655877309689441129482932.581814362874238345072572288258533273183442258432091131093078172377743839373",
+          "ulp": "20282409603651670423947251286016.0",
+          "max_ulp": 2
+        },
+        {
+          "input_hex": "0x1.fffffe0000000p+127",
+          "kind": 4,
+          "value": "1.658004269457671810010192888950274433168034246410336797768470960654800277570352644715803132612778219389902829422977e-39",
+          "ulp": "1.40129846432481707092372958328991613128026194187651577175706828388979108268586060148663818836212158203125e-45",
+          "max_ulp": 2
+        },
+        {
+          "input_hex": "-0x1.aa0f4d2e063cep+4",
+          "kind": 8,
+          "value": "1.797693134862248538861759250211543354295586435761755704594923992428024440658655945505420893620266273987766298841094e+308",
+          "ulp": "1.995840309534719811656372713036838566067451260435457541502547242437211891868964065784957965492635701089342446844192e+292",
+          "max_ulp": 4
+        },
+        {
+          "input_hex": "0x1.fffffffffffffp+1023",
+          "kind": 8,
+          "value": "3.138408733985443212792970179222744690235478551544587059510201187170757927960272054712566474138673402108370529241439e-309",
+          "ulp": "4.940656458412465441765687928682213723650598026143247644255856825006755072702087518652998363616359923797965646954457e-324",
+          "max_ulp": 4
+        }
+      ]
+    },
+    {
+      "name": "erfc_real4_moderate",
+      "source": "cases/erfc_real4_moderate.f90",
+      "sha256": "f81ed4f8b140247c95773f755599a5cd7c2dc56d639eff4e60c586c08cd98b8e",
+      "category": "success",
+      "gnu": "run",
+      "expected": "",
+      "diagnostic": "",
+      "note": "",
+      "numeric": [
+        {
+          "input_hex": "0x0.0p+0",
+          "kind": 4,
+          "value": "1.0",
+          "ulp": "0.00000011920928955078125",
+          "max_ulp": 2
+        },
+        {
+          "input_hex": "0x1.0000000000000p-1",
+          "kind": 4,
+          "value": "0.615690344192925874870793422683741936782306391265631605690826589016709915650725745639345218386258125637623877920073",
+          "ulp": "0.000000059604644775390625",
+          "max_ulp": 2
+        },
+        {
+          "input_hex": "0x1.0000000000000p+1",
+          "kind": 4,
+          "value": "0.2553956763105057438650885809085427633025993052552420654479489936568564204695848026338895072379418882764740227219258",
+          "ulp": "0.0000000298023223876953125",
+          "max_ulp": 2
+        },
+        {
+          "input_hex": "-0x1.0000000000000p+0",
+          "kind": 4,
+          "value": "5.008980080762283466309824598214809814694334684235666486188395484707647838886851943935716264330946322373664772411229",
+          "ulp": "0.000000476837158203125",
+          "max_ulp": 2
+        }
+      ]
+    },
+    {
+      "name": "runtime_erfc_overflow",
+      "source": "cases/runtime_erfc_overflow.f90",
+      "sha256": "a03bc8a0b25445b5511e2f1cb7f071562a042bc8c6dd67e5fcf93e8437dfca57",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected": "before\n",
+      "diagnostic": "finite result range",
+      "note": "Overflowing argument is candidate safety-policy probe, GNU compile only."
+    },
+    {
+      "name": "runtime_undefined_target_pointer",
+      "source": "cases/runtime_undefined_target_pointer.f90",
+      "sha256": "b4c92e328f91e6593267418054d734bff6099c3dc54a350795481d9631f8893f",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected": "before\n",
+      "diagnostic": "association",
+      "note": "Undefined association status is invalid even when first pointer is disassociated; no GNU execution."
+    },
+    {
+      "name": "runtime_expired_pointer",
+      "source": "cases/runtime_expired_pointer.f90",
+      "sha256": "fc762f959f1f5178635dc058b5e495c385506cab86ecfa43b42ec913ea8ff489",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected": "before\n",
+      "diagnostic": "lifetime",
+      "note": "Escaping pointer is rejected at owner-scope return before the later ASSOCIATED inquiry; GNU must not execute expired pointer use."
+    },
+    {
+      "name": "runtime_empty_shift_undefined",
+      "source": "cases/runtime_empty_shift_undefined.f90",
+      "sha256": "aa63a885af36e3423c48a208878a5840d5524c330a43b78507f6466ecbaf24bd",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected": "before\n",
+      "diagnostic": "uninitialized",
+      "note": "CSHIFT evaluates SHIFT once even when ARRAY is empty."
+    },
+    {
+      "name": "reject_real128_execution",
+      "source": "cases/reject_real128_execution.f90",
+      "sha256": "94c77a8e6317cffabbd689201d0699c471e5ba5f5ca560429f3254e95abf4a0a",
+      "category": "reject",
+      "gnu": "compile",
+      "expected": "",
+      "diagnostic": "kind",
+      "note": "REAL128 imports as unsupported sentinel; no REAL16 execution support."
+    },
+    {
+      "name": "reject_rank_three_shift",
+      "source": "cases/reject_rank_three_shift.f90",
+      "sha256": "62b572ce8f459817c59736fa94f9316187657d9b5b20079c126944770b8f899a",
+      "category": "reject",
+      "gnu": "compile",
+      "expected": "",
+      "diagnostic": "rank",
+      "note": "ERFC_SCALED rank3 is supported, CSHIFT rank3 remains outside bounded subset."
+    },
+    {
+      "name": "reject_associated_expression",
+      "source": "cases/reject_associated_expression.f90",
+      "sha256": "9f00d863bdd70863a0530c81cff40ed0bb2465fc15725c1274d154dede0cef67",
+      "category": "reject",
+      "gnu": "reject",
+      "expected": "",
+      "diagnostic": "target",
+      "note": ""
+    },
+    {
+      "name": "reject_duplicate_keyword",
+      "source": "cases/reject_duplicate_keyword.f90",
+      "sha256": "31d09e70ecd3c2f9088733b2d4ca1b2e0062f8df131f9679ee1a4ceb8b9e35b6",
+      "category": "reject",
+      "gnu": "reject",
+      "expected": "",
+      "diagnostic": "Repeated actual argument",
+      "note": ""
+    },
+    {
+      "name": "reject_alias_remote_identity",
+      "source": "cases/reject_alias_remote_identity.f90",
+      "sha256": "0d697ae0a79cb0f6aaefd30de3b4cad92c0536dcbc7ee754849fff38f9b47afa",
+      "category": "reject",
+      "gnu": "compile",
+      "expected": "",
+      "diagnostic": "import",
+      "note": "Two distinct remote entities cannot occupy one alias; GNU14 accepts the same-valued conflicting import, so compile only."
+    }
+  ],
+  "oracle": "Independent exact integer/mapping/shape identities and mpmath1.3.0 at120 decimal digits; exact binary input conversion. No candidate/GNU-derived expected values."
+}

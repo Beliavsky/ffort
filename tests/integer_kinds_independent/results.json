@@ -1,0 +1,694 @@
+{
+  "summary": {
+    "total": 23,
+    "failed": 0,
+    "candidate_checked": 23,
+    "gnu_executed": 11,
+    "gnu_compiled": 11,
+    "gnu_skipped": 12
+  },
+  "records": [
+    {
+      "case": {
+        "name": "large_add",
+        "source": "cases/large_add.f90",
+        "category": "success",
+        "expected_stdout": "9007199254740995",
+        "baseline": "run"
+      },
+      "errors": [],
+      "source_sha256": "39177955e48afc402c8d0a89ceeb9b13234a9edc715dda1eefc1634bb475ece6",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "     9007199254740995\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 9007199254740995\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "comparison",
+        "source": "cases/comparison.f90",
+        "category": "success",
+        "expected_stdout": "T",
+        "baseline": "run"
+      },
+      "errors": [],
+      "source_sha256": "744c13a72a2abddc7e138030744795889079f2e6461407b6f7cf28a8544d2c5e",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "min64",
+        "source": "cases/min64.f90",
+        "category": "success",
+        "expected_stdout": "-9223372036854775808",
+        "baseline": "run"
+      },
+      "errors": [],
+      "source_sha256": "d9aeb0e56f4fac6b3cd57fef15b60a79ae49810637ec37249323fe8c37f97de0",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/min64.f90:3:8:\n\n    3 | print *, -9223372036854775807_8 - 1_8\n      |        1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " -9223372036854775808\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -9223372036854775808\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mod_min",
+        "source": "cases/mod_min.f90",
+        "category": "success",
+        "expected_stdout": "0",
+        "baseline": "run"
+      },
+      "errors": [],
+      "source_sha256": "fea7a3929cf272d6d08e7b3b32bebb29623d56d5cd7dda7d6650c1689e3755f4",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/mod_min.f90:3:16:\n\n    3 | print *, modulo(-9223372036854775807_8-1_8,-1_8)\n      |                1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "modulo_signs",
+        "source": "cases/modulo_signs.f90",
+        "category": "success",
+        "expected_stdout": "1 -1 -2",
+        "baseline": "run"
+      },
+      "errors": [],
+      "source_sha256": "bf68c9dcfb6305029dea8d1359753722687d34751b9836a11bd8e57f31c7f3d0",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    1                   -1                   -2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 -1 -2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "overflow_add",
+        "source": "cases/overflow_add.f90",
+        "category": "runtime",
+        "expected_stdout": "",
+        "baseline": "skip",
+        "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "source_sha256": "d4ed7232e21c56958edfff8f80c56c96346308fe2bef812f1fca1671f707a4f5",
+      "gnu_skipped": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/overflow_add.f90:3:31: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "overflow_sub",
+        "source": "cases/overflow_sub.f90",
+        "category": "runtime",
+        "expected_stdout": "",
+        "baseline": "skip",
+        "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "source_sha256": "b39d7905b3e2ee595a5c7c6c11cd9095a7318da089802b2c631137d0aabc5741",
+      "gnu_skipped": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/overflow_sub.f90:3:38: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "overflow_mul",
+        "source": "cases/overflow_mul.f90",
+        "category": "runtime",
+        "expected_stdout": "",
+        "baseline": "skip",
+        "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "source_sha256": "4996ebd1214c86916ecdfee57dfaaa6de2e309b3280b48a930bada383e1f9ffc",
+      "gnu_skipped": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/overflow_mul.f90:3:31: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "overflow_div",
+        "source": "cases/overflow_div.f90",
+        "category": "runtime",
+        "expected_stdout": "",
+        "baseline": "skip",
+        "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "source_sha256": "60d3fa85969465e2cdddea73d5edf6252a6fa6c18c501a02f265d62e348c19c5",
+      "gnu_skipped": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/overflow_div.f90:3:38: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "overflow_neg",
+        "source": "cases/overflow_neg.f90",
+        "category": "runtime",
+        "expected_stdout": "",
+        "baseline": "skip",
+        "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "source_sha256": "192d3903d6b35785d277b8c89e3c6461a418710138de05dd90198f4d6a51e34d",
+      "gnu_skipped": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/overflow_neg.f90:3:10: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "overflow_abs",
+        "source": "cases/overflow_abs.f90",
+        "category": "runtime",
+        "expected_stdout": "",
+        "baseline": "skip",
+        "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "source_sha256": "45f4c128c1779a2f3945506f356daef71e8ac3f8218eb29dbb868af45d2ad0fd",
+      "gnu_skipped": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/overflow_abs.f90:3:10: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "overflow_pow",
+        "source": "cases/overflow_pow.f90",
+        "category": "runtime",
+        "expected_stdout": "",
+        "baseline": "skip",
+        "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "source_sha256": "8246607583e8d5ec7b7adb121007794d2383ff782d2af20a2cbf3319b2dd718e",
+      "gnu_skipped": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/overflow_pow.f90:3:13: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "negative_pow",
+        "source": "cases/negative_pow.f90",
+        "category": "success",
+        "expected_stdout": "1",
+        "baseline": "run"
+      },
+      "errors": [],
+      "source_sha256": "d7162a1b9c4fb461e9789b2b050a55411630881f850ce137b1104fb5a0dae1c0",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/negative_pow.f90:3:18:\n\n    3 | print *, (-1_8)**(-9223372036854775807_8-1_8)\n      |                  1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n"
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "default_overflow",
+        "source": "cases/default_overflow.f90",
+        "category": "runtime",
+        "expected_stdout": "",
+        "baseline": "skip",
+        "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "source_sha256": "2e2df4cd14b6b5e5641f2da4ca16c8c6edd5de606a304a93c70ea1272a642287",
+      "gnu_skipped": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/default_overflow.f90:3:20: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "narrowing",
+        "source": "cases/narrowing.f90",
+        "category": "runtime",
+        "expected_stdout": "",
+        "baseline": "skip",
+        "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "source_sha256": "31efa8b6a5726ff96f2d85cad18017a7a925a5970b43c8f0e7e3fbe965c67172",
+      "gnu_skipped": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/narrowing.f90:3:10: integer overflow\n"
+      }
+    },
+    {
+      "case": {
+        "name": "bad_kind",
+        "source": "cases/bad_kind.f90",
+        "category": "invalid",
+        "expected_stdout": "",
+        "baseline": "skip",
+        "baseline_note": "INTEGER kind16 is outside the interpreter subset but supported by GNU; not a GNU rejection oracle.",
+        "diagnostic": "INT supports kinds"
+      },
+      "errors": [],
+      "source_sha256": "1d2b56b16b0018622c5b428c6edf1d325cf1a164e19d6e17c17148ef7deef60f",
+      "gnu_skipped": "INTEGER kind16 is outside the interpreter subset but supported by GNU; not a GNU rejection oracle.",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/bad_kind.f90:3:19: INT supports kinds 4 and 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/bad_kind.f90:3:19: INT supports kinds 4 and 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real_bound",
+        "source": "cases/real_bound.f90",
+        "category": "runtime",
+        "expected_stdout": "",
+        "baseline": "skip",
+        "baseline_note": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+        "diagnostic": "integer overflow"
+      },
+      "errors": [],
+      "source_sha256": "1291f8c2888d814ca2c7b9808876126b46e206a0b112eb989999515883a3a7af",
+      "gnu_skipped": "Checked interpreter overflow/narrowing policy; GNU constant folding or execution is not a defined overflow oracle.",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/integer_kinds_independent/cases/real_bound.f90:3:10: integer overflow in real conversion\n"
+      }
+    },
+    {
+      "case": {
+        "name": "real_min",
+        "source": "cases/real_min.f90",
+        "category": "success",
+        "expected_stdout": "-9223372036854775808",
+        "baseline": "skip",
+        "baseline_note": "Interpreter explicitly supports signed two-complement minimum; strict GNU constant conversion diagnoses the standard symmetric-range boundary."
+      },
+      "errors": [],
+      "source_sha256": "62d000a1107d141d86274c488b2bf6a0c07d4935d8094a9e70e9550ebd1143c3",
+      "gnu_skipped": "Interpreter explicitly supports signed two-complement minimum; strict GNU constant conversion diagnoses the standard symmetric-range boundary.",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -9223372036854775808\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_int",
+        "source": "cases/kind_int.f90",
+        "category": "success",
+        "expected_stdout": "8",
+        "baseline": "run"
+      },
+      "errors": [],
+      "source_sha256": "d3e238bae219b4bce87d224f23942e7cf1ee34d635e59bca8bf384775bc398ca",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_wide_compare",
+        "source": "cases/mixed_wide_compare.f90",
+        "category": "success",
+        "expected_stdout": "T T",
+        "baseline": "run"
+      },
+      "errors": [],
+      "source_sha256": "e9a14e418a82cdf28730a71901bd1834df4c094135700ed4526fc5b37b0c5ee8",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T T\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_kind_arithmetic",
+        "source": "cases/mixed_kind_arithmetic.f90",
+        "category": "success",
+        "expected_stdout": "3000000002 6000000000",
+        "baseline": "run"
+      },
+      "errors": [],
+      "source_sha256": "de1550c703a1eb54bd366cf92d329217d0c9f78734dcad271b9c0b8825a91665",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3000000002           6000000000\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3000000002 6000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "selected_kinds",
+        "source": "cases/selected_kinds.f90",
+        "category": "success",
+        "expected_stdout": "4 8 -1",
+        "expected_gnu_stdout": "4 8 16",
+        "baseline": "run"
+      },
+      "errors": [],
+      "source_sha256": "9b9049c843009d9d6532dddf437d48b6bbadfac0406d1874e71d61f145aa6fe8",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           8          16\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 8 -1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "int_keywords",
+        "source": "cases/int_keywords.f90",
+        "category": "success",
+        "expected_stdout": "42 8",
+        "baseline": "run"
+      },
+      "errors": [],
+      "source_sha256": "4e65d818467651e38b5d7ce2366a54f5499159665cafdd8439521de7e478c3c5",
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                   42           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 42 8\n",
+        "err": ""
+      }
+    }
+  ],
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "manifest_sha256": "aeb473e567ab3f08a85457ad9028871d19b1dc1e130e632778722e57f7f4bb16",
+  "source_sha256": {
+    "cases/large_add.f90": "39177955e48afc402c8d0a89ceeb9b13234a9edc715dda1eefc1634bb475ece6",
+    "cases/comparison.f90": "744c13a72a2abddc7e138030744795889079f2e6461407b6f7cf28a8544d2c5e",
+    "cases/min64.f90": "d9aeb0e56f4fac6b3cd57fef15b60a79ae49810637ec37249323fe8c37f97de0",
+    "cases/mod_min.f90": "fea7a3929cf272d6d08e7b3b32bebb29623d56d5cd7dda7d6650c1689e3755f4",
+    "cases/modulo_signs.f90": "bf68c9dcfb6305029dea8d1359753722687d34751b9836a11bd8e57f31c7f3d0",
+    "cases/overflow_add.f90": "d4ed7232e21c56958edfff8f80c56c96346308fe2bef812f1fca1671f707a4f5",
+    "cases/overflow_sub.f90": "b39d7905b3e2ee595a5c7c6c11cd9095a7318da089802b2c631137d0aabc5741",
+    "cases/overflow_mul.f90": "4996ebd1214c86916ecdfee57dfaaa6de2e309b3280b48a930bada383e1f9ffc",
+    "cases/overflow_div.f90": "60d3fa85969465e2cdddea73d5edf6252a6fa6c18c501a02f265d62e348c19c5",
+    "cases/overflow_neg.f90": "192d3903d6b35785d277b8c89e3c6461a418710138de05dd90198f4d6a51e34d",
+    "cases/overflow_abs.f90": "45f4c128c1779a2f3945506f356daef71e8ac3f8218eb29dbb868af45d2ad0fd",
+    "cases/overflow_pow.f90": "8246607583e8d5ec7b7adb121007794d2383ff782d2af20a2cbf3319b2dd718e",
+    "cases/negative_pow.f90": "d7162a1b9c4fb461e9789b2b050a55411630881f850ce137b1104fb5a0dae1c0",
+    "cases/default_overflow.f90": "2e2df4cd14b6b5e5641f2da4ca16c8c6edd5de606a304a93c70ea1272a642287",
+    "cases/narrowing.f90": "31efa8b6a5726ff96f2d85cad18017a7a925a5970b43c8f0e7e3fbe965c67172",
+    "cases/bad_kind.f90": "1d2b56b16b0018622c5b428c6edf1d325cf1a164e19d6e17c17148ef7deef60f",
+    "cases/real_bound.f90": "1291f8c2888d814ca2c7b9808876126b46e206a0b112eb989999515883a3a7af",
+    "cases/real_min.f90": "62d000a1107d141d86274c488b2bf6a0c07d4935d8094a9e70e9550ebd1143c3",
+    "cases/kind_int.f90": "d3e238bae219b4bce87d224f23942e7cf1ee34d635e59bca8bf384775bc398ca",
+    "cases/mixed_wide_compare.f90": "e9a14e418a82cdf28730a71901bd1834df4c094135700ed4526fc5b37b0c5ee8",
+    "cases/mixed_kind_arithmetic.f90": "de1550c703a1eb54bd366cf92d329217d0c9f78734dcad271b9c0b8825a91665",
+    "cases/selected_kinds.f90": "9b9049c843009d9d6532dddf437d48b6bbadfac0406d1874e71d61f145aa6fe8",
+    "cases/int_keywords.f90": "4e65d818467651e38b5d7ce2366a54f5499159665cafdd8439521de7e478c3c5"
+  },
+  "utc": "2026-11-16T14:45:42.675765+00:00"
+}

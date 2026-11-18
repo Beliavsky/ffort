@@ -1,0 +1,712 @@
+{
+  "status": "strict candidate expectations; source bodies unchanged; first two real positives remain expected successes",
+  "registered_name": "input sample.dat",
+  "input_data": "alpha\nbeta\n",
+  "oracle_adaptation": "Only ! GNU_REGISTER_INPUT is replaced by explicit OPEN(unit=iu,file=registered_name,status=old,action=read). No other source body is adapted.",
+  "cases": [
+    {
+      "name": "padded",
+      "source": "cases/padded.f90",
+      "sha256": "2a85bfb310dd8a8d2b4c7706dfdbc56e960addfd74cf72969366c480f0b27a51",
+      "gnu_mode": "execute",
+      "expected_stdout": "[input sample.dat        ]\n",
+      "note": "",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "[input sample.dat        ]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "truncated",
+      "source": "cases/truncated.f90",
+      "sha256": "06de3b1a5b9844d585223671f616e2e600cd07347d35ca307525b7722b6acf66",
+      "gnu_mode": "execute",
+      "expected_stdout": "[input]\n",
+      "note": "",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "[input]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "zero_length",
+      "source": "cases/zero_length.f90",
+      "sha256": "e88d19755e4d9eab1fcc19c3ad696b7cc6f3dcfc00bc65679c65ce5be7e8b0b1",
+      "gnu_mode": "execute",
+      "expected_stdout": "[]\n",
+      "note": "",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "[]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "reversed_controls",
+      "source": "cases/reversed_controls.f90",
+      "sha256": "90c235619f984e4886f3dece5e65173adcbf3215e5b8f48a77ed5c7858dbf5f6",
+      "gnu_mode": "execute",
+      "expected_stdout": "[input sample.dat        ]\n",
+      "note": "",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "[input sample.dat        ]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "mixed_case",
+      "source": "cases/mixed_case.f90",
+      "sha256": "302801a9e1889764610234c0e0110b704ed6bf26f00a24e63f2757106e9303a0",
+      "gnu_mode": "execute",
+      "expected_stdout": "[input sample.dat        ]\n",
+      "note": "",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "[input sample.dat        ]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "continued_controls",
+      "source": "cases/continued_controls.f90",
+      "sha256": "6f609f11e4f3dfd2f019a574b206d7554cd8a55fcb3520159afaf42612c1b48f",
+      "gnu_mode": "execute",
+      "expected_stdout": "[input sample.dat        ]\n",
+      "note": "",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "[input sample.dat        ]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "integer8_unit",
+      "source": "cases/integer8_unit.f90",
+      "sha256": "1f441795c2c80085448c638ca0aa2f435984884ff62d496814eab2afd8371f2c",
+      "gnu_mode": "execute",
+      "expected_stdout": "[input sample.dat        ]\n",
+      "note": "",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "[input sample.dat        ]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "allocated_name",
+      "source": "cases/allocated_name.f90",
+      "sha256": "ad5bba89d955428b45b5cbc33e439f7e678aa314e7c6f0712b5eb760069b8c16",
+      "gnu_mode": "execute",
+      "expected_stdout": "[input sample.dat        ]\n",
+      "note": "",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "[input sample.dat        ]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "length_preserved",
+      "source": "cases/length_preserved.f90",
+      "sha256": "ef9b7f3438b5c96e7ec95f9f36a851279396257cb6fdd42111e8b9ea9c270fbc",
+      "gnu_mode": "execute",
+      "expected_stdout": "[input] 5 chars\n",
+      "note": "",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "[input] 5 chars\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "cursor_preserved",
+      "source": "cases/cursor_preserved.f90",
+      "sha256": "b3dcd85f6fe085e944d1b09dbe1db99433b3a0455dd4be8fa61d173c8fbc427f",
+      "gnu_mode": "execute",
+      "expected_stdout": "beta \n",
+      "note": "",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "beta \n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "eof_preserved",
+      "source": "cases/eof_preserved.f90",
+      "sha256": "182152fe7efca95afaf95145dc074cd81f37fb5527b390c6f40165520d0b102e",
+      "gnu_mode": "execute",
+      "expected_stdout": "input sample.dat\n",
+      "note": "Native descriptor test must also compare cursor/endfile, not only output.",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "input sample.dat\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "dummy_target",
+      "source": "cases/dummy_target.f90",
+      "sha256": "ec51ef3525b1852ffd7a04333256c8858830bcf249d511c1f30710a8af3c45f7",
+      "gnu_mode": "execute",
+      "expected_stdout": "[input sample.dat        ]\n",
+      "note": "",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "[input sample.dat        ]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "literal_unit",
+      "source": "cases/literal_unit.f90",
+      "sha256": "b191074aa0635715f79d0342dcb09d4d6454b295338eca836c657a5f5be15ab2",
+      "gnu_mode": "compile-only",
+      "expected_stdout": null,
+      "note": "GNU-valid excluded bounded syntax/target form; do not weaken source boundary.",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      }
+    },
+    {
+      "name": "unit_expression",
+      "source": "cases/unit_expression.f90",
+      "sha256": "3fd73594769996d681316157565194e9b4e88d87894a104b1da1419d8c38e9ef",
+      "gnu_mode": "compile-only",
+      "expected_stdout": null,
+      "note": "GNU-valid excluded bounded syntax/target form; do not weaken source boundary.",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:27: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:27: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      }
+    },
+    {
+      "name": "positional_unit",
+      "source": "cases/positional_unit.f90",
+      "sha256": "1768dac1fb8d1b5179dd3491477b1038ab5f25facd235f45023f23e26b32f853",
+      "gnu_mode": "compile-only",
+      "expected_stdout": null,
+      "note": "GNU-valid excluded bounded syntax/target form; do not weaken source boundary.",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:11: Expected =, found ,\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:11: Expected =, found ,\n"
+      }
+    },
+    {
+      "name": "array_element_name",
+      "source": "cases/array_element_name.f90",
+      "sha256": "62b3cb4e57e15d789475aa1e10f154d0e9abe2a39e4c2360e03b47880a8e3fd2",
+      "gnu_mode": "compile-only",
+      "expected_stdout": null,
+      "note": "GNU-valid excluded bounded syntax/target form; do not weaken source boundary.",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:28: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:28: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      }
+    },
+    {
+      "name": "substring_name",
+      "source": "cases/substring_name.f90",
+      "sha256": "af5c1e2378b3b6592f89cde159da446ae17856a22ba16871a2a8c7dd62af50c1",
+      "gnu_mode": "compile-only",
+      "expected_stdout": null,
+      "note": "GNU-valid excluded bounded syntax/target form; do not weaken source boundary.",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:30: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:30: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      }
+    },
+    {
+      "name": "extra_iostat",
+      "source": "cases/extra_iostat.f90",
+      "sha256": "debdd5bbd016ea18f0d0438b3f0cf2f133eb4bbc69b11ab192389391393dfd7f",
+      "gnu_mode": "compile-only",
+      "expected_stdout": null,
+      "note": "GNU-valid excluded bounded syntax/target form; do not weaken source boundary.",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:9:32: INQUIRE supports only explicit UNIT and NAME controls\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:9:32: INQUIRE supports only explicit UNIT and NAME controls\n"
+      }
+    },
+    {
+      "name": "file_query",
+      "source": "cases/file_query.f90",
+      "sha256": "9b172df1d40bac7f3e25584f4a39595032a889e9d0c712b7e51e55056c18c399",
+      "gnu_mode": "compile-only",
+      "expected_stdout": null,
+      "note": "GNU-valid excluded bounded syntax/target form; do not weaken source boundary.",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:14: INQUIRE supports only explicit UNIT and NAME controls\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:14: INQUIRE supports only explicit UNIT and NAME controls\n"
+      }
+    },
+    {
+      "name": "wrong_unit_type",
+      "source": "cases/wrong_unit_type.f90",
+      "sha256": "a253b714e6145430a8db5a3cbdf24ea4adf8324d5505edaf821bc3ef3b3f19c8",
+      "gnu_mode": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:9:24: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:9:24: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "gnu_reject_stderr": "{oracle}:9:13:\n\n    9 | inquire(unit=x,name=nm)\n      |             1\nError: UNIT tag at (1) must be of type INTEGER\n"
+    },
+    {
+      "name": "wrong_name_type",
+      "source": "cases/wrong_name_type.f90",
+      "sha256": "ee97e270a44a71e9ca2f83179394272dc6fc31e3ced14b3b9a3d2b95a3fec412",
+      "gnu_mode": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "gnu_reject_stderr": "{oracle}:8:21:\n\n    8 | inquire(unit=iu,name=nm)\n      |                     1\nError: NAME tag at (1) must be of type CHARACTER\n"
+    },
+    {
+      "name": "name_literal",
+      "source": "cases/name_literal.f90",
+      "sha256": "f9930137f991898259ce0a9eda37a92fe6cd4441f5c990234d4fc20047351035",
+      "gnu_mode": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:32: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:32: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "gnu_reject_stderr": "{oracle}:8:22:\n\n    8 | inquire(unit=iu,name='literal')\n      |                      1\nError: Invalid value for NAME specification at (1)\n"
+    },
+    {
+      "name": "duplicate_unit",
+      "source": "cases/duplicate_unit.f90",
+      "sha256": "4c99da06db3e48e6e06f5ef1eab938a4a98e2381491d62c89069e254778f8dbb",
+      "gnu_mode": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:22: Duplicate INQUIRE control\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:22: Duplicate INQUIRE control\n"
+      },
+      "gnu_reject_stderr": "{oracle}:8:24:\n\n    8 | inquire(unit=iu,unit=iu,name=nm)\n      |                        1\nError: Duplicate UNIT specification at (1)\n"
+    },
+    {
+      "name": "duplicate_name",
+      "source": "cases/duplicate_name.f90",
+      "sha256": "3492b3cb8a1402bd4039cb55ec56074c12b8341955c380107cc03a6db2ecbcf6",
+      "gnu_mode": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:30: Duplicate INQUIRE control\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:30: Duplicate INQUIRE control\n"
+      },
+      "gnu_reject_stderr": "{oracle}:8:32:\n\n    8 | inquire(unit=iu,name=nm,name=nm)\n      |                                1\nError: Duplicate NAME specification at (1)\n"
+    },
+    {
+      "name": "missing_unit",
+      "source": "cases/missing_unit.f90",
+      "sha256": "1d58c21189482c2940028537e3a01ce737648efaa234feb4aef9cfd791640f61",
+      "gnu_mode": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:17: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:17: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "gnu_reject_stderr": "{oracle}:8:8:\n\n    8 | inquire(name=nm)\n      |        1\nError: INQUIRE statement at (1) requires either FILE or UNIT specifier\n"
+    },
+    {
+      "name": "unknown_control",
+      "source": "cases/unknown_control.f90",
+      "sha256": "4b2e4923d00e8c032f862d69bd6f994611e1869da179e235f4e65da34e3875cc",
+      "gnu_mode": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:23: INQUIRE supports only explicit UNIT and NAME controls\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:23: INQUIRE supports only explicit UNIT and NAME controls\n"
+      },
+      "gnu_reject_stderr": "{oracle}:8:17:\n\n    8 | inquire(unit=iu,thing=nm)\n      |                 1\nError: Syntax error in INQUIRE statement at (1)\n"
+    },
+    {
+      "name": "unallocated_name",
+      "source": "cases/unallocated_name.f90",
+      "sha256": "3dc7379cd924eceac57a9e871dd6d026a6f0f98c02a6071569dd6f4806220a19",
+      "gnu_mode": "compile-only",
+      "expected_stdout": null,
+      "note": "Runtime-invalid target. Never execute GNU.",
+      "candidate_mode": "runtime-reject",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "{source}:8:1: reference to unallocated array nm\n"
+      }
+    },
+    {
+      "name": "unbound_unit",
+      "source": "cases/unbound_unit.f90",
+      "sha256": "1d0a31c11a7a453977f8a5e19cbc23d804d75766f3d0024e7aa52ef10f846673",
+      "gnu_mode": "compile-only",
+      "expected_stdout": null,
+      "note": "Registered binding remains unit17; unbound NAME is not fabricated. Never execute GNU.",
+      "candidate_mode": "runtime-reject",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "{source}:8:1: external input unit is not explicitly bound\n"
+      }
+    },
+    {
+      "name": "undefined_unit",
+      "source": "cases/undefined_unit.f90",
+      "sha256": "75de9f509c2523eda4b9e5306c5bd9b91d240273c4920236b7eae32bdc4ddb23",
+      "gnu_mode": "compile-only",
+      "expected_stdout": null,
+      "note": "Undefined unit. Never execute GNU.",
+      "candidate_mode": "runtime-reject",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 2,
+        "stdout": "",
+        "stderr": "{source}:6:14: read of uninitialized variable iu\n"
+      }
+    },
+    {
+      "name": "parameter_target",
+      "source": "cases/parameter_target.f90",
+      "sha256": "1f470726a78fd26de78ebeb7ea9808e5341e18f4d866dd21c68dd3001a0f792b",
+      "gnu_mode": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:8:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "gnu_reject_stderr": "{oracle}:8:21:\n\n    8 | inquire(unit=iu,name=nm)\n      |                     1\nError: Named constant 'nm' in variable definition context (NAME tag with INQUIRE) at (1)\n"
+    },
+    {
+      "name": "pure_and_readonly",
+      "source": "cases/pure_and_readonly.f90",
+      "sha256": "9111ac4366e6cf98868870f29599f047eba6bee47f0bcdcaacfea025094b41d4",
+      "gnu_mode": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:6:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:6:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "gnu_reject_stderr": "{oracle}:6:24:\n\n    6 | inquire(unit=iu,name=nm)\n      |                        1\nError: Variable NAME cannot be INTENT(IN) at (1)\n{oracle}:10:5:\n\n   10 | use m\n      |     1\nFatal Error: Cannot open module file 'm.mod' for reading at (1): No such file or directory\ncompilation terminated.\n"
+    },
+    {
+      "name": "readonly_dummy",
+      "source": "cases/readonly_dummy.f90",
+      "sha256": "f09a97814927af92957dde6d6bf2c2f593257d8bea39a9dbd2abef419b9caaa8",
+      "gnu_mode": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:6:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:6:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "gnu_reject_stderr": "{oracle}:6:24:\n\n    6 | inquire(unit=iu,name=nm)\n      |                        1\nError: Variable NAME cannot be INTENT(IN) at (1)\n{oracle}:10:5:\n\n   10 | use m\n      |     1\nFatal Error: Cannot open module file 'm.mod' for reading at (1): No such file or directory\ncompilation terminated.\n"
+    },
+    {
+      "name": "pure_local",
+      "source": "cases/pure_local.f90",
+      "sha256": "f8a2285f76ab09e0fb29c612a4538d60ce92f9f3270a83383948e405ff849813",
+      "gnu_mode": "reject",
+      "expected_stdout": null,
+      "note": "",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:6:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:6:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "gnu_reject_stderr": "{oracle}:6:24:\n\n    6 | inquire(unit=iu,name=nm)\n      |                        1\nError: INQUIRE statement not allowed in PURE procedure at (1)\n"
+    },
+    {
+      "name": "ordinary_function",
+      "source": "cases/ordinary_function.f90",
+      "sha256": "18c4220fda0e6def5a0ca4360a6096d7142d6bb2247befbc58461506334fbb7f",
+      "gnu_mode": "compile-only",
+      "expected_stdout": null,
+      "note": "GNU-valid external inquiry in ordinary function excluded by existing interpreter effect policy.",
+      "candidate_mode": "check-reject",
+      "check_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:6:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      },
+      "run_contract": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "{source}:6:25: INQUIRE NAME requires an INTEGER unit variable and a whole local writable scalar CHARACTER target outside ordinary functions, PURE or SIMPLE procedures\n"
+      }
+    },
+    {
+      "name": "scalar_named_inquire",
+      "source": "cases/scalar_named_inquire.f90",
+      "sha256": "f839195cda3702f45f6f0cb3a91e61b5401466c3b0273e330bc875001f463611",
+      "gnu_mode": "execute",
+      "expected_stdout": "3\n",
+      "note": "",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "3\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "original_inquire_statement",
+      "source": "cases/original_inquire_statement.f90",
+      "sha256": "082adfc7953c91be8e23b95f80182f1df795a7ec5c0aa074db5e5f5d255f475d",
+      "gnu_mode": "execute",
+      "expected_stdout": "input sample.dat\n",
+      "note": "Exact original line2992 raw CRLF retained in a new focused module/main harness; not the complete read_comments routine.",
+      "candidate_mode": "success",
+      "check_contract": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run_contract": {
+        "status": 0,
+        "stdout": "input sample.dat\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "version_stdout": "fortfront-interpreter 0.56.0; FortFront 9a5896a + documented local patches\n",
+  "gnu_version_stdout": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "first_observation_sha256": "80c5b974f8539fd0d860195783fe49c8dd1d4af1201b6dc74db06f1be00932fb",
+  "gnu_rejection_provenance": {
+    "source_receipt_sha256": "a95824f26bb38f150724f94f34ce6feb6c1d3b96dc2b183b76492a0dc28a351b",
+    "compiler": "GNU Fortran (Debian14.2.0-19)14.2.0",
+    "normalization": "Only exact generated oracle source path is replaced with {oracle}. All line/column/source excerpts/messages and whitespace remain exact.",
+    "source_bodies_and_rejection_modes_unchanged": true
+  }
+}

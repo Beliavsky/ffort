@@ -1,0 +1,774 @@
+{
+  "utc": "2026-11-15T03:46:23.479847+00:00",
+  "summary": {
+    "total": 25,
+    "failed": 0,
+    "gnu_checked": 20,
+    "gnu_skipped": 5
+  },
+  "records": [
+    {
+      "case": {
+        "name": "integer_lifecycle_bounds",
+        "source": "cases/integer_lifecycle_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F 0 T 12 3 -1 4 -3 -1 31 9 0 F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/integer_lifecycle_bounds.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-wjdj3i4n/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n           0 T          12           3          -1           4          -3          -1\n          31           9\n           0 F\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-wjdj3i4n/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "real_kinds",
+        "source": "cases/real_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5.0 0.75 3 F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/real_kinds.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-i_5h231o/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   5.00000000      0.75000000000000000                3\n F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-i_5h231o/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "stat_double_and_deallocate",
+        "source": "cases/stat_double_and_deallocate.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T 4 7 8 20 0 F T F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/stat_double_and_deallocate.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-yvzj8brr/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T           4           7           8          20\n           0 F\n T F\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-yvzj8brr/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "capacity_stat_atomic",
+        "source": "cases/capacity_stat_atomic.f90",
+        "category": "success",
+        "baseline": "skip",
+        "expected_stdout": "T F 131072 3 3 1 0 2 7 18",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "third_extent_capacity_atomic",
+        "source": "cases/third_extent_capacity_atomic.f90",
+        "category": "success",
+        "baseline": "skip",
+        "expected_stdout": "T F 0 4 -5 24",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "assignment_preserves_and_reallocates",
+        "source": "cases/assignment_preserves_and_reallocates.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-2 4 7 14 1 2 3 3 -1 9 8",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/assignment_preserves_and_reallocates.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-ytct4b23/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          -2           4           7          14\n           1           2           3           3          -1           9           8\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-ytct4b23/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "expression_and_section_assignment",
+        "source": "cases/expression_and_section_assignment.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 1 1 65 41 17 8",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/expression_and_section_assignment.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-ss94_3ch/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           1           1          65\n          41\n          17           8\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-ss94_3ch/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "empty_shapes",
+        "source": "cases/empty_shapes.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T 0 2 2 0 -2 4 1 0 T 0 2 2 0 F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/empty_shapes.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-gh4qzoix/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T           0           2           2           0\n          -2           4           1           0\n T           0           2           2           0\n F F\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-gh4qzoix/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "function_results",
+        "source": "cases/function_results.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 3 1 9.0 T 0 2 1 0",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/function_results.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-u93oc4fw/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           3           1   9.0000000000000000     \n T           0           2           1           0\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-u93oc4fw/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "module_lifetime",
+        "source": "cases/module_lifetime.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F T 7 20 F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/module_lifetime.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-jy1rugfb/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n T           7          20\n F\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-jy1rugfb/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "descriptor_in_out_inout",
+        "source": "cases/descriptor_in_out_inout.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T -1 3 7 4 8 F T 2 -3 8 6 30 T -4 6 0 2 18",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/descriptor_in_out_inout.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-acd147et/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T          -1           3           7           4           8\n F\n T           2          -3           8           6          30\n T          -4           6           0           2          18\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-acd147et/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "optional_descriptors",
+        "source": "cases/optional_descriptors.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F T F T T 6 24",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/optional_descriptors.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-sc9df_mi/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n T\n F\n T\n T\n           6          24\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-sc9df_mi/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "out_deallocates",
+        "source": "cases/out_deallocates.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/out_deallocates.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-rayb_yf_/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n F\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-rayb_yf_/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "character_fixed",
+        "source": "cases/character_fixed.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 4 7 abc abc abc z 3 2 -2 hel hel",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/character_fixed.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-z636utnn/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           4           7\n abc abc abc z  \n           3           2          -2\n hel hel\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-z636utnn/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "character_deferred",
+        "source": "cases/character_deferred.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 3 5 9 4 4 9 4 5 -3 2 hello hello",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/character_deferred.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-41tb9chh/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           3           5           9           4\n           4           9           4\n           5          -3           2\n hello hello\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-41tb9chh/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "character_function_result",
+        "source": "cases/character_function_result.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 2 1 test test",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/character_function_result.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-puiw1h44/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           2           1\n test test\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-puiw1h44/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "character_optional_out",
+        "source": "cases/character_optional_out.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F T F T 2 2 -1 T F",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/character_optional_out.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-90ee8j73/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n T\n F\n T           2           2          -1\n T\n F\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-90ee8j73/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "character_empty",
+        "source": "cases/character_empty.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T 3 0 2 3 0 T 3 0 2 3 0",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/character_empty.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-d1lnw_pr/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T           3           0           2           3           0\n T           3           0           2           3           0\n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-d1lnw_pr/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "runtime_bounds_third",
+        "source": "cases/runtime_bounds_third.f90",
+        "category": "runtime",
+        "baseline": "runtime",
+        "expected_stdout": "",
+        "diagnostic": "bound"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/runtime_bounds_third.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-mxhlm62e/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 2,
+        "out": "",
+        "err": "At line 6 of file /workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/runtime_bounds_third.f90\nFortran runtime error: Index '1' of dimension 3 of array 'a' above upper bound of 0\n\nError termination. Backtrace:\n#0  0x7f8732ca12ba in ???\n#1  0x7f8732ca1db9 in ???\n#2  0x55b0b9d96498 in MAIN__\n#3  0x55b0b9d9660b in main\n",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-mxhlm62e/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "reject_rank_four",
+        "source": "cases/reject_rank_four.f90",
+        "category": "invalid",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "Only rank-one, rank-two and rank-three ALLOCATABLE arrays are supported"
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "reject_logical_allocatable",
+        "source": "cases/reject_logical_allocatable.f90",
+        "category": "invalid",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "ALLOCATABLE supports numeric and CHARACTER arrays only"
+      },
+      "errors": [],
+      "gnu_skipped": true
+    },
+    {
+      "case": {
+        "name": "reject_input_allocate",
+        "source": "cases/reject_input_allocate.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Allocation requires a writable ALLOCATABLE array"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/reject_input_allocate.f90:7:9:\n\n    7 | allocate(x(1,1,1))\n      |         1\nError: Dummy argument \u2018x\u2019 with INTENT(IN) in variable definition context (ALLOCATE object) at (1)\n",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/reject_input_allocate.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-07dewy32/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "reject_fixed_actual",
+        "source": "cases/reject_fixed_actual.f90",
+        "category": "invalid",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "ALLOCATABLE dummy requires an ALLOCATABLE actual"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/reject_fixed_actual.f90:3:9:\n\n    3 | call bad(a)\n      |         1\nError: Actual argument for \u2018x\u2019 must be ALLOCATABLE at (1)\n",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/reject_fixed_actual.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-0tnx3rhu/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "synthetic_tensor_augmentation",
+        "source": "cases/synthetic_tensor_augmentation.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "52.0 9.0 2.0 52.0 2.0 9.0 52.0 9.0 2.0 52.0 2.0 9.0 52.0 9.0 2.0 52.0 2.0 9.0 ",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/rank-three-allocatable-work/fortfront-interpreter-0.28.0/tests/rank_three_allocatables/cases/synthetic_tensor_augmentation.f90",
+          "-o",
+          "/tmp/rank-three-allocatable-oracle-t5zdc4yg/reference"
+        ]
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   52.000000000000000        9.0000000000000000        2.0000000000000000     \n   52.000000000000000        2.0000000000000000        9.0000000000000000     \n   52.000000000000000        9.0000000000000000        2.0000000000000000     \n   52.000000000000000        2.0000000000000000        9.0000000000000000     \n   52.000000000000000        9.0000000000000000        2.0000000000000000     \n   52.000000000000000        2.0000000000000000        9.0000000000000000     \n",
+        "err": "",
+        "argv": [
+          "/tmp/rank-three-allocatable-oracle-t5zdc4yg/reference"
+        ]
+      }
+    },
+    {
+      "case": {
+        "name": "character_capacity_stat_atomic",
+        "source": "cases/character_capacity_stat_atomic.f90",
+        "category": "success",
+        "baseline": "skip",
+        "expected_stdout": "T F 200 65536 7 14 0 T 100 65536",
+        "diagnostic": ""
+      },
+      "errors": [],
+      "gnu_skipped": true
+    }
+  ],
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python_version": "3.12.14",
+  "manifest_sha256": "55eb0f949f0d50cd8e5a34090c605579c1695fdb89f97fc8d20050d5991ff7a9",
+  "source_sha256": {
+    "cases/integer_lifecycle_bounds.f90": "6c007121aff027e7f44ffeac7e775d7d8374b17f328f6e663ec583979acdf61f",
+    "cases/real_kinds.f90": "1eda184eff02e1cc98520e1c0a35bdb94ed8768dfd303efc92887f38edd71bac",
+    "cases/stat_double_and_deallocate.f90": "f21f50f01b60c449eabd9f2d211a08124b10a233b93687d51b66a1a7815e2aa9",
+    "cases/capacity_stat_atomic.f90": "e9a0aebdef0e9f4fb693d0b83e9bed83f353c73f8043d3f73be87818c22b75e5",
+    "cases/third_extent_capacity_atomic.f90": "ba110693328b48579cd55b774bdcf1e0f73743cc6b41841c8cce965f27d9ce9c",
+    "cases/assignment_preserves_and_reallocates.f90": "1f836241a686915ceda447e949a44130557420fb13f37457053cd1d1a1e854bf",
+    "cases/expression_and_section_assignment.f90": "5dcee98927bea91b45d479a250781ff1fd6268d5eac2b6d316d54e409b8bfea1",
+    "cases/empty_shapes.f90": "767449ba869498beb59521220acd539a7a32c498a89ca9433ec70982ee1c3c90",
+    "cases/function_results.f90": "a0ac05383a8ab761e4e4f20dd8be212333e4989d6bb4c89d7737eaa0db8dacb3",
+    "cases/module_lifetime.f90": "35f17874900c3baab6b2ba883ff282862f966965e8ecd028653ba86726eace8a",
+    "cases/descriptor_in_out_inout.f90": "170b939f7845b54c051bff5974503d786c2e587ef6281261a41a90576721ab53",
+    "cases/optional_descriptors.f90": "90fa4e8f458933b36ab848caa9daf84c75524562d9270486acabda09321a588d",
+    "cases/out_deallocates.f90": "09d6bba4cd02ec9f32706bd6196f0b7d555fdb71831f232ec6814ba6555b072b",
+    "cases/character_fixed.f90": "7401b843e2304e2e71aabd3c92ded7b40403c2b090db635a01b20828464c918a",
+    "cases/character_deferred.f90": "677be57492be96b114fd272d8d93777aeb63a0ceead84e903dd3ff5984df183a",
+    "cases/character_function_result.f90": "e1eee2242cb82404b76c6a6a738b5fe9fabcaf96229bbd589fc7dabc16f89ed7",
+    "cases/character_optional_out.f90": "7d9f9fe31c99e75f43684e649773c277e3f42cdba41dd9abe4bfe03b724cdd36",
+    "cases/character_empty.f90": "0e2edb6abd57a83df83ab43d3b35166cab5d237f1c83292dff4c2a6868057a06",
+    "cases/runtime_bounds_third.f90": "765ce47f70af462d54356046575831612efc63fb68ff731fddbd20aff2cd9820",
+    "cases/reject_rank_four.f90": "7b693e5163a28c1c1a97e4414d6c0616273dc3869773241b2d67df46564961d2",
+    "cases/reject_logical_allocatable.f90": "67412ba833943e4a76e823bfd5a4b7f8bcbedbb6066ebdfb74d8449ab087764a",
+    "cases/reject_input_allocate.f90": "dc1c333451b7488e4893bfa5a6611778922f2504c58f5ca4b43cfcb87b875583",
+    "cases/reject_fixed_actual.f90": "e13a5486d60f3e2b74e66e98b578277e79ae723c2aeed60b25d2906fe191d007",
+    "cases/synthetic_tensor_augmentation.f90": "40cd7f7254cdc7b6fb88679639a05be5c92e14a9afc1f71943c6f9f7d57af2fc",
+    "cases/character_capacity_stat_atomic.f90": "63d45a26e9021edbfc2d297b0571bc7c5f27445e56df7673846606d211ab3cdc"
+  },
+  "gfortran_version": {
+    "code": 0,
+    "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "err": "",
+    "argv": [
+      "gfortran",
+      "--version"
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "cases": [
+    {
+      "name": "cube_search_where",
+      "source": "cube_search_where.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 1 1 1 11 12 11 11"
+    },
+    {
+      "name": "recursive_where_search",
+      "source": "recursive_where_search.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "16"
+    },
+    {
+      "name": "optional_cube_back",
+      "source": "optional_cube_back.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 1 1 1 3 3 3 3"
+    },
+    {
+      "name": "where_cube_boundary",
+      "source": "where_cube_boundary.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "WHERE mask must be a LOGICAL array"
+    },
+    {
+      "name": "where_third_index_impure",
+      "source": "where_third_index_impure.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "WHERE expressions may reference only PURE user functions"
+    },
+    {
+      "name": "where_third_axis_reverse",
+      "source": "where_third_axis_reverse.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 -1 1 -1 2 20 2 20 3 30 3 30"
+    },
+    {
+      "name": "empty_optional_cube",
+      "source": "empty_optional_cube.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 2 2"
+    }
+  ]
+}

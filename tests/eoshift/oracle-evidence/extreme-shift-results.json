@@ -1,0 +1,252 @@
+[
+  {
+    "name": "min64",
+    "source_sha256": "0d9e6e2cf6318336729ed10c83c5001de0408ed87e78711395ceb9e4c41e615d",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=f2018",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/min64.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/min64_O0"
+    ],
+    "compile": {
+      "code": 0,
+      "out": "",
+      "err": "/workspace/scratch/c5319e9549df/eoshift-work/probes/min64.f90:5:2:\n\n    5 | s=-huge(0_8)-1_8;a=[1,2,3]\n      |  1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n"
+    },
+    "run": {
+      "code": -11,
+      "out": "",
+      "err": "\nProgram received signal SIGSEGV: Segmentation fault - invalid memory reference.\n\nBacktrace for this error:\n#0  0x7f6e0c77b2ba in ???\n#1  0x7f6e0c77a375 in ???\n#2  0x7f6e0c4b3d6f in ???\n#3  0x7f6e0c5ef838 in ???\n#4  0x7f6e0ca0206d in ???\n#5  0x562cd5192355 in MAIN__\n"
+    },
+    "expected": "-9 -9 -9 \n"
+  },
+  {
+    "name": "min64",
+    "source_sha256": "0d9e6e2cf6318336729ed10c83c5001de0408ed87e78711395ceb9e4c41e615d",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=f2018",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O2",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/min64.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/min64_O2"
+    ],
+    "compile": {
+      "code": 0,
+      "out": "",
+      "err": "/workspace/scratch/c5319e9549df/eoshift-work/probes/min64.f90:5:2:\n\n    5 | s=-huge(0_8)-1_8;a=[1,2,3]\n      |  1\nWarning: Integer outside symmetric range implied by Standard Fortran at (1)\n"
+    },
+    "run": {
+      "code": -11,
+      "out": "",
+      "err": "\nProgram received signal SIGSEGV: Segmentation fault - invalid memory reference.\n\nBacktrace for this error:\n#0  0x7faef154e2ba in ???\n#1  0x7faef154d375 in ???\n#2  0x7faef1286d6f in ???\n#3  0x7faef13c2838 in ???\n#4  0x7faef17d506d in ???\n#5  0x55d03373b314 in MAIN__\n"
+    },
+    "expected": "-9 -9 -9 \n"
+  },
+  {
+    "name": "minus_huge64",
+    "source_sha256": "0e07ec4fb17215fba69e88c50b1118f000662f60174ec6e10028809af6940efd",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=f2018",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/minus_huge64.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/minus_huge64_O0"
+    ],
+    "compile": {
+      "code": 0,
+      "out": "",
+      "err": ""
+    },
+    "run": {
+      "code": 0,
+      "out": "-9 -9 -9\n",
+      "err": ""
+    },
+    "expected": "-9 -9 -9 \n"
+  },
+  {
+    "name": "minus_huge64",
+    "source_sha256": "0e07ec4fb17215fba69e88c50b1118f000662f60174ec6e10028809af6940efd",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=f2018",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O2",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/minus_huge64.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/minus_huge64_O2"
+    ],
+    "compile": {
+      "code": 0,
+      "out": "",
+      "err": ""
+    },
+    "run": {
+      "code": 0,
+      "out": "-9 -9 -9\n",
+      "err": ""
+    },
+    "expected": "-9 -9 -9 \n"
+  },
+  {
+    "name": "huge64",
+    "source_sha256": "69a7405cc846d99570ca35e606b1684f5e9eeabc88048d8c2833701058c6fef5",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=f2018",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/huge64.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/huge64_O0"
+    ],
+    "compile": {
+      "code": 0,
+      "out": "",
+      "err": ""
+    },
+    "run": {
+      "code": 0,
+      "out": "-9 -9 -9\n",
+      "err": ""
+    },
+    "expected": "-9 -9 -9 \n"
+  },
+  {
+    "name": "huge64",
+    "source_sha256": "69a7405cc846d99570ca35e606b1684f5e9eeabc88048d8c2833701058c6fef5",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=f2018",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O2",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/huge64.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/huge64_O2"
+    ],
+    "compile": {
+      "code": 0,
+      "out": "",
+      "err": ""
+    },
+    "run": {
+      "code": 0,
+      "out": "-9 -9 -9\n",
+      "err": ""
+    },
+    "expected": "-9 -9 -9 \n"
+  },
+  {
+    "name": "above_i32",
+    "source_sha256": "8de424f8357d65dd258809521de39198075ad7cde88286bd57ad416b7ec7b17f",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=f2018",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/above_i32.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/above_i32_O0"
+    ],
+    "compile": {
+      "code": 0,
+      "out": "",
+      "err": ""
+    },
+    "run": {
+      "code": 0,
+      "out": "-9 -9 -9\n",
+      "err": ""
+    },
+    "expected": "-9 -9 -9 \n"
+  },
+  {
+    "name": "above_i32",
+    "source_sha256": "8de424f8357d65dd258809521de39198075ad7cde88286bd57ad416b7ec7b17f",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=f2018",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O2",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/above_i32.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/above_i32_O2"
+    ],
+    "compile": {
+      "code": 0,
+      "out": "",
+      "err": ""
+    },
+    "run": {
+      "code": 0,
+      "out": "-9 -9 -9\n",
+      "err": ""
+    },
+    "expected": "-9 -9 -9 \n"
+  },
+  {
+    "name": "below_i32",
+    "source_sha256": "3488b051f7cb5da552f451e82b80b6184c03a9bcdc75111c42b744633f50927e",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=f2018",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O0",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/below_i32.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/below_i32_O0"
+    ],
+    "compile": {
+      "code": 0,
+      "out": "",
+      "err": ""
+    },
+    "run": {
+      "code": 0,
+      "out": "-9 -9 -9\n",
+      "err": ""
+    },
+    "expected": "-9 -9 -9 \n"
+  },
+  {
+    "name": "below_i32",
+    "source_sha256": "3488b051f7cb5da552f451e82b80b6184c03a9bcdc75111c42b744633f50927e",
+    "command": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "-std=f2018",
+      "-pedantic-errors",
+      "-fcheck=all,no-array-temps",
+      "-O2",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/below_i32.f90",
+      "-o",
+      "/workspace/scratch/c5319e9549df/eoshift-work/probes/below_i32_O2"
+    ],
+    "compile": {
+      "code": 0,
+      "out": "",
+      "err": ""
+    },
+    "run": {
+      "code": 0,
+      "out": "-9 -9 -9\n",
+      "err": ""
+    },
+    "expected": "-9 -9 -9 \n"
+  }
+]

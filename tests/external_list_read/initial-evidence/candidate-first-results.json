@@ -1,0 +1,3054 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/external-list-read-work/candidate-first",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.46.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-15T20:50:24.565837+00:00",
+  "summary": {
+    "total": 86,
+    "failed": 2,
+    "candidate_checked": 86,
+    "gnu_checked": 86,
+    "gnu_skipped": 0,
+    "gnu_executed": 69,
+    "gnu_runtime_rejections": 0,
+    "gnu_successful_executions": 69,
+    "gnu_compile_only": 17,
+    "gnu_compile_rejections": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "integer_kinds",
+        "source": "cases/integer_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-2147483648 0 2147483647 -9223372036854775808 9007199254740993 9223372036854775807\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "-2147483648,0,2147483647, -9223372036854775808,9007199254740993,9223372036854775807\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " -2147483648           0  2147483647 -9223372036854775808     9007199254740993  9223372036854775807\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -2147483648 0 2147483647 -9223372036854775808 9007199254740993 9223372036854775807\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real_kinds",
+        "source": "cases/real_kinds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1.25 -25 3 1.25 -.5 6.25\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1.25,-2.5E+1,3D0, .125d+1,-.5,6.25\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "   1.25000000      -25.0000000       3.00000000       1.2500000000000000      -0.50000000000000000        6.2500000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1.25000000 -25.0000000 3.00000000 1.2500000000000000 -0.50000000000000000 6.2500000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real_signed_zero",
+        "source": "cases/real_signed_zero.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "-0 -0\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "-0.0,-0d0\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "  -0.00000000      -0.0000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " -0.00000000 -0.0000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real_tiny_nonzero",
+        "source": "cases/real_tiny_nonzero.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1d-300\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "numeric_rank_three",
+        "source": "cases/numeric_rank_three.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 3 4 1.5 2.5 3.5 4.5\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1 2\n3 4 1.5\n2.5 3.5 4.5\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3           4   1.5000000000000000        2.5000000000000000        3.5000000000000000        4.5000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 4 1.5000000000000000 2.5000000000000000 3.5000000000000000 4.5000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "allocated_rank_two",
+        "source": "cases/allocated_rank_two.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 3 4 1.5 1.5 1.5 1.5\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1 2 3 4\n4*1.5\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3           4   1.5000000000000000        1.5000000000000000        1.5000000000000000        1.5000000000000000     \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 4 1.5000000000000000 1.5000000000000000 1.5000000000000000 1.5000000000000000\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_padding_truncation",
+        "source": "cases/character_padding_truncation.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "[a   ]\n[abcd]\n[    ]\n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "a abcdef ''\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "[a   ]\n[abcd]\n[    ]\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "[a   ]\n[abcd]\n[    ]\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_delimiters_doubling",
+        "source": "cases/character_delimiters_doubling.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "a,b / * \nsay \"x\" \nit's    \nplain   \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "'a,b / *' \"say \"\"x\"\"\" 'it''s' plain\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "a,b / * \nsay \"x\" \nit's    \nplain   \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "a,b / * \nsay \"x\" \nit's    \nplain   \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_rank_three",
+        "source": "cases/character_rank_three.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "a \nbb\ncc\ndd\n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "a bb ccc dd\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "a \nbb\ncc\ndd\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "a \nbb\ncc\ndd\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "allocated_character_lengths",
+        "source": "cases/allocated_character_lengths.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "x  \ny z\nabc\n   \nlo\n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "x 'y z' abcdef '' long\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "x  \ny z\nabc\n   \nlo\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "x  \ny z\nabc\n   \nlo\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mixed_targets",
+        "source": "cases/mixed_targets.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "a b \nxyz \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "42\n1.5 'a b',xyz\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "a b \nxyz \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "a b \nxyz \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "multirecord_discard_tail",
+        "source": "cases/multirecord_discard_tail.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 3 4\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1\n\n2\n3 99 98\n4\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "record_end_leading_comma",
+        "source": "cases/record_end_leading_comma.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 2 3 4\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1\n,2,3\n4\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           2           3           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 2 3 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "record_end_double_comma_null",
+        "source": "cases/record_end_double_comma_null.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 9 2 3 4\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1,\n,2,3\n4\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           9           2           3           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 9 2 3 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "quoted_continuation",
+        "source": "cases/quoted_continuation.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "abcd    \nef      \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "'ab\ncd', 'e\nf'\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "abcd    \nef      \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "abcd    \nef      \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "quoted_continuation_spaces",
+        "source": "cases/quoted_continuation_spaces.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ab    cd  \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "'ab  \n  cd'\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ab    cd  \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ab    cd  \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "quoted_continuation_empty_crlf",
+        "source": "cases/quoted_continuation_empty_crlf.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "abcd    \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "'ab\r\n\r\ncd'\r\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "abcd    \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "abcd    \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nulls_slash_preserve",
+        "source": "cases/nulls_slash_preserve.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 9 3 4 5\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": ",9,2*,/ ignored\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           9           3           4           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 9 3 4 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_nulls_slash",
+        "source": "cases/character_nulls_slash.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "one\nx  \ntri\nfor\n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": ",'x',/ tail\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "one\nx  \ntri\nfor\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "one\nx  \ntri\nfor\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "repeat_cross_items",
+        "source": "cases/repeat_cross_items.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7 7 7 7\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "4*7\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7           7           7           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7 7 7 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "repeat_character_lengths",
+        "source": "cases/repeat_character_lengths.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ab\nabc  \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "2*'abc'\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ab\nabc  \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ab\nabc  \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "repeat_null_cross_types",
+        "source": "cases/repeat_null_cross_types.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "old\n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "3*\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "old\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "old\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "repeat_reset",
+        "source": "cases/repeat_reset.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7 8\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "5*7\n8\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zero_sized_advance",
+        "source": "cases/zero_sized_advance.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "22\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11\n22\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          22\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 22\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_list_advance",
+        "source": "cases/empty_list_advance.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "22\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11\n22\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          22\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 22\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "zero_length_character",
+        "source": "cases/zero_length_character.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "7\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "'long' xyz 7\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 7\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "eof_and_past_endfile",
+        "source": "cases/eof_and_past_endfile.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": ""
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_target_eof",
+        "source": "cases/empty_target_eof.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": ""
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "short_multirecord_eof",
+        "source": "cases/short_multirecord_eof.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1\n2\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "bad_integer",
+        "source": "cases/bad_integer.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "nope\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "integer_overflow",
+        "source": "cases/integer_overflow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "2147483648\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "bad_real",
+        "source": "cases/bad_real.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1.2xyz\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "real_overflow",
+        "source": "cases/real_overflow.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "1\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1e9999\n"
+        },
+        "reason": "GNU accepts Infinity; FortFront deliberately applies its existing finite-value input policy."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "keyword_iostat_kind8",
+        "source": "cases/keyword_iostat_kind8.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "4\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_parens",
+        "source": "cases/backspace_parens.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 11\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11 99\n22\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_bare",
+        "source": "cases/backspace_bare.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 11\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11 99\n22\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_keywords",
+        "source": "cases/backspace_keywords.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 11\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11 99\n22\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_at_start_connected",
+        "source": "cases/backspace_at_start_connected.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_after_eof",
+        "source": "cases/backspace_after_eof.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_after_spanning",
+        "source": "cases/backspace_after_spanning.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 22 22\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11\n22\n33\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          22          22\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 22 22\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_unterminated_final",
+        "source": "cases/backspace_unterminated_final.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 11\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_crlf_empty_record",
+        "source": "cases/backspace_crlf_empty_record.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "22\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11\r\n\r\n22\r\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          22\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 22\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_read_mode_mixed",
+        "source": "cases/backspace_read_mode_mixed.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12 34 \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "12 34\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "12 34 \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "12 34 \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "independent_units",
+        "source": "cases/independent_units.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 44 11\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11\n22\n",
+          "28": "44\n55\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          44          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 44 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "quoted_separate_records",
+        "source": "cases/quoted_separate_records.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "a  \nb  \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "'a'\n'b'\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "a  \nb  \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "a  \nb  \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "error_then_backspace",
+        "source": "cases/error_then_backspace.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "bad data\n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "bad data\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "bad data\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "bad data\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "repeat_cross_type_error",
+        "source": "cases/repeat_cross_type_error.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "2*12\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "repeat_cross_kind_error",
+        "source": "cases/repeat_cross_kind_error.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "2*12\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "repeat_overflow",
+        "source": "cases/repeat_overflow.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "9223372036854775808*1\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "trailing_quote_junk",
+        "source": "cases/trailing_quote_junk.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "'a'x\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "blank_only_records",
+        "source": "cases/blank_only_records.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 22\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": " \n\t\n11\n22\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          22\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 22\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nondelimited_character_end_record",
+        "source": "cases/nondelimited_character_end_record.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ab \ncd \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "ab\ncd\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ab \ncd \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ab \ncd \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "slash_does_not_consume_next_record",
+        "source": "cases/slash_does_not_consume_next_record.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "9 11\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "/ ignored\n11\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           9          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 9 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_empty_file",
+        "source": "cases/backspace_empty_file.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": ""
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_kind8_unit",
+        "source": "cases/backspace_kind8_unit.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "nested_call_cursor",
+        "source": "cases/nested_call_cursor.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 22 22\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11\n22\n33\n"
+        }
+      },
+      "errors": [
+        "check expected exit 0, got 1",
+        "check: unexpected success diagnostic",
+        "run expected exit 0, got 1",
+        "run: unexpected success diagnostic",
+        "stdout mismatch/leak"
+      ],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          22          22\n",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/nested_call_cursor.f90:12:0: FortFront adapter: missing statement\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/nested_call_cursor.f90:12:0: FortFront adapter: missing statement\n"
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_scalar_identifier",
+        "source": "cases/backspace_scalar_identifier.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_array_identifier",
+        "source": "cases/backspace_array_identifier.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 27 28\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "11\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          27          28\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 27 28\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "quoted_repeat_multirecord",
+        "source": "cases/quoted_repeat_multirecord.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "ab  \nab  \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "2*'a\nb',3\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "ab  \nab  \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "ab  \nab  \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "null_repeat_record_comma",
+        "source": "cases/null_repeat_record_comma.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 9 9 3 4\n",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1 2*\n,3,4\n"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           9           9           3           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 9 9 3 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_error_invalidates_prefix",
+        "source": "cases/character_error_invalidates_prefix.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "'new' bad\n"
+        },
+        "expected_diagnostic": {
+          "line": 9,
+          "column": 9,
+          "message": "read of uninitialized variable word"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/character_error_invalidates_prefix.f90:9:9: read of uninitialized variable word\n"
+      }
+    },
+    {
+      "case": {
+        "name": "original_next_record",
+        "source": "cases/original_next_record.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "a   \nbb  \nccc \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "3\na bb ccc\n"
+        },
+        "original_body": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "a   \nbb  \nccc \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "a   \nbb  \nccc \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_same_record",
+        "source": "cases/original_same_record.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "a   \nbb  \nccc \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "3 a bb ccc\n"
+        },
+        "original_body": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "a   \nbb  \nccc \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "a   \nbb  \nccc \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_same_record_quoted",
+        "source": "cases/original_same_record_quoted.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "a b \nc,d \ne/f \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "3 'a b' 'c,d' 'e/f'\n"
+        },
+        "original_body": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "a b \nc,d \ne/f \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "a b \nc,d \ne/f \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_multirecord",
+        "source": "cases/original_multirecord.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "a   \nbb  \nccc \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "3\na\nbb\nccc\n"
+        },
+        "original_body": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "a   \nbb  \nccc \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "a   \nbb  \nccc \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_zero_next",
+        "source": "cases/original_zero_next.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "0\nskipped\n"
+        },
+        "original_body": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_negative_next",
+        "source": "cases/original_negative_next.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "-2\nskipped\n"
+        },
+        "original_body": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_zero_same",
+        "source": "cases/original_zero_same.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "0 ignored\n"
+        },
+        "original_body": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_print_no_label",
+        "source": "cases/original_print_no_label.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "                               : a bb\na   \nbb  \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "2\na bb\n"
+        },
+        "original_body": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                               : a bb\na   \nbb  \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "                               : a bb\na   \nbb  \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_explicit_false",
+        "source": "cases/original_explicit_false.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "a   \nbb  \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "2\na bb\n"
+        },
+        "original_body": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "a   \nbb  \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "a   \nbb  \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_print_label",
+        "source": "cases/original_print_label.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "                          items: a bb\na   \nbb  \n",
+        "compare_mode": "bytes",
+        "inputs": {
+          "27": "2\na bb\n"
+        },
+        "original_body": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                          items: a bb\na   \nbb  \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "                          items: a bb\na   \nbb  \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "eof_invalidates_prefix",
+        "source": "cases/eof_invalidates_prefix.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1\n"
+        },
+        "expected_diagnostic": {
+          "line": 9,
+          "column": 9,
+          "message": "read of uninitialized variable a"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/eof_invalidates_prefix.f90:9:9: read of uninitialized variable a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "error_invalidates_prefix",
+        "source": "cases/error_invalidates_prefix.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1 bad\n"
+        },
+        "expected_diagnostic": {
+          "line": 9,
+          "column": 9,
+          "message": "read of uninitialized variable a"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/error_invalidates_prefix.f90:9:9: read of uninitialized variable a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "null_preserves_undefined",
+        "source": "cases/null_preserves_undefined.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": ",\n"
+        },
+        "expected_diagnostic": {
+          "line": 7,
+          "column": 9,
+          "message": "read of uninitialized variable a"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/null_preserves_undefined.f90:7:9: read of uninitialized variable a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "slash_preserves_undefined",
+        "source": "cases/slash_preserves_undefined.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "/\n"
+        },
+        "expected_diagnostic": {
+          "line": 7,
+          "column": 9,
+          "message": "read of uninitialized variable a"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/slash_preserves_undefined.f90:7:9: read of uninitialized variable a\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unbound_read",
+        "source": "cases/unbound_read.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "expected_diagnostic": {
+          "line": 6,
+          "column": 1,
+          "message": "external input unit is not explicitly bound"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/unbound_read.f90:6:1: external input unit is not explicitly bound\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unbound_backspace",
+        "source": "cases/unbound_backspace.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "expected_diagnostic": {
+          "line": 6,
+          "column": 1,
+          "message": "external input unit is not explicitly bound"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/unbound_backspace.f90:6:1: external input unit is not explicitly bound\n"
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_negative_unit",
+        "source": "cases/backspace_negative_unit.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "expected_diagnostic": {
+          "line": 7,
+          "column": 1,
+          "message": "external input requires a positive bound unit number"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/backspace_negative_unit.f90:7:1: external input requires a positive bound unit number\n"
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_undefined_unit",
+        "source": "cases/backspace_undefined_unit.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "expected_diagnostic": {
+          "line": 6,
+          "column": 11,
+          "message": "read of uninitialized variable v"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/backspace_undefined_unit.f90:6:11: read of uninitialized variable v\n"
+      }
+    },
+    {
+      "case": {
+        "name": "read_logical_unsupported",
+        "source": "cases/read_logical_unsupported.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "T\n"
+        },
+        "expected_diagnostic": {
+          "line": 6,
+          "column": 11,
+          "message": "External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/read_logical_unsupported.f90:6:11: External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/read_logical_unsupported.f90:6:11: External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures\n"
+      }
+    },
+    {
+      "case": {
+        "name": "read_complex_unsupported",
+        "source": "cases/read_complex_unsupported.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "(1,2)\n"
+        },
+        "expected_diagnostic": {
+          "line": 6,
+          "column": 11,
+          "message": "External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures"
+        }
+      },
+      "errors": [
+        "check: source diagnostic mismatch",
+        "run: source diagnostic mismatch"
+      ],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/read_complex_unsupported.f90:4:1: Undeclared variable or unsupported statement: complex\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/read_complex_unsupported.f90:4:1: Undeclared variable or unsupported statement: complex\n"
+      }
+    },
+    {
+      "case": {
+        "name": "read_element_unsupported",
+        "source": "cases/read_element_unsupported.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1\n"
+        },
+        "expected_diagnostic": {
+          "line": 6,
+          "column": 14,
+          "message": "External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/read_element_unsupported.f90:6:14: External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/read_element_unsupported.f90:6:14: External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures\n"
+      }
+    },
+    {
+      "case": {
+        "name": "read_implied_do_unsupported",
+        "source": "cases/read_implied_do_unsupported.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1 2\n"
+        },
+        "expected_diagnostic": {
+          "line": 6,
+          "column": 15,
+          "message": "Expected ), found ,"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/read_implied_do_unsupported.f90:6:15: Expected ), found ,\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/read_implied_do_unsupported.f90:6:15: Expected ), found ,\n"
+      }
+    },
+    {
+      "case": {
+        "name": "read_alias_targets",
+        "source": "cases/read_alias_targets.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "inputs": {
+          "27": "1 2\n"
+        },
+        "expected_diagnostic": {
+          "line": 6,
+          "column": 13,
+          "message": "External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/read_alias_targets.f90:6:13: External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/read_alias_targets.f90:6:13: External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures\n"
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_literal_unit",
+        "source": "cases/backspace_literal_unit.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "expected_diagnostic": {
+          "line": 6,
+          "column": 14,
+          "message": "BACKSPACE requires an INTEGER unit variable and optional distinct local INTEGER IOSTAT outside PURE/SIMPLE procedures"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/backspace_literal_unit.f90:6:14: BACKSPACE requires an INTEGER unit variable and optional distinct local INTEGER IOSTAT outside PURE/SIMPLE procedures\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/backspace_literal_unit.f90:6:14: BACKSPACE requires an INTEGER unit variable and optional distinct local INTEGER IOSTAT outside PURE/SIMPLE procedures\n"
+      }
+    },
+    {
+      "case": {
+        "name": "backspace_extra_control",
+        "source": "cases/backspace_extra_control.f90",
+        "category": "invalid",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "compare_mode": "tokens",
+        "expected_diagnostic": {
+          "line": 6,
+          "column": 21,
+          "message": "Expected ), found ,"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/backspace_extra_control.f90:6:21: Expected ), found ,\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/external-list-read-tests-work/cases/backspace_extra_control.f90:6:21: Expected ), found ,\n"
+      }
+    }
+  ],
+  "manifest_sha256": "9677eb761cdd0cd0d21eede870a0ee666e3860d4b82e0b1bf9e3829763f1e0a2",
+  "diagnostic_ledger_sha256": "1edf0c5a4332156c4b882c09d3d237d95af6b3914f903a5e2a877fe31451c014",
+  "source_sha256": {
+    "cases/integer_kinds.f90": "941e421b2286bde682ba0a0811e72db3e76d62c0c94f0c00dbae0091e961e3cc",
+    "cases/real_kinds.f90": "161c8214b3822c4a7e8b2a63dca6b8ffd9e88c7bfdbfac159c2db861c3fcdfbc",
+    "cases/real_signed_zero.f90": "5794302d469ca6cfe3624d9b18c68d8117630f54c0adc0f6b1f1b8a490a45016",
+    "cases/real_tiny_nonzero.f90": "67ff0659ff51c63f19fb1281020e5b0998c1a413dc5486b34be5ca07f86af096",
+    "cases/numeric_rank_three.f90": "12661a9349dc8d74d08018631c6dd6bf34d30bdde8929f73be6c5818d451824a",
+    "cases/allocated_rank_two.f90": "6aebd942e65abb05599aa55720ccca6b412ee2dd4151d56dd2c195596fe308a0",
+    "cases/character_padding_truncation.f90": "68b341da2fe6cf448258e2027f6115396b7f2c6f52a1bd74f37bb3b71b6d44f4",
+    "cases/character_delimiters_doubling.f90": "6611fce39cd6930b48bd111c3d45bfd1e9e312a11af56a89cc37d8372b0467fb",
+    "cases/character_rank_three.f90": "5a0244a5171f8185b4c48c550fa8aa561b019ca77018bea5da547a39473b0d2f",
+    "cases/allocated_character_lengths.f90": "1bc3f27c0e713d4ce2dfc4e63c3e2cb6b731e7525d9090d5fdc9d73316db2bd7",
+    "cases/mixed_targets.f90": "08464abcd7356539cc8ce30fe3bff0583d81d25ecddfcd89f1b4a74d6939e608",
+    "cases/multirecord_discard_tail.f90": "55d32747c41b87e5d60066509319908c2aad09777fc696cd5227729ffd882c74",
+    "cases/record_end_leading_comma.f90": "55d32747c41b87e5d60066509319908c2aad09777fc696cd5227729ffd882c74",
+    "cases/record_end_double_comma_null.f90": "05d990a285e3dafaac6e23c56753c968ca8c596290008a47e286b80f8ae293a2",
+    "cases/quoted_continuation.f90": "3a0c832500e5ed2c4cdc1b2eb535f4f431cae5aa4fb192fe1abac8dd0ca44ed9",
+    "cases/quoted_continuation_spaces.f90": "0317d363edf19367307ff2d4c0643ff0ec4b3364fe544fa8fa1816097856097a",
+    "cases/quoted_continuation_empty_crlf.f90": "1218f4e8689c24c44eeef9bf80163e3d7a548206b40cb5025db038dbd3562c84",
+    "cases/nulls_slash_preserve.f90": "793accc7483dc27bbe68d01a24c8cf9b11af18ed6b0074305c5c9428bd660717",
+    "cases/character_nulls_slash.f90": "4d90e18b3c32aeb47310f91a497d461e45a7ba40596d6cc1d90478883465498a",
+    "cases/repeat_cross_items.f90": "b0952a6aed1eb038d59c38c002c5ccb38127cde9c84d2cec4c9dffb942cdda5c",
+    "cases/repeat_character_lengths.f90": "12903bccecd58bba6d1ed04f49b31b2853ee49958009552e17467c56b8d25296",
+    "cases/repeat_null_cross_types.f90": "685737915b087a8391a6ce010b08a85fbe6f3588344cd6a1e58695c9624f4a15",
+    "cases/repeat_reset.f90": "57b33ecfe414e6e54462dab83ef7469de53dcb80876ab3aa2c51111afca6385e",
+    "cases/zero_sized_advance.f90": "876eacaaed09dbe421275d619940a1b2feea4e4c032fcb137b044e015a638a06",
+    "cases/empty_list_advance.f90": "02c9beea1cfe190a77a84423ec7cda0e2ca35262d2ce4235a902763e8b8e403f",
+    "cases/zero_length_character.f90": "17accc3836c5fa0c36e9d791b308469e1538c7b3c3028aabee77964977cb4a45",
+    "cases/eof_and_past_endfile.f90": "e43bf97f4071867d294d882eb2119a4a2a25aaa8b6ac088223f24ef867e7e8d1",
+    "cases/empty_target_eof.f90": "23de58c8ddc839d314c8ac10cbff2ea4e83a2f7b04a2a9d48c8ebeddd342cdc2",
+    "cases/short_multirecord_eof.f90": "cb7d6186ba54ffa471c9b2113e80d760f2fbbb446b0eaed40a3688609bd775fb",
+    "cases/bad_integer.f90": "6d21e4f3722edf3697415819b4c6952b003f3005b92d0a1daa3fa9d132351353",
+    "cases/integer_overflow.f90": "6d21e4f3722edf3697415819b4c6952b003f3005b92d0a1daa3fa9d132351353",
+    "cases/bad_real.f90": "8544c26f00701d93624b567c70eaeb923282f330a61ecd337b78cf132aa8c86d",
+    "cases/real_overflow.f90": "8544c26f00701d93624b567c70eaeb923282f330a61ecd337b78cf132aa8c86d",
+    "cases/keyword_iostat_kind8.f90": "c3d9f5b181fe12664acd28badb4271b69b1b02edb8f73ad962378cb51c71cedf",
+    "cases/backspace_parens.f90": "2bf057b079acce53bcef11655dfcff7765ef17718fa4b205d485ab35bf115291",
+    "cases/backspace_bare.f90": "70bc83fdd6482f5bd939091f21f9c19326e6fb992ae446e81d82d786f91664f5",
+    "cases/backspace_keywords.f90": "63f9c89bd92353fd2e3d9e6575d9296a1d15a4f0453e13f6a58a5922351c5e97",
+    "cases/backspace_at_start_connected.f90": "05686cfc8f71b6211147c34fb3e1a6be8f5ba8ea74b4d8f6796fb02589e1e1f9",
+    "cases/backspace_after_eof.f90": "670be3ad5c35563b79ae65a1a44f9f87d3e502ca45f50922ca3143f65d7930a7",
+    "cases/backspace_after_spanning.f90": "efc6f946d5484cf33fb22ab2966c4eb7fbc776e326c42414eaeb283a7b8756c1",
+    "cases/backspace_unterminated_final.f90": "2bf057b079acce53bcef11655dfcff7765ef17718fa4b205d485ab35bf115291",
+    "cases/backspace_crlf_empty_record.f90": "2ed27cd7ef5568a8a87ea2641a8abfcbd920c0596cc94ec2a3e9244580fc9bd3",
+    "cases/backspace_read_mode_mixed.f90": "a36d0d942e8b6852f4dd6ae05bf6b0d813e23ff87d8854db503b4b8e8aed4674",
+    "cases/independent_units.f90": "5e3d1bb2868ffc199f1806fd959ee61cd1b6302836824fd87d642393841a513b",
+    "cases/quoted_separate_records.f90": "3ac98dbdb1d21ed8fda844e529ee910c35e8756d4695b18f4148da3f778af588",
+    "cases/error_then_backspace.f90": "96590ae0b948a93579b2b240af464fbf9ad9cbdbfda78e5eb10b8925d4fd2680",
+    "cases/repeat_cross_type_error.f90": "06ddc5b0de8a3b5f109557cb7cda692c5f968d343798b2635863bc4f7450ed2e",
+    "cases/repeat_cross_kind_error.f90": "6c1d7aaaad10f76014c894a3b568e4dea38e6d70314c7ee5d8f7ac9de26159dc",
+    "cases/repeat_overflow.f90": "ce8b7b9ee5e46b127a0da900db596e9260f40c518ac8d3a7b4cb763db42f07b5",
+    "cases/trailing_quote_junk.f90": "2618c3aa047410b65fd404f2635ec303c25a0db0001edd85efa707c8916e5bed",
+    "cases/blank_only_records.f90": "b0e2e9aea7d7a5bdda720ed85e19e8a81371e9bd8462c418c39d5948857bf380",
+    "cases/nondelimited_character_end_record.f90": "2ab2f9fd86efb104252dc9caeb4d100e8d54b476dc32793ffa781ea008c10a01",
+    "cases/slash_does_not_consume_next_record.f90": "d39bf387b700bf0423441bee79df05d3045900f01f9cf69d3646e2aab0e8a360",
+    "cases/backspace_empty_file.f90": "6cd5a81814f1b3041307549cdb4aa4489520ba1cbdcf294c0cb59341dd773f52",
+    "cases/backspace_kind8_unit.f90": "9590524038c0b40d76f1145ea5c403aa40ff439cef82596e9f57aa66d099e500",
+    "cases/nested_call_cursor.f90": "810e3db655c9d1e3b693b349c6333d2c378504b6d21812b7549ef324c13b6d7d",
+    "cases/backspace_scalar_identifier.f90": "5d438842e2e6b1d30b643d43695dee9d236c21c37904e89aaae3d656bab7f027",
+    "cases/backspace_array_identifier.f90": "12d9987fe38d8063af0f0270fd7a96b4b567a617e6ccb70497e42e558528563a",
+    "cases/quoted_repeat_multirecord.f90": "6a621c7ba14f4e8cf690f80f753b024adb12b36e375a312bb8ab8285775e33d5",
+    "cases/null_repeat_record_comma.f90": "179aa9a6f6e23242015c1c5c038e6b6a739caeca4f811b8030e5f8bbe3778d2c",
+    "cases/character_error_invalidates_prefix.f90": "d81925a3629f6bd24fbb3510f2bfdb685c37645885d87473fd11d5256859a363",
+    "cases/original_next_record.f90": "99ad454e77d21f9c867b2bb14247155113961b10c7dfe07a3776e113d3edb47b",
+    "cases/original_same_record.f90": "5df3321ea347fbcc088fce2b1ec8c940865b27ebeed26c319089c03e14c46d53",
+    "cases/original_same_record_quoted.f90": "5df3321ea347fbcc088fce2b1ec8c940865b27ebeed26c319089c03e14c46d53",
+    "cases/original_multirecord.f90": "99ad454e77d21f9c867b2bb14247155113961b10c7dfe07a3776e113d3edb47b",
+    "cases/original_zero_next.f90": "143e55208c67b0dcd2f4d02afec3e5bb8115909e27431c23baef33d309efc6b3",
+    "cases/original_negative_next.f90": "143e55208c67b0dcd2f4d02afec3e5bb8115909e27431c23baef33d309efc6b3",
+    "cases/original_zero_same.f90": "58844bd8ca094ce24bcfefccdaafc2089ea17c26abf27f09f4027ca8160ec819",
+    "cases/original_print_no_label.f90": "8e9c3f8b15c5fef61eb566075296a1c54f814cf2f509887776c0060e3b04f791",
+    "cases/original_explicit_false.f90": "95aeb9ccd7a11b86f378d3d5b642d924832821c32240fc1470a15f23ab5d62f3",
+    "cases/original_print_label.f90": "8f6b0abc4821730c1637a9e0b123fbb8d87b881ee69150766775fea8d228e438",
+    "cases/eof_invalidates_prefix.f90": "b62a173736a22fe3607ce2adc5845d7995725070ad2364005ac4270b5a33125d",
+    "cases/error_invalidates_prefix.f90": "b62a173736a22fe3607ce2adc5845d7995725070ad2364005ac4270b5a33125d",
+    "cases/null_preserves_undefined.f90": "f3eaa4b6e90ea5a8707b4b44617f13b1c578e6b89311b0f1e1df9ef2183f631b",
+    "cases/slash_preserves_undefined.f90": "f3eaa4b6e90ea5a8707b4b44617f13b1c578e6b89311b0f1e1df9ef2183f631b",
+    "cases/unbound_read.f90": "4cb347e2cc78020a128ecc8d13f94d68dc28fd11d39b7e13cacfc63b54ccfef4",
+    "cases/unbound_backspace.f90": "80f4fe70316cf493e0beeb0c67ba725cb2b4993be28a2ea77e16a0f197e31871",
+    "cases/backspace_negative_unit.f90": "ee92a796fb30a3da57500d898b65b1cfe5bf91b52f3cbd13eb4a63dd5d21a557",
+    "cases/backspace_undefined_unit.f90": "e8a3f7ff522d09ad4f9680f825388f7b73d11016066e99657e2c08635c385bfb",
+    "cases/read_logical_unsupported.f90": "4ce8199829c3913b7308c6d143c68d70cc19798f2426b45773003a91e34c3aaa",
+    "cases/read_complex_unsupported.f90": "4a5f283dc0abbadbaf80b989c9d25a31328972c4fd9515b835b790949d5beca2",
+    "cases/read_element_unsupported.f90": "f2d74375b7c2bd14bf0fbbd428c35ad70981d326bc5033df7f583b8ac79c628d",
+    "cases/read_implied_do_unsupported.f90": "e0327f3b163af11280f935af8ed342d5402debcd4028eac5466702eded6c3925",
+    "cases/read_alias_targets.f90": "64d8f0ba2b5c8acdb74a7937b40676367f615ed39d35a9b5666f7a7a9455ac0e",
+    "cases/backspace_literal_unit.f90": "2a96827e54c1b478f7a751e3933001bdc9a7a3862882be42857314ab3b061edf",
+    "cases/backspace_extra_control.f90": "6c7a23542e02033aa47db8b2006d0d7828e67683c093d54f4aa03262dabe3f03"
+  },
+  "candidate_sha256": "793a9893f05b40e198b31757a5ac2014f16c1c210f274f65c0cfd634d9dbd216"
+}

@@ -1,0 +1,324 @@
+{
+  "status": "PASS focused verification; full aggregate deferred to integration",
+  "baseline_zip_sha256": "8eb13140d7e8e866362066a507d0c37243881b36cd71f42472099c6d6d67a998",
+  "candidate_sha256": "3caef410c10235ff71b94b3a8e1633ecd3427bc603bc85c7c734f198cec09a82",
+  "source": {
+    "src/fi_frontend.f90": {
+      "before": "59c4cbbfcff43077500e8dde10aa4d03a3ad8524351dacb4c2e6575f77125696",
+      "after": "bf41e696ef3f765fe8f2c7cc09997fef942a72b48101068066270d7a561a37b9"
+    },
+    "src/fi_runtime.f90": {
+      "before": "839e37936244f3100244228b95330eb33c87382bedb4b322a2dfb3bd3db5563d",
+      "after": "31b79991a08bf9d3277b0f64dbd55fa809a03d141b55397d7c219548fe296548"
+    },
+    "src/fi_parser.f90": {
+      "before": "a2d84d4bedb7ec8d424c8840f1c850724fb85e8d5b7d2a4d1a98870b9f2942b6",
+      "after": "d830dbc6f45307c282e0d28c77920a4112e5ed3f9423d44272189c77c042b3e5"
+    },
+    "src/fi_ir.f90": {
+      "before": "dd91492fe5117b095153538106a302f101f4718547b6f607d23a8249a912844f",
+      "after": "3f4b0637017658e6d612c1d112b27150781b9ef666031abcafe0bd90e1081878"
+    },
+    "vendor/fortfront/src/utilities/intrinsic_registry.f90": {
+      "before": "fd43ad62708b580ae71af5195794cba6c5fa334fa60ba489d66873194d8c111d",
+      "after": "edc00b9de474c92f8aad2b4ab58630a2946d1a6422897b58fe8d11ae0fab4c4e"
+    },
+    "vendor/fortfront/src/frontend/frontend_compiler_type_queries.f90": {
+      "before": "3a3f576a61b2168dc6d6c355724a8265e95b6ef81d87a8b8217bdaf3cfe41bb9",
+      "after": "69417f060872a306e854c43a3214ad28a9365e0f97f21a40c3ed4c899f307329"
+    }
+  },
+  "source_suite": {
+    "total": 188,
+    "failed": 0,
+    "candidate_checked": 188,
+    "gnu_checked": 188,
+    "gnu_executed": 132,
+    "gnu_known_limitations": 0,
+    "gnu_compile_only": 18,
+    "gnu_matching_source_rejections": 38,
+    "gnu_compile_rejections": 38
+  },
+  "native_assertions": 9709,
+  "producer_cases": 56,
+  "harness_checks": 33,
+  "regression_total": 832,
+  "regressions": [
+    {
+      "suite": "numeric_model_inquiries",
+      "command": [
+        "python3",
+        "-B",
+        "fortfront-047-integration/fortfront-interpreter-0.47.0/tests/numeric_model_inquiries/run_tests.py",
+        "--candidate",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/preserved-binary/integer-bits-final",
+        "--result",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/numeric_model_inquiries-regression-results.json",
+        "--gfortran",
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran"
+      ],
+      "code": 0,
+      "summary": {
+        "total": 69,
+        "failed": 0
+      }
+    },
+    {
+      "suite": "model_character_intrinsics",
+      "command": [
+        "python3",
+        "-B",
+        "fortfront-047-integration/fortfront-interpreter-0.47.0/tests/model_character_intrinsics/run_tests.py",
+        "--candidate",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/preserved-binary/integer-bits-final",
+        "--result",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/model_character_intrinsics-regression-results.json",
+        "--with-colon-formats"
+      ],
+      "code": 0,
+      "summary": {
+        "total": 120,
+        "failed": 0,
+        "candidate_checked": 120
+      }
+    },
+    {
+      "suite": "lexical_comparisons",
+      "command": [
+        "python3",
+        "-B",
+        "/workspace/scratch/c5319e9549df/fortfront-047-integration/fortfront-interpreter-0.47.0/tests/lexical_comparisons/run_tests.py",
+        "--candidate",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/preserved-binary/integer-bits-final",
+        "--result",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/lexical_comparisons-regression-results.json"
+      ],
+      "code": 0,
+      "summary": {
+        "total": 169,
+        "failed": 0,
+        "candidate_checked": 169
+      }
+    },
+    {
+      "suite": "constructor_implied_do",
+      "command": [
+        "python3",
+        "-B",
+        "/workspace/scratch/c5319e9549df/fortfront-047-integration/fortfront-interpreter-0.47.0/tests/constructor_implied_do/run_tests.py",
+        "--candidate",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/preserved-binary/integer-bits-final",
+        "--result",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/constructor_implied_do-regression-results.json"
+      ],
+      "code": 0,
+      "summary": {
+        "total": 99,
+        "failed": 0,
+        "harness_self_tests": 47,
+        "candidate_checked": 99,
+        "gnu_executed": 0,
+        "gnu_compile_only": 0,
+        "gnu_compile_rejections": 0
+      }
+    },
+    {
+      "suite": "array_intrinsics_independent",
+      "command": [
+        "python3",
+        "-B",
+        "/workspace/scratch/c5319e9549df/fortfront-047-integration/fortfront-interpreter-0.47.0/tests/array_intrinsics_independent/run_tests.py",
+        "--candidate",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/preserved-binary/integer-bits-final",
+        "--result",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/array_intrinsics_independent-regression-results.json"
+      ],
+      "code": 0,
+      "summary": {
+        "total": 234,
+        "failed": 0,
+        "candidate_checked": 234
+      }
+    },
+    {
+      "suite": "eoshift",
+      "command": [
+        "python3",
+        "-B",
+        "/workspace/scratch/c5319e9549df/fortfront-047-integration/fortfront-interpreter-0.47.0/tests/eoshift/run_tests.py",
+        "--candidate",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/preserved-binary/integer-bits-final",
+        "--result",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/eoshift-regression-results.json"
+      ],
+      "code": 0,
+      "summary": {
+        "total": 141,
+        "failed": 0,
+        "candidate_checked": 141
+      }
+    }
+  ],
+  "native_receipts": [
+    {
+      "command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-Wall",
+        "-Wextra",
+        "-Wimplicit-interface",
+        "-Wno-external-argument-mismatch",
+        "-fPIC",
+        "-fmax-errors=1",
+        "-g",
+        "-fcheck=bounds",
+        "-fcheck=array-temps",
+        "-fbacktrace",
+        "-fcoarray=single",
+        "-fimplicit-none",
+        "-Werror=implicit-interface",
+        "-ffree-form",
+        "-I/tmp/integer-bits-048-app-work/build/gfortran_C95531B253A90636",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/test/test_integer_bits.f90",
+        "/tmp/integer-bits-048-app-work/build/gfortran_BF401197FF969414/fortfront-interpreter/libfortfront-interpreter.a",
+        "-o",
+        "/tmp/integer-bits-048-app-work/native-final/test_integer_bits"
+      ],
+      "source_sha256": "4fcb1f6026052d04b16e8e26c6068adff87bcdd0b787544d77c51b453f4f76f0",
+      "official_fpm_flags": [
+        "-Wall",
+        "-Wextra",
+        "-Wimplicit-interface",
+        "-Wno-external-argument-mismatch",
+        "-fPIC",
+        "-fmax-errors=1",
+        "-g",
+        "-fcheck=bounds",
+        "-fcheck=array-temps",
+        "-fbacktrace",
+        "-fcoarray=single",
+        "-fimplicit-none",
+        "-Werror=implicit-interface",
+        "-ffree-form"
+      ],
+      "compile_exit": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_exit": 0,
+      "run_stdout": " 1 1\n 8\n\n 3 3\n 8\n\n 2 2\n 8\n\n -2 -2\n 8\n\n T T\n 4\n\n 64\n 8\n 64\n 0\n 0\nPASS 9709 integer-bit checks\n",
+      "run_stderr": "",
+      "executable_sha256": "4504490b3eb5a911b54e54f80d428c1a57291ae8beb213fe5672e4aaf5556d5d"
+    },
+    {
+      "command": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-Wall",
+        "-Wextra",
+        "-Wimplicit-interface",
+        "-Wno-external-argument-mismatch",
+        "-fPIC",
+        "-fmax-errors=1",
+        "-g",
+        "-fcheck=bounds",
+        "-fcheck=array-temps",
+        "-fbacktrace",
+        "-fcoarray=single",
+        "-fimplicit-none",
+        "-Werror=implicit-interface",
+        "-ffree-form",
+        "-I/tmp/integer-bits-048-app-work/build/gfortran_C95531B253A90636",
+        "/workspace/scratch/c5319e9549df/integer-bits-work/test/test_integer_bits_producer.f90",
+        "/tmp/integer-bits-048-app-work/build/gfortran_BF401197FF969414/fortfront-interpreter/libfortfront-interpreter.a",
+        "-o",
+        "/tmp/integer-bits-048-app-work/native-final/test_integer_bits_producer"
+      ],
+      "source_sha256": "04d2621ea41a5c46999e0152936d1d1effe774fa92153c42f34b87934600d628",
+      "official_fpm_flags": [
+        "-Wall",
+        "-Wextra",
+        "-Wimplicit-interface",
+        "-Wno-external-argument-mismatch",
+        "-fPIC",
+        "-fmax-errors=1",
+        "-g",
+        "-fcheck=bounds",
+        "-fcheck=array-temps",
+        "-fbacktrace",
+        "-fcoarray=single",
+        "-fimplicit-none",
+        "-Werror=implicit-interface",
+        "-ffree-form"
+      ],
+      "compile_exit": 0,
+      "compile_stdout": "",
+      "compile_stderr": "/workspace/scratch/c5319e9549df/integer-bits-work/test/test_integer_bits_producer.f90:10:26:\n\n   10 |     integer::checks,family\n      |                          1\nWarning: Unused variable \u2018family\u2019 declared at (1) [-Wunused-variable]\nf951: note: unrecognized command-line option \u2018-Wno-external-argument-mismatch\u2019 may have been intended to silence earlier diagnostics\n",
+      "run_exit": 0,
+      "run_stdout": " PASS: independent INTEGER bits producer cases:          56\n",
+      "run_stderr": "",
+      "executable_sha256": "b1b443524105bd7edeac765e72134f48855f3fcf554fd5a9d632c7a8d09d05c7"
+    }
+  ],
+  "replay": {
+    "pass_": true,
+    "source_zip": "/workspace/scratch/c5319e9549df/fortfront-interpreter-0.47.0.zip",
+    "source_zip_sha256": "8eb13140d7e8e866362066a507d0c37243881b36cd71f42472099c6d6d67a998",
+    "files": 6,
+    "commands": [
+      {
+        "patch": "integer-bits-core.patch",
+        "code": 0,
+        "out": "patching file src/fi_frontend.f90\npatching file src/fi_ir.f90\npatching file src/fi_parser.f90\npatching file src/fi_runtime.f90\n",
+        "err": ""
+      },
+      {
+        "patch": "integer-bits-vendor-raw.patch",
+        "code": 0,
+        "out": "patching file src/frontend/frontend_compiler_type_queries.f90\npatching file src/utilities/intrinsic_registry.f90\n",
+        "err": ""
+      }
+    ]
+  },
+  "originals": {
+    "repository": "https://github.com/urbanjost/M_intrinsics",
+    "commit": "fc14233036d910e3678d350efc24609e11475067",
+    "license": "MIT",
+    "files": [
+      {
+        "file": "cases/demo_ior.f90",
+        "sha256": "69c3c8606afd87f6cef4809240923286d1832d372917651dbde948fae965df98"
+      },
+      {
+        "file": "cases/demo_not.f90",
+        "sha256": "4b8b9b5baaf811b71a6df1a7f693d26c3005732e396b6884d279cc893d09a014"
+      },
+      {
+        "file": "cases/demo_btest.f90",
+        "sha256": "60f047a56d986a2e9e36ca6290e6e75c854d8638beec349cb2c6637302fd1551"
+      },
+      {
+        "file": "cases/demo_iand.f90",
+        "sha256": "dbe9ec39cc96b7c90be232a244ad67417d0e400d66dd1608f31b862aef1765a4"
+      },
+      {
+        "file": "cases/demo_ieor.f90",
+        "sha256": "3e04a1384f5a848db2b8c4b1244ade787ecb8b2580c93cfd7b8857e5ca470a09"
+      },
+      {
+        "file": "cases/demo_bit_size.f90",
+        "sha256": "98e3897a359111e9c2433059d81cacb2885fb678bb3b624f0b1d3f83a3fb586f"
+      },
+      {
+        "file": "UPSTREAM-LICENSE",
+        "sha256": "5bc2186f9c1ed8a9555dc8bd396ff19672e5a9bd35cb06cf16f996856667a96b"
+      }
+    ]
+  },
+  "original_outcomes": "Standalone all six are explicit subset boundaries; combined B/O/Z profile promotes IOR/NOT only after merged execution; BTEST retains slash boundary.",
+  "cache": {
+    "path": "/tmp/integer-bits-048-app-work/build",
+    "status": "inactive; no deletion approved here",
+    "size_mib": 127,
+    "native_path": "/tmp/integer-bits-048-app-work/native-final",
+    "native_mib": 41
+  },
+  "preservation": "All prior Fortran sources unchanged. Initial synthetic failures, binary snapshots, logs and source archives retained outside final package."
+}

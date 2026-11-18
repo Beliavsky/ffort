@@ -1,0 +1,156 @@
+{
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098",
+  "combined_asin": true,
+  "total": 5,
+  "failed": 0,
+  "complete_original_passes": 2,
+  "cases": [
+    {
+      "name": "demo_shape",
+      "passed": true,
+      "outcome": "complete_original_execution_exact_bytes",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "status": 0,
+        "stdout": "shape of array= 3 4\nshape of constant=\nsize of shape of constant= 0\nubound of array= 1 2\nlbound of array= -1 -1\n",
+        "stderr": ""
+      },
+      "gnu_flags": [
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-ffpe-trap=invalid,zero,overflow"
+      ],
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "status": 0,
+        "stdout": "shape of array= 3 4\nshape of constant=\nsize of shape of constant= 0\nubound of array= 1 2\nlbound of array= -1 -1\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "demo_maxexponent",
+      "passed": true,
+      "outcome": "unchanged_original_later_source_boundary",
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/named_formats/demo_maxexponent.f90:7:33: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "run": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/named_formats/demo_maxexponent.f90:7:33: Only REAL literal kinds 4 and 8 are supported\n"
+      },
+      "gnu_flags": [
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-ffpe-trap=invalid,zero,overflow"
+      ],
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": null
+    },
+    {
+      "name": "demo_nearest",
+      "passed": true,
+      "outcome": "unchanged_original_finite_runtime_boundary_prior_records_exact",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "status": 2,
+        "stdout": "The basics ...\nfor 42 +42.0000038146973    -41.9999961853027    delta.762939453125000E-05\nFor reference ...\nTINY     .117549435082229E-37\nHUGE     .340282346638529E+39\nEPSILON  .119209289550781E-06\nSPACING  .117549435082229E-37 .202824096036517E+32\nTesing the limits ...\nFor TINY() .117549449095213E-37 .117549421069244E-37 .280259692864963E-44\n",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/named_formats/demo_nearest.f90:29:11: NEAREST result exceeds finite REAL range\n"
+      },
+      "gnu_flags": [
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-fno-range-check"
+      ],
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "status": 0,
+        "stdout": "The basics ...\nfor 42 +42.0000038146973    -41.9999961853027    delta.762939453125000E-05\nFor reference ...\nTINY     .117549435082229E-37\nHUGE     .340282346638529E+39\nEPSILON  .119209289550781E-06\nSPACING  .117549435082229E-37 .202824096036517E+32\nTesing the limits ...\nFor TINY() .117549449095213E-37 .117549421069244E-37 .280259692864963E-44\nFor HUGE()             Infinity .340282326356119E+39             Infinity\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "demo_acos",
+      "passed": true,
+      "outcome": "unchanged_original_later_source_boundary",
+      "check": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/named_formats/demo_acos.f90:20:40: Expected ), found ,\n"
+      },
+      "run": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/named_formats/demo_acos.f90:20:40: Expected ), found ,\n"
+      },
+      "gnu_flags": [
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-ffpe-trap=invalid,zero,overflow"
+      ],
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": null
+    },
+    {
+      "name": "demo_asin",
+      "passed": true,
+      "outcome": "complete_original_execution_exact_bytes",
+      "check": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "run": {
+        "status": 0,
+        "stdout": "angle of incline(radians) =  0.25002604899361139E-1\nangle of incline(degrees) =  1.4325437375665075\npercent grade= 2.5000000000000000\n",
+        "stderr": ""
+      },
+      "gnu_flags": [
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-ffpe-trap=invalid,zero,overflow"
+      ],
+      "compile": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "reference": {
+        "status": 0,
+        "stdout": "angle of incline(radians) =  0.25002604899361139E-1\nangle of incline(degrees) =  1.4325437375665075\npercent grade= 2.5000000000000000\n",
+        "stderr": ""
+      }
+    }
+  ]
+}

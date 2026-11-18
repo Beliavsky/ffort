@@ -1,0 +1,35 @@
+{
+  "candidate_sha256": "81ce673609ae78b43d1749cc66341f7be6e72b8b2cdb014063cae3a22d9fc39d",
+  "rows": [
+    {
+      "query": "1) ! bypassclose",
+      "code": 0,
+      "out": " PREFIX\n 5\n",
+      "err": "<repl>: query must be one balanced expression without statement separators\n"
+    },
+    {
+      "query": "1),2 ! splice",
+      "code": 0,
+      "out": " PREFIX\n 5\n",
+      "err": "<repl>: query must be one balanced expression without statement separators\n"
+    },
+    {
+      "query": "x), x, (x",
+      "code": 0,
+      "out": " PREFIX\n 5\n",
+      "err": "<repl>: query must be one balanced expression without statement separators\n"
+    },
+    {
+      "query": "x ! comment",
+      "code": 0,
+      "out": " PREFIX\n 5\n 5\n",
+      "err": ""
+    },
+    {
+      "query": "'hi!'';there'",
+      "code": 0,
+      "out": " PREFIX\n hi!';there\n 5\n",
+      "err": ""
+    }
+  ]
+}

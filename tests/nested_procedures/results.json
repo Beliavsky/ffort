@@ -1,0 +1,1689 @@
+{
+  "original": {
+    "path": "../utilities_slices/source/xutilities.f90",
+    "sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+    "body_sha256": "c12792b8b58af0814e11fabc91840133b8f943f306e32ece55cb68cab6529366",
+    "start_line": 8870,
+    "end_line": 8942,
+    "body_bytes": 2517,
+    "crlf_lines": 73
+  },
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "resolved_path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      },
+      "sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "resolved_path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      },
+      "sha256": "406a8ebf8691187132f55a124d6ca47d99978645f6d03bb1d6926a7e5efcd730"
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:32:15.959989+00:00",
+  "summary": {
+    "total": 54,
+    "failed": 0,
+    "candidate_checked": 54,
+    "gnu_checked": 52,
+    "gnu_skipped": 2,
+    "gnu_executed": 25,
+    "gnu_compile_only": 17,
+    "gnu_compile_rejections": 10
+  },
+  "records": [
+    {
+      "case": {
+        "name": "original_quick_sort",
+        "source": "cases/original_quick_sort.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 T T T T 0 0\n1 T T T T -4 1\n2 T T T T 0 3\n6 T T T T 11 21\n7 T T T T 22 28\n8 T T T T 40 36\n17 T T T T 0 153\n31 T T T T 0 496\n64 T T T T 6 2080\n64 T T T T 6 2080",
+        "diagnostic": "",
+        "note": "Entire original quick_sort including both internal routines is byte-identical with CRLF. Wrapper only defines real64 dp and elemental isnan generic. Tests sizes 0,1,2,6,7,8,17,31,64, duplicates, sorted/reverse, full permutation and value/index association, repeated calls."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0 T T T T   0.0000000000000000                0\n           1 T T T T  -4.0000000000000000                1\n           2 T T T T   0.0000000000000000                3\n           6 T T T T   11.000000000000000               21\n           7 T T T T   22.000000000000000               28\n           8 T T T T   40.000000000000000               36\n          17 T T T T   0.0000000000000000              153\n          31 T T T T   0.0000000000000000              496\n          64 T T T T   6.0000000000000000             2080\n          64 T T T T   6.0000000000000000             2080\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 T T T T 0.0000000000000000 0\n 1 T T T T -4.0000000000000000 1\n 2 T T T T 0.0000000000000000 3\n 6 T T T T 11.000000000000000 21\n 7 T T T T 22.000000000000000 28\n 8 T T T T 40.000000000000000 36\n 17 T T T T 0.0000000000000000 153\n 31 T T T T 0.0000000000000000 496\n 64 T T T T 6.0000000000000000 2080\n 64 T T T T 6.0000000000000000 2080\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "host_scalar_array",
+        "source": "cases/host_scalar_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T 3 xyz 4 5 6 19",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T   3.0000000000000000      xyz\n           4           5           6          19\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " T 3.0000000000000000 xyz\n 4 5 6 19\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "local_shadowing",
+        "source": "cases/local_shadowing.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "100 9",
+        "diagnostic": "",
+        "note": "second sees host x, never calling sibling first local x."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         100\n           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 100\n 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dummy_shadowing",
+        "source": "cases/dummy_shadowing.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "29",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          29\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 29\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_internal",
+        "source": "cases/recursive_internal.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "15 6",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          15\n           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 15\n 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_host_activation",
+        "source": "cases/recursive_host_activation.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "64 12",
+        "diagnostic": "",
+        "note": "An internal child calls a recursive host and then must return to its original host activation. Sibling calls use that activation."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          64\n          12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 64\n 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_host_array_frames",
+        "source": "cases/recursive_host_array_frames.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "30 5",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          30\n           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 30\n 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "mutual_internal_recursion",
+        "source": "cases/mutual_internal_recursion.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "23 22",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          23\n          22\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 23\n 22\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "independent_internal_names",
+        "source": "cases/independent_internal_names.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 102 11",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11         102\n          11\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 102\n 11\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "host_bounds_sections",
+        "source": "cases/host_bounds_sections.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 12 5 7 5 12",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1          12           5           7           5          12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 12 5 7 5 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "readonly_internal_function",
+        "source": "cases/readonly_internal_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "34",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          34\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 34\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_internal_function",
+        "source": "cases/recursive_internal_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "25",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          25\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 25\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "host_parameters",
+        "source": "cases/host_parameters.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "expression_snapshot",
+        "source": "cases/expression_snapshot.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "107",
+        "diagnostic": "",
+        "note": "Parenthesized actual is a value snapshot; child may write host x without dummy storage alias."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "         107\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 107\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "host_actual_not_captured",
+        "source": "cases/host_actual_not_captured.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12",
+        "diagnostic": "",
+        "note": "Passing a host local to a child is safe if the child does not otherwise access its host storage."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "early_return_host_write",
+        "source": "cases/early_return_host_write.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "42",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          42\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 42\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "host_saved_state",
+        "source": "cases/host_saved_state.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 12",
+        "diagnostic": "",
+        "note": "Existing SAVE semantics must not turn captured saved storage into per-activation copies."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "child_saved_state",
+        "source": "cases/child_saved_state.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 12",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pure_readonly_capture",
+        "source": "cases/pure_readonly_capture.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "10",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          10\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 10\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "host_array_specification",
+        "source": "cases/host_array_specification.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "16",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          16\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 16\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "internal_depth_limit",
+        "source": "cases/internal_depth_limit.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "call depth limit",
+        "note": "Deliberately infinite recursion: compile-only GNU and bounded interpreter failure, never execute GNU."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/internal_depth_limit.f90:8:1: procedure call depth limit exceeded (64)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "alias_direct",
+        "source": "cases/alias_direct.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "also referenced through callee host/USE association",
+        "note": "GNU compile only. Direct/transitive host access aliases a dummy actual; conservative interpreter boundary, including harmless read-only alias."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/alias_direct.f90:21:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/alias_direct.f90:21:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "alias_transitive",
+        "source": "cases/alias_transitive.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "also referenced through callee host/USE association",
+        "note": "GNU compile only. Direct/transitive host access aliases a dummy actual; conservative interpreter boundary, including harmless read-only alias."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/alias_transitive.f90:24:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/alias_transitive.f90:24:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "alias_readonly_conservative",
+        "source": "cases/alias_readonly_conservative.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "also referenced through callee host/USE association",
+        "note": "GNU compile only. Direct/transitive host access aliases a dummy actual; conservative interpreter boundary, including harmless read-only alias."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/alias_readonly_conservative.f90:20:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/alias_readonly_conservative.f90:20:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "alias_array_element",
+        "source": "cases/alias_array_element.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "also referenced through callee host/USE association",
+        "note": "Conservative whole-storage overlap for array element actual and host array reference; compile-only."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/alias_array_element.f90:21:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/alias_array_element.f90:21:1: Module actual also referenced through callee host/USE association is unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "capture_optional",
+        "source": "cases/capture_optional.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "host capture",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_optional.f90:9:13: Unsupported internal procedure host capture\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_optional.f90:9:13: Unsupported internal procedure host capture\n"
+      }
+    },
+    {
+      "case": {
+        "name": "capture_pointer",
+        "source": "cases/capture_pointer.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "host capture",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_pointer.f90:12:21: Unsupported internal procedure host capture\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_pointer.f90:12:21: Unsupported internal procedure host capture\n"
+      }
+    },
+    {
+      "case": {
+        "name": "capture_target",
+        "source": "cases/capture_target.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "host capture",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_target.f90:10:4: Unsupported internal procedure host capture\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_target.f90:10:4: Unsupported internal procedure host capture\n"
+      }
+    },
+    {
+      "case": {
+        "name": "capture_allocatable",
+        "source": "cases/capture_allocatable.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "host capture",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_allocatable.f90:11:4: Unsupported internal procedure host capture\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_allocatable.f90:11:4: Unsupported internal procedure host capture\n"
+      }
+    },
+    {
+      "case": {
+        "name": "capture_derived",
+        "source": "cases/capture_derived.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "host capture",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_derived.f90:13:6: Unsupported internal procedure host capture\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_derived.f90:13:6: Unsupported internal procedure host capture\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pure_host_write",
+        "source": "cases/pure_host_write.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/pure_host_write.f90:10:0:\n\n   10 | answer=1\nError: Variable \u2018answer\u2019 cannot appear in a variable definition context (assignment) at (1) in PURE procedure\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/pure_host_write.f90:15:5:\n\n   15 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/pure_host_write.f90:11:1: Host writes inside ordinary functions or PURE procedures are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/pure_host_write.f90:11:1: Host writes inside ordinary functions or PURE procedures are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "intent_in_host_write",
+        "source": "cases/intent_in_host_write.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/intent_in_host_write.f90:9:0:\n\n    9 | x=1\nError: Dummy argument \u2018x\u2019 with INTENT(IN) in variable definition context (assignment) at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/intent_in_host_write.f90:14:5:\n\n   14 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/intent_in_host_write.f90:9:1: Cannot assign to an INTENT(IN) dummy argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/intent_in_host_write.f90:9:1: Cannot assign to an INTENT(IN) dummy argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_function_host_write",
+        "source": "cases/ordinary_function_host_write.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "note": "Standard-valid GNU; interpreter ordinary-function external-side-effect boundary."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/ordinary_function_host_write.f90:12:1: Host writes inside ordinary functions or PURE procedures are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/ordinary_function_host_write.f90:12:1: Host writes inside ordinary functions or PURE procedures are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "ordinary_function_transitive_host_write",
+        "source": "cases/ordinary_function_transitive_host_write.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "note": "Transitive side effect through sibling must be rejected before evaluation."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/ordinary_function_transitive_host_write.f90:25:1: External side effects inside ordinary functions are unsupported\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/ordinary_function_transitive_host_write.f90:25:1: External side effects inside ordinary functions are unsupported\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nested_contains",
+        "source": "cases/nested_contains.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "note": "Fortran internal subprogram may not itself contain an internal subprogram."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/nested_contains.f90:9:8:\n\n    9 | contains\n      |        1\nError: CONTAINS statement at (1) is already in a contained program unit\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/nested_contains.f90:13:3:\n\n   13 | end subroutine\n      |   1\nError: Expecting END MODULE statement at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/nested_contains.f90:16:5:\n\n   16 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/nested_contains.f90:9:9: Internal procedures require a non-ELEMENTAL module procedure host\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/nested_contains.f90:9:9: Internal procedures require a non-ELEMENTAL module procedure host\n"
+      }
+    },
+    {
+      "case": {
+        "name": "internal_not_module_visible",
+        "source": "cases/internal_not_module_visible.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/internal_not_module_visible.f90:11:11:\n\n   11 | use m,only:child\n      |           1\nError: Symbol \u2018child\u2019 referenced at (1) not found in module \u2018m\u2019\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/internal_not_module_visible.f90:11:17: ONLY name is absent or PRIVATE: child\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/internal_not_module_visible.f90:11:17: ONLY name is absent or PRIVATE: child\n"
+      }
+    },
+    {
+      "case": {
+        "name": "internal_wrong_host",
+        "source": "cases/internal_wrong_host.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "note": "GNU rejects at link (unresolved external); internal child is not visible in sibling host."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "ld: /tmp/ccS2p1SZ.o: in function `__m_MOD_second':\ninternal_wrong_host.f90:(.text+0x3c): undefined reference to `child_'\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/internal_wrong_host.f90:10:11: Unknown or inaccessible subroutine: child\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/internal_wrong_host.f90:10:11: Unknown or inaccessible subroutine: child\n"
+      }
+    },
+    {
+      "case": {
+        "name": "main_internal",
+        "source": "cases/main_internal.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "note": "Initial bounded subset only supports internal procedures within module procedures."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/main_internal.f90:8:1: Undeclared variable or unsupported statement: x\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/main_internal.f90:8:1: Undeclared variable or unsupported statement: x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "external_internal",
+        "source": "cases/external_internal.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "note": "Initial bounded subset only supports module hosts."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/external_internal.f90:8:1: Undeclared variable or unsupported statement: x\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/external_internal.f90:8:1: Undeclared variable or unsupported statement: x\n"
+      }
+    },
+    {
+      "case": {
+        "name": "internal_procedure_argument",
+        "source": "cases/internal_procedure_argument.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "note": "No escaping internal procedures, procedure dummy arguments or closure support in this feature."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": "ld: warning: /tmp/ccRMfJ7V.o: requires executable stack (because the .note.GNU-stack section is executable)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/internal_procedure_argument.f90:14:1: Every dummy argument requires an INTENT declaration\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/internal_procedure_argument.f90:14:1: Every dummy argument requires an INTENT declaration\n"
+      }
+    },
+    {
+      "case": {
+        "name": "host_active_do_write",
+        "source": "cases/host_active_do_write.f90",
+        "category": "runtime",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "active DO variable",
+        "note": "Invalid modification of an active host DO variable; never execute GNU. Runtime must protect aliased host binding."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/host_active_do_write.f90:11:3:\n\n    7 | call child()\n      |            2\n......\n   11 | i=9\n      |   1\nError: Index variable \u2018i\u2019 redefined at (1) in procedure \u2018child\u2019 called from within DO loop at (2)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/host_active_do_write.f90:16:5:\n\n   16 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/host_active_do_write.f90:11:1: assignment to active DO variable\n"
+      }
+    },
+    {
+      "case": {
+        "name": "host_active_do_writable_actual",
+        "source": "cases/host_active_do_writable_actual.f90",
+        "category": "runtime",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "active DO variable",
+        "note": "Indirect active-DO write through writable dummy; compile-only GNU."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/host_active_do_writable_actual.f90:11:15:\n\n    7 | call child()\n      |            2   \n......\n   11 | call set_value(i)\n      |               1\nError: Index variable \u2018i\u2019 set to undefined as INTENT(OUT) argument at (1) in subroutine \u2018child\u2019 called from within DO loop at (2)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/host_active_do_writable_actual.f90:20:5:\n\n   20 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/host_active_do_writable_actual.f90:11:1: active DO variable cannot be a writable actual argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "host_active_do_nested_loop",
+        "source": "cases/host_active_do_nested_loop.f90",
+        "category": "runtime",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "active DO variable",
+        "note": "Nested internal loop reuses an active host DO variable; never execute GNU."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/host_active_do_nested_loop.f90:11:8:\n\n    7 | call child()\n      |            2\n......\n   11 | do i=1,2\n      |        1\nError: Index variable \u2018i\u2019 redefined at (1) in procedure \u2018child\u2019 called from within DO loop at (2)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/host_active_do_nested_loop.f90:17:5:\n\n   17 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/host_active_do_nested_loop.f90:11:1: nested reuse of active DO variable\n"
+      }
+    },
+    {
+      "case": {
+        "name": "capture_optional_specification",
+        "source": "cases/capture_optional_specification.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "host capture",
+        "note": "Unsupported optional capture occurs only in a child specification expression, not its body."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_optional_specification.f90:9:11:\n\n    9 | integer::a(n)\n      |           1\nError: Dummy argument \u2018n\u2019 at (1) cannot be OPTIONAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_optional_specification.f90:9:11:\n\n    9 | integer::a(n)\n      |           1\nError: Dummy argument \u2018n\u2019 at (1) cannot be OPTIONAL\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_optional_specification.f90:16:5:\n\n   16 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_optional_specification.f90:9:13: Unsupported internal procedure host capture\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_optional_specification.f90:9:13: Unsupported internal procedure host capture\n"
+      }
+    },
+    {
+      "case": {
+        "name": "internal_shadows_module_procedure",
+        "source": "cases/internal_shadows_module_procedure.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3",
+        "diagnostic": "",
+        "note": "The internal procedure hides the same-named module procedure only within its host."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "intent_in_host_writable_actual",
+        "source": "cases/intent_in_host_writable_actual.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/intent_in_host_writable_actual.f90:9:15:\n\n    9 | call set_value(x)\n      |               1\nError: Dummy argument \u2018x\u2019 with INTENT(IN) in variable definition context (actual argument to INTENT = OUT/INOUT) at (1)\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/intent_in_host_writable_actual.f90:18:5:\n\n   18 | use m\n      |     1\nFatal Error: Cannot open module file \u2018m.mod\u2019 for reading at (1): No such file or directory\ncompilation terminated.\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/intent_in_host_writable_actual.f90:9:18: Writable actual cannot be a PARAMETER or INTENT(IN) dummy\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/intent_in_host_writable_actual.f90:9:18: Writable actual cannot be a PARAMETER or INTENT(IN) dummy\n"
+      }
+    },
+    {
+      "case": {
+        "name": "host_character_substring",
+        "source": "cases/host_character_substring.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "aXYZe",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " aXYZe\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " aXYZe\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "host_empty_array",
+        "source": "cases/host_empty_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 3",
+        "diagnostic": "",
+        "note": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0\n           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "capture_host_function_result",
+        "source": "cases/capture_host_function_result.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "host capture",
+        "note": "Standard-valid result-variable host association is excluded from the bounded interpreter subset."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_host_function_result.f90:9:4: Unsupported internal procedure host capture\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/capture_host_function_result.f90:9:4: Unsupported internal procedure host capture\n"
+      }
+    },
+    {
+      "case": {
+        "name": "elemental_host_contains",
+        "source": "cases/elemental_host_contains.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "",
+        "note": "GNU accepts this standard-valid ELEMENTAL host with a pure internal function; the bounded interpreter subset excludes ELEMENTAL hosts."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/elemental_host_contains.f90:7:9: Internal procedures require a non-ELEMENTAL module procedure host\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/elemental_host_contains.f90:7:9: Internal procedures require a non-ELEMENTAL module procedure host\n"
+      }
+    },
+    {
+      "case": {
+        "name": "impure_elemental_child_host_counter",
+        "source": "cases/impure_elemental_child_host_counter.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 12 13 3",
+        "diagnostic": "",
+        "note": "Existing IMPURE ELEMENTAL effect policy applies to internal child functions. Captured host counter changes once per array element."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          12          13           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 12 13 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "simple_mutable_capture",
+        "source": "cases/simple_mutable_capture.f90",
+        "category": "reject",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "host capture",
+        "note": "SIMPLE forbids reading mutable host storage, including an otherwise read-only capture. GNU is explicitly skipped; no native SIMPLE conformance or PURE-lowered semantics are claimed.",
+        "gnu_skip_reason": "SIMPLE is not evaluated under this suite's GNU Fortran 2018 mode"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "gnu_skip_reason": "SIMPLE is not evaluated under this suite's GNU Fortran 2018 mode",
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/simple_mutable_capture.f90:12:11: Unsupported internal procedure host capture\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/nested_procedures/cases/simple_mutable_capture.f90:12:11: Unsupported internal procedure host capture\n"
+      }
+    },
+    {
+      "case": {
+        "name": "simple_parameter_capture",
+        "source": "cases/simple_parameter_capture.f90",
+        "category": "success",
+        "baseline": "skip",
+        "expected_stdout": "10",
+        "diagnostic": "",
+        "note": "SIMPLE may reference a host named constant. GNU is explicitly skipped; no native SIMPLE conformance or PURE lowering is claimed.",
+        "gnu_skip_reason": "SIMPLE is not evaluated under this suite's GNU Fortran 2018 mode"
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "gnu_skip_reason": "SIMPLE is not evaluated under this suite's GNU Fortran 2018 mode",
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 10\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "host_bound_composition",
+        "source": "cases/host_bound_composition.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 xxx 4 5 6 1 x 10 0",
+        "diagnostic": "",
+        "note": "The same captured host INTEGER INTENT(IN) dummy n supplies an internal explicit-shape dummy bound and local CHARACTER length. Exercises lengths three, one, and zero. No host-local or host-array-inquiry bound claim."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3 xxx\n           4           5           6\n           1 x\n          10\n           0 \n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 xxx\n 4 5 6\n 1 x\n 10\n 0 \n",
+        "err": ""
+      }
+    }
+  ],
+  "manifest_sha256": "4098fb41b9eee5673baf5a951fcd6e2f1717746289f66b44cdd92e40058628fb",
+  "source_sha256": {
+    "cases/original_quick_sort.f90": "0ef4b90135e7ef3c38a80676148c28b6cbdd9f7e3dd93607b6caacfa1bbb527b",
+    "cases/host_scalar_array.f90": "52977e7411680458c8bc64fb5b2baed3de7a4f2bcca84967f3f328961be47221",
+    "cases/local_shadowing.f90": "450fd9391248d1e8a3fe9a75968cbf69fc2c6a00be66ee8ac5cda419110aa4db",
+    "cases/dummy_shadowing.f90": "eaa7c875d4aff19de31641e8e586b121f021314ac4f375b04816e205bcc82aba",
+    "cases/recursive_internal.f90": "ea54ebcb298020e808d09975cafa68f1ada32c84e29006706c7594862c52c538",
+    "cases/recursive_host_activation.f90": "ccde012ce35dd23a930b0bb6a7c4022e98ea8c4eb6d897f5e5b76cace4be0d5e",
+    "cases/recursive_host_array_frames.f90": "f52dbf23242d1833b7b7888f6057b98b3f99aa5c1bf1bff5966f7eb7c2993098",
+    "cases/mutual_internal_recursion.f90": "ec520b7f9930ee62a286ebc079a5592214ab491babd402237d125d44d9904820",
+    "cases/independent_internal_names.f90": "6285687dfe09be595afc9a757ce4a42f63dafdad5a319cc68ac4cabfa5ab25f9",
+    "cases/host_bounds_sections.f90": "b44ea5b4d75ff0a45e23f50b0110f7be18b8a47fffc65bf8b982e4b8e024f584",
+    "cases/readonly_internal_function.f90": "70fd7785b5bfb41898e5fb9abc98b8e7b59a6d3287f46db990fb00fff3c9bdb8",
+    "cases/recursive_internal_function.f90": "11d45da554229a829df78abbcf7b792e3f7a862145d84c524378dbd44aa8ecb8",
+    "cases/host_parameters.f90": "74314a235e14b63b09837dee0fc437117d558bc39568be1bb434a2844f97999d",
+    "cases/expression_snapshot.f90": "dda1e5a77e6dd5f01de17cfc8a85d5ec48f28829d3d8158c5611a0258dee5808",
+    "cases/host_actual_not_captured.f90": "bb1d3eb41e2f2704293c63b118ee0b2d4b59b22a7989c45348539825d5ffdcdd",
+    "cases/early_return_host_write.f90": "d48b9ad3d3d96e36243590807927df7a5fd735e08f35645c3e57f8d1fafe2c01",
+    "cases/host_saved_state.f90": "f47cb868733c004e1bd005de980587c469d2a5bafed83cc9a8e89eaa511df2c1",
+    "cases/child_saved_state.f90": "c1613e2ef5d6e4b4b4b07262e85b07c02b653abc31d8aecf247b39960306d61d",
+    "cases/pure_readonly_capture.f90": "14d20fbf8247d6a517aa35896713b1014d9ba47837bb5bd16389dcfa63a81e05",
+    "cases/host_array_specification.f90": "f254d10a0927ae468cdf442814ba3281c7adb126d1de49ff31868ed95c909e74",
+    "cases/internal_depth_limit.f90": "22b64bd5b4e335d5c152573ed67f124428b2abf3f61fb9b1ec2da73faaf14821",
+    "cases/alias_direct.f90": "556a01bf255d04873e470b75bf8d78b5a1da73f557af705a85c342504b227ba8",
+    "cases/alias_transitive.f90": "4179d7c9ca8c020e827765f18765cfc9051d274f4c41161e50edbc4b72e7bebe",
+    "cases/alias_readonly_conservative.f90": "1f5531735dc9325fea338f0ceefef7f3f922d19426973054b376785513ef7bf8",
+    "cases/alias_array_element.f90": "fa8465addccbc4393ca5645f2506935320530c7044fe024225e78258250e1197",
+    "cases/capture_optional.f90": "bfc35f7f5c84fedcaa5a69dfe4717924c9d8071ca36d388ca6d4d4e3a494be3c",
+    "cases/capture_pointer.f90": "5849bddb7cb76c7358a11022a52425551b355db2399a60d6af04414b37b97bd5",
+    "cases/capture_target.f90": "141c6ea91347bffb0a68e90e9c392e83c346deee0d91f2b6b09b8ede10f549f3",
+    "cases/capture_allocatable.f90": "4559e1e12058442fb66d05d87d9bb193c91bd5e186c3f880475ca24390a408a9",
+    "cases/capture_derived.f90": "c990293ad8655a53c03a723f310b58088ccfdf47429e855167f30eb88b3bb1a6",
+    "cases/pure_host_write.f90": "279780ac63968ece6bab43f7f7ccc6ccac3afc43d7e2f5aab35e354129027628",
+    "cases/intent_in_host_write.f90": "ee6496c0010f986b36b7d2d73d2d76aea7e53ac047f7b85a764b0b36dc9a31c9",
+    "cases/ordinary_function_host_write.f90": "a5a76574229097e11d2d03c05c4b30b4c052b66abb18866219d484dc2cd2041c",
+    "cases/ordinary_function_transitive_host_write.f90": "a1c67ab1734eaecd7d150ff4758eb1ec2c26530521780bdf7a54245a3b5fe876",
+    "cases/nested_contains.f90": "8183a736960a6a9704e325032c240775a28061aee86af0e4732df1512326d186",
+    "cases/internal_not_module_visible.f90": "5bce3ae28fd3bb455600b1662dc990b8a3cb1ba5a29ed3e49306ebb0694b3d55",
+    "cases/internal_wrong_host.f90": "70130011f896a663fae2cdaee9587c0e778db4609802c103a9df1e9aad7ec800",
+    "cases/main_internal.f90": "07181725332a9db16fd9162a8d24c3d4287eb2b3b70af353e786d70c89d3f274",
+    "cases/external_internal.f90": "207780b47348afba7c89f621b137ef3e98eb46682268aae41c6b6d9b6e1cfe54",
+    "cases/internal_procedure_argument.f90": "0d373a4045259ad729f1392541359146925cdaf80db655d88dad77c74b2c4252",
+    "cases/host_active_do_write.f90": "341d037a8c60bcb60e9b0ee7ccce18fc861f721ba12a0036973373f0f8bcedb5",
+    "cases/host_active_do_writable_actual.f90": "80aec08d6e913e729333a698b57ecb9b23bbd93d8584bffc50746450275faa60",
+    "cases/host_active_do_nested_loop.f90": "0fe814833abd82d7aff7064bdab5dcf8101ad73f888eb251e35e59acf80df80e",
+    "cases/capture_optional_specification.f90": "a1325d7c94d0f78048676a5567d3d015c5a5de5ced460973252746b138ff7219",
+    "cases/internal_shadows_module_procedure.f90": "fc93559d9bbd162dc7df5daa49733845ac36f398e304c25c64a858bada80c1d7",
+    "cases/intent_in_host_writable_actual.f90": "bfd9f80066c7bdc85468ce69ae5e8b3f92f3a71284fa2a763e9d2a400ad31464",
+    "cases/host_character_substring.f90": "8f329099f5476bd288771eb13af33581d3ad84bc2f83a74920a51265b39163aa",
+    "cases/host_empty_array.f90": "275215c401d1e8213fd67d6ed0ebbe8f8b968f114d9df320a41fe6d1a9bb2033",
+    "cases/capture_host_function_result.f90": "714ab5555a5d5ff241c9df393ca0d16ab65d18b83f7c416c88ef35d5d364bd97",
+    "cases/elemental_host_contains.f90": "e7d113c8da3e5a259435e703d1e8736a9d5ae63815e06465ca6a7024d7e79862",
+    "cases/impure_elemental_child_host_counter.f90": "e431fe1e2df72a092634fddbd30a9fc56ba38a210ff640ddd8f7619afd2e2489",
+    "cases/simple_mutable_capture.f90": "b05aa1400c0539a583d3acb1503200061f86ca54af534c4d8fb7c28491e18a37",
+    "cases/simple_parameter_capture.f90": "7fa013f0e1e7e28eaf7584e3ec73eaaf6aa5f92f48fdb5e284f4c55430a1eb5b",
+    "cases/host_bound_composition.f90": "f5912c8f5561db2a7a574cdcabdc30f1c13dace3961a1ebd54e9aff3e3abe200"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

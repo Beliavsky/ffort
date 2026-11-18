@@ -1,0 +1,911 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 31,
+    "failed": 0,
+    "candidate_checked": 31,
+    "gnu_checked": 30,
+    "gnu_skipped": 1,
+    "gnu_executed": 10,
+    "gnu_compile_only": 10,
+    "gnu_compile_rejections": 10,
+    "gnu_known_defects": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "blanks_keywords",
+        "source": "cases/blanks_keywords.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "<a a a >\n< b b>\n<>\n<>\n<q q q q !>\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "<a a a >\n< b b>\n<>\n<>\n<q q q q !>\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "<a a a >\n< b b>\n<>\n<>\n<q q q q !>\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "parameters",
+        "source": "cases/parameters.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 8 8 1 0\n<a a a >\n<xyxyxyxy>"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6           8           8           1           0\n<a a a >\n<xyxyxyxy>\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6 8 8 1 0\n<a a a >\n<xyxyxyxy>\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_dummy",
+        "source": "cases/dynamic_dummy.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6\n<a a a >\n0\n<>"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6\n<a a a >\n           0\n<>\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6\n<a a a >\n 0\n<>\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "length_undefined_string",
+        "source": "cases/length_undefined_string.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "21 0 1",
+        "baseline_reason": "Undefined STRING data: descriptor-only interpreter test; GNU is never executed."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 21 0 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "kind_undefined_arguments",
+        "source": "cases/kind_undefined_arguments.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "1",
+        "baseline_reason": "KIND must not read either undefined value."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_huge_count",
+        "source": "cases/empty_huge_count.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "0\n<>",
+        "baseline_reason": "Enormous count: compile-only GNU, even with empty STRING."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0\n<>\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "length_limit",
+        "source": "cases/length_limit.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "65536"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "       65536\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 65536\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_scalar",
+        "source": "cases/shadow_scalar.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "17"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          17\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_array",
+        "source": "cases/shadow_array.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_function",
+        "source": "cases/shadow_function.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "12"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          12\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 12\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_result",
+        "source": "cases/shadow_result.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "23"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          23\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 23\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_generic",
+        "source": "cases/shadow_generic.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "34"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          34\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 34\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_string",
+        "source": "cases/wrong_string.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/wrong_string.f90:3:15:\n\n    3 | print *,repeat(1,2)\n      |               1\nError: \u2018string\u2019 argument of \u2018repeat\u2019 intrinsic at (1) must be CHARACTER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/wrong_string.f90:3:20: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/wrong_string.f90:3:20: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_count",
+        "source": "cases/wrong_count.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/wrong_count.f90:3:19:\n\n    3 | print *,repeat('x',2.0)\n      |                   1\nError: \u2018string\u2019 argument of \u2018repeat\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/wrong_count.f90:3:24: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/wrong_count.f90:3:24: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_count",
+        "source": "cases/missing_count.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/missing_count.f90:3:8:\n\n    3 | print *,repeat('x')\n      |        1\nError: Missing actual argument \u2018ncopies\u2019 in call to \u2018repeat\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/missing_count.f90:3:20: REPEAT requires STRING and NCOPIES\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/missing_count.f90:3:20: REPEAT requires STRING and NCOPIES\n"
+      }
+    },
+    {
+      "case": {
+        "name": "extra_argument",
+        "source": "cases/extra_argument.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/extra_argument.f90:3:8:\n\n    3 | print *,repeat('x',2,3)\n      |        1\nError: Too many arguments in call to \u2018repeat\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/extra_argument.f90:3:24: REPEAT requires STRING and NCOPIES\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/extra_argument.f90:3:24: REPEAT requires STRING and NCOPIES\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unknown_keyword",
+        "source": "cases/unknown_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/unknown_keyword.f90:3:8:\n\n    3 | print *,repeat('x',copies=2)\n      |        1\nError: Cannot find keyword named \u2018copies\u2019 in call to \u2018repeat\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/unknown_keyword.f90:3:29: Unknown keyword or excess actual argument: copies\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/unknown_keyword.f90:3:29: Unknown keyword or excess actual argument: copies\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_keyword",
+        "source": "cases/duplicate_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/duplicate_keyword.f90:3:8:\n\n    3 | print *,repeat('x',2,ncopies=3)\n      |        1\nError: Too many arguments in call to \u2018repeat\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/duplicate_keyword.f90:3:32: Repeated actual argument for ncopies\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/duplicate_keyword.f90:3:32: Repeated actual argument for ncopies\n"
+      }
+    },
+    {
+      "case": {
+        "name": "positional_after_keyword",
+        "source": "cases/positional_after_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/positional_after_keyword.f90:3:27:\n\n    3 | print *,repeat(string='x',2)\n      |                           1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/positional_after_keyword.f90:3:27: Positional argument cannot follow a keyword argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/positional_after_keyword.f90:3:27: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_string",
+        "source": "cases/array_string.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/array_string.f90:3:15:\n\n    3 | print *,repeat(['x','y'],2)\n      |               1\nError: \u2018string\u2019 argument of \u2018repeat\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/array_string.f90:3:28: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/array_string.f90:3:28: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_count",
+        "source": "cases/array_count.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/array_count.f90:3:19:\n\n    3 | print *,repeat('x',[1,2])\n      |                   1\nError: \u2018ncopies\u2019 argument of \u2018repeat\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/array_count.f90:3:26: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/array_count.f90:3:26: REPEAT requires scalar CHARACTER STRING and scalar INTEGER NCOPIES\n"
+      }
+    },
+    {
+      "case": {
+        "name": "negative_constant",
+        "source": "cases/negative_constant.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/negative_constant.f90:3:19:\n\n    3 | print *,repeat('x',-1)\n      |                   1\nError: Argument NCOPIES of REPEAT intrinsic is negative at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/negative_constant.f90:3:23: REPEAT NCOPIES must be nonnegative\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/negative_constant.f90:3:23: REPEAT NCOPIES must be nonnegative\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nondefault_character",
+        "source": "cases/nondefault_character.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "baseline_reason": "Valid Fortran nondefault CHARACTER is outside the interpreter subset."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/nondefault_character.f90:3:16: Missing literal kind suffix\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/nondefault_character.f90:3:16: Missing literal kind suffix\n"
+      }
+    },
+    {
+      "case": {
+        "name": "negative_dynamic",
+        "source": "cases/negative_dynamic.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "baseline_reason": "Unsafe/undefined execution is never attempted under GNU."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/negative_dynamic.f90:5:9: REPEAT NCOPIES must be nonnegative\n"
+      }
+    },
+    {
+      "case": {
+        "name": "overlength_dynamic",
+        "source": "cases/overlength_dynamic.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "baseline_reason": "Unsafe/undefined execution is never attempted under GNU."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/overlength_dynamic.f90:5:9: REPEAT CHARACTER length limit exceeded (65536)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "huge_dynamic",
+        "source": "cases/huge_dynamic.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "baseline_reason": "Unsafe/undefined execution is never attempted under GNU."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/huge_dynamic.f90:5:9: REPEAT CHARACTER length limit exceeded (65536)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_string",
+        "source": "cases/undefined_string.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "baseline_reason": "Unsafe/undefined execution is never attempted under GNU."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/undefined_string.f90:5:16: read of uninitialized variable s\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_count",
+        "source": "cases/undefined_count.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "baseline_reason": "Unsafe/undefined execution is never attempted under GNU."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/undefined_count.f90:5:20: read of uninitialized variable n\n"
+      }
+    },
+    {
+      "case": {
+        "name": "overlength_constant",
+        "source": "cases/overlength_constant.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "baseline_reason": "Valid Fortran result exceeds interpreter 65536-character bound."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/overlength_constant.f90:3:27: REPEAT CHARACTER length limit exceeded (65536)\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/overlength_constant.f90:3:27: REPEAT CHARACTER length limit exceeded (65536)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "huge_constant",
+        "source": "cases/huge_constant.f90",
+        "category": "reject",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "baseline_reason": "Do not ask GNU to fold or allocate an enormous constant result."
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/huge_constant.f90:3:43: REPEAT CHARACTER length limit exceeded (65536)\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/repeat_intrinsic/cases/huge_constant.f90:3:43: REPEAT CHARACTER length limit exceeded (65536)\n"
+      }
+    },
+    {
+      "case": {
+        "name": "matrix",
+        "source": "cases/matrix.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<x>\n<x>\n<x>\n<xx>\n<xx>\n<xx>\n<xxx>\n<xxx>\n<xxx>\n<xxxxxxx>\n<xxxxxxx>\n<xxxxxxx>\n<>\n<>\n<>\n< a >\n< a >\n< a >\n< a  a >\n< a  a >\n< a  a >\n< a  a  a >\n< a  a  a >\n< a  a  a >\n< a  a  a  a  a  a  a >\n< a  a  a  a  a  a  a >\n< a  a  a  a  a  a  a >\n<>\n<>\n<>\n<a'b>\n<a'b>\n<a'b>\n<a'ba'b>\n<a'ba'b>\n<a'ba'b>\n<a'ba'ba'b>\n<a'ba'ba'b>\n<a'ba'ba'b>\n<a'ba'ba'ba'ba'ba'ba'b>\n<a'ba'ba'ba'ba'ba'ba'b>\n<a'ba'ba'ba'ba'ba'ba'b>\n<>\n<>\n<>\n<  >\n<  >\n<  >\n<    >\n<    >\n<    >\n<      >\n<      >\n<      >\n<              >\n<              >\n<              >\n",
+        "exact_stdout": true,
+        "oracle_values": 75
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<x>\n<x>\n<x>\n<xx>\n<xx>\n<xx>\n<xxx>\n<xxx>\n<xxx>\n<xxxxxxx>\n<xxxxxxx>\n<xxxxxxx>\n<>\n<>\n<>\n< a >\n< a >\n< a >\n< a  a >\n< a  a >\n< a  a >\n< a  a  a >\n< a  a  a >\n< a  a  a >\n< a  a  a  a  a  a  a >\n< a  a  a  a  a  a  a >\n< a  a  a  a  a  a  a >\n<>\n<>\n<>\n<a'b>\n<a'b>\n<a'b>\n<a'ba'b>\n<a'ba'b>\n<a'ba'b>\n<a'ba'ba'b>\n<a'ba'ba'b>\n<a'ba'ba'b>\n<a'ba'ba'ba'ba'ba'ba'b>\n<a'ba'ba'ba'ba'ba'ba'b>\n<a'ba'ba'ba'ba'ba'ba'b>\n<>\n<>\n<>\n<  >\n<  >\n<  >\n<    >\n<    >\n<    >\n<      >\n<      >\n<      >\n<              >\n<              >\n<              >\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<>\n<x>\n<x>\n<x>\n<xx>\n<xx>\n<xx>\n<xxx>\n<xxx>\n<xxx>\n<xxxxxxx>\n<xxxxxxx>\n<xxxxxxx>\n<>\n<>\n<>\n< a >\n< a >\n< a >\n< a  a >\n< a  a >\n< a  a >\n< a  a  a >\n< a  a  a >\n< a  a  a >\n< a  a  a  a  a  a  a >\n< a  a  a  a  a  a  a >\n< a  a  a  a  a  a  a >\n<>\n<>\n<>\n<a'b>\n<a'b>\n<a'b>\n<a'ba'b>\n<a'ba'b>\n<a'ba'b>\n<a'ba'ba'b>\n<a'ba'ba'b>\n<a'ba'ba'b>\n<a'ba'ba'ba'ba'ba'ba'b>\n<a'ba'ba'ba'ba'ba'ba'b>\n<a'ba'ba'ba'ba'ba'ba'b>\n<>\n<>\n<>\n<  >\n<  >\n<  >\n<    >\n<    >\n<    >\n<      >\n<      >\n<      >\n<              >\n<              >\n<              >\n",
+        "err": ""
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:32:02.216457+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "limits": "Scalar default CHARACTER REPEAT, INTEGER(4/8) count and 65536-character bound. GNU undefined/unsafe dynamic cases compile only; enormous constant case skipped before compilation.",
+  "manifest_sha256": "e512fa2a1aa874e3d861be712f34786326b3c5e5272f990f4c944e76e83a411b",
+  "source_sha256": {
+    "cases/blanks_keywords.f90": "a68acc33498319e4f227808e7553dc8b309c816e2624ac4325ea9b4c191ce4d7",
+    "cases/parameters.f90": "63c41343ea79fa271c366c334e6b9e7e84c66e74b9383290e51a38be7a433819",
+    "cases/dynamic_dummy.f90": "1d26e90d7bc498c7b0c0b8231b33a6581c7e55bc2db0d813b36679ad8681371f",
+    "cases/length_undefined_string.f90": "2bd2145788c30eab4ac09042b3a59e9c670007cfec4fbc361631f658450fc79f",
+    "cases/kind_undefined_arguments.f90": "7b62c288ecfccd417313714a736f4adb4b30b6a545985fb2aee6ce03dc0e6dec",
+    "cases/empty_huge_count.f90": "6a08301b52a0080706c4c1f225ae28ebfac603ef2c208f3c718007d7ff312525",
+    "cases/length_limit.f90": "cbfa1bb754ddf354fc2bdab94d4b398a2be65f0df2739244f1d08e981c417a99",
+    "cases/shadow_scalar.f90": "58c0316b8644702de4480c4fa4441c2ade18b0b3127fd92c77ab0070726603b4",
+    "cases/shadow_array.f90": "bc2304b185108dbf8e85d58a0e82cb013ce5824876acb7c40ecf6ac207753911",
+    "cases/shadow_function.f90": "f61ccf0c995037b31f4bdd82f8bb5fa9273016d7bef8c0c0d0eb0f41b58bb796",
+    "cases/shadow_result.f90": "faa6b9dd1a1d71c0caa10a892d3557dfee4e97f7140f9f165f3066542a16deb3",
+    "cases/shadow_generic.f90": "bc0ceb80d519190e6c2c5eb4215bc07b0243f89c140a90a76f01be2c97b799eb",
+    "cases/wrong_string.f90": "76ec121784a1e8eda8ded04e69758f63623d28b79835a0ff47dd7e7056305b6b",
+    "cases/wrong_count.f90": "3361cca778845df93561845add62580b584efdfe7c80cc189a774ebf8d99ffa9",
+    "cases/missing_count.f90": "00934d58e282e7af294a2f2ee8ca7c6ab160113dd64bbe4b3e660b7d89fa6ab4",
+    "cases/extra_argument.f90": "4eac8947159ae2a42cc78817f3f65d9689eaaab904b42040476951c4ee6b3124",
+    "cases/unknown_keyword.f90": "817f38ed0645c087dbb41863e8407b7dbf0b460e3a3109d93e26baaad5fa2e85",
+    "cases/duplicate_keyword.f90": "2b3d9c092f299ee9206055803fbdafa8ce57dcca52b05e9b633fedcf190cfb04",
+    "cases/positional_after_keyword.f90": "cccf4910a3d0e97026d2e213ec2f077108acb576374c03c1a9481f6155ec529e",
+    "cases/array_string.f90": "823b3552daa49c48869cabdf46e1ffee9c3132cea62bb1d8ef5cde5e6c16c1d9",
+    "cases/array_count.f90": "cf40f50598740e05198f11a16c1063de250c9980a2f5862624ab93f83b844d14",
+    "cases/negative_constant.f90": "cbe83f645f15308e023769d973f3bb511a82de88ae6e52f2cecc9fc052f89569",
+    "cases/nondefault_character.f90": "30aea00babe4ea97f42bdaa57e50c5257dea6f705447b0ecc4261ce76e9f0708",
+    "cases/negative_dynamic.f90": "c23ba1b0d84374c808c37e5213edecad60315e3fd344a6fe43fbec3a5224b57d",
+    "cases/overlength_dynamic.f90": "00082e65a41d498db5d08b0f1f44f90d670e184e705144606db312b38f8ddfdb",
+    "cases/huge_dynamic.f90": "22f46c8ad087d602a55804458e83e1c1da6783c0ee2c9c320050d7258d8376de",
+    "cases/undefined_string.f90": "95cf786c233297fe6b93d3c046a4a4c3d083859471baa44a714a9ba8e0a52ac9",
+    "cases/undefined_count.f90": "32e9b815b285cd508776cd4d8e718fa8b0ff44f09ed12146c19de29e6a734867",
+    "cases/overlength_constant.f90": "1786106b4a739a9859e47976cd5cca199d93e09c979486fdb58aad2c527dbf23",
+    "cases/huge_constant.f90": "1f06e0ff2704be3ad4ab4a4dbfb54aa8bf94c6154981b37114616c35b0eea0d1",
+    "cases/matrix.f90": "3db96b3e729c921b7e151e09c6c5de423d1edda9451cf17cefa06d22ed0212a7"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

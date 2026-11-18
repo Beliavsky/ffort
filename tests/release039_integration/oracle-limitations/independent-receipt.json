@@ -1,0 +1,123 @@
+{
+  "source": "narrow_result.f90",
+  "source_sha256": "3e9737f167d902546dd440a3922e69eb4a863227d7ff19e8c027a019c0ad72df",
+  "classification": "known GNU runtime optional-KIND discrepancy; not execution agreement",
+  "candidate_expected": [
+    "0",
+    "-0",
+    "1",
+    "-1",
+    "0",
+    "-0",
+    "2",
+    "-2",
+    "1",
+    "0",
+    "0",
+    "-0",
+    "1",
+    "-1",
+    "0",
+    "-0",
+    "2",
+    "-2"
+  ],
+  "gnu_observed_expected": [
+    "0",
+    "-0",
+    "2",
+    "-2",
+    "1",
+    "-1",
+    "2",
+    "-2",
+    "1",
+    "0",
+    "0",
+    "-0",
+    "1",
+    "-1",
+    "0",
+    "-0",
+    "2",
+    "-2"
+  ],
+  "gnu": [
+    {
+      "optimization": "-O0",
+      "compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O0",
+          "/workspace/scratch/c5319e9549df/fortfront-039-integration/fortfront-interpreter-0.39.0/tests/release039_integration/oracle-limitations/narrow_result.f90",
+          "-o",
+          "/tmp/release039-discrepancy-c2963d1n/gnu-O0"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "   0.00000000      -0.00000000       2.00000000      -2.00000000       1.00000000      -1.00000000       2.00000000      -2.00000000    \n   1.00000000       0.00000000    \n   0.00000000      -0.00000000       1.00000000      -1.00000000       0.00000000      -0.00000000       2.00000000      -2.00000000    \n",
+        "err": "",
+        "argv": [
+          "/tmp/release039-discrepancy-c2963d1n/gnu-O0"
+        ]
+      }
+    },
+    {
+      "optimization": "-O2",
+      "compile": {
+        "code": 0,
+        "out": "",
+        "err": "",
+        "argv": [
+          "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+          "-std=f2018",
+          "-pedantic-errors",
+          "-fcheck=all",
+          "-O2",
+          "/workspace/scratch/c5319e9549df/fortfront-039-integration/fortfront-interpreter-0.39.0/tests/release039_integration/oracle-limitations/narrow_result.f90",
+          "-o",
+          "/tmp/release039-discrepancy-c2963d1n/gnu-O2"
+        ]
+      },
+      "run": {
+        "code": 0,
+        "out": "   0.00000000      -0.00000000       2.00000000      -2.00000000       1.00000000      -1.00000000       2.00000000      -2.00000000    \n   1.00000000       0.00000000    \n   0.00000000      -0.00000000       1.00000000      -1.00000000       0.00000000      -0.00000000       2.00000000      -2.00000000    \n",
+        "err": "",
+        "argv": [
+          "/tmp/release039-discrepancy-c2963d1n/gnu-O2"
+        ]
+      }
+    }
+  ],
+  "independent_basis": "Round A before converting its whole-valued result to the KIND representation. The required whole values0,1,2 are exactly representable in REAL4. Decimal intervals including all possible binary64 parse rounding preserve the rounding decisions.",
+  "primary_sources": [
+    "https://gcc.gnu.org/onlinedocs/gfortran/AINT.html",
+    "https://gcc.gnu.org/onlinedocs/gfortran/ANINT.html"
+  ],
+  "candidate_sha256": "ca15eec29f4da1ff0a5039fb431a78ed170b8bca2999c73dfda1f3f96e70703e",
+  "compiler_version": {
+    "code": 0,
+    "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "err": "",
+    "argv": [
+      "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "--version"
+    ]
+  },
+  "candidate": {
+    "code": 0,
+    "out": " 0.00000000 -0.00000000 1.00000000 -1.00000000 0.00000000 -0.00000000 2.00000000 -2.00000000\n 1.00000000 0.00000000\n 0.00000000 -0.00000000 1.00000000 -1.00000000 0.00000000 -0.00000000 2.00000000 -2.00000000\n",
+    "err": "",
+    "argv": [
+      "/tmp/release039-discrepancy-c2963d1n/candidate",
+      "/workspace/scratch/c5319e9549df/fortfront-039-integration/fortfront-interpreter-0.39.0/tests/release039_integration/oracle-limitations/narrow_result.f90"
+    ]
+  }
+}

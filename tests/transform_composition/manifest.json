@@ -1,0 +1,198 @@
+{
+  "cases": [
+    {
+      "name": "pack_pack_reshape_order",
+      "source": "cases/pack_pack_reshape_order.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 5 3 6"
+    },
+    {
+      "name": "pack_reshape_pack_pad_order",
+      "source": "cases/pack_reshape_pack_pad_order.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 8 4 9"
+    },
+    {
+      "name": "pack_pack_reshape_vector",
+      "source": "cases/pack_pack_reshape_vector.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 3 9 10"
+    },
+    {
+      "name": "pack_pack_reshape_mask",
+      "source": "cases/pack_pack_reshape_mask.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 4"
+    },
+    {
+      "name": "pack_character_round_trip",
+      "source": "cases/pack_character_round_trip.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "abef"
+    },
+    {
+      "name": "pack_empty_round_trip",
+      "source": "cases/pack_empty_round_trip.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0"
+    },
+    {
+      "name": "pack_kind_unevaluated_nested",
+      "source": "cases/pack_kind_unevaluated_nested.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "8 8"
+    },
+    {
+      "name": "pack_kind_shape_values_not_read",
+      "source": "cases/pack_kind_shape_values_not_read.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "8"
+    },
+    {
+      "name": "pack_count_nested",
+      "source": "cases/pack_count_nested.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 2 3 5"
+    },
+    {
+      "name": "pack_auto_count_pack_reshape",
+      "source": "cases/pack_auto_count_pack_reshape.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 3 0"
+    },
+    {
+      "name": "pack_parameter_nested",
+      "source": "cases/pack_parameter_nested.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 4"
+    },
+    {
+      "name": "pack_order_pack",
+      "source": "cases/pack_order_pack.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 4 2 5 3 6"
+    },
+    {
+      "name": "pack_empty_dynamic_mismatch",
+      "source": "cases/pack_empty_dynamic_mismatch.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "PACK MASK shape",
+      "reason": "Interpreter shape/value safety contract; invalid data is not run by the compiler oracle."
+    },
+    {
+      "name": "pack_empty_bad_reshape",
+      "source": "cases/pack_empty_bad_reshape.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "RESHAPE SHAPE extents",
+      "reason": "Interpreter shape/value safety contract; invalid data is not run by the compiler oracle."
+    },
+    {
+      "name": "reshape_numeric_order_without_pad",
+      "source": "cases/reshape_numeric_order_without_pad.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2 4 6 93 2 6 4 93 4 5 6 1 3 5 2 4 6"
+    },
+    {
+      "name": "reshape_character_both_directions",
+      "source": "cases/reshape_character_both_directions.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "aa yy cc zz aa cc dd 1"
+    },
+    {
+      "name": "reshape_kind_undefined_inputs",
+      "source": "cases/reshape_kind_undefined_inputs.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "8 8"
+    },
+    {
+      "name": "reshape_zero_pack_undefined_source",
+      "source": "cases/reshape_zero_pack_undefined_source.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0 0 0"
+    },
+    {
+      "name": "reshape_pad_is_pack",
+      "source": "cases/reshape_pad_is_pack.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 9 2 7 7 9 2 4 92 93"
+    },
+    {
+      "name": "reshape_logical_and_wide_integer",
+      "source": "cases/reshape_logical_and_wide_integer.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "9007199254740993 9223372036854775807 -9007199254740995 -9223372036854775807 T T F F"
+    },
+    {
+      "name": "reshape_order_is_pack",
+      "source": "cases/reshape_order_is_pack.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 4 2 5 3 6"
+    },
+    {
+      "name": "reshape_count_bound_composition",
+      "source": "cases/reshape_count_bound_composition.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 1 1 1 2 2"
+    },
+    {
+      "name": "reshape_zero_reshape_bad_pack_mask",
+      "source": "cases/reshape_zero_reshape_bad_pack_mask.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "PACK MASK shape does not conform",
+      "reason": "Interpreter shape/value safety contract; invalid data is not run by the compiler oracle."
+    },
+    {
+      "name": "reshape_empty_pack_bad_reshape_order",
+      "source": "cases/reshape_empty_pack_bad_reshape_order.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "RESHAPE ORDER must be a permutation",
+      "reason": "Interpreter shape/value safety contract; invalid data is not run by the compiler oracle."
+    },
+    {
+      "name": "reshape_zero_reshape_short_pack_vector",
+      "source": "cases/reshape_zero_reshape_short_pack_vector.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "PACK VECTOR has fewer elements",
+      "reason": "Interpreter shape/value safety contract; invalid data is not run by the compiler oracle."
+    },
+    {
+      "name": "reshape_empty_pack_oversized_reshape",
+      "source": "cases/reshape_empty_pack_oversized_reshape.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "RESHAPE extent limit exceeded",
+      "reason": "Interpreter shape/value safety contract; invalid data is not run by the compiler oracle."
+    }
+  ]
+}

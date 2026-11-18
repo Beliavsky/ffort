@@ -1,0 +1,279 @@
+{
+  "tools": {
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 12,
+    "failed": 0,
+    "gnu_checked": 11,
+    "gnu_compiler_discrepancies": 1,
+    "gnu_executed": 8,
+    "gnu_compile_only": 2,
+    "gnu_compile_rejections": 1,
+    "gnu_skipped": 1
+  },
+  "records": [
+    {
+      "case": {
+        "name": "optional_descriptor_where",
+        "source": "cases/optional_descriptor_where.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "F T F 2 2 2 -1 4 7 20 8 T T 2 2 2 -1 4 7 32 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " F\n T\n F\n           2           2           2          -1           4           7\n          20           8\n T\n T\n           2           2           2          -1           4           7\n          32           8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "assumed_section_copyback",
+        "source": "cases/assumed_section_copyback.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2 3 8 2 2 -942 -930 1742 1730 831"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    2                    2                    3           8\n           2           2\n  -942.00000000000000       -930.00000000000000        1742.0000000000000        1730.0000000000000        831.00000000000000     \n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reallocation_bounds",
+        "source": "cases/reallocation_bounds.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 1 2 -2 4 7 14 1 3 2 3 -1 9 12 1 3 2 1 1 1 12 1 3 2 3 -1 9 15"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           1           2          -2           4           7          14\n           1           3           2           3          -1           9          12\n           1           3           2           1           1           1          12\n           1           3           2           3          -1           9          15\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_length_reallocation",
+        "source": "cases/character_length_reallocation.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 1 2 4 3 5 9 test 2 1 2 4 9 1 2 2 3 -2 end 1 2 2 3 1 1 1 end"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           1           2           4           3           5           9 test\n           2           1           2           4           9\n           1           2           2           3          -2 end\n           1           2           2           3           1           1           1 end\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "character_assumed_section",
+        "source": "cases/character_assumed_section.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2 2 4 2 2 xy abcd",
+        "formatted_lines": {
+          "1": "xy  ",
+          "2": "abcd"
+        }
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           2           4           2           2\nxy  \nabcd\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "empty_axis_shapes",
+        "source": "cases/empty_axis_shapes.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 2 3 0 0 2 3 0 2 0 3 0 2 0 3 0 2 3 0 0 2 3 0 0 F"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           2           3           0\n           0           2           3           0\n           2           0           3           0\n           2           0           3           0\n           2           3           0           0\n           2           3           0           0\n F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "recursive_result_lifetime",
+        "source": "cases/recursive_result_lifetime.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 1 2 2 1 2 1 1 1 9.0 9.0 2 1 0 T 2 1 0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           1           2\n           2           1           2           1           1           1\n   9.0000000000000000        9.0000000000000000     \n           2           1           0\n T           2           1           0           0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "stat_descriptor_shape",
+        "source": "cases/stat_descriptor_shape.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "T T 2 2 2 2 2 2 -1 4 7 20 0 F"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " T T           2           2           2\n           2           2           2          -1           4           7          20\n           0 F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "where_rank_three_boundary",
+        "source": "cases/where_rank_three_boundary.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": "",
+        "diagnostic": "WHERE mask must be a LOGICAL array",
+        "scope_note": "GNU accepts rank-three WHERE; the interpreter intentionally supports only rank-one/rank-two masks."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "unallocated_shape_boundary",
+        "source": "cases/unallocated_shape_boundary.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "scope_note": "SHAPE of an unallocated allocatable is invalid. The interpreter must reject safely at runtime; GNU is neither compiled nor executed as an oracle.",
+        "diagnostic": "unallocated"
+      },
+      "errors": [],
+      "gnu_skipped": "SHAPE of an unallocated allocatable is invalid. The interpreter must reject safely at runtime; GNU is neither compiled nor executed as an oracle."
+    },
+    {
+      "case": {
+        "name": "conflicting_intent_boundary",
+        "source": "cases/conflicting_intent_boundary.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": "",
+        "diagnostic": "Repeated or conflicting INTENT",
+        "scope_note": "Both processors must reject repeated/conflicting declaration attributes after continuation normalization."
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/fortfront-029-integration/fortfront-interpreter-0.29.0/tests/release029_integration/cases/conflicting_intent_boundary.f90:11:7:\n\n   11 |  & out),intent(in)::x(:,:,:)\n      |       1\nError: INTENT (IN) conflicts with INTENT(INOUT) at (1)\n/workspace/scratch/c5319e9549df/fortfront-029-integration/fortfront-interpreter-0.29.0/tests/release029_integration/cases/conflicting_intent_boundary.f90:9:19:\n\n    9 | subroutine update(x)\n      |                   1\nError: Symbol \u2018x\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/fortfront-029-integration/fortfront-interpreter-0.29.0/tests/release029_integration/cases/conflicting_intent_boundary.f90:9:19:\n\n    9 | subroutine update(x)\n      |                   1\nError: Symbol \u2018x\u2019 at (1) has no IMPLICIT type\n/workspace/scratch/c5319e9549df/fortfront-029-integration/fortfront-interpreter-0.29.0/tests/release029_integration/cases/conflicting_intent_boundary.f90:7:14:\n\n    7 | call update(a)\n      |              1\nError: Type mismatch in argument \u2018x\u2019 at (1); passed INTEGER(4) to UNKNOWN\n"
+      }
+    },
+    {
+      "case": {
+        "name": "deferred_section_compiler_caveat",
+        "source": "cases/deferred_section_compiler_caveat.f90",
+        "category": "success",
+        "baseline": "compile",
+        "expected_stdout": "2 2 2 4 2 2 xy abcd",
+        "formatted_lines": {
+          "1": "xy  ",
+          "2": "abcd"
+        },
+        "scope_note": "Observed GNU 14.2.0 discrepancy: the reversed deferred-length CHARACTER section probe leaves the selected element unchanged; the fixed-length control copies back correctly. GNU compile-only evidence is not execution agreement. Candidate output is checked against independently reasoned literal output.",
+        "compiler_discrepancy": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      }
+    }
+  ],
+  "utc": "2026-11-15T04:09:16.141166+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "scope": "Synthetic bounded composition tests, not original xutilities execution. Compile-only and policy-skip cases are not GNU execution comparisons.",
+  "manifest_sha256": "8c5df3fbeeee28d547de5dab5240add10645e21f3454aa0277e01301b32f8106",
+  "source_sha256": {
+    "cases/optional_descriptor_where.f90": "9d958e2b5b991cd86f28b6091369d53e51e1b1b1310148372b3f0591d74bc9a1",
+    "cases/assumed_section_copyback.f90": "19abea8294cb811abc4a5b4fbaeab9b856e2c14fc85f2fc0abe65a592ffe88f8",
+    "cases/reallocation_bounds.f90": "575d7c838424c3a19fc3e099536f32aebe4b3231074fec9f18736e8dcf238b92",
+    "cases/character_length_reallocation.f90": "67ba6c1e658df12d67f3a697ba83b6556b7ec28f6ee524f1f77ee2dffabbfac9",
+    "cases/character_assumed_section.f90": "5f3ac28e93e2397026a04d970bc92e9f4d59ee42ef6a7db850a312ee243cc1f2",
+    "cases/empty_axis_shapes.f90": "3d3814aa52fb86c999f3636bb1cbd5fefe50a8d82f40599e44149eff1c8d292c",
+    "cases/recursive_result_lifetime.f90": "486931ffc0d2b38515b348515a89a838bfcc567653447ca99f3f0b445a0f95cd",
+    "cases/stat_descriptor_shape.f90": "e05a4381fffc3631a5a6096afd918637de5d0597d65215b06698ff9a32a12c0a",
+    "cases/where_rank_three_boundary.f90": "708e2f99ab01a3118b842324ffa5db69b9de1253c2cb4f70e10f29f2c710f6d5",
+    "cases/unallocated_shape_boundary.f90": "0badcf93c978f1ae2cf6c11e7c970ac0dde9f13160cf415e6e066dff3ef6ec28",
+    "cases/conflicting_intent_boundary.f90": "6f7d41ab02f86bae7c37fab384a541b30aa9557be1ecc4dac26935781ba5f1d6",
+    "cases/deferred_section_compiler_caveat.f90": "5d58db19b8140f8c6c2cba1326eb758f7154dd3f3a42b20697de86cecda62c03"
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "cases": [
+    {
+      "name": "counter",
+      "source": "cases/counter.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2 0 3 1 3 2 3 0 4",
+      "diagnostic": ""
+    },
+    {
+      "name": "kinds",
+      "source": "cases/kinds.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "2147483649 0.75 T B  x\n2147483650 1 F   xx",
+      "diagnostic": ""
+    },
+    {
+      "name": "original_recursive_gen",
+      "source": "cases/original_recursive_gen.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 1 1 2 2 3\n2 3 4 3 4 4\n-12\n1 1 2 -1 -1 -1\n2 3 3 -1 -1 -1",
+      "diagnostic": ""
+    },
+    {
+      "name": "implicit_save",
+      "source": "cases/implicit_save.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "6 7",
+      "diagnostic": ""
+    },
+    {
+      "name": "multiple_entities",
+      "source": "cases/multiple_entities.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 10 4 12",
+      "diagnostic": ""
+    },
+    {
+      "name": "constant_expression",
+      "source": "cases/constant_expression.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "8 9",
+      "diagnostic": ""
+    },
+    {
+      "name": "kind_conversion",
+      "source": "cases/kind_conversion.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "4 5",
+      "diagnostic": ""
+    },
+    {
+      "name": "zero_character",
+      "source": "cases/zero_character.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 0",
+      "diagnostic": ""
+    },
+    {
+      "name": "early_return",
+      "source": "cases/early_return.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2",
+      "diagnostic": ""
+    },
+    {
+      "name": "saved_counted_do",
+      "source": "cases/saved_counted_do.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 3",
+      "diagnostic": ""
+    },
+    {
+      "name": "saved_do_early_return",
+      "source": "cases/saved_do_early_return.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 1",
+      "diagnostic": ""
+    },
+    {
+      "name": "safe_writable_actual",
+      "source": "cases/safe_writable_actual.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 2",
+      "diagnostic": ""
+    },
+    {
+      "name": "readonly_function",
+      "source": "cases/readonly_function.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 3",
+      "diagnostic": ""
+    },
+    {
+      "name": "impure_elemental",
+      "source": "cases/impure_elemental.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 12 13 14",
+      "diagnostic": ""
+    },
+    {
+      "name": "independent_scopes",
+      "source": "cases/independent_scopes.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 101 2 102",
+      "diagnostic": ""
+    },
+    {
+      "name": "snapshot_recursive_actual",
+      "source": "cases/snapshot_recursive_actual.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 2 3 1 1 3 2 0 3",
+      "diagnostic": ""
+    },
+    {
+      "name": "recursive_active_do",
+      "source": "cases/recursive_active_do.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "active DO variable"
+    },
+    {
+      "name": "initializer_budget",
+      "source": "cases/initializer_budget.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "execution step limit exceeded",
+      "args": [
+        "--max-steps",
+        "1"
+      ]
+    },
+    {
+      "name": "increment_overflow",
+      "source": "cases/increment_overflow.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "integer overflow"
+    },
+    {
+      "name": "pure_explicit",
+      "source": "cases/pure_explicit.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "PURE/SIMPLE"
+    },
+    {
+      "name": "pure_implicit",
+      "source": "cases/pure_implicit.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "PURE/SIMPLE"
+    },
+    {
+      "name": "pure_transitive",
+      "source": "cases/pure_transitive.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "ordinary_function_write",
+      "source": "cases/ordinary_function_write.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "SAVE state writes"
+    },
+    {
+      "name": "ordinary_function_indirect_write",
+      "source": "cases/ordinary_function_indirect_write.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "External side effects"
+    },
+    {
+      "name": "ordinary_function_writable_actual",
+      "source": "cases/ordinary_function_writable_actual.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "SAVE state writes"
+    },
+    {
+      "name": "recursive_saved_alias",
+      "source": "cases/recursive_saved_alias.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "Module actual"
+    },
+    {
+      "name": "no_initializer",
+      "source": "cases/no_initializer.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "SAVE requires"
+    },
+    {
+      "name": "saved_array",
+      "source": "cases/saved_array.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "initialized intrinsic scalar"
+    },
+    {
+      "name": "automatic_saved_array",
+      "source": "cases/automatic_saved_array.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "initialized intrinsic scalar"
+    },
+    {
+      "name": "variable_initializer",
+      "source": "cases/variable_initializer.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "constant expressions"
+    },
+    {
+      "name": "saved_dummy",
+      "source": "cases/saved_dummy.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "initialized intrinsic scalar"
+    },
+    {
+      "name": "saved_parameter",
+      "source": "cases/saved_parameter.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "initialized intrinsic scalar"
+    },
+    {
+      "name": "saved_result",
+      "source": "cases/saved_result.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "RESULT cannot"
+    },
+    {
+      "name": "saved_target",
+      "source": "cases/saved_target.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "initialized intrinsic scalar"
+    },
+    {
+      "name": "duplicate_save",
+      "source": "cases/duplicate_save.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "Repeated SAVE"
+    },
+    {
+      "name": "standalone_save",
+      "source": "cases/standalone_save.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": ""
+    },
+    {
+      "name": "main_explicit_save",
+      "source": "cases/main_explicit_save.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0",
+      "diagnostic": ""
+    }
+  ]
+}

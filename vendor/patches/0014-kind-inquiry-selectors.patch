@@ -1,0 +1,211 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -3,7 +3,7 @@
+     use ast_base, only: ast_node, string_t, LITERAL_INTEGER, LITERAL_REAL, &
+         LITERAL_STRING, LITERAL_LOGICAL
+     use ast_nodes_core, only: literal_node, identifier_node, binary_op_node, &
+-        call_or_subscript_node, component_access_node, assignment_node
++        call_or_subscript_node, component_access_node, assignment_node, array_literal_node
+     use ast_nodes_bounds, only: array_slice_node, range_expression_node, array_bounds_node
+     use ast_nodes_data, only: declaration_node, parameter_declaration_node, &
+         derived_type_node
+@@ -34,7 +34,7 @@
+     public :: annotate_resolved_expression_types
+     public :: query_resolved_type
+     ! Shared by strict argument checking before expression annotation runs.
+-    public :: resolve_kind_selector
++    public :: resolve_kind_selector, resolve_kind_expression
+ 
+ contains
+ 
+@@ -123,6 +123,8 @@
+         select type (node => arena%entries(node_index)%node)
+             type is (literal_node)
+             call resolve_literal(arena, node_index, node)
++            type is (array_literal_node)
++            call resolve_array_literal(arena, node, visiting)
+             type is (complex_literal_node)
+             call resolve_complex_literal(arena, node, visiting)
+             type is (declaration_node)
+@@ -153,6 +155,35 @@
+         end select
+         visiting(node_index) = .false.
+     end subroutine resolve_node_metadata
++
++    subroutine resolve_array_literal(arena, node, visiting)
++        type(ast_arena_t), intent(inout) :: arena
++        type(array_literal_node), intent(inout) :: node
++        logical, intent(inout) :: visiting(:)
++        integer :: i, child, element_type, element_kind
++        call resolve_from_inferred_type(node)
++        if (allocated(node%type_spec)) then
++            if (len_trim(node%type_spec) > 0) return
++        end if
++        if (.not. allocated(node%element_indices)) return
++        if (size(node%element_indices) == 0) return
++        element_type = 0
++        element_kind = 0
++        do i = 1, size(node%element_indices)
++            child = node%element_indices(i)
++            if (.not. arena%has_node_at(child)) return
++            call resolve_node_metadata(arena, child, visiting)
++            if (.not. arena%entries(child)%node%resolved_type_found) return
++            if (i == 1) then
++                element_type = arena%entries(child)%node%resolved_type_kind
++                element_kind = arena%entries(child)%node%resolved_kind_value
++            else
++                if (element_type /= arena%entries(child)%node%resolved_type_kind .or. &
++                    element_kind /= arena%entries(child)%node%resolved_kind_value) return
++            end if
++        end do
++        call set_intrinsic_metadata(node, element_type, element_kind, 1)
++    end subroutine resolve_array_literal
+ 
+     subroutine resolve_literal(arena, node_index, node)
+         type(ast_arena_t), intent(in) :: arena
+@@ -983,6 +1014,16 @@
+         if (underscore_pos > 0) lowered = lowered(:underscore_pos - 1)
+         has_double = index(lowered, "d") > 0
+     end function has_double_exponent
++
++    integer function resolve_kind_expression(arena, expr_index) result(kind_value)
++        type(ast_arena_t), intent(in) :: arena
++        integer, intent(in) :: expr_index
++        logical, allocatable :: visiting(:)
++        kind_value = 0
++        if (.not. arena%has_node_at(expr_index)) return
++        allocate (visiting(arena%size), source=.false.)
++        call evaluate_integer_constant(arena, expr_index, kind_value, visiting)
++    end function resolve_kind_expression
+ 
+     integer function resolve_kind_selector(arena, reference_index, selector) &
+             result(kind_value)
+@@ -1212,7 +1253,7 @@
+         integer, intent(in) :: expr_index
+         integer, intent(out) :: value
+         logical, intent(inout) :: visiting(:)
+-        integer :: lhs, rhs, ios
++        integer :: lhs, rhs, ios, argument
+         character(len=:), allocatable :: raw, name, operator
+ 
+         value = 0
+@@ -1270,6 +1311,32 @@
+                 return
+             end if
+             select case (compact_lower(expr%name))
++            case ("kind")
++                ! KIND is a type inquiry, not evaluation of its argument data.
++                if (allocated(expr%arg_indices)) then
++                    if (size(expr%arg_indices) == 1) then
++                        argument = expr%arg_indices(1)
++                        if (arena%has_node_at(argument)) then
++                            select type (arg => arena%entries(argument)%node)
++                            type is (assignment_node)
++                                if (arg%is_keyword_argument) argument = arg%value_index
++                            end select
++                        end if
++                        if (arena%has_node_at(argument)) then
++                            value = arena%entries(argument)%node%resolved_kind_value
++                            ! Strict dummy checks can ask before annotation.
++                            select type (arg => arena%entries(argument)%node)
++                            type is (literal_node)
++                                block
++                                    type(literal_node) :: typed_literal
++                                    typed_literal = arg
++                                    call resolve_literal(arena, argument, typed_literal)
++                                    value = typed_literal%resolved_kind_value
++                                end block
++                            end select
++                        end if
++                    end if
++                end if
+             case ("selected_real_kind")
+                 call evaluate_selected_real_kind(arena, expr, value, visiting)
+             case ("selected_int_kind")
+--- a/src/parser/declarations/parser_declarations_type_spec_module.f90
++++ b/src/parser/declarations/parser_declarations_type_spec_module.f90
+@@ -488,7 +488,7 @@
+         type(ast_arena_t), intent(inout) :: arena
+         type(type_specifier_t), intent(inout) :: type_spec
+         type(token_t) :: token
+-        type(token_t), allocatable :: collected_tokens(:)
++        type(token_t), allocatable :: collected_tokens(:), selector_tokens(:)
+         character(len=:), allocatable :: collected_text
+         integer :: depth
+ 
+@@ -518,7 +518,14 @@
+ 
+         if (allocated(collected_tokens)) then
+             collected_text = tokens_to_text(collected_tokens)
+-            call parse_single_parameter(collected_tokens, type_spec, arena, parser)
++            selector_tokens = collected_tokens
++            if (size(collected_tokens) >= 3) then
++                if (to_lower(collected_tokens(1)%text) == "kind" .and. &
++                    collected_tokens(2)%text == "=") then
++                    selector_tokens = collected_tokens(3:)
++                end if
++            end if
++            call parse_single_parameter(selector_tokens, type_spec, arena, parser)
+             if (allocated(type_spec%derived_parameter_nodes)) then
+                 type_spec%kind_selector_index = &
+                     type_spec%derived_parameter_nodes(size( &
+--- a/src/parser/declarations/parser_declarations_construction_module.f90
++++ b/src/parser/declarations/parser_declarations_construction_module.f90
+@@ -1,7 +1,7 @@
+ module parser_declarations_construction_module
+     use lexer_core, only: token_t, TK_OPERATOR
+     use parser_state_module, only: parser_state_t
+-    use ast_arena_modern, only: ast_arena_t
++    use ast_arena_modern, only: ast_arena_t, link_children_to_parent
+     use ast_nodes_data, only: declaration_node
+     use ast_factory_core, only: push_complex_literal
+     use ast_factory_declarations, only: push_declaration
+@@ -41,6 +41,7 @@
+             call register_declaration_annotation( &
+                 decl_index, type_spec, attr_info, name_buffer, &
+                 attr_info%global_dimension_indices)
++            call set_kind_selector_index(arena, decl_index, type_spec%kind_selector_index)
+             call apply_bind_c_attribute(arena, decl_index, attr_info)
+             return
+         end if
+@@ -69,6 +70,7 @@
+         select type (decl => arena%entries(decl_index)%node)
+         type is (declaration_node)
+             decl%kind_selector_index = selector_index
++            call link_children_to_parent(arena, decl_index, [selector_index])
+         end select
+     end subroutine set_kind_selector_index
+ 
+@@ -468,6 +470,7 @@
+                     is_allocatable=attr_info%is_allocatable, &
+                     is_pointer=attr_info%is_pointer)
+             end if
++            call set_kind_selector_index(arena, decl_index, type_spec%kind_selector_index)
+             call apply_bind_c_attribute(arena, decl_index, attr_info)
+         end if
+     end function emit_multi_declaration
+--- a/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
++++ b/src/semantic/analyzers/semantic_strict_argument_type_checker_types.f90
+@@ -9,7 +9,7 @@
+     use ast_nodes_procedure, only: function_def_node
+     use frontend_compiler_resolution, only: declaration_binding_t, &
+         resolve_identifier_binding, resolve_name_at_node
+-    use frontend_compiler_type_queries, only: resolve_kind_selector
++    use frontend_compiler_type_queries, only: resolve_kind_selector, resolve_kind_expression
+     use semantic_elemental_validation, only: is_elemental_prefix
+     use semantic_procedure_utils, only: declaration_type_to_mono
+     use string_utils_mod, only: to_lower
+@@ -267,6 +267,13 @@
+                 kind_value = resolve_kind_selector(arena, decl_index, selector)
+             end if
+         end if
++        if (kind_value <= 0) then
++            select type (decl => arena%entries(decl_index)%node)
++            type is (declaration_node)
++                if (decl%kind_selector_index > 0) &
++                    kind_value = resolve_kind_expression(arena, decl%kind_selector_index)
++            end select
++        end if
+         if (kind_value == 8) typ = create_mono_type(TDOUBLE)
+     end subroutine apply_declared_real_kind
+ 

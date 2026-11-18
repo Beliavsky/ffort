@@ -1,0 +1,807 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "utc": "2026-11-16T14:39:27.118017+00:00",
+  "summary": {
+    "total": 26,
+    "failed": 0,
+    "candidate_checked": 26,
+    "gnu_checked": 20,
+    "gnu_skipped": 6,
+    "gnu_executed": 20,
+    "gnu_compile_only": 0,
+    "gnu_compile_rejections": 0
+  },
+  "records": [
+    {
+      "case": {
+        "name": "pack_pack_reshape_order",
+        "source": "cases/pack_pack_reshape_order.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 5 3 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           5           3           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 5 3 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pack_reshape_pack_pad_order",
+        "source": "cases/pack_reshape_pack_pad_order.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 8 4 9"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           8           4           9\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 8 4 9\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pack_pack_reshape_vector",
+        "source": "cases/pack_pack_reshape_vector.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 9 10"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           9          10\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 9 10\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pack_pack_reshape_mask",
+        "source": "cases/pack_pack_reshape_mask.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pack_character_round_trip",
+        "source": "cases/pack_character_round_trip.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "abef"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " abef\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " abef\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pack_empty_round_trip",
+        "source": "cases/pack_empty_round_trip.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pack_kind_unevaluated_nested",
+        "source": "cases/pack_kind_unevaluated_nested.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pack_kind_shape_values_not_read",
+        "source": "cases/pack_kind_shape_values_not_read.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pack_count_nested",
+        "source": "cases/pack_count_nested.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 2 3 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           2           3           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 2 3 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pack_auto_count_pack_reshape",
+        "source": "cases/pack_auto_count_pack_reshape.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pack_parameter_nested",
+        "source": "cases/pack_parameter_nested.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "3 4"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           3           4\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 3 4\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pack_order_pack",
+        "source": "cases/pack_order_pack.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 4 2 5 3 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           4           2           5           3           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 4 2 5 3 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "pack_empty_dynamic_mismatch",
+        "source": "cases/pack_empty_dynamic_mismatch.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "PACK MASK shape",
+        "reason": "Interpreter shape/value safety contract; invalid data is not run by the compiler oracle."
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/transform_composition/cases/pack_empty_dynamic_mismatch.f90:4:14: PACK MASK shape does not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pack_empty_bad_reshape",
+        "source": "cases/pack_empty_bad_reshape.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "RESHAPE SHAPE extents",
+        "reason": "Interpreter shape/value safety contract; invalid data is not run by the compiler oracle."
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/transform_composition/cases/pack_empty_bad_reshape.f90:4:19: RESHAPE SHAPE extents must be nonnegative INTEGER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reshape_numeric_order_without_pad",
+        "source": "cases/reshape_numeric_order_without_pad.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 4 6 93 2 6 4 93 4 5 6 1 3 5 2 4 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           4           6          93           2           6           4          93\n           4           5           6\n           1           3           5           2           4           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 4 6 93 2 6 4 93\n 4 5 6\n 1 3 5 2 4 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reshape_character_both_directions",
+        "source": "cases/reshape_character_both_directions.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "aa yy cc zz aa cc dd 1"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": " aa yy cc zz\n aa cc dd\n           1\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " aa yy cc zz\n aa cc dd\n 1\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reshape_kind_undefined_inputs",
+        "source": "cases/reshape_kind_undefined_inputs.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8\n           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8\n 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reshape_zero_pack_undefined_source",
+        "source": "cases/reshape_zero_pack_undefined_source.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0 0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           0\n           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 0\n 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reshape_pad_is_pack",
+        "source": "cases/reshape_pad_is_pack.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 9 2 7 7 9 2 4 92 93"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           9           2           7           7           9\n           2           4          92          93\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 9 2 7 7 9\n 2 4 92 93\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reshape_logical_and_wide_integer",
+        "source": "cases/reshape_logical_and_wide_integer.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "9007199254740993 9223372036854775807 -9007199254740995 -9223372036854775807 T T F F"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "     9007199254740993  9223372036854775807    -9007199254740995 -9223372036854775807\n T T F F\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 9007199254740993 9223372036854775807 -9007199254740995 -9223372036854775807\n T T F F\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reshape_order_is_pack",
+        "source": "cases/reshape_order_is_pack.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 4 2 5 3 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           4           2           5           3           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 4 2 5 3 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reshape_count_bound_composition",
+        "source": "cases/reshape_count_bound_composition.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 1 1 1 2 2"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "                    1                    1\n           1           1           2           2\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 1\n 1 1 2 2\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "reshape_zero_reshape_bad_pack_mask",
+        "source": "cases/reshape_zero_reshape_bad_pack_mask.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "PACK MASK shape does not conform",
+        "reason": "Interpreter shape/value safety contract; invalid data is not run by the compiler oracle."
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/transform_composition/cases/reshape_zero_reshape_bad_pack_mask.f90:6:22: PACK MASK shape does not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reshape_empty_pack_bad_reshape_order",
+        "source": "cases/reshape_empty_pack_bad_reshape_order.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "RESHAPE ORDER must be a permutation",
+        "reason": "Interpreter shape/value safety contract; invalid data is not run by the compiler oracle."
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/transform_composition/cases/reshape_empty_pack_bad_reshape_order.f90:5:19: RESHAPE ORDER must be a permutation of result dimensions\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reshape_zero_reshape_short_pack_vector",
+        "source": "cases/reshape_zero_reshape_short_pack_vector.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "PACK VECTOR has fewer elements",
+        "reason": "Interpreter shape/value safety contract; invalid data is not run by the compiler oracle."
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/transform_composition/cases/reshape_zero_reshape_short_pack_vector.f90:5:22: PACK VECTOR has fewer elements than selected ARRAY\n"
+      }
+    },
+    {
+      "case": {
+        "name": "reshape_empty_pack_oversized_reshape",
+        "source": "cases/reshape_empty_pack_oversized_reshape.f90",
+        "category": "runtime",
+        "baseline": "skip",
+        "expected_stdout": "",
+        "diagnostic": "RESHAPE extent limit exceeded",
+        "reason": "Interpreter shape/value safety contract; invalid data is not run by the compiler oracle."
+      },
+      "errors": [],
+      "gnu_skipped": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/transform_composition/cases/reshape_empty_pack_oversized_reshape.f90:5:19: RESHAPE extent limit exceeded\n"
+      }
+    }
+  ],
+  "manifest_sha256": "9f48bd9819584aa6cfc5d57f9df16ed726cc1ad00cb2791c98afb7e859714f84",
+  "source_sha256": {
+    "cases/pack_pack_reshape_order.f90": "99597d2ca1f27282902832f95a3800040e1573cd8dc94ceb0a01fb603ec3a3e7",
+    "cases/pack_reshape_pack_pad_order.f90": "5edac2825d2b2b83e90c9242a18c5c07dcb1a55cd25c768e5d1c081a7127cd4d",
+    "cases/pack_pack_reshape_vector.f90": "4d65302908b8e8a03cccc7451223acd4927164c0bf0d0b33ee04d6ef3021dd2a",
+    "cases/pack_pack_reshape_mask.f90": "de737c1b5560d6f9c78f3980b2788ce8ac948a67961f432dd2245ff74a2c0d4a",
+    "cases/pack_character_round_trip.f90": "6f81000f7e2c003f91016229695cf3bd888f33b4e77f078f655d816c9d523c7f",
+    "cases/pack_empty_round_trip.f90": "3744d1478b7d19ca9e81e34088b5229b9b859da20b6d68b62c1cd11a7171fff6",
+    "cases/pack_kind_unevaluated_nested.f90": "3856d3c558257211bab2ee8c85cdb71937fb8c91cabe12e94f1deba8ae808b13",
+    "cases/pack_kind_shape_values_not_read.f90": "8cb508e1a02923bc1e4a554e2e291c1ee996ac1160a51b65f208529e6e9159d5",
+    "cases/pack_count_nested.f90": "98cf344c1ba8a4f5d6527ad1789724a3f264e3a619e739d180f7e038de8d47f3",
+    "cases/pack_auto_count_pack_reshape.f90": "bcaa475f57f920b3a982cacd867886490750eae08577c71c68b2b7dd4a61c56e",
+    "cases/pack_parameter_nested.f90": "7f0f8e029124853ec622da16ab39445fb5fc44575523ff634b86943eaa73db65",
+    "cases/pack_order_pack.f90": "fd21d6f56a6b4024fb12ea17d593d596ab51bec7ff221864ee85a30cbb78f32a",
+    "cases/pack_empty_dynamic_mismatch.f90": "1ad3e77c7e074916d8a569e3c885e0ff3936a1984e2adfb2572b4cc72535969a",
+    "cases/pack_empty_bad_reshape.f90": "03cce33bbf41c288b451edc01b5009f1f43f4217f13aa2262fc47ebc48a148e6",
+    "cases/reshape_numeric_order_without_pad.f90": "163b4a498f13a0843a2a28e4bc143e676d8cc77fa36f4d67a2b2cb6326fd0d55",
+    "cases/reshape_character_both_directions.f90": "8ab579b68a1b99a4da4efb28471f8d245dc3426b0840158db583f29815b27238",
+    "cases/reshape_kind_undefined_inputs.f90": "5aceb8c10ce8ad6dd80c41348fa47ef558f516524351b3f8d98a0a5eb585dc42",
+    "cases/reshape_zero_pack_undefined_source.f90": "2418ef80a8a2fec5f98601a31fcc99438f8582c7c25bd4d3e0927eb3bd1ad58a",
+    "cases/reshape_pad_is_pack.f90": "311dd4e35c85cfdf936d428158e2c854be48a23aa90f2bb04e171a6e8c8db150",
+    "cases/reshape_logical_and_wide_integer.f90": "21226e16f15c79d1cf7144d5edf8a105a0cbc9dc95f1f31cb43bafbddfd8d2ae",
+    "cases/reshape_order_is_pack.f90": "89bcd528a56a0a5dc1584ca6dd056906deede203a3f4a1258e798580cee7f54b",
+    "cases/reshape_count_bound_composition.f90": "4d8398d1582b7487b0e583f3fdd6d2f09acaef6b420c610dfcf412715e919714",
+    "cases/reshape_zero_reshape_bad_pack_mask.f90": "50251a7eeb675659dfd8ed5a97554531120a43994b7a2d7cd281954e152e52f5",
+    "cases/reshape_empty_pack_bad_reshape_order.f90": "5322dda5673670079541ba8436e177b2cedf1673d1ee40ab3e8d5b5561f62543",
+    "cases/reshape_zero_reshape_short_pack_vector.f90": "af496d5f8135ea9ba4d2474755eb6961178931b0ca557f2dea0cc4cfe15d5c82",
+    "cases/reshape_empty_pack_oversized_reshape.f90": "7eda133e356a731a6a51191a03210de03725084728f9595e7201ca431a84fdfc"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

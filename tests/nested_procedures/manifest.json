@@ -1,0 +1,502 @@
+{
+  "description": "Bounded internal procedures, exact original quick_sort, activation semantics, and safety boundaries.",
+  "original": {
+    "path": "../utilities_slices/source/xutilities.f90",
+    "sha256": "c257f1b2ee4911e979bb38cf6db044d8593c95e76ab1a7e7a7a769a298698883",
+    "body_sha256": "c12792b8b58af0814e11fabc91840133b8f943f306e32ece55cb68cab6529366",
+    "start_line": 8870,
+    "end_line": 8942,
+    "body_bytes": 2517,
+    "crlf_lines": 73
+  },
+  "cases": [
+    {
+      "name": "original_quick_sort",
+      "source": "cases/original_quick_sort.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 T T T T 0 0\n1 T T T T -4 1\n2 T T T T 0 3\n6 T T T T 11 21\n7 T T T T 22 28\n8 T T T T 40 36\n17 T T T T 0 153\n31 T T T T 0 496\n64 T T T T 6 2080\n64 T T T T 6 2080",
+      "diagnostic": "",
+      "note": "Entire original quick_sort including both internal routines is byte-identical with CRLF. Wrapper only defines real64 dp and elemental isnan generic. Tests sizes 0,1,2,6,7,8,17,31,64, duplicates, sorted/reverse, full permutation and value/index association, repeated calls."
+    },
+    {
+      "name": "host_scalar_array",
+      "source": "cases/host_scalar_array.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "T 3 xyz 4 5 6 19",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "local_shadowing",
+      "source": "cases/local_shadowing.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "100 9",
+      "diagnostic": "",
+      "note": "second sees host x, never calling sibling first local x."
+    },
+    {
+      "name": "dummy_shadowing",
+      "source": "cases/dummy_shadowing.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "29",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "recursive_internal",
+      "source": "cases/recursive_internal.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "15 6",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "recursive_host_activation",
+      "source": "cases/recursive_host_activation.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "64 12",
+      "diagnostic": "",
+      "note": "An internal child calls a recursive host and then must return to its original host activation. Sibling calls use that activation."
+    },
+    {
+      "name": "recursive_host_array_frames",
+      "source": "cases/recursive_host_array_frames.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "30 5",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "mutual_internal_recursion",
+      "source": "cases/mutual_internal_recursion.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "23 22",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "independent_internal_names",
+      "source": "cases/independent_internal_names.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 102 11",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "host_bounds_sections",
+      "source": "cases/host_bounds_sections.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "1 12 5 7 5 12",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "readonly_internal_function",
+      "source": "cases/readonly_internal_function.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "34",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "recursive_internal_function",
+      "source": "cases/recursive_internal_function.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "25",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "host_parameters",
+      "source": "cases/host_parameters.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "12",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "expression_snapshot",
+      "source": "cases/expression_snapshot.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "107",
+      "diagnostic": "",
+      "note": "Parenthesized actual is a value snapshot; child may write host x without dummy storage alias."
+    },
+    {
+      "name": "host_actual_not_captured",
+      "source": "cases/host_actual_not_captured.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "12",
+      "diagnostic": "",
+      "note": "Passing a host local to a child is safe if the child does not otherwise access its host storage."
+    },
+    {
+      "name": "early_return_host_write",
+      "source": "cases/early_return_host_write.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "42",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "host_saved_state",
+      "source": "cases/host_saved_state.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 12",
+      "diagnostic": "",
+      "note": "Existing SAVE semantics must not turn captured saved storage into per-activation copies."
+    },
+    {
+      "name": "child_saved_state",
+      "source": "cases/child_saved_state.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 12",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "pure_readonly_capture",
+      "source": "cases/pure_readonly_capture.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "10",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "host_array_specification",
+      "source": "cases/host_array_specification.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "16",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "internal_depth_limit",
+      "source": "cases/internal_depth_limit.f90",
+      "category": "runtime",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "call depth limit",
+      "note": "Deliberately infinite recursion: compile-only GNU and bounded interpreter failure, never execute GNU."
+    },
+    {
+      "name": "alias_direct",
+      "source": "cases/alias_direct.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "also referenced through callee host/USE association",
+      "note": "GNU compile only. Direct/transitive host access aliases a dummy actual; conservative interpreter boundary, including harmless read-only alias."
+    },
+    {
+      "name": "alias_transitive",
+      "source": "cases/alias_transitive.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "also referenced through callee host/USE association",
+      "note": "GNU compile only. Direct/transitive host access aliases a dummy actual; conservative interpreter boundary, including harmless read-only alias."
+    },
+    {
+      "name": "alias_readonly_conservative",
+      "source": "cases/alias_readonly_conservative.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "also referenced through callee host/USE association",
+      "note": "GNU compile only. Direct/transitive host access aliases a dummy actual; conservative interpreter boundary, including harmless read-only alias."
+    },
+    {
+      "name": "alias_array_element",
+      "source": "cases/alias_array_element.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "also referenced through callee host/USE association",
+      "note": "Conservative whole-storage overlap for array element actual and host array reference; compile-only."
+    },
+    {
+      "name": "capture_optional",
+      "source": "cases/capture_optional.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "host capture",
+      "note": ""
+    },
+    {
+      "name": "capture_pointer",
+      "source": "cases/capture_pointer.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "host capture",
+      "note": ""
+    },
+    {
+      "name": "capture_target",
+      "source": "cases/capture_target.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "host capture",
+      "note": ""
+    },
+    {
+      "name": "capture_allocatable",
+      "source": "cases/capture_allocatable.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "host capture",
+      "note": ""
+    },
+    {
+      "name": "capture_derived",
+      "source": "cases/capture_derived.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "host capture",
+      "note": ""
+    },
+    {
+      "name": "pure_host_write",
+      "source": "cases/pure_host_write.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "intent_in_host_write",
+      "source": "cases/intent_in_host_write.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "ordinary_function_host_write",
+      "source": "cases/ordinary_function_host_write.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "note": "Standard-valid GNU; interpreter ordinary-function external-side-effect boundary."
+    },
+    {
+      "name": "ordinary_function_transitive_host_write",
+      "source": "cases/ordinary_function_transitive_host_write.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "note": "Transitive side effect through sibling must be rejected before evaluation."
+    },
+    {
+      "name": "nested_contains",
+      "source": "cases/nested_contains.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "note": "Fortran internal subprogram may not itself contain an internal subprogram."
+    },
+    {
+      "name": "internal_not_module_visible",
+      "source": "cases/internal_not_module_visible.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "internal_wrong_host",
+      "source": "cases/internal_wrong_host.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "note": "GNU rejects at link (unresolved external); internal child is not visible in sibling host."
+    },
+    {
+      "name": "main_internal",
+      "source": "cases/main_internal.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "note": "Initial bounded subset only supports internal procedures within module procedures."
+    },
+    {
+      "name": "external_internal",
+      "source": "cases/external_internal.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "note": "Initial bounded subset only supports module hosts."
+    },
+    {
+      "name": "internal_procedure_argument",
+      "source": "cases/internal_procedure_argument.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "note": "No escaping internal procedures, procedure dummy arguments or closure support in this feature."
+    },
+    {
+      "name": "host_active_do_write",
+      "source": "cases/host_active_do_write.f90",
+      "category": "runtime",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "active DO variable",
+      "note": "Invalid modification of an active host DO variable; never execute GNU. Runtime must protect aliased host binding."
+    },
+    {
+      "name": "host_active_do_writable_actual",
+      "source": "cases/host_active_do_writable_actual.f90",
+      "category": "runtime",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "active DO variable",
+      "note": "Indirect active-DO write through writable dummy; compile-only GNU."
+    },
+    {
+      "name": "host_active_do_nested_loop",
+      "source": "cases/host_active_do_nested_loop.f90",
+      "category": "runtime",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "active DO variable",
+      "note": "Nested internal loop reuses an active host DO variable; never execute GNU."
+    },
+    {
+      "name": "capture_optional_specification",
+      "source": "cases/capture_optional_specification.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "host capture",
+      "note": "Unsupported optional capture occurs only in a child specification expression, not its body."
+    },
+    {
+      "name": "internal_shadows_module_procedure",
+      "source": "cases/internal_shadows_module_procedure.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3",
+      "diagnostic": "",
+      "note": "The internal procedure hides the same-named module procedure only within its host."
+    },
+    {
+      "name": "intent_in_host_writable_actual",
+      "source": "cases/intent_in_host_writable_actual.f90",
+      "category": "reject",
+      "baseline": "reject",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "host_character_substring",
+      "source": "cases/host_character_substring.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "aXYZe",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "host_empty_array",
+      "source": "cases/host_empty_array.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "0 3",
+      "diagnostic": "",
+      "note": ""
+    },
+    {
+      "name": "capture_host_function_result",
+      "source": "cases/capture_host_function_result.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "host capture",
+      "note": "Standard-valid result-variable host association is excluded from the bounded interpreter subset."
+    },
+    {
+      "name": "elemental_host_contains",
+      "source": "cases/elemental_host_contains.f90",
+      "category": "reject",
+      "baseline": "compile",
+      "expected_stdout": "",
+      "diagnostic": "",
+      "note": "GNU accepts this standard-valid ELEMENTAL host with a pure internal function; the bounded interpreter subset excludes ELEMENTAL hosts."
+    },
+    {
+      "name": "impure_elemental_child_host_counter",
+      "source": "cases/impure_elemental_child_host_counter.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "11 12 13 3",
+      "diagnostic": "",
+      "note": "Existing IMPURE ELEMENTAL effect policy applies to internal child functions. Captured host counter changes once per array element."
+    },
+    {
+      "name": "simple_mutable_capture",
+      "source": "cases/simple_mutable_capture.f90",
+      "category": "reject",
+      "baseline": "skip",
+      "expected_stdout": "",
+      "diagnostic": "host capture",
+      "note": "SIMPLE forbids reading mutable host storage, including an otherwise read-only capture. GNU is explicitly skipped; no native SIMPLE conformance or PURE-lowered semantics are claimed.",
+      "gnu_skip_reason": "SIMPLE is not evaluated under this suite's GNU Fortran 2018 mode"
+    },
+    {
+      "name": "simple_parameter_capture",
+      "source": "cases/simple_parameter_capture.f90",
+      "category": "success",
+      "baseline": "skip",
+      "expected_stdout": "10",
+      "diagnostic": "",
+      "note": "SIMPLE may reference a host named constant. GNU is explicitly skipped; no native SIMPLE conformance or PURE lowering is claimed.",
+      "gnu_skip_reason": "SIMPLE is not evaluated under this suite's GNU Fortran 2018 mode"
+    },
+    {
+      "name": "host_bound_composition",
+      "source": "cases/host_bound_composition.f90",
+      "category": "success",
+      "baseline": "run",
+      "expected_stdout": "3 xxx 4 5 6 1 x 10 0",
+      "diagnostic": "",
+      "note": "The same captured host INTEGER INTENT(IN) dummy n supplies an internal explicit-shape dummy bound and local CHARACTER length. Exercises lengths three, one, and zero. No host-local or host-array-inquiry bound claim."
+    }
+  ]
+}

@@ -1,0 +1,1092 @@
+{
+  "tools": {
+    "candidate": {
+      "path": "/workspace/scratch/c5319e9549df/recovery/054-clean-build-01/gfortran_C2992C13A93EF9F1/app/fortfront-interpreter",
+      "version": {
+        "code": 0,
+        "out": "fortfront-interpreter 0.54.0; FortFront 9a5896a + documented local patches\n",
+        "err": ""
+      }
+    },
+    "gfortran": {
+      "path": "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+      "version": {
+        "code": 0,
+        "out": "GNU Fortran (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "err": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 37,
+    "failed": 0,
+    "candidate_checked": 37,
+    "gnu_checked": 36,
+    "gnu_skipped": 0,
+    "gnu_executed": 16,
+    "gnu_compile_only": 3,
+    "gnu_compile_rejections": 17,
+    "gnu_known_defects": 1
+  },
+  "records": [
+    {
+      "case": {
+        "name": "scalar_search",
+        "source": "cases/scalar_search.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 4 0 1 7 1 1 0 0 6 2 2 4 4 8"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           4\n           0           1           7\n           1           1           0           0\n           6           2\n                    2                    4\n           4           8\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 4\n 0 1 7\n 1 1 0 0\n 6 2\n 2 4\n 4 8\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_trim_adjust",
+        "source": "cases/scalar_trim_adjust.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "0 0 2 2 4 8 abc abc 6 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           0           0           2                    2\n           4           8\nabc   \n   abc\n  \n\n           6           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 0 0 2 2\n 4 8\nabc   \n   abc\n  \n\n 6 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "exact_blank_preservation",
+        "source": "cases/exact_blank_preservation.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "<abc   >\n<   abc>\n<   >\n<>\n<\t a >\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "<abc   >\n<   abc>\n<   >\n<>\n<\t a >\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "<abc   >\n<   abc>\n<   >\n<>\n<\t a >\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "arrays_and_sections",
+        "source": "cases/arrays_and_sections.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2 0 0 0 2 3 0 3 4 4 0 3 4 0 5 5 0 4 3 <bab  > <aba  > <  aba> <  bab> 1 3 1 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           0           0           0           2           3           0\n                    3                    4                    4                    0\n           3           4           0           5                    5                    0                    4                    3\n<bab  >\n<aba  >\n<  aba>\n<  bab>\n           1           3           1           3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2 0 0 0 2 3 0\n 3 4 4 0\n 3 4 0 5 5 0 4 3\n<bab  >\n<aba  >\n<  aba>\n<  bab>\n 1 3 1 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "matrix_and_empty",
+        "source": "cases/matrix_and_empty.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 2 0 3 1 3 1 2 3 3 3 2 2 2 2 2 2 2 0 0 0 3 0 8 8 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           2           0           3           1           3           1           2           3           3           3           2\n           2           2           2           2           2           2\n           0           0           0           3\n           0           8           8\n           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 2 0 3 1 3 1 2 3 3 3 2\n 2 2 2 2 2 2\n 0 0 0 3\n 0 8 8\n 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "constants_and_inquiry",
+        "source": "cases/constants_and_inquiry.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "8 4 2 4 8 1 <a   > <   b> 5 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           8           4           2           4           8           1\n<a   >\n<   b>\n           5           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 8 4 2 4 8 1\n<a   >\n<   b>\n 5 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "optional_back_forwarding",
+        "source": "cases/optional_back_forwarding.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 3 3 1 3 1 3"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           3                    3                    1\n           3           1                    3\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 3 3 1\n 3 1 3\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_arrays",
+        "source": "cases/dynamic_arrays.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 4 2 2 2 0 1 4 2 2 0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           4           2           2           2           0           1           4           2           2\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 4 2 2 2 0 1 4 2 2\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "original_quote",
+        "source": "cases/original_quote.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "'dog'\n''\n''\n' cat'\n",
+        "exact_stdout": true
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "'dog'\n''\n''\n' cat'\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": "'dog'\n''\n''\n' cat'\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "specification_sum",
+        "source": "cases/specification_sum.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "6 abxx\n0\n"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           6 abxx  \n           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 6 abxx  \n 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_string",
+        "source": "cases/wrong_string.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_string.f90:3:14:\n\n    3 | print *,index(1,'a')\n      |              1\nError: \u2018string\u2019 argument of \u2018index\u2019 intrinsic at (1) must be CHARACTER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_string.f90:3:21: Character intrinsic STRING/SUBSTRING/SET must be CHARACTER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_string.f90:3:21: Character intrinsic STRING/SUBSTRING/SET must be CHARACTER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_substring",
+        "source": "cases/wrong_substring.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_substring.f90:3:18:\n\n    3 | print *,index('a',1)\n      |                  1\nError: \u2018substring\u2019 argument of \u2018index\u2019 intrinsic at (1) must be CHARACTER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_substring.f90:3:21: Character intrinsic STRING/SUBSTRING/SET must be CHARACTER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_substring.f90:3:21: Character intrinsic STRING/SUBSTRING/SET must be CHARACTER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_back",
+        "source": "cases/wrong_back.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_back.f90:3:22:\n\n    3 | print *,index('a','a',1)\n      |                      1\nError: \u2018back\u2019 argument of \u2018index\u2019 intrinsic at (1) must be LOGICAL\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_back.f90:3:25: Character search BACK must be LOGICAL\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_back.f90:3:25: Character search BACK must be LOGICAL\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_substring",
+        "source": "cases/missing_substring.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/missing_substring.f90:3:8:\n\n    3 | print *,index('a')\n      |        1\nError: Missing actual argument \u2018substring\u2019 in call to \u2018index\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/missing_substring.f90:3:19: Missing required actual argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/missing_substring.f90:3:19: Missing required actual argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "missing_string",
+        "source": "cases/missing_string.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/missing_string.f90:3:8:\n\n    3 | print *,index(substring='a')\n      |        1\nError: Missing actual argument \u2018string\u2019 in call to \u2018index\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/missing_string.f90:3:29: Missing required actual argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/missing_string.f90:3:29: Missing required actual argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "extra_index",
+        "source": "cases/extra_index.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/extra_index.f90:3:8:\n\n    3 | print *,index('a','a',.true.,4,5)\n      |        1\nError: Too many arguments in call to \u2018index\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/extra_index.f90:3:34: Unknown keyword or excess actual argument: \n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/extra_index.f90:3:34: Unknown keyword or excess actual argument: \n"
+      }
+    },
+    {
+      "case": {
+        "name": "unknown_index",
+        "source": "cases/unknown_index.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/unknown_index.f90:3:8:\n\n    3 | print *,index('a','a',reverse=.true.)\n      |        1\nError: Cannot find keyword named \u2018reverse\u2019 in call to \u2018index\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/unknown_index.f90:3:38: Unknown keyword or excess actual argument: reverse\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/unknown_index.f90:3:38: Unknown keyword or excess actual argument: reverse\n"
+      }
+    },
+    {
+      "case": {
+        "name": "duplicate_index",
+        "source": "cases/duplicate_index.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/duplicate_index.f90:3:8:\n\n    3 | print *,index('a',string='b',substring='a')\n      |        1\nError: Argument \u2018string\u2019 appears twice in call to \u2018index\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/duplicate_index.f90:3:44: Repeated actual argument for string\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/duplicate_index.f90:3:44: Repeated actual argument for string\n"
+      }
+    },
+    {
+      "case": {
+        "name": "pos_after_keyword",
+        "source": "cases/pos_after_keyword.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/pos_after_keyword.f90:3:26:\n\n    3 | print *,index(string='a','a')\n      |                          1\nError: Missing keyword name in actual argument list at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/pos_after_keyword.f90:3:26: Positional argument cannot follow a keyword argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/pos_after_keyword.f90:3:26: Positional argument cannot follow a keyword argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_trim",
+        "source": "cases/wrong_trim.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_trim.f90:3:17:\n\n    3 | print *,len_trim(4)\n      |                 1\nError: \u2018string\u2019 argument of \u2018len_trim\u2019 intrinsic at (1) must be CHARACTER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_trim.f90:3:20: Character intrinsic STRING/SUBSTRING/SET must be CHARACTER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_trim.f90:3:20: Character intrinsic STRING/SUBSTRING/SET must be CHARACTER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_adjust",
+        "source": "cases/wrong_adjust.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_adjust.f90:3:16:\n\n    3 | print *,adjustl(4)\n      |                1\nError: In call to \u2018adjustl\u2019 at (1), type mismatch in argument \u2018string\u2019; pass \u2018INTEGER(4)\u2019 to \u2018CHARACTER(*,0)\u2019\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_adjust.f90:3:19: Character intrinsic STRING/SUBSTRING/SET must be CHARACTER\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_adjust.f90:3:19: Character intrinsic STRING/SUBSTRING/SET must be CHARACTER\n"
+      }
+    },
+    {
+      "case": {
+        "name": "extra_adjust",
+        "source": "cases/extra_adjust.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/extra_adjust.f90:3:8:\n\n    3 | print *,adjustr('a','b')\n      |        1\nError: Too many arguments in call to \u2018adjustr\u2019 at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/extra_adjust.f90:3:25: ADJUSTL/ADJUSTR require one STRING argument\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/extra_adjust.f90:3:25: ADJUSTL/ADJUSTR require one STRING argument\n"
+      }
+    },
+    {
+      "case": {
+        "name": "wrong_kind",
+        "source": "cases/wrong_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_kind.f90:3:21:\n\n    3 | print *,len_trim('a',.true.)\n      |                     1\nError: \u2018kind\u2019 argument of \u2018len_trim\u2019 intrinsic at (1) must be INTEGER\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_kind.f90:3:29: Character intrinsic KIND must be a scalar INTEGER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/wrong_kind.f90:3:29: Character intrinsic KIND must be a scalar INTEGER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "unsupported_kind",
+        "source": "cases/unsupported_kind.f90",
+        "category": "reject",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/unsupported_kind.f90:3:31: Character intrinsic supports INTEGER kinds 4 and 8\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/unsupported_kind.f90:3:31: Character intrinsic supports INTEGER kinds 4 and 8\n"
+      }
+    },
+    {
+      "case": {
+        "name": "array_kind",
+        "source": "cases/array_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/array_kind.f90:3:21:\n\n    3 | print *,len_trim('a',[4])\n      |                     1\nError: \u2018kind\u2019 argument of \u2018len_trim\u2019 intrinsic at (1) must be a scalar\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/array_kind.f90:3:26: Character intrinsic KIND must be a scalar INTEGER constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/array_kind.f90:3:26: Character intrinsic KIND must be a scalar INTEGER constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "nonconstant_kind",
+        "source": "cases/nonconstant_kind.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/nonconstant_kind.f90:4:27:\n\n    4 | print *,index('a','a',kind=k)\n      |                           1\nError: Parameter \u2018k\u2019 at (1) has not been declared or is a variable, which does not reduce to a constant expression\n/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/nonconstant_kind.f90:4:27:\n\n    4 | print *,index('a','a',kind=k)\n      |                           1\nError: \u2018kind\u2019 argument of \u2018index\u2019 intrinsic at (1) must be a constant\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/nonconstant_kind.f90:4:30: Character intrinsic KIND must be constant\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/nonconstant_kind.f90:4:30: Character intrinsic KIND must be constant\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mismatch_shape",
+        "source": "cases/mismatch_shape.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/mismatch_shape.f90:3:14:\n\n    3 | print *,index(['a','b'],['a','b','c'])\n      |              1\nError: Different shape for arguments 'string' and 'substring' for intrinsic 'index' at (1) on dimension 1 (2 and 3)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/mismatch_shape.f90:3:39: Array expression shapes do not conform\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/mismatch_shape.f90:3:39: Array expression shapes do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "mismatch_rank",
+        "source": "cases/mismatch_rank.f90",
+        "category": "reject",
+        "baseline": "reject",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/mismatch_rank.f90:3:14:\n\n    3 | print *,index(['a','b'],reshape(['a','b'],[1,2]))\n      |              1\nError: Incompatible ranks in arguments 'string' and 'substring' for intrinsic 'index' (1 and 2) at (1)\n"
+      },
+      "check": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/mismatch_rank.f90:3:50: Array expression ranks do not conform\n"
+      },
+      "run": {
+        "code": 1,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/mismatch_rank.f90:3:50: Array expression ranks do not conform\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_string",
+        "source": "cases/undefined_string.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/undefined_string.f90:4:18: read of uninitialized variable s\n"
+      }
+    },
+    {
+      "case": {
+        "name": "undefined_back",
+        "source": "cases/undefined_back.f90",
+        "category": "runtime",
+        "baseline": "compile",
+        "expected_stdout": ""
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 2,
+        "out": "",
+        "err": "/workspace/scratch/c5319e9549df/recovery/054-clean-source-01/tests/character_intrinsics/cases/undefined_back.f90:4:25: read of uninitialized variable b\n"
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_scalar_back",
+        "source": "cases/dynamic_scalar_back.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "1 4 2 2 4 0 4 4 2 2 0 0"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           1           4           2           2           4           0           4           4           2           2\n           0           0\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 1 4 2 2 4 0 4 4 2 2\n 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_empty_descriptors",
+        "source": "cases/dynamic_empty_descriptors.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5 5 0 0",
+        "gnu_known_compile_rejection": "internal compiler error: Segmentation fault",
+        "gnu_known_compile_code": 4
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 4,
+        "out": "",
+        "err": "x86_64-linux-gnu-gfortran-14: internal compiler error: Segmentation fault signal terminated program f951\nPlease submit a full bug report, with preprocessed source (by using -freport-bug).\nSee <file:///usr/share/doc/gcc-14/README.Bugs> for instructions.\n"
+      },
+      "gnu_known_defect": true,
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5 5 0 0\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_scalar_names",
+        "source": "cases/shadow_scalar_names.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 5 7 17"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           5           7\n          17\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 5 7\n 17\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_array_names",
+        "source": "cases/shadow_array_names.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "4 9 3 10 2 12 6"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           4           9           3          10\n           2          12           6\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 4 9 3 10\n 2 12 6\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_result_names",
+        "source": "cases/shadow_result_names.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "2 3 4 5"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           2           3           4           5\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 2 3 4 5\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_procedure_names",
+        "source": "cases/shadow_procedure_names.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "11 22 33 44 15 26 37 48"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "          11          22          33          44\n          15          26          37          48\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 11 22 33 44\n 15 26 37 48\n",
+        "err": ""
+      }
+    },
+    {
+      "case": {
+        "name": "shadow_generic_name",
+        "source": "cases/shadow_generic_name.f90",
+        "category": "success",
+        "baseline": "run",
+        "expected_stdout": "5 7"
+      },
+      "errors": [],
+      "gnu_compile": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "gnu_run": {
+        "code": 0,
+        "out": "           5           7\n",
+        "err": ""
+      },
+      "check": {
+        "code": 0,
+        "out": "",
+        "err": ""
+      },
+      "run": {
+        "code": 0,
+        "out": " 5 7\n",
+        "err": ""
+      }
+    }
+  ],
+  "utc": "2026-11-16T14:31:59.701287+00:00",
+  "compiler_flags": [
+    "-std=f2018",
+    "-pedantic-errors",
+    "-fcheck=all",
+    "-O0"
+  ],
+  "limits": "Bounded CHARACTER intrinsics only. GNU undefined-value cases compile only; one explicit GNU compiler ICE is recorded separately from 16 successful native executions.",
+  "manifest_sha256": "9231b41ee1b1d1cac62b3b2a52056ba8b8210a41a750996632f5b2293cceb6ba",
+  "source_sha256": {
+    "cases/scalar_search.f90": "ecc1fb752e2c41f960e9bd4c6e53610e21c1f5b6df55302ac1a69931273e4e6a",
+    "cases/scalar_trim_adjust.f90": "b69f114f47d4a8731868b8cba059619a0a5167f679d95bfd048235d2ddd38b0e",
+    "cases/exact_blank_preservation.f90": "b4d74784b5bf46a25ed86506acba88d0e04c18ef1b3a3a55ec1bceaf6693b0db",
+    "cases/arrays_and_sections.f90": "7c24550e4d16f2c43783813eab38723900f2822c9ac5af68e781a44e8c504e16",
+    "cases/matrix_and_empty.f90": "be46e6b10aa43e8aed42f94aa9ff8c74691e4a0cf5982c5f3fcdae5a6e13f2a0",
+    "cases/constants_and_inquiry.f90": "2a8a480ba1cd865d9c8da388c65c3aff503a778acf70cc4f4c54f1a2e8b1ce9b",
+    "cases/optional_back_forwarding.f90": "f44d0959acc6eba7252c416b39f6dd2d6316337e08e6a5a6400a3f2dd80bfebe",
+    "cases/dynamic_arrays.f90": "ef46c7a0c40fbb98bd7570d58fbf57aecd0d18bf7737768f7c2e44cedad90fa6",
+    "cases/original_quote.f90": "646174810b9387004d3bfc22299da0e482dc2550d99fd7269601aaa94098484f",
+    "cases/specification_sum.f90": "3eda50a9794f5ddc1d0bd9b43c98a59673b92580f8f5fb33c01206e99b900fbc",
+    "cases/wrong_string.f90": "40bfe627b7c369e4c2361e71896f4edc1b60611d45fa0e71dcb4502d18f1c402",
+    "cases/wrong_substring.f90": "9cb0de8f056d17e81ce3aafe0a87c9d7a97ff4ba3629498df0c17ef44ba445a4",
+    "cases/wrong_back.f90": "7627897a1a18907b43d62850546ad2bff70d6de157242e4e3275b5aa784700fe",
+    "cases/missing_substring.f90": "64d74b59d4a3f0f076f0a7c09ac324b112c9934c6e46c4bffc57d1e06e1a7a92",
+    "cases/missing_string.f90": "60b620cc35fe08e88de5d86796aa57c39447eac0a87ac1d9cd6c1176a0819179",
+    "cases/extra_index.f90": "2aff58136ecfef46da01ddaec9646dd6b7fc4bbecd8df5f70802559c19aa4b5e",
+    "cases/unknown_index.f90": "35db11b928d75aa9a24df4258a6a330f6a1a971dcf3e2a32868d3b45cec5a0dc",
+    "cases/duplicate_index.f90": "43600dc12e80d1f59f4401f233cefd00fb9d72cb19a76ef5215520a0f2e5c230",
+    "cases/pos_after_keyword.f90": "2bcd58d4dfe4edb3c3b74b9b21fe6871be824a999dd83a910aaf75d461cea929",
+    "cases/wrong_trim.f90": "eaaf272a785a6c9ff9f2c79208ec6506ec264e136c6aaf69cf65bbd6316e9470",
+    "cases/wrong_adjust.f90": "621cf057b51d5d9b1eca8ef273289d8301fa9221cb715143ab48d8c3010e6fc3",
+    "cases/extra_adjust.f90": "ecd0c86823ae71841ecc59044b203db3110de157a3a2f80986d56c688bf9a84b",
+    "cases/wrong_kind.f90": "ad2696ac6c49b42f8938c44cd492eba7bc49a6776b6c853c4030e0cf52776fcf",
+    "cases/unsupported_kind.f90": "351f643702acebe0eef417e2b0cf1bb71fecf4b4f6e0804954157ef6f1094f75",
+    "cases/array_kind.f90": "fbc2b0050e27a70dab8e769b35e845c1e15bd5e51a1e6c0e108fb1d763b6ea2c",
+    "cases/nonconstant_kind.f90": "dc98c00119ad9b226298757ec030daa91d59e0061a5af89e7a788bc565e34a0f",
+    "cases/mismatch_shape.f90": "df438d41aa6ca37719e2bf617c745479e2222242525492540bb49099b46f864d",
+    "cases/mismatch_rank.f90": "1fd1b9c1f306ccb690f0de7fb30dd865d7ffc56dd33b6fbe7cf497cd9895d5c5",
+    "cases/undefined_string.f90": "a5277e58e0e06168d4bb707e74dc083de4643c344806a4b234525c91ca97c1fd",
+    "cases/undefined_back.f90": "8ffafe88b20925003dc0dc7e0ba8d445f432202b6d48b934c09364488aad7bab",
+    "cases/dynamic_scalar_back.f90": "2945e327676bb2f882e57a126856f64b0038e734e316950f0704dc6aa0d13275",
+    "cases/dynamic_empty_descriptors.f90": "2f520a589fc5c0c95d079efbdd6bd05b296cad7f3f26009029862bfeddeabce9",
+    "cases/shadow_scalar_names.f90": "24ad84dc1ca45220d53b2c2a7e52f647eaf20a0611978d2044adfc38cca3c40d",
+    "cases/shadow_array_names.f90": "0c7d2043d6ad5080b4a9350f90d7274844257a3a9fc1ca909cdd7c315eb461d3",
+    "cases/shadow_result_names.f90": "87c3f84821ce1b326c65b7d7be5405d42ec57dd48e43115229cad520a6d34594",
+    "cases/shadow_procedure_names.f90": "cbbb691e7fb9fd598819c6d578cbbffd27d190c6d5c3c3d600a4132926d910d8",
+    "cases/shadow_generic_name.f90": "52ba863099a0b9f48c9df36c52159da22c7d047d50143bc5a91bb7de1336234d"
+  },
+  "candidate_sha256": "6a48fcda559e6a6d084de4b2d5b7a8e02d14e301c95224b19ace57892c493098"
+}

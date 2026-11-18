@@ -1,0 +1,50 @@
+{
+  "scope": "GNU14.2 compilation ICE only; not counted as rejection or execution agreement. Candidate source unchanged.",
+  "record": {
+    "case": {
+      "name": "parameter_kind_inquiry",
+      "source": "cases/parameter_kind_inquiry.f90",
+      "category": "success",
+      "baseline": "run",
+      "diagnostic": "",
+      "expected_stdout": ""
+    },
+    "errors": [
+      "GNU compile failed"
+    ],
+    "gnu_compile": {
+      "code": 1,
+      "out": "",
+      "err": "f951: internal compiler error: Segmentation fault\n0x12ed873 internal_error(char const*, ...)\n\t???:0\n0x1aa53e1 gfc_simplify_expr(gfc_expr*, int)\n\t???:0\n0x1b0bf7f gfc_match_varspec(gfc_expr*, int, bool, bool)\n\t???:0\n0x1b0d41e gfc_match_rvalue(gfc_expr**)\n\t???:0\n0x1abfd3c gfc_match_expr(gfc_expr**)\n\t???:0\n0x1b01672 gfc_match_actual_arglist(int, gfc_actual_arglist**, bool)\n\t???:0\n0x1b0d9bc gfc_match_rvalue(gfc_expr**)\n\t???:0\n0x1abfd3c gfc_match_expr(gfc_expr**)\n\t???:0\n0x1aa7774 gfc_match_init_expr(gfc_expr**)\n\t???:0\n0x1b21ae0 gfc_parse_file()\n\t???:0\nPlease submit a full bug report, with preprocessed source (by using -freport-bug).\nPlease include the complete backtrace with any bug report.\nSee <file:///usr/share/doc/gcc-14/README.Bugs> for instructions.\n",
+      "argv": [
+        "/workspace/scratch/c5319e9549df/scifort-verification/toolchain/bin/gfortran",
+        "-std=f2018",
+        "-pedantic-errors",
+        "-fcheck=all",
+        "-O0",
+        "/workspace/scratch/c5319e9549df/character-len-inquiry-work/fortfront/tests/character_len_inquiry/cases/parameter_kind_inquiry.f90",
+        "-o",
+        "/tmp/character-len-oracle-yj0rhmvb/reference"
+      ]
+    },
+    "check": {
+      "code": 0,
+      "out": "",
+      "err": "",
+      "argv": [
+        "/workspace/scratch/c5319e9549df/character-len-inquiry-candidate-cli",
+        "--check",
+        "/workspace/scratch/c5319e9549df/character-len-inquiry-work/fortfront/tests/character_len_inquiry/cases/parameter_kind_inquiry.f90"
+      ]
+    },
+    "run": {
+      "code": 0,
+      "out": "",
+      "err": "",
+      "argv": [
+        "/workspace/scratch/c5319e9549df/character-len-inquiry-candidate-cli",
+        "/workspace/scratch/c5319e9549df/character-len-inquiry-work/fortfront/tests/character_len_inquiry/cases/parameter_kind_inquiry.f90"
+      ]
+    }
+  }
+}

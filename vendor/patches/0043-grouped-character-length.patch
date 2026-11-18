@@ -1,0 +1,22 @@
+--- a/src/parser/declarations/parser_declarations_construction_module.f90
++++ b/src/parser/declarations/parser_declarations_construction_module.f90
+@@ -449,6 +449,19 @@
+             end if
+         end if
+ 
++        ! Grouped declarations must retain the same source length descriptor
++        ! as individual declarations, even when a parser path groups one name.
++        ! Attribute order (e.g. OPTIONAL before INTENT) must not erase LEN.
++        if (decl_index > 0 .and. type_spec%has_character_length) then
++            if (allocated(type_spec%character_length_expr)) then
++                select type (decl => arena%entries(decl_index)%node)
++                type is (declaration_node)
++                    decl%has_character_length = .true.
++                    decl%character_length_expr = type_spec%character_length_expr
++                end select
++            end if
++        end if
++
+         if (decl_index > 0) then
+             if (attr_info%has_global_dimensions) then
+                 call register_type_annotation( &

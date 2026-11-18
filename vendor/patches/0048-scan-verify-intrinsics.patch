@@ -1,0 +1,67 @@
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 73
++        integer, parameter :: NUM_INTRINSICS = 75
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -505,6 +505,17 @@
+             name="index", return_type="integer", &
+             arg_types="character,character", &
+             description="Substring position")
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="scan", return_type="integer", &
++            arg_types="character,character", &
++            description="Position of a character in a set")
++
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="verify", return_type="integer", &
++            arg_types="character,character", &
++            description="Position of a character outside a set")
+     end subroutine register_string_intrinsics
+ 
+     subroutine register_variadic_intrinsics(i)
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -877,7 +877,7 @@
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+         case ("real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+-              "exp", "log", "log10", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "len_trim", "adjustl", "adjustr")
++              "exp", "log", "log10", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar", "index", "scan", "verify", "len_trim", "adjustl", "adjustr")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+                 do i = 1, size(node%arg_indices)
+@@ -891,7 +891,7 @@
+         end select
+ 
+         select case (name)
+-        case ("index", "len_trim")
++        case ("index", "scan", "verify", "len_trim")
+             kind_value = intrinsic_kind_argument(arena, node, name)
+             if (kind_value <= 0) kind_value = 4
+             call set_intrinsic_metadata(node, TINT, kind_value, result_rank)
+@@ -1952,7 +1952,7 @@
+         position = 0
+         if (.not. allocated(node%arg_indices)) return
+         select case (intrinsic_name)
+-        case ("char", "achar", "nint", "floor", "ceiling", "index", "len_trim")
++        case ("char", "achar", "nint", "floor", "ceiling", "index", "scan", "verify", "len_trim")
+             do i = 1, size(node%arg_indices)
+                 argument_index = node%arg_indices(i)
+                 if (.not. arena%has_node_at(argument_index)) cycle
+@@ -1968,7 +1968,7 @@
+                         end if
+                     end select
+                 class default
+-                    if (intrinsic_name == "index") then
++                    if (intrinsic_name == "index" .or. intrinsic_name == "scan" .or. intrinsic_name == "verify") then
+                         if (i == 4) position = i
+                     else
+                         if (i == 2) position = i

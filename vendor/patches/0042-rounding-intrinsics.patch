@@ -1,0 +1,76 @@
+diff --git a/src/frontend/frontend_compiler_type_queries.f90 b/src/frontend/frontend_compiler_type_queries.f90
+index 0829072..d892880 100644
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -868,8 +868,8 @@ contains
+         ! These elemental intrinsics preserve the conforming actual shape.
+         ! Reductions, transformations and inquiries keep their separate rules.
+         select case (name)
+-        case ("real", "int", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
+-              "exp", "log", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar")
++        case ("real", "int", "nint", "floor", "ceiling", "dble", "merge", "logical", "cmplx", "aimag", "abs", &
++              "exp", "log", "log10", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max", "char", "achar")
+             result_rank = 0
+             if (allocated(node%arg_indices)) then
+                 do i = 1, size(node%arg_indices)
+@@ -887,7 +887,7 @@ contains
+             kind_value = intrinsic_kind_argument(arena, node, name)
+             if (kind_value <= 0) kind_value = 1
+             call set_intrinsic_metadata(node, TCHAR, kind_value, result_rank)
+-        case ("real", "int", "logical", "cmplx")
++        case ("real", "int", "nint", "floor", "ceiling", "logical", "cmplx")
+             kind_value = intrinsic_kind_argument(arena, node, name)
+             if (kind_value <= 0 .and. name == "real") then
+                 call real_result_kind_from_argument(arena, node, visiting, &
+@@ -897,7 +897,7 @@ contains
+             select case (name)
+             case ("real")
+                 result_type = TREAL
+-            case ("int")
++            case ("int", "nint", "floor", "ceiling")
+                 result_type = TINT
+             case ("logical")
+                 result_type = TLOGICAL
+@@ -905,7 +905,7 @@ contains
+                 result_type = TCOMPLEX
+             end select
+             call set_intrinsic_metadata(node, result_type, kind_value, result_rank)
+-        case ("exp", "log", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max")
++        case ("exp", "log", "log10", "sqrt", "erfc", "sinh", "cosh", "tanh", "min", "max")
+             call first_intrinsic_argument_metadata(arena, node, visiting, &
+                 result_type, kind_value)
+             if (result_type > 0 .and. kind_value > 0) &
+@@ -1938,7 +1938,7 @@ contains
+         position = 0
+         if (.not. allocated(node%arg_indices)) return
+         select case (intrinsic_name)
+-        case ("char", "achar")
++        case ("char", "achar", "nint", "floor", "ceiling")
+             do i = 1, size(node%arg_indices)
+                 argument_index = node%arg_indices(i)
+                 if (.not. arena%has_node_at(argument_index)) cycle
+diff --git a/src/utilities/intrinsic_registry.f90 b/src/utilities/intrinsic_registry.f90
+index f8b32d8..5593a98 100644
+--- a/src/utilities/intrinsic_registry.f90
++++ b/src/utilities/intrinsic_registry.f90
+@@ -165,7 +165,7 @@ contains
+ 
+     ! Initialize the intrinsic function registry
+     subroutine initialize_intrinsic_registry()
+-        integer, parameter :: NUM_INTRINSICS = 72
++        integer, parameter :: NUM_INTRINSICS = 73
+         integer :: i
+ 
+         if (registry_initialized) return
+@@ -231,6 +231,11 @@ contains
+             name="exp", return_type="real", arg_types="real", &
+             description="Exponential function")
+ 
++        i = i + 1
++        intrinsic_functions(i) = intrinsic_signature_t( &
++            name="log10", return_type="real", arg_types="real", &
++            description="Base ten logarithm function")
++
+         i = i + 1
+         intrinsic_functions(i) = intrinsic_signature_t( &
+             name="log", return_type="real", arg_types="real", &

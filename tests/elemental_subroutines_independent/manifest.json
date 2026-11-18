@@ -1,0 +1,1048 @@
+{
+  "description": "Independent specifications for elemental writable calls and impure evaluation.",
+  "cases": [
+    {
+      "name": "prefix_elemental",
+      "source": "cases/prefix_elemental.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "3 3 3"
+    },
+    {
+      "name": "prefix_pure_elemental",
+      "source": "cases/prefix_pure_elemental.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "3 3 3"
+    },
+    {
+      "name": "prefix_elemental_pure",
+      "source": "cases/prefix_elemental_pure.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "3 3 3"
+    },
+    {
+      "name": "prefix_simple_elemental",
+      "source": "cases/prefix_simple_elemental.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": true,
+      "expected_stdout": "3 3 3",
+      "pure_reference": "pure_references/prefix_simple_elemental.f90"
+    },
+    {
+      "name": "prefix_impure_elemental",
+      "source": "cases/prefix_impure_elemental.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "3 3 3"
+    },
+    {
+      "name": "prefix_elemental_impure",
+      "source": "cases/prefix_elemental_impure.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "3 3 3"
+    },
+    {
+      "name": "simple_elemental_scalar",
+      "source": "cases/simple_elemental_scalar.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": true,
+      "expected_stdout": "3",
+      "pure_reference": "pure_references/simple_elemental_scalar.f90"
+    },
+    {
+      "name": "simple_calls_pure_non_simple",
+      "source": "cases/simple_calls_pure_non_simple.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "has_simple": true,
+      "expected_stdout": "",
+      "pure_reference": "pure_references/simple_calls_pure_non_simple.f90"
+    },
+    {
+      "name": "scalar_all_intents",
+      "source": "cases/scalar_all_intents.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "12 7"
+    },
+    {
+      "name": "scalar_out_uninitialized",
+      "source": "cases/scalar_out_uninitialized.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "7"
+    },
+    {
+      "name": "scalar_inout_overwrite_undefined",
+      "source": "cases/scalar_inout_overwrite_undefined.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "8"
+    },
+    {
+      "name": "array_inout_overwrite_undefined",
+      "source": "cases/array_inout_overwrite_undefined.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "8 8 8"
+    },
+    {
+      "name": "array_out_uninitialized",
+      "source": "cases/array_out_uninitialized.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "7 7 7"
+    },
+    {
+      "name": "scalar_zero_arg_impure",
+      "source": "cases/scalar_zero_arg_impure.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "91"
+    },
+    {
+      "name": "scalar_only_in_impure",
+      "source": "cases/scalar_only_in_impure.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "7"
+    },
+    {
+      "name": "rank_one_bounds",
+      "source": "cases/rank_one_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "10 18 28 7 9 11"
+    },
+    {
+      "name": "rank_two_bounds",
+      "source": "cases/rank_two_bounds.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "6 6 6 6 6 6 5 5 5 5 5 5"
+    },
+    {
+      "name": "keywords_xyz",
+      "source": "cases/keywords_xyz.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "6 6 5 5"
+    },
+    {
+      "name": "keywords_xzy",
+      "source": "cases/keywords_xzy.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "6 6 5 5"
+    },
+    {
+      "name": "keywords_yxz",
+      "source": "cases/keywords_yxz.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "6 6 5 5"
+    },
+    {
+      "name": "keywords_yzx",
+      "source": "cases/keywords_yzx.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "6 6 5 5"
+    },
+    {
+      "name": "keywords_zxy",
+      "source": "cases/keywords_zxy.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "6 6 5 5"
+    },
+    {
+      "name": "keywords_zyx",
+      "source": "cases/keywords_zyx.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "6 6 5 5"
+    },
+    {
+      "name": "mixed_case_keywords",
+      "source": "cases/mixed_case_keywords.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "8 8 6 6"
+    },
+    {
+      "name": "input_expression_snapshot",
+      "source": "cases/input_expression_snapshot.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "2 3 4 5"
+    },
+    {
+      "name": "readonly_aliases",
+      "source": "cases/readonly_aliases.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "4 8 12"
+    },
+    {
+      "name": "disjoint_strides",
+      "source": "cases/disjoint_strides.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "2 1 4 3 6 5"
+    },
+    {
+      "name": "reverse_destination",
+      "source": "cases/reverse_destination.f90",
+      "category": "runtime",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "reverse_source_and_destination",
+      "source": "cases/reverse_source_and_destination.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "10 30 50"
+    },
+    {
+      "name": "rank_two_strided_destinations",
+      "source": "cases/rank_two_strided_destinations.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "43 41 23 21"
+    },
+    {
+      "name": "rank_reduced_destination",
+      "source": "cases/rank_reduced_destination.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "0 1 0 0 1 0 0 1 0 0 1 0"
+    },
+    {
+      "name": "real64_output",
+      "source": "cases/real64_output.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "1.0 1.0 1.0 2.5 2.5 2.5",
+      "rel_tol": 1e-13,
+      "abs_tol": 1e-14
+    },
+    {
+      "name": "logical_output",
+      "source": "cases/logical_output.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "F F F F F F"
+    },
+    {
+      "name": "impure_order_rank_one",
+      "source": "cases/impure_order_rank_one.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "2 4 6 102 104 106"
+    },
+    {
+      "name": "impure_order_rank_two",
+      "source": "cases/impure_order_rank_two.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "11 12 21 22 31 32 111 112 121 122 131 132"
+    },
+    {
+      "name": "impure_order_reverse_section",
+      "source": "cases/impure_order_reverse_section.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "43 41 23 21 11 12 13 121 22 123 31 32 33 141 42 143"
+    },
+    {
+      "name": "impure_calls_ordinary_subroutine",
+      "source": "cases/impure_calls_ordinary_subroutine.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "3 7 4 8"
+    },
+    {
+      "name": "elemental_nested_pure_call",
+      "source": "cases/elemental_nested_pure_call.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "3 3 3"
+    },
+    {
+      "name": "impure_nested_call_order",
+      "source": "cases/impure_nested_call_order.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "2 102 5 105 202 205"
+    },
+    {
+      "name": "function_prefix_impure_elemental_integer",
+      "source": "cases/function_prefix_impure_elemental_integer.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "13"
+    },
+    {
+      "name": "function_prefix_impure_integer_elemental",
+      "source": "cases/function_prefix_impure_integer_elemental.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "13"
+    },
+    {
+      "name": "function_prefix_elemental_impure_integer",
+      "source": "cases/function_prefix_elemental_impure_integer.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "13"
+    },
+    {
+      "name": "function_prefix_elemental_integer_impure",
+      "source": "cases/function_prefix_elemental_integer_impure.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "13"
+    },
+    {
+      "name": "function_prefix_integer_impure_elemental",
+      "source": "cases/function_prefix_integer_impure_elemental.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "13"
+    },
+    {
+      "name": "function_prefix_integer_elemental_impure",
+      "source": "cases/function_prefix_integer_elemental_impure.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "13"
+    },
+    {
+      "name": "impure_function_no_io_print",
+      "source": "cases/impure_function_no_io_print.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "12"
+    },
+    {
+      "name": "impure_function_rank_two",
+      "source": "cases/impure_function_rank_two.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "11 12 21 22 21 22 31 32"
+    },
+    {
+      "name": "impure_function_reverse",
+      "source": "cases/impure_function_reverse.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "3 2 1 13 12 11"
+    },
+    {
+      "name": "impure_function_sum",
+      "source": "cases/impure_function_sum.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "1 2 3 36"
+    },
+    {
+      "name": "impure_function_product",
+      "source": "cases/impure_function_product.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "1 2 3 1716"
+    },
+    {
+      "name": "impure_function_matmul_once",
+      "source": "cases/impure_function_matmul_once.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "11 12 21 22 52 54 52 54"
+    },
+    {
+      "name": "impure_function_dot_once",
+      "source": "cases/impure_function_dot_once.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "1 2 3 72"
+    },
+    {
+      "name": "impure_function_nested",
+      "source": "cases/impure_function_nested.f90",
+      "category": "success",
+      "baseline": "compile",
+      "has_simple": false,
+      "expected_stdout": "1 2 11 12 21 22"
+    },
+    {
+      "name": "impure_function_cache_statement_reset",
+      "source": "cases/impure_function_cache_statement_reset.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "1 2 2 3 12 13"
+    },
+    {
+      "name": "impure_function_scalar_expansion_once",
+      "source": "cases/impure_function_scalar_expansion_once.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "7 17 17 17"
+    },
+    {
+      "name": "impure_function_overlap_assignment",
+      "source": "cases/impure_function_overlap_assignment.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "3 2 1 13 12 11"
+    },
+    {
+      "name": "empty_impure_subroutine",
+      "source": "cases/empty_impure_subroutine.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "0"
+    },
+    {
+      "name": "empty_rank_two_subroutine",
+      "source": "cases/empty_rank_two_subroutine.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "0"
+    },
+    {
+      "name": "empty_writable_no_scalar_read",
+      "source": "cases/empty_writable_no_scalar_read.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "0"
+    },
+    {
+      "name": "empty_impure_function",
+      "source": "cases/empty_impure_function.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "0"
+    },
+    {
+      "name": "empty_function_scalar_expansion",
+      "source": "cases/empty_function_scalar_expansion.f90",
+      "category": "success",
+      "baseline": "compile",
+      "has_simple": false,
+      "expected_stdout": "7 0"
+    },
+    {
+      "name": "undefined_in_unused",
+      "source": "cases/undefined_in_unused.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "9 9 9"
+    },
+    {
+      "name": "inout_partial_definition_preserved",
+      "source": "cases/inout_partial_definition_preserved.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "7"
+    },
+    {
+      "name": "invalid_writable_scalar_with_array",
+      "source": "cases/invalid_writable_scalar_with_array.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_only_in_array",
+      "source": "cases/invalid_only_in_array.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_array_dummy",
+      "source": "cases/invalid_array_dummy.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_missing_intent",
+      "source": "cases/invalid_missing_intent.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_out_expression",
+      "source": "cases/invalid_out_expression.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_inout_literal",
+      "source": "cases/invalid_inout_literal.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_out_parameter",
+      "source": "cases/invalid_out_parameter.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_kind_mismatch",
+      "source": "cases/invalid_kind_mismatch.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_rank_shape_static",
+      "source": "cases/invalid_rank_shape_static.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_pure_print",
+      "source": "cases/invalid_pure_print.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_pure_calls_impure",
+      "source": "cases/invalid_pure_calls_impure.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_conflict_pure_impure",
+      "source": "cases/invalid_conflict_pure_impure.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_duplicate_impure",
+      "source": "cases/invalid_duplicate_impure.f90",
+      "category": "invalid",
+      "baseline": "compile",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_duplicate_elemental",
+      "source": "cases/invalid_duplicate_elemental.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_unknown_keyword",
+      "source": "cases/invalid_unknown_keyword.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_duplicate_keyword",
+      "source": "cases/invalid_duplicate_keyword.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "invalid_position_after_keyword",
+      "source": "cases/invalid_position_after_keyword.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "unsupported_writable_impure_function",
+      "source": "cases/unsupported_writable_impure_function.f90",
+      "category": "unsupported",
+      "baseline": "compile",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "unsupported_impure_nonelemental",
+      "source": "cases/unsupported_impure_nonelemental.f90",
+      "category": "unsupported",
+      "baseline": "compile",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "runtime_overlap_same",
+      "source": "cases/runtime_overlap_same.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "runtime_overlap_cross_elements",
+      "source": "cases/runtime_overlap_cross_elements.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "runtime_overlap_scalar_input",
+      "source": "cases/runtime_overlap_scalar_input.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "runtime_undefined_in_read",
+      "source": "cases/runtime_undefined_in_read.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "runtime_undefined_inout_read",
+      "source": "cases/runtime_undefined_inout_read.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "runtime_out_read_old",
+      "source": "cases/runtime_out_read_old.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "runtime_out_partial_reset",
+      "source": "cases/runtime_out_partial_reset.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": "",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "runtime_shape_dynamic",
+      "source": "cases/runtime_shape_dynamic.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "runtime_empty_zero_stride",
+      "source": "cases/runtime_empty_zero_stride.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "runtime_section_oob",
+      "source": "cases/runtime_section_oob.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "runtime_active_loop_scalar",
+      "source": "cases/runtime_active_loop_scalar.f90",
+      "category": "invalid",
+      "baseline": "reject",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "runtime_impure_print_recursive",
+      "source": "cases/runtime_impure_print_recursive.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "runtime_impure_print_transitive",
+      "source": "cases/runtime_impure_print_transitive.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "runtime_budget_array_call",
+      "source": "cases/runtime_budget_array_call.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": "",
+      "args": [
+        "--max-steps",
+        "40"
+      ]
+    },
+    {
+      "name": "runtime_budget_impure_function",
+      "source": "cases/runtime_budget_impure_function.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": "",
+      "args": [
+        "--max-steps",
+        "40"
+      ]
+    },
+    {
+      "name": "runtime_late_function_divide",
+      "source": "cases/runtime_late_function_divide.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": "1 0"
+    },
+    {
+      "name": "matrix_stride_1_1",
+      "source": "cases/matrix_stride_1_1.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "11 12 13 21 22 23 31 32 33 41 42 43"
+    },
+    {
+      "name": "matrix_stride_1_2",
+      "source": "cases/matrix_stride_1_2.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "11 12 13 31 32 33"
+    },
+    {
+      "name": "matrix_stride_1_m1",
+      "source": "cases/matrix_stride_1_m1.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "41 42 43 31 32 33 21 22 23 11 12 13"
+    },
+    {
+      "name": "matrix_stride_1_m2",
+      "source": "cases/matrix_stride_1_m2.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "41 42 43 21 22 23"
+    },
+    {
+      "name": "matrix_stride_2_1",
+      "source": "cases/matrix_stride_2_1.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "11 13 21 23 31 33 41 43"
+    },
+    {
+      "name": "matrix_stride_2_2",
+      "source": "cases/matrix_stride_2_2.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "11 13 31 33"
+    },
+    {
+      "name": "matrix_stride_2_m1",
+      "source": "cases/matrix_stride_2_m1.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "41 43 31 33 21 23 11 13"
+    },
+    {
+      "name": "matrix_stride_2_m2",
+      "source": "cases/matrix_stride_2_m2.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "41 43 21 23"
+    },
+    {
+      "name": "matrix_stride_m1_1",
+      "source": "cases/matrix_stride_m1_1.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "13 12 11 23 22 21 33 32 31 43 42 41"
+    },
+    {
+      "name": "matrix_stride_m1_2",
+      "source": "cases/matrix_stride_m1_2.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "13 12 11 33 32 31"
+    },
+    {
+      "name": "matrix_stride_m1_m1",
+      "source": "cases/matrix_stride_m1_m1.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "43 42 41 33 32 31 23 22 21 13 12 11"
+    },
+    {
+      "name": "matrix_stride_m1_m2",
+      "source": "cases/matrix_stride_m1_m2.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "43 42 41 23 22 21"
+    },
+    {
+      "name": "matrix_stride_m2_1",
+      "source": "cases/matrix_stride_m2_1.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "13 11 23 21 33 31 43 41"
+    },
+    {
+      "name": "matrix_stride_m2_2",
+      "source": "cases/matrix_stride_m2_2.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "13 11 33 31"
+    },
+    {
+      "name": "matrix_stride_m2_m1",
+      "source": "cases/matrix_stride_m2_m1.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "43 41 33 31 23 21 13 11"
+    },
+    {
+      "name": "matrix_stride_m2_m2",
+      "source": "cases/matrix_stride_m2_m2.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "43 41 23 21"
+    },
+    {
+      "name": "impure_function_masked_reduction",
+      "source": "cases/impure_function_masked_reduction.f90",
+      "category": "success",
+      "baseline": "compile",
+      "has_simple": false,
+      "expected_stdout": "1 2 3 12"
+    },
+    {
+      "name": "module_impure_elemental",
+      "source": "cases/module_impure_elemental.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "5 5 6 6"
+    },
+    {
+      "name": "assumed_shape_elemental_call",
+      "source": "cases/assumed_shape_elemental_call.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "2 3 4"
+    },
+    {
+      "name": "impure_function_array_argument",
+      "source": "cases/impure_function_array_argument.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "1 2 3 36"
+    },
+    {
+      "name": "impure_function_two_references",
+      "source": "cases/impure_function_two_references.f90",
+      "category": "success",
+      "baseline": "compile",
+      "has_simple": false,
+      "expected_stdout": "1 2 1 2 22 24"
+    },
+    {
+      "name": "character_scalar_input",
+      "source": "cases/character_scalar_input.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "item item 2 2"
+    },
+    {
+      "name": "impure_function_cache_loop_reset",
+      "source": "cases/impure_function_cache_loop_reset.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "1 1 2 2 12 12"
+    },
+    {
+      "name": "runtime_fresh_local_each_element",
+      "source": "cases/runtime_fresh_local_each_element.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": "7",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "runtime_out_partial_branch",
+      "source": "cases/runtime_out_partial_branch.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": "7",
+      "diagnostic": "uninitialized"
+    },
+    {
+      "name": "runtime_dynamic_shape_before_io",
+      "source": "cases/runtime_dynamic_shape_before_io.f90",
+      "category": "runtime",
+      "baseline": "skip",
+      "has_simple": false,
+      "expected_stdout": ""
+    },
+    {
+      "name": "impure_shape_only_inquiry",
+      "source": "cases/impure_shape_only_inquiry.f90",
+      "category": "success",
+      "baseline": "compile",
+      "has_simple": false,
+      "expected_stdout": "3"
+    },
+    {
+      "name": "empty_function_scalar_side_actual",
+      "source": "cases/empty_function_scalar_side_actual.f90",
+      "category": "success",
+      "baseline": "compile",
+      "has_simple": false,
+      "expected_stdout": "0"
+    },
+    {
+      "name": "empty_subroutine_scalar_side_actual",
+      "source": "cases/empty_subroutine_scalar_side_actual.f90",
+      "category": "success",
+      "baseline": "compile",
+      "has_simple": false,
+      "expected_stdout": "0"
+    },
+    {
+      "name": "nonempty_subroutine_scalar_side_once",
+      "source": "cases/nonempty_subroutine_scalar_side_once.f90",
+      "category": "success",
+      "baseline": "run",
+      "has_simple": false,
+      "expected_stdout": "7 17 17 17"
+    }
+  ]
+}

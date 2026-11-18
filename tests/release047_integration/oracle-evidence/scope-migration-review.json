@@ -1,0 +1,99 @@
+{
+  "original_sources_preserved": 26,
+  "original_inputs_preserved": 21,
+  "source_checks": true,
+  "new_sources": 3,
+  "new_inputs": 2,
+  "reclassified": [
+    {
+      "name": "move_read_eoshift_vector",
+      "source": "cases/move_read_eoshift_vector.f90",
+      "sha256": "754e110c0efa6b2aeba5b561a8413d7fe387c8bf8c0c8a7321e338074a6e0e42",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "features": [
+        "explicit lower bounds",
+        "external array READ",
+        "MOVE_ALLOC",
+        "EOSHIFT default component boundary"
+      ],
+      "inputs": [
+        {
+          "unit": 27,
+          "file": "inputs/move_read_eoshift_vector_27.dat",
+          "bytes": 8,
+          "sha256": "243c6d67d2657ddfb7607f3d2e161f9aa8d7b8f58d0856c665d9883860c457f6"
+        }
+      ],
+      "diagnostic": "invalid KIND argument opcode",
+      "diagnostic_line": 18,
+      "diagnostic_column": 26
+    },
+    {
+      "name": "default_result_nonempty_eoshift",
+      "source": "cases/default_result_nonempty_eoshift.f90",
+      "sha256": "bb6deff567e52e5b8ef951a8f96f398856f41e77f19daeadb69c75064fa6f146",
+      "category": "reject",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "features": [
+        "nonempty default result body",
+        "READ function lifetime",
+        "EOSHIFT boundary"
+      ],
+      "inputs": [
+        {
+          "unit": 27,
+          "file": "inputs/default_result_nonempty_eoshift_27.dat",
+          "bytes": 2,
+          "sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06"
+        }
+      ],
+      "diagnostic": "External READ requires an INTEGER unit variable, list-directed whole local numeric or CHARACTER targets or literal (A) scalar CHARACTER, and optional INTEGER IOSTAT outside PURE/SIMPLE procedures",
+      "diagnostic_line": 12,
+      "diagnostic_column": 11
+    },
+    {
+      "name": "metadata_no_read_default_kind",
+      "source": "cases/metadata_no_read_default_kind.f90",
+      "sha256": "69ae9fabba895d41012569bfe1783168f08aa38c525fc2c3f9008c0c48d65933",
+      "category": "runtime",
+      "gnu": "compile",
+      "expected_stdout": "",
+      "features": [
+        "KIND metadata-only EOSHIFT",
+        "default component control metadata",
+        "undefined array not read"
+      ],
+      "diagnostic": "invalid KIND argument opcode",
+      "diagnostic_line": 14,
+      "diagnostic_column": 20
+    }
+  ],
+  "reason": "EOSHIFT owner verified existing KIND walker does not accept ex_component; valid_read independently requires explicit IMPURE prefix for function-scope external IO. Original GNU-valid sources retained as bounded compile-only reference; separate supported counterparts added.",
+  "initial_candidate": "c22c1d72e827434c65fb94b751d1b59a537e8aae50d0d271ad552f376acd70e9",
+  "all_initial_sources_preserved": [
+    {
+      "evidence": "preview-first-results.json",
+      "cases": 26,
+      "unchanged": true
+    },
+    {
+      "evidence": "preview-reviewed-results.json",
+      "cases": 29,
+      "unchanged": true
+    }
+  ],
+  "explicit_impure_prefix_boundary": {
+    "source": "cases/explicit_impure_default_result_eoshift.f90",
+    "line": 8,
+    "column": 8,
+    "diagnostic": "IMPURE non-ELEMENTAL prefixes are unsupported",
+    "reason": "Parser deliberately allows IMPURE only with ELEMENTAL; external READ valid_read separately excludes ordinary non-subroutine functions without explicit IMPURE.",
+    "owner_confirmation": true
+  },
+  "read_owner_confirmed_existing_boundaries": true,
+  "eoshift_owner_confirmed_existing_boundaries": true,
+  "final_supported_variant": "cases/main_read_default_result_eoshift.f90"
+}

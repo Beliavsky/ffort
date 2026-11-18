@@ -1,0 +1,160 @@
+--- a/src/frontend/frontend_compiler_type_queries.f90
++++ b/src/frontend/frontend_compiler_type_queries.f90
+@@ -404,6 +404,15 @@
+         if (len(operator) >= 3) then
+             if (operator(1:1) == '.' .and. operator(len(operator):) == '.' .and. &
+                 .not. is_relational_operator(operator) .and. .not. is_logical_operator(operator)) then
++                call resolve_defined_operator_result(arena, node_index, node, visiting)
++                return
++            end if
++        end if
++        ! Binary + has no intrinsic CHARACTER signature. Resolve its visible
++        ! defined specific rather than inventing numeric/operand result metadata.
++        ! Numeric + remains intrinsic and cannot be replaced by an interface.
++        if (operator == '+' .and. node%left_index > 0 .and. node%right_index > 0) then
++            if (left_type == TCHAR .or. right_type == TCHAR) then
+                 call resolve_defined_operator_result(arena, node_index, node, visiting)
+                 return
+             end if
+@@ -775,7 +784,8 @@
+         winner = 0; best = -1; rank = 0; ambiguous = .false.; winning_elemental = .false.
+         do i = 1, size(specifics)
+             candidate = specifics(i)
+-            call match_named_generic_candidate(arena, candidate, node%arg_indices, visiting, score, actual_rank, elemental)
++            call match_named_generic_candidate(arena, candidate, node%arg_indices, visiting, score, actual_rank, elemental, &
++                allow_optional=.true.)
+             if (score < 0 .or. score < best) cycle
+             if (score == best) then
+                 ambiguous = .true.
+@@ -801,37 +811,43 @@
+         end if
+     end subroutine resolve_named_generic_result
+ 
+-    recursive subroutine match_named_generic_candidate(arena, procedure_index, actuals, visiting, score, rank, elemental)
++    recursive subroutine match_named_generic_candidate(arena, procedure_index, actuals, visiting, score, rank, elemental, allow_optional)
+         type(ast_arena_t), intent(inout) :: arena
+         integer, intent(in) :: procedure_index
+         integer, allocatable, intent(in) :: actuals(:)
+         logical, intent(inout) :: visiting(:)
+         integer, intent(out) :: score, rank
+         logical, intent(out) :: elemental
++        logical, intent(in), optional :: allow_optional
++        logical, allocatable :: optional_dummy(:)
+         integer, allocatable :: formals(:), values(:), positions(:)
+         type(string_t), allocatable :: names(:)
+         type(declaration_binding_t) :: binding
+         character(len=:), allocatable :: error_msg, keyword
+-        integer :: n, j, a, d, position, target
+-        logical :: seen_keyword
++        integer :: n, n_actual, j, a, d, position, target
++        logical :: seen_keyword, permit_optional
+ 
+         score = -1; rank = 0; elemental = .false.
+         if (.not. arena%has_node_at(procedure_index)) return
+-        n = 0
+-        if (allocated(actuals)) n = size(actuals)
++        n_actual = 0; permit_optional = .false.
++        if (present(allow_optional)) permit_optional = allow_optional
++        if (allocated(actuals)) n_actual = size(actuals)
+         select type (proc => arena%entries(procedure_index)%node)
+         type is (function_def_node)
+             elemental = is_elemental_prefix(proc%prefix_keywords)
+             if (.not. allocated(proc%param_indices)) then
+-                if (n == 0) score = 1
++                if (n_actual == 0) score = 1
+                 return
+             end if
+-            if (size(proc%param_indices) /= n) return
++            n = size(proc%param_indices)
++            if (n_actual > n) return
++            if (.not. permit_optional .and. n_actual /= n) return
+             formals = proc%param_indices
+         class default
+             return
+         end select
+-        allocate(names(n), values(n), positions(n))
++        allocate(names(n), values(n), positions(n), optional_dummy(n))
++        optional_dummy = .false.
+         positions = 0; values = 0
+         do j = 1, n
+             if (.not. arena%has_node_at(formals(j))) return
+@@ -845,10 +861,22 @@
+             call resolve_name_in_scope(arena, procedure_index, names(j)%s, binding, error_msg)
+             if (.not. binding%found) return
+             formals(j) = binding%declaration_node_index
++            if (.not. arena%has_node_at(formals(j))) return
++            select type (dummy => arena%entries(formals(j))%node)
++            type is (declaration_node)
++                optional_dummy(j) = dummy%is_optional
++            type is (parameter_declaration_node)
++                optional_dummy(j) = dummy%is_optional
++            class default
++                return
++            end select
++            ! Defined operator operands are never OPTIONAL. Named generic
++            ! calls may omit only source-declared OPTIONAL formals.
++            if (optional_dummy(j) .and. .not. permit_optional) return
+             call resolve_node_metadata(arena, formals(j), visiting)
+         end do
+         seen_keyword = .false.
+-        do j = 1, n
++        do j = 1, n_actual
+             a = actuals(j); keyword = ''
+             if (.not. arena%has_node_at(a)) return
+             select type (actual => arena%entries(a)%node)
+@@ -880,6 +908,10 @@
+         score = 1
+         do j = 1, n
+             a = values(j); d = formals(j)
++            if (a == 0) then
++                if (optional_dummy(j)) cycle
++                score = -1; return
++            end if
+             if (.not. arena%has_node_at(a)) then
+                 score = -1; return
+             end if
+--- a/src/semantic/analyzers/semantic_binary_ops_core.f90
++++ b/src/semantic/analyzers/semantic_binary_ops_core.f90
+@@ -17,20 +17,25 @@
+ 
+ contains
+ 
+-    function infer_binary_operation(arena, binop_index, binop, left_typ, right_typ) &
++    function infer_binary_operation(arena, binop_index, binop, left_typ, right_typ, preserve_plus) &
+             result(typ)
+         type(ast_arena_t), intent(inout) :: arena
+         integer, intent(in) :: binop_index
+         type(binary_op_node), intent(in) :: binop
+         type(mono_type_t), intent(in) :: left_typ, right_typ
++        logical, intent(in), optional :: preserve_plus
+         type(mono_type_t) :: typ
++        logical :: rewrite_character_plus
++
++        rewrite_character_plus = .true.
++        if (present(preserve_plus)) rewrite_character_plus = .not. preserve_plus
+ 
+         if (binop%is_unary_minus) then
+             typ = right_typ
+             return
+         end if
+ 
+-        if (binop%operator == "+") then
++        if (binop%operator == "+" .and. rewrite_character_plus) then
+             if (left_typ%kind == TCHAR .and. right_typ%kind == TCHAR) then
+                 typ = infer_string_concatenation(arena, binop%left_index, &
+                     binop%right_index, left_typ, &
+--- a/src/semantic/analyzers/semantic_analyzer_infer_type_locals_part2.inc
++++ b/src/semantic/analyzers/semantic_analyzer_infer_type_locals_part2.inc
+@@ -571,8 +571,11 @@
+ 
+             left_t = get_node_type(expr%left_index)
+             right_t = get_node_type(expr%right_index)
++            ! Standard Fortran + may select a declared CHARACTER overload;
++            ! only lazy input may rewrite it into intrinsic concatenation.
+             node_type = infer_binary_operation(arena, node_index, expr, &
+-                                               left_t, right_t)
++                                               left_t, right_t, &
++                                               preserve_plus=this%input_mode == INPUT_MODE_STANDARD)
+ 
+             call extract_integer_signedness(left_t, left_is_int, left_is_unsigned)
+             call extract_integer_signedness(right_t, right_is_int, right_is_unsigned)

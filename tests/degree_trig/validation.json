@@ -1,0 +1,107 @@
+{
+  "baseline": {
+    "baseline": "fortfront-043-integration/fortfront-interpreter-0.43.0-source-test-final.zip",
+    "sha256": "68d6d6d9e6b854331b3b7a3f598b69ff88786c11adb98e01d3035640d4eb0445",
+    "prior_Fortran_sources_preserved": 8650,
+    "core_replay_zero_fuzz": true
+  },
+  "source": {
+    "total": 177,
+    "failed": 0,
+    "candidate_checked": 177,
+    "gnu_checked": 177,
+    "gnu_executed": 132,
+    "gnu_compile_only": 13,
+    "gnu_compile_rejections": 32
+  },
+  "candidate_sha256": "cc4ec4c76f425e50f935f540c1a52b3fd1be011fe211369b9698c1299e9d4a69",
+  "native": {
+    "test_degree_trig_intrinsics": {
+      "checks": 2501,
+      "log_sha256": "cd601f87698c539f97744abd5694f62117547770559f49f9d7c7c9dc7b976661"
+    },
+    "test_degree_trig_producer": {
+      "checks": 20,
+      "log_sha256": "5940715bf485a1764f71dd92514abddfb5a1088463711f37c29d50153cd8cb34"
+    }
+  },
+  "harness_checks": 28,
+  "related_source_regressions": 550,
+  "regressions": [
+    {
+      "suite": "acos_intrinsic",
+      "code": 0,
+      "summary": {
+        "total": 28,
+        "failed": 0,
+        "candidate_checked": 28
+      }
+    },
+    {
+      "suite": "dprod_tand",
+      "code": 0,
+      "summary": {
+        "total": 67,
+        "failed": 0,
+        "candidate_checked": 67
+      }
+    },
+    {
+      "suite": "inverse_trigonometric",
+      "code": 0,
+      "summary": {
+        "total": 222,
+        "failed": 0,
+        "candidate_checked": 222
+      }
+    },
+    {
+      "suite": "model_character_intrinsics",
+      "code": 0,
+      "summary": {
+        "total": 120,
+        "failed": 0,
+        "candidate_checked": 120
+      }
+    },
+    {
+      "suite": "spacing_nearest",
+      "code": 0,
+      "summary": {
+        "total": 47,
+        "failed": 0,
+        "candidate_checked": 47
+      }
+    },
+    {
+      "suite": "rounding_inverse_hyperbolic",
+      "code": 0,
+      "summary": {
+        "total": 66,
+        "failed": 0,
+        "candidate_checked": 66
+      }
+    }
+  ],
+  "precision": {
+    "cases": 28,
+    "values": 204,
+    "mpmath": "1.3.0",
+    "precision_decimal_digits": 180,
+    "exact_integer_rational_degree_reduction": true,
+    "reproduced_manifest_and_source": true
+  },
+  "original_complete_passes": [
+    "demo_acosd",
+    "demo_asind",
+    "demo_sind"
+  ],
+  "original_boundary": "demo_cosd rejects T20 format positioning; original bytes unchanged",
+  "gnu_caveat": "One isolated REAL4 runtime SIND negative-zero discrepancy; compile-only with independent expected sign",
+  "build_scope": "App/library plus two directly linked native targets; no isolated full native aggregate",
+  "patches": {
+    "degree-trig-core.patch": "a0f4c72e0538b9cb21b953aff5088d6a5a310cba2b8d6f15a04d347031dbb2f5",
+    "degree-trig-vendor-raw.patch": "09a2b6fde911d48546a5648bef7259ba361d7c848124d4db35effdec9e92f86f",
+    "degree-trig-vendor-ledger.patch": "51fb66c99414abd29dfead9c754cc0056d4688f6f4011f4b0863c2881a5612e5"
+  }
+}
